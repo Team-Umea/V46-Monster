@@ -84,3 +84,7 @@ li button:hover {
 body {
     animation: spooky 2s infinite alternate;
 }
+
+.hidden {
+    display:none;
+}

@@ -1,5 +1,6 @@
 const monsterContainer = document.getElementById('monsters');
 const teamsContainer = document.getElementById('chosenTeam');
+const resetButton = document.getElementById('resetTeam');
 const addButtonText = "Add to team"; 
 const removeButtonText = 'Remove from team';
 
@@ -23,10 +24,32 @@ function init(){
   }
 
   teams = localTeams || [];
-  console.log(teams);
+  toggleResetTeanBtn();
+  initResetButton();
   populateHTML(teams, teamsContainer, removeButtonText);
 }
 
+function initResetButton(){
+  resetButton.addEventListener('click', ()=>{
+    teams.forEach(item=>{
+      monsterDb.push(item);
+    })
+    teams=[];
+    monsterDb.sort((a,b)=>a.id-b.id);
+    saveProgress();
+    teamsContainer.innerHTML="";
+    populateHTML(monsterDb,monsterContainer,addButtonText);
+    toggleResetTeanBtn();
+  })
+}
+
+function toggleResetTeanBtn(){
+  if(teams.length > 0){
+    resetButton.classList.remove('hidden');
+  } else {
+    resetButton.classList.add('hidden');
+  }
+}
 
 function fetchMonsters(){
   fetch('aimonsters.json')
@@ -100,6 +123,7 @@ class Monster {
 
 //Monsters => HTML
 function populateHTML(array, parent, buttonText){
+  parent.innerHTML="";
   array.forEach(monster => {
     const li = document.createElement('li');
     const name = document.createElement('h2');
@@ -130,6 +154,7 @@ function populateHTML(array, parent, buttonText){
       }
 
       //Anytime anything changes we save to local storage.
+      toggleResetTeanBtn();
       saveProgress();
     })
 
