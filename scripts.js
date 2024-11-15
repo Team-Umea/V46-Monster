@@ -1,16 +1,24 @@
-const teams = [];
+const monsterContainer = document.getElementById('monsters');
+const teamsContainer = document.getElementById('chosenTeam');
+
+let teams = [];
 let monsterDb;
 
 function init(){
-  const data = JSON.parse(localStorage.getItem('monsters'));
-  if (data){
+  let data;
+  try {
+    data = JSON.parse(localStorage.getItem('monsters'));
+  } catch (error) {
+    console.log(error);
+  }
+  if (data && data != undefined){
     monsterDb = data;
+    populateHTML();
   } else {
     fetchMonsters();
   }
-
-  populateHTML();
 }
+
 
 function fetchMonsters(){
   fetch('aimonsters.json')
@@ -19,6 +27,7 @@ function fetchMonsters(){
   })
   .then(data => {
     generateMonstersJSON(data);
+    populateHTML();
   })
   .catch(error => {
       console.error('There has been a problem with your fetch operation:', error);
@@ -83,8 +92,6 @@ class Monster {
 
 //Monsters => HTML
 function populateHTML(){
-  const container = document.getElementById('monsters');
-
   monsterDb.forEach(monster => {
     const li = document.createElement('li');
     const name = document.createElement('h2');
@@ -97,17 +104,67 @@ function populateHTML(){
     img.setAttribute('src', monster.image);
     img.setAttribute('alt', 'This is an image of monster ' + monster.name);
     button.innerText = 'Add to team';
-    button.addEventListener('click',() => {
-      console.log('you clicked me');
+    button.addEventListener('click', () => {
+      const buttonText =  button.innerText;
+
+      if(buttonText==="Add to team"){
+        if(teams.length<4){
+          addMonsterToTeam(monster);
+          deleteMonster(monster);
+          li.remove();
+          moveMonster(li);
+        }
+      }else if(buttonText==="Remove from team"){
+        addMonsterToDB(monster);
+        shrinkTeam(monster);
+        li.remove();
+        moveMonsterBackToDBUl(li);
+      }
     })
 
     li.appendChild(name);
     li.appendChild(img);
     li.appendChild(spec);
     li.appendChild(button);
-
-    container.append(li);
+    monsterContainer.appendChild(li);
   });
+}
+
+//Moves HTML of a Monster to a team 
+
+function moveMonsterBackToDBUl(monster){
+  console.log(monster);
+  monster.lastElementChild.innerText = "Add to team";
+  monsterContainer.appendChild(monster);
+}
+
+function moveMonster(monster){
+    test = monster;
+    monster.lastElementChild.innerText = "Remove from team";
+    teamsContainer.appendChild(monster);
+}
+
+function addMonsterToTeam(monster){
+  teams.push(monster);
+}
+
+function addMonsterToDB(monster){
+  monsterDb.push(monster);
+}
+
+function deleteMonster(monster){
+  monsterDb = monsterDb.filter((element) => {
+    return element.id !== monster.id;
+  })
+
+  //Update local storage after delet
+  saveToLocalStorage('monsters', monsterDb);
+}
+
+function shrinkTeam(monster){
+  teams = teams.filter((element) => {
+    return element.id !== monster.id;
+  })
 }
 
 function saveToLocalStorage(key, value){
@@ -129,6 +186,7 @@ function generateMonstersJSON(data) {
     const monster = new Monster(id, name, speciality, image);
     monsterDb.push(monster);
   }
+  console.log(monsterDb);
   saveToLocalStorage('monsters', monsterDb);
 }
 
@@ -173,4 +231,7 @@ function createRandomTeams() {
   }
 }
 
-init();
+
+window.onload = ((event)=>{
+  init();
+})
