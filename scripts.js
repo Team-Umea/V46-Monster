@@ -8,6 +8,8 @@ function init(){
   } else {
     fetchMonsters();
   }
+
+  populateHTML();
 }
 
 function fetchMonsters(){
@@ -77,6 +79,35 @@ class Monster {
   setImage(image) {
     this.image = image;
   }
+}
+
+//Monsters => HTML
+function populateHTML(){
+  const container = document.getElementById('monsters');
+
+  monsterDb.forEach(monster => {
+    const li = document.createElement('li');
+    const name = document.createElement('h2');
+    const spec = document.createElement('p');
+    const img = document.createElement('img');
+    const button = document.createElement('button');
+
+    name.innerText = monster.name;
+    spec.innerText = monster.speciality;
+    img.setAttribute('src', monster.image);
+    img.setAttribute('alt', 'This is an image of monster ' + monster.name);
+    button.innerText = 'Add to team';
+    button.addEventListener('click',() => {
+      console.log('you clicked me');
+    })
+
+    li.appendChild(name);
+    li.appendChild(img);
+    li.appendChild(spec);
+    li.appendChild(button);
+
+    container.append(li);
+  });
 }
 
 function saveToLocalStorage(key, value){
