@@ -1,8 +1,16 @@
 const teams = [];
-const monsterDb = [];
-let aiMonsters = []; 
+let monsterDb;
 
-function fetchAI(){
+function init(){
+  const data = JSON.parse(localStorage.getItem('monsters'));
+  if (data){
+    monsterDb = data;
+  } else {
+    fetchMonsters();
+  }
+}
+
+function fetchMonsters(){
   fetch('aimonsters.json')
   .then(response => {
       return response.json();
@@ -71,16 +79,26 @@ class Monster {
   }
 }
 
+function saveToLocalStorage(key, value){
+  try {
+    localStorage.setItem(key, JSON.stringify(value));
+  } catch (error) {
+    console.log(error, 'pathetic');
+  }
+  
+}
+
 function generateMonstersJSON(data) {
+  monsterDb = [];
   for (let i = 0; i < data.length; i++) {
     const id = i + 1;
     const name = data[i].name;
     const speciality = data[i].speciality;
     const image = `monsters/monster${i + 1}.webp`;
     const monster = new Monster(id, name, speciality, image);
-    const monsterAsJSON = JSON.stringify(monster);
-    monsterDb.push(monsterAsJSON);
+    monsterDb.push(monster);
   }
+  saveToLocalStorage('monsters', monsterDb);
 }
 
 function createRandomTeams() {
@@ -124,7 +142,4 @@ function createRandomTeams() {
   }
 }
 
-createRandomTeams();
-fetchAI();
-
-console.log("Teams", teams);
+init();
