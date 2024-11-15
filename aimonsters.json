@@ -1,0 +1,42 @@
+[
+    {
+        "name": "Shadow Weaver",
+        "speciality": "Manipulates shadows to create illusions and confuse foes."
+    },
+    {
+        "name": "Frostbite Fury",
+        "speciality": "Inflicts chilling damage, slowing enemies with each strike."
+    },
+    {
+        "name": "Blight Brute",
+        "speciality": "Spreads toxic spores that weaken and poison nearby creatures."
+    },
+    {
+        "name": "Ember Wraith",
+        "speciality": "Leaves a trail of fire, igniting anything that crosses its path."
+    },
+    {
+        "name": "Thunderous Roar",
+        "speciality": "Emits a deafening roar that stuns and disorients enemies."
+    },
+    {
+        "name": "Spectral Stalker",
+        "speciality": "Phases through walls and becomes invisible for short bursts."
+    },
+    {
+        "name": "Venomous Serpent",
+        "speciality": "Delivers paralyzing venom with its bite, incapacitating its prey."
+    },
+    {
+        "name": "Earthshatter Titan",
+        "speciality": "Causes tremors with every step, knocking enemies off balance."
+    },
+    {
+        "name": "Soul Drain Phantom",
+        "speciality": "Absorbs life energy from foes, healing itself with their pain."
+    },
+    {
+        "name": "Celestial Guardian",
+        "speciality": "Summons protective light to shield allies and repel darkness."
+    }
+]

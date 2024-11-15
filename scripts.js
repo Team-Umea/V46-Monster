@@ -1,8 +1,22 @@
 const teams = [];
 const monsterDb = [];
+let aiMonsters = []; 
+
+function fetchAI(){
+  fetch('aimonsters.json')
+  .then(response => {
+      return response.json();
+  })
+  .then(data => {
+    generateMonstersJSON(data);
+  })
+  .catch(error => {
+      console.error('There has been a problem with your fetch operation:', error);
+  });
+}
 
 class Team {
-  constructor(teamName, monsters) {
+  constructor(teamName, monsters) { 
     this.teamName = teamName;
     this.monsters = monsters;
   }
@@ -57,12 +71,12 @@ class Monster {
   }
 }
 
-function generateMonsters() {
-  for (let i = 0; i < 10; i++) {
+function generateMonstersJSON(data) {
+  for (let i = 0; i < data.length; i++) {
     const id = i + 1;
-    const name = `Monster${i + 1}`;
-    const speciality = `Spec${i + 1}`;
-    const image = `images/monster${i + 1}.png`;
+    const name = data[i].name;
+    const speciality = data[i].speciality;
+    const image = `monsters/monster${i + 1}.webp`;
     const monster = new Monster(id, name, speciality, image);
     const monsterAsJSON = JSON.stringify(monster);
     monsterDb.push(monsterAsJSON);
@@ -110,7 +124,7 @@ function createRandomTeams() {
   }
 }
 
-generateMonsters();
 createRandomTeams();
+fetchAI();
 
 console.log("Teams", teams);
