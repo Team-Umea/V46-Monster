@@ -72,19 +72,51 @@ function initCreateTeamForm() {
   const input = container.getElementsByTagName("input")[0];
   const message = container.getElementsByTagName("p")[0];
 
-  console.log(form);
+  const digits = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
 
   input.addEventListener("input", () => {
+    //reset message on typing
+    message.innerText = "";
+    message.setAttribute("class", "hidden");
+    container.setAttribute("class", "minimize");
+
+    //get rid of all white spaces
     const trimedValue = input.value.replace(/\s+/g, "");
+    const lastCh = trimedValue.slice(-1).toLowerCase();
+
+    //only allow letters and digits
+    const isLetter = lastCh >= "a" && lastCh <= "z";
+    const isDigit = digits.includes(lastCh);
     input.value = trimedValue;
+
+    if (!isDigit && !isLetter) {
+      input.value = input.value.slice(0, -1);
+      message.setAttribute("class", "error");
+      message.innerText = "Error! Only letters and digits allowed";
+      //remove message after 2s
+      setTimeout(() => {
+        message.innerText = "";
+        message.setAttribute("class", "hidden");
+        container.setAttribute("class", "minimize");
+      }, 2000);
+    }
   });
 
   form.addEventListener("submit", (e) => {
     e.preventDefault();
     const teamName = input.value;
     if (teamName !== "") {
-      message.setAttribute("class", "success");
-      message.innerText = `${teamName} successfully created`;
+      const checkName = generateUniqueTeamName(teamName);
+
+      const controlledName = checkName.name;
+      if (!checkName.unique) {
+        message.setAttribute("class", "success");
+        message.innerText = `${teamName} successfully changed to ${controlledName} due to team name duplicates`;
+      } else {
+        message.setAttribute("class", "success");
+        message.innerText = `${controlledName} successfully created`;
+      }
+      addTeam(controlledName);
       input.value = "";
     } else {
       message.setAttribute("class", "error");
@@ -154,17 +186,51 @@ class Monster {
     this.image = image;
   }
 }
-function addTeam() {
+
+function generateUniqueTeamName(teamName) {
+  const noneUnique = teams.filter((team) => extractLetters(team.getTeamName()) === extractLetters(teamName));
+
+  if (noneUnique && noneUnique.length > 0) {
+    const lastElement = noneUnique.length - 1;
+    const name = noneUnique[lastElement].getTeamName();
+    const noneUniqueLetters = extractLetters(name);
+    const digits = Number(extractNumbersFromEnd(name));
+    const unique = digits + 1;
+    const uniqueName = noneUniqueLetters.concat(unique);
+    return {
+      unique: false,
+      name: uniqueName,
+    };
+  }
+
+  return {
+    unique: true,
+    name: teamName,
+  };
+}
+
+function extractLetters(str) {
+  return str.replace(/[^a-zA-Z]/g, "");
+}
+
+function extractNumbersFromEnd(str) {
+  const match = str.match(/\d+$/);
+  return match ? match[0] : "";
+}
+
+function addTeam(teamName) {
+  const newTeam = new Team(teamName);
+  teams.push(newTeam);
+
   const teamContainer = document.createElement("div");
-  const teamName = document.createElement("h2");
+  const teamHeader = document.createElement("h2");
   const teamList = document.createElement("ul");
 
-  const newTeam = new Team(prompt("What do you want to name your team?"));
-  teamList.setAttribute("id", newTeam.getTeamName());
   teamContainer.setAttribute("class", "teamDiv");
+  teamHeader.innerText = teamName;
+  teamList.setAttribute("id", teamName);
 
-  teamName.innerText = newTeam.getTeamName();
-  teamContainer.appendChild(teamName);
+  teamContainer.appendChild(teamHeader);
   teamContainer.appendChild(teamList);
   teamsContainer.appendChild(teamContainer);
 }

@@ -59,6 +59,10 @@ main {
   border: 1px solid snow;
 }
 
+#createTeam input:focus {
+  outline: none;
+}
+
 #createTeam input::placeholder {
   color: snow;
 }
@@ -112,6 +116,7 @@ li h2 {
   margin-bottom: 10px;
   text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
   display: inline-flex;
+  white-space: nowrap;
 }
 
 li p {
@@ -158,8 +163,8 @@ body {
   animation: spooky 2s infinite alternate;
 }
 
-.teamDiv{
-    background-color: #1a1a1a;
+.teamDiv {
+  background-color: #1a1a1a;
 }
 
 .hidden {
