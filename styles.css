@@ -12,6 +12,7 @@ body {
   line-height: 1.6;
   background: rgb(153, 152, 152);
   background: linear-gradient(143deg, rgba(153, 152, 152, 1) 100%, rgb(201, 199, 199) 100%);
+  animation: spooky 2s infinite alternate;
 }
 
 main {
@@ -159,12 +160,20 @@ li button:hover {
   }
 }
 
-body {
-  animation: spooky 2s infinite alternate;
+#teamsContainer {
+  width: 100%;
+  padding: 20px;
+  border-radius: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  background-color: #2b2a2a;
 }
 
-.teamDiv {
-  background-color: #1a1a1a;
+#teamsContainer .teamDiv {
+  padding: 20px;
+  background-color: #474646;
+  border-radius: 8px;
 }
 
 .hidden {
