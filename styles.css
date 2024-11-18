@@ -165,12 +165,14 @@ li button:hover {
   padding: 20px;
   border-radius: 16px;
   display: flex;
+  align-items: center;
   flex-direction: column;
   gap: 20px;
   background-color: #2b2a2a;
 }
 
 #teamsContainer .teamDiv {
+  width: 100%;
   padding: 20px;
   background-color: #474646;
   border-radius: 8px;

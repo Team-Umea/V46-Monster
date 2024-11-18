@@ -28,6 +28,10 @@ function init() {
   initResetButton();
   initCreateTeamForm();
   populateHTML(teams, teamsContainer, removeButtonText);
+
+  const teamsHeader = document.createElement("h2");
+  teamsHeader.innerText = "Your Teams";
+  teamsContainer.appendChild(teamsHeader);
 }
 
 function initResetButton() {
@@ -192,7 +196,8 @@ function generateUniqueTeamName(teamName) {
 
   if (noneUnique && noneUnique.length > 0) {
     const lastElement = noneUnique.length - 1;
-    const name = noneUnique[lastElement].getTeamName();
+    const sortedNames = noneUnique.sort((a, b) => Number(extractNumbersFromEnd(a.getTeamName()) - Number(extractNumbersFromEnd(b.getTeamName())))).map((temm) => temm.getTeamName());
+    const name = sortedNames[lastElement];
     const noneUniqueLetters = extractLetters(name);
     const digits = Number(extractNumbersFromEnd(name));
     const unique = digits + 1;
