@@ -230,13 +230,34 @@ function addTeam(teamName) {
   const teamContainer = document.createElement("div");
   const teamHeader = document.createElement("h2");
   const teamList = document.createElement("ul");
+  const deleteBtn = document.createElement("img");
 
   teamContainer.setAttribute("class", "teamDiv");
   teamHeader.innerText = teamName;
   teamList.setAttribute("id", teamName);
 
+  deleteBtn.setAttribute("src", "/icons/trashBin.svg");
+  deleteBtn.setAttribute("alt", `Delete ${teamName}`);
+  deleteBtn.setAttribute("title", `Delete ${teamName}`);
+  deleteBtn.setAttribute("class", "deleteTeamBtn");
+
+  deleteBtn.addEventListener("click", () => {
+    const src = deleteBtn.getAttribute("src");
+
+    if (src.includes("trash")) {
+      deleteBtn.setAttribute("src", "/icons/checkMark.svg");
+      deleteBtn.setAttribute("alt", `Confirm delete of ${teamName}`);
+      deleteBtn.setAttribute("title", `Confirm delete of ${teamName}`);
+    } else {
+      deleteBtn.setAttribute("src", "/icons/trashBin.svg");
+      deleteBtn.setAttribute("alt", `Delete ${teamName}`);
+      deleteBtn.setAttribute("title", `Delete ${teamName}`);
+    }
+  });
+
   teamContainer.appendChild(teamHeader);
   teamContainer.appendChild(teamList);
+  teamContainer.appendChild(deleteBtn);
   teamsContainer.appendChild(teamContainer);
 }
 //Monsters => HTML
