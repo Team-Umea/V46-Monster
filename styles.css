@@ -12,6 +12,7 @@ body {
   line-height: 1.6;
   background: rgb(153, 152, 152);
   background: linear-gradient(143deg, rgba(153, 152, 152, 1) 100%, rgb(201, 199, 199) 100%);
+  animation: spooky 2s infinite alternate;
 }
 
 main {
@@ -57,6 +58,10 @@ main {
   color: snow;
   background-color: transparent;
   border: 1px solid snow;
+}
+
+#createTeam input:focus {
+  outline: none;
 }
 
 #createTeam input::placeholder {
@@ -112,6 +117,7 @@ li h2 {
   margin-bottom: 10px;
   text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
   display: inline-flex;
+  white-space: nowrap;
 }
 
 li p {
@@ -154,12 +160,46 @@ li button:hover {
   }
 }
 
-body {
-  animation: spooky 2s infinite alternate;
+#teamsContainer {
+  width: 100%;
+  padding: 20px;
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 20px;
+  background-color: #2b2a2a;
 }
 
-.teamDiv{
-    background-color: #1a1a1a;
+#teamsContainer .teamDiv {
+  width: 100%;
+  padding: 20px;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  background-color: #474646;
+  position: relative;
+}
+
+#teamsContainer .teamDiv ul {
+  width: 100%;
+}
+
+.deleteTeamBtn {
+  width: 40px;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  filter: invert(1);
+  cursor: pointer;
+  display: inline-block;
+  transition: all 0.3s ease-out;
+}
+
+.deleteTeamBtn:hover {
+  transform: scale(1.15);
 }
 
 .hidden {
