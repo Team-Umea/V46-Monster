@@ -28,6 +28,7 @@ function init() {
   initResetButton();
   initCreateTeamForm();
   populateHTML(teams, teamsContainer, removeButtonText);
+  // initDrag();
 
   const teamsHeader = document.createElement("h2");
   teamsHeader.innerText = "Your Teams";
@@ -139,13 +140,18 @@ function initCreateTeamForm() {
 class Team {
   constructor(teamName) {
     this.teamName = teamName;
+    this.monsters = [];
   }
 
   getTeamName() {
     return this.teamName;
   }
 
-  getMonters() {
+  setMonsters(monsters) {
+    this.monsters = monsters;
+  }
+
+  getMonsters() {
     return this.monsters;
   }
 
@@ -192,6 +198,7 @@ class Monster {
 }
 
 function generateUniqueTeamName(teamName) {
+  console.log(teamName);
   const noneUnique = teams.filter((team) => extractLetters(team.getTeamName()) === extractLetters(teamName));
 
   if (noneUnique && noneUnique.length > 0) {
@@ -224,8 +231,34 @@ function extractNumbersFromEnd(str) {
 }
 
 function deleteTeam(teamName) {
-  teams = teams.filter((team) => team.getTeamName() !== teamName);
-  saveProgress();
+  console.log(teamName);
+  teamName.getMonsters().forEach((monster) => {
+    monsterDb.push(monster);
+  });
+  monsterDb.sort((a, b) => a.id - b.id);
+  // saveProgress();
+  console.log(monsterDb);
+  teamsContainer.innerHTML = "";
+  console.log(teams);
+  // teams = teams.filter((team) => team.getTeamName() !== teamName);
+  setTimeout(() => {
+    populateHTML(monsterDb, monsterContainer, addButtonText);
+  }, 200);
+}
+
+function initDropZone(dropZone) {
+  dropZone.addEventListener("dragover", (e) => {
+    e.preventDefault(); // Prevent default to allow dropping
+  });
+
+  dropZone.addEventListener("drop", (e) => {
+    e.preventDefault(); // Prevent default action
+    const id = e.dataTransfer.getData("text/plain"); // Get the ID of the dragged element
+    const draggedElement = document.getElementById(id); // Retrieve the dragged element
+    dropZone.appendChild(draggedElement); // Append the dragged element to the team list
+    // Optionally, update the team array or perform other logic
+    addMonsterToTeam(draggedElement); // Update your logic to add the monster to the team
+  });
 }
 
 function addTeam(teamName) {
@@ -255,7 +288,7 @@ function addTeam(teamName) {
       deleteBtn.setAttribute("title", `Confirm delete of ${teamName}`);
     } else {
       teamContainer.remove();
-      deleteTeam(teamName);
+      deleteTeam(newTeam);
     }
   });
 
@@ -263,9 +296,12 @@ function addTeam(teamName) {
   teamContainer.appendChild(teamList);
   teamContainer.appendChild(deleteBtn);
   teamsContainer.appendChild(teamContainer);
+
+  initDropZone(teamList);
 }
 //Monsters => HTML
 function populateHTML(array, parent, buttonText) {
+  console.log("Arr: ", array);
   parent.innerHTML = "";
   array.forEach((monster) => {
     const li = document.createElement("li");
@@ -273,6 +309,10 @@ function populateHTML(array, parent, buttonText) {
     const spec = document.createElement("p");
     const img = document.createElement("img");
     const button = document.createElement("button");
+
+    li.setAttribute("class", "monsterLi");
+    li.setAttribute("id", monster.id);
+    li.setAttribute("draggable", true);
 
     name.innerText = monster.name;
     spec.innerText = monster.speciality;
@@ -299,6 +339,10 @@ function populateHTML(array, parent, buttonText) {
       //Anytime anything changes we save to local storage.
       toggleResetTeanBtn();
       saveProgress();
+    });
+
+    li.addEventListener("dragstart", (e) => {
+      e.dataTransfer.setData("text/plain", monster.id); // Assuming monster has an ID
     });
 
     li.appendChild(name);

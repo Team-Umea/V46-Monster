@@ -185,6 +185,8 @@ li button:hover {
 
 #teamsContainer .teamDiv ul {
   width: 100%;
+  min-height: 300px;
+  border: 2px solid snow;
 }
 
 .deleteTeamBtn {
@@ -216,4 +218,20 @@ li button:hover {
 
 .minimize {
   height: fit-content;
+}
+
+.drag {
+  background-color: blue;
+  width: 500px;
+  height: 500px;
+}
+
+.small-box {
+  background-color: green;
+  width: 200px;
+  height: 200px;
+}
+
+#smallRed {
+  background-color: red;
 }
