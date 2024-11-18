@@ -1,22 +1,22 @@
-const monsterContainer = document.getElementById('monsters');
-const teamsContainer = document.getElementById('chosenTeam');
-const resetButton = document.getElementById('resetTeam');
-const addButtonText = "Add to team"; 
-const removeButtonText = 'Remove from team';
+const monsterContainer = document.getElementById("monsters");
+const teamsContainer = document.getElementById("chosenTeam");
+const resetButton = document.getElementById("resetTeam");
+const addButtonText = "Add to team";
+const removeButtonText = "Remove from team";
 
 let teams = [];
 let monsterDb;
 
-function init(){
+function init() {
   let monsters;
   let localTeams;
   try {
-    monsters = JSON.parse(localStorage.getItem('monsters'));
-    localTeams = JSON.parse(localStorage.getItem('teams'));
+    monsters = JSON.parse(localStorage.getItem("monsters"));
+    localTeams = JSON.parse(localStorage.getItem("teams"));
   } catch (error) {
     console.log(error);
   }
-  if (monsters && monsters != undefined){
+  if (monsters && monsters != undefined) {
     monsterDb = monsters;
     populateHTML(monsterDb, monsterContainer, addButtonText);
   } else {
@@ -26,47 +26,82 @@ function init(){
   teams = localTeams || [];
   toggleResetTeanBtn();
   initResetButton();
+  initCreateTeamForm();
   populateHTML(teams, teamsContainer, removeButtonText);
 }
 
-function initResetButton(){
-  resetButton.addEventListener('click', ()=>{
-    teams.forEach(item=>{
+function initResetButton() {
+  resetButton.addEventListener("click", () => {
+    teams.forEach((item) => {
       monsterDb.push(item);
-    })
-    teams=[];
-    monsterDb.sort((a,b)=>a.id-b.id);
+    });
+    teams = [];
+    monsterDb.sort((a, b) => a.id - b.id);
     saveProgress();
-    teamsContainer.innerHTML="";
-    populateHTML(monsterDb,monsterContainer,addButtonText);
+    teamsContainer.innerHTML = "";
+    populateHTML(monsterDb, monsterContainer, addButtonText);
     toggleResetTeanBtn();
-  })
+  });
 }
 
-function toggleResetTeanBtn(){
-  if(teams.length > 0){
-    resetButton.classList.remove('hidden');
+function toggleResetTeanBtn() {
+  if (teams.length > 0) {
+    resetButton.classList.remove("hidden");
   } else {
-    resetButton.classList.add('hidden');
+    resetButton.classList.add("hidden");
   }
 }
 
-function fetchMonsters(){
-  fetch('aimonsters.json')
-  .then(response => {
+function fetchMonsters() {
+  fetch("aimonsters.json")
+    .then((response) => {
       return response.json();
-  })
-  .then(data => {
-    generateMonstersJSON(data);
-    populateHTML(monsterDb, monsterContainer, addButtonText);
-  })
-  .catch(error => {
-      console.error('There has been a problem with your fetch operation:', error);
+    })
+    .then((data) => {
+      generateMonstersJSON(data);
+      populateHTML(monsterDb, monsterContainer, addButtonText);
+    })
+    .catch((error) => {
+      console.error("There has been a problem with your fetch operation:", error);
+    });
+}
+
+function initCreateTeamForm() {
+  const container = document.getElementById("createTeam");
+  const form = container.getElementsByTagName("form")[0];
+  const input = container.getElementsByTagName("input")[0];
+  const message = container.getElementsByTagName("p")[0];
+
+  console.log(form);
+
+  input.addEventListener("input", () => {
+    const trimedValue = input.value.replace(/\s+/g, "");
+    input.value = trimedValue;
+  });
+
+  form.addEventListener("submit", (e) => {
+    e.preventDefault();
+    const teamName = input.value;
+    if (teamName !== "") {
+      message.setAttribute("class", "success");
+      message.innerText = `${teamName} successfully created`;
+      input.value = "";
+    } else {
+      message.setAttribute("class", "error");
+      message.innerText = "Error! Name must not be empty";
+    }
+    if (message.innerText !== "") {
+      setTimeout(() => {
+        message.innerText = "";
+        message.setAttribute("class", "hidden");
+        container.setAttribute("class", "minimize");
+      }, 3000);
+    }
   });
 }
 
 class Team {
-  constructor(teamName, monsters) { 
+  constructor(teamName, monsters) {
     this.teamName = teamName;
     this.monsters = monsters;
   }
@@ -122,31 +157,31 @@ class Monster {
 }
 
 //Monsters => HTML
-function populateHTML(array, parent, buttonText){
-  parent.innerHTML="";
-  array.forEach(monster => {
-    const li = document.createElement('li');
-    const name = document.createElement('h2');
-    const spec = document.createElement('p');
-    const img = document.createElement('img');
-    const button = document.createElement('button');
+function populateHTML(array, parent, buttonText) {
+  parent.innerHTML = "";
+  array.forEach((monster) => {
+    const li = document.createElement("li");
+    const name = document.createElement("h2");
+    const spec = document.createElement("p");
+    const img = document.createElement("img");
+    const button = document.createElement("button");
 
     name.innerText = monster.name;
     spec.innerText = monster.speciality;
-    img.setAttribute('src', monster.image);
-    img.setAttribute('alt', 'This is an image of monster ' + monster.name);
+    img.setAttribute("src", monster.image);
+    img.setAttribute("alt", "This is an image of monster " + monster.name);
     button.innerText = buttonText;
-    button.addEventListener('click', () => {
+    button.addEventListener("click", () => {
       const buttonText = button.innerText;
-      
-      if(buttonText==="Add to team"){
-        if(teams.length<4){
+
+      if (buttonText === "Add to team") {
+        if (teams.length < 4) {
           addMonsterToTeam(monster);
           deleteMonster(monster);
           li.remove();
           moveMonster(li);
         }
-      }else if(buttonText==="Remove from team"){
+      } else if (buttonText === "Remove from team") {
         addMonsterToDB(monster);
         shrinkTeam(monster);
         li.remove();
@@ -156,60 +191,59 @@ function populateHTML(array, parent, buttonText){
       //Anytime anything changes we save to local storage.
       toggleResetTeanBtn();
       saveProgress();
-    })
+    });
 
     li.appendChild(name);
     li.appendChild(img);
     li.appendChild(spec);
     li.appendChild(button);
     parent.appendChild(li);
-    
   });
 }
 
-//Moves HTML of a Monster to a team 
+//Moves HTML of a Monster to a team
 
-function moveMonsterBackToDBUl(monster){
+function moveMonsterBackToDBUl(monster) {
   monster.lastElementChild.innerText = addButtonText;
   monsterContainer.appendChild(monster);
 }
 
-function moveMonster(monster){
+function moveMonster(monster) {
   monster.lastElementChild.innerText = removeButtonText;
   teamsContainer.appendChild(monster);
 }
 
-function addMonsterToTeam(monster){
+function addMonsterToTeam(monster) {
   teams.push(monster);
 }
 
-function addMonsterToDB(monster){
+function addMonsterToDB(monster) {
   monsterDb.push(monster);
 }
 
-function deleteMonster(monster){
+function deleteMonster(monster) {
   monsterDb = monsterDb.filter((element) => {
     return element.id !== monster.id;
-  })
+  });
 }
 
-function shrinkTeam(monster){
+function shrinkTeam(monster) {
   teams = teams.filter((element) => {
     return element.id !== monster.id;
-  })
+  });
 }
 
-function saveToLocalStorage(key, value){
+function saveToLocalStorage(key, value) {
   try {
     localStorage.setItem(key, JSON.stringify(value));
   } catch (error) {
-    console.log(error, 'pathetic');
+    console.error(error);
   }
 }
 
-function saveProgress(){
-  saveToLocalStorage('teams', teams);
-  saveToLocalStorage('monsters', monsterDb);
+function saveProgress() {
+  saveToLocalStorage("teams", teams);
+  saveToLocalStorage("monsters", monsterDb);
 }
 
 function generateMonstersJSON(data) {
@@ -223,51 +257,9 @@ function generateMonstersJSON(data) {
     monsterDb.push(monster);
   }
   console.log(monsterDb);
-  saveToLocalStorage('monsters', monsterDb);
+  saveToLocalStorage("monsters", monsterDb);
 }
 
-function createRandomTeams() {
-  if (monsterDb.length >= 2) {
-    const shuffleDb = (arr) => {
-      for (let i = arr.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-        [arr[i], arr[j]] = [arr[j], arr[i]];
-      }
-      return arr;
-    };
-
-    const shuffledDb = shuffleDb([...monsterDb]);
-
-    const totalMonsters = shuffledDb.length;
-    let numberOfTeams = Math.floor(totalMonsters / 2);
-
-    if (totalMonsters % 2 !== 0 && totalMonsters >= numberOfTeams * 2 + 2) {
-      numberOfTeams++;
-    }
-
-    let teamsize = Math.floor(totalMonsters / numberOfTeams);
-    let remainder = totalMonsters % numberOfTeams;
-
-    let currentIndex = 0;
-
-    for (let i = 0; i < numberOfTeams; i++) {
-      let currentTeamSize = teamsize + (remainder > 0 ? 1 : 0);
-      if (i < remainder) {
-        remainder--;
-      }
-
-      const teamName = `Team${teams.length + 1}`;
-      const monsters = shuffledDb.slice(currentIndex, currentIndex + currentTeamSize);
-      const team = new Team(teamName, monsters);
-      teams.push(team);
-      currentIndex += currentTeamSize;
-    }
-  } else {
-    console.log("Not enough monsters");
-  }
-}
-
-
-window.onload = ((event)=>{
+window.onload = (event) => {
   init();
-})
+};
