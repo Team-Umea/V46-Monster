@@ -1,5 +1,5 @@
 const monsterContainer = document.getElementById('monsters');
-const teamsContainer = document.getElementById('chosenTeam');
+const teamsContainer = document.getElementById('teamsContainer');
 const resetButton = document.getElementById('resetTeam');
 const addButtonText = "Add to team"; 
 const removeButtonText = 'Remove from team';
@@ -66,9 +66,8 @@ function fetchMonsters(){
 }
 
 class Team {
-  constructor(teamName, monsters) { 
+  constructor(teamName) { 
     this.teamName = teamName;
-    this.monsters = monsters;
   }
 
   getTeamName() {
@@ -120,7 +119,21 @@ class Monster {
     this.image = image;
   }
 }
+function addTeam(){
+  const teamContainer = document.createElement("div");
+  const teamName = document.createElement("h2");
+  const teamList = document.createElement("ul");
+  
 
+  const newTeam = new Team(prompt("What do you want to name your team?"));
+  teamList.setAttribute("id", newTeam.getTeamName());
+  teamContainer.setAttribute("class", "teamDiv");
+
+  teamName.innerText = newTeam.getTeamName();
+  teamContainer.appendChild(teamName);
+  teamContainer.appendChild(teamList);
+  teamsContainer.appendChild(teamContainer);
+}
 //Monsters => HTML
 function populateHTML(array, parent, buttonText){
   parent.innerHTML="";
