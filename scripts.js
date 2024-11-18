@@ -223,6 +223,11 @@ function extractNumbersFromEnd(str) {
   return match ? match[0] : "";
 }
 
+function deleteTeam(teamName) {
+  teams = teams.filter((team) => team.getTeamName() !== teamName);
+  saveProgress();
+}
+
 function addTeam(teamName) {
   const newTeam = new Team(teamName);
   teams.push(newTeam);
@@ -249,9 +254,8 @@ function addTeam(teamName) {
       deleteBtn.setAttribute("alt", `Confirm delete of ${teamName}`);
       deleteBtn.setAttribute("title", `Confirm delete of ${teamName}`);
     } else {
-      deleteBtn.setAttribute("src", "/icons/trashBin.svg");
-      deleteBtn.setAttribute("alt", `Delete ${teamName}`);
-      deleteBtn.setAttribute("title", `Delete ${teamName}`);
+      teamContainer.remove();
+      deleteTeam(teamName);
     }
   });
 
