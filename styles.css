@@ -158,6 +158,10 @@ body {
   animation: spooky 2s infinite alternate;
 }
 
+.teamDiv{
+    background-color: #1a1a1a;
+}
+
 .hidden {
   display: none;
 }
