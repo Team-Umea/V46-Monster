@@ -28,7 +28,6 @@ function init() {
   initResetButton();
   initCreateTeamForm();
   populateHTML(teams, teamsContainer, removeButtonText);
-  // initDrag();
 
   const teamsHeader = document.createElement("h2");
   teamsHeader.innerText = "Your Teams";
@@ -198,7 +197,6 @@ class Monster {
 }
 
 function generateUniqueTeamName(teamName) {
-  console.log(teamName);
   const noneUnique = teams.filter((team) => extractLetters(team.getTeamName()) === extractLetters(teamName));
 
   if (noneUnique && noneUnique.length > 0) {
@@ -231,33 +229,25 @@ function extractNumbersFromEnd(str) {
 }
 
 function deleteTeam(teamName) {
-  console.log(teamName);
   teamName.getMonsters().forEach((monster) => {
     monsterDb.push(monster);
   });
   monsterDb.sort((a, b) => a.id - b.id);
-  // saveProgress();
-  console.log(monsterDb);
-  teamsContainer.innerHTML = "";
-  console.log(teams);
-  // teams = teams.filter((team) => team.getTeamName() !== teamName);
-  setTimeout(() => {
-    populateHTML(monsterDb, monsterContainer, addButtonText);
-  }, 200);
+  teams = teams.filter((team) => team.getTeamName() !== teamName);
+  populateHTML(monsterDb, monsterContainer, addButtonText);
+  // saveProgress(); - uncomment later to save to local storage after bug checks
 }
 
 function initDropZone(dropZone) {
   dropZone.addEventListener("dragover", (e) => {
-    e.preventDefault(); // Prevent default to allow dropping
+    e.preventDefault();
   });
 
   dropZone.addEventListener("drop", (e) => {
-    e.preventDefault(); // Prevent default action
-    const id = e.dataTransfer.getData("text/plain"); // Get the ID of the dragged element
-    const draggedElement = document.getElementById(id); // Retrieve the dragged element
-    dropZone.appendChild(draggedElement); // Append the dragged element to the team list
-    // Optionally, update the team array or perform other logic
-    addMonsterToTeam(draggedElement); // Update your logic to add the monster to the team
+    e.preventDefault();
+    const id = e.dataTransfer.getData("text/plain");
+    const draggedElement = document.getElementById(id);
+    dropZone.appendChild(draggedElement);
   });
 }
 
@@ -301,7 +291,6 @@ function addTeam(teamName) {
 }
 //Monsters => HTML
 function populateHTML(array, parent, buttonText) {
-  console.log("Arr: ", array);
   parent.innerHTML = "";
   array.forEach((monster) => {
     const li = document.createElement("li");
@@ -336,13 +325,12 @@ function populateHTML(array, parent, buttonText) {
         moveMonsterBackToDBUl(li);
       }
 
-      //Anytime anything changes we save to local storage.
       toggleResetTeanBtn();
       saveProgress();
     });
 
     li.addEventListener("dragstart", (e) => {
-      e.dataTransfer.setData("text/plain", monster.id); // Assuming monster has an ID
+      e.dataTransfer.setData("text/plain", monster.id);
     });
 
     li.appendChild(name);
