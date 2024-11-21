@@ -107,7 +107,7 @@
         { "id": 105, "name": "Flickering Flame", "specs": "A small flame spirit that dances in the air.", "strengths": ["Evasion"], "weaknesses": ["Water", "Wind"], "health": 5, "damage": 1, "price": 0 },
         { "id": 106, "name": "Squeaky Mouse", "specs": "A timid mouse that scurries away at the slightest noise.", "strengths": ["Speed"], "weaknesses": ["Cats", "Birds"], "health": 3, "damage": 1, "price": 0 },
         { "id": 107, "name": "Whispering Leaf", "specs": "A leaf that rustles softly in the breeze.", "strengths": ["Camouflage"], "weaknesses": ["Fire", "Cold"], "health": 2, "damage": 3, "price": 0 },
-        { "id": 108, "name": "Tiny Toad", "specs": "A small toad that blends in with the mud.", "strengths": ["Agility"], "weaknesses": ["Birds", "Cold"], "health": 4, "damage": 1, "price": 2 },
+        { "id": 108, "name": "Tiny Toad", "specs": "A small toad that blends in with the mud.", "strengths": ["Agility"], "weaknesses": ["Birds", "Cold"], "health": 4, "damage": 1, "price": 0 },
         { "id": 109, "name": "Faint Glowbug", "specs": "A tiny insect that emits a faint light.", "strengths": ["Stealth"], "weaknesses": ["Wind", "Water"], "health": 3, "damage": 1, "price": 0 },
         { "id": 110, "name": "Puffball Mushroom", "specs": "A small mushroom that releases spores when disturbed.", "strengths": ["Camouflage"], "weaknesses": ["Fire", "Water"], "health": 2, "damage": 1, "price": 0 }
     ]
