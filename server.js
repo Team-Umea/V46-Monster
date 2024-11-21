@@ -17,7 +17,7 @@ const corsOptions = {
 app.use(cors(corsOptions));
 app.use(bodyParser.json());
 
-let monsters = {}; //load from .json file
+let monsters = {};
 
 function loadMonsters() {
   const filePath = path.join(__dirname, "monsters.json");
@@ -98,7 +98,7 @@ app.get("/monstersByWeaknesses", (req, res) => {
   return res.status(400).json({ ok: false, message: "Weaknesses parameter missing or invalid" });
 });
 
-app.get("/health", (req, res) => {
+app.get("/health", (_, res) => {
   res.send("Server is healty");
 });
 
