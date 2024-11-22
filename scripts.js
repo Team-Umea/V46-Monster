@@ -1,6 +1,8 @@
 const url = "https://monsterapi.onrender.com";
 const allMonstersEndpoint = `${url}/allMonsters`;
+const monsterEndpoint = `${url}/monsters`;
 const freeMonstersEndpoint = `${url}/freeMonsters`;
+const randomMonstersEndpoint = `${url}/randomMonsters`;
 const monsterByIdEndpoint = `${url}/monsterById`;
 const monstersByStrengthsEndpoint = `${url}/monstersByStrengths`;
 const monstersByWeaknessEndpoint = `${url}/monstersByWeaknesses`;
@@ -13,7 +15,9 @@ window.addEventListener("DOMContentLoaded", () => {
 
 function init() {
   fetchAllMonsters();
+  fetchMonsters(5)
   fetchFreeMonsters();
+  fetchMonsters(5)
   fetchMonsterById(15);
   fetchMonstersByStrengths(["speed"]);
   fetchMonstersByWeaknesses(["water", "fire"]);
@@ -28,7 +32,28 @@ function fetchAllMonsters() {
       return response.json();
     })
     .then((data) => {
-      console.log(data);
+      if(data.ok){
+        console.log(data.monsters);
+      }
+    })
+    .catch((error) => {
+      console.error("Fetch error:", error);
+    });
+}
+
+function fetchMonsters(num) {
+  const query = `${monsterEndpoint}?num=${num}`;
+  fetch(query)
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error("Network Error");
+      }
+      return response.json();
+    })
+    .then((data) => {
+      if(data.ok){
+        console.log(data.monsters);
+      }
     })
     .catch((error) => {
       console.error("Fetch error:", error);
@@ -44,10 +69,31 @@ function fetchFreeMonsters() {
       return response.json();
     })
     .then((data) => {
-      console.log(data);
+      if(data.ok){
+        console.log(data.freeMonsters);
+      }
     })
     .catch((error) => {
       console.error(error);
+    });
+}
+
+function fetchRandomMonstes(num) {
+  const query = `${randomMonstersEndpoint}?num=${num}`;
+  fetch(query)
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error("Network Error");
+      }
+      return response.json();
+    })
+    .then((data) => {
+      if(data.ok){
+        console.log(data.monsters);
+      }
+    })
+    .catch((error) => {
+      console.error("Fetch error:", error);
     });
 }
 
@@ -61,7 +107,9 @@ function fetchMonsterById(id) {
       return response.json();
     })
     .then((data) => {
-      console.log(data);
+      if(data.ok){
+        console.log(data.monster);
+      }
     })
     .catch((error) => {
       console.error(error);
@@ -79,7 +127,9 @@ function fetchMonstersByWeaknesses(weaknesses) {
       return response.json();
     })
     .then((data) => {
-      console.log(data);
+      if(data.ok){
+        console.log(data.monsters);
+      }
     })
     .catch((error) => {
       console.error(error);
@@ -98,7 +148,9 @@ function fetchMonstersByStrengths(strengths) {
       return response.json();
     })
     .then((data) => {
-      console.log(data);
+      if(data.ok){
+        console.log(data.monsters);
+      }
     })
     .catch((error) => {
       console.error(error);
