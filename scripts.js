@@ -1,11 +1,29 @@
 const apiConfigKey = "apiconfigure"
 
+let fetchedMonsters = [];
+
+let visibleMonsters = 10; 
+
 window.addEventListener("DOMContentLoaded", () => {
   init();
 });
 
 function init() {
   fetchEndpoints();
+  initLoadMoreMonstersBtn().setAttribute("id","1")
+}
+
+function initLoadMoreMonstersBtn(){
+  const loadMoreBtn = document.getElementById("lodMoreMonsters");
+
+  loadMoreBtn.addEventListener("click",()=>{
+    if(fetchedMonsters&& visibleMonsters<fetchedMonsters.length){
+      visibleMonsters+=10;
+      // populateMonster(fetchedMonsters,visibleMonsters)
+    }
+  })
+
+  return loadMoreBtn; 
 }
 
 function fetchEndpoints() {
@@ -59,7 +77,9 @@ function fetchAllMonsters(endpoint) {
     })
     .then((data) => {
       if(data.ok){
-        console.log(data.monsters);
+        const monsters = data.monsters
+        console.log(monsters);
+        fetchedMonsters = monsters; 
       }
     })
     .catch((error) => {
