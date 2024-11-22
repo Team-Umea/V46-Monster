@@ -125,7 +125,33 @@ The API is live on this domain https://monsterapi.onrender.com
     }
     ```
 
-### 6. Health Check
+### 6. Get Random Monsters
+
+- **Endpoint**: `/randomMonsters`
+- **Method**: `GET`
+- **Query Parameters**:
+  - `num` (optional): The number of random monsters to retrieve.
+- **Description**: Retrieve a specified number of random monsters.
+- **Response**:
+  - **200 OK**: Returns a list of random monsters.
+    ```json
+    {
+      "ok": true,
+      "monsters": [
+        { "id": 5, "name": "Fire Dragon", ... },
+        { "id": 2, "name": "Ice Golem", ... }
+      ]
+    }
+    ```
+  - **400 Bad Request**: If the `num` parameter is missing or invalid.
+    ```json
+    {
+      "ok": false,
+      "message": "Num parameter missing or invalid"
+    }
+    ```
+
+### 7. Health Check
 
 - **Endpoint**: `/health`
 - **Method**: `GET`
