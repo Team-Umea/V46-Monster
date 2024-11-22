@@ -17,7 +17,31 @@
         </form>
         <p id="createTeamMessage" class="hidden"></p>
       </div>
-      <button id="loadMoreMonsters">Load more</button>
+      <div>
+        <input type="text" id="searchBox">
+        <div id="searchCategory">
+          <input type="radio" id="nameSearch" name="searchBtn" checked>
+          <label for="nameSearch">Name</label>
+          <input type="radio" id="strengthSearch" name="searchBtn">
+          <label for="strengthSearch">Strength</label>
+          <input type="radio" id="weaknessSearch" name="searchBtn">
+          <label for="weaknessSearch">Weakness</label>
+        </div>
+        <label for="sortDropdown">Sort by:</label>
+        <select name="sortDropdown" id="sortDropdown">
+          <option value="0">A-Z</option>
+          <option value="1">Z-A</option>
+          <option value="2">hi-lo Price</option>
+          <option value="3">lo-hi Price</option>
+
+          <option value="4">hi-lo HP</option>
+          <option value="5">lo-hi HP</option>
+          <option value="6">hi-lo Damage</option>
+          <option value="7">lo-hi Damage</option>
+        </select>
+        <button id="loadMoreMonsters">Load more</button>
+
+      </div>
       <div id="monsterContainer"></div>
       <div id="teamsContainer"></div>
     </main>
