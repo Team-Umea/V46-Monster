@@ -135,6 +135,7 @@ function fetchEndpoints() {
 
 function assignAndPopulate(monsters){
   fetchedMonsters = monsters.map(monster=>({monster:monster,visible:true}));
+  defaultSort(); 
   renderMonsters(fetchedMonsters, visibleMonsters);
 }
 
@@ -143,7 +144,6 @@ function renderMonsters(array, num){
   monsterContainer.innerHTML = "";
   for(let i = 0; i < num; i++){
     if(array&&array[i].visible){
-      // console.log("Element: ",array[i])
       const monsterName = array[i].monster.name; 
       const monsterSpecs = array[i].monster.specs;
       const monsterStrengths = array[i].monster.strengths;
@@ -266,6 +266,7 @@ function initSearchCategory(){
 function initSortDropdown(){
   const dropDown = document.getElementById("sortDropdown");
   dropDown.addEventListener("change",(e)=>{
+    console.log("Value: ",dropDown.value)
     sortMonsters(dropDown.value);
   });
 }
@@ -276,7 +277,6 @@ function showAllMonsters(){
 }
 
 function searchMonsters(query){
-
   fetchedMonsters.forEach((monster)=>{
     const value = getValueInObj(monster.monster, searchCategory);
     if(value){
@@ -300,38 +300,42 @@ function searchMonsters(query){
   renderMonsters(fetchedMonsters, visibleMonsters);
 }
 
+function defaultSort(){
+  fetchedMonsters = fetchedMonsters.sort((a,b) => a.monster.name.localeCompare(b.monster.name));
+}
+
 function sortMonsters(option){
   switch(option){
-    case 0:
+    case "0":
       //alphabetical
       fetchedMonsters = fetchedMonsters.sort((a,b) => a.monster.name.localeCompare(b.monster.name));
       break
-    case 1:
+    case "1":
       //alphabetical reverse
       fetchedMonsters = fetchedMonsters.sort((a,b) => b.monster.name.localeCompare(a.monster.name));
       break
-    case 2:
+    case "2":
       //highest price first
       fetchedMonsters = fetchedMonsters.sort((a,b) => a.monster.price - b.monster.price);
       break
-    case 3:
+    case "3":
       //lowest price first
       fetchedMonsters = fetchedMonsters.sort((a,b) => b.monster.price - a.monster.price);
       break
-    case 4:
+    case "4":
       //highest hp first
       fetchedMonsters = fetchedMonsters.sort((a,b) => a.monster.health - b.monster.health);
       break
-    case 5:
+    case "5":
       //lowest hp first
       fetchedMonsters = fetchedMonsters.sort((a,b) => b.monster.health - a.monster.health);
       break
     
-    case 6:
+    case "6":
       //highest dmg first
       fetchedMonsters = fetchedMonsters.sort((a,b) => a.monster.damage - b.monster.damage);
       break
-    case 7:
+    case "7":
       //lowest dmg first
       fetchedMonsters = fetchedMonsters.sort((a,b) => b.monster.damage - a.monster.damage);
       break
