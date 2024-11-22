@@ -6,10 +6,15 @@
   padding: 0;
 }
 
+::-webkit-scrollbar{
+  width: 0px;
+}
+
 body {
   font-family: "Arial", sans-serif;
   color: #f0f0f0;
   line-height: 1.6;
+  overflow-x: hidden;
   background: rgb(153, 152, 152);
   background: linear-gradient(143deg, rgba(153, 152, 152, 1) 100%, rgb(201, 199, 199) 100%);
   animation: spooky 2s infinite alternate;

@@ -1,0 +1,143 @@
+#monsterContainer{
+    width: 100vw;
+    padding: 40px;
+    display: flex;
+    gap: 20px;
+    overflow-x: scroll;
+    background-color: black;
+}
+
+.monsterCard{
+    width: 100%;
+    height: 500px;
+    padding-bottom: 90px;
+    background: url("../img/monsterPlaceholder.jpg") no-repeat;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(40,1fr);
+    gap: 10px;
+    border-radius: 50px;
+    isolation: isolate;
+    transition: background-size 0.6s ease-in-out; 
+    position: relative;
+}
+
+.monsterCard:hover{
+    background-size: 200% 120%;
+}
+
+.monsterCard::after{
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    z-index: -1;
+    background: rgba(0, 0, 0, 0.5);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(4px);
+}
+
+.monsterCard p{
+    text-align: center;
+    align-self: center;
+    margin: auto;
+}
+
+.monsterName{
+    text-align: center;
+    grid-column: 1;
+    grid-row: 1/4;
+}
+
+.monsterSpec{
+    max-width: 70%;
+    grid-column: 1;
+    grid-row: 10/14;
+}
+
+.monsterStatsContainer{
+    width: 100%;
+    margin-top: 30px;
+    padding: 0 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    grid-column: 1;
+    grid-row: 18/24;
+}
+
+.iconContainer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+}
+
+.iconContainer p{
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.iconContainer img{
+    width: 30px;
+    filter: invert(1);
+}
+
+.abilitesContainer{
+    width: 100%;
+    padding: 0 20px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 50px;
+    grid-column: 1;
+    grid-row: 27/34;
+}
+
+.abilitesContent{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 10px;
+}
+
+.abilitesContent div{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.monsterStr{
+    align-items: flex-start;
+}
+
+.monsterStr div{
+    justify-content: flex-start;
+}
+
+.monsterWeak{
+    align-items: flex-end;
+}
+
+.monsterWeak div{
+    justify-content: flex-end;
+}
+
+.monsterPriceContainer{
+    grid-column: 1;
+    grid-row: 46/44;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+

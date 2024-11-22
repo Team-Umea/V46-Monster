@@ -10,3 +10,27 @@ export function save(key,value){
       return "";
     }
   }
+
+  export function createIconContainer(className, value, src, alt, title, dir){
+    const iconContainer = document.createElement("div"); 
+    const icon = document.createElement("img"); 
+    const iconText = document.createElement("p"); 
+
+    iconContainer.setAttribute("class",className);
+
+    icon.setAttribute("src",src);
+    icon.setAttribute("alt",alt);
+    icon.setAttribute("title",title);
+
+    iconText.innerText=value; 
+
+    if(!dir||dir.toLowerCase()==="left"){ 
+      iconContainer.appendChild(icon);
+      iconContainer.appendChild(iconText);
+    }else{
+      iconContainer.appendChild(iconText);
+      iconContainer.appendChild(icon);
+    }
+
+    return iconContainer
+  }

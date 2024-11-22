@@ -1,5 +1,5 @@
 import { fetchAllMonsters } from './fetchEndpoints.js';
-import {save,load} from "./utility.js";
+import {save,load,createIconContainer} from "./utility.js";
 const apiConfigKey = "apiconfigure"
 
 let fetchedMonsters = [];
@@ -21,7 +21,7 @@ function initLoadMoreMonstersBtn(){
   loadMoreBtn.addEventListener("click",()=>{
     if(fetchedMonsters&& visibleMonsters<fetchedMonsters.length){
       visibleMonsters+=10;
-      // populateMonster(fetchedMonsters,visibleMonsters)
+      populateMonster(fetchedMonsters,visibleMonsters)
     }
   })
 
@@ -76,46 +76,69 @@ function populateMonster(array, num){
     
     const strengths = document.createElement("div");
     const weaknesses = document.createElement("div");
-    const health = document.createElement("p");
-    const damage = document.createElement("p");
-    const price = document.createElement("p");
+
+    const strengthsHeader = document.createElement("h3");
+    const weaknessesHeader = document.createElement("h3");
+
+    const ablitiesContainer = document.createElement("div");
+
+    const strengthsContent = document.createElement("div");
+    const weaknessesContent = document.createElement("div");
+
+    const statsContainer = document.createElement("div");
+    const health = createIconContainer("iconContainer",array[i].health,"../icons/heart.svg",`${name} has ${array[i].health} of health`, `${name} has ${array[i].health} of health`)
+    const damage = createIconContainer("iconContainer",array[i].damage,"../icons/skull.svg",`${name} has ${array[i].damage} of damage`, `${name} has ${array[i].damage} of damage`,"Right")
+    
+    const priceContainer = document.createElement("div");
+    const priceHeader = document.createElement("h4");
+    const price = createIconContainer("iconContainer",array[i].price,"../icons/diamond.svg",`${name} costs ${array[i].priec} diamonds`, `${name} costs ${array[i].priec} diamonds`);
+
+    strengthsHeader.innerText="Strengths"
+    weaknessesHeader.innerText="Weaknesses"
     
     monster.classList.add("monsterCard");
     name.classList.add("monsterName");
-    name.classList.add("monsterSpec");
-    name.classList.add("monsterStr");
-    name.classList.add("monsterWeak");
-    name.classList.add("monsterHealth");
-    name.classList.add("monsterDamage");
-    name.classList.add("monsterPrice");
+    specs.classList.add("monsterSpec");
+    ablitiesContainer.classList.add("abilitesContainer")
+    strengths.classList.add("monsterStr","abilitesContent");
+    weaknesses.classList.add("monsterWeak","abilitesContent");
+    statsContainer.classList.add("monsterStatsContainer");
+    priceContainer.classList.add("monsterPriceContainer");
 
     name.innerText = array[i].name;
     specs.innerText = array[i].specs;
-    damage.innerText = array[i].damage;
-    health.innerText = array[i].health;
-    price.innerText = array[i].price;
+    priceHeader.innerText="Price"
 
+    strengths.appendChild(strengthsHeader); 
+    weaknesses.appendChild(weaknessesHeader);
 
     array[i].strengths.forEach((str) =>{
       const strengthText = document.createElement("p");
       strengthText.innerText = str;
       strengthText.classList.add("strText");
-      strengths.appendChild(strengthText);
+      strengthsContent.appendChild(strengthText);
     });
     array[i].weaknesses.forEach((weak) =>{
       const weakText = document.createElement("p");
       weakText.innerText = weak;
       weakText.classList.add("strText");
-      weaknesses.appendChild(weakText);
+      weaknessesContent.appendChild(weakText);
     });
+
+    strengths.appendChild(strengthsContent); 
+    weaknesses.appendChild(weaknessesContent)
 
     monster.appendChild(name);
     monster.appendChild(specs);
-    monster.appendChild(health);
-    monster.appendChild(damage);
-    monster.appendChild(strengths);
-    monster.appendChild(weaknesses);
-    monster.appendChild(price);
+    statsContainer.appendChild(health); 
+    statsContainer.appendChild(damage);
+    monster.appendChild(statsContainer); 
+    ablitiesContainer.appendChild(strengths);
+    ablitiesContainer.appendChild(weaknesses)
+    monster.appendChild(ablitiesContainer);
+    priceContainer.appendChild(priceHeader); 
+    priceContainer.appendChild(price); 
+    monster.appendChild(priceContainer);
     monsterContainer.appendChild(monster);
   }
 }
