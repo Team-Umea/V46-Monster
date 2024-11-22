@@ -1,14 +1,3 @@
-// const url = "https://monsterapi.onrender.com";
-// const allMonstersEndpoint = `${url}/allMonsters`;
-// const monsterEndpoint = `${url}/monsters`;
-// const freeMonstersEndpoint = `${url}/freeMonsters`;
-// const randomMonstersEndpoint = `${url}/randomMonsters`;
-// const monsterByIdEndpoint = `${url}/monsterById`;
-// const monstersByStrengthsEndpoint = `${url}/monstersByStrengths`;
-// const monstersByWeaknessEndpoint = `${url}/monstersByWeaknesses`;
-
-// let temp = "https://monsterapi.onrender.com/monsterById?id=15";
-
 const apiConfigKey = "apiconfigure"
 
 window.addEventListener("DOMContentLoaded", () => {
