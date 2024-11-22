@@ -16,7 +16,7 @@ function init() {
 }
 
 function initLoadMoreMonstersBtn(){
-  const loadMoreBtn = document.getElementById("lodMoreMonsters");
+  const loadMoreBtn = document.getElementById("loadMoreMonsters");
 
   loadMoreBtn.addEventListener("click",()=>{
     if(fetchedMonsters&& visibleMonsters<fetchedMonsters.length){
@@ -45,7 +45,7 @@ function fetchEndpoints() {
           fetchAllMonsters(endpoints.allMonstersEndpoint)
           .then(monsters=>{
             console.log("Monster fetched: ",monsters)
-            fetchedMonsters = monsters;
+            assignAndPopulate(monsters);
           });
         })
         .catch(error => {
@@ -56,9 +56,66 @@ function fetchEndpoints() {
     fetchAllMonsters(endpoints.allMonstersEndpoint)
     .then(monsters=>{
       console.log("Monster loaded: ",monsters)
-      fetchedMonsters = monsters;
+      assignAndPopulate(monsters);
     });
   }
 }
 
+function assignAndPopulate(monsters){
+  fetchedMonsters = monster;
+  populateMonster(fetchedMonsters, visibleMonsters);
+}
 
+function populateMonster(array, num){
+  const monsterContainer = document.getElementById("monsterContainer");
+  monsterContainer.innerHTML = "";
+  for(let i = 0; i < num; i++){
+    const monster = document.createElement("div");
+    const name = document.createElement("h2");
+    const speciality = document.createElement("p");
+    
+    const strengths = document.createElement("div");
+    const weaknesses = document.createElement("div");
+    const health = document.createElement("p");
+    const damage = document.createElement("p");
+    const price = document.createElement("p");
+    
+    monster.classList.add("monsterCard");
+    name.classList.add("monsterName");
+    name.classList.add("monsterSpec");
+    name.classList.add("monsterStr");
+    name.classList.add("monsterWeak");
+    name.classList.add("monsterHealth");
+    name.classList.add("monsterDamage");
+    name.classList.add("monsterPrice");
+
+    name.innerText = array[i].name;
+    speciality.innerText = array[i].specs;
+    damage.innerText = array[i].damage;
+    health.innerText = array[i].health;
+    price.innerText = array[i].price;
+
+
+    array[i].strengths.forEach((str) =>{
+      const strengthText = document.createElement("p");
+      strengthText.innerText = str;
+      strengthText.classList.add("strText");
+      strengths.appendChild(strengthText);
+    });
+    array[i].weaknesses.forEach((weak) =>{
+      const weakText = document.createElement("p");
+      weakText.innerText = weak;
+      weakText.classList.add("strText");
+      weaknesses.appendChild(weakText);
+    });
+
+    monster.appendChild(name);
+    monster.appendChild(specialty);
+    monster.appendChild(health);
+    monster.appendChild(damage);
+    monster.appendChild(strengths);
+    monster.appendChild(weaknesses);
+    monster.appendChild(price);
+    monsterContainer.appendChild(monster);
+  }
+}
