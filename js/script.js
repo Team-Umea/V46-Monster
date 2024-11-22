@@ -72,7 +72,7 @@ function populateMonster(array, num){
   for(let i = 0; i < num; i++){
     const monster = document.createElement("div");
     const name = document.createElement("h2");
-    const speciality = document.createElement("p");
+    const specs = document.createElement("p");
     
     const strengths = document.createElement("div");
     const weaknesses = document.createElement("div");
@@ -90,7 +90,7 @@ function populateMonster(array, num){
     name.classList.add("monsterPrice");
 
     name.innerText = array[i].name;
-    speciality.innerText = array[i].specs;
+    specs.innerText = array[i].specs;
     damage.innerText = array[i].damage;
     health.innerText = array[i].health;
     price.innerText = array[i].price;
@@ -110,7 +110,7 @@ function populateMonster(array, num){
     });
 
     monster.appendChild(name);
-    monster.appendChild(specialty);
+    monster.appendChild(specs);
     monster.appendChild(health);
     monster.appendChild(damage);
     monster.appendChild(strengths);
