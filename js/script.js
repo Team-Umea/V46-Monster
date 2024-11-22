@@ -6,13 +6,18 @@ let fetchedMonsters = [];
 
 let visibleMonsters = 10; 
 
+
+
 window.addEventListener("DOMContentLoaded", () => {
   init();
 });
 
 function init() {
   fetchEndpoints();
-  initLoadMoreMonstersBtn().setAttribute("id","1")
+  initLoadMoreMonstersBtn().setAttribute("id","1");
+  initSearchBox();
+  initSearch();
+  initSortDropdown();
 }
 
 function initLoadMoreMonstersBtn(){
@@ -143,13 +148,49 @@ function populateMonster(array, num){
   }
 }
 
-function searchMonsters(query,option,array){
-  option = document.getElementById("dropDown").value;
+function initSearchBox(){
+  let searchCategory = "name";
+  const searchBox = document.getElementById("searchBox");
+  
+  searchBox.addEventListener("input" , (e) => {
+    
+    searchMonsters(searchBox.value, fetchedMonsters);
+  
+  });
+}
+
+function initSearch(){
+  const category = document.getElementById("searchCategory");
+  const inputs = Array.from(category.getElementsByTagName("input"));
+  inputs.forEach((input)=>{
+    const index = inputs.indexOf(input);
+    input.addEventListener("click", (e) =>{
+      switch(index){
+        case 0:
+          searchCategory = "name";
+          break;
+        case 1:
+          searchCategory = "strengths";
+          break;
+        case 2:
+          searchCategory = "weaknesses";
+          break;
+      }
+    });
+  })
+}
+function initSortDropdown(){
+  const dropDown = document.getElementById("sortDropdown");
+  dropDown.addEventListener("change",(e)=>{
+    sortMonsters(dropDown.value);
+  });
+}
+function searchMonsters(query,array){
   query = document.getElementById("searchBox").value;
 
   const result = array.forEach((monster)=>{
 
-    if(getValueInObj(monster.monster, option).includes(query)){
+    if(getValueInObj(monster.monster, searchCategory).includes(query)){
       monster.monster.visible = true;
     }
     else{
