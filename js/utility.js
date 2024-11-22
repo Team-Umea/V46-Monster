@@ -34,3 +34,7 @@ export function save(key,value){
 
     return iconContainer
   }
+
+  export function getValueInObj(obj,key){
+    return obj[key];
+  }
