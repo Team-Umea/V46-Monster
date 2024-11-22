@@ -158,6 +158,7 @@ function searchMonsters(query,option,array){
   });
   populateMonster(result, visibleMonsters);
 }
+
 function sortMonsters(option){
   switch(option){
     case 0:
