@@ -1,10 +1,11 @@
 import { fetchAllMonsters } from './fetchEndpoints.js';
-import {save,load,createIconContainer,getValueInObj} from "./utility.js";
+import {save,load,createIconContainer,getValueInObj,generateUniqueTeamName} from "./utility.js";
+import { Team } from '../classes/team.js';
 const apiConfigKey = "apiconfigure"
 
 let fetchedMonsters = [];
-
 let visibleMonsters = 10; 
+let teams = []; 
 
 window.addEventListener("DOMContentLoaded", () => {
   init();
@@ -12,7 +13,8 @@ window.addEventListener("DOMContentLoaded", () => {
 
 function init() {
   fetchEndpoints();
-  initLoadMoreMonstersBtn().setAttribute("id","1")
+  initCreateTeamForm();
+  initLoadMoreMonstersBtn();
 }
 
 function initLoadMoreMonstersBtn(){
@@ -21,11 +23,77 @@ function initLoadMoreMonstersBtn(){
   loadMoreBtn.addEventListener("click",()=>{
     if(fetchedMonsters&& visibleMonsters<fetchedMonsters.length){
       visibleMonsters+=10;
-      populateMonster(fetchedMonsters,visibleMonsters)
+      renderMonsters(fetchedMonsters,visibleMonsters)
     }
   })
 
   return loadMoreBtn; 
+}
+
+function initCreateTeamForm() {
+  const container = document.getElementById("createTeam");
+  const form = container.getElementsByTagName("form")[0];
+  const input = container.getElementsByTagName("input")[0];
+  const message = container.getElementsByTagName("p")[0];
+
+  const digits = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
+
+  input.addEventListener("input", () => {
+    //reset message on typing
+    message.innerText = "";
+    message.setAttribute("class", "hidden");
+    container.setAttribute("class", "minimize");
+
+    //get rid of all white spaces
+    const trimedValue = input.value.replace(/\s+/g, "");
+    const lastCh = trimedValue.slice(-1).toLowerCase();
+
+    //only allow letters and digits
+    const isLetter = lastCh >= "a" && lastCh <= "z";
+    const isDigit = digits.includes(lastCh);
+    input.value = trimedValue;
+
+    if (!isDigit && !isLetter) {
+      input.value = input.value.slice(0, -1);
+      message.setAttribute("class", "error");
+      message.innerText = "Error! Only letters and digits allowed";
+      //remove message after 2s
+      setTimeout(() => {
+        message.innerText = "";
+        message.setAttribute("class", "hidden");
+        container.setAttribute("class", "minimize");
+      }, 2000);
+    }
+  });
+
+  form.addEventListener("submit", (e) => {
+    e.preventDefault();
+    const teamName = input.value;
+    if (teamName !== "") {
+      const checkName = generateUniqueTeamName(teams,teamName);
+
+      const controlledName = checkName.name;
+      if (!checkName.unique) {
+        message.setAttribute("class", "success");
+        message.innerText = `${teamName} successfully changed to ${controlledName} due to team name duplicates`;
+      } else {
+        message.setAttribute("class", "success");
+        message.innerText = `${controlledName} successfully created`;
+      }
+      addTeam(controlledName);
+      input.value = "";
+    } else {
+      message.setAttribute("class", "error");
+      message.innerText = "Error! Name must not be empty";
+    }
+    if (message.innerText !== "") {
+      setTimeout(() => {
+        message.innerText = "";
+        message.setAttribute("class", "hidden");
+        container.setAttribute("class", "minimize");
+      }, 3000);
+    }
+  });
 }
 
 function fetchEndpoints() {
@@ -63,10 +131,10 @@ function fetchEndpoints() {
 
 function assignAndPopulate(monsters){
   fetchedMonsters = monsters;
-  populateMonster(fetchedMonsters, visibleMonsters);
+  renderMonsters(fetchedMonsters, visibleMonsters);
 }
 
-function populateMonster(array, num){
+function renderMonsters(array, num){
   const monsterContainer = document.getElementById("monsterContainer");
   monsterContainer.innerHTML = "";
   for(let i = 0; i < num; i++){
@@ -143,6 +211,61 @@ function populateMonster(array, num){
   }
 }
 
+function addTeam(teamName) {
+
+  const teamsContainer = document.getElementById("teamsContainer");
+
+  const newTeam = new Team(teamName);
+  teams.push(newTeam);
+
+  const teamContainer = document.createElement("div");
+  const teamHeader = document.createElement("h2");
+  const teamList = document.createElement("ul");
+  const deleteBtn = document.createElement("img");
+
+  teamContainer.setAttribute("class", "teamDiv");
+  teamHeader.innerText = teamName;
+  teamList.setAttribute("id", teamName);
+
+  deleteBtn.setAttribute("src", "/icons/trashBin.svg");
+  deleteBtn.setAttribute("alt", `Delete ${teamName}`);
+  deleteBtn.setAttribute("title", `Delete ${teamName}`);
+  deleteBtn.setAttribute("class", "deleteTeamBtn");
+
+  deleteBtn.addEventListener("click", () => {
+    const src = deleteBtn.getAttribute("src");
+
+    if (src.includes("trash")) {
+      deleteBtn.setAttribute("src", "/icons/checkMark.svg");
+      deleteBtn.setAttribute("alt", `Confirm delete of ${teamName}`);
+      deleteBtn.setAttribute("title", `Confirm delete of ${teamName}`);
+    } else {
+      teamContainer.remove();
+      deleteTeam(newTeam);
+    }
+  });
+
+  teamContainer.appendChild(teamHeader);
+  teamContainer.appendChild(teamList);
+  teamContainer.appendChild(deleteBtn);
+  teamsContainer.appendChild(teamContainer);
+
+  initDropZone(teamList);
+}
+
+function initDropZone(dropZone) {
+  dropZone.addEventListener("dragover", (e) => {
+    e.preventDefault();
+  });
+
+  dropZone.addEventListener("drop", (e) => {
+    e.preventDefault();
+    const id = e.dataTransfer.getData("text/plain");
+    const draggedElement = document.getElementById(id);
+    dropZone.appendChild(draggedElement);
+  });
+}
+
 function searchMonsters(query,option,array){
   option = document.getElementById("dropDown").value;
   query = document.getElementById("searchBox").value;
@@ -156,7 +279,7 @@ function searchMonsters(query,option,array){
       monster.monster.visible = false;
     }
   });
-  populateMonster(result, visibleMonsters);
+  renderMonsters(result, visibleMonsters);
 }
 
 function sortMonsters(option){
@@ -196,7 +319,7 @@ function sortMonsters(option){
       break
     
   }
-  populateMonster(fetchedMonsters, visibleMonsters);
+  renderMonsters(fetchedMonsters, visibleMonsters);
 }
 
 
