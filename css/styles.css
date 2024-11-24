@@ -14,6 +14,12 @@ body {
   animation: spooky 2s infinite alternate;
 }
 
+.creditsContainer {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+}
+
 main {
   width: 90%;
   max-width: 1200px;
@@ -168,6 +174,22 @@ li button:hover {
 
 .btn-red:hover {
   background-color: #ee5e54;
+}
+
+.btn-blue {
+  background-color: #1625ac;
+}
+
+.btn-blue:hover {
+  background-color: #1a2dd8;
+}
+
+.btn-green {
+  background-color: #06830c;
+}
+
+.btn-green:hover {
+  background-color: rgb(7, 158, 14);
 }
 
 .icon {

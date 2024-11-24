@@ -2,6 +2,7 @@ export class Team {
   constructor(teamName) {
     this.teamName = teamName;
     this.monsters = [];
+    this.paidFor = false;
   }
 
   getTeamName() {
@@ -22,5 +23,13 @@ export class Team {
 
   deleteMonster(monster) {
     this.monsters = this.monsters.filter((m) => m.monster.name !== monster.monster.name);
+  }
+
+  getPaidFor() {
+    return this.paidFor;
+  }
+
+  setPaidFor(status) {
+    this.paidFor = status;
   }
 }
