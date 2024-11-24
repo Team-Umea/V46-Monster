@@ -191,7 +191,7 @@ function initMonsterCatalogue() {
     const monster = team.getMonsters().find((m) => m.monster.name === monsterName);
     if (monster) {
       team.deleteMonster(monster);
-      fetchedMonsters.push(monster);
+      // fetchedMonsters.push(monster);
       sortMonsters(sortOder);
       renderMonsters();
       renderTeams();
@@ -200,6 +200,9 @@ function initMonsterCatalogue() {
 }
 
 function initDropZone(dropZone, team) {
+  const dropDown = document.getElementById("sortDropdown");
+  const sortOder = dropDown.value;
+
   dropZone.addEventListener("dragover", (e) => {
     e.preventDefault();
   });
@@ -210,10 +213,17 @@ function initDropZone(dropZone, team) {
     if (team.getMonsters().length < 4) {
       const monster = fetchedMonsters.find((m) => m.monster.name === monsterName);
       if (monster) {
-        fetchedMonsters = fetchedMonsters.filter((m) => m.monster.name !== monsterName);
-        team.addMonster(monster);
-        const draggedElement = document.getElementById(monsterName);
-        dropZone.appendChild(draggedElement);
+        if (!team.getMonsters().includes(monster)) {
+          team.addMonster(monster);
+          const draggedElement = document.getElementById(monsterName);
+          dropZone.appendChild(draggedElement);
+          sortMonsters(sortOder);
+          renderMonsters();
+          renderTeams();
+        } else {
+          alert("Cant have duplicates of monsters in same team");
+        }
+        // fetchedMonsters = fetchedMonsters.filter((m) => m.monster.name !== monsterName);
       }
     } else {
       alert("Team is full");
@@ -334,11 +344,6 @@ function addTeam(teamName) {
 function deleteTeam(teamToDelete) {
   const dropDown = document.getElementById("sortDropdown");
   const sortOder = dropDown.value;
-
-  const monsters = teamToDelete.getMonsters();
-  monsters.forEach((monster) => {
-    fetchedMonsters.push(monster);
-  });
   teams = teams.filter((team) => team.getTeamName() !== teamToDelete.getTeamName());
   sortMonsters(sortOder);
   renderMonsters();
@@ -359,15 +364,33 @@ function renderTeams() {
       const monsters = team.getMonsters();
       const teamContainer = document.createElement("div");
       const teamHeader = document.createElement("h2");
+      const deleteBtnsContainer = document.createElement("div");
       const teamList = document.createElement("ul");
       const deleteBtn = document.createElement("img");
 
       teamContainer.setAttribute("class", "teamDiv");
+      deleteBtnsContainer.setAttribute("class", "deleteMonstersContainer");
       teamHeader.innerText = teamName;
       teamList.setAttribute("id", teamName);
 
       monsters.forEach((monster) => {
-        createMonsterCard(monster.monster, teamList);
+        const monsterData = monster.monster;
+        const monsterName = monsterData.name;
+        const deleteMonsterBtn = document.createElement("button");
+        const btnIcon = document.createElement("img");
+        btnIcon.setAttribute("src", "../icons/cross.svg");
+        btnIcon.setAttribute("alt", `Remove ${monsterName} from ${teamName}`);
+        btnIcon.setAttribute("title", `Remove ${monsterName} from ${teamName}`);
+        btnIcon.setAttribute("class", "icon icon-white");
+        deleteMonsterBtn.appendChild(btnIcon);
+        deleteMonsterBtn.setAttribute("class", "btn btn-red");
+        deleteMonsterBtn.addEventListener("click", () => {
+          team.deleteMonster(monster);
+          renderTeams();
+        });
+        deleteBtnsContainer.appendChild(deleteMonsterBtn);
+
+        createMonsterCard(monsterData, teamList);
       });
 
       teamList.addEventListener("mousedown", () => {
@@ -398,8 +421,9 @@ function renderTeams() {
       });
 
       teamContainer.appendChild(teamHeader);
-      teamContainer.appendChild(teamList);
       teamContainer.appendChild(deleteBtn);
+      teamContainer.appendChild(deleteBtnsContainer);
+      teamContainer.appendChild(teamList);
       teamsContainer.appendChild(teamContainer);
       initDropZone(teamList, team);
     });

@@ -7,6 +7,7 @@
   flex-direction: column;
   gap: 20px;
   background-color: #2b2a2a;
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.75);
 }
 
 #teamsContainer .teamDiv {
@@ -19,6 +20,15 @@
   gap: 10px;
   background-color: #474646;
   position: relative;
+}
+
+.deleteMonstersContainer {
+  width: 100%;
+  padding: 10px;
+  display: grid;
+  justify-items: center;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: auto;
 }
 
 #teamsContainer .teamDiv ul {
