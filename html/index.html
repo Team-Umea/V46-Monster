@@ -35,18 +35,32 @@
         <select name="sortDropdown" id="sortDropdown">
           <option value="0">A-Z</option>
           <option value="1">Z-A</option>
-          <option value="2">lo-hi Price</option>
-          <option value="3">hi-lo Price</option>
-          <option value="4">lo-hi HP</option>
-          <option value="5">hi-lo HP</option>
-          <option value="6">lo-hi Damage</option>
-          <option value="7">hi-lo Damage</option>
+          <option value="2">Lo-Hi Price</option>
+          <option value="3">Hi-Lo Price</option>
+          <option value="4">Lo-Hi HP</option>
+          <option value="5">Hi-Lo HP</option>
+          <option value="6">Lo-Hi Damage</option>
+          <option value="7">Hi-Lo Damage</option>
         </select>
         <button id="loadMoreMonsters">Load more</button>
       </div>
       <div id="monstersWrapper">
         <h2>Choose your fighters</h2>
         <div id="monsterContainer"></div>
+      </div>
+      <div id="filterTeamsContainer">
+        <h2>Filter Teams</h2>
+        <input type="text" id="serachTeams" placeholder="Serach by team name" />
+        <select name="sortTeamsDropDown" id="sortTeamsDropDown">
+          <option value="0">A-Z</option>
+          <option value="1">Z-A</option>
+          <option value="2">New-Old</option>
+          <option value="3">Old-New</option>
+          <option value="4">Paid-Unpaid</option>
+          <option value="5">Unpaid-Paid</option>
+          <option value="6">Full-Empty</option>
+          <option value="7">Empty-Full</option>
+        </select>
       </div>
       <div id="teamsContainer" class="hidden"></div>
     </main>

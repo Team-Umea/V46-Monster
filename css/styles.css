@@ -259,3 +259,13 @@ main {
 .minimize {
   height: fit-content;
 }
+
+.searchError {
+  width: 100%;
+  text-align: center;
+  font-size: 1.5rem;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}

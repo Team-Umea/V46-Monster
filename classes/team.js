@@ -3,6 +3,8 @@ export class Team {
     this.teamName = teamName;
     this.monsters = [];
     this.paidFor = false;
+    this.createdAt = new Date();
+    this.visible = true;
   }
 
   getTeamName() {
@@ -33,10 +35,28 @@ export class Team {
     this.paidFor = status;
   }
 
+  getCreatedAt() {
+    return this.createdAt;
+  }
+
+  setCreatedAt(createdAt) {
+    this.createdAt = createdAt;
+  }
+
+  getVisible() {
+    return this.visible;
+  }
+
+  setVisible(visible) {
+    this.visible = visible;
+  }
+
   static fromJSON(json) {
     const newTeam = new Team(json.teamName);
     newTeam.setMonsters(json.monsters);
     newTeam.setPaidFor(json.paidFor);
+    newTeam.setCreatedAt(json.createdAt);
+    newTeam.setVisible(json.visible);
     return newTeam;
   }
 }
