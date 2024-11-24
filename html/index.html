@@ -19,8 +19,10 @@
         </form>
         <p id="createTeamMessage" class="hidden"></p>
       </div>
-      <div>
-        <input type="text" id="searchBox" />
+      <div id="filterCatalogueContainer">
+        <h2>Filter Monsters</h2>
+        <input type="text" id="searchBox" placeholder="Enter search query" />
+        <label for="searchBox">Serach by:</label>
         <div id="searchCategory">
           <input type="radio" id="nameSearch" name="searchBtn" checked />
           <label for="nameSearch">Name</label>
@@ -46,7 +48,7 @@
         <h2>Choose your fighters</h2>
         <div id="monsterContainer"></div>
       </div>
-      <div id="teamsContainer" class="hidden temp"></div>
+      <div id="teamsContainer" class="hidden"></div>
     </main>
     <script type="module" src="../js/script.js"></script>
   </body>

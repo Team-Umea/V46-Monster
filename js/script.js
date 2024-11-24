@@ -260,12 +260,21 @@ function assignAndPopulate(monsters) {
 
 function renderMonsters() {
   const monsterContainer = document.getElementById("monsterContainer");
+  const serachMonstersErrorMessage = document.createElement("p");
+  serachMonstersErrorMessage.setAttribute("class", "error");
+  serachMonstersErrorMessage.setAttribute("id", "monstersErrorMessage");
+  serachMonstersErrorMessage.innerText = "No matching result for your search query";
   monsterContainer.innerHTML = "";
   for (let i = 0; i < visibleMonsters; i++) {
     if (fetchedMonsters && fetchedMonsters[i].visible) {
       const monster = fetchedMonsters[i].monster;
       createMonsterCard(monster, monsterContainer);
     }
+  }
+  const noMatchingSerach = fetchedMonsters.every((m) => !m.visible);
+  if (noMatchingSerach) {
+    console.log("hello");
+    monsterContainer.appendChild(serachMonstersErrorMessage);
   }
 }
 
