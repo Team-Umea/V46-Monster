@@ -1,11 +1,11 @@
-import { fetchAllMonsters } from './fetchEndpoints.js';
-import {save,load,createIconContainer,getValueInObj,generateUniqueTeamName} from "./utility.js";
-import { Team } from '../classes/team.js';
-const apiConfigKey = "apiconfigure"
+import { fetchAllMonsters } from "./fetchEndpoints.js";
+import { save, load, createIconContainer, getValueInObj, generateUniqueTeamName } from "./utility.js";
+import { Team } from "../classes/team.js";
+const apiConfigKey = "apiconfigure";
 
 let fetchedMonsters = [];
-let visibleMonsters = 10; 
-let teams = []; 
+let visibleMonsters = 10;
+let teams = [];
 let searchCategory = "name";
 
 window.addEventListener("DOMContentLoaded", () => {
@@ -21,17 +21,33 @@ function init() {
   initLoadMoreMonstersBtn();
 }
 
-function initLoadMoreMonstersBtn(){
-  const loadMoreBtn = document.getElementById("loadMoreMonsters");
+function fetchEndpoints() {
+  const loadApiEndpoints = load(apiConfigKey);
 
-  loadMoreBtn.addEventListener("click",()=>{
-    if(fetchedMonsters&& visibleMonsters<fetchedMonsters.length){
-      visibleMonsters+=10;
-      renderMonsters(fetchedMonsters,visibleMonsters)
-    }
-  })
-
-  return loadMoreBtn; 
+  if (!loadApiEndpoints) {
+    const apiConfigPath = "../json/apiConfig.json";
+    fetch(apiConfigPath)
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error("Network response was not ok");
+        }
+        return response.json();
+      })
+      .then((endpoints) => {
+        save(apiConfigKey, endpoints);
+        fetchAllMonsters(endpoints.allMonstersEndpoint).then((monsters) => {
+          assignAndPopulate(monsters);
+        });
+      })
+      .catch((error) => {
+        console.error("Error loading JSON:", error);
+      });
+  } else {
+    const endpoints = load(apiConfigKey);
+    fetchAllMonsters(endpoints.allMonstersEndpoint).then((monsters) => {
+      assignAndPopulate(monsters);
+    });
+  }
 }
 
 function initCreateTeamForm() {
@@ -74,7 +90,7 @@ function initCreateTeamForm() {
     e.preventDefault();
     const teamName = input.value;
     if (teamName !== "") {
-      const checkName = generateUniqueTeamName(teams,teamName);
+      const checkName = generateUniqueTeamName(teams, teamName);
 
       const controlledName = checkName.name;
       if (!checkName.unique) {
@@ -100,51 +116,138 @@ function initCreateTeamForm() {
   });
 }
 
-function fetchEndpoints() {
-  const loadApiEndpoints = load(apiConfigKey);
+function initLoadMoreMonstersBtn() {
+  const loadMoreBtn = document.getElementById("loadMoreMonsters");
 
-  if(!loadApiEndpoints){
-    const apiConfigPath = "../json/apiConfig.json"
-    fetch(apiConfigPath)
-        .then(response => {
-            if (!response.ok) {
-                throw new Error('Network response was not ok');
-            }
-            return response.json();
-        })
-        .then(endpoints => {
-          save(apiConfigKey, endpoints); 
-          fetchAllMonsters(endpoints.allMonstersEndpoint)
-          .then(monsters=>{
-            console.log("Monster fetched: ",monsters)
-            assignAndPopulate(monsters);
-          });
-        })
-        .catch(error => {
-            console.error('Error loading JSON:', error);
-        });
-  }else{
-    const endpoints = load(apiConfigKey); 
-    fetchAllMonsters(endpoints.allMonstersEndpoint)
-    .then(monsters=>{
-      console.log("Monster loaded: ",monsters)
-      assignAndPopulate(monsters);
-    });
-  }
+  loadMoreBtn.addEventListener("click", () => {
+    if (fetchedMonsters && visibleMonsters < fetchedMonsters.length) {
+      visibleMonsters += 10;
+      renderMonsters(fetchedMonsters, visibleMonsters);
+    }
+  });
+
+  return loadMoreBtn;
 }
 
-function assignAndPopulate(monsters){
-  fetchedMonsters = monsters.map(monster=>({monster:monster,visible:true}));
-  defaultSort(); 
+function initSearchBox() {
+  searchCategory = "name";
+  const searchBox = document.getElementById("searchBox");
+  searchBox.addEventListener("input", (e) => {
+    const searchQuery = searchBox.value.trim().toLowerCase();
+    if (searchQuery !== "") {
+      searchMonsters(searchQuery);
+    } else {
+      showAllMonsters();
+    }
+  });
+}
+
+function initSearchCategory() {
+  const searchBox = document.getElementById("searchBox");
+  const category = document.getElementById("searchCategory");
+  const inputs = Array.from(category.getElementsByTagName("input"));
+  inputs.forEach((input) => {
+    const index = inputs.indexOf(input);
+    input.addEventListener("click", (e) => {
+      switch (index) {
+        case 0:
+          searchCategory = "name";
+          break;
+        case 1:
+          searchCategory = "strengths";
+          break;
+        case 2:
+          searchCategory = "weaknesses";
+          break;
+      }
+      searchBox.value = "";
+      showAllMonsters();
+    });
+  });
+}
+
+function initSortDropdown() {
+  const dropDown = document.getElementById("sortDropdown");
+  dropDown.addEventListener("change", (e) => {
+    console.log("Value: ", dropDown.value);
+    sortMonsters(dropDown.value);
+  });
+}
+
+function assignAndPopulate(monsters) {
+  fetchedMonsters = monsters.map((monster) => ({ monster: monster, visible: true }));
+  defaultSort();
   renderMonsters(fetchedMonsters, visibleMonsters);
 }
 
-function renderMonsters(array, num){
+function deleteTeam(teamName) {
+  // teamName.getMonsters().forEach((monster) => {
+  //   monsterDb.push(monster);
+  // });
+  // monsterDb.sort((a, b) => a.id - b.id);
+  teams = teams.filter((team) => team.getTeamName() !== teamName);
+  // populateHTML(monsterDb, monsterContainer, addButtonText);
+}
+
+function addTeam(teamName) {
+  const teamsContainer = document.getElementById("teamsContainer");
+  const newTeam = new Team(teamName);
+  teams.push(newTeam);
+
+  const teamContainer = document.createElement("div");
+  const teamHeader = document.createElement("h2");
+  const teamList = document.createElement("ul");
+  const deleteBtn = document.createElement("img");
+
+  teamContainer.setAttribute("class", "teamDiv");
+  teamHeader.innerText = teamName;
+  teamList.setAttribute("id", teamName);
+
+  deleteBtn.setAttribute("src", "/icons/trashBin.svg");
+  deleteBtn.setAttribute("alt", `Delete ${teamName}`);
+  deleteBtn.setAttribute("title", `Delete ${teamName}`);
+  deleteBtn.setAttribute("class", "deleteTeamBtn");
+
+  deleteBtn.addEventListener("click", () => {
+    const src = deleteBtn.getAttribute("src");
+
+    if (src.includes("trash")) {
+      deleteBtn.setAttribute("src", "/icons/checkMark.svg");
+      deleteBtn.setAttribute("alt", `Confirm delete of ${teamName}`);
+      deleteBtn.setAttribute("title", `Confirm delete of ${teamName}`);
+    } else {
+      teamContainer.remove();
+      deleteTeam(newTeam);
+    }
+  });
+
+  teamContainer.appendChild(teamHeader);
+  teamContainer.appendChild(teamList);
+  teamContainer.appendChild(deleteBtn);
+  teamsContainer.appendChild(teamContainer);
+
+  initDropZone(teamList);
+}
+
+function initDropZone(dropZone) {
+  dropZone.addEventListener("dragover", (e) => {
+    e.preventDefault();
+  });
+
+  dropZone.addEventListener("drop", (e) => {
+    e.preventDefault();
+    const id = e.dataTransfer.getData("text/plain");
+    const draggedElement = document.getElementById(id);
+    dropZone.appendChild(draggedElement);
+  });
+}
+
+function renderMonsters(array, num) {
   const monsterContainer = document.getElementById("monsterContainer");
   monsterContainer.innerHTML = "";
-  for(let i = 0; i < num; i++){
-    if(array&&array[i].visible){
-      const monsterName = array[i].monster.name; 
+  for (let i = 0; i < num; i++) {
+    if (array && array[i].visible) {
+      const monsterName = array[i].monster.name;
       const monsterSpecs = array[i].monster.specs;
       const monsterStrengths = array[i].monster.strengths;
       const monsterWeaknesses = array[i].monster.weaknesses;
@@ -155,142 +258,97 @@ function renderMonsters(array, num){
       const monster = document.createElement("div");
       const name = document.createElement("h2");
       const specs = document.createElement("p");
-      
+
       const strengths = document.createElement("div");
       const weaknesses = document.createElement("div");
-  
+
       const strengthsHeader = document.createElement("h3");
       const weaknessesHeader = document.createElement("h3");
-  
+
       const ablitiesContainer = document.createElement("div");
-  
+
       const strengthsContent = document.createElement("div");
       const weaknessesContent = document.createElement("div");
-  
+
       const statsContainer = document.createElement("div");
-      const health = createIconContainer("iconContainer",monsterHealth,"../icons/heart.svg",`${monsterName} has ${monsterHealth} of health`, `${monsterName} has ${monsterName} of health`)
-      const damage = createIconContainer("iconContainer",monsterDamage,"../icons/skull.svg",`${monsterName} has ${monsterDamage} of damage`, `${monsterName} has ${monsterDamage} of damage`,"Right")
-      
+      const health = createIconContainer("iconContainer", monsterHealth, "../icons/heart.svg", `${monsterName} has ${monsterHealth} of health`, `${monsterName} has ${monsterName} of health`);
+      const damage = createIconContainer("iconContainer", monsterDamage, "../icons/skull.svg", `${monsterName} has ${monsterDamage} of damage`, `${monsterName} has ${monsterDamage} of damage`, "Right");
+
       const priceContainer = document.createElement("div");
       const priceHeader = document.createElement("h4");
-      const price = createIconContainer("iconContainer",monsterPrice,"../icons/diamond.svg",`${monsterName} costs ${monsterPrice} diamonds`, `${monsterName} costs ${monsterPrice} diamonds`);
-  
-      strengthsHeader.innerText="Strengths"
-      weaknessesHeader.innerText="Weaknesses"
-      
+      const price = createIconContainer("iconContainer", monsterPrice, "../icons/diamond.svg", `${monsterName} costs ${monsterPrice} diamonds`, `${monsterName} costs ${monsterPrice} diamonds`);
+
+      strengthsHeader.innerText = "Strengths";
+      weaknessesHeader.innerText = "Weaknesses";
+
       monster.classList.add("monsterCard");
       name.classList.add("monsterName");
       specs.classList.add("monsterSpec");
-      ablitiesContainer.classList.add("abilitesContainer")
-      strengths.classList.add("monsterStr","abilitesContent");
-      weaknesses.classList.add("monsterWeak","abilitesContent");
+      ablitiesContainer.classList.add("abilitesContainer");
+      strengths.classList.add("monsterStr", "abilitesContent");
+      weaknesses.classList.add("monsterWeak", "abilitesContent");
       statsContainer.classList.add("monsterStatsContainer");
       priceContainer.classList.add("monsterPriceContainer");
-  
+
       name.innerText = monsterName;
       specs.innerText = monsterSpecs;
-      priceHeader.innerText="Price"
-  
-      strengths.appendChild(strengthsHeader); 
+      priceHeader.innerText = "Price";
+
+      strengths.appendChild(strengthsHeader);
       weaknesses.appendChild(weaknessesHeader);
-  
-      monsterStrengths.forEach((str) =>{
+
+      monsterStrengths.forEach((str) => {
         const strengthText = document.createElement("p");
         strengthText.innerText = str;
         strengthText.classList.add("strText");
         strengthsContent.appendChild(strengthText);
       });
-      monsterWeaknesses.forEach((weak) =>{
+      monsterWeaknesses.forEach((weak) => {
         const weakText = document.createElement("p");
         weakText.innerText = weak;
         weakText.classList.add("strText");
         weaknessesContent.appendChild(weakText);
       });
-  
-      strengths.appendChild(strengthsContent); 
-      weaknesses.appendChild(weaknessesContent)
-  
+
+      strengths.appendChild(strengthsContent);
+      weaknesses.appendChild(weaknessesContent);
+
       monster.appendChild(name);
       monster.appendChild(specs);
-      statsContainer.appendChild(health); 
+      statsContainer.appendChild(health);
       statsContainer.appendChild(damage);
-      monster.appendChild(statsContainer); 
+      monster.appendChild(statsContainer);
       ablitiesContainer.appendChild(strengths);
-      ablitiesContainer.appendChild(weaknesses)
+      ablitiesContainer.appendChild(weaknesses);
       monster.appendChild(ablitiesContainer);
-      priceContainer.appendChild(priceHeader); 
-      priceContainer.appendChild(price); 
+      priceContainer.appendChild(priceHeader);
+      priceContainer.appendChild(price);
       monster.appendChild(priceContainer);
       monsterContainer.appendChild(monster);
     }
   }
 }
 
-function initSearchBox(){
-  searchCategory = "name";
-  const searchBox = document.getElementById("searchBox");
-  searchBox.addEventListener("input" , (e) => {
-    const searchQuery = searchBox.value.trim().toLowerCase(); 
-    if(searchQuery!==""){
-      searchMonsters(searchQuery);
-    }else{
-      showAllMonsters(); 
-    }
-  });
+function showAllMonsters() {
+  fetchedMonsters.forEach((monster) => (monster.visible = true));
+  renderMonsters(fetchedMonsters, visibleMonsters);
 }
 
-function initSearchCategory(){
-  const searchBox = document.getElementById("searchBox");
-  const category = document.getElementById("searchCategory");
-  const inputs = Array.from(category.getElementsByTagName("input"));
-  inputs.forEach((input)=>{
-    const index = inputs.indexOf(input);
-    input.addEventListener("click", (e) =>{
-        switch(index){
-          case 0:
-            searchCategory = "name";
-            break;
-          case 1:
-            searchCategory = "strengths";
-            break;
-          case 2:
-            searchCategory = "weaknesses";
-            break;
-        }
-      searchBox.value="";
-      showAllMonsters(); 
-    });
-  })
-}
-
-function initSortDropdown(){
-  const dropDown = document.getElementById("sortDropdown");
-  dropDown.addEventListener("change",(e)=>{
-    console.log("Value: ",dropDown.value)
-    sortMonsters(dropDown.value);
-  });
-}
-
-function showAllMonsters(){
-  fetchedMonsters.forEach(monster=>monster.visible=true); 
-  renderMonsters(fetchedMonsters,visibleMonsters);
-}
-
-function searchMonsters(query){
-  fetchedMonsters.forEach((monster)=>{
+function searchMonsters(query) {
+  fetchedMonsters.forEach((monster) => {
     const value = getValueInObj(monster.monster, searchCategory);
-    if(value){
-      if(typeof value === "string"){
-        if(value.includes(query)){
+    if (value) {
+      if (typeof value === "string") {
+        if (value.includes(query)) {
           monster.visible = true;
-        }else{
+        } else {
           monster.visible = false;
         }
-      }else{  
-        const hasAbility = value.some(ablity=>ablity.toLowerCase().includes(query));
-        if(hasAbility){
+      } else {
+        const hasAbility = value.some((ablity) => ablity.toLowerCase().includes(query));
+        if (hasAbility) {
           monster.visible = true;
-        }else{
+        } else {
           monster.visible = false;
         }
       }
@@ -300,48 +358,45 @@ function searchMonsters(query){
   renderMonsters(fetchedMonsters, visibleMonsters);
 }
 
-function defaultSort(){
-  fetchedMonsters = fetchedMonsters.sort((a,b) => a.monster.name.localeCompare(b.monster.name));
+function defaultSort() {
+  fetchedMonsters = fetchedMonsters.sort((a, b) => a.monster.name.localeCompare(b.monster.name));
 }
 
-function sortMonsters(option){
-  switch(option){
+function sortMonsters(option) {
+  switch (option) {
     case "0":
       //alphabetical
-      fetchedMonsters = fetchedMonsters.sort((a,b) => a.monster.name.localeCompare(b.monster.name));
-      break
+      fetchedMonsters = fetchedMonsters.sort((a, b) => a.monster.name.localeCompare(b.monster.name));
+      break;
     case "1":
       //alphabetical reverse
-      fetchedMonsters = fetchedMonsters.sort((a,b) => b.monster.name.localeCompare(a.monster.name));
-      break
+      fetchedMonsters = fetchedMonsters.sort((a, b) => b.monster.name.localeCompare(a.monster.name));
+      break;
     case "2":
       //highest price first
-      fetchedMonsters = fetchedMonsters.sort((a,b) => a.monster.price - b.monster.price);
-      break
+      fetchedMonsters = fetchedMonsters.sort((a, b) => a.monster.price - b.monster.price);
+      break;
     case "3":
       //lowest price first
-      fetchedMonsters = fetchedMonsters.sort((a,b) => b.monster.price - a.monster.price);
-      break
+      fetchedMonsters = fetchedMonsters.sort((a, b) => b.monster.price - a.monster.price);
+      break;
     case "4":
       //highest hp first
-      fetchedMonsters = fetchedMonsters.sort((a,b) => a.monster.health - b.monster.health);
-      break
+      fetchedMonsters = fetchedMonsters.sort((a, b) => a.monster.health - b.monster.health);
+      break;
     case "5":
       //lowest hp first
-      fetchedMonsters = fetchedMonsters.sort((a,b) => b.monster.health - a.monster.health);
-      break
-    
+      fetchedMonsters = fetchedMonsters.sort((a, b) => b.monster.health - a.monster.health);
+      break;
+
     case "6":
       //highest dmg first
-      fetchedMonsters = fetchedMonsters.sort((a,b) => a.monster.damage - b.monster.damage);
-      break
+      fetchedMonsters = fetchedMonsters.sort((a, b) => a.monster.damage - b.monster.damage);
+      break;
     case "7":
       //lowest dmg first
-      fetchedMonsters = fetchedMonsters.sort((a,b) => b.monster.damage - a.monster.damage);
-      break
-    
+      fetchedMonsters = fetchedMonsters.sort((a, b) => b.monster.damage - a.monster.damage);
+      break;
   }
   renderMonsters(fetchedMonsters, visibleMonsters);
 }
-
-
