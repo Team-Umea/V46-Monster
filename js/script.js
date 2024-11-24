@@ -447,13 +447,16 @@ function renderTeams() {
       });
 
       getRandomMonstersBtn.addEventListener("click", () => {
-        fetchRandomMonsters(apiConfig.randomMonstersEndpoint, 4).then((randomMonsters) => {
-          console.log("Random Monsters: ", randomMonsters);
-          const modifyedMonsters = randomMonsters.map((m) => ({ monster: m, visible: true }));
-          team.setMonsters(modifyedMonsters);
-          console.log("Teams: ", teams);
-          updateTeams();
-        });
+        const confirmRandomFetch = confirm("This action will override any progess to your team, click 'OK' to continue");
+        if (confirmRandomFetch) {
+          fetchRandomMonsters(apiConfig.randomMonstersEndpoint, 4).then((randomMonsters) => {
+            console.log("Random Monsters: ", randomMonsters);
+            const modifyedMonsters = randomMonsters.map((m) => ({ monster: m, visible: true }));
+            team.setMonsters(modifyedMonsters);
+            console.log("Teams: ", teams);
+            updateTeams();
+          });
+        }
       });
 
       deleteTeamBtn.addEventListener("click", () => {
