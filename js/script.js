@@ -1,8 +1,11 @@
-import { fetchAllMonsters } from "./fetchEndpoints.js";
-import { save, load, createIconContainer, createBtnIcon, getValueInObj, generateUniqueTeamName } from "./utility.js";
+import { fetchAllMonsters, fetchRandomMonsters } from "./fetchEndpoints.js";
+import { save, load, loadApiConfig, createIconContainer, createBtnIcon, getValueInObj, generateUniqueTeamName } from "./utility.js";
 import { Team } from "../classes/team.js";
-const apiConfigKey = "apiconfigure";
+
 const creditsKey = "credits";
+const teamsKey = "teams";
+
+let apiConfig;
 
 let fetchedMonsters = [];
 let visibleMonsters = 10;
@@ -16,7 +19,7 @@ window.addEventListener("DOMContentLoaded", () => {
 });
 
 function init() {
-  fetchEndpoints();
+  defaultFetchAllMonsters();
   initSearchBox();
   initSearchCategory();
   initSortDropdown();
@@ -24,35 +27,31 @@ function init() {
   initLoadMoreMonstersBtn();
   initMonsterCatalogue();
   setCredits();
+  loadTeams();
 }
 
-function fetchEndpoints() {
-  const loadApiEndpoints = load(apiConfigKey);
-
-  if (!loadApiEndpoints) {
-    const apiConfigPath = "../json/apiConfig.json";
-    fetch(apiConfigPath)
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error("Network response was not ok");
-        }
-        return response.json();
-      })
-      .then((endpoints) => {
-        save(apiConfigKey, endpoints);
-        fetchAllMonsters(endpoints.allMonstersEndpoint).then((monsters) => {
-          assignAndPopulate(monsters);
-        });
-      })
-      .catch((error) => {
-        console.error("Error loading JSON:", error);
-      });
-  } else {
-    const endpoints = load(apiConfigKey);
+function defaultFetchAllMonsters() {
+  loadApiConfig().then((endpoints) => {
+    apiConfig = endpoints;
     fetchAllMonsters(endpoints.allMonstersEndpoint).then((monsters) => {
       assignAndPopulate(monsters);
     });
+  });
+}
+
+function loadTeams() {
+  const loadedTeams = load(teamsKey);
+  if (loadedTeams) {
+    loadedTeams.forEach((loadedTeam) => {
+      teams.push(Team.fromJSON(loadedTeam));
+    });
+    renderTeams();
   }
+}
+
+function updateTeams() {
+  save(teamsKey, teams);
+  renderTeams();
 }
 
 function initCreateTeamForm() {
@@ -194,10 +193,9 @@ function initMonsterCatalogue() {
     const monster = team.getMonsters().find((m) => m.monster.name === monsterName);
     if (monster) {
       team.deleteMonster(monster);
-      // fetchedMonsters.push(monster);
       sortMonsters(sortOder);
       renderMonsters();
-      renderTeams();
+      updateTeams();
     }
   });
 }
@@ -243,11 +241,10 @@ function initDropZone(dropZone, team) {
           dropZone.appendChild(draggedElement);
           sortMonsters(sortOder);
           renderMonsters();
-          renderTeams();
+          updateTeams();
         } else {
           alert("Cant have duplicates of monsters in same team");
         }
-        // fetchedMonsters = fetchedMonsters.filter((m) => m.monster.name !== monsterName);
       }
     } else {
       alert("Team is full");
@@ -362,7 +359,7 @@ function createMonsterCard(newMonster, parent) {
 function addTeam(teamName) {
   const newTeam = new Team(teamName);
   teams.push(newTeam);
-  renderTeams();
+  updateTeams();
 }
 
 function deleteTeam(teamToDelete) {
@@ -371,7 +368,7 @@ function deleteTeam(teamToDelete) {
   teams = teams.filter((team) => team.getTeamName() !== teamToDelete.getTeamName());
   sortMonsters(sortOder);
   renderMonsters();
-  renderTeams();
+  updateTeams();
 }
 
 function renderTeams() {
@@ -406,19 +403,21 @@ function renderTeams() {
       monsters.forEach((monster) => {
         const monsterData = monster.monster;
         const monsterName = monsterData.name;
-        const deleteMonsterBtn = document.createElement("button");
-        const btnIcon = document.createElement("img");
-        btnIcon.setAttribute("src", "../icons/cross.svg");
-        btnIcon.setAttribute("alt", `Remove ${monsterName} from ${teamName}`);
-        btnIcon.setAttribute("title", `Remove ${monsterName} from ${teamName}`);
-        btnIcon.setAttribute("class", "icon icon-white");
-        deleteMonsterBtn.appendChild(btnIcon);
-        deleteMonsterBtn.setAttribute("class", "btn btn-red");
-        deleteMonsterBtn.addEventListener("click", () => {
-          team.deleteMonster(monster);
-          renderTeams();
-        });
-        deleteBtnsContainer.appendChild(deleteMonsterBtn);
+        if (!team.getPaidFor()) {
+          const deleteMonsterBtn = document.createElement("button");
+          const btnIcon = document.createElement("img");
+          btnIcon.setAttribute("src", "../icons/cross.svg");
+          btnIcon.setAttribute("alt", `Remove ${monsterName} from ${teamName}`);
+          btnIcon.setAttribute("title", `Remove ${monsterName} from ${teamName}`);
+          btnIcon.setAttribute("class", "icon icon-white");
+          deleteMonsterBtn.appendChild(btnIcon);
+          deleteMonsterBtn.setAttribute("class", "btn btn-red");
+          deleteMonsterBtn.addEventListener("click", () => {
+            team.deleteMonster(monster);
+            updateTeams();
+          });
+          deleteBtnsContainer.appendChild(deleteMonsterBtn);
+        }
 
         createMonsterCard(monsterData, teamList);
       });
@@ -427,16 +426,9 @@ function renderTeams() {
         transferTeamData = teamName;
       });
 
-      // deleteBtn.setAttribute("src", "/icons/trashBin.svg");
-      // deleteBtn.setAttribute("alt", `Delete ${teamName}`);
-      // deleteBtn.setAttribute("title", `Delete ${teamName}`);
-      // deleteBtn.setAttribute("class", "deleteTeamBtn");
-
       buyTeamBtn.addEventListener("click", () => {
         const prices = monsters.map((monster) => monster.monster.price);
-        // console.log("Pirces: ", prices);
         const sum = prices.reduce((acc, curr) => acc + curr, 0);
-        console.log("Sum is", sum);
         if (monsters.length === 4) {
           if (sum <= userCredits) {
             const buy = confirm(`Click to confirm to buy monsters in ${teamName} for ${sum} credits`);
@@ -444,6 +436,7 @@ function renderTeams() {
               team.setPaidFor(true);
               setCredits(sum);
               buyTeamBtn.remove();
+              updateTeams();
             }
           } else {
             alert("You don't have enough credits");
@@ -451,6 +444,16 @@ function renderTeams() {
         } else {
           alert("Please fill out all slots in your team");
         }
+      });
+
+      getRandomMonstersBtn.addEventListener("click", () => {
+        fetchRandomMonsters(apiConfig.randomMonstersEndpoint, 4).then((randomMonsters) => {
+          console.log("Random Monsters: ", randomMonsters);
+          const modifyedMonsters = randomMonsters.map((m) => ({ monster: m, visible: true }));
+          team.setMonsters(modifyedMonsters);
+          console.log("Teams: ", teams);
+          updateTeams();
+        });
       });
 
       deleteTeamBtn.addEventListener("click", () => {
@@ -475,11 +478,13 @@ function renderTeams() {
       teamContainer.appendChild(teamHeader);
       if (!team.getPaidFor()) {
         teamBtnsContainer.appendChild(buyTeamBtn);
+        teamBtnsContainer.appendChild(getRandomMonstersBtn);
       }
-      teamBtnsContainer.appendChild(getRandomMonstersBtn);
       teamBtnsContainer.appendChild(deleteTeamBtn);
       teamContainer.appendChild(teamBtnsContainer);
-      // teamContainer.appendChild(deleteBtn);
+      if (!team.getPaidFor()) {
+        teamContainer.appendChild(deleteBtnsContainer);
+      }
       teamContainer.appendChild(deleteBtnsContainer);
       teamContainer.appendChild(teamList);
       teamsContainer.appendChild(teamContainer);

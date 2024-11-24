@@ -32,4 +32,11 @@ export class Team {
   setPaidFor(status) {
     this.paidFor = status;
   }
+
+  static fromJSON(json) {
+    const newTeam = new Team(json.teamName);
+    newTeam.setMonsters(json.monsters);
+    newTeam.setPaidFor(json.paidFor);
+    return newTeam;
+  }
 }

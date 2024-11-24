@@ -11,6 +11,31 @@ export function load(key) {
   }
 }
 
+export function loadApiConfig() {
+  const apiConfigKey = "apiconfigure";
+  const loadApiEndpoints = load(apiConfigKey);
+  if (!loadApiEndpoints) {
+    const apiConfigPath = "../json/apiConfig.json";
+    return fetch(apiConfigPath)
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error("Network response was not ok");
+        }
+        return response.json();
+      })
+      .then((endpoints) => {
+        save(apiConfigKey, endpoints);
+        return endpoints;
+      })
+      .catch((error) => {
+        console.error("Error loading JSON:", error);
+      });
+  } else {
+    const endpoints = load(apiConfigKey);
+    return Promise.resolve(endpoints);
+  }
+}
+
 export function createIconContainer(className, value, src, alt, title, dir) {
   const iconContainer = document.createElement("div");
   const icon = document.createElement("img");
@@ -55,7 +80,6 @@ export function getValueInObj(obj, key) {
 }
 
 export function generateUniqueTeamName(teams, teamName) {
-  console.log("Teams: ", teams);
   const noneUnique = teams.filter((team) => extractLetters(team.getTeamName()) === extractLetters(teamName));
 
   if (noneUnique && noneUnique.length > 0) {
