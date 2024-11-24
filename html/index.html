@@ -5,7 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Monster Battle Arena</title>
     <link rel="stylesheet" href="../css/styles.css" />
-    <link rel="stylesheet" href="../css/monsters.css">
+    <link rel="stylesheet" href="../css/monsters.css" />
+    <link rel="stylesheet" href="../css/teams.css" />
   </head>
   <body>
     <main>
@@ -18,13 +19,13 @@
         <p id="createTeamMessage" class="hidden"></p>
       </div>
       <div>
-        <input type="text" id="searchBox">
+        <input type="text" id="searchBox" />
         <div id="searchCategory">
-          <input type="radio" id="nameSearch" name="searchBtn" checked>
+          <input type="radio" id="nameSearch" name="searchBtn" checked />
           <label for="nameSearch">Name</label>
-          <input type="radio" id="strengthSearch" name="searchBtn">
+          <input type="radio" id="strengthSearch" name="searchBtn" />
           <label for="strengthSearch">Strength</label>
-          <input type="radio" id="weaknessSearch" name="searchBtn">
+          <input type="radio" id="weaknessSearch" name="searchBtn" />
           <label for="weaknessSearch">Weakness</label>
         </div>
         <label for="sortDropdown">Sort by:</label>
@@ -39,10 +40,12 @@
           <option value="7">hi-lo Damage</option>
         </select>
         <button id="loadMoreMonsters">Load more</button>
-
       </div>
-      <div id="monsterContainer"></div>
-      <div id="teamsContainer"></div>
+      <div id="monstersWrapper">
+        <h2>Choose your fighters</h2>
+        <div id="monsterContainer"></div>
+      </div>
+      <div id="teamsContainer" class="hidden temp"></div>
     </main>
     <script type="module" src="../js/script.js"></script>
   </body>

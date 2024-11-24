@@ -1,143 +1,155 @@
-#monsterContainer{
-    width: 100vw;
-    padding: 40px;
-    display: flex;
-    gap: 20px;
-    overflow-x: scroll;
-    background-color: black;
+#monstersWrapper {
+  width: min(100%, 1200px);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 25px;
+  border-radius: 8px;
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.75);
+  background-color: #2b2b2b;
 }
 
-.monsterCard{
-    width: 100%;
-    height: 500px;
-    padding-bottom: 90px;
-    background: url("../img/monsterPlaceholder.jpg") no-repeat;
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-template-rows: repeat(40,1fr);
-    gap: 10px;
-    border-radius: 50px;
-    isolation: isolate;
-    transition: background-size 0.6s ease-in-out; 
-    position: relative;
+#monsterContainer {
+  width: 100%;
+  padding: 40px;
+  display: flex;
+  justify-content: flex-start;
+  gap: 20px;
+  overflow-x: scroll;
+  background-color: black;
 }
 
-.monsterCard:hover{
-    background-size: 200% 120%;
+.monsterCard {
+  width: 300px;
+  height: 500px;
+  padding-bottom: 90px;
+  background: url("../img/monsterPlaceholder.jpg") no-repeat;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: repeat(40, 1fr);
+  gap: 10px;
+  border-radius: 50px;
+  isolation: isolate;
+  transition: background-size 0.6s ease-in-out;
+  position: relative;
 }
 
-.monsterCard::after{
-    content: "";
-    position: absolute;
-    left: 0;
-    right: 0;
-    top: 0;
-    bottom: 0;
-    z-index: -1;
-    background: rgba(0, 0, 0, 0.7);
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-    backdrop-filter: blur(4px);
+.monsterCard:hover {
+  background-size: 200% 120%;
 }
 
-.monsterCard p{
-    text-align: center;
-    align-self: center;
-    margin: auto;
+.monsterCard::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  z-index: -1;
+  background: rgba(0, 0, 0, 0.7);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(4px);
 }
 
-.monsterName{
-    text-align: center;
-    grid-column: 1;
-    grid-row: 1/4;
+.monsterCard p {
+  text-align: center;
+  align-self: center;
+  margin: auto;
 }
 
-.monsterSpec{
-    max-width: 70%;
-    grid-column: 1;
-    grid-row: 10/14;
+.monsterName {
+  text-align: center;
+  grid-column: 1;
+  grid-row: 1/4;
 }
 
-.monsterStatsContainer{
-    width: 100%;
-    margin-top: 30px;
-    padding: 0 20px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    grid-column: 1;
-    grid-row: 18/24;
+.monsterSpec {
+  max-width: 70%;
+  grid-column: 1;
+  grid-row: 10/14;
 }
 
-.iconContainer{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 12px;
+.monsterStatsContainer {
+  width: 100%;
+  margin-top: 30px;
+  padding: 0 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  grid-column: 1;
+  grid-row: 18/24;
 }
 
-.iconContainer p{
-    font-size: 1.5rem;
-    font-weight: bold;
+.iconContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
 }
 
-.iconContainer img{
-    width: 30px;
-    filter: invert(1);
+.iconContainer p {
+  font-size: 1.5rem;
+  font-weight: bold;
 }
 
-.abilitesContainer{
-    width: 100%;
-    padding: 0 20px;
-    display: flex;
-    align-items: flex-start;
-    justify-content: space-between;
-    gap: 50px;
-    grid-column: 1;
-    grid-row: 27/34;
+.iconContainer img {
+  width: 30px;
+  filter: invert(1);
 }
 
-.abilitesContent{
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
-    gap: 10px;
+.abilitesContainer {
+  width: 100%;
+  padding: 0 20px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 50px;
+  grid-column: 1;
+  grid-row: 27/34;
 }
 
-.abilitesContent div{
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
+.abilitesContent {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 10px;
 }
 
-.monsterStr{
-    align-items: flex-start;
+.abilitesContent div {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
 }
 
-.monsterStr div{
-    justify-content: flex-start;
+.monsterStr {
+  align-items: flex-start;
 }
 
-.monsterWeak{
-    align-items: flex-end;
+.monsterStr div {
+  justify-content: flex-start;
 }
 
-.monsterWeak div{
-    justify-content: flex-end;
+.monsterWeak {
+  align-items: flex-end;
 }
 
-.monsterPriceContainer{
-    grid-column: 1;
-    grid-row: 46/44;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+.monsterWeak div {
+  justify-content: flex-end;
 }
 
+.monsterPriceContainer {
+  grid-column: 1;
+  grid-row: 46/44;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
