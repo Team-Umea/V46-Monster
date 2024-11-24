@@ -47,6 +47,7 @@ function loadTeams() {
     loadedTeams.forEach((loadedTeam) => {
       teams.push(Team.fromJSON(loadedTeam));
     });
+    teams.forEach((team) => team.setVisible(true));
     defaultSortTeams();
     renderTeams();
   }
