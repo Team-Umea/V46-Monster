@@ -168,7 +168,7 @@ function createElements(elmentsName, abilities) {
     };
     elements.push(element);
   });
-  console.log("Elements: ", elements);
+  console.log("Elements: ", JSON.stringify(elements));
 }
 
 app.get("/allMonsters", (_, res) => {

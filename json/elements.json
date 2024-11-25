@@ -1,0 +1,1193 @@
+[
+    {
+        "name": "Inferno",
+        "strongAgainst": [
+            "cryokinesis",
+            "aerokinesis"
+        ],
+        "weakAgainst": [
+            "nature manipulation",
+            "teleportation"
+        ],
+        "rating": 100
+    },
+    {
+        "name": "Tsunami",
+        "strongAgainst": [
+            "pyrokinesis",
+            "teleportation",
+            "nature manipulation"
+        ],
+        "weakAgainst": [
+            "acid spit",
+            "nature manipulation",
+            "shapeshifting"
+        ],
+        "rating": 100
+    },
+    {
+        "name": "Terra",
+        "strongAgainst": [
+            "telepathy"
+        ],
+        "weakAgainst": [
+            "flight",
+            "necromancy",
+            "nature manipulation"
+        ],
+        "rating": 33
+    },
+    {
+        "name": "Tempest",
+        "strongAgainst": [
+            "nature manipulation"
+        ],
+        "weakAgainst": [
+            "shapeshifting",
+            "fear induction"
+        ],
+        "rating": 50
+    },
+    {
+        "name": "Frost",
+        "strongAgainst": [
+            "super strength"
+        ],
+        "weakAgainst": [
+            "electrokinesis",
+            "aura manipulation",
+            "telekinesis"
+        ],
+        "rating": 33
+    },
+    {
+        "name": "Shadow",
+        "strongAgainst": [
+            "pyrokinesis",
+            "animal communication"
+        ],
+        "weakAgainst": [
+            "aura manipulation"
+        ],
+        "rating": 200
+    },
+    {
+        "name": "Radiance",
+        "strongAgainst": [
+            "illusion",
+            "teleportation"
+        ],
+        "weakAgainst": [
+            "fear induction",
+            "astral projection"
+        ],
+        "rating": 100
+    },
+    {
+        "name": "Toxin",
+        "strongAgainst": [
+            "mind control"
+        ],
+        "weakAgainst": [
+            "sound manipulation",
+            "aerokinesis"
+        ],
+        "rating": 50
+    },
+    {
+        "name": "Vitalis",
+        "strongAgainst": [
+            "shapeshifting"
+        ],
+        "weakAgainst": [
+            "telepathy",
+            "flight"
+        ],
+        "rating": 50
+    },
+    {
+        "name": "Aether",
+        "strongAgainst": [
+            "electrokinesis"
+        ],
+        "weakAgainst": [
+            "nature manipulation",
+            "cryokinesis"
+        ],
+        "rating": 50
+    },
+    {
+        "name": "Storm",
+        "strongAgainst": [
+            "time manipulation"
+        ],
+        "weakAgainst": [
+            "camouflage",
+            "invisibility",
+            "teleportation"
+        ],
+        "rating": 33
+    },
+    {
+        "name": "Ember",
+        "strongAgainst": [
+            "aura manipulation",
+            "necromancy",
+            "telepathy"
+        ],
+        "weakAgainst": [
+            "camouflage"
+        ],
+        "rating": 300
+    },
+    {
+        "name": "Glacier",
+        "strongAgainst": [
+            "aerokinesis",
+            "fear induction",
+            "super strength"
+        ],
+        "weakAgainst": [
+            "telekinesis",
+            "stone skin"
+        ],
+        "rating": 150
+    },
+    {
+        "name": "Quake",
+        "strongAgainst": [
+            "camouflage",
+            "aura manipulation",
+            "hydrokinesis"
+        ],
+        "weakAgainst": [
+            "flight",
+            "super speed",
+            "sound manipulation"
+        ],
+        "rating": 100
+    },
+    {
+        "name": "Specter",
+        "strongAgainst": [
+            "super speed",
+            "telepathy"
+        ],
+        "weakAgainst": [
+            "sound manipulation",
+            "illusion"
+        ],
+        "rating": 100
+    },
+    {
+        "name": "Phantom",
+        "strongAgainst": [
+            "sound manipulation",
+            "camouflage"
+        ],
+        "weakAgainst": [
+            "time manipulation",
+            "sound manipulation",
+            "astral projection"
+        ],
+        "rating": 67
+    },
+    {
+        "name": "Nebula",
+        "strongAgainst": [
+            "stone skin",
+            "telekinesis"
+        ],
+        "weakAgainst": [
+            "stone skin",
+            "sonic screech",
+            "nature manipulation"
+        ],
+        "rating": 67
+    },
+    {
+        "name": "Celestial",
+        "strongAgainst": [
+            "aerokinesis",
+            "cryokinesis"
+        ],
+        "weakAgainst": [
+            "astral projection"
+        ],
+        "rating": 200
+    },
+    {
+        "name": "Chaos",
+        "strongAgainst": [
+            "invisibility"
+        ],
+        "weakAgainst": [
+            "telekinesis",
+            "nature manipulation",
+            "time manipulation"
+        ],
+        "rating": 33
+    },
+    {
+        "name": "Mystic",
+        "strongAgainst": [
+            "gravity control",
+            "super speed"
+        ],
+        "weakAgainst": [
+            "cryokinesis",
+            "electrokinesis",
+            "acid spit"
+        ],
+        "rating": 67
+    },
+    {
+        "name": "Beast",
+        "strongAgainst": [
+            "teleportation",
+            "aerokinesis",
+            "time manipulation"
+        ],
+        "weakAgainst": [
+            "telepathy",
+            "sound manipulation"
+        ],
+        "rating": 150
+    },
+    {
+        "name": "Spirit",
+        "strongAgainst": [
+            "cryokinesis",
+            "animal communication"
+        ],
+        "weakAgainst": [
+            "time manipulation",
+            "geokinesis",
+            "nature manipulation"
+        ],
+        "rating": 67
+    },
+    {
+        "name": "Chronos",
+        "strongAgainst": [
+            "mind control",
+            "gravity control"
+        ],
+        "weakAgainst": [
+            "cryokinesis",
+            "super speed",
+            "regeneration"
+        ],
+        "rating": 67
+    },
+    {
+        "name": "Void",
+        "strongAgainst": [
+            "time manipulation",
+            "teleportation"
+        ],
+        "weakAgainst": [
+            "super speed",
+            "animal communication"
+        ],
+        "rating": 100
+    },
+    {
+        "name": "Lumina",
+        "strongAgainst": [
+            "invisibility"
+        ],
+        "weakAgainst": [
+            "telepathy",
+            "super strength"
+        ],
+        "rating": 50
+    },
+    {
+        "name": "Ether",
+        "strongAgainst": [
+            "time manipulation",
+            "animal communication",
+            "flight"
+        ],
+        "weakAgainst": [
+            "aerokinesis",
+            "nature manipulation"
+        ],
+        "rating": 150
+    },
+    {
+        "name": "Briar",
+        "strongAgainst": [
+            "teleportation",
+            "nature manipulation"
+        ],
+        "weakAgainst": [
+            "gravity control",
+            "time manipulation"
+        ],
+        "rating": 100
+    },
+    {
+        "name": "Cinder",
+        "strongAgainst": [
+            "super strength"
+        ],
+        "weakAgainst": [
+            "time manipulation",
+            "mind control"
+        ],
+        "rating": 50
+    },
+    {
+        "name": "Hurricane",
+        "strongAgainst": [
+            "pyrokinesis"
+        ],
+        "weakAgainst": [
+            "shapeshifting",
+            "flight"
+        ],
+        "rating": 50
+    },
+    {
+        "name": "Crystal",
+        "strongAgainst": [
+            "super strength",
+            "acid spit"
+        ],
+        "weakAgainst": [
+            "super strength",
+            "regeneration",
+            "nature manipulation"
+        ],
+        "rating": 67
+    },
+    {
+        "name": "Gale",
+        "strongAgainst": [
+            "regeneration",
+            "astral projection"
+        ],
+        "weakAgainst": [
+            "teleportation",
+            "super speed"
+        ],
+        "rating": 100
+    },
+    {
+        "name": "Echo",
+        "strongAgainst": [
+            "regeneration",
+            "animal communication"
+        ],
+        "weakAgainst": [
+            "telepathy"
+        ],
+        "rating": 200
+    },
+    {
+        "name": "Wraith",
+        "strongAgainst": [
+            "aura manipulation",
+            "invisibility"
+        ],
+        "weakAgainst": [
+            "geokinesis",
+            "time manipulation"
+        ],
+        "rating": 100
+    },
+    {
+        "name": "Blight",
+        "strongAgainst": [
+            "telepathy"
+        ],
+        "weakAgainst": [
+            "fear induction",
+            "mind control"
+        ],
+        "rating": 50
+    },
+    {
+        "name": "Grove",
+        "strongAgainst": [
+            "time manipulation",
+            "gravity control"
+        ],
+        "weakAgainst": [
+            "acid spit",
+            "stone skin"
+        ],
+        "rating": 100
+    },
+    {
+        "name": "Fulgor",
+        "strongAgainst": [
+            "super speed",
+            "necromancy"
+        ],
+        "weakAgainst": [
+            "cryokinesis",
+            "time manipulation",
+            "nature manipulation"
+        ],
+        "rating": 67
+    },
+    {
+        "name": "Fury",
+        "strongAgainst": [
+            "stone skin",
+            "teleportation"
+        ],
+        "weakAgainst": [
+            "nature manipulation",
+            "flight",
+            "aerokinesis"
+        ],
+        "rating": 67
+    },
+    {
+        "name": "Sorrow",
+        "strongAgainst": [
+            "electrokinesis",
+            "camouflage"
+        ],
+        "weakAgainst": [
+            "illusion"
+        ],
+        "rating": 200
+    },
+    {
+        "name": "Dread",
+        "strongAgainst": [
+            "time manipulation",
+            "invisibility"
+        ],
+        "weakAgainst": [
+            "teleportation",
+            "electrokinesis"
+        ],
+        "rating": 100
+    },
+    {
+        "name": "Haven",
+        "strongAgainst": [
+            "gravity control"
+        ],
+        "weakAgainst": [
+            "teleportation"
+        ],
+        "rating": 100
+    },
+    {
+        "name": "Ascendancy",
+        "strongAgainst": [
+            "flight",
+            "regeneration",
+            "gravity control"
+        ],
+        "weakAgainst": [
+            "shapeshifting",
+            "cryokinesis"
+        ],
+        "rating": 150
+    },
+    {
+        "name": "Plague",
+        "strongAgainst": [
+            "pyrokinesis",
+            "fear induction"
+        ],
+        "weakAgainst": [
+            "animal communication"
+        ],
+        "rating": 200
+    },
+    {
+        "name": "Rift",
+        "strongAgainst": [
+            "stone skin",
+            "electrokinesis"
+        ],
+        "weakAgainst": [
+            "camouflage",
+            "teleportation"
+        ],
+        "rating": 100
+    },
+    {
+        "name": "Abyss",
+        "strongAgainst": [
+            "fear induction"
+        ],
+        "weakAgainst": [
+            "electrokinesis",
+            "invisibility"
+        ],
+        "rating": 50
+    },
+    {
+        "name": "Vortex",
+        "strongAgainst": [
+            "telekinesis"
+        ],
+        "weakAgainst": [
+            "hydrokinesis"
+        ],
+        "rating": 100
+    },
+    {
+        "name": "Silhouette",
+        "strongAgainst": [
+            "electrokinesis"
+        ],
+        "weakAgainst": [
+            "cryokinesis",
+            "gravity control"
+        ],
+        "rating": 50
+    },
+    {
+        "name": "Verdant",
+        "strongAgainst": [
+            "shapeshifting",
+            "stone skin"
+        ],
+        "weakAgainst": [
+            "fear induction",
+            "sonic screech",
+            "aura manipulation"
+        ],
+        "rating": 67
+    },
+    {
+        "name": "Eclipse",
+        "strongAgainst": [
+            "mind control",
+            "gravity control",
+            "telepathy"
+        ],
+        "weakAgainst": [
+            "aura manipulation",
+            "telepathy"
+        ],
+        "rating": 150
+    },
+    {
+        "name": "Emberstorm",
+        "strongAgainst": [
+            "shapeshifting",
+            "acid spit",
+            "aerokinesis"
+        ],
+        "weakAgainst": [
+            "camouflage",
+            "sound manipulation"
+        ],
+        "rating": 150
+    },
+    {
+        "name": "Frostbite",
+        "strongAgainst": [
+            "sonic screech",
+            "mind control"
+        ],
+        "weakAgainst": [
+            "stone skin"
+        ],
+        "rating": 200
+    },
+    {
+        "name": "Tidal",
+        "strongAgainst": [
+            "electrokinesis"
+        ],
+        "weakAgainst": [
+            "gravity control",
+            "invisibility"
+        ],
+        "rating": 50
+    },
+    {
+        "name": "Cavern",
+        "strongAgainst": [
+            "electrokinesis",
+            "stone skin",
+            "fear induction"
+        ],
+        "weakAgainst": [
+            "invisibility",
+            "cryokinesis"
+        ],
+        "rating": 150
+    },
+    {
+        "name": "Solaris",
+        "strongAgainst": [
+            "astral projection",
+            "mind control"
+        ],
+        "weakAgainst": [
+            "gravity control",
+            "invisibility",
+            "mind control"
+        ],
+        "rating": 67
+    },
+    {
+        "name": "Lunar",
+        "strongAgainst": [
+            "nature manipulation"
+        ],
+        "weakAgainst": [
+            "necromancy",
+            "pyrokinesis"
+        ],
+        "rating": 50
+    },
+    {
+        "name": "Blizzard",
+        "strongAgainst": [
+            "pyrokinesis"
+        ],
+        "weakAgainst": [
+            "sound manipulation"
+        ],
+        "rating": 100
+    },
+    {
+        "name": "Phoenix",
+        "strongAgainst": [
+            "aerokinesis",
+            "pyrokinesis"
+        ],
+        "weakAgainst": [
+            "telepathy"
+        ],
+        "rating": 200
+    },
+    {
+        "name": "Magma",
+        "strongAgainst": [
+            "shapeshifting",
+            "animal communication",
+            "sound manipulation"
+        ],
+        "weakAgainst": [
+            "aura manipulation",
+            "gravity control"
+        ],
+        "rating": 150
+    },
+    {
+        "name": "Infernal",
+        "strongAgainst": [
+            "mind control",
+            "electrokinesis",
+            "regeneration"
+        ],
+        "weakAgainst": [
+            "aura manipulation",
+            "geokinesis"
+        ],
+        "rating": 150
+    },
+    {
+        "name": "Zephyr",
+        "strongAgainst": [
+            "super strength",
+            "acid spit",
+            "aura manipulation"
+        ],
+        "weakAgainst": [
+            "astral projection",
+            "pyrokinesis"
+        ],
+        "rating": 150
+    },
+    {
+        "name": "Obsidian",
+        "strongAgainst": [
+            "gravity control",
+            "flight"
+        ],
+        "weakAgainst": [
+            "electrokinesis"
+        ],
+        "rating": 200
+    },
+    {
+        "name": "Seraph",
+        "strongAgainst": [
+            "aerokinesis"
+        ],
+        "weakAgainst": [
+            "telekinesis",
+            "astral projection"
+        ],
+        "rating": 50
+    },
+    {
+        "name": "Windshear",
+        "strongAgainst": [
+            "animal communication"
+        ],
+        "weakAgainst": [
+            "illusion"
+        ],
+        "rating": 100
+    },
+    {
+        "name": "Chill",
+        "strongAgainst": [
+            "hydrokinesis",
+            "animal communication"
+        ],
+        "weakAgainst": [
+            "fear induction",
+            "gravity control"
+        ],
+        "rating": 100
+    },
+    {
+        "name": "Sandstorm",
+        "strongAgainst": [
+            "flight",
+            "camouflage"
+        ],
+        "weakAgainst": [
+            "acid spit",
+            "telepathy"
+        ],
+        "rating": 100
+    },
+    {
+        "name": "Crimson",
+        "strongAgainst": [
+            "animal communication",
+            "gravity control"
+        ],
+        "weakAgainst": [
+            "super strength",
+            "cryokinesis"
+        ],
+        "rating": 100
+    },
+    {
+        "name": "Aurora",
+        "strongAgainst": [
+            "sonic screech"
+        ],
+        "weakAgainst": [
+            "telepathy"
+        ],
+        "rating": 100
+    },
+    {
+        "name": "Voidwalker",
+        "strongAgainst": [
+            "cryokinesis",
+            "super speed"
+        ],
+        "weakAgainst": [
+            "time manipulation",
+            "geokinesis"
+        ],
+        "rating": 100
+    },
+    {
+        "name": "Nightfall",
+        "strongAgainst": [
+            "telepathy",
+            "fear induction"
+        ],
+        "weakAgainst": [
+            "sound manipulation"
+        ],
+        "rating": 200
+    },
+    {
+        "name": "Ethereal",
+        "strongAgainst": [
+            "camouflage",
+            "necromancy"
+        ],
+        "weakAgainst": [
+            "super speed"
+        ],
+        "rating": 200
+    },
+    {
+        "name": "Pestilence",
+        "strongAgainst": [
+            "hydrokinesis",
+            "super strength"
+        ],
+        "weakAgainst": [
+            "telekinesis",
+            "stone skin"
+        ],
+        "rating": 100
+    },
+    {
+        "name": "Radiant",
+        "strongAgainst": [
+            "regeneration",
+            "hydrokinesis",
+            "super speed"
+        ],
+        "weakAgainst": [
+            "pyrokinesis"
+        ],
+        "rating": 300
+    },
+    {
+        "name": "Oblivion",
+        "strongAgainst": [
+            "cryokinesis",
+            "illusion"
+        ],
+        "weakAgainst": [
+            "astral projection",
+            "animal communication"
+        ],
+        "rating": 100
+    },
+    {
+        "name": "Fate",
+        "strongAgainst": [
+            "camouflage",
+            "gravity control"
+        ],
+        "weakAgainst": [
+            "aura manipulation",
+            "telekinesis",
+            "pyrokinesis"
+        ],
+        "rating": 67
+    },
+    {
+        "name": "Genesis",
+        "strongAgainst": [
+            "sound manipulation",
+            "fear induction"
+        ],
+        "weakAgainst": [
+            "teleportation",
+            "super speed",
+            "invisibility"
+        ],
+        "rating": 67
+    },
+    {
+        "name": "Umbral",
+        "strongAgainst": [
+            "geokinesis"
+        ],
+        "weakAgainst": [
+            "fear induction",
+            "necromancy"
+        ],
+        "rating": 50
+    },
+    {
+        "name": "Hallowed",
+        "strongAgainst": [
+            "cryokinesis",
+            "aura manipulation",
+            "super speed"
+        ],
+        "weakAgainst": [
+            "hydrokinesis"
+        ],
+        "rating": 300
+    },
+    {
+        "name": "Spectral",
+        "strongAgainst": [
+            "animal communication",
+            "teleportation"
+        ],
+        "weakAgainst": [
+            "regeneration"
+        ],
+        "rating": 200
+    },
+    {
+        "name": "Embers",
+        "strongAgainst": [
+            "telekinesis"
+        ],
+        "weakAgainst": [
+            "gravity control",
+            "telepathy"
+        ],
+        "rating": 50
+    },
+    {
+        "name": "Thorn",
+        "strongAgainst": [
+            "flight",
+            "gravity control"
+        ],
+        "weakAgainst": [
+            "mind control",
+            "cryokinesis"
+        ],
+        "rating": 100
+    },
+    {
+        "name": "Rapture",
+        "strongAgainst": [
+            "invisibility",
+            "acid spit"
+        ],
+        "weakAgainst": [
+            "stone skin",
+            "invisibility",
+            "geokinesis"
+        ],
+        "rating": 67
+    },
+    {
+        "name": "Sunder",
+        "strongAgainst": [
+            "stone skin",
+            "fear induction"
+        ],
+        "weakAgainst": [
+            "electrokinesis",
+            "stone skin"
+        ],
+        "rating": 100
+    },
+    {
+        "name": "Aura",
+        "strongAgainst": [
+            "sound manipulation",
+            "electrokinesis"
+        ],
+        "weakAgainst": [
+            "camouflage",
+            "sonic screech"
+        ],
+        "rating": 100
+    },
+    {
+        "name": "Sable",
+        "strongAgainst": [
+            "animal communication"
+        ],
+        "weakAgainst": [
+            "mind control",
+            "hydrokinesis"
+        ],
+        "rating": 50
+    },
+    {
+        "name": "Chroma",
+        "strongAgainst": [
+            "teleportation"
+        ],
+        "weakAgainst": [
+            "cryokinesis",
+            "invisibility",
+            "aerokinesis"
+        ],
+        "rating": 33
+    },
+    {
+        "name": "Fulgent",
+        "strongAgainst": [
+            "super speed"
+        ],
+        "weakAgainst": [
+            "electrokinesis",
+            "telepathy"
+        ],
+        "rating": 50
+    },
+    {
+        "name": "Cacophony",
+        "strongAgainst": [
+            "shapeshifting"
+        ],
+        "weakAgainst": [
+            "pyrokinesis",
+            "gravity control"
+        ],
+        "rating": 50
+    },
+    {
+        "name": "Aegis",
+        "strongAgainst": [
+            "pyrokinesis",
+            "stone skin",
+            "camouflage"
+        ],
+        "weakAgainst": [
+            "mind control",
+            "teleportation"
+        ],
+        "rating": 150
+    },
+    {
+        "name": "Ironclad",
+        "strongAgainst": [
+            "sound manipulation",
+            "time manipulation",
+            "gravity control"
+        ],
+        "weakAgainst": [
+            "acid spit",
+            "invisibility"
+        ],
+        "rating": 150
+    },
+    {
+        "name": "Searing",
+        "strongAgainst": [
+            "astral projection"
+        ],
+        "weakAgainst": [
+            "stone skin",
+            "cryokinesis",
+            "teleportation"
+        ],
+        "rating": 33
+    },
+    {
+        "name": "Fey",
+        "strongAgainst": [
+            "pyrokinesis",
+            "animal communication"
+        ],
+        "weakAgainst": [
+            "aura manipulation"
+        ],
+        "rating": 200
+    },
+    {
+        "name": "Vigilance",
+        "strongAgainst": [
+            "geokinesis",
+            "telepathy",
+            "gravity control"
+        ],
+        "weakAgainst": [
+            "geokinesis"
+        ],
+        "rating": 300
+    },
+    {
+        "name": "Nether",
+        "strongAgainst": [
+            "animal communication",
+            "time manipulation"
+        ],
+        "weakAgainst": [
+            "camouflage",
+            "illusion"
+        ],
+        "rating": 100
+    },
+    {
+        "name": "Gloom",
+        "strongAgainst": [
+            "animal communication"
+        ],
+        "weakAgainst": [
+            "illusion",
+            "super speed"
+        ],
+        "rating": 50
+    },
+    {
+        "name": "Haze",
+        "strongAgainst": [
+            "electrokinesis",
+            "sonic screech",
+            "acid spit"
+        ],
+        "weakAgainst": [
+            "astral projection",
+            "mind control",
+            "aura manipulation"
+        ],
+        "rating": 100
+    },
+    {
+        "name": "Mirage",
+        "strongAgainst": [
+            "camouflage"
+        ],
+        "weakAgainst": [
+            "electrokinesis",
+            "time manipulation",
+            "flight"
+        ],
+        "rating": 33
+    },
+    {
+        "name": "Shroud",
+        "strongAgainst": [
+            "fear induction",
+            "sound manipulation",
+            "animal communication"
+        ],
+        "weakAgainst": [
+            "camouflage"
+        ],
+        "rating": 300
+    },
+    {
+        "name": "Vermilion",
+        "strongAgainst": [
+            "gravity control",
+            "fear induction"
+        ],
+        "weakAgainst": [
+            "geokinesis",
+            "regeneration",
+            "flight"
+        ],
+        "rating": 67
+    },
+    {
+        "name": "Aqua",
+        "strongAgainst": [
+            "super strength"
+        ],
+        "weakAgainst": [
+            "shapeshifting",
+            "regeneration",
+            "aura manipulation"
+        ],
+        "rating": 33
+    },
+    {
+        "name": "Solstice",
+        "strongAgainst": [
+            "nature manipulation"
+        ],
+        "weakAgainst": [
+            "invisibility",
+            "shapeshifting"
+        ],
+        "rating": 50
+    },
+    {
+        "name": "Tempestuous",
+        "strongAgainst": [
+            "geokinesis",
+            "super speed"
+        ],
+        "weakAgainst": [
+            "super speed",
+            "camouflage",
+            "sonic screech"
+        ],
+        "rating": 67
+    }
+]
