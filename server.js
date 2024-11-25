@@ -18,6 +18,7 @@ const port = process.env.PORT || 3000;
 // app.use(bodyParser.json());
 
 let monsters = {};
+// let abilities = [];
 
 init();
 
@@ -27,7 +28,21 @@ function init() {
       console.log("Error", err);
     } else {
       monsters = addPriceTags(data);
-      console.log(monsters);
+    }
+  });
+  readJSON("./json/abilities.json", (err, data) => {
+    if (err) {
+      console.log("Error", err);
+    } else {
+      const abilities = data;
+      readJSON("./json/elementsName.json", (err, data) => {
+        if (err) {
+          console.log("Error", err);
+        } else {
+          const elementsName = data;
+          createElements(elementsName, abilities);
+        }
+      });
     }
   });
 }
@@ -102,6 +117,55 @@ function addPriceTags(monstersFromDB) {
   });
 
   return monstersWithPriceTag;
+}
+
+function createElements(elmentsName, abilities) {
+  const elements = [];
+  elmentsName.forEach((elmentName) => {
+    const name = elmentName;
+    const strongAgainst = [];
+    const weakAgainst = [];
+    let rating = 0;
+
+    const possibleNumStrengths = [1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 3, 3, 3, 3];
+    const possibleNumWeaknesses = [1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 3, 3, 3, 3];
+
+    const numStrengths = possibleNumStrengths[Math.floor(Math.random() * possibleNumStrengths.length)];
+    const numWeaknesses = possibleNumWeaknesses[Math.floor(Math.random() * possibleNumWeaknesses.length)];
+
+    const uniqueStrengthIndexes = new Set();
+    const uniqueWeaknessIndexes = new Set();
+
+    for (let i = 0; i < numStrengths; i++) {
+      let randomIndex;
+
+      do {
+        randomIndex = Math.floor(Math.random() * abilities.length);
+      } while (uniqueStrengthIndexes.has(randomIndex));
+
+      uniqueStrengthIndexes.add(randomIndex);
+      strongAgainst.push(abilities[randomIndex]);
+    }
+
+    for (let i = 0; i < numWeaknesses; i++) {
+      let randomIndex;
+
+      do {
+        randomIndex = Math.floor(Math.random() * abilities.length);
+      } while (uniqueWeaknessIndexes.has(randomIndex));
+
+      uniqueWeaknessIndexes.add(randomIndex);
+      weakAgainst.push(abilities[randomIndex]);
+    }
+
+    const element = {
+      name: elmentName,
+      strongAgainst: strongAgainst,
+      weakAgainst: weakAgainst,
+    };
+    elements.push(element);
+  });
+  console.log("Elements: ", elements);
 }
 
 app.get("/allMonsters", (_, res) => {
