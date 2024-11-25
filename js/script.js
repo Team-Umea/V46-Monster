@@ -585,11 +585,15 @@ function searchTeams(query) {
 }
 
 function defaultSortMonsters() {
-  fetchedMonsters = fetchedMonsters.sort((a, b) => a.monster.name.localeCompare(b.monster.name));
+  if (fetchedMonsters && fetchedMonsters.length > 0) {
+    fetchedMonsters = fetchedMonsters.sort((a, b) => a.monster.name.localeCompare(b.monster.name));
+  }
 }
 
 function defaultSortTeams() {
-  teams = teams.sort((a, b) => a.getTeamName().localeCompare(b.getTeamName()));
+  if (teams && teams.length) {
+    teams = teams.sort((a, b) => a.getTeamName().localeCompare(b.getTeamName()));
+  }
 }
 
 function sortMonsters(option) {
