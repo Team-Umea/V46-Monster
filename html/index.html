@@ -11,18 +11,19 @@
   <body>
     <main>
       <div id="credits"></div>
-      <div id="createTeam" class="createTeamContainer">
-        <h2>Create Your Team</h2>
-        <form>
-          <input type="text" placeholder="Enter a team name" id="teamNameInput" />
-          <button type="submit">Create Team</button>
-        </form>
-        <p id="createTeamMessage" class="hidden"></p>
-      </div>
-      <div id="filterCatalogueContainer">
+      <section class="filterContainer">
+        <div id="createTeam" class="createTeamContainer">
+          <h2>Create Your Team</h2>
+          <form>
+            <input type="text" placeholder="Enter a team name" id="teamNameInput" />
+            <button type="submit">Create Team</button>
+          </form>
+          <p id="createTeamMessage" class="hidden"></p>
+        </div>
+        <div id="filterCatalogueContainer">
         <h2>Filter Monsters</h2>
         <input type="text" id="searchBox" placeholder="Enter search query" />
-        <label for="searchBox">Serach by:</label>
+        <label for="searchBox">search by:</label>
         <div id="searchCategory">
           <input type="radio" id="nameSearch" name="searchBtn" checked />
           <label for="nameSearch">Name</label>
@@ -31,6 +32,7 @@
           <input type="radio" id="weaknessSearch" name="searchBtn" />
           <label for="weaknessSearch">Weakness</label>
         </div>
+        
         <label for="sortDropdown">Sort by:</label>
         <select name="sortDropdown" id="sortDropdown">
           <option value="0">A-Z</option>
@@ -44,13 +46,9 @@
         </select>
         <button id="loadMoreMonsters">Load more</button>
       </div>
-      <div id="monstersWrapper">
-        <h2>Choose your fighters</h2>
-        <div id="monsterContainer"></div>
-      </div>
-      <div id="filterTeamsContainer" class="hidden">
+      <div id="filterTeamsContainer">
         <h2>Filter Teams</h2>
-        <input type="text" id="serachTeams" placeholder="Serach by team name" />
+        <input type="text" id="searchTeams" placeholder="search by team name" />
         <select name="sortTeamsDropDown" id="sortTeamsDropDown">
           <option value="0">A-Z</option>
           <option value="1">Z-A</option>
@@ -62,6 +60,12 @@
           <option value="7">Empty-Full</option>
         </select>
       </div>
+    </section>
+      <div id="monstersWrapper">
+        <h2>Choose your fighters</h2>
+        <div id="monsterContainer"></div>
+      </div>
+
       <div id="teamsContainer" class="hidden"></div>
     </main>
     <script type="module" src="../js/script.js"></script>

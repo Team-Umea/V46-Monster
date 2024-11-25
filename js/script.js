@@ -28,7 +28,7 @@ function init() {
   initMonsterCatalogue();
   setCredits();
   loadTeams();
-  initSerachTeams();
+  initSearchTeams();
   initSortTeams();
 }
 
@@ -159,6 +159,7 @@ function initSearchCategory() {
       switch (index) {
         case 0:
           searchCategory = "name";
+          console.log(search)
           break;
         case 1:
           searchCategory = "strengths";
@@ -203,14 +204,14 @@ function initMonsterCatalogue() {
   });
 }
 
-function initSerachTeams() {
-  const serachInput = document.getElementById("serachTeams");
+function initSearchTeams() {
+  const searchInput = document.getElementById("searchTeams");
 
-  serachInput.addEventListener("input", () => {
-    const serachQuery = serachInput.value.trim().toLowerCase();
-    serachInput.value = serachInput.value.trim();
-    if (serachQuery !== "") {
-      searchTeams(serachQuery);
+  searchInput.addEventListener("input", () => {
+    const searchQuery = searchInput.value.trim().toLowerCase();
+    searchInput.value = searchInput.value.trim();
+    if (searchQuery !== "") {
+      searchTeams(searchQuery);
     } else {
       showAllTeams();
     }
@@ -303,12 +304,12 @@ function renderMonsters() {
       createMonsterCard(monster, monsterContainer);
     }
   }
-  const noMatchingSerach = fetchedMonsters.every((m) => !m.visible);
-  if (noMatchingSerach) {
-    const serachMonstersErrorMessage = document.createElement("p");
-    serachMonstersErrorMessage.setAttribute("class", "searchError error");
-    serachMonstersErrorMessage.innerText = "No matching result for your search query";
-    monsterContainer.appendChild(serachMonstersErrorMessage);
+  const noMatchingSearch = fetchedMonsters.every((m) => !m.visible);
+  if (noMatchingSearch) {
+    const searchMonstersErrorMessage = document.createElement("p");
+    searchMonstersErrorMessage.setAttribute("class", "searchError error");
+    searchMonstersErrorMessage.innerText = "No matching result for your search query";
+    monsterContainer.appendChild(searchMonstersErrorMessage);
   }
 }
 
@@ -416,14 +417,11 @@ function deleteTeam(teamToDelete) {
 
 function renderTeams() {
   const teamsContainer = document.getElementById("teamsContainer");
-  const filterTeamsContainer = document.getElementById("filterTeamsContainer");
   teamsContainer.innerHTML = "";
   if (teams.length === 0) {
     teamsContainer.classList.add("hidden");
-    filterTeamsContainer.classList.add("hidden");
   } else {
     teamsContainer.classList.remove("hidden");
-    filterTeamsContainer.classList.remove("hidden");
   }
   if (teams && teams.length > 0) {
     teams.forEach((team) => {
@@ -607,12 +605,12 @@ function renderTeams() {
     });
   }
 
-  const noMatchSerachResult = teams.every((team) => !team.getVisible());
-  if (noMatchSerachResult) {
-    const serachMonstersErrorMessage = document.createElement("p");
-    serachMonstersErrorMessage.setAttribute("class", "searchError error");
-    serachMonstersErrorMessage.innerText = "No matching result for your search query";
-    teamsContainer.appendChild(serachMonstersErrorMessage);
+  const noMatchSearchResult = teams.every((team) => !team.getVisible());
+  if (noMatchSearchResult) {
+    const searchMonstersErrorMessage = document.createElement("p");
+    searchMonstersErrorMessage.setAttribute("class", "searchError error");
+    searchMonstersErrorMessage.innerText = "No matching result for your search query";
+    teamsContainer.appendChild(searchMonstersErrorMessage);
   }
 }
 

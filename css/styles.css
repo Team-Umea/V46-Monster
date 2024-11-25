@@ -21,10 +21,8 @@ body {
 }
 
 main {
-  width: 90%;
-  max-width: 1200px;
   margin: 20px auto;
-  padding: 20px;
+  margin-top: 0px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -32,20 +30,13 @@ main {
 }
 
 #createTeam {
-  border-radius: 8px;
-  padding: 20px;
-  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.75);
+  padding: 40px;
   display: flex;
   flex-direction: column;
   align-items: center;
   background-color: #2b2b2b;
-  width: min(100%, 700px);
-}
-
-#createTeam {
-  display: flex;
-  flex-direction: column;
   gap: 1rem;
+  width: 100%;
 }
 
 #createTeam form {
@@ -53,6 +44,7 @@ main {
   gap: 20px;
   width: 100%;
   align-items: center;
+  flex-direction: column;
 }
 
 #createTeam input {
@@ -80,11 +72,11 @@ main {
   padding: 1rem 2rem;
   border-radius: 5px;
   cursor: pointer;
-  width: fit-content;
   white-space: nowrap;
   margin: 0;
   align-self: center;
   transition: background-color 0.3s, transform 0.3s;
+  width: 100%;
 }
 
 #createTeam button:hover {
@@ -93,16 +85,13 @@ main {
 }
 
 #filterCatalogueContainer {
-  border-radius: 8px;
-  padding: 20px;
-  margin-top: 80px;
-  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.75);
+  padding: 40px;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   gap: 1rem;
   background-color: #2b2b2b;
-  width: min(100%, 700px);
+  width:100%;
 }
 
 #filterCatalogueContainer input,
@@ -122,9 +111,7 @@ main {
 
 #searchContainer {
   background-color: #2b2b2b;
-  border-radius: 8px;
   padding: 20px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.75);
   display: flex;
   flex-direction: column;
   gap: 1rem;
@@ -257,7 +244,7 @@ main {
 }
 
 .minimize {
-  height: fit-content;
+  /* height: fit-content; */
 }
 
 .searchError {
@@ -268,4 +255,20 @@ main {
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
+}
+
+.filterContainer{
+  display:grid;
+  grid-template-columns: repeat(auto-fit, minmax(25vw, 1fr));
+  margin: auto;
+  width:100%;
+}
+
+@media(max-width:800px){
+  .filterContainer{
+    display:grid;
+    grid-template-columns: repeat(auto-fit, minmax(50vw, 1fr));
+    margin: auto;
+    width:100%;
+  }
 }
