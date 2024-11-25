@@ -27,20 +27,15 @@ function init() {
     if (err) {
       console.log("Error", err);
     } else {
-      monsters = addPriceTags(data);
-    }
-  });
-  readJSON("./json/abilities.json", (err, data) => {
-    if (err) {
-      console.log("Error", err);
-    } else {
-      const abilities = data;
-      readJSON("./json/elementsName.json", (err, data) => {
+      const monstersFromDB = data;
+      monsters = addPriceTags(monstersFromDB);
+      readJSON("./json/elements.json", (err, data) => {
         if (err) {
           console.log("Error", err);
         } else {
-          const elementsName = data;
-          createElements(elementsName, abilities);
+          const elements = data;
+          monsters = addElements(monsters, elements);
+          console.log("Monsters: ", monsters);
         }
       });
     }
@@ -117,6 +112,43 @@ function addPriceTags(monstersFromDB) {
   });
 
   return monstersWithPriceTag;
+}
+
+function addElements(monstersFromDB, elements) {
+  const mappedRatings = [
+    { monsterMin: 0, monsterMax: 38, elementRating: 33 },
+    { monsterMin: 39, monsterMax: 74, elementRating: 50 },
+    { monsterMin: 75, monsterMax: 105, elementRating: 67 },
+    { monsterMin: 106, monsterMax: 130, elementRating: 150 },
+    { monsterMin: 131, monsterMax: 157, elementRating: 200 },
+    { monsterMin: 158, monsterMax: 200, elementRating: 300 },
+  ];
+
+  const monstersWithElements = monstersFromDB.map((monster) => {
+    const monsterElements = [];
+    const monsterRating = monster.rating;
+    const monsterElementRating = mappedRatings.find((rating) => (monsterRating) => rating.monsterMin && monsterRating <= rating.monsterMax).elementRating;
+
+    const possibleElements = elements.filter((element) => element.rating === monsterElementRating);
+
+    const minNumElements = mappedRatings.indexOf(monsterElementRating) + 2;
+    const rangeNumElements = minNumElements + mappedRatings.indexOf(monsterElementRating) + 1;
+    const numElements = Math.floor(Math.random() * rangeNumElements + minNumElements);
+
+    let uniqueElementIndexes = new Set();
+
+    for (let i = 0; i < numElements; i++) {
+      let randomIndex;
+      do {
+        randomIndex = Math.floor(Math.random() * possibleElements.length);
+      } while (uniqueElementIndexes.has(randomIndex));
+      uniqueElementIndexes.add(randomIndex);
+      monsterElements.push(possibleElements[randomIndex]);
+    }
+
+    return { ...monster, elements: monsterElements };
+  });
+  return monstersWithElements;
 }
 
 function createElements(elmentsName, abilities) {
