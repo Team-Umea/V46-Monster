@@ -101,7 +101,7 @@
 }
 
 .deleteMonstersContainer {
-  width: 100%;
+  width: 1200px;
   padding: 20px;
   display: grid;
   justify-items: center;
