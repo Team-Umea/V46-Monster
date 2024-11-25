@@ -158,10 +158,13 @@ function createElements(elmentsName, abilities) {
       weakAgainst.push(abilities[randomIndex]);
     }
 
+    rating = (strongAgainst.length / weakAgainst.length).toFixed(2) * 100;
+
     const element = {
       name: elmentName,
       strongAgainst: strongAgainst,
       weakAgainst: weakAgainst,
+      rating: rating,
     };
     elements.push(element);
   });
