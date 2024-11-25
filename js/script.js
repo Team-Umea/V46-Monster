@@ -247,7 +247,7 @@ function setCredits(creditsChange) {
   creditsContainer.appendChild(displayer);
 }
 
-function initDropZone(dropZone, team) {
+function initDropZone(dropZone, team, teamMessage) {
   const dropDown = document.getElementById("sortDropdown");
   const sortOder = dropDown.value;
 
@@ -269,11 +269,21 @@ function initDropZone(dropZone, team) {
           renderMonsters();
           updateTeams();
         } else {
-          alert("Cant have duplicates of monsters in same team");
+          teamMessage.classList.add("error");
+          teamMessage.innerText = "Can't have duplicates of monsters in same team";
+          setTimeout(() => {
+            teamMessage.classList.remove("error");
+            teamMessage.innerText = "";
+          }, 2000);
         }
       }
     } else {
-      alert("Team is full");
+      teamMessage.classList.add("error");
+      teamMessage.innerText = "All slots have already been filled";
+      setTimeout(() => {
+        teamMessage.classList.remove("error");
+        teamMessage.innerText = "";
+      }, 2000);
     }
   });
 }
@@ -406,32 +416,41 @@ function deleteTeam(teamToDelete) {
 
 function renderTeams() {
   const teamsContainer = document.getElementById("teamsContainer");
+  const filterTeamsContainer = document.getElementById("filterTeamsContainer");
   teamsContainer.innerHTML = "";
   if (teams.length === 0) {
     teamsContainer.classList.add("hidden");
+    filterTeamsContainer.classList.add("hidden");
   } else {
     teamsContainer.classList.remove("hidden");
+    filterTeamsContainer.classList.remove("hidden");
   }
   if (teams && teams.length > 0) {
     teams.forEach((team) => {
       if (team.getVisible()) {
         const teamName = team.getTeamName();
         const monsters = team.getMonsters();
+        const prices = monsters.map((monster) => monster.monster.price);
+        const sum = prices.reduce((acc, curr) => acc + curr, 0);
+
         const teamContainer = document.createElement("div");
         const teamHeader = document.createElement("h2");
+        const teamMessage = document.createElement("p");
         const teamBtnsContainer = document.createElement("div");
         const deleteBtnsContainer = document.createElement("div");
         const teamList = document.createElement("ul");
 
-        const buyTeamBtn = createBtnIcon("btn-green", "../icons/cart.svg", `Buy ${teamName}`);
+        let buyTeamBtn = createBtnIcon("btn-green", "../icons/cart.svg", `Buy ${teamName} for ${sum} credits`);
         const getRandomMonstersBtn = createBtnIcon("btn-blue", "../icons/shuffle.svg", `Get 4 random monsters`);
         const deleteTeamBtn = createBtnIcon("btn-red", "../icons/trashBin.svg", `Delete ${teamName}`);
 
         teamContainer.setAttribute("class", "teamDiv");
-        teamBtnsContainer.setAttribute("class", "teamContainerBtns");
-        deleteBtnsContainer.setAttribute("class", "deleteMonstersContainer");
         teamHeader.setAttribute("class", "teamHeader");
         teamHeader.innerText = teamName;
+        teamMessage.setAttribute("class", "teamMessage");
+        teamBtnsContainer.setAttribute("class", "teamContainerBtns");
+        deleteBtnsContainer.setAttribute("class", "deleteMonstersContainer");
+
         teamList.setAttribute("id", teamName);
 
         monsters.forEach((monster) => {
@@ -461,33 +480,90 @@ function renderTeams() {
         });
 
         buyTeamBtn.addEventListener("click", () => {
-          const prices = monsters.map((monster) => monster.monster.price);
-          const sum = prices.reduce((acc, curr) => acc + curr, 0);
-          if (monsters.length === 4) {
-            if (sum <= userCredits) {
-              const buy = confirm(`Click to confirm to buy monsters in ${teamName} for ${sum} credits`);
-              if (buy) {
-                team.setPaidFor(true);
-                setCredits(sum);
-                buyTeamBtn.remove();
-                updateTeams();
+          const icon = buyTeamBtn.getElementsByTagName("img")[0];
+          const src = icon.getAttribute("src");
+
+          if (!src.includes("forbidden")) {
+            if (monsters.length === 4) {
+              if (sum <= userCredits) {
+                if (src.includes("checkMark")) {
+                  team.setPaidFor(true);
+                  setCredits(sum);
+                  buyTeamBtn.remove();
+                  updateTeams();
+                }
+
+                buyTeamBtn.setAttribute("class", "btn btn-green");
+                icon.setAttribute("src", "../icons/checkMark.svg");
+                icon.setAttribute("alt", "Click to confirm deal");
+                icon.setAttribute("title", "Click to confirm deal");
+                teamMessage.innerText = `Click confirm to buy team for ${sum} credits`;
+
+                setTimeout(() => {
+                  buyTeamBtn.setAttribute("class", "btn btn-green");
+                  icon.setAttribute("src", "../icons/cart.svg");
+                  icon.setAttribute("alt", `Buy ${teamName} for ${sum} credits`);
+                  icon.setAttribute("title", `Buy ${teamName} for ${sum} credits`);
+                  teamMessage.classList.remove("error");
+                  teamMessage.innerText = "";
+                }, 3000);
+              } else {
+                buyTeamBtn.setAttribute("class", "btn btn-red");
+                icon.setAttribute("src", "../icons/forbidden.svg");
+                icon.setAttribute("alt", "You don't have enough credits");
+                icon.setAttribute("title", "You don't have enough credits");
+                teamMessage.classList.add("error");
+                teamMessage.innerText = "You don't have enough credits";
+
+                setTimeout(() => {
+                  buyTeamBtn.setAttribute("class", "btn btn-green");
+                  icon.setAttribute("src", "../icons/cart.svg");
+                  icon.setAttribute("alt", `Buy ${teamName}`);
+                  icon.setAttribute("title", `Buy ${teamName}`);
+                  teamMessage.classList.remove("error");
+                  teamMessage.innerText = "";
+                }, 2000);
               }
             } else {
-              alert("You don't have enough credits");
+              buyTeamBtn.setAttribute("class", "btn btn-red");
+              icon.setAttribute("src", "../icons/forbidden.svg");
+              icon.setAttribute("alt", "Pick 4 fighters for your team");
+              icon.setAttribute("title", "Pick 4 fighters for your team");
+              teamMessage.classList.add("error");
+              teamMessage.innerText = "Please fill all four slots in your team";
+
+              setTimeout(() => {
+                buyTeamBtn.setAttribute("class", "btn btn-green");
+                icon.setAttribute("src", "../icons/cart.svg");
+                icon.setAttribute("alt", `Buy ${teamName}`);
+                icon.setAttribute("title", `Buy ${teamName}`);
+                teamMessage.classList.remove("error");
+                teamMessage.innerText = "";
+              }, 2000);
             }
-          } else {
-            alert("Please fill out all slots in your team");
           }
         });
 
         getRandomMonstersBtn.addEventListener("click", () => {
-          const confirmRandomFetch = confirm("This action will override any progess to your team, click 'OK' to continue");
-          if (confirmRandomFetch) {
+          const icon = getRandomMonstersBtn.getElementsByTagName("img")[0];
+          const src = icon.getAttribute("src");
+
+          if (src.includes("shuffle")) {
+            icon.setAttribute("src", "../icons/checkMark.svg");
+            icon.setAttribute("alt", `Confirm shuffle of ${teamName}`);
+            icon.setAttribute("title", `Confirm shuffle of ${teamName}`);
+            setTimeout(() => {
+              icon.setAttribute("src", "../icons/shuffle.svg");
+              icon.setAttribute("alt", "Get 4 random monsters");
+              icon.setAttribute("title", "Get 4 random monsters");
+            }, 2000);
+          } else {
+            icon.setAttribute("src", "../icons/shuffle.svg");
+            icon.setAttribute("alt", "Get 4 random monsters");
+            icon.setAttribute("title", "Get 4 random monsters");
             fetchRandomMonsters(apiConfig.randomMonstersEndpoint, 4).then((randomMonsters) => {
-              console.log("Random Monsters: ", randomMonsters);
               const modifyedMonsters = randomMonsters.map((m) => ({ monster: m, visible: true }));
               team.setMonsters(modifyedMonsters);
-              console.log("Teams: ", teams);
               updateTeams();
             });
           }
@@ -513,6 +589,7 @@ function renderTeams() {
         });
 
         teamContainer.appendChild(teamHeader);
+        teamContainer.appendChild(teamMessage);
         if (!team.getPaidFor()) {
           teamBtnsContainer.appendChild(buyTeamBtn);
           teamBtnsContainer.appendChild(getRandomMonstersBtn);
@@ -525,7 +602,7 @@ function renderTeams() {
         teamContainer.appendChild(deleteBtnsContainer);
         teamContainer.appendChild(teamList);
         teamsContainer.appendChild(teamContainer);
-        initDropZone(teamList, team);
+        initDropZone(teamList, team, teamMessage);
       }
     });
   }

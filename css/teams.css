@@ -1,7 +1,6 @@
 #filterTeamsContainer {
   border-radius: 8px;
   padding: 20px;
-  margin-top: 80px;
   box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.75);
   display: flex;
   flex-direction: column;
@@ -88,9 +87,16 @@
   border-bottom: 1px solid grey;
 }
 
+.teamMessage {
+  position: absolute;
+  top: 105px;
+  font-size: 1.2rem;
+}
+
 .teamContainerBtns {
   width: 100%;
   padding: 20px;
+  margin-top: 30px;
   display: flex;
   justify-content: space-between;
   border-radius: 8px;
