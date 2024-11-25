@@ -22,7 +22,7 @@ let monsters = {};
 init();
 
 function init() {
-  readJSON("newMonsters.json", (err, data) => {
+  readJSON("./json/newMonsters.json", (err, data) => {
     if (err) {
       console.log("Error", err);
     } else {
@@ -49,9 +49,8 @@ function loadMonsters() {
   });
 }
 
-function readJSON(fileName, callback) {
-  const filePath = path.join(__dirname, fileName);
-  fs.readFile(filePath, "utf8", (err, data) => {
+function readJSON(path, callback) {
+  fs.readFile(path, "utf8", (err, data) => {
     if (err) {
       console.log("Error reading monsters.json");
       return;
