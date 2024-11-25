@@ -23,21 +23,29 @@ let monsters = {};
 init();
 
 function init() {
-  readJSON("./json/newMonsters.json", (err, data) => {
+  // readJSON("./json/newMonsters.json", (err, data) => {
+  //   if (err) {
+  //     console.log("Error", err);
+  //   } else {
+  //     const monstersFromDB = data;
+  //     monsters = addPriceTags(monstersFromDB);
+  //     readJSON("./json/elements.json", (err, data) => {
+  //       if (err) {
+  //         console.log("Error", err);
+  //       } else {
+  //         const elements = data;
+  //         monsters = addElements(monsters, elements);
+  //         writeToJSONFile("./json/monsters.json", monsters);
+  //       }
+  //     });
+  //   }
+  // });
+  readJSON("./json/monsters.json", (err, data) => {
     if (err) {
       console.log("Error", err);
     } else {
-      const monstersFromDB = data;
-      monsters = addPriceTags(monstersFromDB);
-      readJSON("./json/elements.json", (err, data) => {
-        if (err) {
-          console.log("Error", err);
-        } else {
-          const elements = data;
-          monsters = addElements(monsters, elements);
-          console.log("Monsters: ", monsters);
-        }
-      });
+      monsters = data;
+      console.log("Mosnters", monsters);
     }
   });
 }
@@ -70,6 +78,16 @@ function readJSON(path, callback) {
       callback(null, jsonData);
     } catch (parseError) {
       console.log("Error parsing JSON data");
+    }
+  });
+}
+
+function writeToJSONFile(path, data) {
+  fs.writeFile(path, JSON.stringify(data, null, 2), (err) => {
+    if (err) {
+      console.error("Error writing to file", err);
+    } else {
+      console.log("Data written to file successfully!");
     }
   });
 }
@@ -126,14 +144,19 @@ function addElements(monstersFromDB, elements) {
 
   const monstersWithElements = monstersFromDB.map((monster) => {
     const monsterElements = [];
-    const monsterRating = monster.rating;
-    const monsterElementRating = mappedRatings.find((rating) => (monsterRating) => rating.monsterMin && monsterRating <= rating.monsterMax).elementRating;
+    const monsterRating = monster.health + monster.damage;
+    const monsterElementRating = mappedRatings.find((rating) => {
+      return monsterRating <= rating.monsterMax && monsterRating >= rating.monsterMin;
+    }).elementRating;
 
     const possibleElements = elements.filter((element) => element.rating === monsterElementRating);
 
-    const minNumElements = mappedRatings.indexOf(monsterElementRating) + 2;
-    const rangeNumElements = minNumElements + mappedRatings.indexOf(monsterElementRating) + 1;
-    const numElements = Math.floor(Math.random() * rangeNumElements + minNumElements);
+    const minNumElements = mappedRatings.indexOf(mappedRatings.find((r) => r.elementRating === monsterElementRating)) + 1;
+    const rangeNumElements = minNumElements + mappedRatings.indexOf(mappedRatings.find((r) => r.elementRating === monsterElementRating)) + 1;
+    let numElements = Math.floor(Math.random() * rangeNumElements + minNumElements);
+    if (numElements >= possibleElements.length) {
+      numElements = possibleElements.length;
+    }
 
     let uniqueElementIndexes = new Set();
 
@@ -145,8 +168,8 @@ function addElements(monstersFromDB, elements) {
       uniqueElementIndexes.add(randomIndex);
       monsterElements.push(possibleElements[randomIndex]);
     }
-
-    return { ...monster, elements: monsterElements };
+    const newMonster = { ...monster, elements: monsterElements };
+    return newMonster;
   });
   return monstersWithElements;
 }
