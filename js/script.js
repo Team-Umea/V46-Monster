@@ -631,7 +631,7 @@ function searchMonsters(query) {
     const value = getValueInObj(monster.monster, searchCategory);
     if (value) {
       if (typeof value === "string") {
-        if (value.includes(query)) {
+        if (value.toLowerCase().includes(query)) {
           monster.visible = true;
         } else {
           monster.visible = false;
