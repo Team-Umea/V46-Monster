@@ -3,160 +3,227 @@
     "id": 0,
     "name": "Night Stalker",
     "specs": "A creature that lurks in the shadows, preying on the unsuspecting at dusk.",
-    "health": 7,
+    "health": 11,
     "damage": 3,
+    "elements": [
+      "Aqua"
+    ],
     "price": 0
   },
   {
     "id": 1,
     "name": "Frost Wraith",
     "specs": "An ethereal being that brings a chilling frost wherever it roams.",
-    "health": 8,
-    "damage": 4,
+    "health": 16,
+    "damage": 2,
+    "elements": [
+      "Aqua"
+    ],
     "price": 0
   },
   {
     "id": 2,
     "name": "Blood Fiend",
     "specs": "A malevolent spirit that thrives on the fear and blood of its victims.",
-    "health": 10,
-    "damage": 3,
+    "health": 14,
+    "damage": 4,
+    "elements": [
+      "Searing"
+    ],
     "price": 0
   },
   {
     "id": 3,
     "name": "Fire Serpent",
     "specs": "A serpentine beast that spews flames and scorches the earth beneath.",
-    "health": 8,
-    "damage": 2,
+    "health": 12,
+    "damage": 3,
+    "elements": [
+      "Frost"
+    ],
     "price": 0
   },
   {
     "id": 4,
     "name": "Stone Golem",
     "specs": "A massive guardian made of ancient stone, awakened to protect its secrets.",
-    "health": 9,
-    "damage": 2,
+    "health": 8,
+    "damage": 3,
+    "elements": [
+      "Aqua",
+      "Searing"
+    ],
     "price": 0
   },
   {
     "id": 5,
     "name": "Shadow Beast",
     "specs": "A creature formed from pure darkness, it strikes fear into the hearts of all.",
-    "health": 7,
-    "damage": 2,
+    "health": 10,
+    "damage": 3,
+    "elements": [
+      "Searing"
+    ],
     "price": 0
   },
   {
     "id": 6,
     "name": "Venomous Phantom",
     "specs": "A ghostly figure that leaves a trail of poison in its wake.",
-    "health": 9,
-    "damage": 4,
+    "health": 6,
+    "damage": 2,
+    "elements": [
+      "Chaos",
+      "Storm"
+    ],
     "price": 0
   },
   {
     "id": 7,
     "name": "Thunder Beast",
     "specs": "A colossal creature that roars like thunder, causing tremors with each step.",
-    "health": 11,
-    "damage": 2,
+    "health": 10,
+    "damage": 4,
+    "elements": [
+      "Mirage",
+      "Storm"
+    ],
     "price": 0
   },
   {
     "id": 8,
     "name": "Gloom Harbinger",
     "specs": "A dark omen that brings despair and chaos wherever it appears.",
-    "health": 15,
-    "damage": 4,
+    "health": 10,
+    "damage": 3,
+    "elements": [
+      "Mirage"
+    ],
     "price": 0
   },
   {
     "id": 9,
     "name": "Blightwalker",
     "specs": "A creature that spreads disease and decay, thriving in the ruins of the dead.",
-    "health": 7,
-    "damage": 4,
+    "health": 14,
+    "damage": 3,
+    "elements": [
+      "Chroma"
+    ],
     "price": 0
   },
   {
     "id": 10,
     "name": "Storm Wyrm",
     "specs": "A dragon-like monster that commands the storms, wielding lightning.",
-    "health": 11,
-    "damage": 2,
+    "health": 12,
+    "damage": 3,
+    "elements": [
+      "Chaos",
+      "Searing"
+    ],
     "price": 0
   },
   {
     "id": 11,
     "name": "Grave Horror",
     "specs": "A terrifying specter that rises from the grave to haunt the living.",
-    "health": 11,
+    "health": 16,
     "damage": 4,
+    "elements": [
+      "Aqua"
+    ],
     "price": 0
   },
   {
     "id": 12,
     "name": "Cinder Demon",
     "specs": "A fiery demon born from the ashes of burnt lands.",
-    "health": 10,
+    "health": 12,
     "damage": 2,
+    "elements": [
+      "Frost",
+      "Searing"
+    ],
     "price": 0
   },
   {
     "id": 13,
     "name": "Iron Claw",
     "specs": "A ferocious beast with metallic claws, feared by all who encounter it.",
-    "health": 9,
-    "damage": 3,
+    "health": 15,
+    "damage": 2,
+    "elements": [
+      "Searing"
+    ],
     "price": 0
   },
   {
     "id": 14,
     "name": "Howling Banshee",
     "specs": "A spirit that wails in sorrow, bringing doom to those who hear it.",
-    "health": 13,
-    "damage": 3,
+    "health": 8,
+    "damage": 4,
+    "elements": [
+      "Storm"
+    ],
     "price": 0
   },
   {
     "id": 15,
     "name": "Mirewalker",
     "specs": "A swamp-dwelling creature that drags its victims into the depths.",
-    "health": 8,
-    "damage": 2,
+    "health": 10,
+    "damage": 4,
+    "elements": [
+      "Mirage",
+      "Storm"
+    ],
     "price": 0
   },
   {
     "id": 16,
     "name": "Lava Brute",
     "specs": "A hulking monster made of molten rock, leaving a trail of destruction.",
-    "health": 15,
-    "damage": 2,
+    "health": 16,
+    "damage": 3,
+    "elements": [
+      "Frost"
+    ],
     "price": 0
   },
   {
     "id": 17,
     "name": "Fang Terror",
     "specs": "A predatory beast with razor-sharp fangs that hunts in packs.",
-    "health": 12,
+    "health": 14,
     "damage": 3,
+    "elements": [
+      "Mirage"
+    ],
     "price": 0
   },
   {
     "id": 18,
     "name": "Spectral Reaver",
     "specs": "A ghostly hunter that feeds on the souls of the living.",
-    "health": 9,
-    "damage": 2,
+    "health": 12,
+    "damage": 3,
+    "elements": [
+      "Searing",
+      "Storm"
+    ],
     "price": 0
   },
   {
     "id": 19,
     "name": "Dread Leviathan",
     "specs": "A massive sea creature that drags ships to their watery graves.",
-    "health": 12,
-    "damage": 4,
+    "health": 10,
+    "damage": 2,
+    "elements": [
+      "Chaos"
+    ],
     "price": 0
   },
   {
@@ -164,79 +231,113 @@
     "name": "Echo Shade",
     "specs": "A shadowy figure that mimics the sounds of the lost.",
     "health": 6,
-    "damage": 4,
+    "damage": 3,
+    "elements": [
+      "Chaos"
+    ],
     "price": 0
   },
   {
     "id": 21,
     "name": "Ravenous Ghoul",
     "specs": "A flesh-eating monster that rises from the grave to satisfy its hunger.",
-    "health": 13,
+    "health": 16,
     "damage": 4,
+    "elements": [
+      "Mirage",
+      "Terra"
+    ],
     "price": 0
   },
   {
     "id": 22,
     "name": "Wraith Knight",
     "specs": "A spectral warrior bound by vengeance, haunting the battlefield.",
-    "health": 16,
-    "damage": 4,
+    "health": 12,
+    "damage": 3,
+    "elements": [
+      "Frost",
+      "Mirage"
+    ],
     "price": 0
   },
   {
     "id": 23,
     "name": "Plague Bringer",
     "specs": "A monstrous entity that spreads disease and despair with every breath.",
-    "health": 14,
-    "damage": 3,
+    "health": 12,
+    "damage": 2,
+    "elements": [
+      "Terra"
+    ],
     "price": 0
   },
   {
     "id": 24,
     "name": "Nightmare Beast",
     "specs": "A creature that manifests from one's worst fears, haunting dreams.",
-    "health": 15,
-    "damage": 3,
+    "health": 8,
+    "damage": 4,
+    "elements": [
+      "Searing",
+      "Terra"
+    ],
     "price": 0
   },
   {
     "id": 25,
     "name": "Iron Phantom",
     "specs": "A ghostly figure clad in rusted armor, searching for its lost honor.",
-    "health": 28,
+    "health": 23,
     "damage": 4,
+    "elements": [
+      "Searing"
+    ],
     "price": 100
   },
   {
     "id": 26,
     "name": "Terror Wyrm",
     "specs": "A dragon-like creature that instills fear with its mere presence.",
-    "health": 25,
-    "damage": 6,
+    "health": 23,
+    "damage": 5,
+    "elements": [
+      "Mirage",
+      "Terra"
+    ],
     "price": 100
   },
   {
     "id": 27,
     "name": "Corrupted Sentinel",
     "specs": "A once-noble guardian turned monstrous through dark magic.",
-    "health": 18,
+    "health": 26,
     "damage": 5,
+    "elements": [
+      "Frost"
+    ],
     "price": 100
   },
   {
     "id": 28,
     "name": "Gorgon Stalker",
     "specs": "A serpent-haired monster that petrifies those who meet its gaze.",
-    "health": 17,
+    "health": 22,
     "damage": 6,
+    "elements": [
+      "Storm"
+    ],
     "price": 100
   },
   {
     "id": 29,
     "name": "Ashen Horror",
     "specs": "A creature born from the ashes of destruction, seeking revenge.",
-    "health": 25,
+    "health": 18,
     "damage": 4,
+    "elements": [
+      "Chaos"
+    ],
     "price": 100
   },
   {
@@ -245,6 +346,9 @@
     "specs": "An entity from the void that consumes everything in its path.",
     "health": 25,
     "damage": 4,
+    "elements": [
+      "Aqua"
+    ],
     "price": 100
   },
   {
@@ -252,87 +356,128 @@
     "name": "Sorrow Weaver",
     "specs": "A creature that spins webs of despair, trapping its victims in grief.",
     "health": 26,
-    "damage": 5,
+    "damage": 4,
+    "elements": [
+      "Frost",
+      "Searing"
+    ],
     "price": 100
   },
   {
     "id": 32,
     "name": "Tempest Fiend",
     "specs": "A demon that controls the winds and storms, wreaking havoc on the land.",
-    "health": 25,
+    "health": 21,
     "damage": 6,
+    "elements": [
+      "Aqua"
+    ],
     "price": 100
   },
   {
     "id": 33,
     "name": "Crystal Golem",
     "specs": "A giant made of shimmering crystals, reflecting the light of the sun.",
-    "health": 20,
-    "damage": 3,
+    "health": 30,
+    "damage": 5,
+    "elements": [
+      "Chroma",
+      "Mirage"
+    ],
     "price": 100
   },
   {
     "id": 34,
     "name": "Feral Horror",
     "specs": "A wild beast that embodies primal rage and instinct.",
-    "health": 20,
-    "damage": 5,
+    "health": 30,
+    "damage": 4,
+    "elements": [
+      "Chroma",
+      "Storm"
+    ],
     "price": 100
   },
   {
     "id": 35,
     "name": "Chilling Revenant",
     "specs": "A cold spirit seeking vengeance for its untimely death.",
-    "health": 29,
-    "damage": 4,
+    "health": 18,
+    "damage": 6,
+    "elements": [
+      "Chroma"
+    ],
     "price": 100
   },
   {
     "id": 36,
     "name": "Soul Devourer",
     "specs": "A creature that feeds on the very essence of life.",
-    "health": 28,
-    "damage": 6,
+    "health": 17,
+    "damage": 5,
+    "elements": [
+      "Mirage",
+      "Terra"
+    ],
     "price": 100
   },
   {
     "id": 37,
     "name": "Phantom Marauder",
     "specs": "A ghostly pirate haunting the seas, stealing souls instead of treasure.",
-    "health": 25,
-    "damage": 4,
+    "health": 18,
+    "damage": 5,
+    "elements": [
+      "Mirage",
+      "Searing"
+    ],
     "price": 100
   },
   {
     "id": 38,
     "name": "Rift Walker",
     "specs": "A creature that can travel through dimensions, leaving chaos in its wake.",
-    "health": 16,
-    "damage": 6,
+    "health": 24,
+    "damage": 5,
+    "elements": [
+      "Aqua",
+      "Storm"
+    ],
     "price": 100
   },
   {
     "id": 39,
     "name": "Manticore Shadow",
     "specs": "A hybrid beast with a scorpion's tail and a lion's body, lurking in the dark.",
-    "health": 17,
+    "health": 28,
     "damage": 6,
+    "elements": [
+      "Searing"
+    ],
     "price": 100
   },
   {
     "id": 40,
     "name": "Obsidian Behemoth",
     "specs": "A gigantic creature made of black stone, impervious to most attacks.",
-    "health": 25,
-    "damage": 5,
+    "health": 23,
+    "damage": 4,
+    "elements": [
+      "Searing",
+      "Terra"
+    ],
     "price": 100
   },
   {
     "id": 41,
     "name": "Scourge Wraith",
     "specs": "A malevolent spirit that drags its victims into the underworld.",
-    "health": 27,
+    "health": 31,
     "damage": 4,
+    "elements": [
+      "Aqua",
+      "Terra"
+    ],
     "price": 100
   },
   {
@@ -341,158 +486,228 @@
     "specs": "A creature of ice that brings blizzards and chills the heart.",
     "health": 31,
     "damage": 6,
+    "elements": [
+      "Frost",
+      "Terra"
+    ],
     "price": 100
   },
   {
     "id": 43,
     "name": "Flesh Eater",
     "specs": "A grotesque monster that consumes the flesh of living beings.",
-    "health": 24,
-    "damage": 5,
+    "health": 27,
+    "damage": 4,
+    "elements": [
+      "Aqua"
+    ],
     "price": 100
   },
   {
     "id": 44,
     "name": "Nightmare Stalker",
     "specs": "A creature that haunts the dreams of its victims, feeding on fear.",
-    "health": 21,
+    "health": 23,
     "damage": 6,
+    "elements": [
+      "Mirage"
+    ],
     "price": 100
   },
   {
     "id": 45,
     "name": "Doom Bringer",
     "specs": "An ancient entity that foretells disaster and destruction.",
-    "health": 16,
-    "damage": 6,
+    "health": 30,
+    "damage": 4,
+    "elements": [
+      "Frost",
+      "Searing"
+    ],
     "price": 100
   },
   {
     "id": 46,
     "name": "Wicked Harpy",
     "specs": "A monstrous bird-woman that lures travelers to their doom.",
-    "health": 22,
-    "damage": 3,
+    "health": 20,
+    "damage": 5,
+    "elements": [
+      "Mirage",
+      "Searing"
+    ],
     "price": 100
   },
   {
     "id": 47,
     "name": "Hollow Specter",
     "specs": "A ghostly figure that leaves behind a chilling emptiness.",
-    "health": 27,
-    "damage": 3,
+    "health": 28,
+    "damage": 6,
+    "elements": [
+      "Chaos",
+      "Storm"
+    ],
     "price": 100
   },
   {
     "id": 48,
     "name": "Crimson Shade",
     "specs": "A blood-red apparition that seeks vengeance for its death.",
-    "health": 25,
+    "health": 18,
     "damage": 5,
+    "elements": [
+      "Chaos"
+    ],
     "price": 100
   },
   {
     "id": 49,
     "name": "Savage Chimera",
     "specs": "A beast with the traits of multiple animals, unpredictable and fierce.",
-    "health": 18,
+    "health": 17,
     "damage": 4,
+    "elements": [
+      "Chaos",
+      "Mirage"
+    ],
     "price": 100
   },
   {
     "id": 50,
     "name": "Cursed Revenant",
     "specs": "A spirit bound by a dark curse, forever seeking redemption.",
-    "health": 35,
+    "health": 31,
     "damage": 8,
+    "elements": [
+      "Mirage"
+    ],
     "price": 500
   },
   {
     "id": 51,
     "name": "Twilight Horror",
     "specs": "A creature that emerges at twilight, blending into the shadows.",
-    "health": 36,
-    "damage": 7,
+    "health": 32,
+    "damage": 6,
+    "elements": [
+      "Mirage"
+    ],
     "price": 500
   },
   {
     "id": 52,
     "name": "Fiery Banshee",
     "specs": "A wailing spirit enflamed with rage, burning anything in its path.",
-    "health": 34,
-    "damage": 8,
+    "health": 33,
+    "damage": 6,
+    "elements": [
+      "Frost",
+      "Terra"
+    ],
     "price": 500
   },
   {
     "id": 53,
     "name": "Venom Drifter",
     "specs": "A creature that leaves a toxic trail, poisoning the land.",
-    "health": 39,
-    "damage": 7,
+    "health": 46,
+    "damage": 9,
+    "elements": [
+      "Mirage",
+      "Terra"
+    ],
     "price": 500
   },
   {
     "id": 54,
     "name": "Mire Horror",
     "specs": "A swamp creature that drags its victims below the murky water.",
-    "health": 43,
-    "damage": 6,
+    "health": 36,
+    "damage": 7,
+    "elements": [
+      "Chroma"
+    ],
     "price": 500
   },
   {
     "id": 55,
     "name": "Serpent Queen",
     "specs": "A regal yet deadly serpent that commands other snakes.",
-    "health": 45,
-    "damage": 6,
+    "health": 43,
+    "damage": 7,
+    "elements": [
+      "Searing"
+    ],
     "price": 500
   },
   {
     "id": 56,
     "name": "Wailing Shade",
     "specs": "A mournful spirit that brings sorrow to all who hear its cries.",
-    "health": 37,
-    "damage": 7,
+    "health": 40,
+    "damage": 8,
+    "elements": [
+      "Chroma"
+    ],
     "price": 500
   },
   {
     "id": 57,
     "name": "Gloom Beast",
     "specs": "A dark creature that thrives in low light, preying on the weak.",
-    "health": 42,
-    "damage": 7,
+    "health": 35,
+    "damage": 6,
+    "elements": [
+      "Frost"
+    ],
     "price": 500
   },
   {
     "id": 58,
     "name": "Forsaken Horror",
     "specs": "A creature abandoned by gods, filled with rage and vengeance.",
-    "health": 32,
-    "damage": 6,
+    "health": 31,
+    "damage": 9,
+    "elements": [
+      "Storm"
+    ],
     "price": 500
   },
   {
     "id": 59,
     "name": "Doomed Specter",
     "specs": "A spirit cursed to wander, searching for what it has lost.",
-    "health": 34,
-    "damage": 8,
+    "health": 39,
+    "damage": 7,
+    "elements": [
+      "Frost",
+      "Searing"
+    ],
     "price": 500
   },
   {
     "id": 60,
     "name": "Ruinous Phantom",
     "specs": "A ghost that haunts ancient ruins, guarding secrets of the past.",
-    "health": 38,
-    "damage": 8,
+    "health": 42,
+    "damage": 7,
+    "elements": [
+      "Frost",
+      "Mirage"
+    ],
     "price": 500
   },
   {
     "id": 61,
     "name": "Specter of Sorrow",
     "specs": "An entity that feeds on grief, growing stronger with each tear.",
-    "health": 32,
-    "damage": 6,
+    "health": 46,
+    "damage": 7,
+    "elements": [
+      "Chroma",
+      "Terra"
+    ],
     "price": 500
   },
   {
@@ -500,7 +715,11 @@
     "name": "Chaos Wyrm",
     "specs": "A dragon-like creature that thrives in chaos and destruction.",
     "health": 43,
-    "damage": 8,
+    "damage": 7,
+    "elements": [
+      "Chroma",
+      "Storm"
+    ],
     "price": 500
   },
   {
@@ -508,7 +727,10 @@
     "name": "Wretched Ghoul",
     "specs": "A rotting creature that rises from the grave to feast on flesh.",
     "health": 38,
-    "damage": 8,
+    "damage": 9,
+    "elements": [
+      "Chaos"
+    ],
     "price": 500
   },
   {
@@ -516,191 +738,274 @@
     "name": "Banshee's Lament",
     "specs": "A haunting spirit that brings misfortune to those it encounters.",
     "health": 38,
-    "damage": 8,
+    "damage": 6,
+    "elements": [
+      "Mirage",
+      "Terra"
+    ],
     "price": 500
   },
   {
     "id": 65,
     "name": "Dread Phantom",
     "specs": "A terrifying ghost that inspires horror with its mere presence.",
-    "health": 34,
+    "health": 42,
     "damage": 7,
+    "elements": [
+      "Mirage"
+    ],
     "price": 500
   },
   {
     "id": 66,
     "name": "Frost Titan",
     "specs": "A giant made of ice, commanding winter's fury.",
-    "health": 43,
-    "damage": 6,
+    "health": 42,
+    "damage": 7,
+    "elements": [
+      "Terra"
+    ],
     "price": 500
   },
   {
     "id": 67,
     "name": "Beast of the Abyss",
     "specs": "A monstrous creature that dwells in the depths of the ocean.",
-    "health": 31,
-    "damage": 9,
+    "health": 34,
+    "damage": 6,
+    "elements": [
+      "Storm"
+    ],
     "price": 500
   },
   {
     "id": 68,
     "name": "Terrorfiend",
     "specs": "A hideous beast that embodies the essence of fear.",
-    "health": 40,
-    "damage": 6,
+    "health": 43,
+    "damage": 8,
+    "elements": [
+      "Chaos",
+      "Storm"
+    ],
     "price": 500
   },
   {
     "id": 69,
     "name": "Bloodthirsty Wraith",
     "specs": "A ghost that hungers for the life force of the living.",
-    "health": 42,
-    "damage": 7,
+    "health": 39,
+    "damage": 6,
+    "elements": [
+      "Terra"
+    ],
     "price": 500
   },
   {
     "id": 70,
     "name": "Haunting Wyrm",
     "specs": "A dragon that causes nightmares with its chilling roar.",
-    "health": 33,
-    "damage": 8,
+    "health": 44,
+    "damage": 9,
+    "elements": [
+      "Chroma",
+      "Storm"
+    ],
     "price": 500
   },
   {
     "id": 71,
     "name": "Necrotic Beast",
     "specs": "A creature that embodies death and decay, leaving ruin behind.",
-    "health": 39,
-    "damage": 6,
+    "health": 32,
+    "damage": 8,
+    "elements": [
+      "Chaos",
+      "Terra"
+    ],
     "price": 500
   },
   {
     "id": 72,
     "name": "Feral Specter",
     "specs": "A restless spirit that attacks the living in a frenzied rage.",
-    "health": 41,
-    "damage": 9,
+    "health": 37,
+    "damage": 6,
+    "elements": [
+      "Searing"
+    ],
     "price": 500
   },
   {
     "id": 73,
     "name": "Dark Emissary",
     "specs": "A shadowy figure that spreads chaos and despair.",
-    "health": 34,
+    "health": 46,
     "damage": 9,
+    "elements": [
+      "Frost",
+      "Searing"
+    ],
     "price": 500
   },
   {
     "id": 74,
     "name": "Murderous Spirit",
     "specs": "A vengeful ghost that hunts those who wronged it.",
-    "health": 37,
-    "damage": 6,
+    "health": 42,
+    "damage": 8,
+    "elements": [
+      "Chroma",
+      "Mirage"
+    ],
     "price": 500
   },
   {
     "id": 75,
     "name": "Shadow Wyrm",
     "specs": "A dragon that blends into the shadows, striking with stealth.",
-    "health": 47,
-    "damage": 10,
+    "health": 57,
+    "damage": 9,
+    "elements": [
+      "Searing",
+      "Terra"
+    ],
     "price": 1000
   },
   {
     "id": 76,
     "name": "Cursed Beast",
     "specs": "A creature afflicted by a dark curse, forever hunting for freedom.",
-    "health": 49,
-    "damage": 10,
+    "health": 54,
+    "damage": 9,
+    "elements": [
+      "Chroma"
+    ],
     "price": 1000
   },
   {
     "id": 77,
     "name": "Howling Terror",
     "specs": "A beast that howls in agony, driving its prey to madness.",
-    "health": 56,
-    "damage": 9,
+    "health": 59,
+    "damage": 10,
+    "elements": [
+      "Chroma"
+    ],
     "price": 1000
   },
   {
     "id": 78,
     "name": "Lurking Horror",
     "specs": "A creature that hides in the dark, waiting for the perfect moment to strike.",
-    "health": 48,
-    "damage": 11,
+    "health": 50,
+    "damage": 10,
+    "elements": [
+      "Mirage",
+      "Storm"
+    ],
     "price": 1000
   },
   {
     "id": 79,
     "name": "Ghastly Revenant",
     "specs": "A ghostly figure that seeks to reclaim its lost life.",
-    "health": 52,
+    "health": 61,
     "damage": 9,
+    "elements": [
+      "Frost"
+    ],
     "price": 1000
   },
   {
     "id": 80,
     "name": "Mournful Shade",
     "specs": "A spirit filled with sorrow, haunting the places it once loved.",
-    "health": 57,
-    "damage": 9,
+    "health": 53,
+    "damage": 10,
+    "elements": [
+      "Storm"
+    ],
     "price": 1000
   },
   {
     "id": 81,
     "name": "Specter of the Past",
     "specs": "A ghost that relives its tragic history, seeking retribution.",
-    "health": 58,
-    "damage": 9,
+    "health": 59,
+    "damage": 10,
+    "elements": [
+      "Chroma"
+    ],
     "price": 1000
   },
   {
     "id": 82,
     "name": "Wyrm of Despair",
     "specs": "A dragon that brings hopelessness to all who encounter it.",
-    "health": 49,
-    "damage": 9,
+    "health": 48,
+    "damage": 11,
+    "elements": [
+      "Mirage"
+    ],
     "price": 1000
   },
   {
     "id": 83,
     "name": "Brimstone Demon",
     "specs": "A fiery creature that leaves a trail of brimstone in its wake.",
-    "health": 59,
+    "health": 50,
     "damage": 10,
+    "elements": [
+      "Mirage",
+      "Terra"
+    ],
     "price": 1000
   },
   {
     "id": 84,
     "name": "Chilling Wraith",
     "specs": "A ghost that freezes the hearts of those who face it.",
-    "health": 58,
+    "health": 51,
     "damage": 10,
+    "elements": [
+      "Chaos",
+      "Frost"
+    ],
     "price": 1000
   },
   {
     "id": 85,
     "name": "Blood Phantom",
     "specs": "A specter that feeds on the fear and blood of the living.",
-    "health": 48,
-    "damage": 8,
+    "health": 56,
+    "damage": 9,
+    "elements": [
+      "Storm"
+    ],
     "price": 1000
   },
   {
     "id": 86,
     "name": "Infernal Beast",
     "specs": "A creature of fire and brimstone, born from the depths of hell.",
-    "health": 50,
-    "damage": 11,
+    "health": 60,
+    "damage": 10,
+    "elements": [
+      "Mirage"
+    ],
     "price": 1000
   },
   {
     "id": 87,
     "name": "Grim Reaper",
     "specs": "A skeletal figure that collects souls, feared by all.",
-    "health": 57,
-    "damage": 10,
+    "health": 50,
+    "damage": 11,
+    "elements": [
+      "Searing",
+      "Storm"
+    ],
     "price": 1000
   },
   {
@@ -709,158 +1014,229 @@
     "specs": "A ghost seeking revenge against those who wronged it.",
     "health": 53,
     "damage": 9,
+    "elements": [
+      "Storm"
+    ],
     "price": 1000
   },
   {
     "id": 89,
     "name": "Flesh Golem",
     "specs": "A monstrous creation made of stitched-together body parts.",
-    "health": 54,
+    "health": 61,
     "damage": 8,
+    "elements": [
+      "Storm"
+    ],
     "price": 1000
   },
   {
     "id": 90,
     "name": "Twisted Horror",
     "specs": "A grotesque creature that embodies the very essence of fear.",
-    "health": 53,
-    "damage": 11,
+    "health": 55,
+    "damage": 8,
+    "elements": [
+      "Aqua",
+      "Storm"
+    ],
     "price": 1000
   },
   {
     "id": 91,
     "name": "Ominous Shade",
     "specs": "A dark presence that brings foreboding and dread.",
-    "health": 60,
-    "damage": 10,
+    "health": 50,
+    "damage": 8,
+    "elements": [
+      "Chaos"
+    ],
     "price": 1000
   },
   {
     "id": 92,
     "name": "Phantom Predator",
     "specs": "A ghostly hunter that stalks its prey through the night.",
-    "health": 47,
-    "damage": 10,
+    "health": 56,
+    "damage": 11,
+    "elements": [
+      "Mirage"
+    ],
     "price": 1000
   },
   {
     "id": 93,
     "name": "Eldritch Horror",
     "specs": "A creature from beyond comprehension, driving those who see it to madness.",
-    "health": 49,
-    "damage": 9,
+    "health": 53,
+    "damage": 8,
+    "elements": [
+      "Chaos",
+      "Chroma"
+    ],
     "price": 1000
   },
   {
     "id": 94,
     "name": "Hollow Knight",
     "specs": "A spectral warrior cursed to wander the land forever.",
-    "health": 60,
-    "damage": 9,
+    "health": 61,
+    "damage": 8,
+    "elements": [
+      "Chroma"
+    ],
     "price": 1000
   },
   {
     "id": 95,
     "name": "Vile Demon",
     "specs": "A creature of pure malice, delighting in the suffering of others.",
-    "health": 56,
-    "damage": 8,
+    "health": 58,
+    "damage": 11,
+    "elements": [
+      "Aqua",
+      "Terra"
+    ],
     "price": 1000
   },
   {
     "id": 96,
     "name": "Cursed Wraith",
     "specs": "A ghost bound by a dark curse, seeking to undo its fate.",
-    "health": 47,
-    "damage": 10,
+    "health": 48,
+    "damage": 11,
+    "elements": [
+      "Mirage"
+    ],
     "price": 1000
   },
   {
     "id": 97,
     "name": "Frostfire Beast",
     "specs": "A creature that embodies both fire and ice, leaving destruction in its wake.",
-    "health": 58,
-    "damage": 8,
+    "health": 53,
+    "damage": 11,
+    "elements": [
+      "Mirage",
+      "Searing"
+    ],
     "price": 1000
   },
   {
     "id": 98,
     "name": "Veil of Shadows",
     "specs": "A mysterious entity that shrouds the area in darkness.",
-    "health": 54,
-    "damage": 10,
+    "health": 53,
+    "damage": 8,
+    "elements": [
+      "Chaos"
+    ],
     "price": 1000
   },
   {
     "id": 99,
     "name": "Blighted Soul",
     "specs": "A tormented spirit trapped in a state of decay.",
-    "health": 59,
-    "damage": 9,
+    "health": 55,
+    "damage": 10,
+    "elements": [
+      "Frost",
+      "Searing"
+    ],
     "price": 1000
   },
   {
     "id": 100,
     "name": "Sanguine Beast",
     "specs": "A bloodthirsty creature that thrives in battle.",
-    "health": 68,
+    "health": 64,
     "damage": 13,
+    "elements": [
+      "Chaos",
+      "Chroma"
+    ],
     "price": 2500
   },
   {
     "id": 101,
     "name": "Revenant Knight",
     "specs": "A ghostly warrior seeking to avenge its death.",
-    "health": 65,
+    "health": 68,
     "damage": 11,
+    "elements": [
+      "Aqua"
+    ],
     "price": 2500
   },
   {
     "id": 102,
     "name": "Wretched Shade",
     "specs": "A spirit that brings despair and misery to the living.",
-    "health": 72,
-    "damage": 11,
+    "health": 62,
+    "damage": 12,
+    "elements": [
+      "Chaos",
+      "Searing"
+    ],
     "price": 2500
   },
   {
     "id": 103,
     "name": "Creeping Terror",
     "specs": "A monster that moves slowly, instilling fear with its presence.",
-    "health": 68,
-    "damage": 11,
+    "health": 65,
+    "damage": 12,
+    "elements": [
+      "Searing",
+      "Terra"
+    ],
     "price": 2500
   },
   {
     "id": 104,
     "name": "Bane of the Woods",
     "specs": "A creature that haunts the forest, preying on the lost.",
-    "health": 69,
-    "damage": 14,
+    "health": 68,
+    "damage": 11,
+    "elements": [
+      "Frost",
+      "Terra"
+    ],
     "price": 2500
   },
   {
     "id": 105,
     "name": "Dire Wyrm",
     "specs": "A massive dragon that commands the skies and strikes fear.",
-    "health": 61,
-    "damage": 13,
+    "health": 76,
+    "damage": 11,
+    "elements": [
+      "Aqua",
+      "Chroma"
+    ],
     "price": 2500
   },
   {
     "id": 106,
     "name": "Gravewalker",
     "specs": "A creature that roams graveyards, seeking the dead.",
-    "health": 69,
-    "damage": 13,
+    "health": 66,
+    "damage": 14,
+    "elements": [
+      "Chaos",
+      "Mirage"
+    ],
     "price": 2500
   },
   {
     "id": 107,
     "name": "Crimson Reaver",
     "specs": "A bloodthirsty monster that leaves a trail of carnage.",
-    "health": 70,
-    "damage": 14,
+    "health": 69,
+    "damage": 13,
+    "elements": [
+      "Mirage"
+    ],
     "price": 2500
   },
   {
@@ -868,95 +1244,138 @@
     "name": "Nightmare Fiend",
     "specs": "A creature that thrives on nightmares, feeding on fear.",
     "health": 70,
-    "damage": 14,
+    "damage": 11,
+    "elements": [
+      "Chaos"
+    ],
     "price": 2500
   },
   {
     "id": 109,
     "name": "Lurking Shade",
     "specs": "A shadowy figure that stalks its prey silently.",
-    "health": 66,
-    "damage": 11,
+    "health": 68,
+    "damage": 14,
+    "elements": [
+      "Storm"
+    ],
     "price": 2500
   },
   {
     "id": 110,
     "name": "Cursed Beast",
     "specs": "A creature afflicted by a dark curse, forever seeking revenge.",
-    "health": 62,
-    "damage": 14,
+    "health": 71,
+    "damage": 12,
+    "elements": [
+      "Aqua",
+      "Chroma"
+    ],
     "price": 2500
   },
   {
     "id": 111,
     "name": "Venomous Nightstalker",
     "specs": "A creature that strikes under the cover of darkness, leaving poison behind.",
-    "health": 71,
+    "health": 68,
     "damage": 13,
+    "elements": [
+      "Frost",
+      "Storm"
+    ],
     "price": 2500
   },
   {
     "id": 112,
     "name": "Phantom of Despair",
     "specs": "A ghost that brings sorrow to all who encounter it.",
-    "health": 64,
-    "damage": 11,
+    "health": 61,
+    "damage": 13,
+    "elements": [
+      "Frost",
+      "Mirage"
+    ],
     "price": 2500
   },
   {
     "id": 113,
     "name": "Frost Demon",
     "specs": "A creature born of ice and cold, spreading winter's chill.",
-    "health": 74,
-    "damage": 14,
+    "health": 64,
+    "damage": 11,
+    "elements": [
+      "Frost",
+      "Storm"
+    ],
     "price": 2500
   },
   {
     "id": 114,
     "name": "Sorrowful Wraith",
     "specs": "A tragic spirit that haunts the living with its grief.",
-    "health": 69,
-    "damage": 12,
+    "health": 74,
+    "damage": 13,
+    "elements": [
+      "Searing"
+    ],
     "price": 2500
   },
   {
     "id": 115,
     "name": "Twilight Horror",
     "specs": "A creature that emerges at dusk, preying on the unwary.",
-    "health": 66,
-    "damage": 13,
+    "health": 68,
+    "damage": 11,
+    "elements": [
+      "Chroma",
+      "Terra"
+    ],
     "price": 2500
   },
   {
     "id": 116,
     "name": "Dread Wyrm",
     "specs": "A dragon that embodies fear itself, instilling terror in all.",
-    "health": 72,
+    "health": 67,
     "damage": 12,
+    "elements": [
+      "Chaos",
+      "Searing"
+    ],
     "price": 2500
   },
   {
     "id": 117,
     "name": "Grim Horror",
     "specs": "A terrifying figure that brings death and despair to all who see it.",
-    "health": 62,
-    "damage": 11,
+    "health": 69,
+    "damage": 13,
+    "elements": [
+      "Terra"
+    ],
     "price": 2500
   },
   {
     "id": 118,
     "name": "Wailing Horror",
     "specs": "A creature whose cries echo through the night, inducing madness.",
-    "health": 71,
+    "health": 73,
     "damage": 14,
+    "elements": [
+      "Aqua",
+      "Chroma"
+    ],
     "price": 2500
   },
   {
     "id": 119,
     "name": "Shadow Fiend",
     "specs": "A dark being that thrives in shadows, striking without warning.",
-    "health": 62,
-    "damage": 12,
+    "health": 64,
+    "damage": 14,
+    "elements": [
+      "Chaos"
+    ],
     "price": 2500
   },
   {
@@ -964,159 +1383,226 @@
     "name": "Fallen Knight",
     "specs": "A once-noble warrior now cursed to wander as a specter.",
     "health": 62,
-    "damage": 12,
+    "damage": 13,
+    "elements": [
+      "Aqua"
+    ],
     "price": 2500
   },
   {
     "id": 121,
     "name": "Ravenous Shade",
     "specs": "A ghost that consumes the life force of those it haunts.",
-    "health": 74,
-    "damage": 13,
+    "health": 62,
+    "damage": 11,
+    "elements": [
+      "Chaos"
+    ],
     "price": 2500
   },
   {
     "id": 122,
     "name": "Blight Demon",
     "specs": "A creature that spreads disease and decay wherever it goes.",
-    "health": 74,
+    "health": 68,
     "damage": 12,
+    "elements": [
+      "Aqua",
+      "Frost"
+    ],
     "price": 2500
   },
   {
     "id": 123,
     "name": "Cavern Horror",
     "specs": "A monstrous entity that lurks in the depths of dark caves.",
-    "health": 74,
-    "damage": 11,
+    "health": 66,
+    "damage": 12,
+    "elements": [
+      "Terra"
+    ],
     "price": 2500
   },
   {
     "id": 124,
     "name": "Night Terror",
     "specs": "A creature that preys on the fears of those who sleep.",
-    "health": 64,
-    "damage": 12,
+    "health": 69,
+    "damage": 13,
+    "elements": [
+      "Terra"
+    ],
     "price": 2500
   },
   {
     "id": 125,
     "name": "Spectral Hunter",
     "specs": "A ghostly predator that stalks its prey through the ethereal realm.",
-    "health": 79,
-    "damage": 13,
+    "health": 82,
+    "damage": 15,
+    "elements": [
+      "Aether",
+      "Searing"
+    ],
     "price": 5000
   },
   {
     "id": 126,
     "name": "Frost Wyrm",
     "specs": "A dragon of ice that breathes frost and commands winter.",
-    "health": 91,
-    "damage": 16,
+    "health": 90,
+    "damage": 13,
+    "elements": [
+      "Frost"
+    ],
     "price": 5000
   },
   {
     "id": 127,
     "name": "Doom Harbinger",
     "specs": "A foreboding figure that heralds disaster and ruin.",
-    "health": 77,
-    "damage": 14,
+    "health": 85,
+    "damage": 16,
+    "elements": [
+      "Searing"
+    ],
     "price": 5000
   },
   {
     "id": 128,
     "name": "Mournful Phantom",
     "specs": "A spirit that laments its lost life and haunts the living.",
-    "health": 91,
+    "health": 82,
     "damage": 16,
+    "elements": [
+      "Chroma"
+    ],
     "price": 5000
   },
   {
     "id": 129,
     "name": "Plague Shade",
     "specs": "A ghost that spreads sickness to all who cross its path.",
-    "health": 89,
+    "health": 87,
     "damage": 16,
+    "elements": [
+      "Terra"
+    ],
     "price": 5000
   },
   {
     "id": 130,
     "name": "Infernal Wyrm",
     "specs": "A dragon made of fire and brimstone, feared by all.",
-    "health": 84,
-    "damage": 16,
+    "health": 77,
+    "damage": 15,
+    "elements": [
+      "Storm"
+    ],
     "price": 5000
   },
   {
     "id": 131,
     "name": "Vengeful Wraith",
     "specs": "A spirit consumed by anger, seeking revenge on the living.",
-    "health": 78,
-    "damage": 14,
+    "health": 85,
+    "damage": 15,
+    "elements": [
+      "Fulgent",
+      "Vitalis"
+    ],
     "price": 5000
   },
   {
     "id": 132,
     "name": "Nightmare Stalker",
     "specs": "A creature that hunts in the shadows, driven by hunger.",
-    "health": 76,
-    "damage": 14,
+    "health": 86,
+    "damage": 16,
+    "elements": [
+      "Sable"
+    ],
     "price": 5000
   },
   {
     "id": 133,
     "name": "Ethereal Beast",
     "specs": "A ghostly creature that slips between the realms of the living and dead.",
-    "health": 85,
-    "damage": 16,
+    "health": 87,
+    "damage": 15,
+    "elements": [
+      "Aqua",
+      "Mirage"
+    ],
     "price": 5000
   },
   {
     "id": 134,
     "name": "Gloom Phantom",
     "specs": "A shadowy figure that brings darkness and despair.",
-    "health": 79,
-    "damage": 16,
+    "health": 91,
+    "damage": 13,
+    "elements": [
+      "Umbral"
+    ],
     "price": 5000
   },
   {
     "id": 135,
     "name": "Dread Horror",
     "specs": "A creature that embodies all fears, striking terror into hearts.",
-    "health": 86,
+    "health": 91,
     "damage": 14,
+    "elements": [
+      "Hurricane",
+      "Terra"
+    ],
     "price": 5000
   },
   {
     "id": 136,
     "name": "Ashen Wraith",
     "specs": "A ghost formed from the ashes of the fallen, seeking justice.",
-    "health": 80,
+    "health": 84,
     "damage": 15,
+    "elements": [
+      "Searing",
+      "Silhouette"
+    ],
     "price": 5000
   },
   {
     "id": 137,
     "name": "Venomous Specter",
     "specs": "A ghost that poisons the souls of those it haunts.",
-    "health": 91,
-    "damage": 15,
+    "health": 81,
+    "damage": 14,
+    "elements": [
+      "Abyss"
+    ],
     "price": 5000
   },
   {
     "id": 138,
     "name": "Cursed Revenant",
     "specs": "A spirit bound to the world by its unfinished business.",
-    "health": 83,
-    "damage": 14,
+    "health": 86,
+    "damage": 16,
+    "elements": [
+      "Solstice",
+      "Toxin"
+    ],
     "price": 5000
   },
   {
     "id": 139,
     "name": "Mire Demon",
     "specs": "A creature that dwells in swamps, dragging the unwary into the depths.",
-    "health": 80,
+    "health": 77,
     "damage": 14,
+    "elements": [
+      "Fulgent"
+    ],
     "price": 5000
   },
   {
@@ -1124,119 +1610,173 @@
     "name": "Chilling Shade",
     "specs": "A ghost that freezes the air around it, instilling fear.",
     "health": 89,
-    "damage": 16,
+    "damage": 13,
+    "elements": [
+      "Chaos"
+    ],
     "price": 5000
   },
   {
     "id": 141,
     "name": "Doomed Beast",
     "specs": "A creature marked for destruction, forever seeking vengeance.",
-    "health": 80,
-    "damage": 16,
+    "health": 86,
+    "damage": 13,
+    "elements": [
+      "Searing",
+      "Storm"
+    ],
     "price": 5000
   },
   {
     "id": 142,
     "name": "Lost Soul",
     "specs": "A wandering spirit searching for peace in the afterlife.",
-    "health": 90,
+    "health": 91,
     "damage": 14,
+    "elements": [
+      "Tempest",
+      "Tidal"
+    ],
     "price": 5000
   },
   {
     "id": 143,
     "name": "Feral Wraith",
     "specs": "A ghost driven by primal instincts, hunting the living.",
-    "health": 79,
-    "damage": 14,
+    "health": 84,
+    "damage": 16,
+    "elements": [
+      "Lumina"
+    ],
     "price": 5000
   },
   {
     "id": 144,
     "name": "Twilight Demon",
     "specs": "A creature that thrives at dusk, preying on the vulnerable.",
-    "health": 80,
-    "damage": 13,
+    "health": 90,
+    "damage": 16,
+    "elements": [
+      "Cacophony",
+      "Tempest"
+    ],
     "price": 5000
   },
   {
     "id": 145,
     "name": "Banshee's Cry",
     "specs": "A haunting wail that brings doom to those who hear it.",
-    "health": 89,
-    "damage": 15,
+    "health": 84,
+    "damage": 16,
+    "elements": [
+      "Cacophony",
+      "Umbral"
+    ],
     "price": 5000
   },
   {
     "id": 146,
     "name": "Wicked Spirit",
     "specs": "A malevolent ghost that delights in causing fear.",
-    "health": 88,
-    "damage": 14,
+    "health": 79,
+    "damage": 15,
+    "elements": [
+      "Sable"
+    ],
     "price": 5000
   },
   {
     "id": 147,
     "name": "Sorrowful Wraith",
     "specs": "A spirit that mourns its death, seeking solace in the living.",
-    "health": 85,
-    "damage": 15,
+    "health": 79,
+    "damage": 16,
+    "elements": [
+      "Embers"
+    ],
     "price": 5000
   },
   {
     "id": 148,
     "name": "Veilwalker",
     "specs": "A creature that traverses between the realms of life and death.",
-    "health": 85,
+    "health": 76,
     "damage": 16,
+    "elements": [
+      "Searing"
+    ],
     "price": 5000
   },
   {
     "id": 149,
     "name": "Dread Knight",
     "specs": "A spectral warrior that rides through the night, spreading fear.",
-    "health": 85,
-    "damage": 13,
+    "health": 87,
+    "damage": 15,
+    "elements": [
+      "Blight",
+      "Mirage"
+    ],
     "price": 5000
   },
   {
     "id": 150,
     "name": "Cursed Shade",
     "specs": "A ghost bound by a dark curse, forever haunting its tormentors.",
-    "health": 98,
-    "damage": 16,
+    "health": 106,
+    "damage": 17,
+    "elements": [
+      "Chroma",
+      "Embers"
+    ],
     "price": 10000
   },
   {
     "id": 151,
     "name": "Grave Wyrm",
     "specs": "A dragon that rises from the grave, seeking revenge.",
-    "health": 104,
-    "damage": 17,
+    "health": 95,
+    "damage": 18,
+    "elements": [
+      "Embers",
+      "Mirage"
+    ],
     "price": 10000
   },
   {
     "id": 152,
     "name": "Infernal Phantom",
     "specs": "A spirit of fire, bringing destruction to the living.",
-    "health": 104,
-    "damage": 17,
+    "health": 95,
+    "damage": 18,
+    "elements": [
+      "Sable",
+      "Storm"
+    ],
     "price": 10000
   },
   {
     "id": 153,
     "name": "Wailing Fiend",
     "specs": "A creature that screams in agony, driving others to madness.",
-    "health": 105,
-    "damage": 19,
+    "health": 95,
+    "damage": 17,
+    "elements": [
+      "Blight",
+      "Lunar"
+    ],
     "price": 10000
   },
   {
     "id": 154,
     "name": "Lost Revenant",
     "specs": "A ghost seeking to find its way back to the living world.",
-    "health": 91,
+    "health": 97,
     "damage": 17,
+    "elements": [
+      "Mirage"
+    ],
     "price": 10000
   },
   {
@@ -1244,103 +1784,147 @@
     "name": "Mournful Shade",
     "specs": "A spectral figure filled with grief, haunting its past.",
     "health": 93,
-    "damage": 16,
+    "damage": 17,
+    "elements": [
+      "Seraph"
+    ],
     "price": 10000
   },
   {
     "id": 156,
     "name": "Restless Wraith",
     "specs": "A spirit unable to find peace, eternally wandering.",
-    "health": 106,
-    "damage": 18,
+    "health": 95,
+    "damage": 16,
+    "elements": [
+      "Chroma"
+    ],
     "price": 10000
   },
   {
     "id": 157,
     "name": "Harrowing Beast",
     "specs": "A monstrous creature that brings terror to all who encounter it.",
-    "health": 100,
-    "damage": 19,
+    "health": 105,
+    "damage": 16,
+    "elements": [
+      "Toxin"
+    ],
     "price": 10000
   },
   {
     "id": 158,
     "name": "Sanguine Shadow",
     "specs": "A blood-red specter that feeds on fear and despair.",
-    "health": 96,
-    "damage": 17,
+    "health": 98,
+    "damage": 16,
+    "elements": [
+      "Sable",
+      "Umbral"
+    ],
     "price": 10000
   },
   {
     "id": 159,
     "name": "Dreaded Phantom",
     "specs": "A ghost that brings nightmares to those it haunts.",
-    "health": 94,
+    "health": 91,
     "damage": 18,
+    "elements": [
+      "Seraph",
+      "Tidal"
+    ],
     "price": 10000
   },
   {
     "id": 160,
     "name": "Wicked Beast",
     "specs": "A creature of pure malice, terrorizing the innocent.",
-    "health": 106,
-    "damage": 16,
+    "health": 100,
+    "damage": 19,
+    "elements": [
+      "Aether"
+    ],
     "price": 10000
   },
   {
     "id": 161,
     "name": "Forsaken Wraith",
     "specs": "A spirit abandoned by the living, filled with rage.",
-    "health": 93,
-    "damage": 16,
+    "health": 98,
+    "damage": 17,
+    "elements": [
+      "Sable"
+    ],
     "price": 10000
   },
   {
     "id": 162,
     "name": "Gloom Reaver",
     "specs": "A creature that thrives in darkness, feeding on fear.",
-    "health": 91,
-    "damage": 18,
+    "health": 94,
+    "damage": 19,
+    "elements": [
+      "Abyss",
+      "Cacophony"
+    ],
     "price": 10000
   },
   {
     "id": 163,
     "name": "Malevolent Shade",
     "specs": "A dark spirit that brings misfortune to all it encounters.",
-    "health": 98,
+    "health": 105,
     "damage": 17,
+    "elements": [
+      "Lunar",
+      "Silhouette"
+    ],
     "price": 10000
   },
   {
     "id": 164,
     "name": "Echoing Horror",
     "specs": "A creature that reverberates through the night, instilling dread.",
-    "health": 101,
-    "damage": 18,
+    "health": 96,
+    "damage": 17,
+    "elements": [
+      "Vitalis"
+    ],
     "price": 10000
   },
   {
     "id": 165,
     "name": "Twisted Phantom",
     "specs": "A ghost warped by grief, seeking to torment the living.",
-    "health": 92,
-    "damage": 18,
+    "health": 102,
+    "damage": 19,
+    "elements": [
+      "Embers"
+    ],
     "price": 10000
   },
   {
     "id": 166,
     "name": "Fallen Specter",
     "specs": "A once-noble spirit now cursed to haunt the earth.",
-    "health": 97,
-    "damage": 16,
+    "health": 101,
+    "damage": 19,
+    "elements": [
+      "Aqua",
+      "Blight"
+    ],
     "price": 10000
   },
   {
     "id": 167,
     "name": "Death's Emissary",
     "specs": "A harbinger of doom, bringing death to those it touches.",
-    "health": 98,
-    "damage": 18,
+    "health": 91,
+    "damage": 17,
+    "elements": [
+      "Fulgent"
+    ],
     "price": 10000
   },
   {
@@ -1348,47 +1932,68 @@
     "name": "Veil of Night",
     "specs": "A shadowy figure that cloaks itself in darkness.",
     "health": 94,
-    "damage": 16,
+    "damage": 18,
+    "elements": [
+      "Umbral"
+    ],
     "price": 10000
   },
   {
     "id": 169,
     "name": "Haunting Fiend",
     "specs": "A malevolent spirit that torments the living.",
-    "health": 105,
+    "health": 99,
     "damage": 17,
+    "elements": [
+      "Tidal"
+    ],
     "price": 10000
   },
   {
     "id": 170,
     "name": "Creeping Wyrm",
     "specs": "A serpent-like creature that moves silently, striking from the shadows.",
-    "health": 91,
-    "damage": 18,
+    "health": 92,
+    "damage": 17,
+    "elements": [
+      "Chroma",
+      "Storm"
+    ],
     "price": 10000
   },
   {
     "id": 171,
     "name": "Eldritch Shade",
     "specs": "A ghostly figure from beyond, inducing madness with its presence.",
-    "health": 92,
-    "damage": 19,
+    "health": 96,
+    "damage": 18,
+    "elements": [
+      "Fulgent"
+    ],
     "price": 10000
   },
   {
     "id": 172,
     "name": "Chilling Wraith",
     "specs": "A cold spirit that freezes the air around it.",
-    "health": 105,
-    "damage": 17,
+    "health": 98,
+    "damage": 18,
+    "elements": [
+      "Blight",
+      "Searing"
+    ],
     "price": 10000
   },
   {
     "id": 173,
     "name": "Vengeful Phantom",
     "specs": "A spirit seeking revenge on those who wronged it.",
-    "health": 91,
-    "damage": 17,
+    "health": 103,
+    "damage": 16,
+    "elements": [
+      "Cacophony",
+      "Solstice"
+    ],
     "price": 10000
   },
   {
@@ -1397,46 +2002,68 @@
     "specs": "A spectral figure that haunts the deep forests.",
     "health": 96,
     "damage": 17,
+    "elements": [
+      "Solstice"
+    ],
     "price": 10000
   },
   {
     "id": 175,
     "name": "Fleshbound Horror",
     "specs": "A grotesque creature made from the remains of the dead.",
-    "health": 115,
-    "damage": 19,
+    "health": 121,
+    "damage": 21,
+    "elements": [
+      "Aqua",
+      "Cacophony"
+    ],
     "price": 15000
   },
   {
     "id": 176,
     "name": "Dreaded Wyrm",
     "specs": "A dragon that brings fear and destruction with its fiery breath.",
-    "health": 117,
-    "damage": 19,
+    "health": 108,
+    "damage": 18,
+    "elements": [
+      "Tempest",
+      "Terra"
+    ],
     "price": 15000
   },
   {
     "id": 177,
     "name": "Abyssal Phantom",
     "specs": "A ghost from the depths, bringing terror to the surface.",
-    "health": 106,
-    "damage": 21,
+    "health": 111,
+    "damage": 18,
+    "elements": [
+      "Cinder"
+    ],
     "price": 15000
   },
   {
     "id": 178,
     "name": "Mournful Demon",
     "specs": "A creature of sadness that feeds on the tears of the living.",
-    "health": 115,
-    "damage": 19,
+    "health": 120,
+    "damage": 18,
+    "elements": [
+      "Mirage",
+      "Tidal"
+    ],
     "price": 15000
   },
   {
     "id": 179,
     "name": "Wyrm of Sorrow",
     "specs": "A dragon that embodies grief, bringing despair wherever it goes.",
-    "health": 113,
-    "damage": 20,
+    "health": 106,
+    "damage": 19,
+    "elements": [
+      "Fulgent",
+      "Toxin"
+    ],
     "price": 15000
   },
   {
@@ -1445,102 +2072,149 @@
     "specs": "A creature abandoned by its creator, filled with rage.",
     "health": 111,
     "damage": 19,
+    "elements": [
+      "Abyss",
+      "Fulgent"
+    ],
     "price": 15000
   },
   {
     "id": 181,
     "name": "Sorrowful Spirit",
     "specs": "A ghost that brings sorrow to the living.",
-    "health": 110,
-    "damage": 18,
+    "health": 120,
+    "damage": 19,
+    "elements": [
+      "Fulgent",
+      "Hurricane"
+    ],
     "price": 15000
   },
   {
     "id": 182,
     "name": "Twilight Shade",
     "specs": "A creature that thrives in the twilight, preying on the weak.",
-    "health": 120,
-    "damage": 20,
+    "health": 115,
+    "damage": 19,
+    "elements": [
+      "Embers",
+      "Umbral"
+    ],
     "price": 15000
   },
   {
     "id": 183,
     "name": "Despair Fiend",
     "specs": "A dark being that feeds on hopelessness.",
-    "health": 107,
+    "health": 119,
     "damage": 19,
+    "elements": [
+      "Embers",
+      "Toxin"
+    ],
     "price": 15000
   },
   {
     "id": 184,
     "name": "Echoing Wraith",
     "specs": "A ghostly figure that resonates with the cries of the lost.",
-    "health": 110,
+    "health": 119,
     "damage": 21,
+    "elements": [
+      "Gloom",
+      "Solstice"
+    ],
     "price": 15000
   },
   {
     "id": 185,
     "name": "Nightmare Shade",
     "specs": "A creature born from nightmares, haunting the living.",
-    "health": 106,
-    "damage": 21,
+    "health": 110,
+    "damage": 20,
+    "elements": [
+      "Lunar"
+    ],
     "price": 15000
   },
   {
     "id": 186,
     "name": "Fallen Wyrm",
     "specs": "A dragon that has fallen from grace, now a harbinger of doom.",
-    "health": 113,
-    "damage": 21,
+    "health": 119,
+    "damage": 20,
+    "elements": [
+      "Chroma",
+      "Seraph"
+    ],
     "price": 15000
   },
   {
     "id": 187,
     "name": "Cursed Revenant",
     "specs": "A spirit bound by a dark curse, forever seeking revenge.",
-    "health": 108,
-    "damage": 19,
+    "health": 116,
+    "damage": 21,
+    "elements": [
+      "Searing"
+    ],
     "price": 15000
   },
   {
     "id": 188,
     "name": "Blighted Shade",
     "specs": "A ghost corrupted by dark magic, spreading decay.",
-    "health": 117,
+    "health": 118,
     "damage": 19,
+    "elements": [
+      "Cinder",
+      "Sable"
+    ],
     "price": 15000
   },
   {
     "id": 189,
     "name": "Specter of the Abyss",
     "specs": "A creature from the depths that brings despair to the surface.",
-    "health": 110,
-    "damage": 19,
+    "health": 117,
+    "damage": 20,
+    "elements": [
+      "Hurricane"
+    ],
     "price": 15000
   },
   {
     "id": 190,
     "name": "Chilling Beast",
     "specs": "A creature of ice that brings winter's chill wherever it goes.",
-    "health": 106,
-    "damage": 20,
+    "health": 117,
+    "damage": 21,
+    "elements": [
+      "Cacophony",
+      "Searing"
+    ],
     "price": 15000
   },
   {
     "id": 191,
     "name": "Howling Wyrm",
     "specs": "A dragon that howls in the night, instilling fear.",
-    "health": 108,
+    "health": 111,
     "damage": 21,
+    "elements": [
+      "Umbral"
+    ],
     "price": 15000
   },
   {
     "id": 192,
     "name": "Vile Shade",
     "specs": "A malevolent ghost that brings misery to the living.",
-    "health": 120,
-    "damage": 19,
+    "health": 108,
+    "damage": 21,
+    "elements": [
+      "Chroma"
+    ],
     "price": 15000
   },
   {
@@ -1548,7 +2222,11 @@
     "name": "Wretched Beast",
     "specs": "A grotesque creature that embodies suffering.",
     "health": 115,
-    "damage": 19,
+    "damage": 20,
+    "elements": [
+      "Searing",
+      "Toxin"
+    ],
     "price": 15000
   },
   {
@@ -1557,126 +2235,179 @@
     "specs": "A spirit unable to find peace, eternally wandering.",
     "health": 113,
     "damage": 21,
+    "elements": [
+      "Storm",
+      "Terra"
+    ],
     "price": 15000
   },
   {
     "id": 195,
     "name": "Doomed Shade",
     "specs": "A ghost marked for destruction, haunting the living.",
-    "health": 119,
+    "health": 121,
     "damage": 20,
+    "elements": [
+      "Storm",
+      "Umbral"
+    ],
     "price": 15000
   },
   {
     "id": 196,
     "name": "Cursed Wyrm",
     "specs": "A dragon afflicted by a dark curse, forever seeking vengeance.",
-    "health": 110,
+    "health": 107,
     "damage": 21,
+    "elements": [
+      "Aether"
+    ],
     "price": 15000
   },
   {
     "id": 197,
     "name": "Mournful Demon",
     "specs": "A creature of sadness that feeds on the tears of the living.",
-    "health": 106,
-    "damage": 19,
+    "health": 107,
+    "damage": 20,
+    "elements": [
+      "Tempest"
+    ],
     "price": 15000
   },
   {
     "id": 198,
     "name": "Harrowing Shade",
     "specs": "A ghost that haunts the living, spreading despair.",
-    "health": 110,
-    "damage": 20,
+    "health": 106,
+    "damage": 21,
+    "elements": [
+      "Gloom"
+    ],
     "price": 15000
   },
   {
     "id": 199,
     "name": "Specter of Despair",
     "specs": "A creature that embodies hopelessness, bringing ruin.",
-    "health": 118,
+    "health": 106,
     "damage": 19,
+    "elements": [
+      "Hurricane"
+    ],
     "price": 15000
   },
   {
     "id": 200,
     "name": "Flesh Eater",
     "specs": "A grotesque monster that consumes the flesh of the living.",
-    "health": 124,
-    "damage": 22,
+    "health": 133,
+    "damage": 24,
+    "elements": [
+      "Terra",
+      "Tidal"
+    ],
     "price": 25000
   },
   {
     "id": 201,
     "name": "Twilight Fiend",
     "specs": "A creature that thrives in the twilight, preying on the weak.",
-    "health": 128,
-    "damage": 23,
+    "health": 125,
+    "damage": 21,
+    "elements": [
+      "Gloom",
+      "Toxin"
+    ],
     "price": 25000
   },
   {
     "id": 202,
     "name": "Soul Devourer",
     "specs": "A monstrous entity that feeds on the very essence of life.",
-    "health": 136,
-    "damage": 24,
+    "health": 134,
+    "damage": 23,
+    "elements": [
+      "Gloom"
+    ],
     "price": 25000
   },
   {
     "id": 203,
     "name": "Ghost of Sorrow",
     "specs": "A spirit that brings sorrow to all who encounter it.",
-    "health": 128,
-    "damage": 23,
+    "health": 125,
+    "damage": 22,
+    "elements": [
+      "Solstice"
+    ],
     "price": 25000
   },
   {
     "id": 204,
     "name": "Despairing Wraith",
     "specs": "A ghost that feeds on the despair of the living.",
-    "health": 122,
-    "damage": 23,
+    "health": 129,
+    "damage": 21,
+    "elements": [
+      "Chroma"
+    ],
     "price": 25000
   },
   {
     "id": 205,
     "name": "Creeping Horror",
     "specs": "A monster that moves silently, instilling fear.",
-    "health": 122,
-    "damage": 22,
+    "health": 128,
+    "damage": 21,
+    "elements": [
+      "Fulgent"
+    ],
     "price": 25000
   },
   {
     "id": 206,
     "name": "Echoing Phantom",
     "specs": "A ghost that resonates with the cries of the lost.",
-    "health": 127,
-    "damage": 21,
+    "health": 125,
+    "damage": 22,
+    "elements": [
+      "Umbral"
+    ],
     "price": 25000
   },
   {
     "id": 207,
     "name": "Wretched Shade",
     "specs": "A spirit that brings despair and misery to the living.",
-    "health": 132,
-    "damage": 23,
+    "health": 136,
+    "damage": 21,
+    "elements": [
+      "Embers"
+    ],
     "price": 25000
   },
   {
     "id": 208,
     "name": "Harrowing Wyrm",
     "specs": "A dragon that brings terror to all who encounter it.",
-    "health": 122,
-    "damage": 23,
+    "health": 126,
+    "damage": 21,
+    "elements": [
+      "Solstice",
+      "Tidal"
+    ],
     "price": 25000
   },
   {
     "id": 209,
     "name": "Cursed Horror",
     "specs": "A creature afflicted by a dark curse, seeking revenge.",
-    "health": 132,
-    "damage": 22,
+    "health": 128,
+    "damage": 21,
+    "elements": [
+      "Searing"
+    ],
     "price": 25000
   },
   {
@@ -1684,71 +2415,103 @@
     "name": "Forsaken Phantom",
     "specs": "A spirit abandoned by the living, filled with rage.",
     "health": 129,
-    "damage": 22,
+    "damage": 23,
+    "elements": [
+      "Vitalis"
+    ],
     "price": 25000
   },
   {
     "id": 211,
     "name": "Chilling Wyrm",
     "specs": "A dragon of ice that breathes frost and commands winter.",
-    "health": 125,
-    "damage": 23,
+    "health": 131,
+    "damage": 22,
+    "elements": [
+      "Abyss"
+    ],
     "price": 25000
   },
   {
     "id": 212,
     "name": "Gloom Demon",
     "specs": "A creature that thrives in darkness, bringing despair.",
-    "health": 125,
+    "health": 130,
     "damage": 23,
+    "elements": [
+      "Vitalis"
+    ],
     "price": 25000
   },
   {
     "id": 213,
     "name": "Sorrowful Wraith",
     "specs": "A spirit filled with grief, haunting its past.",
-    "health": 123,
-    "damage": 23,
+    "health": 122,
+    "damage": 21,
+    "elements": [
+      "Toxin"
+    ],
     "price": 25000
   },
   {
     "id": 214,
     "name": "Veilwalker",
     "specs": "A creature that traverses between the realms of life and death.",
-    "health": 130,
-    "damage": 21,
+    "health": 123,
+    "damage": 23,
+    "elements": [
+      "Blight",
+      "Tidal"
+    ],
     "price": 25000
   },
   {
     "id": 215,
     "name": "Cursed Beast",
     "specs": "A creature marked by a dark curse, forever seeking vengeance.",
-    "health": 124,
-    "damage": 21,
+    "health": 135,
+    "damage": 22,
+    "elements": [
+      "Lunar",
+      "Tidal"
+    ],
     "price": 25000
   },
   {
     "id": 216,
     "name": "Infernal Shade",
     "specs": "A ghost of fire, bringing destruction to the living.",
-    "health": 121,
+    "health": 132,
     "damage": 22,
+    "elements": [
+      "Blight",
+      "Cacophony"
+    ],
     "price": 25000
   },
   {
     "id": 217,
     "name": "Wretched Phantom",
     "specs": "A ghost that brings misery to the living.",
-    "health": 123,
-    "damage": 21,
+    "health": 131,
+    "damage": 23,
+    "elements": [
+      "Fulgent",
+      "Mirage"
+    ],
     "price": 25000
   },
   {
     "id": 218,
     "name": "Doomed Shade",
     "specs": "A ghost marked for destruction, haunting the living.",
-    "health": 121,
-    "damage": 22,
+    "health": 122,
+    "damage": 21,
+    "elements": [
+      "Abyss",
+      "Blight"
+    ],
     "price": 25000
   },
   {
@@ -1756,135 +2519,195 @@
     "name": "Blighted Wyrm",
     "specs": "A dragon corrupted by dark magic, spreading decay.",
     "health": 135,
-    "damage": 23,
+    "damage": 24,
+    "elements": [
+      "Searing",
+      "Silhouette"
+    ],
     "price": 25000
   },
   {
     "id": 220,
     "name": "Haunting Beast",
     "specs": "A creature that stalks its prey, bringing terror.",
-    "health": 133,
+    "health": 125,
     "damage": 22,
+    "elements": [
+      "Chaos",
+      "Terra"
+    ],
     "price": 25000
   },
   {
     "id": 221,
     "name": "Chilling Horror",
     "specs": "A creature that freezes the air around it, inducing fear.",
-    "health": 132,
-    "damage": 21,
+    "health": 136,
+    "damage": 23,
+    "elements": [
+      "Chaos"
+    ],
     "price": 25000
   },
   {
     "id": 222,
     "name": "Vengeful Shade",
     "specs": "A spirit seeking revenge on those who wronged it.",
-    "health": 123,
+    "health": 125,
     "damage": 22,
+    "elements": [
+      "Mirage",
+      "Sable"
+    ],
     "price": 25000
   },
   {
     "id": 223,
     "name": "Sorrowful Spirit",
     "specs": "A ghost that brings sorrow to the living.",
-    "health": 127,
-    "damage": 23,
+    "health": 131,
+    "damage": 22,
+    "elements": [
+      "Frost"
+    ],
     "price": 25000
   },
   {
     "id": 224,
     "name": "Fallen Beast",
     "specs": "A creature that has lost its way, now a harbinger of doom.",
-    "health": 128,
-    "damage": 23,
+    "health": 123,
+    "damage": 21,
+    "elements": [
+      "Terra"
+    ],
     "price": 25000
   },
   {
     "id": 225,
     "name": "Twilight Demon",
     "specs": "A creature that thrives at dusk, preying on the vulnerable.",
-    "health": 140,
-    "damage": 24,
+    "health": 148,
+    "damage": 23,
+    "elements": [
+      "Storm",
+      "Terra"
+    ],
     "price": 50000
   },
   {
     "id": 226,
     "name": "Echoing Wyrm",
     "specs": "A dragon that reverberates through the night, instilling fear.",
-    "health": 147,
-    "damage": 24,
+    "health": 139,
+    "damage": 25,
+    "elements": [
+      "Lumina"
+    ],
     "price": 50000
   },
   {
     "id": 227,
     "name": "Forsaken Wraith",
     "specs": "A spirit abandoned by the living, seeking vengeance.",
-    "health": 140,
+    "health": 148,
     "damage": 24,
+    "elements": [
+      "Hurricane"
+    ],
     "price": 50000
   },
   {
     "id": 228,
     "name": "Mournful Shade",
     "specs": "A ghost that brings sorrow to all who encounter it.",
-    "health": 149,
-    "damage": 25,
+    "health": 145,
+    "damage": 26,
+    "elements": [
+      "Searing",
+      "Umbral"
+    ],
     "price": 50000
   },
   {
     "id": 229,
     "name": "Dread Phantom",
     "specs": "A ghost that brings nightmares to those it haunts.",
-    "health": 142,
-    "damage": 24,
+    "health": 144,
+    "damage": 26,
+    "elements": [
+      "Frost",
+      "Toxin"
+    ],
     "price": 50000
   },
   {
     "id": 230,
     "name": "Specter of Sorrow",
     "specs": "A creature that embodies grief, bringing despair.",
-    "health": 139,
-    "damage": 25,
+    "health": 145,
+    "damage": 24,
+    "elements": [
+      "Aether"
+    ],
     "price": 50000
   },
   {
     "id": 231,
     "name": "Twilight Horror",
     "specs": "A creature that emerges at dusk, preying on the unwary.",
-    "health": 148,
-    "damage": 24,
+    "health": 136,
+    "damage": 25,
+    "elements": [
+      "Fulgent"
+    ],
     "price": 50000
   },
   {
     "id": 232,
     "name": "Wailing Horror",
     "specs": "A creature whose cries echo through the night.",
-    "health": 147,
+    "health": 139,
     "damage": 26,
+    "elements": [
+      "Embers",
+      "Lumina"
+    ],
     "price": 50000
   },
   {
     "id": 233,
     "name": "Gloom Phantom",
     "specs": "A shadowy figure that brings darkness and despair.",
-    "health": 141,
+    "health": 149,
     "damage": 25,
+    "elements": [
+      "Cinder"
+    ],
     "price": 50000
   },
   {
     "id": 234,
     "name": "Cursed Wraith",
     "specs": "A ghost bound by a dark curse, forever haunting its tormentors.",
-    "health": 143,
+    "health": 147,
     "damage": 25,
+    "elements": [
+      "Seraph",
+      "Solstice"
+    ],
     "price": 50000
   },
   {
     "id": 235,
     "name": "Eldritch Horror",
     "specs": "A creature from beyond comprehension, driving those who see it to madness.",
-    "health": 144,
+    "health": 143,
     "damage": 24,
+    "elements": [
+      "Sable",
+      "Vitalis"
+    ],
     "price": 50000
   },
   {
@@ -1892,327 +2715,466 @@
     "name": "Phantom of the Abyss",
     "specs": "A creature from the depths that brings despair to the surface.",
     "health": 146,
-    "damage": 25,
+    "damage": 26,
+    "elements": [
+      "Cinder"
+    ],
     "price": 50000
   },
   {
     "id": 237,
     "name": "Wretched Wyrm",
     "specs": "A dragon that embodies suffering, bringing despair wherever it",
-    "health": 137,
+    "health": 144,
     "damage": 24,
+    "elements": [
+      "Sable"
+    ],
     "price": 50000
   },
   {
     "id": 238,
     "name": "Doom Bringer",
     "specs": "A fearsome entity that heralds destruction and chaos.",
-    "health": 146,
+    "health": 136,
     "damage": 26,
+    "elements": [
+      "Aether",
+      "Aqua"
+    ],
     "price": 50000
   },
   {
     "id": 239,
     "name": "Whispering Shade",
     "specs": "A ghost that murmurs secrets from the beyond.",
-    "health": 142,
-    "damage": 26,
+    "health": 140,
+    "damage": 24,
+    "elements": [
+      "Gloom"
+    ],
     "price": 50000
   },
   {
     "id": 240,
     "name": "Ravenous Phantom",
     "specs": "A spirit that consumes the fear of the living.",
-    "health": 136,
+    "health": 141,
     "damage": 26,
+    "elements": [
+      "Frost",
+      "Tempest"
+    ],
     "price": 50000
   },
   {
     "id": 241,
     "name": "Creeping Shadow",
     "specs": "A silent figure that stalks its prey from the darkness.",
-    "health": 143,
-    "damage": 25,
+    "health": 150,
+    "damage": 26,
+    "elements": [
+      "Lunar"
+    ],
     "price": 50000
   },
   {
     "id": 242,
     "name": "Infernal Wraith",
     "specs": "A ghostly figure wreathed in flames, bringing terror.",
-    "health": 138,
-    "damage": 24,
+    "health": 142,
+    "damage": 23,
+    "elements": [
+      "Cacophony",
+      "Gloom"
+    ],
     "price": 50000
   },
   {
     "id": 243,
     "name": "Dread Revenant",
     "specs": "A vengeful spirit that rises from the grave.",
-    "health": 151,
-    "damage": 25,
+    "health": 136,
+    "damage": 26,
+    "elements": [
+      "Lumina",
+      "Vitalis"
+    ],
     "price": 50000
   },
   {
     "id": 244,
     "name": "Gloom Reaver",
     "specs": "A dark creature that feeds on despair and sorrow.",
-    "health": 142,
-    "damage": 25,
+    "health": 150,
+    "damage": 26,
+    "elements": [
+      "Umbral"
+    ],
     "price": 50000
   },
   {
     "id": 245,
     "name": "Twilight Terror",
     "specs": "A creature that thrives in the twilight, preying on the lost.",
-    "health": 147,
-    "damage": 25,
+    "health": 144,
+    "damage": 23,
+    "elements": [
+      "Abyss"
+    ],
     "price": 50000
   },
   {
     "id": 246,
     "name": "Echoing Horror",
     "specs": "A being that resonates with the fears of those nearby.",
-    "health": 139,
-    "damage": 26,
+    "health": 146,
+    "damage": 24,
+    "elements": [
+      "Tidal"
+    ],
     "price": 50000
   },
   {
     "id": 247,
     "name": "Nightmare Beast",
     "specs": "A creature born from the darkest dreams.",
-    "health": 143,
-    "damage": 26,
+    "health": 137,
+    "damage": 24,
+    "elements": [
+      "Cacophony"
+    ],
     "price": 50000
   },
   {
     "id": 248,
     "name": "Forsaken Demon",
     "specs": "A malevolent spirit cast out from its realm.",
-    "health": 145,
-    "damage": 24,
+    "health": 140,
+    "damage": 26,
+    "elements": [
+      "Aether",
+      "Lumina"
+    ],
     "price": 50000
   },
   {
     "id": 249,
     "name": "Wailing Revenant",
     "specs": "A ghost that cries out for vengeance.",
-    "health": 146,
-    "damage": 26,
+    "health": 142,
+    "damage": 24,
+    "elements": [
+      "Fulgent"
+    ],
     "price": 50000
   },
   {
     "id": 250,
     "name": "Mournful Shade",
     "specs": "A spirit filled with grief, haunting its past.",
-    "health": 165,
-    "damage": 26,
+    "health": 152,
+    "damage": 27,
+    "elements": [
+      "Genesis"
+    ],
     "price": 75000
   },
   {
     "id": 251,
     "name": "Chilling Wyrm",
     "specs": "An ice dragon that commands the cold.",
-    "health": 151,
-    "damage": 29,
+    "health": 163,
+    "damage": 27,
+    "elements": [
+      "Seraph"
+    ],
     "price": 75000
   },
   {
     "id": 252,
     "name": "Veilwalker",
     "specs": "A creature that moves between realms, unseen.",
-    "health": 158,
-    "damage": 28,
+    "health": 155,
+    "damage": 29,
+    "elements": [
+      "Embers",
+      "Nebula"
+    ],
     "price": 75000
   },
   {
     "id": 253,
     "name": "Cursed Phantom",
     "specs": "A ghost bound by a dark curse, seeking escape.",
-    "health": 160,
-    "damage": 29,
+    "health": 159,
+    "damage": 27,
+    "elements": [
+      "Sable"
+    ],
     "price": 75000
   },
   {
     "id": 254,
     "name": "Despairing Demon",
     "specs": "A creature that thrives on the sorrow of others.",
-    "health": 152,
+    "health": 164,
     "damage": 29,
+    "elements": [
+      "Lunar",
+      "Tempestuous"
+    ],
     "price": 75000
   },
   {
     "id": 255,
     "name": "Gloom Wyrm",
     "specs": "A dragon that brings darkness and fear.",
-    "health": 158,
+    "health": 151,
     "damage": 28,
+    "elements": [
+      "Embers"
+    ],
     "price": 75000
   },
   {
     "id": 256,
     "name": "Echoing Shade",
     "specs": "A ghost that echoes the cries of the forgotten.",
-    "health": 156,
+    "health": 160,
     "damage": 27,
+    "elements": [
+      "Toxin"
+    ],
     "price": 75000
   },
   {
     "id": 257,
     "name": "Twilight Spirit",
     "specs": "A being that thrives at dusk, bringing shadows.",
-    "health": 159,
+    "health": 164,
     "damage": 26,
+    "elements": [
+      "Hurricane"
+    ],
     "price": 75000
   },
   {
     "id": 258,
     "name": "Creeping Terror",
     "specs": "A monster that crawls silently, striking from the dark.",
-    "health": 162,
-    "damage": 26,
+    "health": 154,
+    "damage": 28,
+    "elements": [
+      "Tempestuous"
+    ],
     "price": 75000
   },
   {
     "id": 259,
     "name": "Sorrowful Demon",
     "specs": "A creature that feeds on the grief of others.",
-    "health": 158,
-    "damage": 28,
+    "health": 159,
+    "damage": 29,
+    "elements": [
+      "Phantom",
+      "Verdant"
+    ],
     "price": 75000
   },
   {
     "id": 260,
     "name": "Nightmare Phantom",
     "specs": "A ghost that haunts the dreams of the living.",
-    "health": 162,
+    "health": 160,
     "damage": 28,
+    "elements": [
+      "Crystal",
+      "Terra"
+    ],
     "price": 75000
   },
   {
     "id": 261,
     "name": "Wretched Shade",
     "specs": "A spirit that brings misery and despair.",
-    "health": 164,
-    "damage": 29,
+    "health": 153,
+    "damage": 26,
+    "elements": [
+      "Verdant"
+    ],
     "price": 75000
   },
   {
     "id": 262,
     "name": "Forsaken Wyrm",
     "specs": "A dragon abandoned by its kin, filled with rage.",
-    "health": 152,
-    "damage": 27,
+    "health": 163,
+    "damage": 26,
+    "elements": [
+      "Chaos"
+    ],
     "price": 75000
   },
   {
     "id": 263,
     "name": "Dread Shade",
     "specs": "A ghost that embodies fear, haunting the living.",
-    "health": 159,
-    "damage": 27,
+    "health": 164,
+    "damage": 29,
+    "elements": [
+      "Embers"
+    ],
     "price": 75000
   },
   {
     "id": 264,
     "name": "Chilling Revenant",
     "specs": "A ghost that brings winter's chill wherever it goes.",
-    "health": 161,
-    "damage": 29,
+    "health": 165,
+    "damage": 26,
+    "elements": [
+      "Aqua",
+      "Hurricane"
+    ],
     "price": 75000
   },
   {
     "id": 265,
     "name": "Eldritch Wraith",
     "specs": "A creature from beyond that induces madness.",
-    "health": 157,
-    "damage": 27,
+    "health": 165,
+    "damage": 28,
+    "elements": [
+      "Chaos"
+    ],
     "price": 75000
   },
   {
     "id": 266,
     "name": "Mourning Wyrm",
     "specs": "A dragon that weeps for its lost kin.",
-    "health": 151,
-    "damage": 27,
+    "health": 157,
+    "damage": 26,
+    "elements": [
+      "Solaris"
+    ],
     "price": 75000
   },
   {
     "id": 267,
     "name": "Blighted Phantom",
     "specs": "A ghost corrupted by dark magic.",
-    "health": 164,
+    "health": 151,
     "damage": 28,
+    "elements": [
+      "Embers"
+    ],
     "price": 75000
   },
   {
     "id": 268,
     "name": "Gloom Demon",
     "specs": "A creature that thrives in darkness, preying on fear.",
-    "health": 165,
-    "damage": 29,
+    "health": 158,
+    "damage": 26,
+    "elements": [
+      "Blight",
+      "Verdant"
+    ],
     "price": 75000
   },
   {
     "id": 269,
     "name": "Forsaken Shade",
     "specs": "A spirit abandoned by the living.",
-    "health": 151,
-    "damage": 27,
+    "health": 159,
+    "damage": 28,
+    "elements": [
+      "Tempest"
+    ],
     "price": 75000
   },
   {
     "id": 270,
     "name": "Doomed Wraith",
     "specs": "A ghost marked for destruction.",
-    "health": 155,
+    "health": 158,
     "damage": 26,
+    "elements": [
+      "Cinder"
+    ],
     "price": 75000
   },
   {
     "id": 271,
     "name": "Harrowing Phantom",
     "specs": "A ghost that induces terror in those it haunts.",
-    "health": 153,
-    "damage": 28,
+    "health": 152,
+    "damage": 29,
+    "elements": [
+      "Searing"
+    ],
     "price": 75000
   },
   {
     "id": 272,
     "name": "Sorrowful Shade",
     "specs": "A spirit filled with grief, haunting the living.",
-    "health": 163,
+    "health": 152,
     "damage": 26,
+    "elements": [
+      "Fury",
+      "Genesis"
+    ],
     "price": 75000
   },
   {
     "id": 273,
     "name": "Vengeful Wyrm",
     "specs": "A dragon seeking revenge for its fallen kin.",
-    "health": 153,
+    "health": 166,
     "damage": 28,
+    "elements": [
+      "Chroma",
+      "Silhouette"
+    ],
     "price": 75000
   },
   {
     "id": 274,
     "name": "Blight Wraith",
     "specs": "A ghost that spreads disease and decay.",
-    "health": 154,
-    "damage": 27,
+    "health": 164,
+    "damage": 28,
+    "elements": [
+      "Blight",
+      "Vitalis"
+    ],
     "price": 75000
   },
   {
     "id": 275,
     "name": "Infernal Shade",
     "specs": "A fiery ghost that brings destruction.",
-    "health": 168,
+    "health": 170,
     "damage": 31,
+    "elements": [
+      "Embers",
+      "Fulgor"
+    ],
     "price": 100000
   },
   {
     "id": 276,
     "name": "Echoing Revenant",
     "specs": "A spirit that resonates with the cries of the lost.",
-    "health": 171,
-    "damage": 28,
+    "health": 172,
+    "damage": 29,
+    "elements": [
+      "Frost",
+      "Verdant"
+    ],
     "price": 100000
   },
   {
@@ -2220,175 +3182,253 @@
     "name": "Creeping Shade",
     "specs": "A ghost that moves silently, stalking its prey.",
     "health": 175,
-    "damage": 29,
+    "damage": 28,
+    "elements": [
+      "Phantom"
+    ],
     "price": 100000
   },
   {
     "id": 278,
     "name": "Twilight Wyrm",
     "specs": "A dragon that thrives at dusk, preying on the vulnerable.",
-    "health": 181,
-    "damage": 30,
+    "health": 175,
+    "damage": 28,
+    "elements": [
+      "Aqua",
+      "Cinder"
+    ],
     "price": 100000
   },
   {
     "id": 279,
     "name": "Dread Phantom",
     "specs": "A ghost that brings nightmares to the living.",
-    "health": 175,
-    "damage": 30,
+    "health": 166,
+    "damage": 31,
+    "elements": [
+      "Searing",
+      "Tempestuous"
+    ],
     "price": 100000
   },
   {
     "id": 280,
     "name": "Sorrow Demon",
     "specs": "A creature that feeds on the grief of others.",
-    "health": 179,
-    "damage": 30,
+    "health": 177,
+    "damage": 28,
+    "elements": [
+      "Searing",
+      "Seraph"
+    ],
     "price": 100000
   },
   {
     "id": 281,
     "name": "Forsaken Spirit",
     "specs": "A ghost abandoned by the living, filled with rage.",
-    "health": 178,
-    "damage": 30,
+    "health": 180,
+    "damage": 31,
+    "elements": [
+      "Cacophony",
+      "Mirage"
+    ],
     "price": 100000
   },
   {
     "id": 282,
     "name": "Haunting Beast",
     "specs": "A creature that stalks its prey, bringing terror.",
-    "health": 180,
+    "health": 179,
     "damage": 31,
+    "elements": [
+      "Chaos",
+      "Mirage"
+    ],
     "price": 100000
   },
   {
     "id": 283,
     "name": "Chilling Phantom",
     "specs": "A ghost that freezes the air around it.",
-    "health": 175,
-    "damage": 28,
+    "health": 167,
+    "damage": 31,
+    "elements": [
+      "Abyss",
+      "Solstice"
+    ],
     "price": 100000
   },
   {
     "id": 284,
     "name": "Doomed Revenant",
     "specs": "A spirit marked for destruction, haunting the living.",
-    "health": 181,
-    "damage": 29,
+    "health": 173,
+    "damage": 30,
+    "elements": [
+      "Phantom"
+    ],
     "price": 100000
   },
   {
     "id": 285,
     "name": "Echoing Horror",
     "specs": "A creature that resonates with the fears of those nearby.",
-    "health": 178,
-    "damage": 31,
+    "health": 169,
+    "damage": 30,
+    "elements": [
+      "Mystic",
+      "Rapture"
+    ],
     "price": 100000
   },
   {
     "id": 286,
     "name": "Wretched Wraith",
     "specs": "A ghost that brings misery and despair.",
-    "health": 169,
-    "damage": 29,
+    "health": 174,
+    "damage": 31,
+    "elements": [
+      "Abyss"
+    ],
     "price": 100000
   },
   {
     "id": 287,
     "name": "Forsaken Demon",
     "specs": "A malevolent spirit cast out from its realm.",
-    "health": 180,
-    "damage": 29,
+    "health": 170,
+    "damage": 30,
+    "elements": [
+      "Hurricane"
+    ],
     "price": 100000
   },
   {
     "id": 288,
     "name": "Twilight Shade",
     "specs": "A creature that thrives in twilight, preying on shadows.",
-    "health": 169,
-    "damage": 29,
+    "health": 178,
+    "damage": 31,
+    "elements": [
+      "Abyss",
+      "Genesis"
+    ],
     "price": 100000
   },
   {
     "id": 289,
     "name": "Cursed Wraith",
     "specs": "A ghost bound by a dark curse, seeking vengeance.",
-    "health": 170,
-    "damage": 29,
+    "health": 176,
+    "damage": 28,
+    "elements": [
+      "Aqua",
+      "Chroma"
+    ],
     "price": 100000
   },
   {
     "id": 290,
     "name": "Mournful Revenant",
     "specs": "A spirit that cries out for justice.",
-    "health": 173,
-    "damage": 30,
+    "health": 178,
+    "damage": 31,
+    "elements": [
+      "Chaos",
+      "Tidal"
+    ],
     "price": 100000
   },
   {
     "id": 291,
     "name": "Dread Beast",
     "specs": "A creature that embodies all fears.",
-    "health": 173,
-    "damage": 31,
+    "health": 177,
+    "damage": 28,
+    "elements": [
+      "Sable"
+    ],
     "price": 100000
   },
   {
     "id": 292,
     "name": "Nightmare Demon",
     "specs": "A creature born from the darkest fears.",
-    "health": 167,
-    "damage": 30,
+    "health": 169,
+    "damage": 29,
+    "elements": [
+      "Rapture"
+    ],
     "price": 100000
   },
   {
     "id": 293,
     "name": "Sorrowful Wyrm",
     "specs": "A dragon that embodies grief.",
-    "health": 178,
-    "damage": 28,
+    "health": 175,
+    "damage": 31,
+    "elements": [
+      "Aqua",
+      "Rapture"
+    ],
     "price": 100000
   },
   {
     "id": 294,
     "name": "Echoing Shade",
     "specs": "A ghost that resonates with the cries of the lost.",
-    "health": 168,
+    "health": 176,
     "damage": 31,
+    "elements": [
+      "Hurricane"
+    ],
     "price": 100000
   },
   {
     "id": 295,
     "name": "Twilight Fiend",
     "specs": "A creature that thrives at dusk, bringing shadows.",
-    "health": 179,
-    "damage": 30,
+    "health": 170,
+    "damage": 28,
+    "elements": [
+      "Fulgor",
+      "Hurricane"
+    ],
     "price": 100000
   },
   {
     "id": 296,
     "name": "Creeping Wraith",
     "specs": "A ghost that stalks the living silently.",
-    "health": 167,
+    "health": 166,
     "damage": 29,
+    "elements": [
+      "Gloom"
+    ],
     "price": 100000
   },
   {
     "id": 297,
     "name": "Vengeful Shade",
     "specs": "A spirit seeking revenge on those who wronged it.",
-    "health": 180,
-    "damage": 29,
+    "health": 175,
+    "damage": 28,
+    "elements": [
+      "Tempestuous"
+    ],
     "price": 100000
   },
   {
     "id": 298,
     "name": "Infernal Phantom",
     "specs": "A fiery spirit that brings destruction.",
-    "health": 171,
-    "damage": 28,
+    "health": 166,
+    "damage": 29,
+    "elements": [
+      "Embers"
+    ],
     "price": 100000
   },
   {
@@ -2397,342 +3437,490 @@
     "specs": "A dragon that spreads terror wherever it flies.",
     "health": 174,
     "damage": 29,
+    "elements": [
+      "Fate"
+    ],
     "price": 100000
   },
   {
     "id": 300,
     "name": "Grieving Shade",
     "specs": "A ghost burdened by sorrow, haunting the living.",
-    "health": 181,
-    "damage": 33,
+    "health": 187,
+    "damage": 32,
+    "elements": [
+      "Fate",
+      "Genesis"
+    ],
     "price": 200000
   },
   {
     "id": 301,
     "name": "Cursed Beast",
     "specs": "A creature marked by a dark curse, forever seeking escape.",
-    "health": 186,
+    "health": 188,
     "damage": 31,
+    "elements": [
+      "Chronos"
+    ],
     "price": 200000
   },
   {
     "id": 302,
     "name": "Blighted Wraith",
     "specs": "A spirit corrupted by dark magic.",
-    "health": 181,
-    "damage": 33,
+    "health": 184,
+    "damage": 31,
+    "elements": [
+      "Fury"
+    ],
     "price": 200000
   },
   {
     "id": 303,
     "name": "Chilling Fiend",
     "specs": "A creature that brings a deep, penetrating cold.",
-    "health": 196,
-    "damage": 34,
+    "health": 185,
+    "damage": 33,
+    "elements": [
+      "Crystal"
+    ],
     "price": 200000
   },
   {
     "id": 304,
     "name": "Mournful Demon",
     "specs": "A creature that feeds on the tears of the living.",
-    "health": 186,
+    "health": 189,
     "damage": 31,
+    "elements": [
+      "Fate",
+      "Mystic"
+    ],
     "price": 200000
   },
   {
     "id": 305,
     "name": "Twilight Revenant",
     "specs": "A ghost that rises at dusk, seeking vengeance.",
-    "health": 191,
-    "damage": 33,
+    "health": 194,
+    "damage": 32,
+    "elements": [
+      "Fulgor",
+      "Seraph"
+    ],
     "price": 200000
   },
   {
     "id": 306,
     "name": "Echoing Horror",
     "specs": "A being that resonates with the fears of those nearby.",
-    "health": 185,
-    "damage": 32,
+    "health": 187,
+    "damage": 33,
+    "elements": [
+      "Verdant"
+    ],
     "price": 200000
   },
   {
     "id": 307,
     "name": "Wretched Shade",
     "specs": "A spirit that brings misery and despair.",
-    "health": 191,
-    "damage": 33,
+    "health": 195,
+    "damage": 31,
+    "elements": [
+      "Cacophony"
+    ],
     "price": 200000
   },
   {
     "id": 308,
     "name": "Forsaken Wraith",
     "specs": "A spirit abandoned by the living, filled with rage.",
-    "health": 190,
-    "damage": 32,
+    "health": 186,
+    "damage": 31,
+    "elements": [
+      "Toxin"
+    ],
     "price": 200000
   },
   {
     "id": 309,
     "name": "Vengeful Wyrm",
     "specs": "A dragon seeking revenge for its fallen kin.",
-    "health": 185,
-    "damage": 31,
+    "health": 195,
+    "damage": 32,
+    "elements": [
+      "Fulgent",
+      "Searing"
+    ],
     "price": 200000
   },
   {
     "id": 310,
     "name": "Creeping Phantom",
     "specs": "A ghost that moves silently, stalking its prey.",
-    "health": 196,
+    "health": 188,
     "damage": 31,
+    "elements": [
+      "Storm"
+    ],
     "price": 200000
   },
   {
     "id": 311,
     "name": "Doomed Shade",
     "specs": "A ghost marked for destruction.",
-    "health": 187,
+    "health": 181,
     "damage": 31,
+    "elements": [
+      "Cinder"
+    ],
     "price": 200000
   },
   {
     "id": 312,
     "name": "Chilling Wraith",
     "specs": "A ghost that brings winter's chill wherever it goes.",
-    "health": 181,
+    "health": 195,
     "damage": 32,
+    "elements": [
+      "Chroma"
+    ],
     "price": 200000
   },
   {
     "id": 313,
     "name": "Sorrowful Spirit",
     "specs": "A ghost that brings sorrow to those it haunts.",
-    "health": 181,
-    "damage": 34,
+    "health": 189,
+    "damage": 33,
+    "elements": [
+      "Aether",
+      "Vermilion"
+    ],
     "price": 200000
   },
   {
     "id": 314,
     "name": "Gloom Demon",
     "specs": "A creature that thrives in darkness, preying on fear.",
-    "health": 188,
+    "health": 196,
     "damage": 31,
+    "elements": [
+      "Phantom",
+      "Solstice"
+    ],
     "price": 200000
   },
   {
     "id": 315,
     "name": "Echoing Wyrm",
     "specs": "A dragon that reverberates with the cries of the lost.",
-    "health": 182,
-    "damage": 34,
+    "health": 193,
+    "damage": 33,
+    "elements": [
+      "Fury",
+      "Tempestuous"
+    ],
     "price": 200000
   },
   {
     "id": 316,
     "name": "Twilight Shade",
     "specs": "A creature that thrives in twilight, preying on shadows.",
-    "health": 191,
-    "damage": 31,
+    "health": 193,
+    "damage": 34,
+    "elements": [
+      "Fate",
+      "Solaris"
+    ],
     "price": 200000
   },
   {
     "id": 317,
     "name": "Cursed Wraith",
     "specs": "A ghost bound by a dark curse, seeking vengeance.",
-    "health": 191,
+    "health": 192,
     "damage": 33,
+    "elements": [
+      "Tempest"
+    ],
     "price": 200000
   },
   {
     "id": 318,
     "name": "Grieving Phantom",
     "specs": "A spirit that laments its lost life.",
-    "health": 192,
-    "damage": 32,
+    "health": 193,
+    "damage": 33,
+    "elements": [
+      "Genesis",
+      "Lunar"
+    ],
     "price": 200000
   },
   {
     "id": 319,
     "name": "Dread Revenant",
     "specs": "A vengeful spirit that rises from the grave.",
-    "health": 185,
-    "damage": 33,
+    "health": 183,
+    "damage": 34,
+    "elements": [
+      "Gloom"
+    ],
     "price": 200000
   },
   {
     "id": 320,
     "name": "Blighted Shade",
     "specs": "A ghost corrupted by dark magic, spreading decay.",
-    "health": 182,
-    "damage": 34,
+    "health": 191,
+    "damage": 32,
+    "elements": [
+      "Genesis"
+    ],
     "price": 200000
   },
   {
     "id": 321,
     "name": "Mournful Wyrm",
     "specs": "A dragon that weeps for its lost kin.",
-    "health": 195,
-    "damage": 31,
+    "health": 182,
+    "damage": 32,
+    "elements": [
+      "Aether",
+      "Storm"
+    ],
     "price": 200000
   },
   {
     "id": 322,
     "name": "Forsaken Demon",
     "specs": "A malevolent spirit cast out from its realm.",
-    "health": 190,
-    "damage": 31,
+    "health": 192,
+    "damage": 33,
+    "elements": [
+      "Vermilion"
+    ],
     "price": 200000
   },
   {
     "id": 323,
     "name": "Harrowing Shade",
     "specs": "A ghost that induces terror in those it haunts.",
-    "health": 188,
-    "damage": 34,
+    "health": 191,
+    "damage": 31,
+    "elements": [
+      "Embers"
+    ],
     "price": 200000
   },
   {
     "id": 324,
     "name": "Creeping Terror",
     "specs": "A monster that crawls silently, striking from the dark.",
-    "health": 182,
-    "damage": 33,
+    "health": 191,
+    "damage": 32,
+    "elements": [
+      "Fate"
+    ],
     "price": 200000
   },
   {
     "id": 325,
     "name": "Sorrow Demon",
     "specs": "A creature that feeds on the grief of others.",
-    "health": 205,
-    "damage": 33,
+    "health": 198,
+    "damage": 36,
+    "elements": [
+      "Abyss",
+      "Aether"
+    ],
     "price": 300000
   },
   {
     "id": 326,
     "name": "Twilight Spirit",
     "specs": "A being that thrives at dusk, bringing shadows.",
-    "health": 204,
+    "health": 205,
     "damage": 36,
+    "elements": [
+      "Aqua",
+      "Fulgor"
+    ],
     "price": 300000
   },
   {
     "id": 327,
     "name": "Wretched Revenant",
     "specs": "A spirit that brings misery to the living.",
-    "health": 210,
+    "health": 203,
     "damage": 36,
+    "elements": [
+      "Chronos"
+    ],
     "price": 300000
   },
   {
     "id": 328,
     "name": "Doomed Wyrm",
     "specs": "A dragon marked for destruction, haunting the skies.",
-    "health": 198,
-    "damage": 36,
+    "health": 203,
+    "damage": 34,
+    "elements": [
+      "Blight",
+      "Mirage"
+    ],
     "price": 300000
   },
   {
     "id": 329,
     "name": "Echoing Shade",
     "specs": "A ghost that resonates with the cries of the lost.",
-    "health": 210,
-    "damage": 35,
+    "health": 208,
+    "damage": 34,
+    "elements": [
+      "Chroma",
+      "Lunar"
+    ],
     "price": 300000
   },
   {
     "id": 330,
     "name": "Chilling Beast",
     "specs": "A creature of ice that brings winter's chill.",
-    "health": 200,
+    "health": 205,
     "damage": 35,
+    "elements": [
+      "Fury",
+      "Terra"
+    ],
     "price": 300000
   },
   {
     "id": 331,
     "name": "Vengeful Shade",
     "specs": "A spirit seeking revenge on those who wronged it.",
-    "health": 207,
-    "damage": 33,
+    "health": 208,
+    "damage": 34,
+    "elements": [
+      "Terra"
+    ],
     "price": 300000
   },
   {
     "id": 332,
     "name": "Forsaken Wraith",
     "specs": "A ghost abandoned by the living, filled with rage.",
-    "health": 205,
+    "health": 196,
     "damage": 33,
+    "elements": [
+      "Chaos",
+      "Spirit"
+    ],
     "price": 300000
   },
   {
     "id": 333,
     "name": "Cursed Demon",
     "specs": "A malevolent spirit bound by a dark curse.",
-    "health": 209,
-    "damage": 34,
+    "health": 198,
+    "damage": 36,
+    "elements": [
+      "Searing"
+    ],
     "price": 300000
   },
   {
     "id": 334,
     "name": "Mournful Phantom",
     "specs": "A spirit that cries out for justice.",
-    "health": 198,
-    "damage": 35,
+    "health": 197,
+    "damage": 34,
+    "elements": [
+      "Spirit"
+    ],
     "price": 300000
   },
   {
     "id": 335,
     "name": "Dread Horror",
     "specs": "A creature that embodies all fears, striking terror.",
-    "health": 208,
-    "damage": 36,
+    "health": 200,
+    "damage": 35,
+    "elements": [
+      "Lunar"
+    ],
     "price": 300000
   },
   {
     "id": 336,
     "name": "Twilight Wyrm",
     "specs": "A dragon that thrives in the twilight, preying on shadows.",
-    "health": 203,
+    "health": 211,
     "damage": 35,
+    "elements": [
+      "Gloom"
+    ],
     "price": 300000
   },
   {
     "id": 337,
     "name": "Sorrowful Shade",
     "specs": "A spirit filled with grief, haunting the living.",
-    "health": 199,
-    "damage": 36,
+    "health": 208,
+    "damage": 34,
+    "elements": [
+      "Nebula",
+      "Silhouette"
+    ],
     "price": 300000
   },
   {
     "id": 338,
     "name": "Echoing Phantom",
     "specs": "A ghost that resonates with the cries of the lost.",
-    "health": 198,
-    "damage": 35,
+    "health": 204,
+    "damage": 34,
+    "elements": [
+      "Hurricane",
+      "Tidal"
+    ],
     "price": 300000
   },
   {
     "id": 339,
     "name": "Chilling Wraith",
     "specs": "A ghost that brings a deep, penetrating cold.",
-    "health": 205,
+    "health": 206,
     "damage": 34,
+    "elements": [
+      "Cacophony",
+      "Embers"
+    ],
     "price": 300000
   },
   {
     "id": 340,
     "name": "Creeping Horror",
     "specs": "A monster that moves silently, instilling fear.",
-    "health": 205,
+    "health": 206,
     "damage": 35,
+    "elements": [
+      "Fulgor"
+    ],
     "price": 300000
   },
   {
     "id": 341,
     "name": "Forsaken Revenant",
     "specs": "A spirit that rises from the grave seeking revenge.",
-    "health": 211,
-    "damage": 35,
+    "health": 201,
+    "damage": 36,
+    "elements": [
+      "Fate"
+    ],
     "price": 300000
   },
   {
@@ -2740,55 +3928,78 @@
     "name": "Doomed Shade",
     "specs": "A ghost marked for destruction, haunting the living.",
     "health": 210,
-    "damage": 35,
+    "damage": 36,
+    "elements": [
+      "Spirit"
+    ],
     "price": 300000
   },
   {
     "id": 343,
     "name": "Harrowing Fiend",
     "specs": "A creature that induces terror in those it haunts.",
-    "health": 203,
-    "damage": 34,
+    "health": 201,
+    "damage": 36,
+    "elements": [
+      "Hurricane",
+      "Umbral"
+    ],
     "price": 300000
   },
   {
     "id": 344,
     "name": "Mournful Wyrm",
     "specs": "A dragon that embodies grief, bringing despair.",
-    "health": 202,
+    "health": 201,
     "damage": 35,
+    "elements": [
+      "Seraph"
+    ],
     "price": 300000
   },
   {
     "id": 345,
     "name": "Eldritch Horror",
     "specs": "A creature that drives those who see it to madness.",
-    "health": 210,
-    "damage": 33,
+    "health": 209,
+    "damage": 36,
+    "elements": [
+      "Blight",
+      "Tempest"
+    ],
     "price": 300000
   },
   {
     "id": 346,
     "name": "Gloom Phantom",
     "specs": "A shadowy figure that brings darkness and despair.",
-    "health": 199,
-    "damage": 33,
+    "health": 196,
+    "damage": 34,
+    "elements": [
+      "Fury"
+    ],
     "price": 300000
   },
   {
     "id": 347,
     "name": "Twilight Shade",
     "specs": "A creature that thrives in twilight, preying on shadows.",
-    "health": 205,
-    "damage": 36,
+    "health": 211,
+    "damage": 35,
+    "elements": [
+      "Aether"
+    ],
     "price": 300000
   },
   {
     "id": 348,
     "name": "Echoing Horror",
     "specs": "A being that resonates with the fears of those nearby.",
-    "health": 209,
-    "damage": 33,
+    "health": 199,
+    "damage": 36,
+    "elements": [
+      "Crystal"
+    ],
     "price": 300000
   },
   {
@@ -2796,31 +4007,49 @@
     "name": "Cursed Wraith",
     "specs": "A ghost bound by a dark curse, seeking vengeance.",
     "health": 198,
-    "damage": 36,
+    "damage": 34,
+    "elements": [
+      "Tidal"
+    ],
     "price": 300000
   },
   {
     "id": 350,
     "name": "Dread Revenant",
     "specs": "A vengeful spirit that rises from the grave.",
-    "health": 211,
-    "damage": 38,
+    "health": 214,
+    "damage": 37,
+    "elements": [
+      "Abyss",
+      "Beast",
+      "Cavern",
+      "Emberstorm",
+      "Ether"
+    ],
     "price": 400000
   },
   {
     "id": 351,
     "name": "Wretched Shade",
     "specs": "A spirit that brings misery and despair.",
-    "health": 213,
+    "health": 217,
     "damage": 37,
+    "elements": [
+      "Fate",
+      "Zephyr"
+    ],
     "price": 400000
   },
   {
     "id": 352,
     "name": "Forsaken Wyrm",
     "specs": "A dragon abandoned by its kin, filled with rage.",
-    "health": 221,
-    "damage": 36,
+    "health": 212,
+    "damage": 38,
+    "elements": [
+      "Abyss",
+      "Solstice"
+    ],
     "price": 400000
   },
   {
@@ -2828,311 +4057,527 @@
     "name": "Sorrowful Spirit",
     "specs": "A ghost that brings sorrow to those it haunts.",
     "health": 219,
-    "damage": 36,
+    "damage": 38,
+    "elements": [
+      "Ascendancy",
+      "Fulgor",
+      "Lumina",
+      "Rapture"
+    ],
     "price": 400000
   },
   {
     "id": 354,
     "name": "Chilling Wraith",
     "specs": "A ghost that brings winter's chill wherever it goes.",
-    "health": 214,
-    "damage": 37,
+    "health": 213,
+    "damage": 39,
+    "elements": [
+      "Beast",
+      "Blight",
+      "Ether"
+    ],
     "price": 400000
   },
   {
     "id": 355,
     "name": "Vengeful Phantom",
     "specs": "A spirit seeking revenge on those who wronged it.",
-    "health": 211,
-    "damage": 38,
+    "health": 213,
+    "damage": 36,
+    "elements": [
+      "Fate",
+      "Umbral"
+    ],
     "price": 400000
   },
   {
     "id": 356,
     "name": "Twilight Demon",
     "specs": "A creature that thrives at dusk, bringing shadows.",
-    "health": 217,
-    "damage": 36,
+    "health": 213,
+    "damage": 38,
+    "elements": [
+      "Fulgent",
+      "Tidal"
+    ],
     "price": 400000
   },
   {
     "id": 357,
     "name": "Creeping Terror",
     "specs": "A monster that crawls silently, striking from the dark.",
-    "health": 216,
-    "damage": 36,
+    "health": 214,
+    "damage": 39,
+    "elements": [
+      "Beast",
+      "Embers",
+      "Fate",
+      "Tempest",
+      "Toxin"
+    ],
     "price": 400000
   },
   {
     "id": 358,
     "name": "Doomed Wyrm",
     "specs": "A dragon marked for destruction, haunting the skies.",
-    "health": 222,
-    "damage": 39,
+    "health": 215,
+    "damage": 38,
+    "elements": [
+      "Emberstorm",
+      "Fulgent",
+      "Lunar",
+      "Solaris"
+    ],
     "price": 400000
   },
   {
     "id": 359,
     "name": "Forsaken Wraith",
     "specs": "A ghost abandoned by the living, seeking vengeance.",
-    "health": 223,
-    "damage": 36,
+    "health": 225,
+    "damage": 37,
+    "elements": [
+      "Chronos",
+      "Fate",
+      "Zephyr"
+    ],
     "price": 400000
   },
   {
     "id": 360,
     "name": "Echoing Shade",
     "specs": "A ghost that resonates with the cries of the lost.",
-    "health": 219,
-    "damage": 37,
+    "health": 226,
+    "damage": 39,
+    "elements": [
+      "Aegis",
+      "Aether",
+      "Verdant"
+    ],
     "price": 400000
   },
   {
     "id": 361,
     "name": "Chilling Fiend",
     "specs": "A creature that brings a deep, penetrating cold.",
-    "health": 218,
-    "damage": 38,
+    "health": 216,
+    "damage": 39,
+    "elements": [
+      "Crystal",
+      "Magma",
+      "Rapture",
+      "Verdant"
+    ],
     "price": 400000
   },
   {
     "id": 362,
     "name": "Sorrow Demon",
     "specs": "A creature that feeds on the grief of others.",
-    "health": 214,
-    "damage": 38,
+    "health": 221,
+    "damage": 36,
+    "elements": [
+      "Abyss",
+      "Chronos",
+      "Vermilion",
+      "Vitalis",
+      "Zephyr"
+    ],
     "price": 400000
   },
   {
     "id": 363,
     "name": "Twilight Spirit",
     "specs": "A being that thrives at dusk, bringing shadows.",
-    "health": 224,
-    "damage": 37,
+    "health": 213,
+    "damage": 39,
+    "elements": [
+      "Blight",
+      "Eclipse",
+      "Fulgent",
+      "Toxin"
+    ],
     "price": 400000
   },
   {
     "id": 364,
     "name": "Wretched Revenant",
     "specs": "A spirit that brings misery to the living.",
-    "health": 225,
+    "health": 212,
     "damage": 36,
+    "elements": [
+      "Cavern",
+      "Gloom",
+      "Mystic"
+    ],
     "price": 400000
   },
   {
     "id": 365,
     "name": "Harrowing Wyrm",
     "specs": "A dragon that spreads terror wherever it flies.",
-    "health": 218,
-    "damage": 37,
+    "health": 216,
+    "damage": 38,
+    "elements": [
+      "Fury",
+      "Tempest",
+      "Toxin"
+    ],
     "price": 400000
   },
   {
     "id": 366,
     "name": "Lamenting Shade",
     "specs": "A ghost that mourns for its lost life.",
-    "health": 222,
+    "health": 219,
     "damage": 38,
+    "elements": [
+      "Embers",
+      "Silhouette",
+      "Zephyr"
+    ],
     "price": 400000
   },
   {
     "id": 367,
     "name": "Dread Beast",
     "specs": "A creature that embodies all fears.",
-    "health": 218,
-    "damage": 38,
+    "health": 224,
+    "damage": 36,
+    "elements": [
+      "Hurricane",
+      "Phantom",
+      "Solstice",
+      "Spirit"
+    ],
     "price": 400000
   },
   {
     "id": 368,
     "name": "Blighted Specter",
     "specs": "A spirit marked by decay and darkness.",
-    "health": 217,
-    "damage": 38,
+    "health": 223,
+    "damage": 37,
+    "elements": [
+      "Cavern",
+      "Mystic",
+      "Tempestuous",
+      "Tidal"
+    ],
     "price": 400000
   },
   {
     "id": 369,
     "name": "Cursed Phantom",
     "specs": "A ghost bound by a dark curse, seeking vengeance.",
-    "health": 222,
+    "health": 221,
     "damage": 36,
+    "elements": [
+      "Aegis",
+      "Chronos",
+      "Embers",
+      "Verdant"
+    ],
     "price": 400000
   },
   {
     "id": 370,
     "name": "Twilight Reaper",
     "specs": "A figure that harvests souls at dusk.",
-    "health": 225,
+    "health": 226,
     "damage": 37,
+    "elements": [
+      "Aether",
+      "Fulgent",
+      "Glacier"
+    ],
     "price": 400000
   },
   {
     "id": 371,
     "name": "Chilling Revenant",
     "specs": "A ghost that brings a cold dread to the living.",
-    "health": 212,
+    "health": 215,
     "damage": 37,
+    "elements": [
+      "Infernal",
+      "Solaris"
+    ],
     "price": 400000
   },
   {
     "id": 372,
     "name": "Forsaken Fiend",
     "specs": "A malevolent spirit cast out from its realm.",
-    "health": 226,
+    "health": 214,
     "damage": 38,
+    "elements": [
+      "Embers",
+      "Fulgor",
+      "Ironclad",
+      "Tempest"
+    ],
     "price": 400000
   },
   {
     "id": 373,
     "name": "Echoing Horror",
     "specs": "A being that resonates with the fears of those nearby.",
-    "health": 224,
+    "health": 211,
     "damage": 38,
+    "elements": [
+      "Cavern",
+      "Emberstorm",
+      "Ether",
+      "Tempest"
+    ],
     "price": 400000
   },
   {
     "id": 374,
     "name": "Sorrowful Wraith",
     "specs": "A ghost that embodies grief.",
-    "health": 213,
-    "damage": 37,
+    "health": 212,
+    "damage": 39,
+    "elements": [
+      "Emberstorm",
+      "Hurricane",
+      "Ironclad",
+      "Magma",
+      "Zephyr"
+    ],
     "price": 400000
   },
   {
     "id": 375,
     "name": "Doomed Demon",
     "specs": "A creature marked for destruction.",
-    "health": 235,
-    "damage": 41,
+    "health": 236,
+    "damage": 39,
+    "elements": [
+      "Aegis",
+      "Chronos",
+      "Crystal",
+      "Toxin"
+    ],
     "price": 500000
   },
   {
     "id": 376,
     "name": "Lurking Shade",
     "specs": "A ghost that hides in the shadows, waiting.",
-    "health": 227,
-    "damage": 40,
+    "health": 228,
+    "damage": 39,
+    "elements": [
+      "Cavern",
+      "Verdant",
+      "Vermilion"
+    ],
     "price": 500000
   },
   {
     "id": 377,
     "name": "Mournful Spirit",
     "specs": "A specter that laments its lost life.",
-    "health": 230,
-    "damage": 38,
+    "health": 236,
+    "damage": 40,
+    "elements": [
+      "Aether",
+      "Cacophony",
+      "Cavern",
+      "Fury",
+      "Vermilion"
+    ],
     "price": 500000
   },
   {
     "id": 378,
     "name": "Wretched Revenant",
     "specs": "A spirit that brings despair and sorrow.",
-    "health": 228,
-    "damage": 40,
+    "health": 241,
+    "damage": 38,
+    "elements": [
+      "Eclipse",
+      "Embers",
+      "Solstice",
+      "Umbral",
+      "Vermilion"
+    ],
     "price": 500000
   },
   {
     "id": 379,
     "name": "Blight Wyrm",
     "specs": "A dragon that spreads disease and decay.",
-    "health": 229,
-    "damage": 39,
+    "health": 226,
+    "damage": 41,
+    "elements": [
+      "Fate",
+      "Gloom",
+      "Tempest",
+      "Tidal",
+      "Umbral"
+    ],
     "price": 500000
   },
   {
     "id": 380,
     "name": "Chilling Shade",
     "specs": "A ghost that freezes the air around it.",
-    "health": 241,
-    "damage": 38,
+    "health": 232,
+    "damage": 39,
+    "elements": [
+      "Aether",
+      "Ether",
+      "Hurricane"
+    ],
     "price": 500000
   },
   {
     "id": 381,
     "name": "Cursed Beast",
     "specs": "A creature marked by a dark curse.",
-    "health": 235,
+    "health": 236,
     "damage": 41,
+    "elements": [
+      "Genesis",
+      "Glacier",
+      "Hurricane",
+      "Tidal"
+    ],
     "price": 500000
   },
   {
     "id": 382,
     "name": "Dread Phantom",
     "specs": "A ghost that brings nightmares.",
-    "health": 235,
+    "health": 236,
     "damage": 38,
+    "elements": [
+      "Cacophony",
+      "Solstice"
+    ],
     "price": 500000
   },
   {
     "id": 383,
     "name": "Eldritch Wraith",
     "specs": "A being from beyond that induces madness.",
-    "health": 230,
-    "damage": 40,
+    "health": 240,
+    "damage": 41,
+    "elements": [
+      "Cacophony",
+      "Magma",
+      "Tidal"
+    ],
     "price": 500000
   },
   {
     "id": 384,
     "name": "Twilight Demon",
     "specs": "A creature that thrives at dusk, bringing shadows.",
-    "health": 236,
-    "damage": 40,
+    "health": 234,
+    "damage": 41,
+    "elements": [
+      "Cacophony",
+      "Glacier"
+    ],
     "price": 500000
   },
   {
     "id": 385,
     "name": "Forsaken Shade",
     "specs": "A spirit abandoned by the living.",
-    "health": 228,
+    "health": 233,
     "damage": 41,
+    "elements": [
+      "Chronos",
+      "Crystal",
+      "Eclipse",
+      "Umbral",
+      "Vermilion"
+    ],
     "price": 500000
   },
   {
     "id": 386,
     "name": "Vengeful Phantom",
     "specs": "A spirit seeking revenge on those who wronged it.",
-    "health": 227,
-    "damage": 38,
+    "health": 232,
+    "damage": 39,
+    "elements": [
+      "Cavern",
+      "Crystal",
+      "Emberstorm",
+      "Spirit",
+      "Vitalis"
+    ],
     "price": 500000
   },
   {
     "id": 387,
     "name": "Chilling Wyrm",
     "specs": "An ice dragon that commands the cold.",
-    "health": 234,
-    "damage": 39,
+    "health": 235,
+    "damage": 38,
+    "elements": [
+      "Lunar",
+      "Solaris",
+      "Verdant"
+    ],
     "price": 500000
   },
   {
     "id": 388,
     "name": "Sorrowful Shade",
     "specs": "A ghost filled with grief, haunting the living.",
-    "health": 232,
-    "damage": 39,
+    "health": 234,
+    "damage": 40,
+    "elements": [
+      "Lunar",
+      "Vitalis"
+    ],
     "price": 500000
   },
   {
     "id": 389,
     "name": "Doomed Wraith",
     "specs": "A ghost marked for destruction.",
-    "health": 231,
+    "health": 237,
     "damage": 41,
+    "elements": [
+      "Aether",
+      "Phantom"
+    ],
     "price": 500000
   },
   {
     "id": 390,
     "name": "Echoing Revenant",
     "specs": "A spirit that resonates with the cries of the lost.",
-    "health": 227,
-    "damage": 39,
+    "health": 231,
+    "damage": 38,
+    "elements": [
+      "Cacophony",
+      "Ether"
+    ],
     "price": 500000
   },
   {
     "id": 391,
     "name": "Mournful Wyrm",
     "specs": "A dragon that weeps for its lost kin.",
-    "health": 229,
-    "damage": 41,
+    "health": 239,
+    "damage": 39,
+    "elements": [
+      "Abyss",
+      "Fulgor",
+      "Sable",
+      "Tidal",
+      "Vitalis"
+    ],
     "price": 500000
   },
   {
@@ -3141,142 +4586,236 @@
     "specs": "A ghost corrupted by dark magic.",
     "health": 238,
     "damage": 40,
+    "elements": [
+      "Ether",
+      "Nebula"
+    ],
     "price": 500000
   },
   {
     "id": 393,
     "name": "Harrowing Shade",
     "specs": "A ghost that induces terror in those it haunts.",
-    "health": 238,
+    "health": 228,
     "damage": 39,
+    "elements": [
+      "Hurricane",
+      "Mystic"
+    ],
     "price": 500000
   },
   {
     "id": 394,
     "name": "Forsaken Wraith",
     "specs": "A ghost abandoned by the living, filled with rage.",
-    "health": 238,
-    "damage": 40,
+    "health": 230,
+    "damage": 39,
+    "elements": [
+      "Embers",
+      "Solaris",
+      "Vermilion"
+    ],
     "price": 500000
   },
   {
     "id": 395,
     "name": "Twilight Spirit",
     "specs": "A being that thrives at dusk, bringing shadows.",
-    "health": 233,
-    "damage": 38,
+    "health": 239,
+    "damage": 39,
+    "elements": [
+      "Lumina",
+      "Phantom",
+      "Umbral"
+    ],
     "price": 500000
   },
   {
     "id": 396,
     "name": "Dread Beast",
     "specs": "A creature that embodies all fears.",
-    "health": 240,
-    "damage": 38,
+    "health": 234,
+    "damage": 40,
+    "elements": [
+      "Blight",
+      "Fate",
+      "Mystic",
+      "Phantom"
+    ],
     "price": 500000
   },
   {
     "id": 397,
     "name": "Chilling Fiend",
     "specs": "A creature that brings a deep, penetrating cold.",
-    "health": 239,
-    "damage": 40,
+    "health": 226,
+    "damage": 39,
+    "elements": [
+      "Crystal",
+      "Fulgent",
+      "Sable"
+    ],
     "price": 500000
   },
   {
     "id": 398,
     "name": "Vengeful Wyrm",
     "specs": "A dragon seeking revenge for its fallen kin.",
-    "health": 229,
-    "damage": 41,
+    "health": 235,
+    "damage": 39,
+    "elements": [
+      "Abyss",
+      "Fulgent",
+      "Ironclad",
+      "Phantom"
+    ],
     "price": 500000
   },
   {
     "id": 399,
     "name": "Creeping Terror",
     "specs": "A monster that crawls silently, striking from the dark.",
-    "health": 237,
-    "damage": 41,
+    "health": 240,
+    "damage": 39,
+    "elements": [
+      "Ether",
+      "Genesis"
+    ],
     "price": 500000
   },
   {
     "id": 400,
     "name": "Echoing Shade",
     "specs": "A ghost that resonates with the cries of the lost.",
-    "health": 256,
+    "health": 250,
     "damage": 42,
+    "elements": [
+      "Blight",
+      "Glacier",
+      "Lumina",
+      "Silhouette",
+      "Solaris"
+    ],
     "price": 600000
   },
   {
     "id": 401,
     "name": "Doomed Spirit",
     "specs": "A ghost bound to its tragic fate.",
-    "health": 245,
-    "damage": 43,
+    "health": 246,
+    "damage": 42,
+    "elements": [
+      "Crystal",
+      "Gloom",
+      "Vermilion"
+    ],
     "price": 600000
   },
   {
     "id": 402,
     "name": "Despairing Wraith",
     "specs": "A spirit that thrives on sadness.",
-    "health": 243,
+    "health": 242,
     "damage": 44,
+    "elements": [
+      "Cacophony",
+      "Verdant"
+    ],
     "price": 600000
   },
   {
     "id": 403,
     "name": "Sorrow Demon",
     "specs": "A creature that feeds on the grief of others.",
-    "health": 242,
+    "health": 254,
     "damage": 43,
+    "elements": [
+      "Aether",
+      "Embers",
+      "Ether",
+      "Spirit"
+    ],
     "price": 600000
   },
   {
     "id": 404,
     "name": "Hollow Fiend",
     "specs": "A being that leaves emptiness in its wake.",
-    "health": 251,
-    "damage": 42,
+    "health": 254,
+    "damage": 43,
+    "elements": [
+      "Aether",
+      "Genesis",
+      "Vitalis"
+    ],
     "price": 600000
   },
   {
     "id": 405,
     "name": "Mournful Phantom",
     "specs": "A spirit that laments its lost life.",
-    "health": 254,
-    "damage": 41,
+    "health": 241,
+    "damage": 42,
+    "elements": [
+      "Cinder",
+      "Eclipse",
+      "Glacier",
+      "Infernal",
+      "Zephyr"
+    ],
     "price": 600000
   },
   {
     "id": 406,
     "name": "Forsaken Shade",
     "specs": "A spirit abandoned by the living.",
-    "health": 255,
-    "damage": 42,
+    "health": 251,
+    "damage": 44,
+    "elements": [
+      "Chronos",
+      "Glacier",
+      "Vermilion"
+    ],
     "price": 600000
   },
   {
     "id": 407,
     "name": "Twilight Reaper",
     "specs": "A figure that harvests souls at dusk.",
-    "health": 247,
-    "damage": 41,
+    "health": 252,
+    "damage": 44,
+    "elements": [
+      "Ascendancy",
+      "Crystal",
+      "Ironclad",
+      "Umbral"
+    ],
     "price": 600000
   },
   {
     "id": 408,
     "name": "Grieving Shade",
     "specs": "A ghost burdened by sorrow.",
-    "health": 242,
-    "damage": 41,
+    "health": 244,
+    "damage": 44,
+    "elements": [
+      "Phantom",
+      "Toxin",
+      "Umbral"
+    ],
     "price": 600000
   },
   {
     "id": 409,
     "name": "Chilling Wraith",
     "specs": "A ghost that brings winter's chill.",
-    "health": 254,
-    "damage": 41,
+    "health": 251,
+    "damage": 43,
+    "elements": [
+      "Abyss",
+      "Fate",
+      "Rapture"
+    ],
     "price": 600000
   },
   {
@@ -3285,358 +4824,660 @@
     "specs": "A spirit marked for destruction.",
     "health": 243,
     "damage": 43,
+    "elements": [
+      "Eclipse",
+      "Fulgor",
+      "Tempestuous",
+      "Vermilion",
+      "Vitalis"
+    ],
     "price": 600000
   },
   {
     "id": 411,
     "name": "Echoing Horror",
     "specs": "A being that resonates with the fears of those nearby.",
-    "health": 253,
-    "damage": 42,
+    "health": 256,
+    "damage": 43,
+    "elements": [
+      "Blight",
+      "Cavern",
+      "Infernal",
+      "Lunar",
+      "Mystic"
+    ],
     "price": 600000
   },
   {
     "id": 412,
     "name": "Twilight Demon",
     "specs": "A creature that thrives at dusk, bringing shadows.",
-    "health": 256,
-    "damage": 44,
+    "health": 241,
+    "damage": 43,
+    "elements": [
+      "Infernal",
+      "Lumina",
+      "Lunar"
+    ],
     "price": 600000
   },
   {
     "id": 413,
     "name": "Wretched Wraith",
     "specs": "A ghost that brings misery and despair.",
-    "health": 242,
-    "damage": 42,
+    "health": 250,
+    "damage": 41,
+    "elements": [
+      "Beast",
+      "Magma",
+      "Silhouette",
+      "Vermilion"
+    ],
     "price": 600000
   },
   {
     "id": 414,
     "name": "Forsaken Fiend",
     "specs": "A malevolent spirit cast out from its realm.",
-    "health": 252,
-    "damage": 42,
+    "health": 250,
+    "damage": 43,
+    "elements": [
+      "Aether",
+      "Beast",
+      "Cavern",
+      "Ironclad",
+      "Phantom"
+    ],
     "price": 600000
   },
   {
     "id": 415,
     "name": "Cursed Revenant",
     "specs": "A spirit bound by a dark curse.",
-    "health": 248,
-    "damage": 41,
+    "health": 255,
+    "damage": 42,
+    "elements": [
+      "Emberstorm",
+      "Ether",
+      "Zephyr"
+    ],
     "price": 600000
   },
   {
     "id": 416,
     "name": "Mournful Wyrm",
     "specs": "A dragon that weeps for its lost kin.",
-    "health": 256,
-    "damage": 44,
+    "health": 250,
+    "damage": 41,
+    "elements": [
+      "Emberstorm",
+      "Ether",
+      "Gloom",
+      "Mystic",
+      "Vitalis"
+    ],
     "price": 600000
   },
   {
     "id": 417,
     "name": "Harrowing Shade",
     "specs": "A ghost that induces terror in those it haunts.",
-    "health": 248,
+    "health": 252,
     "damage": 43,
+    "elements": [
+      "Aether",
+      "Crystal",
+      "Fate",
+      "Nebula",
+      "Umbral"
+    ],
     "price": 600000
   },
   {
     "id": 418,
     "name": "Chilling Phantom",
     "specs": "A ghost that freezes the air around it.",
-    "health": 245,
+    "health": 241,
     "damage": 42,
+    "elements": [
+      "Gloom",
+      "Magma",
+      "Toxin"
+    ],
     "price": 600000
   },
   {
     "id": 419,
     "name": "Sorrowful Spirit",
     "specs": "A ghost that brings sorrow to those it haunts.",
-    "health": 241,
+    "health": 242,
     "damage": 41,
+    "elements": [
+      "Ascendancy",
+      "Fury",
+      "Sable"
+    ],
     "price": 600000
   },
   {
     "id": 420,
     "name": "Echoing Shade",
     "specs": "A ghost that resonates with the cries of the lost.",
-    "health": 253,
-    "damage": 42,
+    "health": 243,
+    "damage": 43,
+    "elements": [
+      "Cinder",
+      "Mystic"
+    ],
     "price": 600000
   },
   {
     "id": 421,
     "name": "Doomed Wraith",
     "specs": "A ghost marked for destruction.",
-    "health": 254,
-    "damage": 41,
+    "health": 256,
+    "damage": 42,
+    "elements": [
+      "Cacophony",
+      "Glacier",
+      "Rapture",
+      "Solstice",
+      "Tempestuous"
+    ],
     "price": 600000
   },
   {
     "id": 422,
     "name": "Twilight Wyrm",
     "specs": "A dragon that thrives in twilight, preying on shadows.",
-    "health": 252,
-    "damage": 42,
+    "health": 256,
+    "damage": 43,
+    "elements": [
+      "Beast",
+      "Tempestuous"
+    ],
     "price": 600000
   },
   {
     "id": 423,
     "name": "Creeping Horror",
     "specs": "A monster that moves silently, instilling fear.",
-    "health": 251,
-    "damage": 41,
+    "health": 246,
+    "damage": 42,
+    "elements": [
+      "Fulgor",
+      "Phantom",
+      "Solaris"
+    ],
     "price": 600000
   },
   {
     "id": 424,
     "name": "Forsaken Demon",
     "specs": "A malevolent spirit cast out from its realm.",
-    "health": 248,
-    "damage": 43,
+    "health": 247,
+    "damage": 41,
+    "elements": [
+      "Fulgent",
+      "Spirit",
+      "Tidal",
+      "Toxin"
+    ],
     "price": 600000
   },
   {
     "id": 425,
     "name": "Vengeful Shade",
     "specs": "A spirit seeking revenge on those who wronged it.",
-    "health": 261,
+    "health": 269,
     "damage": 46,
+    "elements": [
+      "Aegis",
+      "Ethereal",
+      "Genesis",
+      "Shadow"
+    ],
     "price": 700000
   },
   {
     "id": 426,
     "name": "Wretched Shade",
     "specs": "A spirit that brings misery and despair.",
-    "health": 270,
+    "health": 271,
     "damage": 44,
+    "elements": [
+      "Celestial",
+      "Eclipse",
+      "Emberstorm",
+      "Fulgor",
+      "Sorrow",
+      "Spirit"
+    ],
     "price": 700000
   },
   {
     "id": 427,
     "name": "Despairing Dread",
     "specs": "A creature that thrives on the sorrow of others.",
-    "health": 265,
-    "damage": 45,
+    "health": 271,
+    "damage": 43,
+    "elements": [
+      "Aegis",
+      "Ether",
+      "Shadow",
+      "Spirit",
+      "Zephyr"
+    ],
     "price": 700000
   },
   {
     "id": 428,
     "name": "Chilling Wyrm",
     "specs": "An ice dragon that commands the cold.",
-    "health": 270,
-    "damage": 43,
+    "health": 271,
+    "damage": 46,
+    "elements": [
+      "Ascendancy",
+      "Magma",
+      "Spectral"
+    ],
     "price": 700000
   },
   {
     "id": 429,
     "name": "Mournful Shade",
     "specs": "A ghost filled with grief, haunting the living.",
-    "health": 259,
-    "damage": 43,
+    "health": 271,
+    "damage": 44,
+    "elements": [
+      "Ascendancy",
+      "Echo",
+      "Genesis",
+      "Tempestuous"
+    ],
     "price": 700000
   },
   {
     "id": 430,
     "name": "Echoing Phantom",
     "specs": "A ghost that resonates with the cries of the lost.",
-    "health": 268,
-    "damage": 46,
+    "health": 264,
+    "damage": 44,
+    "elements": [
+      "Fury",
+      "Glacier",
+      "Solaris"
+    ],
     "price": 700000
   },
   {
     "id": 431,
     "name": "Doomed Spirit",
     "specs": "A ghost bound to its tragic fate.",
-    "health": 270,
-    "damage": 45,
+    "health": 256,
+    "damage": 44,
+    "elements": [
+      "Crystal",
+      "Fate",
+      "Fury",
+      "Shadow"
+    ],
     "price": 700000
   },
   {
     "id": 432,
     "name": "Lamenting Wraith",
     "specs": "A spirit that mourns for its lost life.",
-    "health": 259,
+    "health": 270,
     "damage": 44,
+    "elements": [
+      "Ascendancy",
+      "Ether",
+      "Genesis",
+      "Infernal",
+      "Ironclad",
+      "Obsidian",
+      "Phoenix",
+      "Solaris"
+    ],
     "price": 700000
   },
   {
     "id": 433,
     "name": "Harrowing Wyrm",
     "specs": "A dragon that spreads terror wherever it flies.",
-    "health": 268,
-    "damage": 43,
+    "health": 271,
+    "damage": 44,
+    "elements": [
+      "Beast",
+      "Crystal",
+      "Genesis",
+      "Nebula",
+      "Phoenix",
+      "Plague",
+      "Solaris",
+      "Spirit"
+    ],
     "price": 700000
   },
   {
     "id": 434,
     "name": "Forsaken Revenant",
     "specs": "A spirit that rises from the grave seeking revenge.",
-    "health": 258,
+    "health": 267,
     "damage": 44,
+    "elements": [
+      "Cavern",
+      "Eclipse",
+      "Fate",
+      "Genesis"
+    ],
     "price": 700000
   },
   {
     "id": 435,
     "name": "Twilight Spirit",
     "specs": "A being that thrives at dusk, bringing shadows.",
-    "health": 266,
-    "damage": 43,
+    "health": 264,
+    "damage": 45,
+    "elements": [
+      "Celestial",
+      "Genesis",
+      "Glacier",
+      "Infernal",
+      "Shadow",
+      "Spirit"
+    ],
     "price": 700000
   },
   {
     "id": 436,
     "name": "Dread Phantom",
     "specs": "A ghost that brings nightmares.",
-    "health": 258,
+    "health": 270,
     "damage": 45,
+    "elements": [
+      "Frostbite",
+      "Nebula",
+      "Spectral"
+    ],
     "price": 700000
   },
   {
     "id": 437,
     "name": "Blighted Shade",
     "specs": "A ghost corrupted by dark magic.",
-    "health": 267,
-    "damage": 45,
+    "health": 257,
+    "damage": 43,
+    "elements": [
+      "Ethereal",
+      "Fate",
+      "Fulgor",
+      "Infernal",
+      "Ironclad",
+      "Rapture",
+      "Zephyr"
+    ],
     "price": 700000
   },
   {
     "id": 438,
     "name": "Cursed Wraith",
     "specs": "A ghost bound by a dark curse.",
-    "health": 267,
+    "health": 257,
     "damage": 45,
+    "elements": [
+      "Emberstorm",
+      "Phoenix",
+      "Solaris"
+    ],
     "price": 700000
   },
   {
     "id": 439,
     "name": "Sorrow Demon",
     "specs": "A creature that feeds on the grief of others.",
-    "health": 270,
-    "damage": 46,
+    "health": 266,
+    "damage": 45,
+    "elements": [
+      "Fey",
+      "Frostbite",
+      "Infernal",
+      "Sorrow",
+      "Spectral"
+    ],
     "price": 700000
   },
   {
     "id": 440,
     "name": "Chilling Fiend",
     "specs": "A creature that brings a deep, penetrating cold.",
-    "health": 264,
+    "health": 259,
     "damage": 45,
+    "elements": [
+      "Ascendancy",
+      "Beast",
+      "Frostbite",
+      "Genesis",
+      "Spectral",
+      "Verdant"
+    ],
     "price": 700000
   },
   {
     "id": 441,
     "name": "Mournful Phantom",
     "specs": "A spirit that laments its lost life.",
-    "health": 268,
-    "damage": 44,
+    "health": 261,
+    "damage": 46,
+    "elements": [
+      "Fury",
+      "Glacier",
+      "Magma",
+      "Mystic"
+    ],
     "price": 700000
   },
   {
     "id": 442,
     "name": "Forsaken Shade",
     "specs": "A spirit abandoned by the living.",
-    "health": 269,
-    "damage": 45,
+    "health": 258,
+    "damage": 44,
+    "elements": [
+      "Cavern",
+      "Fate",
+      "Fury",
+      "Glacier",
+      "Nightfall",
+      "Obsidian",
+      "Rapture"
+    ],
     "price": 700000
   },
   {
     "id": 443,
     "name": "Twilight Reaper",
     "specs": "A figure that harvests souls at dusk.",
-    "health": 270,
-    "damage": 45,
+    "health": 259,
+    "damage": 44,
+    "elements": [
+      "Chronos",
+      "Echo",
+      "Fey",
+      "Fury",
+      "Obsidian",
+      "Plague",
+      "Rapture"
+    ],
     "price": 700000
   },
   {
     "id": 444,
     "name": "Grieving Shade",
     "specs": "A ghost burdened by sorrow.",
-    "health": 265,
+    "health": 256,
     "damage": 44,
+    "elements": [
+      "Cavern",
+      "Fate",
+      "Fury",
+      "Magma",
+      "Nightfall",
+      "Plague",
+      "Vermilion"
+    ],
     "price": 700000
   },
   {
     "id": 445,
     "name": "Chilling Wraith",
     "specs": "A ghost that brings winter's chill.",
-    "health": 267,
-    "damage": 44,
+    "health": 269,
+    "damage": 45,
+    "elements": [
+      "Frostbite",
+      "Genesis",
+      "Phantom",
+      "Rapture"
+    ],
     "price": 700000
   },
   {
     "id": 446,
     "name": "Doom Revenant",
     "specs": "A spirit marked for destruction.",
-    "health": 267,
+    "health": 260,
     "damage": 44,
+    "elements": [
+      "Fury",
+      "Spectral",
+      "Tempestuous"
+    ],
     "price": 700000
   },
   {
     "id": 447,
     "name": "Echoing Horror",
     "specs": "A being that resonates with the fears of those nearby.",
-    "health": 264,
-    "damage": 45,
+    "health": 256,
+    "damage": 46,
+    "elements": [
+      "Aegis",
+      "Celestial",
+      "Crystal",
+      "Fury",
+      "Rapture",
+      "Spectral"
+    ],
     "price": 700000
   },
   {
     "id": 448,
     "name": "Twilight Demon",
     "specs": "A creature that thrives at dusk, bringing shadows.",
-    "health": 265,
-    "damage": 44,
+    "health": 257,
+    "damage": 45,
+    "elements": [
+      "Chronos",
+      "Echo",
+      "Plague",
+      "Shadow"
+    ],
     "price": 700000
   },
   {
     "id": 449,
     "name": "Wretched Wraith",
     "specs": "A ghost that brings misery and despair.",
-    "health": 262,
-    "damage": 45,
+    "health": 258,
+    "damage": 44,
+    "elements": [
+      "Celestial",
+      "Emberstorm",
+      "Ether",
+      "Ethereal",
+      "Nebula",
+      "Spectral"
+    ],
     "price": 700000
   },
   {
     "id": 450,
     "name": "Forsaken Fiend",
     "specs": "A malevolent spirit cast out from its realm.",
-    "health": 275,
-    "damage": 47,
+    "health": 284,
+    "damage": 46,
+    "elements": [
+      "Fate",
+      "Magma",
+      "Spectral",
+      "Zephyr"
+    ],
     "price": 800000
   },
   {
     "id": 451,
     "name": "Cursed Revenant",
     "specs": "A spirit bound by a dark curse.",
-    "health": 284,
-    "damage": 47,
+    "health": 283,
+    "damage": 48,
+    "elements": [
+      "Celestial",
+      "Ironclad",
+      "Magma",
+      "Nightfall",
+      "Obsidian"
+    ],
     "price": 800000
   },
   {
     "id": 452,
     "name": "Mournful Wyrm",
     "specs": "A dragon that weeps for its lost kin.",
-    "health": 284,
-    "damage": 46,
+    "health": 275,
+    "damage": 48,
+    "elements": [
+      "Aegis",
+      "Celestial",
+      "Fulgor",
+      "Phantom",
+      "Tempestuous",
+      "Verdant"
+    ],
     "price": 800000
   },
   {
     "id": 453,
     "name": "Harrowing Shade",
     "specs": "A ghost that induces terror in those it haunts.",
-    "health": 284,
-    "damage": 49,
+    "health": 275,
+    "damage": 46,
+    "elements": [
+      "Ascendancy",
+      "Chronos",
+      "Plague",
+      "Sorrow",
+      "Spectral",
+      "Tempestuous"
+    ],
     "price": 800000
   },
   {
     "id": 454,
     "name": "Chilling Phantom",
     "specs": "A ghost that freezes the air around it.",
-    "health": 271,
-    "damage": 47,
+    "health": 272,
+    "damage": 48,
+    "elements": [
+      "Celestial",
+      "Ether",
+      "Ethereal",
+      "Fate",
+      "Obsidian",
+      "Shadow",
+      "Spirit"
+    ],
     "price": 800000
   },
   {
@@ -3644,359 +5485,755 @@
     "name": "Sorrowful Spirit",
     "specs": "A ghost that brings sorrow to those it haunts.",
     "health": 284,
-    "damage": 48,
+    "damage": 47,
+    "elements": [
+      "Crystal",
+      "Frostbite",
+      "Plague",
+      "Tempestuous"
+    ],
     "price": 800000
   },
   {
     "id": 456,
     "name": "Echoing Shade",
     "specs": "A ghost that resonates with the cries of the lost.",
-    "health": 272,
-    "damage": 46,
+    "health": 283,
+    "damage": 48,
+    "elements": [
+      "Cavern",
+      "Infernal",
+      "Phantom",
+      "Shadow",
+      "Spectral",
+      "Tempestuous"
+    ],
     "price": 800000
   },
   {
     "id": 457,
     "name": "Doomed Wraith",
     "specs": "A ghost marked for destruction.",
-    "health": 280,
-    "damage": 46,
+    "health": 272,
+    "damage": 48,
+    "elements": [
+      "Ascendancy",
+      "Phantom",
+      "Rapture"
+    ],
     "price": 800000
   },
   {
     "id": 458,
     "name": "Twilight Wyrm",
     "specs": "A dragon that thrives in twilight, preying on shadows.",
-    "health": 285,
+    "health": 279,
     "damage": 46,
+    "elements": [
+      "Aegis",
+      "Ethereal",
+      "Glacier",
+      "Infernal",
+      "Nightfall",
+      "Phantom",
+      "Zephyr"
+    ],
     "price": 800000
   },
   {
     "id": 459,
     "name": "Creeping Horror",
     "specs": "A monster that moves silently, instilling fear.",
-    "health": 276,
-    "damage": 49,
+    "health": 285,
+    "damage": 47,
+    "elements": [
+      "Aegis",
+      "Echo",
+      "Eclipse",
+      "Emberstorm",
+      "Glacier",
+      "Ironclad",
+      "Spectral",
+      "Spirit"
+    ],
     "price": 800000
   },
   {
     "id": 460,
     "name": "Forsaken Demon",
     "specs": "A malevolent spirit cast out from its realm.",
-    "health": 272,
-    "damage": 48,
+    "health": 271,
+    "damage": 47,
+    "elements": [
+      "Aegis",
+      "Celestial",
+      "Eclipse",
+      "Magma",
+      "Solaris",
+      "Spectral",
+      "Vermilion"
+    ],
     "price": 800000
   },
   {
     "id": 461,
     "name": "Vengeful Shade",
     "specs": "A spirit seeking revenge on those who wronged it.",
-    "health": 281,
-    "damage": 47,
+    "health": 283,
+    "damage": 49,
+    "elements": [
+      "Crystal",
+      "Fey",
+      "Frostbite",
+      "Ironclad",
+      "Rapture"
+    ],
     "price": 800000
   },
   {
     "id": 462,
     "name": "Wretched Shade",
     "specs": "A spirit that brings misery and despair.",
-    "health": 276,
-    "damage": 48,
+    "health": 281,
+    "damage": 46,
+    "elements": [
+      "Beast",
+      "Crystal",
+      "Echo",
+      "Frostbite",
+      "Glacier",
+      "Solaris"
+    ],
     "price": 800000
   },
   {
     "id": 463,
     "name": "Despairing Dread",
     "specs": "A creature that thrives on the sorrow of others.",
-    "health": 276,
-    "damage": 46,
+    "health": 272,
+    "damage": 47,
+    "elements": [
+      "Ascendancy",
+      "Frostbite",
+      "Fury",
+      "Plague",
+      "Solaris",
+      "Sorrow",
+      "Vermilion"
+    ],
     "price": 800000
   },
   {
     "id": 464,
     "name": "Chilling Wyrm",
     "specs": "An ice dragon that commands the cold.",
-    "health": 276,
-    "damage": 47,
+    "health": 278,
+    "damage": 46,
+    "elements": [
+      "Ascendancy",
+      "Chronos",
+      "Echo",
+      "Fulgor",
+      "Plague",
+      "Spirit",
+      "Tempestuous",
+      "Verdant"
+    ],
     "price": 800000
   },
   {
     "id": 465,
     "name": "Mournful Shade",
     "specs": "A ghost filled with grief, haunting the living.",
-    "health": 275,
+    "health": 271,
     "damage": 47,
+    "elements": [
+      "Fulgor",
+      "Glacier",
+      "Verdant"
+    ],
     "price": 800000
   },
   {
     "id": 466,
     "name": "Echoing Phantom",
     "specs": "A ghost that resonates with the cries of the lost.",
-    "health": 275,
-    "damage": 48,
+    "health": 283,
+    "damage": 46,
+    "elements": [
+      "Ascendancy",
+      "Ether",
+      "Fate",
+      "Infernal",
+      "Plague",
+      "Tempestuous",
+      "Vermilion"
+    ],
     "price": 800000
   },
   {
     "id": 467,
     "name": "Doomed Spirit",
     "specs": "A ghost bound to its tragic fate.",
-    "health": 276,
-    "damage": 46,
+    "health": 272,
+    "damage": 47,
+    "elements": [
+      "Chronos",
+      "Ironclad",
+      "Obsidian"
+    ],
     "price": 800000
   },
   {
     "id": 468,
     "name": "Lamenting Wraith",
     "specs": "A spirit that mourns for its lost life.",
-    "health": 276,
-    "damage": 46,
+    "health": 285,
+    "damage": 47,
+    "elements": [
+      "Celestial",
+      "Eclipse",
+      "Fey",
+      "Phoenix",
+      "Spirit",
+      "Verdant",
+      "Vermilion"
+    ],
     "price": 800000
   },
   {
     "id": 469,
     "name": "Harrowing Wyrm",
     "specs": "A dragon that spreads terror wherever it flies.",
-    "health": 277,
-    "damage": 48,
+    "health": 273,
+    "damage": 46,
+    "elements": [
+      "Eclipse",
+      "Ironclad",
+      "Mystic",
+      "Nebula"
+    ],
     "price": 800000
   },
   {
     "id": 470,
     "name": "Forsaken Revenant",
     "specs": "A spirit that rises from the grave seeking revenge.",
-    "health": 273,
+    "health": 278,
     "damage": 47,
+    "elements": [
+      "Chronos",
+      "Eclipse",
+      "Emberstorm",
+      "Mystic",
+      "Obsidian"
+    ],
     "price": 800000
   },
   {
     "id": 471,
     "name": "Twilight Spirit",
     "specs": "A being that thrives at dusk, bringing shadows.",
-    "health": 280,
-    "damage": 46,
+    "health": 282,
+    "damage": 48,
+    "elements": [
+      "Celestial",
+      "Ethereal",
+      "Fate",
+      "Nebula"
+    ],
     "price": 800000
   },
   {
     "id": 472,
     "name": "Dread Phantom",
     "specs": "A ghost that brings nightmares.",
-    "health": 284,
-    "damage": 48,
+    "health": 279,
+    "damage": 47,
+    "elements": [
+      "Emberstorm",
+      "Genesis",
+      "Infernal",
+      "Sorrow",
+      "Spirit",
+      "Vermilion"
+    ],
     "price": 800000
   },
   {
     "id": 473,
     "name": "Blighted Shade",
     "specs": "A ghost corrupted by dark magic.",
-    "health": 285,
-    "damage": 47,
+    "health": 275,
+    "damage": 46,
+    "elements": [
+      "Ascendancy",
+      "Ether",
+      "Fury",
+      "Ironclad",
+      "Phantom"
+    ],
     "price": 800000
   },
   {
     "id": 474,
     "name": "Cursed Wraith",
     "specs": "A ghost bound by a dark curse.",
-    "health": 272,
+    "health": 271,
     "damage": 46,
+    "elements": [
+      "Aegis",
+      "Cavern",
+      "Fey",
+      "Verdant"
+    ],
     "price": 800000
   },
   {
     "id": 475,
     "name": "Sorrow Demon",
     "specs": "A creature that feeds on the grief of others.",
-    "health": 297,
-    "damage": 51,
+    "health": 299,
+    "damage": 49,
+    "elements": [
+      "Aegis",
+      "Beast",
+      "Echo",
+      "Glacier",
+      "Hallowed",
+      "Infernal",
+      "Ironclad",
+      "Shadow",
+      "Vigilance"
+    ],
     "price": 900000
   },
   {
     "id": 476,
     "name": "Chilling Fiend",
     "specs": "A creature that brings a deep, penetrating cold.",
-    "health": 286,
-    "damage": 51,
+    "health": 294,
+    "damage": 49,
+    "elements": [
+      "Cavern",
+      "Celestial",
+      "Ether",
+      "Frostbite",
+      "Glacier",
+      "Obsidian"
+    ],
     "price": 900000
   },
   {
     "id": 477,
     "name": "Mournful Phantom",
     "specs": "A spirit that laments its lost life.",
-    "health": 300,
-    "damage": 51,
+    "health": 289,
+    "damage": 49,
+    "elements": [
+      "Frostbite",
+      "Glacier",
+      "Ironclad",
+      "Shadow",
+      "Spectral"
+    ],
     "price": 900000
   },
   {
     "id": 478,
     "name": "Forsaken Shade",
     "specs": "A spirit abandoned by the living.",
-    "health": 297,
+    "health": 295,
     "damage": 49,
+    "elements": [
+      "Ethereal",
+      "Frostbite",
+      "Obsidian",
+      "Plague",
+      "Radiant",
+      "Shadow",
+      "Sorrow",
+      "Spectral",
+      "Zephyr"
+    ],
     "price": 900000
   },
   {
     "id": 479,
     "name": "Twilight Reaper",
     "specs": "A figure that harvests souls at dusk.",
-    "health": 292,
-    "damage": 50,
+    "health": 293,
+    "damage": 49,
+    "elements": [
+      "Ether",
+      "Fey",
+      "Glacier",
+      "Obsidian",
+      "Phoenix",
+      "Sorrow",
+      "Spectral",
+      "Vigilance"
+    ],
     "price": 900000
   },
   {
     "id": 480,
     "name": "Grieving Shade",
     "specs": "A ghost burdened by sorrow.",
-    "health": 291,
+    "health": 292,
     "damage": 51,
+    "elements": [
+      "Aegis",
+      "Ascendancy",
+      "Echo",
+      "Ember",
+      "Frostbite",
+      "Obsidian",
+      "Plague",
+      "Spectral",
+      "Zephyr"
+    ],
     "price": 900000
   },
   {
     "id": 481,
     "name": "Chilling Wraith",
     "specs": "A ghost that brings winter's chill.",
-    "health": 286,
-    "damage": 49,
+    "health": 297,
+    "damage": 50,
+    "elements": [
+      "Aegis",
+      "Ascendancy",
+      "Beast",
+      "Eclipse",
+      "Ember",
+      "Infernal",
+      "Phoenix",
+      "Radiant",
+      "Shroud",
+      "Sorrow",
+      "Vigilance"
+    ],
     "price": 900000
   },
   {
     "id": 482,
     "name": "Doom Revenant",
     "specs": "A spirit marked for destruction.",
-    "health": 295,
+    "health": 286,
     "damage": 49,
+    "elements": [
+      "Ascendancy",
+      "Beast",
+      "Cavern",
+      "Celestial",
+      "Ember",
+      "Ether",
+      "Ironclad",
+      "Magma",
+      "Shroud",
+      "Sorrow",
+      "Vigilance"
+    ],
     "price": 900000
   },
   {
     "id": 483,
     "name": "Echoing Horror",
     "specs": "A being that resonates with the fears of those nearby.",
-    "health": 289,
-    "damage": 51,
+    "health": 300,
+    "damage": 50,
+    "elements": [
+      "Aegis",
+      "Celestial",
+      "Eclipse",
+      "Ember",
+      "Frostbite",
+      "Magma",
+      "Shadow",
+      "Shroud",
+      "Sorrow"
+    ],
     "price": 900000
   },
   {
     "id": 484,
     "name": "Twilight Demon",
     "specs": "A creature that thrives at dusk, bringing shadows.",
-    "health": 295,
+    "health": 288,
     "damage": 49,
+    "elements": [
+      "Ascendancy",
+      "Echo",
+      "Ether",
+      "Hallowed",
+      "Spectral",
+      "Zephyr"
+    ],
     "price": 900000
   },
   {
     "id": 485,
     "name": "Wretched Wraith",
     "specs": "A ghost that brings misery and despair.",
-    "health": 301,
+    "health": 286,
     "damage": 49,
+    "elements": [
+      "Beast",
+      "Cavern",
+      "Ember",
+      "Ether",
+      "Fey",
+      "Hallowed",
+      "Infernal",
+      "Ironclad",
+      "Radiant",
+      "Shroud",
+      "Zephyr"
+    ],
     "price": 900000
   },
   {
     "id": 486,
     "name": "Forsaken Fiend",
     "specs": "A malevolent spirit cast out from its realm.",
-    "health": 295,
-    "damage": 49,
+    "health": 290,
+    "damage": 48,
+    "elements": [
+      "Emberstorm",
+      "Fey",
+      "Phoenix",
+      "Plague",
+      "Radiant",
+      "Shadow",
+      "Shroud",
+      "Vigilance"
+    ],
     "price": 900000
   },
   {
     "id": 487,
     "name": "Cursed Revenant",
     "specs": "A spirit bound by a dark curse.",
-    "health": 297,
+    "health": 301,
     "damage": 51,
+    "elements": [
+      "Aegis",
+      "Ascendancy",
+      "Celestial",
+      "Echo",
+      "Emberstorm",
+      "Magma",
+      "Plague"
+    ],
     "price": 900000
   },
   {
     "id": 488,
     "name": "Mournful Wyrm",
     "specs": "A dragon that weeps for its lost kin.",
-    "health": 298,
-    "damage": 51,
+    "health": 293,
+    "damage": 49,
+    "elements": [
+      "Celestial",
+      "Fey",
+      "Infernal",
+      "Ironclad",
+      "Sorrow",
+      "Spectral"
+    ],
     "price": 900000
   },
   {
     "id": 489,
     "name": "Harrowing Shade",
     "specs": "A ghost that induces terror in those it haunts.",
-    "health": 300,
-    "damage": 51,
+    "health": 301,
+    "damage": 49,
+    "elements": [
+      "Aegis",
+      "Ascendancy",
+      "Celestial",
+      "Emberstorm",
+      "Magma",
+      "Phoenix",
+      "Plague",
+      "Radiant",
+      "Shadow",
+      "Shroud",
+      "Vigilance"
+    ],
     "price": 900000
   },
   {
     "id": 490,
     "name": "Chilling Phantom",
     "specs": "A ghost that freezes the air around it.",
-    "health": 299,
-    "damage": 48,
+    "health": 287,
+    "damage": 51,
+    "elements": [
+      "Echo",
+      "Eclipse",
+      "Emberstorm",
+      "Ether",
+      "Frostbite",
+      "Ironclad",
+      "Radiant",
+      "Shroud",
+      "Spectral",
+      "Vigilance"
+    ],
     "price": 900000
   },
   {
     "id": 491,
     "name": "Sorrowful Spirit",
     "specs": "A ghost that brings sorrow to those it haunts.",
-    "health": 301,
-    "damage": 48,
+    "health": 300,
+    "damage": 50,
+    "elements": [
+      "Glacier",
+      "Obsidian",
+      "Radiant",
+      "Vigilance"
+    ],
     "price": 900000
   },
   {
     "id": 492,
     "name": "Echoing Shade",
     "specs": "A ghost that resonates with the cries of the lost.",
-    "health": 296,
-    "damage": 48,
+    "health": 299,
+    "damage": 49,
+    "elements": [
+      "Celestial",
+      "Emberstorm",
+      "Obsidian",
+      "Shadow"
+    ],
     "price": 900000
   },
   {
     "id": 493,
     "name": "Doomed Wraith",
     "specs": "A ghost marked for destruction.",
-    "health": 288,
-    "damage": 49,
+    "health": 294,
+    "damage": 50,
+    "elements": [
+      "Ascendancy",
+      "Echo",
+      "Eclipse",
+      "Ember",
+      "Ethereal",
+      "Hallowed",
+      "Obsidian",
+      "Phoenix",
+      "Shadow",
+      "Shroud",
+      "Sorrow"
+    ],
     "price": 900000
   },
   {
     "id": 494,
     "name": "Twilight Wyrm",
     "specs": "A dragon that thrives in twilight, preying on shadows.",
-    "health": 299,
-    "damage": 50,
+    "health": 293,
+    "damage": 49,
+    "elements": [
+      "Celestial",
+      "Frostbite",
+      "Glacier",
+      "Hallowed",
+      "Infernal",
+      "Magma",
+      "Plague",
+      "Zephyr"
+    ],
     "price": 900000
   },
   {
     "id": 495,
     "name": "Creeping Horror",
     "specs": "A monster that moves silently, instilling fear.",
-    "health": 286,
-    "damage": 48,
+    "health": 300,
+    "damage": 51,
+    "elements": [
+      "Aegis",
+      "Ascendancy",
+      "Celestial",
+      "Fey",
+      "Glacier",
+      "Infernal",
+      "Ironclad",
+      "Magma",
+      "Nightfall"
+    ],
     "price": 900000
   },
   {
     "id": 496,
     "name": "Forsaken Demon",
     "specs": "A malevolent spirit cast out from its realm.",
-    "health": 294,
+    "health": 289,
     "damage": 50,
+    "elements": [
+      "Ironclad",
+      "Radiant",
+      "Shadow",
+      "Vigilance",
+      "Zephyr"
+    ],
     "price": 900000
   },
   {
     "id": 497,
     "name": "Vengeful Shade",
     "specs": "A spirit seeking revenge on those who wronged it.",
-    "health": 292,
-    "damage": 49,
+    "health": 290,
+    "damage": 50,
+    "elements": [
+      "Eclipse",
+      "Ethereal",
+      "Hallowed",
+      "Magma",
+      "Plague",
+      "Shroud",
+      "Spectral"
+    ],
     "price": 900000
   },
   {
     "id": 498,
     "name": "Wretched Shade",
     "specs": "A spirit that brings misery and despair.",
-    "health": 301,
-    "damage": 50,
+    "health": 292,
+    "damage": 51,
+    "elements": [
+      "Ascendancy",
+      "Cavern",
+      "Glacier",
+      "Zephyr"
+    ],
     "price": 900000
   },
   {
     "id": 499,
     "name": "Despairing Dread",
     "specs": "A creature that thrives on the sorrow of others.",
-    "health": 292,
+    "health": 293,
     "damage": 49,
+    "elements": [
+      "Cavern",
+      "Celestial",
+      "Echo",
+      "Eclipse",
+      "Ember",
+      "Hallowed",
+      "Phoenix",
+      "Shadow",
+      "Shroud"
+    ],
     "price": 900000
   }
 ]

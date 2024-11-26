@@ -41,36 +41,40 @@ const endpoints = [
 init();
 
 function init() {
-  // readJSON("./json/monsters.json", (err, data) => {
-  //   if (err) {
-  //     console.log("Error", err);
-  //   } else {
-  //     monsters = data;
-  //     prepareFight(monsters);
-  //   }
-  // });
-  // readJSON("./json/elements.json", (err, data) => {
-  //   if (err) {
-  //     console.log("Error", err);
-  //   } else {
-  //     elements = data;
-  //   }
-  // });
+  readJSON("./monsters/monsters.json", (err, data) => {
+    if (err) {
+      console.log("Error", err);
+    } else {
+      monsters = data;
+      prepareFight(monsters);
+    }
+  });
+  readJSON("./json/elements.json", (err, data) => {
+    if (err) {
+      console.log("Error", err);
+    } else {
+      elements = data;
+    }
+  });
   readJSON("./monsters/nameSpecsID.json", (err, data) => {
     if (err) {
       console.log("Error", err);
     } else {
       const loadedMonsters = data;
-      const monstersWithHealhAndDamage = addHealthAndDamage(loadedMonsters, 50, 300);
-      console.log("Monsters Len: ", monstersWithHealhAndDamage.length);
-      // const addID = loadedMonsters.map((monster, index) => ({ id: index, name: monster.name, specs: monster.specs }));
-      // console.log("added id: ", addID);
-      writeToJSONFile("./monsters/hpDamage.json", monstersWithHealhAndDamage);
+      readJSON("./json/elements.json", (err, data) => {
+        if (err) {
+          console.log("Error", err);
+        } else {
+          const loadedElements = data;
+          const monstersWithHealhAndDamage = addHealthAndDamage(loadedMonsters, 50, 300, loadedElements);
+          writeToJSONFile("./monsters/hpDamage.json", monstersWithHealhAndDamage);
+        }
+      });
     }
   });
 }
 
-function addHealthAndDamage(monstersFromDB, maxD, maxH) {
+function addHealthAndDamage(monstersFromDB, maxD, maxH, elementsFromDB) {
   const numMonsters = monstersFromDB.length;
   const levels = 20;
 
@@ -110,13 +114,60 @@ function addHealthAndDamage(monstersFromDB, maxD, maxH) {
           monsterDamage = Math.ceil(Math.random() * (levelMaxDamage - levelMinDamage + 1) + levelMinDamage);
         }
         const monster = monstersFromDB[monsterIndex];
+        const elements = addElements(elementsFromDB, i);
+        console.log("Elements: ", elements);
         const price = prices[i];
-        const monsterWithHealhAndDamage = { ...monster, health: monsterHealth, damage: monsterDamage, price: price };
+        const monsterWithHealhAndDamage = { ...monster, health: monsterHealth, damage: monsterDamage, elements: elements, price: price };
         monstersWithHealhAndDamage.push(monsterWithHealhAndDamage);
       }
     }
     return monstersWithHealhAndDamage.sort((a, b) => a.id - b.id);
   }
+}
+
+function addElements(elements, level) {
+  const mappedRatings = [
+    { minLevel: 0, maxLevel: 4, elementRating: 33 },
+    { minLevel: 5, maxLevel: 9, elementRating: 50 },
+    { minLevel: 10, maxLevel: 13, elementRating: 67 },
+    { minLevel: 14, maxLevel: 16, elementRating: 150 },
+    { minLevel: 17, maxLevel: 18, elementRating: 200 },
+    { minLevel: 19, maxLevel: 20, elementRating: 300 },
+  ];
+
+  const monsterElements = [];
+
+  let monsterElementRatings = mappedRatings
+    .filter((rating) => {
+      return level >= rating.minLevel;
+    })
+    .map((rating) => rating.elementRating);
+
+  if (monsterElementRatings.length >= 3) {
+    monsterElementRatings = monsterElementRatings.slice(-3);
+  }
+
+  const possibleElements = elements.filter((element) => monsterElementRatings.includes(element.rating));
+
+  const minNumElements = mappedRatings.indexOf(mappedRatings.find((r) => r.elementRating === monsterElementRatings[0])) + 1;
+  const rangeNumElements = minNumElements + mappedRatings.indexOf(mappedRatings.find((r) => r.elementRating === monsterElementRatings[0])) + 1;
+  let numElements = Math.floor(Math.random() * rangeNumElements + minNumElements);
+
+  if (numElements >= possibleElements.length) {
+    numElements = possibleElements.length;
+  }
+
+  let uniqueElementIndexes = new Set();
+
+  for (let i = 0; i < numElements; i++) {
+    let randomIndex;
+    do {
+      randomIndex = Math.floor(Math.random() * possibleElements.length);
+    } while (uniqueElementIndexes.has(randomIndex));
+    uniqueElementIndexes.add(randomIndex);
+    monsterElements.push(possibleElements[randomIndex]);
+  }
+  return monsterElements.map((element) => element.name).sort((a, b) => a.localeCompare(b));
 }
 
 function readJSON(path, callback) {
