@@ -61,7 +61,7 @@ function init() {
       console.log("Error", err);
     } else {
       const loadedMonsters = data;
-      const monstersWithHealhAndDamage = addHealthAndDamage(loadedMonsters, 20, 50, 300);
+      const monstersWithHealhAndDamage = addHealthAndDamage(loadedMonsters, 50, 300);
       console.log("Monsters Len: ", monstersWithHealhAndDamage.length);
       // const addID = loadedMonsters.map((monster, index) => ({ id: index, name: monster.name, specs: monster.specs }));
       // console.log("added id: ", addID);
@@ -70,8 +70,11 @@ function init() {
   });
 }
 
-function addHealthAndDamage(monstersFromDB, levels, maxD, maxH) {
+function addHealthAndDamage(monstersFromDB, maxD, maxH) {
   const numMonsters = monstersFromDB.length;
+  const levels = 20;
+
+  const prices = [0, 100, 500, 1000, 2500, 5000, 10000, 15000, 25000, 50000, 75000, 100000, 200000, 300000, 400000, 500000, 600000, 700000, 800000, 900000];
 
   let monstersWithHealhAndDamage = [];
 
@@ -107,7 +110,8 @@ function addHealthAndDamage(monstersFromDB, levels, maxD, maxH) {
           monsterDamage = Math.ceil(Math.random() * (levelMaxDamage - levelMinDamage + 1) + levelMinDamage);
         }
         const monster = monstersFromDB[monsterIndex];
-        const monsterWithHealhAndDamage = { ...monster, health: monsterHealth, damage: monsterDamage };
+        const price = prices[i];
+        const monsterWithHealhAndDamage = { ...monster, health: monsterHealth, damage: monsterDamage, price: price };
         monstersWithHealhAndDamage.push(monsterWithHealhAndDamage);
       }
     }
