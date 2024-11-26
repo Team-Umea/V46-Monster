@@ -1,68 +1,42 @@
 const express = require("express");
-const bodyParser = require("body-parser");
-const cors = require("cors");
 const fs = require("fs");
-const path = require("path");
 
 const app = express();
 const port = process.env.PORT || 3000;
 
-// const corsOptions = {
-//   origin: "*",
-//   methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
-//   preflightContinue: false,
-//   optionSuccessStatus: 204,
-// };
-
-// app.use(cors(corsOptions));
-// app.use(bodyParser.json());
-
 let monsters = {};
-// let abilities = [];
+const endpoints = [
+  {
+    path: "/allMonsters",
+    desc: "Returns a list of all monsters. No parameters needed. Returns a JSON object with 'ok' status and an array of all monster objects, or a 500 error if there are no monsters.",
+  },
+  {
+    path: "/monsters",
+    desc: "Returns a specified number of monsters. Requires a query parameter 'num' (positive integer) indicating how many monsters to return. Returns a JSON object with 'ok' status and an array of monster objects, or a 400 error if 'num' is missing or invalid.",
+  },
+  {
+    path: "/freeMonsters",
+    desc: "Returns a list of monsters that are free (price = 0). No parameters needed. Returns a JSON object with 'ok' status and an array of free monster objects, or a 500 error if there are no monsters.",
+  },
+  {
+    path: "/randomMonsters",
+    desc: "Returns a specified number of random monsters. Requires a query parameter 'num' (positive integer) indicating how many random monsters to return. Returns a JSON object with 'ok' status and an array of randomly selected monster objects, or a 400 error if 'num' is missing or invalid.",
+  },
+  {
+    path: "/monsterById",
+    desc: "Returns a monster by its unique ID. Requires a query parameter 'id' (integer) for the unique identifier of the monster. Returns a JSON object with 'ok' status and the monster object if found, or a 404 error if no monster matches the given ID, and a 400 error if 'id' is missing or invalid.",
+  },
+];
 
 init();
 
 function init() {
-  // readJSON("./json/newMonsters.json", (err, data) => {
-  //   if (err) {
-  //     console.log("Error", err);
-  //   } else {
-  //     const monstersFromDB = data;
-  //     monsters = addPriceTags(monstersFromDB);
-  //     readJSON("./json/elements.json", (err, data) => {
-  //       if (err) {
-  //         console.log("Error", err);
-  //       } else {
-  //         const elements = data;
-  //         monsters = addElements(monsters, elements);
-  //         writeToJSONFile("./json/monsters.json", monsters);
-  //       }
-  //     });
-  //   }
-  // });
   readJSON("./json/monsters.json", (err, data) => {
     if (err) {
       console.log("Error", err);
     } else {
       monsters = data;
       console.log("Mosnters", monsters);
-    }
-  });
-}
-
-function loadMonsters() {
-  const filePath = path.join(__dirname, "monsters.json");
-  fs.readFile(filePath, "utf8", (err, data) => {
-    if (err) {
-      console.log("Error reading monsters.json");
-      return;
-    }
-    try {
-      const jsonData = JSON.parse(data);
-      monsters = jsonData.monsters;
-      console.log("Monsters loaded");
-    } catch (parseError) {
-      console.log("Error parsing JSON data");
     }
   });
 }
@@ -82,149 +56,11 @@ function readJSON(path, callback) {
   });
 }
 
-function writeToJSONFile(path, data) {
-  fs.writeFile(path, JSON.stringify(data, null, 2), (err) => {
-    if (err) {
-      console.error("Error writing to file", err);
-    } else {
-      console.log("Data written to file successfully!");
-    }
-  });
-}
-
-function addPriceTags(monstersFromDB) {
-  const prices = [
-    { min: 0, max: 5, price: 0 },
-    { min: 6, max: 10, price: 100 },
-    { min: 11, max: 16, price: 150 },
-    { min: 17, max: 21, price: 250 },
-    { min: 22, max: 26, price: 500 },
-    { min: 27, max: 33, price: 1000 },
-    { min: 34, max: 39, price: 2000 },
-    { min: 40, max: 46, price: 5000 },
-    { min: 47, max: 55, price: 10000 },
-    { min: 56, max: 62, price: 20000 },
-    { min: 62, max: 68, price: 30000 },
-    { min: 69, max: 74, price: 40000 },
-    { min: 75, max: 80, price: 50000 },
-    { min: 81, max: 86, price: 75000 },
-    { min: 87, max: 93, price: 100000 },
-    { min: 94, max: 100, price: 125000 },
-    { min: 101, max: 109, price: 150000 },
-    { min: 110, max: 119, price: 175000 },
-    { min: 120, max: 129, price: 200000 },
-    { min: 130, max: 139, price: 250000 },
-    { min: 140, max: 149, price: 300000 },
-    { min: 150, max: 159, price: 400000 },
-    { min: 160, max: 169, price: 500000 },
-    { min: 170, max: 179, price: 600000 },
-    { min: 180, max: 189, price: 750000 },
-    { min: 190, max: 195, price: 950000 },
-    { min: 196, max: 200, price: 1000000 },
-  ];
-
-  const monstersWithPriceTag = monstersFromDB.map((monster) => {
-    const rating = monster.damage + monster.health;
-    const price = prices.find((p) => rating >= p.min && rating <= p.max).price;
-    return { ...monster, price: price };
-  });
-
-  return monstersWithPriceTag;
-}
-
-function addElements(monstersFromDB, elements) {
-  const mappedRatings = [
-    { monsterMin: 0, monsterMax: 38, elementRating: 33 },
-    { monsterMin: 39, monsterMax: 74, elementRating: 50 },
-    { monsterMin: 75, monsterMax: 105, elementRating: 67 },
-    { monsterMin: 106, monsterMax: 130, elementRating: 150 },
-    { monsterMin: 131, monsterMax: 157, elementRating: 200 },
-    { monsterMin: 158, monsterMax: 200, elementRating: 300 },
-  ];
-
-  const monstersWithElements = monstersFromDB.map((monster) => {
-    const monsterElements = [];
-    const monsterRating = monster.health + monster.damage;
-    const monsterElementRating = mappedRatings.find((rating) => {
-      return monsterRating <= rating.monsterMax && monsterRating >= rating.monsterMin;
-    }).elementRating;
-
-    const possibleElements = elements.filter((element) => element.rating === monsterElementRating);
-
-    const minNumElements = mappedRatings.indexOf(mappedRatings.find((r) => r.elementRating === monsterElementRating)) + 1;
-    const rangeNumElements = minNumElements + mappedRatings.indexOf(mappedRatings.find((r) => r.elementRating === monsterElementRating)) + 1;
-    let numElements = Math.floor(Math.random() * rangeNumElements + minNumElements);
-    if (numElements >= possibleElements.length) {
-      numElements = possibleElements.length;
-    }
-
-    let uniqueElementIndexes = new Set();
-
-    for (let i = 0; i < numElements; i++) {
-      let randomIndex;
-      do {
-        randomIndex = Math.floor(Math.random() * possibleElements.length);
-      } while (uniqueElementIndexes.has(randomIndex));
-      uniqueElementIndexes.add(randomIndex);
-      monsterElements.push(possibleElements[randomIndex]);
-    }
-    const newMonster = { ...monster, elements: monsterElements };
-    return newMonster;
-  });
-  return monstersWithElements;
-}
-
-function createElements(elmentsName, abilities) {
-  const elements = [];
-  elmentsName.forEach((elmentName) => {
-    const name = elmentName;
-    const strongAgainst = [];
-    const weakAgainst = [];
-    let rating = 0;
-
-    const possibleNumStrengths = [1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 3, 3, 3, 3];
-    const possibleNumWeaknesses = [1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 3, 3, 3, 3];
-
-    const numStrengths = possibleNumStrengths[Math.floor(Math.random() * possibleNumStrengths.length)];
-    const numWeaknesses = possibleNumWeaknesses[Math.floor(Math.random() * possibleNumWeaknesses.length)];
-
-    const uniqueStrengthIndexes = new Set();
-    const uniqueWeaknessIndexes = new Set();
-
-    for (let i = 0; i < numStrengths; i++) {
-      let randomIndex;
-
-      do {
-        randomIndex = Math.floor(Math.random() * abilities.length);
-      } while (uniqueStrengthIndexes.has(randomIndex));
-
-      uniqueStrengthIndexes.add(randomIndex);
-      strongAgainst.push(abilities[randomIndex]);
-    }
-
-    for (let i = 0; i < numWeaknesses; i++) {
-      let randomIndex;
-
-      do {
-        randomIndex = Math.floor(Math.random() * abilities.length);
-      } while (uniqueWeaknessIndexes.has(randomIndex));
-
-      uniqueWeaknessIndexes.add(randomIndex);
-      weakAgainst.push(abilities[randomIndex]);
-    }
-
-    rating = (strongAgainst.length / weakAgainst.length).toFixed(2) * 100;
-
-    const element = {
-      name: elmentName,
-      strongAgainst: strongAgainst,
-      weakAgainst: weakAgainst,
-      rating: rating,
-    };
-    elements.push(element);
-  });
-  console.log("Elements: ", JSON.stringify(elements));
-}
+app.get("/", (_, res) => {
+  const welcome = endpoints.map((end) => `${end.path} - ${end.desc}`).join("\n\n");
+  res.setHeader("Content-Type", "text/plain");
+  res.send(welcome);
+});
 
 app.get("/allMonsters", (_, res) => {
   if (monsters && monsters.length > 0) {
@@ -286,42 +122,6 @@ app.get("/monsterById", (req, res) => {
     return res.status(404).json({ ok: false, message: "Monster not found" });
   }
   return res.status(400).json({ ok: false, message: "Id parameter missing or invalid" });
-});
-
-app.get("/monstersByStrengths", (req, res) => {
-  const strengths = req.query.strengths;
-
-  if (strengths) {
-    const strengthsArray = Array.isArray(strengths) ? strengths : [strengths];
-
-    const insensitiveStrengths = strengthsArray.map((strength) => strength.toLowerCase());
-    const filteredMonsters = monsters.filter((monster) => {
-      return monster.strengths.some((strength) => insensitiveStrengths.includes(strength.toLowerCase()));
-    });
-
-    return res.status(200).json({ ok: true, monsters: filteredMonsters });
-  }
-
-  return res.status(400).json({ ok: false, message: "Strengths parameter missing or invalid" });
-});
-
-app.get("/monstersByWeaknesses", (req, res) => {
-  const weaknesses = req.query.weaknesses;
-
-  if (weaknesses) {
-    const weaknessesArray = Array.isArray(weaknesses) ? weaknesses : [weaknesses];
-    const insensitiveWeaknesses = weaknessesArray.map((weakness) => weakness.toLowerCase());
-    const filteredMonsters = monsters.filter((monster) => {
-      return monster.weaknesses.some((weakness) => insensitiveWeaknesses.includes(weakness.toLowerCase()));
-    });
-
-    return res.status(200).json({ ok: true, monsters: filteredMonsters });
-  }
-  return res.status(400).json({ ok: false, message: "Weaknesses parameter missing or invalid" });
-});
-
-app.get("/health", (_, res) => {
-  res.send("Server is healty");
 });
 
 app.listen(port, () => {
