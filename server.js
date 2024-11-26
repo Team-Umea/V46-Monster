@@ -5,6 +5,8 @@ const app = express();
 const port = process.env.PORT || 3000;
 
 let monsters = {};
+let elements = [];
+
 const endpoints = [
   {
     path: "/allMonsters",
@@ -26,6 +28,10 @@ const endpoints = [
     path: "/monsterById",
     desc: "Returns a monster by its unique ID. Requires a query parameter 'id' (integer) for the unique identifier of the monster. Returns a JSON object with 'ok' status and the monster object if found, or a 404 error if no monster matches the given ID, and a 400 error if 'id' is missing or invalid.",
   },
+  {
+    path: "/elements",
+    desc: "Returns a list of elements with their names and ratings. No parameters needed. Returns a JSON object with 'ok' status and an array of objects containing element names and ratings, or a 500 error if there are any issues.",
+  },
 ];
 
 init();
@@ -36,7 +42,14 @@ function init() {
       console.log("Error", err);
     } else {
       monsters = data;
-      console.log("Mosnters", monsters);
+    }
+  });
+  readJSON("./json/elements.json", (err, data) => {
+    if (err) {
+      console.log("Error", err);
+    } else {
+      elements = data;
+      console.log("Els: ", elements);
     }
   });
 }
@@ -122,6 +135,14 @@ app.get("/monsterById", (req, res) => {
     return res.status(404).json({ ok: false, message: "Monster not found" });
   }
   return res.status(400).json({ ok: false, message: "Id parameter missing or invalid" });
+});
+
+app.get("/elements", (_, res) => {
+  const elmentsNameAndRating = elements.map((elment) => ({ rating: elment.name, rating: elment.rating }));
+  if (elmentsNameAndRating) {
+    return res.status(200).json({ ok: true, elements: elmentsNameAndRating });
+  }
+  return res.status(500).json({ ok: false });
 });
 
 app.listen(port, () => {
