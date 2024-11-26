@@ -210,7 +210,16 @@ function prepareFight(monstersFromDB) {
     const team1TotalRating = team1.reduce((acc, curr) => acc + (curr.health + curr.damage), 0);
     const team2TotalRating = team2.reduce((acc, curr) => acc + (curr.health + curr.damage), 0);
 
-    console.log("Total rating team 1: ", team1TotalRating, team2TotalRating);
+    let startTeam = team1TotalRating < team2TotalRating ? team1 : team2TotalRating < team1TotalRating ? team2 : "Random";
+
+    if (startTeam === "Random") {
+      let random = Math.floor(Math.random() * 2);
+      if (random === 0) {
+        startTeam = team1;
+      } else {
+        startTeam = team2;
+      }
+    }
 
     team1.forEach((fighterTeam1, index) => {
       const fighterTeam2 = team2[index];
