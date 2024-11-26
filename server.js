@@ -32,6 +32,10 @@ const endpoints = [
     path: "/elements",
     desc: "Returns a list of elements with their names and ratings. No parameters needed. Returns a JSON object with 'ok' status and an array of objects containing element names and ratings, or a 500 error if there are any issues.",
   },
+  {
+    path: "/generateTeam",
+    desc: "Generates a random team of 4 monsters based on the specified level. Requires a query parameter 'level' (integer) to specify the monster level. Returns a JSON object with 'ok' status and an array of selected monster objects, or a 400 error if the level is missing or invalid, and a 400 error if there are not enough monsters available.",
+  },
 ];
 
 init();
@@ -49,7 +53,6 @@ function init() {
       console.log("Error", err);
     } else {
       elements = data;
-      console.log("Els: ", elements);
     }
   });
 }
@@ -138,11 +141,58 @@ app.get("/monsterById", (req, res) => {
 });
 
 app.get("/elements", (_, res) => {
-  const elmentsNameAndRating = elements.map((elment) => ({ rating: elment.name, rating: elment.rating }));
+  const elmentsNameAndRating = elements.map((elment) => ({ name: elment.name, rating: elment.rating }));
   if (elmentsNameAndRating) {
-    return res.status(200).json({ ok: true, elements: elmentsNameAndRating });
+    const sortedByRating = elmentsNameAndRating.sort((a, b) => a.rating - b.rating);
+    return res.status(200).json({ ok: true, elements: sortedByRating });
   }
   return res.status(500).json({ ok: false });
+});
+
+app.get("/generateTeam", (req, res) => {
+  const level = req.query.level;
+
+  const levels = [
+    { min: 0, max: 10, level: 1 },
+    { min: 11, max: 33, level: 2 },
+    { min: 34, max: 55, level: 3 },
+    { min: 56, max: 80, level: 4 },
+    { min: 81, max: 100, level: 5 },
+    { min: 101, max: 120, level: 6 },
+    { min: 121, max: 140, level: 7 },
+    { min: 141, max: 160, level: 8 },
+    { min: 161, max: 180, level: 9 },
+    { min: 181, max: 200, level: 10 },
+  ];
+
+  let requestedLevel = levels.find((l) => l.level === parseInt(level));
+
+  if (!requestedLevel) {
+    requestedLevel = { min: 0, max: 10, level: 1 };
+  }
+
+  const possibleFighters = monsters.filter((monster) => {
+    const monsterRating = monster.health + monster.damage;
+    return monsterRating <= requestedLevel.max && monsterRating >= requestedLevel.min;
+  });
+
+  if (possibleFighters.length >= 4) {
+    const uniqueFighterIndexes = new Set();
+    const team = [];
+
+    while (team.length < 4) {
+      const randomIndex = Math.floor(Math.random() * possibleFighters.length);
+
+      if (!uniqueFighterIndexes.has(randomIndex)) {
+        uniqueFighterIndexes.add(randomIndex);
+        team.push(possibleFighters[randomIndex]);
+      }
+    }
+
+    return res.status(200).json({ ok: true, team: team });
+  }
+
+  return res.status(400).json({ ok: false, message: "Not enough fighters available for the requested level." });
 });
 
 app.listen(port, () => {

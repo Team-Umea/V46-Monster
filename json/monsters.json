@@ -1,17 +1,5 @@
 [
   {
-    "id": 0,
-    "name": "Gloom Stalker",
-    "specs": "Likes to sneak around in the dark and attack from nowhere.",
-    "health": 1,
-    "damage": 1,
-    "price": 0,
-    "elements": [
-      "Chaos",
-      "Terra"
-    ]
-  },
-  {
     "id": 1,
     "name": "Frost Fang",
     "specs": "A chilling beast with icy breath that freezes its prey.",
