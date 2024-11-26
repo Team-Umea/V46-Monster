@@ -200,11 +200,61 @@ function prepareFight(monstersFromDB) {
   const team1IDs = ["1", "2", "3", "4"];
   const team2IDs = ["5", "6", "7", "8"];
 
-  const team1 = monstersFromDB.filter((monster) => team1IDs.includes(monster.id.toString()));
-  const team2 = monstersFromDB.filter((monster) => team2IDs.includes(monster.id.toString()));
+  const team1 = [
+    {
+      name: "a1",
+      health: 4,
+      damage: 1,
+    },
+    {
+      name: "a2",
+      health: 5,
+      damage: 1,
+    },
+    {
+      name: "a3",
+      health: 6,
+      damage: 2,
+    },
+    {
+      name: "a4",
+      health: 5,
+      damage: 3,
+    },
+  ];
+
+  const team2 = [
+    {
+      name: "b1",
+      health: 5,
+      damage: 1,
+    },
+    {
+      name: "b2",
+      health: 7,
+      damage: 1,
+    },
+    {
+      name: "b3",
+      health: 4,
+      damage: 2,
+    },
+    {
+      name: "b4",
+      health: 6,
+      damage: 2,
+    },
+  ];
+
+  // const team1 = monstersFromDB.filter((monster) => team1IDs.includes(monster.id.toString()));
+  // const team2 = monstersFromDB.filter((monster) => team2IDs.includes(monster.id.toString()));
 
   let team1Points = 0;
   let team2Points = 0;
+
+  //fights[] => rounds[] => round{}
+
+  let fights = [];
 
   if (team1 && team1.length === 4 && team2 && team2.length === 4) {
     const team1TotalRating = team1.reduce((acc, curr) => acc + (curr.health + curr.damage), 0);
@@ -221,23 +271,97 @@ function prepareFight(monstersFromDB) {
       }
     }
 
+    console.log("Start Team: ", startTeam);
+    console.log();
+    console.log("Total rating team 1", team1TotalRating);
+    console.log("Total rating team 2", team2TotalRating);
+    console.log();
+
     team1.forEach((fighterTeam1, index) => {
       const fighterTeam2 = team2[index];
-      const winner = fight(fighterTeam1, fighterTeam2);
 
-      if (winner === "1") {
-        team1Points++;
-      } else if (winner === "2") {
-        team2Points++;
-      }
+      const currentFight = fights.length + 1;
+
+      let rounds = [];
+      let fighter1Health = fighterTeam1.health;
+      let fighter2Health = fighterTeam2.health;
+
+      const fighter1Name = fighterTeam1.name;
+      const fighter2Name = fighterTeam2.name;
+
+      do {
+        //fight
+        const currentRound = rounds.length + 1;
+        const fighter1StartHealth = fighter1Health;
+        const fighter2StartHealth = fighter2Health;
+
+        const fighter1Stats = [fighter1Health];
+        const fighter2Stats = [fighter2Health];
+
+        if (startTeam === team1) {
+          fighterTeam2.health -= fighterTeam1.damage;
+          fighter2Health = fighterTeam2.health;
+          fighter2Stats.push(fighter2Health);
+          if (fighter2Health.health <= 0) {
+            break;
+          }
+          fighterTeam1.health -= fighterTeam2.damage;
+          fighter1Health.health = fighterTeam1.health;
+          fighter1Stats.push(fighter1Health);
+        } else {
+          fighterTeam1.health -= fighterTeam2.damage;
+          fighter1Health.health = fighterTeam1.health;
+          if (fighter1Health.health <= 0) {
+            break;
+          }
+          fighterTeam2.health -= fighterTeam1.damage;
+          fighter2Health = fighterTeam2.health;
+        }
+
+        fighter1Stats.push(fighterTeam2.damage);
+        fighter1Stats.push(fighterTeam1.damage);
+
+        fighter2Stats.push(fighterTeam1.damage);
+        fighter2Stats.push(fighterTeam2.damage);
+
+        const round = {
+          Round: currentRound,
+          "Figther 1": {
+            "Start HP": fighter1Stats[0],
+            "Remaining HP": fighter1Stats[1],
+            "Suffered damage": fighter1Stats[2],
+            "Distributed damage": fighter1Stats[3],
+          },
+          "Figther 2": {
+            "Start HP": fighter1Stats[1],
+            "Remaining HP": fighter1Stats[2],
+            "Suffered damage": fighter1Stats[3],
+            "Distributed damage": fighter1Stats[4],
+          },
+        };
+
+        rounds.push(round);
+      } while (fighter1Health > 0 && fighter2Health > 0);
+
+      fights.push({ fight: currentFight, rounds: rounds, fighter1: fighter1Name, fighter2: fighter2Name });
+
+      // const winner = fight(fighterTeam1, fighterTeam2);
+
+      // if (winner === "1") {
+      //   team1Points++;
+      // } else if (winner === "2") {
+      //   team2Points++;
+      // }
     });
+    // console.log("Fights: ", fights);
   }
 
-  console.log("Team 1 points: ", team1Points);
-  console.log("Team 2 points: ", team2Points);
+  // console.log("Team 1 points: ", team1Points);
+  // console.log("Team 2 points: ", team2Points);
 
   // console.log("Team 1: ", team1);
   // console.log("Team 2: ", team2);
+  console.log("Figths: ", fights);
 }
 
 function fight(monster1, monster2) {
