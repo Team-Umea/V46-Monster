@@ -41,21 +41,78 @@ const endpoints = [
 init();
 
 function init() {
-  readJSON("./json/monsters.json", (err, data) => {
+  // readJSON("./json/monsters.json", (err, data) => {
+  //   if (err) {
+  //     console.log("Error", err);
+  //   } else {
+  //     monsters = data;
+  //     prepareFight(monsters);
+  //   }
+  // });
+  // readJSON("./json/elements.json", (err, data) => {
+  //   if (err) {
+  //     console.log("Error", err);
+  //   } else {
+  //     elements = data;
+  //   }
+  // });
+  readJSON("./monsters/nameSpecsID.json", (err, data) => {
     if (err) {
       console.log("Error", err);
     } else {
-      monsters = data;
-      prepareFight(monsters);
+      const loadedMonsters = data;
+      const monstersWithHealhAndDamage = addHealthAndDamage(loadedMonsters, 20, 50, 300);
+      console.log("Monsters Len: ", monstersWithHealhAndDamage.length);
+      // const addID = loadedMonsters.map((monster, index) => ({ id: index, name: monster.name, specs: monster.specs }));
+      // console.log("added id: ", addID);
+      writeToJSONFile("./monsters/hpDamage.json", monstersWithHealhAndDamage);
     }
   });
-  readJSON("./json/elements.json", (err, data) => {
-    if (err) {
-      console.log("Error", err);
-    } else {
-      elements = data;
+}
+
+function addHealthAndDamage(monstersFromDB, levels, maxD, maxH) {
+  const numMonsters = monstersFromDB.length;
+
+  let monstersWithHealhAndDamage = [];
+
+  if (numMonsters % levels === 0) {
+    const monstersPerLevel = numMonsters / levels;
+    const maxDamage = maxD;
+    const maxHP = maxH;
+    const minDamage = 1;
+    const minHP = 5;
+    const rangeDamage = maxDamage / levels;
+    const rangeHP = maxHP / levels;
+
+    for (let i = 0; i < levels; i++) {
+      let levelMinHp = rangeHP * i;
+      let levelMinDamage = rangeDamage * i;
+      let levelMaxHp = rangeHP * (i + 1);
+      let levelMaxDamage = rangeDamage * (i + 1);
+
+      if (i === 0) {
+        levelMinHp = minHP;
+        levelMinDamage = minDamage;
+      }
+
+      for (let j = 0; j < monstersPerLevel; j++) {
+        const monsterIndex = i * monstersPerLevel + j;
+        let monsterHealth;
+        let monsterDamage;
+        if (i !== 0 && i % 2 === 0) {
+          monsterHealth = Math.ceil(Math.random() * (levelMaxHp - levelMinHp + 1) + levelMinHp);
+          monsterDamage = Math.ceil(Math.random() * (levelMaxDamage - levelMinDamage + 1) + levelMinDamage);
+        } else {
+          monsterHealth = Math.ceil(Math.random() * (levelMaxHp - levelMinHp + 1) + levelMinHp);
+          monsterDamage = Math.ceil(Math.random() * (levelMaxDamage - levelMinDamage + 1) + levelMinDamage);
+        }
+        const monster = monstersFromDB[monsterIndex];
+        const monsterWithHealhAndDamage = { ...monster, health: monsterHealth, damage: monsterDamage };
+        monstersWithHealhAndDamage.push(monsterWithHealhAndDamage);
+      }
     }
-  });
+    return monstersWithHealhAndDamage.sort((a, b) => a.id - b.id);
+  }
 }
 
 function readJSON(path, callback) {
@@ -69,6 +126,16 @@ function readJSON(path, callback) {
       callback(null, jsonData);
     } catch (parseError) {
       console.log("Error parsing JSON data");
+    }
+  });
+}
+
+function writeToJSONFile(path, data) {
+  fs.writeFile(path, JSON.stringify(data, null, 2), (err) => {
+    if (err) {
+      console.error("Error writing to file", err);
+    } else {
+      console.log("Data written to file successfully!");
     }
   });
 }

@@ -1,0 +1,2502 @@
+[
+  {
+    "id": 0,
+    "name": "Night Stalker",
+    "specs": "A creature that lurks in the shadows, preying on the unsuspecting at dusk."
+  },
+  {
+    "id": 1,
+    "name": "Frost Wraith",
+    "specs": "An ethereal being that brings a chilling frost wherever it roams."
+  },
+  {
+    "id": 2,
+    "name": "Blood Fiend",
+    "specs": "A malevolent spirit that thrives on the fear and blood of its victims."
+  },
+  {
+    "id": 3,
+    "name": "Fire Serpent",
+    "specs": "A serpentine beast that spews flames and scorches the earth beneath."
+  },
+  {
+    "id": 4,
+    "name": "Stone Golem",
+    "specs": "A massive guardian made of ancient stone, awakened to protect its secrets."
+  },
+  {
+    "id": 5,
+    "name": "Shadow Beast",
+    "specs": "A creature formed from pure darkness, it strikes fear into the hearts of all."
+  },
+  {
+    "id": 6,
+    "name": "Venomous Phantom",
+    "specs": "A ghostly figure that leaves a trail of poison in its wake."
+  },
+  {
+    "id": 7,
+    "name": "Thunder Beast",
+    "specs": "A colossal creature that roars like thunder, causing tremors with each step."
+  },
+  {
+    "id": 8,
+    "name": "Gloom Harbinger",
+    "specs": "A dark omen that brings despair and chaos wherever it appears."
+  },
+  {
+    "id": 9,
+    "name": "Blightwalker",
+    "specs": "A creature that spreads disease and decay, thriving in the ruins of the dead."
+  },
+  {
+    "id": 10,
+    "name": "Storm Wyrm",
+    "specs": "A dragon-like monster that commands the storms, wielding lightning."
+  },
+  {
+    "id": 11,
+    "name": "Grave Horror",
+    "specs": "A terrifying specter that rises from the grave to haunt the living."
+  },
+  {
+    "id": 12,
+    "name": "Cinder Demon",
+    "specs": "A fiery demon born from the ashes of burnt lands."
+  },
+  {
+    "id": 13,
+    "name": "Iron Claw",
+    "specs": "A ferocious beast with metallic claws, feared by all who encounter it."
+  },
+  {
+    "id": 14,
+    "name": "Howling Banshee",
+    "specs": "A spirit that wails in sorrow, bringing doom to those who hear it."
+  },
+  {
+    "id": 15,
+    "name": "Mirewalker",
+    "specs": "A swamp-dwelling creature that drags its victims into the depths."
+  },
+  {
+    "id": 16,
+    "name": "Lava Brute",
+    "specs": "A hulking monster made of molten rock, leaving a trail of destruction."
+  },
+  {
+    "id": 17,
+    "name": "Fang Terror",
+    "specs": "A predatory beast with razor-sharp fangs that hunts in packs."
+  },
+  {
+    "id": 18,
+    "name": "Spectral Reaver",
+    "specs": "A ghostly hunter that feeds on the souls of the living."
+  },
+  {
+    "id": 19,
+    "name": "Dread Leviathan",
+    "specs": "A massive sea creature that drags ships to their watery graves."
+  },
+  {
+    "id": 20,
+    "name": "Echo Shade",
+    "specs": "A shadowy figure that mimics the sounds of the lost."
+  },
+  {
+    "id": 21,
+    "name": "Ravenous Ghoul",
+    "specs": "A flesh-eating monster that rises from the grave to satisfy its hunger."
+  },
+  {
+    "id": 22,
+    "name": "Wraith Knight",
+    "specs": "A spectral warrior bound by vengeance, haunting the battlefield."
+  },
+  {
+    "id": 23,
+    "name": "Plague Bringer",
+    "specs": "A monstrous entity that spreads disease and despair with every breath."
+  },
+  {
+    "id": 24,
+    "name": "Nightmare Beast",
+    "specs": "A creature that manifests from one's worst fears, haunting dreams."
+  },
+  {
+    "id": 25,
+    "name": "Iron Phantom",
+    "specs": "A ghostly figure clad in rusted armor, searching for its lost honor."
+  },
+  {
+    "id": 26,
+    "name": "Terror Wyrm",
+    "specs": "A dragon-like creature that instills fear with its mere presence."
+  },
+  {
+    "id": 27,
+    "name": "Corrupted Sentinel",
+    "specs": "A once-noble guardian turned monstrous through dark magic."
+  },
+  {
+    "id": 28,
+    "name": "Gorgon Stalker",
+    "specs": "A serpent-haired monster that petrifies those who meet its gaze."
+  },
+  {
+    "id": 29,
+    "name": "Ashen Horror",
+    "specs": "A creature born from the ashes of destruction, seeking revenge."
+  },
+  {
+    "id": 30,
+    "name": "Void Specter",
+    "specs": "An entity from the void that consumes everything in its path."
+  },
+  {
+    "id": 31,
+    "name": "Sorrow Weaver",
+    "specs": "A creature that spins webs of despair, trapping its victims in grief."
+  },
+  {
+    "id": 32,
+    "name": "Tempest Fiend",
+    "specs": "A demon that controls the winds and storms, wreaking havoc on the land."
+  },
+  {
+    "id": 33,
+    "name": "Crystal Golem",
+    "specs": "A giant made of shimmering crystals, reflecting the light of the sun."
+  },
+  {
+    "id": 34,
+    "name": "Feral Horror",
+    "specs": "A wild beast that embodies primal rage and instinct."
+  },
+  {
+    "id": 35,
+    "name": "Chilling Revenant",
+    "specs": "A cold spirit seeking vengeance for its untimely death."
+  },
+  {
+    "id": 36,
+    "name": "Soul Devourer",
+    "specs": "A creature that feeds on the very essence of life."
+  },
+  {
+    "id": 37,
+    "name": "Phantom Marauder",
+    "specs": "A ghostly pirate haunting the seas, stealing souls instead of treasure."
+  },
+  {
+    "id": 38,
+    "name": "Rift Walker",
+    "specs": "A creature that can travel through dimensions, leaving chaos in its wake."
+  },
+  {
+    "id": 39,
+    "name": "Manticore Shadow",
+    "specs": "A hybrid beast with a scorpion's tail and a lion's body, lurking in the dark."
+  },
+  {
+    "id": 40,
+    "name": "Obsidian Behemoth",
+    "specs": "A gigantic creature made of black stone, impervious to most attacks."
+  },
+  {
+    "id": 41,
+    "name": "Scourge Wraith",
+    "specs": "A malevolent spirit that drags its victims into the underworld."
+  },
+  {
+    "id": 42,
+    "name": "Blizzard Fiend",
+    "specs": "A creature of ice that brings blizzards and chills the heart."
+  },
+  {
+    "id": 43,
+    "name": "Flesh Eater",
+    "specs": "A grotesque monster that consumes the flesh of living beings."
+  },
+  {
+    "id": 44,
+    "name": "Nightmare Stalker",
+    "specs": "A creature that haunts the dreams of its victims, feeding on fear."
+  },
+  {
+    "id": 45,
+    "name": "Doom Bringer",
+    "specs": "An ancient entity that foretells disaster and destruction."
+  },
+  {
+    "id": 46,
+    "name": "Wicked Harpy",
+    "specs": "A monstrous bird-woman that lures travelers to their doom."
+  },
+  {
+    "id": 47,
+    "name": "Hollow Specter",
+    "specs": "A ghostly figure that leaves behind a chilling emptiness."
+  },
+  {
+    "id": 48,
+    "name": "Crimson Shade",
+    "specs": "A blood-red apparition that seeks vengeance for its death."
+  },
+  {
+    "id": 49,
+    "name": "Savage Chimera",
+    "specs": "A beast with the traits of multiple animals, unpredictable and fierce."
+  },
+  {
+    "id": 50,
+    "name": "Cursed Revenant",
+    "specs": "A spirit bound by a dark curse, forever seeking redemption."
+  },
+  {
+    "id": 51,
+    "name": "Twilight Horror",
+    "specs": "A creature that emerges at twilight, blending into the shadows."
+  },
+  {
+    "id": 52,
+    "name": "Fiery Banshee",
+    "specs": "A wailing spirit enflamed with rage, burning anything in its path."
+  },
+  {
+    "id": 53,
+    "name": "Venom Drifter",
+    "specs": "A creature that leaves a toxic trail, poisoning the land."
+  },
+  {
+    "id": 54,
+    "name": "Mire Horror",
+    "specs": "A swamp creature that drags its victims below the murky water."
+  },
+  {
+    "id": 55,
+    "name": "Serpent Queen",
+    "specs": "A regal yet deadly serpent that commands other snakes."
+  },
+  {
+    "id": 56,
+    "name": "Wailing Shade",
+    "specs": "A mournful spirit that brings sorrow to all who hear its cries."
+  },
+  {
+    "id": 57,
+    "name": "Gloom Beast",
+    "specs": "A dark creature that thrives in low light, preying on the weak."
+  },
+  {
+    "id": 58,
+    "name": "Forsaken Horror",
+    "specs": "A creature abandoned by gods, filled with rage and vengeance."
+  },
+  {
+    "id": 59,
+    "name": "Doomed Specter",
+    "specs": "A spirit cursed to wander, searching for what it has lost."
+  },
+  {
+    "id": 60,
+    "name": "Ruinous Phantom",
+    "specs": "A ghost that haunts ancient ruins, guarding secrets of the past."
+  },
+  {
+    "id": 61,
+    "name": "Specter of Sorrow",
+    "specs": "An entity that feeds on grief, growing stronger with each tear."
+  },
+  {
+    "id": 62,
+    "name": "Chaos Wyrm",
+    "specs": "A dragon-like creature that thrives in chaos and destruction."
+  },
+  {
+    "id": 63,
+    "name": "Wretched Ghoul",
+    "specs": "A rotting creature that rises from the grave to feast on flesh."
+  },
+  {
+    "id": 64,
+    "name": "Banshee's Lament",
+    "specs": "A haunting spirit that brings misfortune to those it encounters."
+  },
+  {
+    "id": 65,
+    "name": "Dread Phantom",
+    "specs": "A terrifying ghost that inspires horror with its mere presence."
+  },
+  {
+    "id": 66,
+    "name": "Frost Titan",
+    "specs": "A giant made of ice, commanding winter's fury."
+  },
+  {
+    "id": 67,
+    "name": "Beast of the Abyss",
+    "specs": "A monstrous creature that dwells in the depths of the ocean."
+  },
+  {
+    "id": 68,
+    "name": "Terrorfiend",
+    "specs": "A hideous beast that embodies the essence of fear."
+  },
+  {
+    "id": 69,
+    "name": "Bloodthirsty Wraith",
+    "specs": "A ghost that hungers for the life force of the living."
+  },
+  {
+    "id": 70,
+    "name": "Haunting Wyrm",
+    "specs": "A dragon that causes nightmares with its chilling roar."
+  },
+  {
+    "id": 71,
+    "name": "Necrotic Beast",
+    "specs": "A creature that embodies death and decay, leaving ruin behind."
+  },
+  {
+    "id": 72,
+    "name": "Feral Specter",
+    "specs": "A restless spirit that attacks the living in a frenzied rage."
+  },
+  {
+    "id": 73,
+    "name": "Dark Emissary",
+    "specs": "A shadowy figure that spreads chaos and despair."
+  },
+  {
+    "id": 74,
+    "name": "Murderous Spirit",
+    "specs": "A vengeful ghost that hunts those who wronged it."
+  },
+  {
+    "id": 75,
+    "name": "Shadow Wyrm",
+    "specs": "A dragon that blends into the shadows, striking with stealth."
+  },
+  {
+    "id": 76,
+    "name": "Cursed Beast",
+    "specs": "A creature afflicted by a dark curse, forever hunting for freedom."
+  },
+  {
+    "id": 77,
+    "name": "Howling Terror",
+    "specs": "A beast that howls in agony, driving its prey to madness."
+  },
+  {
+    "id": 78,
+    "name": "Lurking Horror",
+    "specs": "A creature that hides in the dark, waiting for the perfect moment to strike."
+  },
+  {
+    "id": 79,
+    "name": "Ghastly Revenant",
+    "specs": "A ghostly figure that seeks to reclaim its lost life."
+  },
+  {
+    "id": 80,
+    "name": "Mournful Shade",
+    "specs": "A spirit filled with sorrow, haunting the places it once loved."
+  },
+  {
+    "id": 81,
+    "name": "Specter of the Past",
+    "specs": "A ghost that relives its tragic history, seeking retribution."
+  },
+  {
+    "id": 82,
+    "name": "Wyrm of Despair",
+    "specs": "A dragon that brings hopelessness to all who encounter it."
+  },
+  {
+    "id": 83,
+    "name": "Brimstone Demon",
+    "specs": "A fiery creature that leaves a trail of brimstone in its wake."
+  },
+  {
+    "id": 84,
+    "name": "Chilling Wraith",
+    "specs": "A ghost that freezes the hearts of those who face it."
+  },
+  {
+    "id": 85,
+    "name": "Blood Phantom",
+    "specs": "A specter that feeds on the fear and blood of the living."
+  },
+  {
+    "id": 86,
+    "name": "Infernal Beast",
+    "specs": "A creature of fire and brimstone, born from the depths of hell."
+  },
+  {
+    "id": 87,
+    "name": "Grim Reaper",
+    "specs": "A skeletal figure that collects souls, feared by all."
+  },
+  {
+    "id": 88,
+    "name": "Vengeful Spirit",
+    "specs": "A ghost seeking revenge against those who wronged it."
+  },
+  {
+    "id": 89,
+    "name": "Flesh Golem",
+    "specs": "A monstrous creation made of stitched-together body parts."
+  },
+  {
+    "id": 90,
+    "name": "Twisted Horror",
+    "specs": "A grotesque creature that embodies the very essence of fear."
+  },
+  {
+    "id": 91,
+    "name": "Ominous Shade",
+    "specs": "A dark presence that brings foreboding and dread."
+  },
+  {
+    "id": 92,
+    "name": "Phantom Predator",
+    "specs": "A ghostly hunter that stalks its prey through the night."
+  },
+  {
+    "id": 93,
+    "name": "Eldritch Horror",
+    "specs": "A creature from beyond comprehension, driving those who see it to madness."
+  },
+  {
+    "id": 94,
+    "name": "Hollow Knight",
+    "specs": "A spectral warrior cursed to wander the land forever."
+  },
+  {
+    "id": 95,
+    "name": "Vile Demon",
+    "specs": "A creature of pure malice, delighting in the suffering of others."
+  },
+  {
+    "id": 96,
+    "name": "Cursed Wraith",
+    "specs": "A ghost bound by a dark curse, seeking to undo its fate."
+  },
+  {
+    "id": 97,
+    "name": "Frostfire Beast",
+    "specs": "A creature that embodies both fire and ice, leaving destruction in its wake."
+  },
+  {
+    "id": 98,
+    "name": "Veil of Shadows",
+    "specs": "A mysterious entity that shrouds the area in darkness."
+  },
+  {
+    "id": 99,
+    "name": "Blighted Soul",
+    "specs": "A tormented spirit trapped in a state of decay."
+  },
+  {
+    "id": 100,
+    "name": "Sanguine Beast",
+    "specs": "A bloodthirsty creature that thrives in battle."
+  },
+  {
+    "id": 101,
+    "name": "Revenant Knight",
+    "specs": "A ghostly warrior seeking to avenge its death."
+  },
+  {
+    "id": 102,
+    "name": "Wretched Shade",
+    "specs": "A spirit that brings despair and misery to the living."
+  },
+  {
+    "id": 103,
+    "name": "Creeping Terror",
+    "specs": "A monster that moves slowly, instilling fear with its presence."
+  },
+  {
+    "id": 104,
+    "name": "Bane of the Woods",
+    "specs": "A creature that haunts the forest, preying on the lost."
+  },
+  {
+    "id": 105,
+    "name": "Dire Wyrm",
+    "specs": "A massive dragon that commands the skies and strikes fear."
+  },
+  {
+    "id": 106,
+    "name": "Gravewalker",
+    "specs": "A creature that roams graveyards, seeking the dead."
+  },
+  {
+    "id": 107,
+    "name": "Crimson Reaver",
+    "specs": "A bloodthirsty monster that leaves a trail of carnage."
+  },
+  {
+    "id": 108,
+    "name": "Nightmare Fiend",
+    "specs": "A creature that thrives on nightmares, feeding on fear."
+  },
+  {
+    "id": 109,
+    "name": "Lurking Shade",
+    "specs": "A shadowy figure that stalks its prey silently."
+  },
+  {
+    "id": 110,
+    "name": "Cursed Beast",
+    "specs": "A creature afflicted by a dark curse, forever seeking revenge."
+  },
+  {
+    "id": 111,
+    "name": "Venomous Nightstalker",
+    "specs": "A creature that strikes under the cover of darkness, leaving poison behind."
+  },
+  {
+    "id": 112,
+    "name": "Phantom of Despair",
+    "specs": "A ghost that brings sorrow to all who encounter it."
+  },
+  {
+    "id": 113,
+    "name": "Frost Demon",
+    "specs": "A creature born of ice and cold, spreading winter's chill."
+  },
+  {
+    "id": 114,
+    "name": "Sorrowful Wraith",
+    "specs": "A tragic spirit that haunts the living with its grief."
+  },
+  {
+    "id": 115,
+    "name": "Twilight Horror",
+    "specs": "A creature that emerges at dusk, preying on the unwary."
+  },
+  {
+    "id": 116,
+    "name": "Dread Wyrm",
+    "specs": "A dragon that embodies fear itself, instilling terror in all."
+  },
+  {
+    "id": 117,
+    "name": "Grim Horror",
+    "specs": "A terrifying figure that brings death and despair to all who see it."
+  },
+  {
+    "id": 118,
+    "name": "Wailing Horror",
+    "specs": "A creature whose cries echo through the night, inducing madness."
+  },
+  {
+    "id": 119,
+    "name": "Shadow Fiend",
+    "specs": "A dark being that thrives in shadows, striking without warning."
+  },
+  {
+    "id": 120,
+    "name": "Fallen Knight",
+    "specs": "A once-noble warrior now cursed to wander as a specter."
+  },
+  {
+    "id": 121,
+    "name": "Ravenous Shade",
+    "specs": "A ghost that consumes the life force of those it haunts."
+  },
+  {
+    "id": 122,
+    "name": "Blight Demon",
+    "specs": "A creature that spreads disease and decay wherever it goes."
+  },
+  {
+    "id": 123,
+    "name": "Cavern Horror",
+    "specs": "A monstrous entity that lurks in the depths of dark caves."
+  },
+  {
+    "id": 124,
+    "name": "Night Terror",
+    "specs": "A creature that preys on the fears of those who sleep."
+  },
+  {
+    "id": 125,
+    "name": "Spectral Hunter",
+    "specs": "A ghostly predator that stalks its prey through the ethereal realm."
+  },
+  {
+    "id": 126,
+    "name": "Frost Wyrm",
+    "specs": "A dragon of ice that breathes frost and commands winter."
+  },
+  {
+    "id": 127,
+    "name": "Doom Harbinger",
+    "specs": "A foreboding figure that heralds disaster and ruin."
+  },
+  {
+    "id": 128,
+    "name": "Mournful Phantom",
+    "specs": "A spirit that laments its lost life and haunts the living."
+  },
+  {
+    "id": 129,
+    "name": "Plague Shade",
+    "specs": "A ghost that spreads sickness to all who cross its path."
+  },
+  {
+    "id": 130,
+    "name": "Infernal Wyrm",
+    "specs": "A dragon made of fire and brimstone, feared by all."
+  },
+  {
+    "id": 131,
+    "name": "Vengeful Wraith",
+    "specs": "A spirit consumed by anger, seeking revenge on the living."
+  },
+  {
+    "id": 132,
+    "name": "Nightmare Stalker",
+    "specs": "A creature that hunts in the shadows, driven by hunger."
+  },
+  {
+    "id": 133,
+    "name": "Ethereal Beast",
+    "specs": "A ghostly creature that slips between the realms of the living and dead."
+  },
+  {
+    "id": 134,
+    "name": "Gloom Phantom",
+    "specs": "A shadowy figure that brings darkness and despair."
+  },
+  {
+    "id": 135,
+    "name": "Dread Horror",
+    "specs": "A creature that embodies all fears, striking terror into hearts."
+  },
+  {
+    "id": 136,
+    "name": "Ashen Wraith",
+    "specs": "A ghost formed from the ashes of the fallen, seeking justice."
+  },
+  {
+    "id": 137,
+    "name": "Venomous Specter",
+    "specs": "A ghost that poisons the souls of those it haunts."
+  },
+  {
+    "id": 138,
+    "name": "Cursed Revenant",
+    "specs": "A spirit bound to the world by its unfinished business."
+  },
+  {
+    "id": 139,
+    "name": "Mire Demon",
+    "specs": "A creature that dwells in swamps, dragging the unwary into the depths."
+  },
+  {
+    "id": 140,
+    "name": "Chilling Shade",
+    "specs": "A ghost that freezes the air around it, instilling fear."
+  },
+  {
+    "id": 141,
+    "name": "Doomed Beast",
+    "specs": "A creature marked for destruction, forever seeking vengeance."
+  },
+  {
+    "id": 142,
+    "name": "Lost Soul",
+    "specs": "A wandering spirit searching for peace in the afterlife."
+  },
+  {
+    "id": 143,
+    "name": "Feral Wraith",
+    "specs": "A ghost driven by primal instincts, hunting the living."
+  },
+  {
+    "id": 144,
+    "name": "Twilight Demon",
+    "specs": "A creature that thrives at dusk, preying on the vulnerable."
+  },
+  {
+    "id": 145,
+    "name": "Banshee's Cry",
+    "specs": "A haunting wail that brings doom to those who hear it."
+  },
+  {
+    "id": 146,
+    "name": "Wicked Spirit",
+    "specs": "A malevolent ghost that delights in causing fear."
+  },
+  {
+    "id": 147,
+    "name": "Sorrowful Wraith",
+    "specs": "A spirit that mourns its death, seeking solace in the living."
+  },
+  {
+    "id": 148,
+    "name": "Veilwalker",
+    "specs": "A creature that traverses between the realms of life and death."
+  },
+  {
+    "id": 149,
+    "name": "Dread Knight",
+    "specs": "A spectral warrior that rides through the night, spreading fear."
+  },
+  {
+    "id": 150,
+    "name": "Cursed Shade",
+    "specs": "A ghost bound by a dark curse, forever haunting its tormentors."
+  },
+  {
+    "id": 151,
+    "name": "Grave Wyrm",
+    "specs": "A dragon that rises from the grave, seeking revenge."
+  },
+  {
+    "id": 152,
+    "name": "Infernal Phantom",
+    "specs": "A spirit of fire, bringing destruction to the living."
+  },
+  {
+    "id": 153,
+    "name": "Wailing Fiend",
+    "specs": "A creature that screams in agony, driving others to madness."
+  },
+  {
+    "id": 154,
+    "name": "Lost Revenant",
+    "specs": "A ghost seeking to find its way back to the living world."
+  },
+  {
+    "id": 155,
+    "name": "Mournful Shade",
+    "specs": "A spectral figure filled with grief, haunting its past."
+  },
+  {
+    "id": 156,
+    "name": "Restless Wraith",
+    "specs": "A spirit unable to find peace, eternally wandering."
+  },
+  {
+    "id": 157,
+    "name": "Harrowing Beast",
+    "specs": "A monstrous creature that brings terror to all who encounter it."
+  },
+  {
+    "id": 158,
+    "name": "Sanguine Shadow",
+    "specs": "A blood-red specter that feeds on fear and despair."
+  },
+  {
+    "id": 159,
+    "name": "Dreaded Phantom",
+    "specs": "A ghost that brings nightmares to those it haunts."
+  },
+  {
+    "id": 160,
+    "name": "Wicked Beast",
+    "specs": "A creature of pure malice, terrorizing the innocent."
+  },
+  {
+    "id": 161,
+    "name": "Forsaken Wraith",
+    "specs": "A spirit abandoned by the living, filled with rage."
+  },
+  {
+    "id": 162,
+    "name": "Gloom Reaver",
+    "specs": "A creature that thrives in darkness, feeding on fear."
+  },
+  {
+    "id": 163,
+    "name": "Malevolent Shade",
+    "specs": "A dark spirit that brings misfortune to all it encounters."
+  },
+  {
+    "id": 164,
+    "name": "Echoing Horror",
+    "specs": "A creature that reverberates through the night, instilling dread."
+  },
+  {
+    "id": 165,
+    "name": "Twisted Phantom",
+    "specs": "A ghost warped by grief, seeking to torment the living."
+  },
+  {
+    "id": 166,
+    "name": "Fallen Specter",
+    "specs": "A once-noble spirit now cursed to haunt the earth."
+  },
+  {
+    "id": 167,
+    "name": "Death's Emissary",
+    "specs": "A harbinger of doom, bringing death to those it touches."
+  },
+  {
+    "id": 168,
+    "name": "Veil of Night",
+    "specs": "A shadowy figure that cloaks itself in darkness."
+  },
+  {
+    "id": 169,
+    "name": "Haunting Fiend",
+    "specs": "A malevolent spirit that torments the living."
+  },
+  {
+    "id": 170,
+    "name": "Creeping Wyrm",
+    "specs": "A serpent-like creature that moves silently, striking from the shadows."
+  },
+  {
+    "id": 171,
+    "name": "Eldritch Shade",
+    "specs": "A ghostly figure from beyond, inducing madness with its presence."
+  },
+  {
+    "id": 172,
+    "name": "Chilling Wraith",
+    "specs": "A cold spirit that freezes the air around it."
+  },
+  {
+    "id": 173,
+    "name": "Vengeful Phantom",
+    "specs": "A spirit seeking revenge on those who wronged it."
+  },
+  {
+    "id": 174,
+    "name": "Ghost of the Woods",
+    "specs": "A spectral figure that haunts the deep forests."
+  },
+  {
+    "id": 175,
+    "name": "Fleshbound Horror",
+    "specs": "A grotesque creature made from the remains of the dead."
+  },
+  {
+    "id": 176,
+    "name": "Dreaded Wyrm",
+    "specs": "A dragon that brings fear and destruction with its fiery breath."
+  },
+  {
+    "id": 177,
+    "name": "Abyssal Phantom",
+    "specs": "A ghost from the depths, bringing terror to the surface."
+  },
+  {
+    "id": 178,
+    "name": "Mournful Demon",
+    "specs": "A creature of sadness that feeds on the tears of the living."
+  },
+  {
+    "id": 179,
+    "name": "Wyrm of Sorrow",
+    "specs": "A dragon that embodies grief, bringing despair wherever it goes."
+  },
+  {
+    "id": 180,
+    "name": "Forsaken Beast",
+    "specs": "A creature abandoned by its creator, filled with rage."
+  },
+  {
+    "id": 181,
+    "name": "Sorrowful Spirit",
+    "specs": "A ghost that brings sorrow to the living."
+  },
+  {
+    "id": 182,
+    "name": "Twilight Shade",
+    "specs": "A creature that thrives in the twilight, preying on the weak."
+  },
+  {
+    "id": 183,
+    "name": "Despair Fiend",
+    "specs": "A dark being that feeds on hopelessness."
+  },
+  {
+    "id": 184,
+    "name": "Echoing Wraith",
+    "specs": "A ghostly figure that resonates with the cries of the lost."
+  },
+  {
+    "id": 185,
+    "name": "Nightmare Shade",
+    "specs": "A creature born from nightmares, haunting the living."
+  },
+  {
+    "id": 186,
+    "name": "Fallen Wyrm",
+    "specs": "A dragon that has fallen from grace, now a harbinger of doom."
+  },
+  {
+    "id": 187,
+    "name": "Cursed Revenant",
+    "specs": "A spirit bound by a dark curse, forever seeking revenge."
+  },
+  {
+    "id": 188,
+    "name": "Blighted Shade",
+    "specs": "A ghost corrupted by dark magic, spreading decay."
+  },
+  {
+    "id": 189,
+    "name": "Specter of the Abyss",
+    "specs": "A creature from the depths that brings despair to the surface."
+  },
+  {
+    "id": 190,
+    "name": "Chilling Beast",
+    "specs": "A creature of ice that brings winter's chill wherever it goes."
+  },
+  {
+    "id": 191,
+    "name": "Howling Wyrm",
+    "specs": "A dragon that howls in the night, instilling fear."
+  },
+  {
+    "id": 192,
+    "name": "Vile Shade",
+    "specs": "A malevolent ghost that brings misery to the living."
+  },
+  {
+    "id": 193,
+    "name": "Wretched Beast",
+    "specs": "A grotesque creature that embodies suffering."
+  },
+  {
+    "id": 194,
+    "name": "Restless Phantom",
+    "specs": "A spirit unable to find peace, eternally wandering."
+  },
+  {
+    "id": 195,
+    "name": "Doomed Shade",
+    "specs": "A ghost marked for destruction, haunting the living."
+  },
+  {
+    "id": 196,
+    "name": "Cursed Wyrm",
+    "specs": "A dragon afflicted by a dark curse, forever seeking vengeance."
+  },
+  {
+    "id": 197,
+    "name": "Mournful Demon",
+    "specs": "A creature of sadness that feeds on the tears of the living."
+  },
+  {
+    "id": 198,
+    "name": "Harrowing Shade",
+    "specs": "A ghost that haunts the living, spreading despair."
+  },
+  {
+    "id": 199,
+    "name": "Specter of Despair",
+    "specs": "A creature that embodies hopelessness, bringing ruin."
+  },
+  {
+    "id": 200,
+    "name": "Flesh Eater",
+    "specs": "A grotesque monster that consumes the flesh of the living."
+  },
+  {
+    "id": 201,
+    "name": "Twilight Fiend",
+    "specs": "A creature that thrives in the twilight, preying on the weak."
+  },
+  {
+    "id": 202,
+    "name": "Soul Devourer",
+    "specs": "A monstrous entity that feeds on the very essence of life."
+  },
+  {
+    "id": 203,
+    "name": "Ghost of Sorrow",
+    "specs": "A spirit that brings sorrow to all who encounter it."
+  },
+  {
+    "id": 204,
+    "name": "Despairing Wraith",
+    "specs": "A ghost that feeds on the despair of the living."
+  },
+  {
+    "id": 205,
+    "name": "Creeping Horror",
+    "specs": "A monster that moves silently, instilling fear."
+  },
+  {
+    "id": 206,
+    "name": "Echoing Phantom",
+    "specs": "A ghost that resonates with the cries of the lost."
+  },
+  {
+    "id": 207,
+    "name": "Wretched Shade",
+    "specs": "A spirit that brings despair and misery to the living."
+  },
+  {
+    "id": 208,
+    "name": "Harrowing Wyrm",
+    "specs": "A dragon that brings terror to all who encounter it."
+  },
+  {
+    "id": 209,
+    "name": "Cursed Horror",
+    "specs": "A creature afflicted by a dark curse, seeking revenge."
+  },
+  {
+    "id": 210,
+    "name": "Forsaken Phantom",
+    "specs": "A spirit abandoned by the living, filled with rage."
+  },
+  {
+    "id": 211,
+    "name": "Chilling Wyrm",
+    "specs": "A dragon of ice that breathes frost and commands winter."
+  },
+  {
+    "id": 212,
+    "name": "Gloom Demon",
+    "specs": "A creature that thrives in darkness, bringing despair."
+  },
+  {
+    "id": 213,
+    "name": "Sorrowful Wraith",
+    "specs": "A spirit filled with grief, haunting its past."
+  },
+  {
+    "id": 214,
+    "name": "Veilwalker",
+    "specs": "A creature that traverses between the realms of life and death."
+  },
+  {
+    "id": 215,
+    "name": "Cursed Beast",
+    "specs": "A creature marked by a dark curse, forever seeking vengeance."
+  },
+  {
+    "id": 216,
+    "name": "Infernal Shade",
+    "specs": "A ghost of fire, bringing destruction to the living."
+  },
+  {
+    "id": 217,
+    "name": "Wretched Phantom",
+    "specs": "A ghost that brings misery to the living."
+  },
+  {
+    "id": 218,
+    "name": "Doomed Shade",
+    "specs": "A ghost marked for destruction, haunting the living."
+  },
+  {
+    "id": 219,
+    "name": "Blighted Wyrm",
+    "specs": "A dragon corrupted by dark magic, spreading decay."
+  },
+  {
+    "id": 220,
+    "name": "Haunting Beast",
+    "specs": "A creature that stalks its prey, bringing terror."
+  },
+  {
+    "id": 221,
+    "name": "Chilling Horror",
+    "specs": "A creature that freezes the air around it, inducing fear."
+  },
+  {
+    "id": 222,
+    "name": "Vengeful Shade",
+    "specs": "A spirit seeking revenge on those who wronged it."
+  },
+  {
+    "id": 223,
+    "name": "Sorrowful Spirit",
+    "specs": "A ghost that brings sorrow to the living."
+  },
+  {
+    "id": 224,
+    "name": "Fallen Beast",
+    "specs": "A creature that has lost its way, now a harbinger of doom."
+  },
+  {
+    "id": 225,
+    "name": "Twilight Demon",
+    "specs": "A creature that thrives at dusk, preying on the vulnerable."
+  },
+  {
+    "id": 226,
+    "name": "Echoing Wyrm",
+    "specs": "A dragon that reverberates through the night, instilling fear."
+  },
+  {
+    "id": 227,
+    "name": "Forsaken Wraith",
+    "specs": "A spirit abandoned by the living, seeking vengeance."
+  },
+  {
+    "id": 228,
+    "name": "Mournful Shade",
+    "specs": "A ghost that brings sorrow to all who encounter it."
+  },
+  {
+    "id": 229,
+    "name": "Dread Phantom",
+    "specs": "A ghost that brings nightmares to those it haunts."
+  },
+  {
+    "id": 230,
+    "name": "Specter of Sorrow",
+    "specs": "A creature that embodies grief, bringing despair."
+  },
+  {
+    "id": 231,
+    "name": "Twilight Horror",
+    "specs": "A creature that emerges at dusk, preying on the unwary."
+  },
+  {
+    "id": 232,
+    "name": "Wailing Horror",
+    "specs": "A creature whose cries echo through the night."
+  },
+  {
+    "id": 233,
+    "name": "Gloom Phantom",
+    "specs": "A shadowy figure that brings darkness and despair."
+  },
+  {
+    "id": 234,
+    "name": "Cursed Wraith",
+    "specs": "A ghost bound by a dark curse, forever haunting its tormentors."
+  },
+  {
+    "id": 235,
+    "name": "Eldritch Horror",
+    "specs": "A creature from beyond comprehension, driving those who see it to madness."
+  },
+  {
+    "id": 236,
+    "name": "Phantom of the Abyss",
+    "specs": "A creature from the depths that brings despair to the surface."
+  },
+  {
+    "id": 237,
+    "name": "Wretched Wyrm",
+    "specs": "A dragon that embodies suffering, bringing despair wherever it"
+  },
+  {
+    "id": 238,
+    "name": "Doom Bringer",
+    "specs": "A fearsome entity that heralds destruction and chaos."
+  },
+  {
+    "id": 239,
+    "name": "Whispering Shade",
+    "specs": "A ghost that murmurs secrets from the beyond."
+  },
+  {
+    "id": 240,
+    "name": "Ravenous Phantom",
+    "specs": "A spirit that consumes the fear of the living."
+  },
+  {
+    "id": 241,
+    "name": "Creeping Shadow",
+    "specs": "A silent figure that stalks its prey from the darkness."
+  },
+  {
+    "id": 242,
+    "name": "Infernal Wraith",
+    "specs": "A ghostly figure wreathed in flames, bringing terror."
+  },
+  {
+    "id": 243,
+    "name": "Dread Revenant",
+    "specs": "A vengeful spirit that rises from the grave."
+  },
+  {
+    "id": 244,
+    "name": "Gloom Reaver",
+    "specs": "A dark creature that feeds on despair and sorrow."
+  },
+  {
+    "id": 245,
+    "name": "Twilight Terror",
+    "specs": "A creature that thrives in the twilight, preying on the lost."
+  },
+  {
+    "id": 246,
+    "name": "Echoing Horror",
+    "specs": "A being that resonates with the fears of those nearby."
+  },
+  {
+    "id": 247,
+    "name": "Nightmare Beast",
+    "specs": "A creature born from the darkest dreams."
+  },
+  {
+    "id": 248,
+    "name": "Forsaken Demon",
+    "specs": "A malevolent spirit cast out from its realm."
+  },
+  {
+    "id": 249,
+    "name": "Wailing Revenant",
+    "specs": "A ghost that cries out for vengeance."
+  },
+  {
+    "id": 250,
+    "name": "Mournful Shade",
+    "specs": "A spirit filled with grief, haunting its past."
+  },
+  {
+    "id": 251,
+    "name": "Chilling Wyrm",
+    "specs": "An ice dragon that commands the cold."
+  },
+  {
+    "id": 252,
+    "name": "Veilwalker",
+    "specs": "A creature that moves between realms, unseen."
+  },
+  {
+    "id": 253,
+    "name": "Cursed Phantom",
+    "specs": "A ghost bound by a dark curse, seeking escape."
+  },
+  {
+    "id": 254,
+    "name": "Despairing Demon",
+    "specs": "A creature that thrives on the sorrow of others."
+  },
+  {
+    "id": 255,
+    "name": "Gloom Wyrm",
+    "specs": "A dragon that brings darkness and fear."
+  },
+  {
+    "id": 256,
+    "name": "Echoing Shade",
+    "specs": "A ghost that echoes the cries of the forgotten."
+  },
+  {
+    "id": 257,
+    "name": "Twilight Spirit",
+    "specs": "A being that thrives at dusk, bringing shadows."
+  },
+  {
+    "id": 258,
+    "name": "Creeping Terror",
+    "specs": "A monster that crawls silently, striking from the dark."
+  },
+  {
+    "id": 259,
+    "name": "Sorrowful Demon",
+    "specs": "A creature that feeds on the grief of others."
+  },
+  {
+    "id": 260,
+    "name": "Nightmare Phantom",
+    "specs": "A ghost that haunts the dreams of the living."
+  },
+  {
+    "id": 261,
+    "name": "Wretched Shade",
+    "specs": "A spirit that brings misery and despair."
+  },
+  {
+    "id": 262,
+    "name": "Forsaken Wyrm",
+    "specs": "A dragon abandoned by its kin, filled with rage."
+  },
+  {
+    "id": 263,
+    "name": "Dread Shade",
+    "specs": "A ghost that embodies fear, haunting the living."
+  },
+  {
+    "id": 264,
+    "name": "Chilling Revenant",
+    "specs": "A ghost that brings winter's chill wherever it goes."
+  },
+  {
+    "id": 265,
+    "name": "Eldritch Wraith",
+    "specs": "A creature from beyond that induces madness."
+  },
+  {
+    "id": 266,
+    "name": "Mourning Wyrm",
+    "specs": "A dragon that weeps for its lost kin."
+  },
+  {
+    "id": 267,
+    "name": "Blighted Phantom",
+    "specs": "A ghost corrupted by dark magic."
+  },
+  {
+    "id": 268,
+    "name": "Gloom Demon",
+    "specs": "A creature that thrives in darkness, preying on fear."
+  },
+  {
+    "id": 269,
+    "name": "Forsaken Shade",
+    "specs": "A spirit abandoned by the living."
+  },
+  {
+    "id": 270,
+    "name": "Doomed Wraith",
+    "specs": "A ghost marked for destruction."
+  },
+  {
+    "id": 271,
+    "name": "Harrowing Phantom",
+    "specs": "A ghost that induces terror in those it haunts."
+  },
+  {
+    "id": 272,
+    "name": "Sorrowful Shade",
+    "specs": "A spirit filled with grief, haunting the living."
+  },
+  {
+    "id": 273,
+    "name": "Vengeful Wyrm",
+    "specs": "A dragon seeking revenge for its fallen kin."
+  },
+  {
+    "id": 274,
+    "name": "Blight Wraith",
+    "specs": "A ghost that spreads disease and decay."
+  },
+  {
+    "id": 275,
+    "name": "Infernal Shade",
+    "specs": "A fiery ghost that brings destruction."
+  },
+  {
+    "id": 276,
+    "name": "Echoing Revenant",
+    "specs": "A spirit that resonates with the cries of the lost."
+  },
+  {
+    "id": 277,
+    "name": "Creeping Shade",
+    "specs": "A ghost that moves silently, stalking its prey."
+  },
+  {
+    "id": 278,
+    "name": "Twilight Wyrm",
+    "specs": "A dragon that thrives at dusk, preying on the vulnerable."
+  },
+  {
+    "id": 279,
+    "name": "Dread Phantom",
+    "specs": "A ghost that brings nightmares to the living."
+  },
+  {
+    "id": 280,
+    "name": "Sorrow Demon",
+    "specs": "A creature that feeds on the grief of others."
+  },
+  {
+    "id": 281,
+    "name": "Forsaken Spirit",
+    "specs": "A ghost abandoned by the living, filled with rage."
+  },
+  {
+    "id": 282,
+    "name": "Haunting Beast",
+    "specs": "A creature that stalks its prey, bringing terror."
+  },
+  {
+    "id": 283,
+    "name": "Chilling Phantom",
+    "specs": "A ghost that freezes the air around it."
+  },
+  {
+    "id": 284,
+    "name": "Doomed Revenant",
+    "specs": "A spirit marked for destruction, haunting the living."
+  },
+  {
+    "id": 285,
+    "name": "Echoing Horror",
+    "specs": "A creature that resonates with the fears of those nearby."
+  },
+  {
+    "id": 286,
+    "name": "Wretched Wraith",
+    "specs": "A ghost that brings misery and despair."
+  },
+  {
+    "id": 287,
+    "name": "Forsaken Demon",
+    "specs": "A malevolent spirit cast out from its realm."
+  },
+  {
+    "id": 288,
+    "name": "Twilight Shade",
+    "specs": "A creature that thrives in twilight, preying on shadows."
+  },
+  {
+    "id": 289,
+    "name": "Cursed Wraith",
+    "specs": "A ghost bound by a dark curse, seeking vengeance."
+  },
+  {
+    "id": 290,
+    "name": "Mournful Revenant",
+    "specs": "A spirit that cries out for justice."
+  },
+  {
+    "id": 291,
+    "name": "Dread Beast",
+    "specs": "A creature that embodies all fears."
+  },
+  {
+    "id": 292,
+    "name": "Nightmare Demon",
+    "specs": "A creature born from the darkest fears."
+  },
+  {
+    "id": 293,
+    "name": "Sorrowful Wyrm",
+    "specs": "A dragon that embodies grief."
+  },
+  {
+    "id": 294,
+    "name": "Echoing Shade",
+    "specs": "A ghost that resonates with the cries of the lost."
+  },
+  {
+    "id": 295,
+    "name": "Twilight Fiend",
+    "specs": "A creature that thrives at dusk, bringing shadows."
+  },
+  {
+    "id": 296,
+    "name": "Creeping Wraith",
+    "specs": "A ghost that stalks the living silently."
+  },
+  {
+    "id": 297,
+    "name": "Vengeful Shade",
+    "specs": "A spirit seeking revenge on those who wronged it."
+  },
+  {
+    "id": 298,
+    "name": "Infernal Phantom",
+    "specs": "A fiery spirit that brings destruction."
+  },
+  {
+    "id": 299,
+    "name": "Harrowing Wyrm",
+    "specs": "A dragon that spreads terror wherever it flies."
+  },
+  {
+    "id": 300,
+    "name": "Grieving Shade",
+    "specs": "A ghost burdened by sorrow, haunting the living."
+  },
+  {
+    "id": 301,
+    "name": "Cursed Beast",
+    "specs": "A creature marked by a dark curse, forever seeking escape."
+  },
+  {
+    "id": 302,
+    "name": "Blighted Wraith",
+    "specs": "A spirit corrupted by dark magic."
+  },
+  {
+    "id": 303,
+    "name": "Chilling Fiend",
+    "specs": "A creature that brings a deep, penetrating cold."
+  },
+  {
+    "id": 304,
+    "name": "Mournful Demon",
+    "specs": "A creature that feeds on the tears of the living."
+  },
+  {
+    "id": 305,
+    "name": "Twilight Revenant",
+    "specs": "A ghost that rises at dusk, seeking vengeance."
+  },
+  {
+    "id": 306,
+    "name": "Echoing Horror",
+    "specs": "A being that resonates with the fears of those nearby."
+  },
+  {
+    "id": 307,
+    "name": "Wretched Shade",
+    "specs": "A spirit that brings misery and despair."
+  },
+  {
+    "id": 308,
+    "name": "Forsaken Wraith",
+    "specs": "A spirit abandoned by the living, filled with rage."
+  },
+  {
+    "id": 309,
+    "name": "Vengeful Wyrm",
+    "specs": "A dragon seeking revenge for its fallen kin."
+  },
+  {
+    "id": 310,
+    "name": "Creeping Phantom",
+    "specs": "A ghost that moves silently, stalking its prey."
+  },
+  {
+    "id": 311,
+    "name": "Doomed Shade",
+    "specs": "A ghost marked for destruction."
+  },
+  {
+    "id": 312,
+    "name": "Chilling Wraith",
+    "specs": "A ghost that brings winter's chill wherever it goes."
+  },
+  {
+    "id": 313,
+    "name": "Sorrowful Spirit",
+    "specs": "A ghost that brings sorrow to those it haunts."
+  },
+  {
+    "id": 314,
+    "name": "Gloom Demon",
+    "specs": "A creature that thrives in darkness, preying on fear."
+  },
+  {
+    "id": 315,
+    "name": "Echoing Wyrm",
+    "specs": "A dragon that reverberates with the cries of the lost."
+  },
+  {
+    "id": 316,
+    "name": "Twilight Shade",
+    "specs": "A creature that thrives in twilight, preying on shadows."
+  },
+  {
+    "id": 317,
+    "name": "Cursed Wraith",
+    "specs": "A ghost bound by a dark curse, seeking vengeance."
+  },
+  {
+    "id": 318,
+    "name": "Grieving Phantom",
+    "specs": "A spirit that laments its lost life."
+  },
+  {
+    "id": 319,
+    "name": "Dread Revenant",
+    "specs": "A vengeful spirit that rises from the grave."
+  },
+  {
+    "id": 320,
+    "name": "Blighted Shade",
+    "specs": "A ghost corrupted by dark magic, spreading decay."
+  },
+  {
+    "id": 321,
+    "name": "Mournful Wyrm",
+    "specs": "A dragon that weeps for its lost kin."
+  },
+  {
+    "id": 322,
+    "name": "Forsaken Demon",
+    "specs": "A malevolent spirit cast out from its realm."
+  },
+  {
+    "id": 323,
+    "name": "Harrowing Shade",
+    "specs": "A ghost that induces terror in those it haunts."
+  },
+  {
+    "id": 324,
+    "name": "Creeping Terror",
+    "specs": "A monster that crawls silently, striking from the dark."
+  },
+  {
+    "id": 325,
+    "name": "Sorrow Demon",
+    "specs": "A creature that feeds on the grief of others."
+  },
+  {
+    "id": 326,
+    "name": "Twilight Spirit",
+    "specs": "A being that thrives at dusk, bringing shadows."
+  },
+  {
+    "id": 327,
+    "name": "Wretched Revenant",
+    "specs": "A spirit that brings misery to the living."
+  },
+  {
+    "id": 328,
+    "name": "Doomed Wyrm",
+    "specs": "A dragon marked for destruction, haunting the skies."
+  },
+  {
+    "id": 329,
+    "name": "Echoing Shade",
+    "specs": "A ghost that resonates with the cries of the lost."
+  },
+  {
+    "id": 330,
+    "name": "Chilling Beast",
+    "specs": "A creature of ice that brings winter's chill."
+  },
+  {
+    "id": 331,
+    "name": "Vengeful Shade",
+    "specs": "A spirit seeking revenge on those who wronged it."
+  },
+  {
+    "id": 332,
+    "name": "Forsaken Wraith",
+    "specs": "A ghost abandoned by the living, filled with rage."
+  },
+  {
+    "id": 333,
+    "name": "Cursed Demon",
+    "specs": "A malevolent spirit bound by a dark curse."
+  },
+  {
+    "id": 334,
+    "name": "Mournful Phantom",
+    "specs": "A spirit that cries out for justice."
+  },
+  {
+    "id": 335,
+    "name": "Dread Horror",
+    "specs": "A creature that embodies all fears, striking terror."
+  },
+  {
+    "id": 336,
+    "name": "Twilight Wyrm",
+    "specs": "A dragon that thrives in the twilight, preying on shadows."
+  },
+  {
+    "id": 337,
+    "name": "Sorrowful Shade",
+    "specs": "A spirit filled with grief, haunting the living."
+  },
+  {
+    "id": 338,
+    "name": "Echoing Phantom",
+    "specs": "A ghost that resonates with the cries of the lost."
+  },
+  {
+    "id": 339,
+    "name": "Chilling Wraith",
+    "specs": "A ghost that brings a deep, penetrating cold."
+  },
+  {
+    "id": 340,
+    "name": "Creeping Horror",
+    "specs": "A monster that moves silently, instilling fear."
+  },
+  {
+    "id": 341,
+    "name": "Forsaken Revenant",
+    "specs": "A spirit that rises from the grave seeking revenge."
+  },
+  {
+    "id": 342,
+    "name": "Doomed Shade",
+    "specs": "A ghost marked for destruction, haunting the living."
+  },
+  {
+    "id": 343,
+    "name": "Harrowing Fiend",
+    "specs": "A creature that induces terror in those it haunts."
+  },
+  {
+    "id": 344,
+    "name": "Mournful Wyrm",
+    "specs": "A dragon that embodies grief, bringing despair."
+  },
+  {
+    "id": 345,
+    "name": "Eldritch Horror",
+    "specs": "A creature that drives those who see it to madness."
+  },
+  {
+    "id": 346,
+    "name": "Gloom Phantom",
+    "specs": "A shadowy figure that brings darkness and despair."
+  },
+  {
+    "id": 347,
+    "name": "Twilight Shade",
+    "specs": "A creature that thrives in twilight, preying on shadows."
+  },
+  {
+    "id": 348,
+    "name": "Echoing Horror",
+    "specs": "A being that resonates with the fears of those nearby."
+  },
+  {
+    "id": 349,
+    "name": "Cursed Wraith",
+    "specs": "A ghost bound by a dark curse, seeking vengeance."
+  },
+  {
+    "id": 350,
+    "name": "Dread Revenant",
+    "specs": "A vengeful spirit that rises from the grave."
+  },
+  {
+    "id": 351,
+    "name": "Wretched Shade",
+    "specs": "A spirit that brings misery and despair."
+  },
+  {
+    "id": 352,
+    "name": "Forsaken Wyrm",
+    "specs": "A dragon abandoned by its kin, filled with rage."
+  },
+  {
+    "id": 353,
+    "name": "Sorrowful Spirit",
+    "specs": "A ghost that brings sorrow to those it haunts."
+  },
+  {
+    "id": 354,
+    "name": "Chilling Wraith",
+    "specs": "A ghost that brings winter's chill wherever it goes."
+  },
+  {
+    "id": 355,
+    "name": "Vengeful Phantom",
+    "specs": "A spirit seeking revenge on those who wronged it."
+  },
+  {
+    "id": 356,
+    "name": "Twilight Demon",
+    "specs": "A creature that thrives at dusk, bringing shadows."
+  },
+  {
+    "id": 357,
+    "name": "Creeping Terror",
+    "specs": "A monster that crawls silently, striking from the dark."
+  },
+  {
+    "id": 358,
+    "name": "Doomed Wyrm",
+    "specs": "A dragon marked for destruction, haunting the skies."
+  },
+  {
+    "id": 359,
+    "name": "Forsaken Wraith",
+    "specs": "A ghost abandoned by the living, seeking vengeance."
+  },
+  {
+    "id": 360,
+    "name": "Echoing Shade",
+    "specs": "A ghost that resonates with the cries of the lost."
+  },
+  {
+    "id": 361,
+    "name": "Chilling Fiend",
+    "specs": "A creature that brings a deep, penetrating cold."
+  },
+  {
+    "id": 362,
+    "name": "Sorrow Demon",
+    "specs": "A creature that feeds on the grief of others."
+  },
+  {
+    "id": 363,
+    "name": "Twilight Spirit",
+    "specs": "A being that thrives at dusk, bringing shadows."
+  },
+  {
+    "id": 364,
+    "name": "Wretched Revenant",
+    "specs": "A spirit that brings misery to the living."
+  },
+  {
+    "id": 365,
+    "name": "Harrowing Wyrm",
+    "specs": "A dragon that spreads terror wherever it flies."
+  },
+  {
+    "id": 366,
+    "name": "Lamenting Shade",
+    "specs": "A ghost that mourns for its lost life."
+  },
+  {
+    "id": 367,
+    "name": "Dread Beast",
+    "specs": "A creature that embodies all fears."
+  },
+  {
+    "id": 368,
+    "name": "Blighted Specter",
+    "specs": "A spirit marked by decay and darkness."
+  },
+  {
+    "id": 369,
+    "name": "Cursed Phantom",
+    "specs": "A ghost bound by a dark curse, seeking vengeance."
+  },
+  {
+    "id": 370,
+    "name": "Twilight Reaper",
+    "specs": "A figure that harvests souls at dusk."
+  },
+  {
+    "id": 371,
+    "name": "Chilling Revenant",
+    "specs": "A ghost that brings a cold dread to the living."
+  },
+  {
+    "id": 372,
+    "name": "Forsaken Fiend",
+    "specs": "A malevolent spirit cast out from its realm."
+  },
+  {
+    "id": 373,
+    "name": "Echoing Horror",
+    "specs": "A being that resonates with the fears of those nearby."
+  },
+  {
+    "id": 374,
+    "name": "Sorrowful Wraith",
+    "specs": "A ghost that embodies grief."
+  },
+  {
+    "id": 375,
+    "name": "Doomed Demon",
+    "specs": "A creature marked for destruction."
+  },
+  {
+    "id": 376,
+    "name": "Lurking Shade",
+    "specs": "A ghost that hides in the shadows, waiting."
+  },
+  {
+    "id": 377,
+    "name": "Mournful Spirit",
+    "specs": "A specter that laments its lost life."
+  },
+  {
+    "id": 378,
+    "name": "Wretched Revenant",
+    "specs": "A spirit that brings despair and sorrow."
+  },
+  {
+    "id": 379,
+    "name": "Blight Wyrm",
+    "specs": "A dragon that spreads disease and decay."
+  },
+  {
+    "id": 380,
+    "name": "Chilling Shade",
+    "specs": "A ghost that freezes the air around it."
+  },
+  {
+    "id": 381,
+    "name": "Cursed Beast",
+    "specs": "A creature marked by a dark curse."
+  },
+  {
+    "id": 382,
+    "name": "Dread Phantom",
+    "specs": "A ghost that brings nightmares."
+  },
+  {
+    "id": 383,
+    "name": "Eldritch Wraith",
+    "specs": "A being from beyond that induces madness."
+  },
+  {
+    "id": 384,
+    "name": "Twilight Demon",
+    "specs": "A creature that thrives at dusk, bringing shadows."
+  },
+  {
+    "id": 385,
+    "name": "Forsaken Shade",
+    "specs": "A spirit abandoned by the living."
+  },
+  {
+    "id": 386,
+    "name": "Vengeful Phantom",
+    "specs": "A spirit seeking revenge on those who wronged it."
+  },
+  {
+    "id": 387,
+    "name": "Chilling Wyrm",
+    "specs": "An ice dragon that commands the cold."
+  },
+  {
+    "id": 388,
+    "name": "Sorrowful Shade",
+    "specs": "A ghost filled with grief, haunting the living."
+  },
+  {
+    "id": 389,
+    "name": "Doomed Wraith",
+    "specs": "A ghost marked for destruction."
+  },
+  {
+    "id": 390,
+    "name": "Echoing Revenant",
+    "specs": "A spirit that resonates with the cries of the lost."
+  },
+  {
+    "id": 391,
+    "name": "Mournful Wyrm",
+    "specs": "A dragon that weeps for its lost kin."
+  },
+  {
+    "id": 392,
+    "name": "Blighted Phantom",
+    "specs": "A ghost corrupted by dark magic."
+  },
+  {
+    "id": 393,
+    "name": "Harrowing Shade",
+    "specs": "A ghost that induces terror in those it haunts."
+  },
+  {
+    "id": 394,
+    "name": "Forsaken Wraith",
+    "specs": "A ghost abandoned by the living, filled with rage."
+  },
+  {
+    "id": 395,
+    "name": "Twilight Spirit",
+    "specs": "A being that thrives at dusk, bringing shadows."
+  },
+  {
+    "id": 396,
+    "name": "Dread Beast",
+    "specs": "A creature that embodies all fears."
+  },
+  {
+    "id": 397,
+    "name": "Chilling Fiend",
+    "specs": "A creature that brings a deep, penetrating cold."
+  },
+  {
+    "id": 398,
+    "name": "Vengeful Wyrm",
+    "specs": "A dragon seeking revenge for its fallen kin."
+  },
+  {
+    "id": 399,
+    "name": "Creeping Terror",
+    "specs": "A monster that crawls silently, striking from the dark."
+  },
+  {
+    "id": 400,
+    "name": "Echoing Shade",
+    "specs": "A ghost that resonates with the cries of the lost."
+  },
+  {
+    "id": 401,
+    "name": "Doomed Spirit",
+    "specs": "A ghost bound to its tragic fate."
+  },
+  {
+    "id": 402,
+    "name": "Despairing Wraith",
+    "specs": "A spirit that thrives on sadness."
+  },
+  {
+    "id": 403,
+    "name": "Sorrow Demon",
+    "specs": "A creature that feeds on the grief of others."
+  },
+  {
+    "id": 404,
+    "name": "Hollow Fiend",
+    "specs": "A being that leaves emptiness in its wake."
+  },
+  {
+    "id": 405,
+    "name": "Mournful Phantom",
+    "specs": "A spirit that laments its lost life."
+  },
+  {
+    "id": 406,
+    "name": "Forsaken Shade",
+    "specs": "A spirit abandoned by the living."
+  },
+  {
+    "id": 407,
+    "name": "Twilight Reaper",
+    "specs": "A figure that harvests souls at dusk."
+  },
+  {
+    "id": 408,
+    "name": "Grieving Shade",
+    "specs": "A ghost burdened by sorrow."
+  },
+  {
+    "id": 409,
+    "name": "Chilling Wraith",
+    "specs": "A ghost that brings winter's chill."
+  },
+  {
+    "id": 410,
+    "name": "Doom Revenant",
+    "specs": "A spirit marked for destruction."
+  },
+  {
+    "id": 411,
+    "name": "Echoing Horror",
+    "specs": "A being that resonates with the fears of those nearby."
+  },
+  {
+    "id": 412,
+    "name": "Twilight Demon",
+    "specs": "A creature that thrives at dusk, bringing shadows."
+  },
+  {
+    "id": 413,
+    "name": "Wretched Wraith",
+    "specs": "A ghost that brings misery and despair."
+  },
+  {
+    "id": 414,
+    "name": "Forsaken Fiend",
+    "specs": "A malevolent spirit cast out from its realm."
+  },
+  {
+    "id": 415,
+    "name": "Cursed Revenant",
+    "specs": "A spirit bound by a dark curse."
+  },
+  {
+    "id": 416,
+    "name": "Mournful Wyrm",
+    "specs": "A dragon that weeps for its lost kin."
+  },
+  {
+    "id": 417,
+    "name": "Harrowing Shade",
+    "specs": "A ghost that induces terror in those it haunts."
+  },
+  {
+    "id": 418,
+    "name": "Chilling Phantom",
+    "specs": "A ghost that freezes the air around it."
+  },
+  {
+    "id": 419,
+    "name": "Sorrowful Spirit",
+    "specs": "A ghost that brings sorrow to those it haunts."
+  },
+  {
+    "id": 420,
+    "name": "Echoing Shade",
+    "specs": "A ghost that resonates with the cries of the lost."
+  },
+  {
+    "id": 421,
+    "name": "Doomed Wraith",
+    "specs": "A ghost marked for destruction."
+  },
+  {
+    "id": 422,
+    "name": "Twilight Wyrm",
+    "specs": "A dragon that thrives in twilight, preying on shadows."
+  },
+  {
+    "id": 423,
+    "name": "Creeping Horror",
+    "specs": "A monster that moves silently, instilling fear."
+  },
+  {
+    "id": 424,
+    "name": "Forsaken Demon",
+    "specs": "A malevolent spirit cast out from its realm."
+  },
+  {
+    "id": 425,
+    "name": "Vengeful Shade",
+    "specs": "A spirit seeking revenge on those who wronged it."
+  },
+  {
+    "id": 426,
+    "name": "Wretched Shade",
+    "specs": "A spirit that brings misery and despair."
+  },
+  {
+    "id": 427,
+    "name": "Despairing Dread",
+    "specs": "A creature that thrives on the sorrow of others."
+  },
+  {
+    "id": 428,
+    "name": "Chilling Wyrm",
+    "specs": "An ice dragon that commands the cold."
+  },
+  {
+    "id": 429,
+    "name": "Mournful Shade",
+    "specs": "A ghost filled with grief, haunting the living."
+  },
+  {
+    "id": 430,
+    "name": "Echoing Phantom",
+    "specs": "A ghost that resonates with the cries of the lost."
+  },
+  {
+    "id": 431,
+    "name": "Doomed Spirit",
+    "specs": "A ghost bound to its tragic fate."
+  },
+  {
+    "id": 432,
+    "name": "Lamenting Wraith",
+    "specs": "A spirit that mourns for its lost life."
+  },
+  {
+    "id": 433,
+    "name": "Harrowing Wyrm",
+    "specs": "A dragon that spreads terror wherever it flies."
+  },
+  {
+    "id": 434,
+    "name": "Forsaken Revenant",
+    "specs": "A spirit that rises from the grave seeking revenge."
+  },
+  {
+    "id": 435,
+    "name": "Twilight Spirit",
+    "specs": "A being that thrives at dusk, bringing shadows."
+  },
+  {
+    "id": 436,
+    "name": "Dread Phantom",
+    "specs": "A ghost that brings nightmares."
+  },
+  {
+    "id": 437,
+    "name": "Blighted Shade",
+    "specs": "A ghost corrupted by dark magic."
+  },
+  {
+    "id": 438,
+    "name": "Cursed Wraith",
+    "specs": "A ghost bound by a dark curse."
+  },
+  {
+    "id": 439,
+    "name": "Sorrow Demon",
+    "specs": "A creature that feeds on the grief of others."
+  },
+  {
+    "id": 440,
+    "name": "Chilling Fiend",
+    "specs": "A creature that brings a deep, penetrating cold."
+  },
+  {
+    "id": 441,
+    "name": "Mournful Phantom",
+    "specs": "A spirit that laments its lost life."
+  },
+  {
+    "id": 442,
+    "name": "Forsaken Shade",
+    "specs": "A spirit abandoned by the living."
+  },
+  {
+    "id": 443,
+    "name": "Twilight Reaper",
+    "specs": "A figure that harvests souls at dusk."
+  },
+  {
+    "id": 444,
+    "name": "Grieving Shade",
+    "specs": "A ghost burdened by sorrow."
+  },
+  {
+    "id": 445,
+    "name": "Chilling Wraith",
+    "specs": "A ghost that brings winter's chill."
+  },
+  {
+    "id": 446,
+    "name": "Doom Revenant",
+    "specs": "A spirit marked for destruction."
+  },
+  {
+    "id": 447,
+    "name": "Echoing Horror",
+    "specs": "A being that resonates with the fears of those nearby."
+  },
+  {
+    "id": 448,
+    "name": "Twilight Demon",
+    "specs": "A creature that thrives at dusk, bringing shadows."
+  },
+  {
+    "id": 449,
+    "name": "Wretched Wraith",
+    "specs": "A ghost that brings misery and despair."
+  },
+  {
+    "id": 450,
+    "name": "Forsaken Fiend",
+    "specs": "A malevolent spirit cast out from its realm."
+  },
+  {
+    "id": 451,
+    "name": "Cursed Revenant",
+    "specs": "A spirit bound by a dark curse."
+  },
+  {
+    "id": 452,
+    "name": "Mournful Wyrm",
+    "specs": "A dragon that weeps for its lost kin."
+  },
+  {
+    "id": 453,
+    "name": "Harrowing Shade",
+    "specs": "A ghost that induces terror in those it haunts."
+  },
+  {
+    "id": 454,
+    "name": "Chilling Phantom",
+    "specs": "A ghost that freezes the air around it."
+  },
+  {
+    "id": 455,
+    "name": "Sorrowful Spirit",
+    "specs": "A ghost that brings sorrow to those it haunts."
+  },
+  {
+    "id": 456,
+    "name": "Echoing Shade",
+    "specs": "A ghost that resonates with the cries of the lost."
+  },
+  {
+    "id": 457,
+    "name": "Doomed Wraith",
+    "specs": "A ghost marked for destruction."
+  },
+  {
+    "id": 458,
+    "name": "Twilight Wyrm",
+    "specs": "A dragon that thrives in twilight, preying on shadows."
+  },
+  {
+    "id": 459,
+    "name": "Creeping Horror",
+    "specs": "A monster that moves silently, instilling fear."
+  },
+  {
+    "id": 460,
+    "name": "Forsaken Demon",
+    "specs": "A malevolent spirit cast out from its realm."
+  },
+  {
+    "id": 461,
+    "name": "Vengeful Shade",
+    "specs": "A spirit seeking revenge on those who wronged it."
+  },
+  {
+    "id": 462,
+    "name": "Wretched Shade",
+    "specs": "A spirit that brings misery and despair."
+  },
+  {
+    "id": 463,
+    "name": "Despairing Dread",
+    "specs": "A creature that thrives on the sorrow of others."
+  },
+  {
+    "id": 464,
+    "name": "Chilling Wyrm",
+    "specs": "An ice dragon that commands the cold."
+  },
+  {
+    "id": 465,
+    "name": "Mournful Shade",
+    "specs": "A ghost filled with grief, haunting the living."
+  },
+  {
+    "id": 466,
+    "name": "Echoing Phantom",
+    "specs": "A ghost that resonates with the cries of the lost."
+  },
+  {
+    "id": 467,
+    "name": "Doomed Spirit",
+    "specs": "A ghost bound to its tragic fate."
+  },
+  {
+    "id": 468,
+    "name": "Lamenting Wraith",
+    "specs": "A spirit that mourns for its lost life."
+  },
+  {
+    "id": 469,
+    "name": "Harrowing Wyrm",
+    "specs": "A dragon that spreads terror wherever it flies."
+  },
+  {
+    "id": 470,
+    "name": "Forsaken Revenant",
+    "specs": "A spirit that rises from the grave seeking revenge."
+  },
+  {
+    "id": 471,
+    "name": "Twilight Spirit",
+    "specs": "A being that thrives at dusk, bringing shadows."
+  },
+  {
+    "id": 472,
+    "name": "Dread Phantom",
+    "specs": "A ghost that brings nightmares."
+  },
+  {
+    "id": 473,
+    "name": "Blighted Shade",
+    "specs": "A ghost corrupted by dark magic."
+  },
+  {
+    "id": 474,
+    "name": "Cursed Wraith",
+    "specs": "A ghost bound by a dark curse."
+  },
+  {
+    "id": 475,
+    "name": "Sorrow Demon",
+    "specs": "A creature that feeds on the grief of others."
+  },
+  {
+    "id": 476,
+    "name": "Chilling Fiend",
+    "specs": "A creature that brings a deep, penetrating cold."
+  },
+  {
+    "id": 477,
+    "name": "Mournful Phantom",
+    "specs": "A spirit that laments its lost life."
+  },
+  {
+    "id": 478,
+    "name": "Forsaken Shade",
+    "specs": "A spirit abandoned by the living."
+  },
+  {
+    "id": 479,
+    "name": "Twilight Reaper",
+    "specs": "A figure that harvests souls at dusk."
+  },
+  {
+    "id": 480,
+    "name": "Grieving Shade",
+    "specs": "A ghost burdened by sorrow."
+  },
+  {
+    "id": 481,
+    "name": "Chilling Wraith",
+    "specs": "A ghost that brings winter's chill."
+  },
+  {
+    "id": 482,
+    "name": "Doom Revenant",
+    "specs": "A spirit marked for destruction."
+  },
+  {
+    "id": 483,
+    "name": "Echoing Horror",
+    "specs": "A being that resonates with the fears of those nearby."
+  },
+  {
+    "id": 484,
+    "name": "Twilight Demon",
+    "specs": "A creature that thrives at dusk, bringing shadows."
+  },
+  {
+    "id": 485,
+    "name": "Wretched Wraith",
+    "specs": "A ghost that brings misery and despair."
+  },
+  {
+    "id": 486,
+    "name": "Forsaken Fiend",
+    "specs": "A malevolent spirit cast out from its realm."
+  },
+  {
+    "id": 487,
+    "name": "Cursed Revenant",
+    "specs": "A spirit bound by a dark curse."
+  },
+  {
+    "id": 488,
+    "name": "Mournful Wyrm",
+    "specs": "A dragon that weeps for its lost kin."
+  },
+  {
+    "id": 489,
+    "name": "Harrowing Shade",
+    "specs": "A ghost that induces terror in those it haunts."
+  },
+  {
+    "id": 490,
+    "name": "Chilling Phantom",
+    "specs": "A ghost that freezes the air around it."
+  },
+  {
+    "id": 491,
+    "name": "Sorrowful Spirit",
+    "specs": "A ghost that brings sorrow to those it haunts."
+  },
+  {
+    "id": 492,
+    "name": "Echoing Shade",
+    "specs": "A ghost that resonates with the cries of the lost."
+  },
+  {
+    "id": 493,
+    "name": "Doomed Wraith",
+    "specs": "A ghost marked for destruction."
+  },
+  {
+    "id": 494,
+    "name": "Twilight Wyrm",
+    "specs": "A dragon that thrives in twilight, preying on shadows."
+  },
+  {
+    "id": 495,
+    "name": "Creeping Horror",
+    "specs": "A monster that moves silently, instilling fear."
+  },
+  {
+    "id": 496,
+    "name": "Forsaken Demon",
+    "specs": "A malevolent spirit cast out from its realm."
+  },
+  {
+    "id": 497,
+    "name": "Vengeful Shade",
+    "specs": "A spirit seeking revenge on those who wronged it."
+  },
+  {
+    "id": 498,
+    "name": "Wretched Shade",
+    "specs": "A spirit that brings misery and despair."
+  },
+  {
+    "id": 499,
+    "name": "Despairing Dread",
+    "specs": "A creature that thrives on the sorrow of others."
+  }
+]
