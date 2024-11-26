@@ -46,7 +46,10 @@ function init() {
       console.log("Error", err);
     } else {
       monsters = data;
-      prepareFight(monsters);
+      const team1 = ["0", "1", "2", "3"];
+      const team2 = ["200", "102", "62", "17"];
+      const battle = fight(team1, team2, monsters);
+      console.log("Battle: ", battle);
     }
   });
   readJSON("./json/elements.json", (err, data) => {
@@ -206,69 +209,41 @@ app.get("/generateTeam", (req, res) => {
   return res.status(400).json({ ok: false, message: "Not enough fighters available for the requested level." });
 });
 
-function prepareFight(monstersFromDB) {
-  const team1IDs = ["1", "2", "3", "4"];
-  const team2IDs = ["5", "6", "7", "8"];
+function fight(t1, t2, monstersFromDB) {
+  const team1IDs = t1;
+  const team2IDs = t2;
 
-  const team1 = [
-    {
-      name: "a1",
-      health: 4,
-      damage: 1,
-    },
-    {
-      name: "a2",
-      health: 5,
-      damage: 1,
-    },
-    {
-      name: "a3",
-      health: 6,
-      damage: 2,
-    },
-    {
-      name: "a4",
-      health: 5,
-      damage: 3,
-    },
-  ];
+  const team1 = monstersFromDB.filter((monster) => team1IDs.includes(monster.id.toString()));
+  const team2 = monstersFromDB.filter((monster) => team2IDs.includes(monster.id.toString()));
 
-  const team2 = [
-    {
-      name: "b1",
-      health: 5,
-      damage: 1,
-    },
-    {
-      name: "b2",
-      health: 7,
-      damage: 1,
-    },
-    {
-      name: "b3",
-      health: 4,
-      damage: 2,
-    },
-    {
-      name: "b4",
-      health: 6,
-      damage: 2,
-    },
-  ];
+  console.log("Team 1: ", team1);
+  console.log("Team 2: ", team2);
 
-  // const team1 = monstersFromDB.filter((monster) => team1IDs.includes(monster.id.toString()));
-  // const team2 = monstersFromDB.filter((monster) => team2IDs.includes(monster.id.toString()));
+  let team1Fighters;
+  let team2Fighters;
 
   let team1Points = 0;
   let team2Points = 0;
 
-  //fights[] => rounds[] => round{}
+  const combindedFigthers = [...team1IDs, ...team2IDs].sort((a, b) => a.localeCompare(b)).join("/");
+  const currentDate = new Date();
+  const year = currentDate.getFullYear();
+  const month = currentDate.getMonth();
+  const day = currentDate.getDate();
+  const hour = currentDate.getHours();
+  const minute = currentDate.getMinutes();
+  const seconds = currentDate.getSeconds();
+  const date = `${year}:${month}:${day}:${hour}:${minute}:${seconds}`;
+  const battleID = `${date}@${combindedFigthers}`;
 
-  let fights = [];
+  let battle = [];
 
   if (team1 && team1.length === 4 && team2 && team2.length === 4) {
     const team1TotalRating = team1.reduce((acc, curr) => acc + (curr.health + curr.damage), 0);
     const team2TotalRating = team2.reduce((acc, curr) => acc + (curr.health + curr.damage), 0);
+
+    team1Fighters = team1.map((fighter) => fighter.name);
+    team2Fighters = team2.map((fighter) => fighter.name);
 
     let startTeam = team1TotalRating < team2TotalRating ? team1 : team2TotalRating < team1TotalRating ? team2 : "Random";
 
@@ -281,119 +256,134 @@ function prepareFight(monstersFromDB) {
       }
     }
 
-    console.log("Start Team: ", startTeam);
-    console.log();
-    console.log("Total rating team 1", team1TotalRating);
-    console.log("Total rating team 2", team2TotalRating);
-    console.log();
-
-    team1.forEach((fighterTeam1, index) => {
+    team1.forEach((fighter, index) => {
+      const fighterTeam1 = fighter;
       const fighterTeam2 = team2[index];
-
-      const currentFight = fights.length + 1;
-
-      let rounds = [];
+      const fighter1Name = fighterTeam1.name;
+      const fighter2Name = fighterTeam2.name;
       let fighter1Health = fighterTeam1.health;
       let fighter2Health = fighterTeam2.health;
 
-      const fighter1Name = fighterTeam1.name;
-      const fighter2Name = fighterTeam2.name;
+      const currentFight = battle.length + 1;
+      let rounds = [];
 
       do {
-        //fight
         const currentRound = rounds.length + 1;
-        const fighter1StartHealth = fighter1Health;
-        const fighter2StartHealth = fighter2Health;
 
         const fighter1Stats = [fighter1Health];
         const fighter2Stats = [fighter2Health];
 
+        const fighter1Damage = fighterTeam1.damage;
+        const fighter2Damage = fighterTeam2.damage;
+
+        let totalDamageFigther1 = fighter1Damage;
+        let totalDamageFigther2 = fighter2Damage;
+
+        console.log("Fighter1Damage", totalDamageFigther1);
+        console.log("Fighter2Damage", totalDamageFigther2);
+
         if (startTeam === team1) {
-          fighterTeam2.health -= fighterTeam1.damage;
+          fighterTeam2.health -= totalDamageFigther1;
           fighter2Health = fighterTeam2.health;
           fighter2Stats.push(fighter2Health);
-          if (fighter2Health.health <= 0) {
+
+          if (fighter2Health <= 0) {
             break;
           }
-          fighterTeam1.health -= fighterTeam2.damage;
+
+          fighterTeam1.health -= totalDamageFigther2;
           fighter1Health.health = fighterTeam1.health;
           fighter1Stats.push(fighter1Health);
         } else {
-          fighterTeam1.health -= fighterTeam2.damage;
+          fighterTeam1.health -= totalDamageFigther2;
           fighter1Health.health = fighterTeam1.health;
-          if (fighter1Health.health <= 0) {
+          fighter1Stats.push(fighter1Health);
+
+          if (fighter1Health <= 0) {
             break;
           }
-          fighterTeam2.health -= fighterTeam1.damage;
+
+          fighterTeam2.health -= totalDamageFigther1;
           fighter2Health = fighterTeam2.health;
+          fighter2Stats.push(fighter2Health);
         }
 
-        fighter1Stats.push(fighterTeam2.damage);
-        fighter1Stats.push(fighterTeam1.damage);
+        fighter1Stats.push(totalDamageFigther2);
+        fighter1Stats.push(totalDamageFigther1);
 
-        fighter2Stats.push(fighterTeam1.damage);
-        fighter2Stats.push(fighterTeam2.damage);
+        fighter2Stats.push(totalDamageFigther1);
+        fighter2Stats.push(totalDamageFigther2);
+
+        const roundWinner = totalDamageFigther1 > totalDamageFigther2 ? "1" : totalDamageFigther2 > totalDamageFigther1 ? "2" : 0;
+
+        const roundWinnerByTeam = roundWinner === "1" ? team1Fighters : roundWinner === "2" ? team2Fighters : "Draw";
+        const roundWinnerByFighterName = roundWinner === "1" ? fighter1Name : roundWinner === "2" ? fighter2Name : "Draw";
 
         const round = {
           Round: currentRound,
-          "Figther 1": {
-            "Start HP": fighter1Stats[0],
-            "Remaining HP": fighter1Stats[1],
-            "Suffered damage": fighter1Stats[2],
-            "Distributed damage": fighter1Stats[3],
+          wonBy: {
+            team: roundWinnerByTeam,
+            fighter: roundWinnerByFighterName,
           },
-          "Figther 2": {
-            "Start HP": fighter1Stats[1],
-            "Remaining HP": fighter1Stats[2],
-            "Suffered damage": fighter1Stats[3],
-            "Distributed damage": fighter1Stats[4],
+          Figther1: {
+            StartHP: fighter1Stats[0],
+            RemainingHP: fighter1Stats[1] >= 0 ? fighter1Stats[1] : 0,
+            SufferedDamage: fighter1Stats[2],
+            DistributedDamage: fighter1Stats[3],
+          },
+          Figther2: {
+            StartHP: fighter2Stats[0],
+            RemainingHP: fighter2Stats[1] >= 0 ? fighter2Stats[1] : 0,
+            SufferedDamage: fighter2Stats[2],
+            DistributedDamage: fighter2Stats[3],
           },
         };
 
         rounds.push(round);
       } while (fighter1Health > 0 && fighter2Health > 0);
 
-      fights.push({ fight: currentFight, rounds: rounds, fighter1: fighter1Name, fighter2: fighter2Name });
-
-      // const winner = fight(fighterTeam1, fighterTeam2);
-
-      // if (winner === "1") {
-      //   team1Points++;
-      // } else if (winner === "2") {
-      //   team2Points++;
+      // if (battle.length === 0) {
+      //   console.log("Rounds: ", rounds);
       // }
+
+      console.log("Rounds: ", rounds);
+
+      let fightWinners;
+      const team1Rounds = rounds.filter((round) => round.wonBy.team === team1Fighters).length;
+      const team2Rounds = rounds.filter((round) => round.wonBy.team === team2Fighters).length;
+
+      if (team1Rounds > team2Rounds) {
+        team1Points++;
+        fightWinners = team1Fighters;
+      } else if (team2Rounds > team2Rounds) {
+        team2Points++;
+        fightWinners = team2Fighters;
+      } else {
+        fightWinners = "Draw";
+      }
+
+      battle.push({ fight: currentFight, rounds: rounds, fighter1: fighter1Name, fighter2: fighter2Name, wonBy: fightWinners });
     });
-    // console.log("Fights: ", fights);
   }
 
-  // console.log("Team 1 points: ", team1Points);
-  // console.log("Team 2 points: ", team2Points);
+  let battleWinners = null;
+  let teamWon = null;
 
-  // console.log("Team 1: ", team1);
-  // console.log("Team 2: ", team2);
-  console.log("Figths: ", fights);
-}
-
-function fight(monster1, monster2) {
-  const monster1Damage = monster1.damage;
-  const monster2Damage = monster2.damage;
-
-  let damagedHealthMonster1 = monster1.health - monster2Damage;
-  let damagedHealthMonster2 = monster2.health - monster1Damage;
-
-  monster1.health = damagedHealthMonster1;
-  monster2.health = damagedHealthMonster2;
-
-  if (monster1.health < 0) {
-    monster1.health = 0;
+  if (team1Fighters && team2Fighters) {
+    if (team1Points > team2Points) {
+      battleWinners = team1Fighters;
+      teamWon = "Team 1";
+    } else if (team2Points > team1Points) {
+      battleWinners = team2Fighters;
+      teamWon = "Team 2";
+    } else {
+      battleWinners = "Draw";
+      teamWon = "Draw";
+    }
   }
 
-  if (monster2.health < 0) {
-    monster2.health = 0;
-  }
-
-  const winner = monster1.health > monster2.health ? "1" : monster2.health > monster1.health ? "2" : null;
-  return winner;
+  const battleResult = { battleID: battleID, battle: battle, battleWinners: battleWinners, teamWon: teamWon, team1Points: team1Points, team2Points: team2Points };
+  return battleResult;
 }
 
 app.get("/fight", (req, res) => {
