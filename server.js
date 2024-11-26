@@ -46,6 +46,7 @@ function init() {
       console.log("Error", err);
     } else {
       monsters = data;
+      prepareFight(monsters);
     }
   });
   readJSON("./json/elements.json", (err, data) => {
@@ -193,6 +194,71 @@ app.get("/generateTeam", (req, res) => {
   }
 
   return res.status(400).json({ ok: false, message: "Not enough fighters available for the requested level." });
+});
+
+function prepareFight(monstersFromDB) {
+  const team1IDs = ["1", "2", "3", "4"];
+  const team2IDs = ["5", "6", "7", "8"];
+
+  const team1 = monstersFromDB.filter((monster) => team1IDs.includes(monster.id.toString()));
+  const team2 = monstersFromDB.filter((monster) => team2IDs.includes(monster.id.toString()));
+
+  let team1Points = 0;
+  let team2Points = 0;
+
+  if (team1 && team1.length === 4 && team2 && team2.length === 4) {
+    const team1TotalRating = team1.reduce((acc, curr) => acc + (curr.health + curr.damage), 0);
+    const team2TotalRating = team2.reduce((acc, curr) => acc + (curr.health + curr.damage), 0);
+
+    console.log("Total rating team 1: ", team1TotalRating, team2TotalRating);
+
+    team1.forEach((fighterTeam1, index) => {
+      const fighterTeam2 = team2[index];
+      const winner = fight(fighterTeam1, fighterTeam2);
+
+      if (winner === "1") {
+        team1Points++;
+      } else if (winner === "2") {
+        team2Points++;
+      }
+    });
+  }
+
+  console.log("Team 1 points: ", team1Points);
+  console.log("Team 2 points: ", team2Points);
+
+  // console.log("Team 1: ", team1);
+  // console.log("Team 2: ", team2);
+}
+
+function fight(monster1, monster2) {
+  const monster1Damage = monster1.damage;
+  const monster2Damage = monster2.damage;
+
+  let damagedHealthMonster1 = monster1.health - monster2Damage;
+  let damagedHealthMonster2 = monster2.health - monster1Damage;
+
+  monster1.health = damagedHealthMonster1;
+  monster2.health = damagedHealthMonster2;
+
+  if (monster1.health < 0) {
+    monster1.health = 0;
+  }
+
+  if (monster2.health < 0) {
+    monster2.health = 0;
+  }
+
+  const winner = monster1.health > monster2.health ? "1" : monster2.health > monster1.health ? "2" : null;
+  return winner;
+}
+
+app.get("/fight", (req, res) => {
+  const team1IDs = req.query.team1;
+  const team2IDs = req.query.team2;
+
+  const team1 = monsters.filter((monster) => team1IDs.includes(monster.id.toString()));
+  const team2 = monsters.filter((monster) => team2IDs.includes(monster.id.toString()));
 });
 
 app.listen(port, () => {
