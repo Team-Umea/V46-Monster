@@ -77,7 +77,6 @@ header nav ul {
 main {
   /* css for main */
   flex: 1;
-  /* background-color: orange; */
 }
 
 footer {
@@ -93,6 +92,36 @@ footer {
   cursor: pointer;
 }
 
+.theme-light {
+  /*Color palette should be default*/
+  --color-primary-lightest: #f6f9f9;
+  --color-primary-light: #ecf1f2;
+  --color-primary: #c4d7d9;
+  --color-primary-medium: #aec9cb;
+  --color-primary-dark: #82abae;
+  --color-primary-darker: #629295;
+  --color-secondary: #4e777b;
+  --color-secondary-dark: #406064;
+  --color-tertiary: #385154;
+  --color-tertiary-dark: #324548;
+  --color-tertiary-darker: #212e30;
+}
+
+.theme-dark {
+  /*Color palette must be inverted to handle dark mode*/
+  --color-primary-lightest: #212e30;
+  --color-primary-light: #324548;
+  --color-primary: #385154;
+  --color-primary-medium: #406064;
+  --color-primary-dark: #4e777b;
+  --color-primary-darker: #629295;
+  --color-secondary: #82abae;
+  --color-secondary-dark: #aec9cb;
+  --color-tertiary: #c4d7d9;
+  --color-tertiary-dark: #ecf1f2;
+  --color-tertiary-darker: #f6f9f9;
+}
+
 .icon {
   width: 30px;
   transition: all 0.3s ease-in-out;
@@ -104,10 +133,6 @@ footer {
 
 .icon-scale:hover {
   transform: scale(1.07);
-}
-
-.icon:hover {
-  filter: brightness(2);
 }
 
 .icon-white {
