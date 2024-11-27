@@ -1,0 +1,10 @@
+{
+    "url":"https://monsterapi.onrender.com",
+    "allMonsters":"https://monsterapi.onrender.com/allMonsters",
+    "monsters":"https://monsterapi.onrender.com/monsters",
+    "freeMonsters":"https://monsterapi.onrender.com/freeMonsters",
+    "randomMonsters":"https://monsterapi.onrender.com/randomMonsters",
+    "monsterById":"https://monsterapi.onrender.com/monsterById",
+    "monstersByStrengthsEndpoint":"https://monsterapi.onrender.com/monstersByStrengths",
+    "monstersByWeaknessEndpoint":"https://monsterapi.onrender.com/monstersByWeaknesses"
+}
