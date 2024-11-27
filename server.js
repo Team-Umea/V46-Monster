@@ -37,6 +37,10 @@ const endpoints = [
     path: "/generateTeam",
     desc: "Generates a random team of 4 monsters based on the specified level. Requires a query parameter 'level' (integer) to specify the monster level. Returns a JSON object with 'ok' status and an array of selected monster objects, or a 400 error if the level is missing or invalid, and a 400 error if there are not enough monsters available.",
   },
+  {
+    path: "/fight",
+    desc: "Initiates a battle between two teams of monsters. Requires query parameters 'team1' and 'team2' (comma-separated monster IDs for each team). Returns a JSON object with 'ok' status and the battle result, or a 400 error if the teams are invalid or missing.",
+  },
 ];
 
 init();
