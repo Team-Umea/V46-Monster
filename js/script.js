@@ -1,1 +1,1 @@
-//Js code för index.html
+//Js code for index.html

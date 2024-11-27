@@ -1,1 +1,1 @@
-//Js code för fight page
+//Js code for fight page

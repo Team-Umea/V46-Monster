@@ -1,1 +1,1 @@
-//Js code för right records page
+//Js code for right records page

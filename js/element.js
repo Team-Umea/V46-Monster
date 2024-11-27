@@ -1,1 +1,1 @@
-//Js code för element page
+//Js code for element page

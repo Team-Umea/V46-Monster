@@ -1,1 +1,1 @@
-//Js code för team page
+//Js code for team page

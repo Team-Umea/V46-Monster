@@ -1,1 +1,1 @@
-//Js code för monster page
+//Js code for monster page
