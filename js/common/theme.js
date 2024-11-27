@@ -29,4 +29,13 @@ function toggleTheme() {
 
 function applyTheme(theme) {
   body.setAttribute("class", `theme-${theme}`);
+  if (theme === "light") {
+    themeToggle.setAttribute("src", "../../res/icons/moon.svg");
+    themeToggle.setAttribute("alt", "Swith to dark mode");
+    themeToggle.setAttribute("title", "Swith to dark mode");
+  } else {
+    themeToggle.setAttribute("src", "../../res/icons/sun.svg");
+    themeToggle.setAttribute("alt", "Swith to light mode");
+    themeToggle.setAttribute("title", "Swith to light mode");
+  }
 }
