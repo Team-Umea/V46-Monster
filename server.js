@@ -47,13 +47,11 @@ function init() {
       console.log("Error", err);
     } else {
       monsters = data;
-      const team1 = ["5", "2", "1", "10"];
-      const team2 = ["4", "8", "0", "11"];
-      const battle = fight(team1, team2, monsters);
-
-      writeToJSONFile("./fights/fightTemplate.json", battle);
-
-      console.log("Battle: ", battle);
+      // const team1 = ["5", "2", "1", "10"];
+      // const team2 = ["4", "8", "0", "11"];
+      // const battle = fight(team1, team2, monsters);
+      // writeToJSONFile("./fights/fightTemplate.json", battle);
+      // console.log("Battle: ", battle);
     }
   });
   readJSON("./json/elements.json", (err, data) => {
@@ -213,12 +211,12 @@ app.get("/generateTeam", (req, res) => {
   return res.status(400).json({ ok: false, message: "Not enough fighters available for the requested level." });
 });
 
-function fight(t1, t2, monstersFromDB) {
-  const team1IDs = t1;
-  const team2IDs = t2;
+function fight(team1, team2, team1IDs, team2IDs) {
+  // const team1IDs = t1;
+  // const team2IDs = t2;
 
-  const team1 = monstersFromDB.filter((monster) => team1IDs.includes(monster.id.toString()));
-  const team2 = monstersFromDB.filter((monster) => team2IDs.includes(monster.id.toString()));
+  // const team1 = monstersFromDB.filter((monster) => team1IDs.includes(monster.id.toString()));
+  // const team2 = monstersFromDB.filter((monster) => team2IDs.includes(monster.id.toString()));
 
   // console.log("Team 1: ", team1);
   // console.log("Team 2: ", team2);
@@ -229,7 +227,8 @@ function fight(t1, t2, monstersFromDB) {
   let team1Points = 0;
   let team2Points = 0;
 
-  const combindedFigthers = [...team1IDs, ...team2IDs].sort((a, b) => a.localeCompare(b)).join("/");
+  const combindedFigthers = [...team1IDs, ...team2IDs].sort((a, b) => Number(a) - Number(b)).join("/");
+  console.log("FightID: ", combindedFigthers);
   const currentDate = new Date();
   const year = currentDate.getFullYear();
   const month = currentDate.getMonth();
@@ -380,8 +379,6 @@ function fight(t1, t2, monstersFromDB) {
     }
   }
 
-  // console.log("Battle winners: ", battleWinners);
-
   const battleResult = { battleID: battleID, battle: battle, battleWinners: battleWinners, teamWon: teamWon, team1Points: team1Points, team2Points: team2Points, team1: team1, team2: team2 };
   return battleResult;
 }
@@ -390,8 +387,35 @@ app.get("/fight", (req, res) => {
   const team1IDs = req.query.team1;
   const team2IDs = req.query.team2;
 
-  const team1 = monsters.filter((monster) => team1IDs.includes(monster.id.toString()));
-  const team2 = monsters.filter((monster) => team2IDs.includes(monster.id.toString()));
+  // const url = "http://localhost:3000/fight?team1=1,2,3,4&team2=78,23,25,21"
+
+  // const team1IDs = req.query.team1;
+  // const team2IDs = req.query.team2;
+
+  // if (team1IDs && team2IDs) {
+  //   const fightersTeam1 = team1IDs.split(",");
+  //   const fightersTeam2 = team2IDs.split(",");
+  //   if(fightersTeam1.length===4 && fightersTeam2.length===4){
+  //     console.log("To arr team 1", fightersTeam1);
+  //     console.log("To arr team 2", fightersTeam2);
+  //   }
+  // }
+
+  // const team1 = monsters.filter((monster) => team1IDs.includes(monster.id.toString()));
+  // const team2 = monsters.filter((monster) => team2IDs.includes(monster.id.toString()));
+
+  if (team1IDs && team2IDs) {
+    const fightersTeam1 = team1IDs.split(",");
+    const fightersTeam2 = team2IDs.split(",");
+    if (fightersTeam1.length === 4 && fightersTeam2.length === 4) {
+      const team1 = monsters.filter((monster) => fightersTeam1.includes(monster.id.toString()));
+      const team2 = monsters.filter((monster) => fightersTeam2.includes(monster.id.toString()));
+      const battle = fight(team1, team2, fightersTeam1, fightersTeam2);
+      return res.status(200).json({ ok: true, battle: battle });
+    }
+    return res.status(400).json({ ok: false, message: "Invalid teams" });
+  }
+  return res.status(400).json({ ok: false, message: "Teams params is missing" });
 });
 
 app.listen(port, () => {
