@@ -33,9 +33,11 @@ function applyTheme(theme) {
     themeToggle.setAttribute("src", "../../res/icons/moon.svg");
     themeToggle.setAttribute("alt", "Swith to dark mode");
     themeToggle.setAttribute("title", "Swith to dark mode");
+    themeToggle.setAttribute("class", "icon icon-scale");
   } else {
     themeToggle.setAttribute("src", "../../res/icons/sun.svg");
     themeToggle.setAttribute("alt", "Swith to light mode");
     themeToggle.setAttribute("title", "Swith to light mode");
+    themeToggle.setAttribute("class", "icon icon-scale icon-white");
   }
 }
