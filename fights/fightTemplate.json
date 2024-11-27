@@ -1,0 +1,423 @@
+{
+  "battleID": "2024:10:27:10:24:29@0/1/10/11/2/4/5/8",
+  "battle": [
+    {
+      "fight": 1,
+      "rounds": [
+        {
+          "Round": 1,
+          "wonBy": {
+            "team": [
+              "Frost Wraith",
+              "Blood Fiend",
+              "Shadow Beast",
+              "Storm Wyrm"
+            ],
+            "fighter": "Frost Wraith"
+          },
+          "Figther1": {
+            "StartHP": 16,
+            "RemainingHP": 13,
+            "SufferedDamage": 3,
+            "DistributedDamage": 2
+          },
+          "Figther2": {
+            "StartHP": 11,
+            "RemainingHP": 9,
+            "SufferedDamage": 2,
+            "DistributedDamage": 3
+          }
+        },
+        {
+          "Round": 2,
+          "wonBy": {
+            "team": [
+              "Frost Wraith",
+              "Blood Fiend",
+              "Shadow Beast",
+              "Storm Wyrm"
+            ],
+            "fighter": "Frost Wraith"
+          },
+          "Figther1": {
+            "StartHP": 13,
+            "RemainingHP": 10,
+            "SufferedDamage": 3,
+            "DistributedDamage": 2
+          },
+          "Figther2": {
+            "StartHP": 9,
+            "RemainingHP": 7,
+            "SufferedDamage": 2,
+            "DistributedDamage": 3
+          }
+        },
+        {
+          "Round": 3,
+          "wonBy": {
+            "team": [
+              "Frost Wraith",
+              "Blood Fiend",
+              "Shadow Beast",
+              "Storm Wyrm"
+            ],
+            "fighter": "Frost Wraith"
+          },
+          "Figther1": {
+            "StartHP": 10,
+            "RemainingHP": 7,
+            "SufferedDamage": 3,
+            "DistributedDamage": 2
+          },
+          "Figther2": {
+            "StartHP": 7,
+            "RemainingHP": 5,
+            "SufferedDamage": 2,
+            "DistributedDamage": 3
+          }
+        },
+        {
+          "Round": 4,
+          "wonBy": {
+            "team": [
+              "Frost Wraith",
+              "Blood Fiend",
+              "Shadow Beast",
+              "Storm Wyrm"
+            ],
+            "fighter": "Frost Wraith"
+          },
+          "Figther1": {
+            "StartHP": 7,
+            "RemainingHP": 4,
+            "SufferedDamage": 3,
+            "DistributedDamage": 2
+          },
+          "Figther2": {
+            "StartHP": 5,
+            "RemainingHP": 3,
+            "SufferedDamage": 2,
+            "DistributedDamage": 3
+          }
+        },
+        {
+          "Round": 5,
+          "wonBy": {
+            "team": "Draw",
+            "fighter": "Draw"
+          },
+          "Figther1": {
+            "StartHP": 4,
+            "RemainingHP": 1,
+            "SufferedDamage": 3,
+            "DistributedDamage": 2
+          },
+          "Figther2": {
+            "StartHP": 3,
+            "RemainingHP": 1,
+            "SufferedDamage": 2,
+            "DistributedDamage": 3
+          }
+        }
+      ],
+      "fighter1": "Frost Wraith",
+      "fighter2": "Night Stalker",
+      "wonBy": [
+        "Frost Wraith",
+        "Blood Fiend",
+        "Shadow Beast",
+        "Storm Wyrm"
+      ]
+    },
+    {
+      "fight": 2,
+      "rounds": [
+        {
+          "Round": 1,
+          "wonBy": {
+            "team": [
+              "Frost Wraith",
+              "Blood Fiend",
+              "Shadow Beast",
+              "Storm Wyrm"
+            ],
+            "fighter": "Blood Fiend"
+          },
+          "Figther1": {
+            "StartHP": 14,
+            "RemainingHP": 11,
+            "SufferedDamage": 3,
+            "DistributedDamage": 4
+          },
+          "Figther2": {
+            "StartHP": 8,
+            "RemainingHP": 4,
+            "SufferedDamage": 4,
+            "DistributedDamage": 3
+          }
+        },
+        {
+          "Round": 2,
+          "wonBy": {
+            "team": [
+              "Frost Wraith",
+              "Blood Fiend",
+              "Shadow Beast",
+              "Storm Wyrm"
+            ],
+            "fighter": "Blood Fiend"
+          },
+          "Figther1": {
+            "StartHP": 11,
+            "RemainingHP": 8,
+            "SufferedDamage": 3,
+            "DistributedDamage": 4
+          },
+          "Figther2": {
+            "StartHP": 4,
+            "RemainingHP": 0,
+            "SufferedDamage": 4,
+            "DistributedDamage": 3
+          }
+        }
+      ],
+      "fighter1": "Blood Fiend",
+      "fighter2": "Stone Golem",
+      "wonBy": [
+        "Frost Wraith",
+        "Blood Fiend",
+        "Shadow Beast",
+        "Storm Wyrm"
+      ]
+    },
+    {
+      "fight": 3,
+      "rounds": [
+        {
+          "Round": 1,
+          "wonBy": {
+            "team": "Draw",
+            "fighter": "Draw"
+          },
+          "Figther1": {
+            "StartHP": 10,
+            "RemainingHP": 7,
+            "SufferedDamage": 3,
+            "DistributedDamage": 3
+          },
+          "Figther2": {
+            "StartHP": 10,
+            "RemainingHP": 7,
+            "SufferedDamage": 3,
+            "DistributedDamage": 3
+          }
+        },
+        {
+          "Round": 2,
+          "wonBy": {
+            "team": "Draw",
+            "fighter": "Draw"
+          },
+          "Figther1": {
+            "StartHP": 7,
+            "RemainingHP": 4,
+            "SufferedDamage": 3,
+            "DistributedDamage": 3
+          },
+          "Figther2": {
+            "StartHP": 7,
+            "RemainingHP": 4,
+            "SufferedDamage": 3,
+            "DistributedDamage": 3
+          }
+        },
+        {
+          "Round": 3,
+          "wonBy": {
+            "team": "Draw",
+            "fighter": "Draw"
+          },
+          "Figther1": {
+            "StartHP": 4,
+            "RemainingHP": 1,
+            "SufferedDamage": 3,
+            "DistributedDamage": 3
+          },
+          "Figther2": {
+            "StartHP": 4,
+            "RemainingHP": 1,
+            "SufferedDamage": 3,
+            "DistributedDamage": 3
+          }
+        }
+      ],
+      "fighter1": "Shadow Beast",
+      "fighter2": "Gloom Harbinger",
+      "wonBy": "Draw"
+    },
+    {
+      "fight": 4,
+      "rounds": [
+        {
+          "Round": 1,
+          "wonBy": {
+            "team": [
+              "Night Stalker",
+              "Stone Golem",
+              "Gloom Harbinger",
+              "Grave Horror"
+            ],
+            "fighter": "Grave Horror"
+          },
+          "Figther1": {
+            "StartHP": 12,
+            "RemainingHP": 8,
+            "SufferedDamage": 4,
+            "DistributedDamage": 3
+          },
+          "Figther2": {
+            "StartHP": 16,
+            "RemainingHP": 13,
+            "SufferedDamage": 3,
+            "DistributedDamage": 4
+          }
+        },
+        {
+          "Round": 2,
+          "wonBy": {
+            "team": [
+              "Night Stalker",
+              "Stone Golem",
+              "Gloom Harbinger",
+              "Grave Horror"
+            ],
+            "fighter": "Grave Horror"
+          },
+          "Figther1": {
+            "StartHP": 8,
+            "RemainingHP": 4,
+            "SufferedDamage": 4,
+            "DistributedDamage": 3
+          },
+          "Figther2": {
+            "StartHP": 13,
+            "RemainingHP": 10,
+            "SufferedDamage": 3,
+            "DistributedDamage": 4
+          }
+        }
+      ],
+      "fighter1": "Storm Wyrm",
+      "fighter2": "Grave Horror",
+      "wonBy": [
+        "Night Stalker",
+        "Stone Golem",
+        "Gloom Harbinger",
+        "Grave Horror"
+      ]
+    }
+  ],
+  "battleWinners": [
+    "Frost Wraith",
+    "Blood Fiend",
+    "Shadow Beast",
+    "Storm Wyrm"
+  ],
+  "teamWon": "Team 1",
+  "team1Points": 2,
+  "team2Points": 1,
+  "team1": [
+    {
+      "id": 1,
+      "name": "Frost Wraith",
+      "specs": "An ethereal being that brings a chilling frost wherever it roams.",
+      "health": 16,
+      "damage": 2,
+      "elements": [
+        "Aqua"
+      ],
+      "price": 0
+    },
+    {
+      "id": 2,
+      "name": "Blood Fiend",
+      "specs": "A malevolent spirit that thrives on the fear and blood of its victims.",
+      "health": 14,
+      "damage": 4,
+      "elements": [
+        "Searing"
+      ],
+      "price": 0
+    },
+    {
+      "id": 5,
+      "name": "Shadow Beast",
+      "specs": "A creature formed from pure darkness, it strikes fear into the hearts of all.",
+      "health": 10,
+      "damage": 3,
+      "elements": [
+        "Searing"
+      ],
+      "price": 0
+    },
+    {
+      "id": 10,
+      "name": "Storm Wyrm",
+      "specs": "A dragon-like monster that commands the storms, wielding lightning.",
+      "health": 11,
+      "damage": 3,
+      "elements": [
+        "Chaos",
+        "Searing"
+      ],
+      "price": 0
+    }
+  ],
+  "team2": [
+    {
+      "id": 0,
+      "name": "Night Stalker",
+      "specs": "A creature that lurks in the shadows, preying on the unsuspecting at dusk.",
+      "health": 10,
+      "damage": 3,
+      "elements": [
+        "Aqua"
+      ],
+      "price": 0
+    },
+    {
+      "id": 4,
+      "name": "Stone Golem",
+      "specs": "A massive guardian made of ancient stone, awakened to protect its secrets.",
+      "health": 7,
+      "damage": 3,
+      "elements": [
+        "Aqua",
+        "Searing"
+      ],
+      "price": 0
+    },
+    {
+      "id": 8,
+      "name": "Gloom Harbinger",
+      "specs": "A dark omen that brings despair and chaos wherever it appears.",
+      "health": 10,
+      "damage": 3,
+      "elements": [
+        "Mirage"
+      ],
+      "price": 0
+    },
+    {
+      "id": 11,
+      "name": "Grave Horror",
+      "specs": "A terrifying specter that rises from the grave to haunt the living.",
+      "health": 16,
+      "damage": 4,
+      "elements": [
+        "Aqua"
+      ],
+      "price": 0
+    }
+  ]
+}

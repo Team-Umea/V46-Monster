@@ -1,3 +1,4 @@
+const { Console } = require("console");
 const express = require("express");
 const fs = require("fs");
 
@@ -46,9 +47,12 @@ function init() {
       console.log("Error", err);
     } else {
       monsters = data;
-      const team1 = ["0", "1", "2", "3"];
-      const team2 = ["200", "102", "62", "17"];
+      const team1 = ["5", "2", "1", "10"];
+      const team2 = ["4", "8", "0", "11"];
       const battle = fight(team1, team2, monsters);
+
+      writeToJSONFile("./fights/fightTemplate.json", battle);
+
       console.log("Battle: ", battle);
     }
   });
@@ -216,8 +220,8 @@ function fight(t1, t2, monstersFromDB) {
   const team1 = monstersFromDB.filter((monster) => team1IDs.includes(monster.id.toString()));
   const team2 = monstersFromDB.filter((monster) => team2IDs.includes(monster.id.toString()));
 
-  console.log("Team 1: ", team1);
-  console.log("Team 2: ", team2);
+  // console.log("Team 1: ", team1);
+  // console.log("Team 2: ", team2);
 
   let team1Fighters;
   let team2Fighters;
@@ -261,6 +265,7 @@ function fight(t1, t2, monstersFromDB) {
       const fighterTeam2 = team2[index];
       const fighter1Name = fighterTeam1.name;
       const fighter2Name = fighterTeam2.name;
+
       let fighter1Health = fighterTeam1.health;
       let fighter2Health = fighterTeam2.health;
 
@@ -279,32 +284,25 @@ function fight(t1, t2, monstersFromDB) {
         let totalDamageFigther1 = fighter1Damage;
         let totalDamageFigther2 = fighter2Damage;
 
-        console.log("Fighter1Damage", totalDamageFigther1);
-        console.log("Fighter2Damage", totalDamageFigther2);
-
         if (startTeam === team1) {
-          fighterTeam2.health -= totalDamageFigther1;
-          fighter2Health = fighterTeam2.health;
+          fighter2Health -= totalDamageFigther1;
           fighter2Stats.push(fighter2Health);
 
           if (fighter2Health <= 0) {
             break;
           }
 
-          fighterTeam1.health -= totalDamageFigther2;
-          fighter1Health.health = fighterTeam1.health;
+          fighter1Health -= totalDamageFigther2;
           fighter1Stats.push(fighter1Health);
         } else {
-          fighterTeam1.health -= totalDamageFigther2;
-          fighter1Health.health = fighterTeam1.health;
+          fighter1Health -= totalDamageFigther2;
           fighter1Stats.push(fighter1Health);
 
           if (fighter1Health <= 0) {
             break;
           }
 
-          fighterTeam2.health -= totalDamageFigther1;
-          fighter2Health = fighterTeam2.health;
+          fighter2Health -= totalDamageFigther1;
           fighter2Stats.push(fighter2Health);
         }
 
@@ -314,7 +312,7 @@ function fight(t1, t2, monstersFromDB) {
         fighter2Stats.push(totalDamageFigther1);
         fighter2Stats.push(totalDamageFigther2);
 
-        const roundWinner = totalDamageFigther1 > totalDamageFigther2 ? "1" : totalDamageFigther2 > totalDamageFigther1 ? "2" : 0;
+        const roundWinner = fighter1Health > fighter2Health ? "1" : fighter2Health > fighter1Health ? "2" : "0";
 
         const roundWinnerByTeam = roundWinner === "1" ? team1Fighters : roundWinner === "2" ? team2Fighters : "Draw";
         const roundWinnerByFighterName = roundWinner === "1" ? fighter1Name : roundWinner === "2" ? fighter2Name : "Draw";
@@ -342,12 +340,6 @@ function fight(t1, t2, monstersFromDB) {
         rounds.push(round);
       } while (fighter1Health > 0 && fighter2Health > 0);
 
-      // if (battle.length === 0) {
-      //   console.log("Rounds: ", rounds);
-      // }
-
-      console.log("Rounds: ", rounds);
-
       let fightWinners;
       const team1Rounds = rounds.filter((round) => round.wonBy.team === team1Fighters).length;
       const team2Rounds = rounds.filter((round) => round.wonBy.team === team2Fighters).length;
@@ -355,9 +347,15 @@ function fight(t1, t2, monstersFromDB) {
       if (team1Rounds > team2Rounds) {
         team1Points++;
         fightWinners = team1Fighters;
-      } else if (team2Rounds > team2Rounds) {
+        if (fighterTeam2.health > 0) {
+          fighterTeam2.health--;
+        }
+      } else if (team2Rounds > team1Rounds) {
         team2Points++;
         fightWinners = team2Fighters;
+        if (fighterTeam1.health > 0) {
+          fighterTeam1.health--;
+        }
       } else {
         fightWinners = "Draw";
       }
@@ -382,7 +380,9 @@ function fight(t1, t2, monstersFromDB) {
     }
   }
 
-  const battleResult = { battleID: battleID, battle: battle, battleWinners: battleWinners, teamWon: teamWon, team1Points: team1Points, team2Points: team2Points };
+  // console.log("Battle winners: ", battleWinners);
+
+  const battleResult = { battleID: battleID, battle: battle, battleWinners: battleWinners, teamWon: teamWon, team1Points: team1Points, team2Points: team2Points, team1: team1, team2: team2 };
   return battleResult;
 }
 
