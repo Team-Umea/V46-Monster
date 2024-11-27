@@ -1,0 +1,12 @@
+{
+    "url":"https://ozzodevmonsterapi.azurewebsites.net",
+    "allMonsters":"https://ozzodevmonsterapi.azurewebsites.net/allMonsters",
+    "monsters":"https://ozzodevmonsterapi.azurewebsites.net/monsters",
+    "freeMonsters":"https://ozzodevmonsterapi.azurewebsites.net/freeMonsters",
+    "randomMonsters":"https://ozzodevmonsterapi.azurewebsites.net/randomMonsters",
+    "monsterById":"https://ozzodevmonsterapi.azurewebsites.net/monsterById",
+    "elements":"https://ozzodevmonsterapi.azurewebsites.net/elements",
+    "abilities":"https://ozzodevmonsterapi.azurewebsites.net/abilities",
+    "generateTeam":"https://ozzodevmonsterapi.azurewebsites.net/generateTeam",
+    "fight":"https://ozzodevmonsterapi.azurewebsites.net/fight"
+}
