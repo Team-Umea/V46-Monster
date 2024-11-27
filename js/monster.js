@@ -15,7 +15,6 @@ function init() {
 }
 
 async function fetchMonsters() {
-  console.log("Loading...");
   renderSpinner(monsterContainer);
   const response = await fetchFromApi("monsters", "&num=10");
   setTimeout(() => {

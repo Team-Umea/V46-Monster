@@ -1,1 +1,7 @@
 /*Only write css here that will be used by element page*/
+.dataContainer {
+  width: 100%;
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+}
