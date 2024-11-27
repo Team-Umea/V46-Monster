@@ -216,9 +216,8 @@ app.get("/generateTeam", (req, res) => {
 });
 
 function fight(team1, team2, team1IDs, team2IDs) {
-  let team1Fighters;
-  let team2Fighters;
-
+  let team1FighterNames;
+  let team2FighterNames;
   let team1Points = 0;
   let team2Points = 0;
 
@@ -234,14 +233,22 @@ function fight(team1, team2, team1IDs, team2IDs) {
   const date = `${year}:${month}:${day}:${hour}:${minute}:${seconds}`;
   const battleID = `${date}@${combindedFigthers}`;
 
-  let battle = [];
+  const battle = [];
+  const teamStats = {};
+  const remainingHP = {};
 
   if (team1 && team1.length === 4 && team2 && team2.length === 4) {
     const team1TotalRating = team1.reduce((acc, curr) => acc + (curr.health + curr.damage), 0);
     const team2TotalRating = team2.reduce((acc, curr) => acc + (curr.health + curr.damage), 0);
 
-    team1Fighters = team1.map((fighter) => fighter.name);
-    team2Fighters = team2.map((fighter) => fighter.name);
+    const team1Stats = getTeamStats(team1, team1TotalRating);
+    const team2Stats = getTeamStats(team2, team2TotalRating);
+
+    teamStats["team1"] = team1Stats;
+    teamStats["team2"] = team2Stats;
+
+    team1FighterNames = team1.map((fighter) => fighter.name);
+    team2FighterNames = team2.map((fighter) => fighter.name);
 
     let startTeam = team1TotalRating < team2TotalRating ? team1 : team2TotalRating < team1TotalRating ? team2 : "Random";
 
@@ -308,7 +315,7 @@ function fight(team1, team2, team1IDs, team2IDs) {
 
         const roundWinner = fighter1Health > fighter2Health ? "1" : fighter2Health > fighter1Health ? "2" : "0";
 
-        const roundWinnerByTeam = roundWinner === "1" ? team1Fighters : roundWinner === "2" ? team2Fighters : "Draw";
+        const roundWinnerByTeam = roundWinner === "1" ? team1FighterNames : roundWinner === "2" ? team2FighterNames : "Draw";
         const roundWinnerByFighterName = roundWinner === "1" ? fighter1Name : roundWinner === "2" ? fighter2Name : "Draw";
 
         const round = {
@@ -337,18 +344,18 @@ function fight(team1, team2, team1IDs, team2IDs) {
       } while (fighter1Health > 0 && fighter2Health > 0);
 
       let fightWinners;
-      const team1Rounds = rounds.filter((round) => round.wonBy.team === team1Fighters).length;
-      const team2Rounds = rounds.filter((round) => round.wonBy.team === team2Fighters).length;
+      const team1Rounds = rounds.filter((round) => round.wonBy.team === team1FighterNames).length;
+      const team2Rounds = rounds.filter((round) => round.wonBy.team === team2FighterNames).length;
 
       if (team1Rounds > team2Rounds) {
         team1Points++;
-        fightWinners = team1Fighters;
+        fightWinners = team1FighterNames;
         if (fighterTeam2.health > 0) {
           fighterTeam2.health--;
         }
       } else if (team2Rounds > team1Rounds) {
         team2Points++;
-        fightWinners = team2Fighters;
+        fightWinners = team2FighterNames;
         if (fighterTeam1.health > 0) {
           fighterTeam1.health--;
         }
@@ -363,12 +370,18 @@ function fight(team1, team2, team1IDs, team2IDs) {
   let battleWinners = null;
   let teamWon = null;
 
-  if (team1Fighters && team2Fighters) {
+  const team1RemainingHp = getRemainingHealth(team1);
+  const team2RemainingHp = getRemainingHealth(team2);
+
+  remainingHP["team1"] = team1RemainingHp;
+  remainingHP["team2"] = team2RemainingHp;
+
+  if (team1FighterNames && team2FighterNames) {
     if (team1Points > team2Points) {
-      battleWinners = team1Fighters;
+      battleWinners = team1FighterNames;
       teamWon = "Team 1";
     } else if (team2Points > team1Points) {
-      battleWinners = team2Fighters;
+      battleWinners = team2FighterNames;
       teamWon = "Team 2";
     } else {
       battleWinners = "Draw";
@@ -376,8 +389,52 @@ function fight(team1, team2, team1IDs, team2IDs) {
     }
   }
 
-  const battleResult = { battleID: battleID, battleWinners: battleWinners, teamWon: teamWon, team1Points: team1Points, team2Points: team2Points, battle: battle, team1: team1, team2: team2 };
-  return battleResult;
+  return { battleID: battleID, battleWinners: battleWinners, teamWon: teamWon, team1Points: team1Points, team2Points: team2Points, teamStats: teamStats, remainingHP, remainingHP, battle: battle };
+}
+
+function getTeamStats(team, teamRating) {
+  const teamPrice = team.reduce((acc, curr) => acc + curr.price, 0);
+  const teamElements = team.map((monster) => monster.elements);
+  const cleanedTeamElements = teamElements.filter((element, index, self) => self.indexOf(element) === index).flat();
+  const cleanedTeamElementsObjects = elements.filter((element) => cleanedTeamElements.includes(element.name));
+  const cleanedTeamElementRatings = cleanedTeamElementsObjects.reduce((acc, curr) => acc + curr.rating, 0);
+
+  const monsterStats = team.map((fighter) => {
+    const rating = fighter.health + fighter.damage;
+    const rank =
+      monsters
+        .sort((a, b) => {
+          const monsterRatingA = a.health + a.damage;
+          const monsterRatingB = b.health + b.damage;
+          return monsterRatingA - monsterRatingB;
+        })
+        .indexOf(fighter) + 1;
+    return { ...fighter, rating, rank };
+  });
+
+  const sortedByRank = monsterStats.sort((a, b) => b.rank - a.rank);
+
+  return {
+    teamRating,
+    teamPrice,
+    teamElements: cleanedTeamElements,
+    teamElementRastings: cleanedTeamElementRatings,
+    monsterStats: sortedByRank,
+  };
+}
+
+function getRemainingHealth(team) {
+  const fighters = {};
+  team.forEach((fighter) => {
+    const name = fighter.name;
+    const id = fighter.id;
+    const hp = fighter.health;
+    fighters[name] = {
+      id,
+      hp,
+    };
+  });
+  return fighters;
 }
 
 app.get("/fight", (req, res) => {
