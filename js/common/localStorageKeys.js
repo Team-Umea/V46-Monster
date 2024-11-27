@@ -1,1 +1,1 @@
-export const theme = "theme";
+export const themeKey = "theme";
