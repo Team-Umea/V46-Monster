@@ -9,7 +9,8 @@ window.addEventListener("DOMContentLoaded", () => {
 });
 
 function init() {
-  toggleTheme();
+  const loadedTheme = load(themeKey);
+  applyTheme(loadedTheme || "light");
   setEventListener();
 }
 
@@ -20,19 +21,12 @@ function setEventListener() {
 }
 
 function toggleTheme() {
-  const loadedTheme = load(themeKey);
-  let theme = "light";
-  if (loadedTheme && loadedTheme === "light") {
-    theme = "dark";
-  }
-  save(themeKey, theme);
-  applyTheme(theme);
+  const currentTheme = load(themeKey) || "light";
+  const newTheme = currentTheme === "light" ? "dark" : "light";
+  save(themeKey, newTheme);
+  applyTheme(newTheme);
 }
 
 function applyTheme(theme) {
-  if (theme === "light") {
-    body.setAttribute("class", "theme-light");
-  } else {
-    body.setAttribute("class", "theme-dark");
-  }
+  body.setAttribute("class", `theme-${theme}`);
 }
