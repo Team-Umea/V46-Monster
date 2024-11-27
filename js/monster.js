@@ -3,6 +3,7 @@ import { fetchFromApi } from "./common/endpoints.js";
 import { useClickEvent } from "./common/useEvent.js";
 
 const fetchBtn = document.getElementById("fetchMonsters");
+const monsterContainer = document.getElementById("monsterContainer");
 
 window.addEventListener("DOMContentLoaded", () => {
   init();
