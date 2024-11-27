@@ -1,3 +1,5 @@
+import { save, load } from "./utilities";
+
 const themeToggle = document.getElementById("themeToggle");
 const body = document.body;
 
