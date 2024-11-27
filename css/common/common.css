@@ -1,4 +1,19 @@
 /*Only write css here that will be used by every pages*/
+
+:root {
+  --color-primary-lightest: #f6f9f9;
+  --color-primary-light: #ecf1f2;
+  --color-primary: #c4d7d9;
+  --color-primary-medium: #aec9cb;
+  --color-primary-dark: #82abae;
+  --color-primary-darker: #629295;
+  --color-secondary: #4e777b;
+  --color-secondary-dark: #406064;
+  --color-tertiary: #385154;
+  --color-tertiary-dark: #324548;
+  --color-tertiary-darker: #212e30;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -7,4 +22,68 @@
 
 body {
   /*css for body*/
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  color: var(--color-tertiary-dark);
+  background-color: var(--color-primary-lightest);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  text-align: center;
+}
+
+ul {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  color: var(--color-secondary);
+  transition: all 0.3s ease-in-out;
+}
+
+a:hover {
+  filter: brightness(1.5);
+}
+
+header {
+  /* css for header */
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  background-color: var(--color-primary);
+}
+
+header nav {
+  width: 100%;
+}
+
+header nav ul {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+}
+
+header nav ul li {
+}
+
+main {
+  /* css for main */
+  flex: 1;
+  /* background-color: orange; */
+}
+
+footer {
+  /* css for footer */
+  padding: 30px;
+  background-color: var(--color-primary);
 }
