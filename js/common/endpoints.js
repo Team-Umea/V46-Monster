@@ -11,10 +11,6 @@ export async function fetchFromApi(requestedEndpoint, apiParams) {
     };
   }
 
-  console.log("Endpoint: ", requestedEndpoint);
-  console.log("Endpoints: ", endpoints);
-  console.log(endpoints[requestedEndpoint]);
-
   if (endpoints && requestedEndpoint in endpoints) {
     const endpoint = endpoints[requestedEndpoint];
     const url = apiParams ? `${endpoint}?${apiParams}` : endpoint;
