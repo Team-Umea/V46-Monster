@@ -1,12 +1,12 @@
-const { Console } = require("console");
 const express = require("express");
 const fs = require("fs");
 
 const app = express();
 const port = process.env.PORT || 3000;
 
-let monsters = {};
+let monsters = [];
 let elements = [];
+let abilities = [];
 
 const endpoints = [
   {
@@ -34,6 +34,10 @@ const endpoints = [
     desc: "Returns a list of elements with their names and ratings. No parameters needed. Returns a JSON object with 'ok' status and an array of objects containing element names and ratings, or a 500 error if there are any issues.",
   },
   {
+    path: "/abilities",
+    desc: "Returns a list of abilities. No parameters needed. Returns a JSON object with 'ok' status and an array of ability objects, or a 500 error if there are no abilities available.",
+  },
+  {
     path: "/generateTeam",
     desc: "Generates a random team of 4 monsters based on the specified level. Requires a query parameter 'level' (integer) to specify the monster level. Returns a JSON object with 'ok' status and an array of selected monster objects, or a 400 error if the level is missing or invalid, and a 400 error if there are not enough monsters available.",
   },
@@ -51,11 +55,6 @@ function init() {
       console.log("Error", err);
     } else {
       monsters = data;
-      // const team1 = ["5", "2", "1", "10"];
-      // const team2 = ["4", "8", "0", "11"];
-      // const battle = fight(team1, team2, monsters);
-      // writeToJSONFile("./fights/fightTemplate.json", battle);
-      // console.log("Battle: ", battle);
     }
   });
   readJSON("./json/elements.json", (err, data) => {
@@ -63,6 +62,13 @@ function init() {
       console.log("Error", err);
     } else {
       elements = data;
+    }
+  });
+  readJSON("./json/abilities.json", (err, data) => {
+    if (err) {
+      console.log("Error", err);
+    } else {
+      abilities = data;
     }
   });
 }
@@ -165,6 +171,13 @@ app.get("/elements", (_, res) => {
   if (elmentsNameAndRating) {
     const sortedByRating = elmentsNameAndRating.sort((a, b) => a.rating - b.rating);
     return res.status(200).json({ ok: true, elements: sortedByRating });
+  }
+  return res.status(500).json({ ok: false });
+});
+
+app.get("/abilities", (_, req) => {
+  if (abilities) {
+    return res.status(200).json({ ok: true, abilities: abilities });
   }
   return res.status(500).json({ ok: false });
 });

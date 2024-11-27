@@ -19,15 +19,17 @@ Endpoints
 { "id": 2, "name": "Water Wraith", ... }
 ]
 }
-500 Internal Server Error: If there is an issue loading monsters. 2. Get Specified Number of Monsters
-Endpoint: /monsters
-Method: GET
-Query Parameters:
-num (required): The number of monsters to retrieve (positive integer).
-Description: Retrieve a specified number of monsters.
-Response:
-200 OK: Returns a list of specified monsters.
-json
+500 Internal Server Error: If there is an issue loading monsters.
+
+2. Get Specified Number of Monsters
+   Endpoint: /monsters
+   Method: GET
+   Query Parameters:
+   num (required): The number of monsters to retrieve (positive integer).
+   Description: Retrieve a specified number of monsters.
+   Response:
+   200 OK: Returns a list of specified monsters.
+   json
 
 {
 "ok": true,
@@ -42,13 +44,15 @@ json
 {
 "ok": false,
 "message": "Num parameter missing or invalid"
-} 3. Get Free Monsters
-Endpoint: /freeMonsters
-Method: GET
-Description: Retrieve a list of monsters that are free (price = 0).
-Response:
-200 OK: Returns a list of free monsters.
-json
+}
+
+3. Get Free Monsters
+   Endpoint: /freeMonsters
+   Method: GET
+   Description: Retrieve a list of monsters that are free (price = 0).
+   Response:
+   200 OK: Returns a list of free monsters.
+   json
 
 {
 "ok": true,
@@ -57,15 +61,17 @@ json
 ...
 ]
 }
-500 Internal Server Error: If there is an issue loading monsters. 4. Get Monster by ID
-Endpoint: /monsterById
-Method: GET
-Query Parameters:
-id (required): The ID of the monster to retrieve.
-Description: Retrieve a monster by its ID.
-Response:
-200 OK: Returns the monster details.
-json
+500 Internal Server Error: If there is an issue loading monsters.
+
+4. Get Monster by ID
+   Endpoint: /monsterById
+   Method: GET
+   Query Parameters:
+   id (required): The ID of the monster to retrieve.
+   Description: Retrieve a monster by its ID.
+   Response:
+   200 OK: Returns the monster details.
+   json
 
 {
 "ok": true,
@@ -84,13 +90,15 @@ json
 {
 "ok": false,
 "message": "Monster not found"
-} 5. Get List of Elements
-Endpoint: /elements
-Method: GET
-Description: Retrieve a list of elements with their names and ratings.
-Response:
-200 OK: Returns a list of elements.
-json
+}
+
+5. Get List of Elements
+   Endpoint: /elements
+   Method: GET
+   Description: Retrieve a list of elements with their names and ratings.
+   Response:
+   200 OK: Returns a list of elements.
+   json
 
 {
 "ok": true,
@@ -99,15 +107,35 @@ json
 ...
 ]
 }
-500 Internal Server Error: If there are any issues loading elements. 6. Generate a Random Team
-Endpoint: /generateTeam
-Method: GET
-Query Parameters:
-level (required): The level of the monsters to include in the team.
-Description: Generates a random team of 4 monsters based on the specified level.
-Response:
-200 OK: Returns a team of monsters.
-json
+500 Internal Server Error: If there are any issues loading elements.
+
+6. Get Abilities
+   Endpoint: /abilities
+   Method: GET
+   Description: Returns a list of abilities. No parameters needed. Returns a JSON object with 'ok' status and an array of ability objects, or a 500 error if there are no abilities available.
+   Response:
+   200 OK: Returns a list of abilities.
+   json
+
+Copy
+{
+"ok": true,
+"abilities": [
+{ "id": 1, "name": "Fireball", ... },
+...
+]
+}
+500 Internal Server Error: If there are no abilities available.
+
+7. Generate a Random Team
+   Endpoint: /generateTeam
+   Method: GET
+   Query Parameters:
+   level (required): The level of the monsters to include in the team.
+   Description: Generates a random team of 4 monsters based on the specified level.
+   Response:
+   200 OK: Returns a team of monsters.
+   json
 
 {
 "ok": true,
@@ -122,16 +150,18 @@ json
 {
 "ok": false,
 "message": "Not enough fighters available for the requested level."
-} 7. Initiate a Battle
-Endpoint: /fight
-Method: GET
-Query Parameters:
-team1 (required): Comma-separated monster IDs for the first team.
-team2 (required): Comma-separated monster IDs for the second team.
-Description: Initiates a battle between two teams of monsters.
-Response:
-200 OK: Returns the result of the battle.
-json
+}
+
+8. Initiate a Battle
+   Endpoint: /fight
+   Method: GET
+   Query Parameters:
+   team1 (required): Comma-separated monster IDs for the first team.
+   team2 (required): Comma-separated monster IDs for the second team.
+   Description: Initiates a battle between two teams of monsters.
+   Response:
+   200 OK: Returns the result of the battle.
+   json
 
 {
 "ok": true,
@@ -152,15 +182,8 @@ json
 {
 "ok": false,
 "message": "Invalid teams"
-} 8. Health Check
-Endpoint: /
-Method: GET
-Description: Check the health status of the server.
-Response:
-200 OK: Returns a simple message indicating the server is healthy.
-text
+}
 
-Server is healthy
 Notes
 All endpoints return JSON responses.
 Ensure that the parameters are correctly formatted when making requests.
