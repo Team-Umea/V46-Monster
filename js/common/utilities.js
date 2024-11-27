@@ -1,22 +1,22 @@
 //Place the most dynamics functions here that are independet of html elements
-import {apiConfigKey} from "./localStorageKeys.js"
+import { apiConfigKey } from "./localStorageKeys.js";
 
-export async function loadEndpoints(){
-  const filePath = "../../json/apiConfig.json"; 
+export async function loadEndpoints() {
+  const filePath = "../../json/apiConfig.json";
   const loadedEndpoints = load(apiConfigKey);
 
-  if(!loadedEndpoints){
-    try{
-      const response = await fetch(filePath); 
-      const endpoints = await response.json(); 
+  if (!loadedEndpoints) {
+    try {
+      const response = await fetch(filePath);
+      const endpoints = await response.json();
       save(apiConfigKey, endpoints);
-      return endpoints; 
-    }catch(error){
+      return endpoints;
+    } catch (error) {
       console.error(error);
       return null;
     }
   }
-  return loadedEndpoints
+  return loadedEndpoints;
 }
 
 export function save(key, value) {
@@ -30,4 +30,13 @@ export function load(key) {
     console.log(`${key} does not exists in local storage`);
     return "";
   }
+}
+
+export function filterObject(obj, unwantedProperty) {
+  if (obj.hasOwnProperty(unwantedProperty)) {
+    const { [unwantedProperty]: _, ...filteredObj } = obj;
+    return filteredObj;
+  }
+
+  return obj;
 }

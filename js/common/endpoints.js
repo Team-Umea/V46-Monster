@@ -1,17 +1,19 @@
 //Fetch logic to fetch from ozzodevmonsterapi.azurewebsites.net goes here
-import { loadEndpoints } from "./utilities.js";
+import { loadEndpoints, filterObject } from "./utilities.js";
 
-fetchFromApi("/temp", "monsters", alertStatus);
-
-export async function fetchFromApi(requestedEndpoint, requestedData, apiParams, callback) {
+export async function fetchFromApi(requestedEndpoint, apiParams) {
   const endpoints = await loadEndpoints();
 
   if (apiParams && typeof apiParams !== "string") {
     return {
-      message: callback("Invalid parameters inputed, must be one string"),
+      message: alertStatus("Invalid parameters inputed, must be one string"),
       hasError: true,
     };
   }
+
+  console.log("Endpoint: ", requestedEndpoint);
+  console.log("Endpoints: ", endpoints);
+  console.log(endpoints[requestedEndpoint]);
 
   if (endpoints && requestedEndpoint in endpoints) {
     const endpoint = endpoints[requestedEndpoint];
@@ -21,7 +23,7 @@ export async function fetchFromApi(requestedEndpoint, requestedData, apiParams, 
       const response = await fetch(url);
       if (!response.ok) {
         return {
-          message: callback(`HTTP error! status: ${response.status}`),
+          message: alertStatus(`HTTP error! status: ${response.status}`),
           hasError: true,
         };
       }
@@ -30,30 +32,24 @@ export async function fetchFromApi(requestedEndpoint, requestedData, apiParams, 
 
       if (!data.ok) {
         return {
-          message: callback("The server encountered an unexpected condition."),
+          message: alertStatus("The server encountered an unexpected condition."),
           hasError: true,
         };
       }
 
-      if (!(requestedData in data)) {
-        return {
-          message: callback("Requested data not found."),
-          hasError: true,
-        };
-      }
       return {
-        data: data[requestedData],
+        data: filterObject(data, "ok"),
         hasError: false,
       };
     } catch (error) {
       return {
-        message: callback(`Network error: ${error.message}`),
+        message: alertStatus(`Network error: ${error.message}`),
         hasError: true,
       };
     }
   } else {
     return {
-      message: callback("No endpoints found or invalid endpoint requested"),
+      message: alertStatus("No endpoints found or invalid endpoint requested"),
       hasError: true,
     };
   }
