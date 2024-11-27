@@ -1,10 +1,12 @@
 {
-    "url":"https://monsterapi.onrender.com",
-    "allMonsters":"https://monsterapi.onrender.com/allMonsters",
-    "monsters":"https://monsterapi.onrender.com/monsters",
-    "freeMonsters":"https://monsterapi.onrender.com/freeMonsters",
-    "randomMonsters":"https://monsterapi.onrender.com/randomMonsters",
-    "monsterById":"https://monsterapi.onrender.com/monsterById",
-    "monstersByStrengthsEndpoint":"https://monsterapi.onrender.com/monstersByStrengths",
-    "monstersByWeaknessEndpoint":"https://monsterapi.onrender.com/monstersByWeaknesses"
+    "url":"https://ozzodevmonsterapi.azurewebsites.net",
+    "allMonsters":"https://ozzodevmonsterapi.azurewebsites.net/allMonsters",
+    "monsters":"https://ozzodevmonsterapi.azurewebsites.net/monsters",
+    "freeMonsters":"https://ozzodevmonsterapi.azurewebsites.net/freeMonsters",
+    "randomMonsters":"https://ozzodevmonsterapi.azurewebsites.net/randomMonsters",
+    "monsterById":"https://ozzodevmonsterapi.azurewebsites.net/monsterById",
+    "elements":"https://ozzodevmonsterapi.azurewebsites.net/elements",
+    "abilities":"https://ozzodevmonsterapi.azurewebsites.net/abilities",
+    "generateTeam":"https://ozzodevmonsterapi.azurewebsites.net/generateTeam",
+    "fight":"https://ozzodevmonsterapi.azurewebsites.net/fight"
 }
