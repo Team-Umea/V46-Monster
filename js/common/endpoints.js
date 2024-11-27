@@ -3,14 +3,22 @@ import { loadEndpoints } from "./utilities.js";
 
 fetchFromApi("/temp", "monsters", alertStatus);
 
-export async function fetchFromApi(requestedEndpoint, requestedData, callback) {
+export async function fetchFromApi(requestedEndpoint, requestedData, apiParams, callback) {
   const endpoints = await loadEndpoints();
+
+  if (apiParams && typeof apiParams !== "string") {
+    return {
+      message: callback("Invalid parameters inputed, must be one string"),
+      hasError: true,
+    };
+  }
 
   if (endpoints && requestedEndpoint in endpoints) {
     const endpoint = endpoints[requestedEndpoint];
-    try {
-      const response = await fetch(endpoint);
+    const url = apiParams ? `${endpoint}?${apiParams}` : endpoint;
 
+    try {
+      const response = await fetch(url);
       if (!response.ok) {
         return {
           message: callback(`HTTP error! status: ${response.status}`),
