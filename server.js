@@ -175,7 +175,7 @@ app.get("/elements", (_, res) => {
   return res.status(500).json({ ok: false });
 });
 
-app.get("/abilities", (_, req) => {
+app.get("/abilities", (_, res) => {
   if (abilities) {
     return res.status(200).json({ ok: true, abilities: abilities });
   }
