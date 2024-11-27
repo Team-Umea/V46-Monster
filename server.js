@@ -212,15 +212,6 @@ app.get("/generateTeam", (req, res) => {
 });
 
 function fight(team1, team2, team1IDs, team2IDs) {
-  // const team1IDs = t1;
-  // const team2IDs = t2;
-
-  // const team1 = monstersFromDB.filter((monster) => team1IDs.includes(monster.id.toString()));
-  // const team2 = monstersFromDB.filter((monster) => team2IDs.includes(monster.id.toString()));
-
-  // console.log("Team 1: ", team1);
-  // console.log("Team 2: ", team2);
-
   let team1Fighters;
   let team2Fighters;
 
@@ -228,7 +219,7 @@ function fight(team1, team2, team1IDs, team2IDs) {
   let team2Points = 0;
 
   const combindedFigthers = [...team1IDs, ...team2IDs].sort((a, b) => Number(a) - Number(b)).join("/");
-  console.log("FightID: ", combindedFigthers);
+
   const currentDate = new Date();
   const year = currentDate.getFullYear();
   const month = currentDate.getMonth();
@@ -379,30 +370,13 @@ function fight(team1, team2, team1IDs, team2IDs) {
     }
   }
 
-  const battleResult = { battleID: battleID, battle: battle, battleWinners: battleWinners, teamWon: teamWon, team1Points: team1Points, team2Points: team2Points, team1: team1, team2: team2 };
+  const battleResult = { battleID: battleID, battleWinners: battleWinners, teamWon: teamWon, team1Points: team1Points, team2Points: team2Points, battle: battle, team1: team1, team2: team2 };
   return battleResult;
 }
 
 app.get("/fight", (req, res) => {
   const team1IDs = req.query.team1;
   const team2IDs = req.query.team2;
-
-  // const url = "http://localhost:3000/fight?team1=1,2,3,4&team2=78,23,25,21"
-
-  // const team1IDs = req.query.team1;
-  // const team2IDs = req.query.team2;
-
-  // if (team1IDs && team2IDs) {
-  //   const fightersTeam1 = team1IDs.split(",");
-  //   const fightersTeam2 = team2IDs.split(",");
-  //   if(fightersTeam1.length===4 && fightersTeam2.length===4){
-  //     console.log("To arr team 1", fightersTeam1);
-  //     console.log("To arr team 2", fightersTeam2);
-  //   }
-  // }
-
-  // const team1 = monsters.filter((monster) => team1IDs.includes(monster.id.toString()));
-  // const team2 = monsters.filter((monster) => team2IDs.includes(monster.id.toString()));
 
   if (team1IDs && team2IDs) {
     const fightersTeam1 = team1IDs.split(",");
