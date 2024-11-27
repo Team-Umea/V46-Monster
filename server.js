@@ -448,7 +448,6 @@ app.get("/fight", (req, res) => {
       const team1 = monsters.filter((monster) => fightersTeam1.includes(monster.id.toString()));
       const team2 = monsters.filter((monster) => fightersTeam2.includes(monster.id.toString()));
       const battle = fight(team1, team2, fightersTeam1, fightersTeam2);
-      writeToJSONFile("./fights/fightTemplate.json", battle);
       return res.status(200).json({ ok: true, battle: battle });
     }
     return res.status(400).json({ ok: false, message: "Invalid teams" });
