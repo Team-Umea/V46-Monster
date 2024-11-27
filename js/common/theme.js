@@ -1,5 +1,5 @@
-import { save, load } from "./utilities";
-import { themeKey } from "./localStorageKeys";
+import { save, load } from "./utilities.js";
+import { themeKey } from "./localStorageKeys.js";
 
 const themeToggle = document.getElementById("themeToggle");
 const body = document.body;
@@ -22,10 +22,10 @@ function setEventListener() {
 function toggleTheme() {
   const loadedTheme = load(themeKey);
   let theme = "light";
-  if (loadedTheme && loadedTheme === "dark") {
+  if (loadedTheme && loadedTheme === "light") {
     theme = "dark";
   }
-  save(theme, themeKey);
+  save(themeKey, theme);
   applyTheme(theme);
 }
 
