@@ -312,22 +312,24 @@ function fight(team1, team2, team1IDs, team2IDs) {
         const roundWinnerByFighterName = roundWinner === "1" ? fighter1Name : roundWinner === "2" ? fighter2Name : "Draw";
 
         const round = {
-          Round: currentRound,
+          round: currentRound,
           wonBy: {
             team: roundWinnerByTeam,
             fighter: roundWinnerByFighterName,
           },
-          Figther1: {
-            StartHP: fighter1Stats[0],
-            RemainingHP: fighter1Stats[1] >= 0 ? fighter1Stats[1] : 0,
-            SufferedDamage: fighter1Stats[2],
-            DistributedDamage: fighter1Stats[3],
+          figther1: {
+            name: fighter1Name,
+            startHP: fighter1Stats[0],
+            remainingHP: fighter1Stats[1] >= 0 ? fighter1Stats[1] : 0,
+            sufferedDamage: fighter1Stats[2],
+            distributedDamage: fighter1Stats[3],
           },
-          Figther2: {
-            StartHP: fighter2Stats[0],
-            RemainingHP: fighter2Stats[1] >= 0 ? fighter2Stats[1] : 0,
-            SufferedDamage: fighter2Stats[2],
-            DistributedDamage: fighter2Stats[3],
+          figther2: {
+            name: fighter2Name,
+            startHP: fighter2Stats[0],
+            remainingHP: fighter2Stats[1] >= 0 ? fighter2Stats[1] : 0,
+            sufferedDamage: fighter2Stats[2],
+            distributedDamage: fighter2Stats[3],
           },
         };
 
@@ -354,7 +356,7 @@ function fight(team1, team2, team1IDs, team2IDs) {
         fightWinners = "Draw";
       }
 
-      battle.push({ fight: currentFight, rounds: rounds, fighter1: fighter1Name, fighter2: fighter2Name, wonBy: fightWinners });
+      battle.push({ fight: currentFight, fighter1: fighter1Name, fighter2: fighter2Name, wonBy: fightWinners, rounds: rounds });
     });
   }
 
@@ -389,6 +391,7 @@ app.get("/fight", (req, res) => {
       const team1 = monsters.filter((monster) => fightersTeam1.includes(monster.id.toString()));
       const team2 = monsters.filter((monster) => fightersTeam2.includes(monster.id.toString()));
       const battle = fight(team1, team2, fightersTeam1, fightersTeam2);
+      writeToJSONFile("./fights/fightTemplate.json", battle);
       return res.status(200).json({ ok: true, battle: battle });
     }
     return res.status(400).json({ ok: false, message: "Invalid teams" });
