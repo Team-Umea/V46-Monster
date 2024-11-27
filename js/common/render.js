@@ -14,10 +14,25 @@ export function renderDataAsUl(parent, parentClass, data) {
   }
 }
 
-export function renderError(parent, clasName, error) {
+export function renderError(parent, error, clasName) {
   parent.innerHTML = "";
   const p = document.createElement("p");
   p.innerText = error;
-  p.setAttribute(clasName);
+  p.setAttribute("class", clasName ? `error ${clasName}` : "error");
+  removeEl(p, 3);
   parent.appendChild(p);
+}
+
+export function renderSpinner(parent) {
+  parent.innerHTML = "";
+  const spinner = document.createElement("div");
+  spinner.setAttribute("class", "spinner");
+  parent.appendChild(spinner);
+}
+
+function removeEl(element, delay) {
+  const delayInSeconds = delay * 1000;
+  setTimeout(() => {
+    element.remove();
+  }, delayInSeconds);
 }
