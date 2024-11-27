@@ -138,3 +138,15 @@ footer {
 .icon-white {
   filter: invert(1);
 }
+
+.error {
+  color: rgb(243, 67, 67);
+}
+
+.success {
+  color: rgb(13, 202, 13);
+}
+
+.hidden {
+  display: none;
+}

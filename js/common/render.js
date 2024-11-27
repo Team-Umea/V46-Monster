@@ -13,3 +13,11 @@ export function renderDataAsUl(parent, parentClass, data) {
     parent.appendChild(ul);
   }
 }
+
+export function renderError(parent, clasName, error) {
+  parent.innerHTML = "";
+  const p = document.createElement("p");
+  p.innerText = error;
+  p.setAttribute(clasName);
+  parent.appendChild(p);
+}
