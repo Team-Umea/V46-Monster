@@ -6,7 +6,7 @@ import { MONSTERS_LSK } from "./common/localStorageKeys.js";
 import { MonsterCard } from "./classes/MonsterCard.js";
 
 const fetchBtn = document.getElementById("fetchMonsters");
-const monsterContainer = document.getElementById("monsterContainer");
+// const monsterContainer = document.getElementById("monsterContainer");
 
 //time in seconds for how long the data will be cached for before it will refetch
 //this way we can limit the number of calls to the api for data that don't need
@@ -18,7 +18,8 @@ window.addEventListener("DOMContentLoaded", () => {
 });
 
 function init() {
-  useClickEvent(fetchBtn, processMonsters);
+  // useClickEvent(fetchBtn, processMonsters);
+  processMonsters();
 }
 
 async function processMonsters() {

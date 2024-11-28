@@ -3,10 +3,8 @@
 
 #monsterContainer {
   width: 100%;
+  min-height: 100%;
   padding: 10px;
-  /* display: flex;
-  flex-wrap: wrap;
-  gap: 10px; */
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   gap: 15px;
@@ -14,7 +12,6 @@
 }
 
 .monsterCard {
-  /* width: 300px; */
   height: 380px;
   padding: 20px;
   display: grid;
@@ -65,13 +62,6 @@
   justify-content: center;
   flex-wrap: wrap;
   gap: 10px;
-}
-
-.monsterPrice {
-  /* grid-column: 1;
-  grid-row-start: 29;
-  grid-row-end: 45;
-  background-color: rebeccapurple; */
 }
 
 .monsterPriceContainer {
