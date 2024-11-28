@@ -28,6 +28,11 @@ export function renderSpinner(parent) {
   const spinner = document.createElement("div");
   spinner.setAttribute("class", "spinner");
   parent.appendChild(spinner);
+  setTimeout(() => {
+    if (parent.firstElementChild.getAttribute("spinner")) {
+      renderError(parent, "Timeout error");
+    }
+  }, 3000);
 }
 
 function removeEl(element, delay) {
