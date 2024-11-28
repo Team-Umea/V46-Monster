@@ -130,12 +130,12 @@ class MonsterCard {
 
   assembleMonsterCard() {
     const container = this.monsterContainer();
-    const name = this.monsterContainer();
-    const specs = this.monsterContainer();
-    const stats = this.monsterContainer();
-    const elements = this.monsterContainer();
-    const price = this.monsterContainer();
-    const select = this.monsterContainer();
+    const name = this.monsterName();
+    const specs = this.monsterSpecs();
+    const stats = this.monsterStats();
+    const elements = this.elements();
+    const price = this.price();
+    const select = this.select();
 
     container.appendChild(name);
     container.appendChild(specs);
