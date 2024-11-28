@@ -45,7 +45,7 @@ export async function serveData(requestedEndpoint, apiParams, parent, key, ttl) 
   if (key) {
     const loaded = useCachedData(key);
     if (loaded) {
-      console.log("Data is cahced and will be loaded");
+      console.log("Data is cacehed and will be loaded");
       return loaded;
     }
     console.log("Data had expired so we nedd to refetch data");

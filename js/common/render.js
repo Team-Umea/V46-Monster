@@ -42,6 +42,31 @@ export function renderSpinner(parent) {
   }, 5000);
 }
 
+export function renderIconWithNumber(value, src, altAndTitle, dir) {
+  const iconContainer = document.createElement("div");
+  const icon = document.createElement("img");
+  const iconText = document.createElement("p");
+
+  iconContainer.setAttribute("class", "iconContainer");
+
+  icon.setAttribute("src", src);
+  icon.setAttribute("alt", altAndTitle);
+  icon.setAttribute("title", altAndTitle);
+  icon.setAttribute("class", "icon");
+
+  iconText.innerText = value;
+
+  if (!dir || dir.toLowerCase() === "left") {
+    iconContainer.appendChild(icon);
+    iconContainer.appendChild(iconText);
+  } else {
+    iconContainer.appendChild(iconText);
+    iconContainer.appendChild(icon);
+  }
+
+  return iconContainer;
+}
+
 function removeEl(element, delay) {
   const delayInSeconds = delay * 1000;
   setTimeout(() => {

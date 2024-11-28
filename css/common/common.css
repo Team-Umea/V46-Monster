@@ -63,6 +63,17 @@ header {
   background-color: var(--color-primary);
 }
 
+header h1 {
+  margin-top: -10px;
+}
+
+#headerControls {
+  width: 100%;
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: space-between;
+}
+
 header nav {
   width: 100%;
 }
@@ -86,9 +97,6 @@ footer {
 }
 
 #themeToggle {
-  position: absolute;
-  top: 10px;
-  right: 10px;
   cursor: pointer;
 }
 
@@ -122,8 +130,21 @@ footer {
   --color-tertiary-darker: #f6f9f9;
 }
 
+.iconContainer {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.iconContainer p {
+  font-size: 1.4rem;
+  letter-spacing: 1.1px;
+  font-weight: bold;
+}
+
 .icon {
   width: 30px;
+  filter: invert(1);
   transition: all 0.3s ease-in-out;
 }
 
@@ -133,10 +154,6 @@ footer {
 
 .icon-scale:hover {
   transform: scale(1.07);
-}
-
-.icon-white {
-  filter: invert(1);
 }
 
 .errorContainer {

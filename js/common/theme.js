@@ -1,5 +1,6 @@
 import { save, load } from "./utilities.js";
 import { THEME_LSK } from "./localStorageKeys.js";
+import { changeCSSClass } from "./utilities.js";
 
 const themeToggle = document.getElementById("themeToggle");
 const body = document.body;
@@ -34,10 +35,12 @@ function applyTheme(theme) {
     themeToggle.setAttribute("alt", "Swith to dark mode");
     themeToggle.setAttribute("title", "Swith to dark mode");
     themeToggle.setAttribute("class", "icon icon-scale");
+    changeCSSClass(1, "icon", { filter: "invert(0)" });
   } else {
     themeToggle.setAttribute("src", "../../res/icons/sun.svg");
     themeToggle.setAttribute("alt", "Swith to light mode");
     themeToggle.setAttribute("title", "Swith to light mode");
-    themeToggle.setAttribute("class", "icon icon-scale icon-white");
+    themeToggle.setAttribute("class", "icon icon-scale");
+    changeCSSClass(1, "icon", { filter: "invert(1)" });
   }
 }

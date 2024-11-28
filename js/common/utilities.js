@@ -34,23 +34,12 @@ export function save(key, value) {
   localStorage.setItem(key, JSON.stringify(value));
 }
 
-export function cache(key, value, ttl) {
-  if ((key, value, ttl)) {
-    const loaded = load(key);
-    if (loaded) {
-      const currentDate = new Date();
-      const savedAt = loaded.savedAt;
-      const ttl = loaded.ttl;
-
-      const ttlExpired = compareWithTempDate(currentDate, savedAt, ttl);
-      if (ttlExpired) {
-        const dataWithTtl = { data: filteredData, savedAt: new Date(), ttl };
-        save(key, dataWithTtl);
-      }
-    } else {
-      const dataWithTtl = { data: filteredData, savedAt: new Date(), ttl };
-      save(key, dataWithTtl);
-    }
+export function load(key) {
+  try {
+    return JSON.parse(localStorage.getItem(key));
+  } catch (error) {
+    console.log(`${key} does not exists in local storage`);
+    return "";
   }
 }
 
@@ -73,15 +62,6 @@ export function useCachedData(key) {
   }
 }
 
-export function load(key) {
-  try {
-    return JSON.parse(localStorage.getItem(key));
-  } catch (error) {
-    console.log(`${key} does not exists in local storage`);
-    return "";
-  }
-}
-
 export function filterObject(obj, unwantedProperty) {
   const data = Object.fromEntries(Object.entries(obj).filter(([key]) => key !== unwantedProperty));
   const firstKey = Object.keys(data)[0];
@@ -96,4 +76,19 @@ export function compareWithTempDate(date1, date2, timeLimitInSeconds) {
   d2.setSeconds(d2.getSeconds() + timeLimitInSeconds);
 
   return d1 > d2;
+}
+
+export function changeCSSClass(styleSheeetIndex, className, properties) {
+  const styleSheet = document.styleSheets[styleSheeetIndex];
+
+  for (let i = 0; i < styleSheet.cssRules.length; i++) {
+    const rule = styleSheet.cssRules[i];
+
+    if (rule.selectorText === `.${className}`) {
+      for (const [property, value] of Object.entries(properties)) {
+        rule.style[property] = value;
+      }
+      break;
+    }
+  }
 }
