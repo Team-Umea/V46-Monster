@@ -1,6 +1,6 @@
-import { renderIconWithNumber } from "../common/render";
+import { renderIconWithNumber } from "../common/render.js";
 
-class MonsterCard {
+export class MonsterCard {
   constructor(monster, allMonsters, teams) {
     this.monster = monster;
     this.allMonsters = allMonsters;
@@ -36,9 +36,20 @@ class MonsterCard {
     return specsP;
   }
 
-  monsterRank() {
-    const rankP = document.createElement("p");
-    let rank = "";
+  monsterStats() {
+    const statsContainer = document.createElement("ul");
+
+    const name = this.name;
+    const monster = this.monster;
+    const health = this.health;
+    const damage = this.damage;
+
+    const healthIconValue = renderIconWithNumber(health, "../../res/icons/heart.svg", `${name} has ${health} of health`);
+    const damageIconValue = renderIconWithNumber(damage, "../../res/icons/skull.svg", `${name} has ${damage} of damage`);
+    let rankIconValue;
+
+    statsContainer.setAttribute("class", "monsterStats");
+
     const rankList = this.allMonsters.sort((a, b) => {
       const ratingA = a.health + a.damage;
       const ratingB = b.health + a.damage;
@@ -46,25 +57,16 @@ class MonsterCard {
     });
 
     if (rankList) {
-      rank = rankList.indexOf(this.monster) + 1;
+      const rank = rankList.indexOf(monster) + 1;
+      const controlledRank = rank > 0 ? rank : "";
+      rankIconValue = renderIconWithNumber(controlledRank, "../../res/icons/trophy.svg", `${name} is ranked ${rank} of all monsters`);
+      rankIconValue.classList.add("monsterRank");
     }
 
-    rankP.setAttribute("class", "monsterRank");
-    rankP.innerText = rank;
-    return rankP;
-  }
-
-  monsterStats() {
-    const health = this.health;
-    const damage = this.damage;
-    const name = this.name;
-
-    const healthIconValue = renderIconWithNumber(health, "../../res/icons/heart.svg", `${name} has ${health} of health`);
-    const damageIconValue = renderIconWithNumber(health, "../../res/icons/heart.svg", `${name} has ${damage} of damage`);
-
-    const statsContainer = document.createElement("ul");
-    statsContainer.setAttribute("class", "monsterStats");
     statsContainer.appendChild(healthIconValue);
+    if (rankIconValue) {
+      statsContainer.appendChild(rankIconValue);
+    }
     statsContainer.appendChild(damageIconValue);
 
     return statsContainer;
@@ -76,6 +78,7 @@ class MonsterCard {
     const elementHeader = document.createElement("h3");
     const elements = this.elements;
 
+    elementsContainer.setAttribute("class", "monsterElements");
     elementHeader.setAttribute("class", "elementHeader");
     elementList.setAttribute("class", "elementList");
 
@@ -99,11 +102,16 @@ class MonsterCard {
     const name = this.name;
     const priceContainer = document.createElement("div");
     const priceHeader = document.createElement("h2");
-    const priceIconValue = renderIconWithNumber("iconContainer", "../../res/icons/diamond.svg", `${name} costs ${price} credits`);
+    const priceIconValue = renderIconWithNumber(price, "../../res/icons/diamond.svg", `${name} costs ${price} credits`);
 
     priceContainer.setAttribute("class", "monsterPriceContainer");
     priceHeader.setAttribute("class", "monsterPriceHeader");
     priceIconValue.classList.add("monsterPrice");
+
+    priceHeader.innerText = "Price";
+
+    priceContainer.appendChild(priceHeader);
+    priceContainer.appendChild(priceIconValue);
 
     return priceContainer;
   }
@@ -133,8 +141,8 @@ class MonsterCard {
     const name = this.monsterName();
     const specs = this.monsterSpecs();
     const stats = this.monsterStats();
-    const elements = this.elements();
-    const price = this.price();
+    const elements = this.monsterElements();
+    const price = this.monsterPrice();
     const select = this.addToTeam();
 
     container.appendChild(name);
@@ -143,5 +151,6 @@ class MonsterCard {
     container.appendChild(elements);
     container.appendChild(price);
     container.appendChild(select);
+    return container;
   }
 }
