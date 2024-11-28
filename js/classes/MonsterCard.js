@@ -135,7 +135,7 @@ class MonsterCard {
     const stats = this.monsterStats();
     const elements = this.elements();
     const price = this.price();
-    const select = this.select();
+    const select = this.addToTeam();
 
     container.appendChild(name);
     container.appendChild(specs);
