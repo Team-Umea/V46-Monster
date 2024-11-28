@@ -18,29 +18,17 @@ function init() {
 }
 
 async function fetchElements() {
-  renderSpinner(elementsContainer);
-  const response = await fetchFromApi("elements");
-  setTimeout(() => {
-    if (!response.hasError) {
-      const elements = response.data.elements.map((res) => res.name);
-      renderDataAsUl(elementsContainer, "elementsContainer", elements);
-    } else {
-      const errorMessage = response.message;
-      renderError(elementsContainer, errorMessage);
-    }
-  }, 1000);
+  const response = await fetchFromApi("elements", undefined, elementsContainer);
+  if (response.ok) {
+    const elements = response.data.elements.map((res) => res.name);
+    renderDataAsUl(elementsContainer, "elementsContainer", elements);
+  }
 }
 
 async function fetchAbilities() {
-  renderSpinner(abilitiesContainer);
-  const response = await fetchFromApi("abilities");
-  setTimeout(() => {
-    if (!response.hasError) {
-      const abilities = response.data.abilities;
-      renderDataAsUl(abilitiesContainer, "abilitiesContainer", abilities);
-    } else {
-      const errorMessage = response.message;
-      renderError(abilitiesContainer, errorMessage);
-    }
-  }, 1000);
+  const response = await fetchFromApi("abilities", undefined, abilitiesContainer);
+  if (response.ok) {
+    const abilities = response.data.abilities;
+    renderDataAsUl(abilitiesContainer, "elementsContainer", abilities);
+  }
 }

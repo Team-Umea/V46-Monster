@@ -1,57 +1,36 @@
 //Fetch logic to fetch from ozzodevmonsterapi.azurewebsites.net goes here
 import { loadEndpoints, filterObject } from "./utilities.js";
+import { getError } from "./error.js";
+import { renderSpinner } from "./render.js";
 
-export async function fetchFromApi(requestedEndpoint, apiParams) {
+export async function fetchFromApi(requestedEndpoint, apiParams, parent) {
   const endpoints = await loadEndpoints();
 
-  if (apiParams && typeof apiParams !== "string") {
-    return {
-      message: alertStatus("Invalid parameters inputed, must be one string"),
-      hasError: true,
-    };
+  if (!(requestedEndpoint in endpoints)) {
+    getError(404, parent);
   }
 
-  if (endpoints && requestedEndpoint in endpoints) {
+  if (endpoints) {
     const endpoint = endpoints[requestedEndpoint];
     const url = apiParams ? `${endpoint}?${apiParams}` : endpoint;
 
     try {
+      renderSpinner(parent);
       const response = await fetch(url);
       if (!response.ok) {
-        return {
-          message: alertStatus(`HTTP error! status: ${response.status}`),
-          hasError: true,
-        };
+        return getError(response.status, parent);
       }
 
       const data = await response.json();
 
-      if (!data.ok) {
-        return {
-          message: alertStatus("The server encountered an unexpected condition."),
-          hasError: true,
-        };
-      }
-
       return {
+        ok: data.ok,
         data: filterObject(data, "ok"),
-        hasError: false,
       };
     } catch (error) {
-      return {
-        message: alertStatus(`Network error: ${error.message}`),
-        hasError: true,
-      };
+      return getError(504, parent);
     }
   } else {
-    return {
-      message: alertStatus("No endpoints found or invalid endpoint requested"),
-      hasError: true,
-    };
+    return getError(0, parent);
   }
-}
-
-function alertStatus(message) {
-  console.error(message);
-  return message;
 }

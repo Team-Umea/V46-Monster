@@ -1,16 +1,23 @@
 //Place as much render code here as possible
-export function renderDataAsUl(parent, parentClass, data) {
-  parent.innerHTML = "";
+import { getError } from "./error.js";
 
-  if (data && data.length > 0) {
-    const ul = document.createElement("ul");
-    ul.setAttribute("class", parentClass);
-    data.forEach((item) => {
-      const li = document.createElement("li");
-      li.innerText = item;
-      ul.appendChild(li);
-    });
-    parent.appendChild(ul);
+export function renderDataAsUl(parent, parentClass, data) {
+  if (parent.firstElementChild) {
+    const hasErrorMessage = parent.firstElementChild.getAttribute("class") === "errorContainer";
+    if (!hasErrorMessage) {
+      parent.innerHTML = "";
+
+      if (data && data.length > 0) {
+        const ul = document.createElement("ul");
+        ul.setAttribute("class", parentClass);
+        data.forEach((item) => {
+          const li = document.createElement("li");
+          li.innerText = item;
+          ul.appendChild(li);
+        });
+        parent.appendChild(ul);
+      }
+    }
   }
 }
 
@@ -24,15 +31,21 @@ export function renderError(parent, error, clasName) {
 }
 
 export function renderSpinner(parent) {
+  if (parent.timeoutId) {
+    clearTimeout(parent.timeoutId);
+  }
+
   parent.innerHTML = "";
   const spinner = document.createElement("div");
   spinner.setAttribute("class", "spinner");
   parent.appendChild(spinner);
-  setTimeout(() => {
-    if (parent.firstElementChild.getAttribute("spinner")) {
-      renderError(parent, "Timeout error");
+
+  parent.timeoutId = setTimeout(() => {
+    if (parent.firstElementChild.getAttribute("class") === "spinner" && parent.children.length === 1) {
+      getError(504, parent);
+      spinner.remove();
     }
-  }, 3000);
+  }, 5000);
 }
 
 function removeEl(element, delay) {
