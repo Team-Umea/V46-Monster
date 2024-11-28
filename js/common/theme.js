@@ -1,5 +1,5 @@
 import { save, load } from "./utilities.js";
-import { themeKey } from "./localStorageKeys.js";
+import { THEME_LSK } from "./localStorageKeys.js";
 
 const themeToggle = document.getElementById("themeToggle");
 const body = document.body;
@@ -9,7 +9,7 @@ window.addEventListener("DOMContentLoaded", () => {
 });
 
 function init() {
-  const loadedTheme = load(themeKey);
+  const loadedTheme = load(THEME_LSK);
   applyTheme(loadedTheme || "light");
   setEventListener();
 }
@@ -21,9 +21,9 @@ function setEventListener() {
 }
 
 function toggleTheme() {
-  const currentTheme = load(themeKey) || "light";
+  const currentTheme = load(THEME_LSK) || "light";
   const newTheme = currentTheme === "light" ? "dark" : "light";
-  save(themeKey, newTheme);
+  save(THEME_LSK, newTheme);
   applyTheme(newTheme);
 }
 
