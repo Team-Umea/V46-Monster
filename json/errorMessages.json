@@ -1,4 +1,5 @@
 {
+        "0": "Error: Unexpected Error/HEADER//CONTENT/An unexpected error has occurred. We apologize for the inconvenience this may have caused./CONTENT//STEPS/Please try the following troubleshooting steps:/STEPS//STEP1/Refresh the Page: A simple refresh may resolve the issue./STEP1//STEP2/Clear Your Browser Cache: Sometimes cached data can cause problems; try clearing your cache and cookies./STEP2//STEP3/Report the Issue: If the problem persists, please report it to our support team with as much detail as possible./STEP3//FOOTER/Thank you for your understanding and patience as we work to resolve this issue.",
     "200": "Success: Request Completed/HEADER//CONTENT/Your request has been successfully processed. Thank you for your patience!/CONTENT//STEPS/No further action is needed at this time./STEPS//FOOTER/If you have any questions, feel free to reach out to our support team."
     ,
     "201": "Success: Resource Created/HEADER//CONTENT/Your request has been fulfilled and a new resource has been created./CONTENT//STEPS/You can now access the newly created resource./STEPS//FOOTER/If you need assistance, please contact our support team."
