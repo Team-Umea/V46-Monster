@@ -19,6 +19,17 @@ export async function loadEndpoints() {
   return loadedEndpoints;
 }
 
+export async function readJSON(path) {
+  try {
+    const response = await fetch(path);
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.error(error);
+    return null;
+  }
+}
+
 export function save(key, value) {
   localStorage.setItem(key, JSON.stringify(value));
 }
