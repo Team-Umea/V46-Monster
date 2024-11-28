@@ -3,6 +3,7 @@ import { serveData } from "./common/fetch.js";
 import { useClickEvent } from "./common/useEvent.js";
 import { renderDataAsUl } from "./common/render.js";
 import { ELEMENTS_LSK, ABILITIES_LSK } from "./common/localStorageKeys.js";
+import { capitalize } from "./common/utilities.js";
 
 const elementsContainer = document.getElementById("elementsContainer");
 const abilitiesContainer = document.getElementById("abilitiesContainer");
@@ -32,5 +33,6 @@ async function fetchElements() {
 async function fetchAbilities() {
   const response = await serveData("abilities", undefined, abilitiesContainer, ABILITIES_LSK, ttl);
   const abilities = response;
-  renderDataAsUl(abilitiesContainer, "elementsContainer", abilities);
+  const capatilizedAbilities = abilities.map((ability) => capitalize(ability));
+  renderDataAsUl(abilitiesContainer, "elementsContainer", capatilizedAbilities);
 }
