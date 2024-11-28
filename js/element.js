@@ -1,12 +1,18 @@
 //Js code for element page
-import { fetchFromApi } from "./common/fetch.js";
+import { serveData } from "./common/fetch.js";
 import { useClickEvent } from "./common/useEvent.js";
 import { renderDataAsUl } from "./common/render.js";
+import { ELEMENTS_LSK, ABILITIES_LSK } from "./common/localStorageKeys.js";
 
 const elementsContainer = document.getElementById("elementsContainer");
 const abilitiesContainer = document.getElementById("abilitiesContainer");
 const fetchElementsBtn = document.getElementById("fetchElements");
 const fetchAbilitiesBtn = document.getElementById("fetchAbilities");
+
+//time in seconds for how long the data will be cached for before it will refetch
+//this way we can limit the number of calls to the api for data that don't need
+//constent updates
+const ttl = 300; //5 min
 
 window.addEventListener("DOMContentLoaded", () => {
   init();
@@ -18,17 +24,13 @@ function init() {
 }
 
 async function fetchElements() {
-  const response = await fetchFromApi("elements", undefined, elementsContainer);
-  if (response.ok) {
-    const elements = response.data.map((res) => res.name);
-    renderDataAsUl(elementsContainer, "elementsContainer", elements);
-  }
+  const response = await serveData("elements", undefined, elementsContainer, ELEMENTS_LSK, ttl);
+  const elements = response.map((res) => res.name);
+  renderDataAsUl(elementsContainer, "elementsContainer", elements);
 }
 
 async function fetchAbilities() {
-  const response = await fetchFromApi("abilities", undefined, abilitiesContainer);
-  if (response.ok) {
-    const abilities = response.data;
-    renderDataAsUl(abilitiesContainer, "elementsContainer", abilities);
-  }
+  const response = await serveData("abilities", undefined, abilitiesContainer, ABILITIES_LSK, ttl);
+  const abilities = response;
+  renderDataAsUl(abilitiesContainer, "elementsContainer", abilities);
 }

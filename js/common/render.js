@@ -2,22 +2,16 @@
 import { getError } from "./error.js";
 
 export function renderDataAsUl(parent, parentClass, data) {
-  if (parent.firstElementChild) {
-    const hasErrorMessage = parent.firstElementChild.getAttribute("class") === "errorContainer";
-    if (!hasErrorMessage) {
-      parent.innerHTML = "";
-
-      if (data && data.length > 0) {
-        const ul = document.createElement("ul");
-        ul.setAttribute("class", parentClass);
-        data.forEach((item) => {
-          const li = document.createElement("li");
-          li.innerText = item;
-          ul.appendChild(li);
-        });
-        parent.appendChild(ul);
-      }
-    }
+  parent.innerHTML = "";
+  if (data && data.length > 0) {
+    const ul = document.createElement("ul");
+    ul.setAttribute("class", parentClass);
+    data.forEach((item) => {
+      const li = document.createElement("li");
+      li.innerText = item;
+      ul.appendChild(li);
+    });
+    parent.appendChild(ul);
   }
 }
 
