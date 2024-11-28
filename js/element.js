@@ -1,7 +1,7 @@
 //Js code for element page
-import { fetchFromApi } from "./common/endpoints.js";
+import { fetchFromApi } from "./common/fetch.js";
 import { useClickEvent } from "./common/useEvent.js";
-import { renderDataAsUl, renderError, renderSpinner } from "./common/render.js";
+import { renderDataAsUl } from "./common/render.js";
 
 const elementsContainer = document.getElementById("elementsContainer");
 const abilitiesContainer = document.getElementById("abilitiesContainer");
@@ -20,7 +20,7 @@ function init() {
 async function fetchElements() {
   const response = await fetchFromApi("elements", undefined, elementsContainer);
   if (response.ok) {
-    const elements = response.data.elements.map((res) => res.name);
+    const elements = response.data.map((res) => res.name);
     renderDataAsUl(elementsContainer, "elementsContainer", elements);
   }
 }
@@ -28,7 +28,7 @@ async function fetchElements() {
 async function fetchAbilities() {
   const response = await fetchFromApi("abilities", undefined, abilitiesContainer);
   if (response.ok) {
-    const abilities = response.data.abilities;
+    const abilities = response.data;
     renderDataAsUl(abilitiesContainer, "elementsContainer", abilities);
   }
 }

@@ -44,10 +44,9 @@ export function load(key) {
 }
 
 export function filterObject(obj, unwantedProperty) {
-  if (obj.hasOwnProperty(unwantedProperty)) {
-    const { [unwantedProperty]: _, ...filteredObj } = obj;
-    return filteredObj;
-  }
+  const data = Object.fromEntries(Object.entries(obj).filter(([key]) => key !== unwantedProperty));
+  const firstKey = Object.keys(data)[0];
+  const filteredObj = data[firstKey];
 
-  return obj;
+  return filteredObj;
 }

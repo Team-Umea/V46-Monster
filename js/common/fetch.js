@@ -7,7 +7,7 @@ export async function fetchFromApi(requestedEndpoint, apiParams, parent) {
   const endpoints = await loadEndpoints();
 
   if (!(requestedEndpoint in endpoints)) {
-    getError(404, parent);
+    return getError(404, parent);
   }
 
   if (endpoints) {

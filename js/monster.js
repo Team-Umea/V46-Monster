@@ -1,5 +1,5 @@
 //Js code for monster page
-import { fetchFromApi } from "./common/endpoints.js";
+import { fetchFromApi } from "./common/fetch.js";
 import { useClickEvent } from "./common/useEvent.js";
 import { renderDataAsUl } from "./common/render.js";
 
@@ -17,7 +17,7 @@ function init() {
 async function fetchMonsters() {
   const response = await fetchFromApi("monsters", "&num=10", monsterContainer);
   if (response.ok) {
-    const monsters = response.data.monsters.map((res) => res.name);
+    const monsters = response.data.map((res) => res.name);
     renderDataAsUl(monsterContainer, "monsterContainer", monsters);
   }
 
