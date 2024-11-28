@@ -1,10 +1,11 @@
 import { renderIconWithNumber } from "../common/render.js";
 
 export class MonsterCard {
-  constructor(monster, allMonsters, teams) {
+  constructor(monster, allMonsters, teams, id) {
     this.monster = monster;
     this.allMonsters = allMonsters;
     this.teams = teams;
+    this.id = id;
 
     this.name = monster.name;
     this.specs = monster.specs;
@@ -15,8 +16,10 @@ export class MonsterCard {
   }
 
   monsterContainer() {
+    const id = this.id;
     const container = document.createElement("div");
     container.setAttribute("class", "monsterCard");
+    container.setAttribute("id", id);
     return container;
   }
 

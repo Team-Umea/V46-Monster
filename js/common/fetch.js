@@ -3,7 +3,7 @@ import { loadEndpoints, filterObject, save, useCachedData } from "./utilities.js
 import { getError } from "./error.js";
 import { renderSpinner } from "./render.js";
 
-async function fetchData(requestedEndpoint, apiParams, parent, key, ttl) {
+async function fetchData(requestedEndpoint, apiParams, parent, key, ttl, noSpinner) {
   const endpoints = await loadEndpoints();
 
   if (!(requestedEndpoint in endpoints)) {
@@ -15,7 +15,9 @@ async function fetchData(requestedEndpoint, apiParams, parent, key, ttl) {
     const url = apiParams ? `${endpoint}?${apiParams}` : endpoint;
 
     try {
-      renderSpinner(parent);
+      if (!noSpinner) {
+        renderSpinner(parent);
+      }
       const response = await fetch(url);
       if (!response.ok) {
         return getError(response.status, parent);
@@ -41,7 +43,7 @@ async function fetchData(requestedEndpoint, apiParams, parent, key, ttl) {
   }
 }
 
-export async function serveData(requestedEndpoint, apiParams, parent, key, ttl) {
+export async function serveData(requestedEndpoint, apiParams, parent, key, ttl, noSpinner) {
   if (key) {
     const loaded = useCachedData(key);
     if (loaded) {
@@ -57,8 +59,8 @@ export async function serveData(requestedEndpoint, apiParams, parent, key, ttl) 
   return fetchedData;
 }
 
-export async function serveFetchedData(requestedEndpoint, apiParams, parent, key, ttl) {
-  const reponse = await fetchData(requestedEndpoint, apiParams, parent, key, ttl);
+export async function serveFetchedData(requestedEndpoint, apiParams, parent, key, ttl, noSpinner) {
+  const reponse = await fetchData(requestedEndpoint, apiParams, parent, key, ttl, noSpinner);
   if (reponse.ok) {
     return reponse.data;
   }
