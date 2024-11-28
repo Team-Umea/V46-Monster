@@ -1,15 +1,15 @@
 //Place the most dynamics functions here that are independet of html elements
-import { apiConfigKey } from "./localStorageKeys.js";
+import { APICONFIG_KEY } from "./localStorageKeys.js";
 
 export async function loadEndpoints() {
   const filePath = "../../json/apiConfig.json";
-  const loadedEndpoints = load(apiConfigKey);
+  const loadedEndpoints = load(APICONFIG_KEY);
 
   if (!loadedEndpoints) {
     try {
       const response = await fetch(filePath);
       const endpoints = await response.json();
-      save(apiConfigKey, endpoints);
+      save(APICONFIG_KEY, endpoints);
       return endpoints;
     } catch (error) {
       console.error(error);

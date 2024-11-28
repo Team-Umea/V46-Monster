@@ -1,2 +1,4 @@
-export const themeKey = "theme";
-export const apiConfigKey = "apiConfig";
+//File to store all key that will be used to store data in local storage
+//LSK = Local Storage Key
+export const THEME_LSK = "theme";
+export const APICONFIG_KEY = "apiConfig";
