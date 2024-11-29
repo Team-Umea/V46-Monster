@@ -81,6 +81,8 @@ export function compareWithTempDate(date1, date2, timeLimitInSeconds) {
 export function changeCSSClass(styleSheeetIndex, className, properties) {
   const styleSheet = document.styleSheets[styleSheeetIndex];
 
+  console.log(styleSheet);
+
   for (let i = 0; i < styleSheet.cssRules.length; i++) {
     const rule = styleSheet.cssRules[i];
 
