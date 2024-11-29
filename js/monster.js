@@ -13,7 +13,7 @@ const monsterContainer = document.getElementById("monsterContainer");
 //constent updates
 const ttl = 60;
 let allMonsters = [];
-let visibleMonsters = 10;
+let visibleMonsters = 20;
 
 window.addEventListener("DOMContentLoaded", () => {
   init();
