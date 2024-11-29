@@ -1,1 +1,7 @@
 /*Only write css here that will be used by fight page*/
+
+.winner {
+    color:green;
+    font-size: 36px;
+    padding:25px;
+}
