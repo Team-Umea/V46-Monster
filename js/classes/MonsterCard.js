@@ -7,6 +7,25 @@ export class MonsterCard {
     this.teams = teams;
     this.id = id;
 
+    if(monster){
+      this.name = monster.name;
+      this.specs = monster.specs;
+      this.health = monster.health;
+      this.damage = monster.damage;
+      this.elements = monster.elements;
+      this.price = monster.price;
+    }
+
+    this.monsterCard = this.monsterContainer()
+    this.skeleton = this.monsterLoadingSkeleton()
+  }
+
+  setValues(monster, allMonsters, teams, id){
+    this.monster = monster;
+    this.allMonsters = allMonsters;
+    this.teams = teams;
+    this.id = id;
+
     this.name = monster.name;
     this.specs = monster.specs;
     this.health = monster.health;
@@ -16,11 +35,25 @@ export class MonsterCard {
   }
 
   monsterContainer() {
-    const id = this.id;
+    const id = this.id
     const container = document.createElement("div");
     container.setAttribute("class", "monsterCard");
     container.setAttribute("id", id);
     return container;
+  }
+
+  monsterLoadingSkeleton() {
+    const container = document.createElement("div");
+    container.setAttribute("class","monsterLoadingSkeleton"); 
+    return container;
+  }
+
+  monsterImg(){
+    const img = document.createElement("img"); 
+    img.setAttribute("alt","Monster img placeholder"); 
+    img.setAttribute("class","monsterImg");
+    img.setAttribute("src","../../res/img/monsterPlaceholder.webp");
+    return img; 
   }
 
   monsterName() {
@@ -44,7 +77,6 @@ export class MonsterCard {
 
     const name = this.name;
     const id = this.id;
-    const monster = this.monster;
     const health = this.health;
     const damage = this.damage;
     const allMonsters = this.allMonsters; 
@@ -106,20 +138,9 @@ export class MonsterCard {
   monsterPrice() {
     const price = this.price;
     const name = this.name;
-    const priceContainer = document.createElement("div");
-    const priceHeader = document.createElement("h2");
     const priceIconValue = renderIconWithNumber(price, "../../res/icons/diamond.svg", `${name} costs ${price} credits`);
-
-    priceContainer.setAttribute("class", "monsterPriceContainer");
-    priceHeader.setAttribute("class", "monsterPriceHeader");
-    priceIconValue.classList.add("monsterPrice");
-
-    priceHeader.innerText = "Price";
-
-    priceContainer.appendChild(priceHeader);
-    priceContainer.appendChild(priceIconValue);
-
-    return priceContainer;
+    priceIconValue.classList.add("monsterPrice");;
+    return priceIconValue;
   }
 
   addToTeam() {
@@ -143,15 +164,21 @@ export class MonsterCard {
   }
 
   assembleMonsterCard() {
-    const container = this.monsterContainer();
+    const container = this.monsterCard;
+    container.innerHTML="";
+
     const name = this.monsterName();
+    const img = this.monsterImg();
     const specs = this.monsterSpecs();
     const stats = this.monsterStats();
     const elements = this.monsterElements();
     const price = this.monsterPrice();
     const select = this.addToTeam();
 
+    this.skeleton.remove();
+
     container.appendChild(name);
+    container.appendChild(img);
     container.appendChild(specs);
     container.appendChild(stats);
     container.appendChild(elements);
@@ -159,4 +186,12 @@ export class MonsterCard {
     container.appendChild(select);
     return container;
   }
+
+  getLoadingSkeletion(){
+    const skeleton = this.skeleton; 
+    const container = this.monsterCard;
+    container.appendChild(skeleton);
+    return container;
+  }
+
 }

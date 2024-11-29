@@ -14,12 +14,12 @@ const monsterContainer = document.getElementById("monsterContainer");
 const ttl = 60;
 let allMonsters = [];
 let visibleMonsters = 20;
+const monsterCards = [];
+let monsters = [];
 
 window.addEventListener("DOMContentLoaded", () => {
   init();
 });
-
-"?team1=12,22,123,234&team2=99,98,97,109"
 
  
 async function init() {
@@ -31,42 +31,59 @@ async function init() {
 }
 
 async function processMonsters() { 
-  const monsters = await serveData("monsters", `&num=${visibleMonsters}`, monsterContainer, MONSTERS_LSK, ttl,true);
+  renderLoadingSkeletons(visibleMonsters);
+  const monsterData = await serveData("monsters", `&num=${visibleMonsters}`, monsterContainer, MONSTERS_LSK, ttl);
+  if(monsterData.length>0){
+    monsters = monsterData
+    renderMonsters(monsterData);
+  }
+}
 
-  if(monsters.length>0){
-    renderMonsters(monsters);
+function renderLoadingSkeletons(max){
+  for (let i = 0; i < max; i++) {
+    const monsterCard = new MonsterCard();
+    const assembleMonsterCard = monsterCard.getLoadingSkeletion();
+    monsterCards.push(monsterCard);
+    monsterContainer.appendChild(assembleMonsterCard);
   }
 }
 
 function renderMonsters(monsters) {
-  monsterContainer.innerHTML = "";
   const tempTeams = ["a", "b", "c", "d"]; //change for later
 
-  monsters.forEach((monster) => {
+  monsterCards.forEach((card,index)=>{
+    const monster = monsters[index];
     const id = monster.id;
-    const createMonsterCard = new MonsterCard(monster, allMonsters, tempTeams, id);
-    const assembleMonsterCard = createMonsterCard.assembleMonsterCard();
-    monsterContainer.appendChild(assembleMonsterCard);
-  });
+
+    card.setValues(monster, allMonsters, tempTeams, id);
+    card.assembleMonsterCard(); 
+  })
 }
 
-function appendMonsters(newMonsters) {
-  const monsterCards = Array.from(monsterContainer.children);
+function appendMonsters() {
   const tempTeams = ["a", "b", "c", "d"]; //change for later
 
-  newMonsters.forEach((monster) => {
+  console.log(monsters.length, monsterCards.length)
+
+  monsterCards.forEach((card,index) => {
+    const monster = monsters[index];
     const id = monster.id;
-    const createMonsterCard = new MonsterCard(monster, allMonsters, tempTeams, id);
-    const assembleMonsterCard = createMonsterCard.assembleMonsterCard();
-    monsterContainer.appendChild(assembleMonsterCard);
+
+    card.setValues(monster, allMonsters, tempTeams, id);
+    card.assembleMonsterCard(); 
   });
 }
 
 async function infiniteScroll() {
-  if (monsterContainer.scrollTop + monsterContainer.clientHeight >= monsterContainer.scrollHeight && visibleMonsters < allMonsters.length) {
-    visibleMonsters += 10;
-    const monsters = await serveFetchedData("monsters", `&num=${visibleMonsters}`, monsterContainer, MONSTERS_LSK, ttl);
-    const newMonsters = monsters.slice(-10);
+  if (monsterContainer.scrollTop + monsterContainer.clientHeight >= monsterContainer.scrollHeight -1200 && visibleMonsters < allMonsters.length) {
+    const numNewMonsters = 10; 
+    visibleMonsters += numNewMonsters;
+    renderLoadingSkeletons(numNewMonsters);
+    const monsterData = await serveFetchedData("monsters", `&num=${visibleMonsters}`, monsterContainer, MONSTERS_LSK, ttl);
+    const newMonsters = monsterData.slice(-10);
+    newMonsters.forEach(monster=>{
+      monsters.push(monster);
+    })
     appendMonsters(newMonsters);
   }
 }
