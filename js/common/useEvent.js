@@ -16,3 +16,10 @@ export function useChangeEvent(element, callback){
     callback();
   })
 }
+
+export function useInputEvent(element, callback){
+  element.addEventListener("input",()=>{
+    element.value = element.value.trim(); 
+    callback();
+  })
+}

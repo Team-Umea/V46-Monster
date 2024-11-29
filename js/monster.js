@@ -1,6 +1,6 @@
 //Js code for monster page
 import { serveData, serveFetchedData } from "./common/fetch.js";
-import { useClickEvent, useScrollEvent, useChangeEvent } from "./common/useEvent.js";
+import { useClickEvent, useScrollEvent, useChangeEvent,useInputEvent } from "./common/useEvent.js";
 import { MONSTERS_LSK, ALLMONSTERS_LSK } from "./common/localStorageKeys.js";
 import { MonsterCard } from "./classes/MonsterCard.js";
 import { isValidObjKey } from "./common/utilities.js";
@@ -8,6 +8,9 @@ import { isValidObjKey } from "./common/utilities.js";
 const fetchBtn = document.getElementById("fetchMonsters");
 const monsterContainer = document.getElementById("monsterContainer");
 const sortDropDown = document.getElementById("sortDropdown");
+const searchButtonGroup = document.getElementById("searchCategory");
+const searchBtns = searchButtonGroup.getElementsByTagName("input");
+const searchBox = document.getElementById("searchBox");
 
 //time in seconds for how long the data will be cached for before it will refetch
 //this way we can limit the number of calls to the api for data that don't need
@@ -17,6 +20,7 @@ let allMonsters = [];
 let visibleMonsters = 20;
 const monsterCards = [];
 let monsters = [];
+let searchCategory; 
 
 window.addEventListener("DOMContentLoaded", () => {
   init();
@@ -26,7 +30,11 @@ window.addEventListener("DOMContentLoaded", () => {
 async function init() {
   allMonsters = await serveData("allMonsters", undefined, monsterContainer, ALLMONSTERS_LSK, ttl);
   useScrollEvent(monsterContainer, infiniteScroll);
-  useChangeEvent(sortDropDown, changeSortOrder)
+  useChangeEvent(sortDropDown, setSortOrder);
+  Array.from(searchBtns).forEach(btn=>{
+    useClickEvent(btn, setSearchCategory)
+  }); 
+  useInputEvent(searchBox, searchMonsters)
   processMonsters();
 }
 
@@ -34,9 +42,18 @@ async function processMonsters() {
   renderLoadingSkeletons(visibleMonsters);
   const monsterData = await serveData("monsters", `&num=${visibleMonsters}`, monsterContainer, MONSTERS_LSK, ttl);
   if(monsterData.length>0){
-    monsters = monsterData
-    renderMonsters(monsterData);
+    assignMonsters(monsterData);
+    renderMonsters(monsters);
   }
+}
+
+function assignMonsters(data){
+  const mappedData = data.map(data=>({monster:data, visible:true}));
+  const oldMonsters = monsters; 
+  monsters = [...oldMonsters, ...mappedData];
+  defaultSort("name");
+  setSearchCategory();
+  searchMonsters();
 }
 
 function renderLoadingSkeletons(max){
@@ -52,7 +69,8 @@ function renderMonsters(monsters) {
   const tempTeams = ["a", "b", "c", "d"]; //change for later
 
   monsterCards.forEach((card,index)=>{
-    const monster = monsters[index];
+    const monsterObj = monsters[index]
+    const monster = monsterObj.monster; 
     const id = monster.id;
 
     card.setValues(monster, allMonsters, tempTeams, id);
@@ -64,11 +82,15 @@ function renderUpdatedMonster(monsters){
   monsterContainer.innerHTML=""; 
   const tempTeams = ["a", "b", "c", "d"]; //change for later
 
-  monsters.forEach(monster=>{
-    const id = monster.id; 
-    const monsterCard = new MonsterCard(monster,allMonsters, tempTeams, id); 
-    const assembledMonsterCard = monsterCard.assembleMonsterCard();
-    monsterContainer.appendChild(assembledMonsterCard);
+  monsters.forEach(monsterObj=>{
+    const isVisible = monsterObj.visible;
+    if(isVisible){
+      const monster = monsterObj.monster;
+      const id = monster.id; 
+      const monsterCard = new MonsterCard(monster,allMonsters, tempTeams, id); 
+      const assembledMonsterCard = monsterCard.assembleMonsterCard();
+      monsterContainer.appendChild(assembledMonsterCard);
+    }
   })
 
 }
@@ -79,7 +101,8 @@ function appendMonsters() {
   console.log(monsters.length, monsterCards.length)
 
   monsterCards.forEach((card,index) => {
-    const monster = monsters[index];
+    const monsterObj = monsters[index];
+    const monster = monsterObj.monster; 
     const id = monster.id;
 
     card.setValues(monster, allMonsters, tempTeams, id);
@@ -94,17 +117,77 @@ async function infiniteScroll() {
     renderLoadingSkeletons(numNewMonsters);
     const monsterData = await serveFetchedData("monsters", `&num=${visibleMonsters}`, monsterContainer, MONSTERS_LSK, ttl);
     const newMonsters = monsterData.slice(-10);
-    newMonsters.forEach(monster=>{
-      monsters.push(monster);
-    })
+
+    // const everyMonster = monsters.concat(newMonsters);
+    assignMonsters(newMonsters);
+
+    // newMonsters.forEach(monster=>{
+    //   monsters.push(monster);
+    // })
+
     appendMonsters(newMonsters);
-    changeSortOrder();
   }
 }
 
-function changeSortOrder(){
+function setSortOrder(){
   const sortOrder = Number(sortDropDown.value); 
   sortMonsters(sortOrder)
+  console.log("Hello is I changed? ", sortOrder);
+}
+
+function setSearchCategory(){
+  const selectedBtn = Array.from(searchBtns).find(btn=>btn.checked);
+  searchCategory = selectedBtn.value; 
+}
+
+// function showAllMonsters(){
+//   monsters.forEach(monster=>monster.visible=true); 
+//   renderMonsters(monsters); 
+// }
+
+function searchMonsters(){
+  const searchQuery = searchBox.value.trim().toLowerCase();
+  monsters.forEach(monsterObj=>{
+    const monster = monsterObj.monster; 
+
+    if(searchCategory!=="rank"){
+      if(searchCategory in monster){
+
+        const value = monster[searchCategory]; 
+        let valueStrHasQuery; 
+        let valueArrHasQuery;
+
+        if(typeof value === "string"||typeof value === "number"){
+          valueStrHasQuery = value.toString().trim().toLowerCase().includes(searchQuery);
+        }else{
+          valueArrHasQuery=value.some(item=>item.toLowerCase().includes(searchQuery));
+        }
+
+        if(valueStrHasQuery||valueArrHasQuery){
+          monsterObj.visible=true; 
+        }else{
+          monsterObj.visible=false; 
+        }
+      }
+    }else{
+      const rankList = allMonsters.sort((a, b) => {
+        const ratingA = a.health + a.damage;
+        const ratingB = b.health + a.damage;
+        return ratingA - ratingB;
+      });
+  
+      const rank = rankList.indexOf(rankList.find(m=>m.id===monster.id));
+      const descending = (rankList.length - rank).toString();
+
+      if(descending.includes(searchQuery)){
+        monsterObj.visible=true; 
+      }else{
+          monsterObj.visible=false; 
+      }
+    }
+  })
+
+  renderUpdatedMonster(monsters);
 }
 
 function sortMonsters(sortOrder){
@@ -156,10 +239,11 @@ function sortMonsters(sortOrder){
 }
 
 function defaultSort(key){
-  if(isValidObjKey(monsters,key)){
+  const tempMonsters = monsters.map(monster=>monster.monster);
+  if(isValidObjKey(tempMonsters,key)){
     monsters = monsters.sort((a,b)=>{
-      const valueA = a[key];
-      const valueB = b[key];
+      const valueA = a.monster[key];
+      const valueB = b.monster[key];
       if(typeof valueA ==="string"){
         return valueA.localeCompare(valueB);
       }else if(typeof valueA==="number"){
@@ -170,10 +254,11 @@ function defaultSort(key){
 }
 
 function reverseSort(key){
-  if(isValidObjKey(monsters,key)){
+  const tempMonsters = monsters.map(monster=>monster.monster);
+  if(isValidObjKey(tempMonsters,key)){
     monsters = monsters.sort((a,b)=>{
-      const valueA = a[key];
-      const valueB = b[key];
+      const valueA = a.monster[key];
+      const valueB = b.monster[key];
       if(typeof valueA ==="string"){
         return valueB.localeCompare(valueA);
       }else if(typeof valueA==="number"){
@@ -185,24 +270,16 @@ function reverseSort(key){
 
 function sortByLoHiRank(){
   monsters = monsters.sort((a,b)=>{
-    const rankA = a.health + a.damage; 
-    const rankB = b.health + b.damage; 
+    const rankA = a.monster.health + a.monster.damage; 
+    const rankB = b.monster.health + b.monster.damage; 
     return rankA - rankB
   })
 }
 
 function sortByHiLoRank(){
   monsters = monsters.sort((a,b)=>{
-    const rankA = a.health + a.damage; 
-    const rankB = b.health + b.damage; 
+    const rankA = a.monster.health + a.monster.damage; 
+    const rankB = b.monster.health + b.monster.damage; 
     return rankB - rankA
   })
 }
-
-// function zaSort(){
-//   monsters = monsters.sort((a,b)=>b.name.localeCompare(a.name));
-// }
-
-// function zaSort(){
-//   monsters = monsters.sort((a,b)=>b.name.localeCompare(a.name));
-// }
