@@ -1,15 +1,18 @@
 /*Only write css here that will be used by monster page*/
-body{
+body {
   height: 100dvh;
 }
 
-main{
+main {
   height: 100%;
   overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 #monsterContainer {
-  width: 100%;
+  width: min(100%, 1600px);
   height: 100%;
   padding: 10px;
   display: grid;
@@ -20,7 +23,7 @@ main{
 }
 
 .monsterCard {
-  max-width: 300px;
+  max-width: 400px;
   height: 400px;
   padding: 10px 20px;
   display: grid;
@@ -40,7 +43,7 @@ main{
   grid-row-end: 14;
 }
 
-.monsterImg{
+.monsterImg {
   position: absolute;
   top: 0;
   left: 0;
@@ -51,7 +54,7 @@ main{
   /* isolation: isolate; */
 }
 
-.monsterCard::after{
+.monsterCard::after {
   content: "";
   position: absolute;
   z-index: -1;
@@ -113,7 +116,7 @@ main{
   height: fit-content;
 }
 
-.monsterLoadingSkeleton{
+.monsterLoadingSkeleton {
   position: absolute;
   top: 0;
   left: 0;
@@ -126,9 +129,9 @@ main{
 
 @keyframes loading {
   0% {
-      background-position: 200% 0;
+    background-position: 200% 0;
   }
   100% {
-      background-position: 0 0;
+    background-position: 0 0;
   }
 }
