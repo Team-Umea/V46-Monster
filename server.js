@@ -1,8 +1,18 @@
 const express = require("express");
 const fs = require("fs");
+const cors = require("cors");
 
 const app = express();
 const port = process.env.PORT || 3000;
+
+const corsOptions = {
+  origin: "*",
+  methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+  preflightContinue: false,
+  optionSuccessStatus: 204,
+};
+
+app.use(cors(corsOptions));
 
 let monsters = [];
 let elements = [];
