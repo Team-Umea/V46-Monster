@@ -3,10 +3,11 @@ import { loadEndpoints, filterObject, save, useCachedData } from "./utilities.js
 import { getError } from "./error.js";
 import { renderSpinner } from "./render.js";
 
-async function fetchData(requestedEndpoint, apiParams, parent, key, ttl, noSpinner) {
+async function fetchData(requestedEndpoint, apiParams, parent, key, ttl, useSpinner) {
   const endpoints = await loadEndpoints();
 
   if (!(requestedEndpoint in endpoints)) {
+    console.log("404, parent: ", parent);
     return getError(404, parent);
   }
 
@@ -15,7 +16,7 @@ async function fetchData(requestedEndpoint, apiParams, parent, key, ttl, noSpinn
     const url = apiParams ? `${endpoint}?${apiParams}` : endpoint;
 
     try {
-      if (!noSpinner) {
+      if (useSpinner) {
         renderSpinner(parent);
       }
       const response = await fetch(url);
@@ -43,24 +44,24 @@ async function fetchData(requestedEndpoint, apiParams, parent, key, ttl, noSpinn
   }
 }
 
-export async function serveData(requestedEndpoint, apiParams, parent, key, ttl, noSpinner) {
+export async function serveData(requestedEndpoint, apiParams, parent, key, ttl, useSpinner) {
   if (key) {
     const loaded = useCachedData(key);
     if (loaded) {
       console.log("Data is cacehed and will be loaded");
       return loaded;
     }
-    console.log("Data had expired so we nedd to refetch data");
-    const fetchedData = await serveFetchedData(requestedEndpoint, apiParams, parent, key, ttl);
+    console.log("Data had expired so we need to refetch data");
+    const fetchedData = await serveFetchedData(requestedEndpoint, apiParams, parent, key, ttl,useSpinner);
     return fetchedData;
   }
   console.log("No key found hence data will be fetched");
-  const fetchedData = await serveFetchedData(requestedEndpoint, apiParams, parent, key, ttl);
+  const fetchedData = await serveFetchedData(requestedEndpoint, apiParams, parent, key, ttl,useSpinner);
   return fetchedData;
 }
 
-export async function serveFetchedData(requestedEndpoint, apiParams, parent, key, ttl, noSpinner) {
-  const reponse = await fetchData(requestedEndpoint, apiParams, parent, key, ttl, noSpinner);
+export async function serveFetchedData(requestedEndpoint, apiParams, parent, key, ttl, renderSpinner) {
+  const reponse = await fetchData(requestedEndpoint, apiParams, parent, key, ttl, renderSpinner);
   if (reponse.ok) {
     return reponse.data;
   }

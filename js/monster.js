@@ -22,33 +22,16 @@ window.addEventListener("DOMContentLoaded", () => {
 async function init() {
   // useClickEvent(fetchBtn, processMonsters);
   allMonsters = await serveData("allMonsters", undefined, monsterContainer, ALLMONSTERS_LSK, ttl);
-  console.log("All Monsters: ", allMonsters);
-
   useScrollEvent(monsterContainer, infiniteScroll);
   processMonsters();
 }
 
 async function processMonsters() {
-  const monsters = await serveData("monsters", `&num=${visibleMonsters}`, monsterContainer, MONSTERS_LSK, ttl);
-  // const monsters = response.map((res) => res.name);
-  // renderDataAsUl(monsterContainer, "monsterContainer", monsters);
-  renderMonsters(monsters);
+  const monsters = await serveData("monsters", `&num=${visibleMonsters}`, monsterContainer, MONSTERS_LSK, ttl,true);
 
-  //simulate request timeout
-  // setTimeout(() => {
-  //   if (response.ok) {
-  //     const monsters = response.data.monsters.map((res) => res.name);
-  //     renderDataAsUl(monsterContainer, "monsterContainer", monsters);
-  //   }
-  // }, 10000);
-
-  //simulate loading
-  // setTimeout(() => {
-  //   if (response.ok) {
-  //     const monsters = response.data.monsters.map((res) => res.name);
-  //     renderDataAsUl(monsterContainer, "monsterContainer", monsters);
-  //   }
-  // }, 1000);
+  if(monsters.length>0){
+    renderMonsters(monsters);
+  }
 }
 
 function renderMonsters(monsters) {
@@ -78,7 +61,7 @@ function appendMonsters(newMonsters) {
 async function infiniteScroll() {
   if (monsterContainer.scrollTop + monsterContainer.clientHeight >= monsterContainer.scrollHeight && visibleMonsters < allMonsters.length) {
     visibleMonsters += 10;
-    const monsters = await serveFetchedData("monsters", `&num=${visibleMonsters}`, monsterContainer, MONSTERS_LSK, ttl, true);
+    const monsters = await serveFetchedData("monsters", `&num=${visibleMonsters}`, monsterContainer, MONSTERS_LSK, ttl);
     const newMonsters = monsters.slice(-10);
     appendMonsters(newMonsters);
   }

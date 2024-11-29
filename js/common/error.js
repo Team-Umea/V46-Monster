@@ -9,10 +9,10 @@ export async function getError(status, parent) {
     const requestedMessage = messages[status];
     const parsedMessage = parseMessage(requestedMessage);
     renderErrorMesage(parsedMessage, parent);
-    console.error(parsedMessage);
+    // console.error(parsedMessage);
     return parsedMessage;
   }
-  console.error("An unexpected error occurred");
+  // console.error("An unexpected error occurred");
   return "An unexpected error occurred";
 }
 
@@ -43,9 +43,13 @@ function parseMessage(messageAsJSON) {
 }
 
 function renderErrorMesage(message, parent) {
-  const hasData = Array.from(parent.children).some((child) => child.getAttribute("class") !== "spinner" && child.getAttribute("class") !== "errorContainer");
-  if (!hasData) {
+  // console.log("Hello", parent)
+
+  // const hasData = Array.from(parent.children).some((child) => child.getAttribute("class") !== "spinner" && child.getAttribute("class") !== "errorContainer");
+  
+  // if (!hasData) {
     parent.innerHTML = "";
+    // console.log("Is in if")
 
     const container = document.createElement("div");
     const header = message.header;
@@ -83,6 +87,14 @@ function renderErrorMesage(message, parent) {
     container.appendChild(stepsHeaderH4);
     container.appendChild(stepsOl);
     container.appendChild(footerP);
+
     parent.appendChild(container);
-  }
+
+    // const main = document.getElementsByTagName("main")[0]; 
+    // console.log("Main: ", main)
+    // main.appendChild(container)
+
+    console.log("Container", container)
+    console.log("Parent: ", parent);
+  // }
 }

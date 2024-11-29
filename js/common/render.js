@@ -25,21 +25,23 @@ export function renderError(parent, error, clasName) {
 }
 
 export function renderSpinner(parent) {
-  if (parent.timeoutId) {
-    clearTimeout(parent.timeoutId);
-  }
+  // if (parent.timeoutId) {
+  //   clearTimeout(parent.timeoutId);
+  // }
+
+  console.log("kdjskdsjkk")
 
   parent.innerHTML = "";
   const spinner = document.createElement("div");
   spinner.setAttribute("class", "spinner");
   parent.appendChild(spinner);
 
-  parent.timeoutId = setTimeout(() => {
-    if (parent.firstElementChild.getAttribute("class") === "spinner" && parent.children.length === 1) {
-      getError(504, parent);
-      spinner.remove();
-    }
-  }, 5000);
+  // parent.timeoutId = setTimeout(() => {
+  //   if (parent.firstElementChild&&parent.firstElementChild.getAttribute("class") === "spinner" && parent.children.length === 1) {
+  //     getError(504, parent);
+  //     spinner.remove();
+  //   }
+  // }, 5000);
 }
 
 export function renderIconWithNumber(value, src, altAndTitle, dir) {
