@@ -19,14 +19,18 @@ window.addEventListener("DOMContentLoaded", () => {
   init();
 });
 
+"?team1=12,22,123,234&team2=99,98,97,109"
+
+ 
 async function init() {
+
   // useClickEvent(fetchBtn, processMonsters);
   allMonsters = await serveData("allMonsters", undefined, monsterContainer, ALLMONSTERS_LSK, ttl);
   useScrollEvent(monsterContainer, infiniteScroll);
   processMonsters();
 }
 
-async function processMonsters() {
+async function processMonsters() { 
   const monsters = await serveData("monsters", `&num=${visibleMonsters}`, monsterContainer, MONSTERS_LSK, ttl,true);
 
   if(monsters.length>0){

@@ -43,9 +43,11 @@ export class MonsterCard {
     const statsContainer = document.createElement("ul");
 
     const name = this.name;
+    const id = this.id;
     const monster = this.monster;
     const health = this.health;
     const damage = this.damage;
+    const allMonsters = this.allMonsters; 
 
     const healthIconValue = renderIconWithNumber(health, "../../res/icons/heart.svg", `${name} has ${health} of health`);
     const damageIconValue = renderIconWithNumber(damage, "../../res/icons/skull.svg", `${name} has ${damage} of damage`);
@@ -53,16 +55,17 @@ export class MonsterCard {
 
     statsContainer.setAttribute("class", "monsterStats");
 
-    const rankList = this.allMonsters.sort((a, b) => {
+    const rankList = allMonsters.sort((a, b) => {
       const ratingA = a.health + a.damage;
       const ratingB = b.health + a.damage;
       return ratingA - ratingB;
     });
 
     if (rankList) {
-      const rank = rankList.indexOf(monster) + 1;
-      const controlledRank = rank > 0 ? rank : "";
-      rankIconValue = renderIconWithNumber(controlledRank, "../../res/icons/trophy.svg", `${name} is ranked ${rank} of all monsters`);
+      const rank = rankList.indexOf(rankList.find(m=>m.id===id));
+      const descending = rankList.length - rank;
+      const controlledRank = descending > 0 ? descending : "";
+      rankIconValue = renderIconWithNumber(controlledRank, "../../res/icons/trophy.svg", `${name} is ranked ${controlledRank} of all monsters`);
       rankIconValue.classList.add("monsterRank");
     }
 
