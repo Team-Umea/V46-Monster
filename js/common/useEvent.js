@@ -10,3 +10,9 @@ export function useScrollEvent(element, callback) {
     callback();
   });
 }
+
+export function useChangeEvent(element, callback){
+  element.addEventListener("change",()=>{
+    callback();
+  })
+}
