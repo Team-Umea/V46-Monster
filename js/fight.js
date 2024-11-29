@@ -3,8 +3,8 @@ import { serveData } from "./common/fetch.js";
 
 const fightContainer = document.getElementById("fightContainer");
 
-let team1 = await createRandomTeam(1, 10);
-let team2 = await createRandomTeam(1, 10);
+let team1 = await createRandomTeam(3, 4);
+let team2 = await createRandomTeam(3, 4);
 let param = await buildParam(team1, team2);
 
 const data = await serveData("fight", param, fightContainer);
