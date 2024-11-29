@@ -12,6 +12,7 @@
   --color-tertiary: #385154;
   --color-tertiary-dark: #324548;
   --color-tertiary-darker: #212e30;
+  --filter:rgba(0, 0, 0, 0.75);
 }
 
 * {
@@ -113,6 +114,7 @@ footer {
   --color-tertiary: #385154;
   --color-tertiary-dark: #324548;
   --color-tertiary-darker: #212e30;
+  --filter:rgba(197, 192, 192, 0.75);
 }
 
 .theme-dark {
@@ -128,6 +130,7 @@ footer {
   --color-tertiary: #c4d7d9;
   --color-tertiary-dark: #ecf1f2;
   --color-tertiary-darker: #f6f9f9;
+  --filter:rgba(0, 0, 0, 0.75);
 }
 
 .iconContainer {
