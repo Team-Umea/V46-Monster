@@ -35,12 +35,30 @@ export function save(key, value) {
 }
 
 export function load(key) {
-  try {
-    return JSON.parse(localStorage.getItem(key));
-  } catch (error) {
-    console.log(`${key} does not exists in local storage`);
-    return "";
+  const loaded = JSON.parse(localStorage.getItem(key));
+
+  if (loaded === null) {
+    return null;
   }
+
+  const keys = Object.keys(loaded);
+
+  const savedAt = keys.includes("savedAt");
+  const ttl = key.includes("ttl");
+
+  if (savedAt && ttl) {
+    const currentDate = new Date();
+    const dataIsLiving = !compareWithTempDate(currentDate, savedAt, ttl);
+
+    if (dataIsLiving) {
+      return loaded;
+    } else {
+      localStorage.removeItem(key);
+      return null;
+    }
+  }
+
+  return loaded;
 }
 
 export function useCachedData(key) {
@@ -97,6 +115,6 @@ export function capitalize(str) {
   return str.length > 0 ? str[0].toUpperCase() + str.slice(1) : str;
 }
 
-export function isValidObjKey(arr, key){
-  return arr.every(item=>key in item);
+export function isValidObjKey(arr, key) {
+  return arr.every((item) => key in item);
 }

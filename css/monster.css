@@ -12,18 +12,19 @@ main {
 }
 
 #monsterContainer {
-  width: min(100%, 1600px);
+  width: min(100%, 1550px);
   height: 100%;
-  padding: 10px;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 15px;
+  padding: 20px 10px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
   overflow-y: scroll;
   background-color: var(--color-primary-light);
 }
 
 .monsterCard {
-  max-width: 400px;
+  width: min(100%, 285px);
   height: 400px;
   padding: 10px 20px;
   display: grid;
@@ -50,8 +51,6 @@ main {
   height: 100%;
   width: 100%;
   z-index: -2;
-  /* z-index: 99; */
-  /* isolation: isolate; */
 }
 
 .monsterCard::after {
@@ -69,7 +68,7 @@ main {
   text-align: center;
   font-size: 1.1rem;
   grid-row-start: 15;
-  grid-row-end: 27;
+  grid-row-end: 29;
 }
 
 .monsterStats {
@@ -77,7 +76,7 @@ main {
   display: flex;
   justify-content: space-between;
   grid-column: 1;
-  grid-row-start: 28;
+  grid-row-start: 30;
   grid-row-end: 44;
 }
 
@@ -89,7 +88,7 @@ main {
   gap: 5px;
   grid-column: 1;
   grid-row-start: 45;
-  grid-row-end: 73;
+  grid-row-end: 80;
 }
 
 .elementList {
@@ -105,13 +104,13 @@ main {
   justify-content: center;
   margin: auto;
   grid-column: 1;
-  grid-row-start: 74;
-  grid-row-end: 90;
+  grid-row-start: 81;
+  grid-row-end: 93;
 }
 
 .monsterSelect {
   grid-column: 1;
-  grid-row-start: 91;
+  grid-row-start: 94;
   grid-row-end: 101;
   height: fit-content;
 }

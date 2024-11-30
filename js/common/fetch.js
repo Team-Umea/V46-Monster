@@ -48,15 +48,15 @@ export async function serveData(requestedEndpoint, apiParams, parent, key, ttl, 
   if (key) {
     const loaded = useCachedData(key);
     if (loaded) {
-      console.log("Data is cacehed and will be loaded");
+      console.log("Data is cacehed and will be loaded for endpoint: ", requestedEndpoint);
       return loaded;
     }
-    console.log("Data had expired so we need to refetch data");
-    const fetchedData = await serveFetchedData(requestedEndpoint, apiParams, parent, key, ttl,useSpinner);
+    console.log("Data had expired so we need to refetch data for endpoint: ", requestedEndpoint);
+    const fetchedData = await serveFetchedData(requestedEndpoint, apiParams, parent, key, ttl, useSpinner);
     return fetchedData;
   }
-  console.log("No key found hence data will be fetched");
-  const fetchedData = await serveFetchedData(requestedEndpoint, apiParams, parent, key, ttl,useSpinner);
+  console.log("No key found hence data will be fetched for endpoint: ", requestedEndpoint);
+  const fetchedData = await serveFetchedData(requestedEndpoint, apiParams, parent, key, ttl, useSpinner);
   return fetchedData;
 }
 

@@ -15,6 +15,18 @@ export function renderDataAsUl(parent, parentClass, data) {
   }
 }
 
+export function renderSelect(parent, data) {
+  parent.innerHTML = "";
+  if (data) {
+    data.forEach((item, index) => {
+      const option = document.createElement("option");
+      option.setAttribute("value", index);
+      option.innerText = item;
+      parent.appendChild(option);
+    });
+  }
+}
+
 export function renderError(parent, error, clasName) {
   parent.innerHTML = "";
   const p = document.createElement("p");
@@ -29,7 +41,7 @@ export function renderSpinner(parent) {
   //   clearTimeout(parent.timeoutId);
   // }
 
-  console.log("kdjskdsjkk")
+  console.log("kdjskdsjkk");
 
   parent.innerHTML = "";
   const spinner = document.createElement("div");

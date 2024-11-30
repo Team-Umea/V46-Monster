@@ -11,15 +11,20 @@ export function useScrollEvent(element, callback) {
   });
 }
 
-export function useChangeEvent(element, callback){
-  element.addEventListener("change",()=>{
+export function useChangeEvent(element, callback) {
+  element.addEventListener("change", () => {
     callback();
-  })
+  });
 }
 
-export function useInputEvent(element, callback){
-  element.addEventListener("input",()=>{
-    element.value = element.value.trim(); 
+export function useInputEvent(element, callback) {
+  element.addEventListener("input", () => {
     callback();
-  })
+  });
+}
+
+export function useMouseWheelEvent(element, callback) {
+  element.addEventListener("wheel", () => {
+    callback();
+  });
 }

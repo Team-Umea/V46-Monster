@@ -1,9 +1,10 @@
 //Js code for monster page
 import { serveData, serveFetchedData } from "./common/fetch.js";
-import { useClickEvent, useScrollEvent, useChangeEvent, useInputEvent } from "./common/useEvent.js";
+import { useClickEvent, useScrollEvent, useChangeEvent, useInputEvent, useMouseWheelEvent } from "./common/useEvent.js";
 import { MONSTERS_LSK, ALLMONSTERS_LSK } from "./common/localStorageKeys.js";
 import { MonsterCard } from "./classes/MonsterCard.js";
 import { load, isValidObjKey } from "./common/utilities.js";
+import { renderSelect } from "./common/render.js";
 
 const monsterContainer = document.getElementById("monsterContainer");
 const sortDropDown = document.getElementById("sortDropdown");
@@ -16,7 +17,7 @@ const searchBox = document.getElementById("searchBox");
 //constent updates
 const ttl = 60;
 let allMonsters = [];
-let visibleMonsters = load(MONSTERS_LSK).data.length || 20;
+let visibleMonsters = load(MONSTERS_LSK) ? load(MONSTERS_LSK).data.length : 20;
 const monsterCards = [];
 let monsters = [];
 let searchCategory;
@@ -27,21 +28,39 @@ window.addEventListener("DOMContentLoaded", () => {
 
 async function init() {
   allMonsters = await serveData("allMonsters", undefined, monsterContainer, ALLMONSTERS_LSK, ttl);
+
   useScrollEvent(monsterContainer, infiniteScroll);
   useChangeEvent(sortDropDown, setSortOrder);
+  useMouseWheelEvent(monsterContainer, showAllMonsters);
+
   Array.from(searchBtns).forEach((btn) => {
     useClickEvent(btn, setSearchCategory);
   });
+
   useInputEvent(searchBox, searchMonsters);
   processMonsters();
+  populateSortDropDown();
+  setSearchCategory();
+}
+
+function constructParams(num, start, sort) {
+  return `num=${num}&start=${start}&sort=${sort}`;
+}
+
+function populateSortDropDown() {
+  serveData("sortOptions", undefined, sortDropDown).then((options) => {
+    renderSelect(sortDropDown, options);
+  });
 }
 
 async function processMonsters() {
   renderLoadingSkeletons(visibleMonsters);
-  const monsterData = await serveData("monsters", `&num=${visibleMonsters}`, monsterContainer, MONSTERS_LSK, ttl);
+  const params = constructParams(visibleMonsters, 0, 0);
+
+  const monsterData = await serveData("monsters", params, monsterContainer, MONSTERS_LSK, ttl);
   if (monsterData.length > 0) {
     assignMonsters(monsterData);
-    renderMonsters(monsters);
+    appendNewMonsters(monsters);
   }
 }
 
@@ -49,9 +68,10 @@ function assignMonsters(data) {
   const mappedData = data.map((data) => ({ monster: data, visible: true }));
   const oldMonsters = monsters;
   monsters = [...oldMonsters, ...mappedData];
-  defaultSort("name");
-  setSearchCategory();
-  searchMonsters();
+
+  const sortOrder = getSortOrder();
+  sortMonsters(sortOrder);
+  showAllMonsters();
 }
 
 function renderLoadingSkeletons(max) {
@@ -64,13 +84,12 @@ function renderLoadingSkeletons(max) {
   }
 }
 
-function renderMonsters(monsters) {
+function appendNewMonsters(monsters) {
   const tempTeams = ["a", "b", "c", "d"]; //change for later
-
-  console.log(monsters.length, monsterCards.length);
 
   monsterCards.forEach((card, index) => {
     const monsterObj = monsters[index];
+
     if (monsterObj) {
       const monster = monsterObj.monster;
       const id = monster.id;
@@ -83,7 +102,7 @@ function renderMonsters(monsters) {
 
 function renderUpdatedMonster(monsters) {
   monsterContainer.innerHTML = "";
-  const tempTeams = ["a", "b", "c", "d"]; //change for later
+  const tempTeams = ["a", "b", "c", "d"];
 
   monsters.forEach((monsterObj) => {
     const isVisible = monsterObj.visible;
@@ -97,33 +116,25 @@ function renderUpdatedMonster(monsters) {
   });
 }
 
-function appendMonsters() {
-  const tempTeams = ["a", "b", "c", "d"]; //change for later
-
-  console.log(monsters.length, monsterCards.length);
-
-  monsterCards.forEach((card, index) => {
-    const monsterObj = monsters[index];
-    const monster = monsterObj.monster;
-    const id = monster.id;
-
-    card.setValues(monster, allMonsters, tempTeams, id);
-    card.assembleMonsterCard();
-  });
+function getSortOrder() {
+  return Number(sortDropDown.value);
 }
 
 async function infiniteScroll() {
-  if (monsterContainer.scrollTop + monsterContainer.clientHeight >= monsterContainer.scrollHeight - 1200 && visibleMonsters < allMonsters.length) {
+  if (visibleMonsters < allMonsters.length) {
     const numNewMonsters = 10;
-    visibleMonsters += numNewMonsters;
-
     renderLoadingSkeletons(numNewMonsters);
 
-    const monsterData = await serveFetchedData("monsters", `&num=${visibleMonsters}`, monsterContainer, MONSTERS_LSK, ttl);
-    const newMonsters = monsterData.slice(-10);
+    const sortOrder = getSortOrder();
+    const params = constructParams(visibleMonsters, numNewMonsters, sortOrder);
+
+    visibleMonsters += numNewMonsters;
+
+    const monsterData = await serveFetchedData("monsters", params, monsterContainer, MONSTERS_LSK, ttl);
+    const newMonsters = monsterData.slice(-numNewMonsters);
 
     assignMonsters(newMonsters);
-    renderMonsters(monsters);
+    appendNewMonsters(monsters);
   }
 }
 
@@ -141,7 +152,7 @@ function setSearchCategory() {
 function showAllMonsters() {
   monsters.forEach((monster) => (monster.visible = true));
   searchBox.value = "";
-  renderMonsters(monsters);
+  renderUpdatedMonster(monsters);
 }
 
 function searchMonsters() {
@@ -156,9 +167,9 @@ function searchMonsters() {
         let valueArrHasQuery;
 
         if (typeof value === "string" || typeof value === "number") {
-          valueStrHasQuery = value.toString().trim().toLowerCase().includes(searchQuery);
+          valueStrHasQuery = value.toString().trim().toLowerCase().startsWith(searchQuery);
         } else {
-          valueArrHasQuery = value.some((item) => item.toLowerCase().includes(searchQuery));
+          valueArrHasQuery = value.some((item) => item.toLowerCase().startsWith(searchQuery));
         }
 
         if (valueStrHasQuery || valueArrHasQuery) {
@@ -172,7 +183,7 @@ function searchMonsters() {
       const rank = rankList.indexOf(rankList.find((m) => m.id === monster.id));
       const descending = (rankList.length - rank).toString();
 
-      if (descending.includes(searchQuery)) {
+      if (descending.startsWith(searchQuery)) {
         monsterObj.visible = true;
       } else {
         monsterObj.visible = false;
@@ -219,11 +230,21 @@ function sortMonsters(sortOrder) {
       break;
     case 8:
       //Lo-Hi Damage
+      console.log("Sorted");
       defaultSort("damage");
       break;
     case 9:
       //Hi-Lo Damage
       reverseSort("damage");
+      break;
+    case 10:
+      //Few-Many Elements
+      console.log("hello");
+      sortByFewToManyElements();
+      break;
+    case 11:
+      //Many-Few Elements;
+      sortByManyToFewElements();
       break;
     default:
       break;
@@ -235,12 +256,15 @@ function defaultSort(key) {
   const tempMonsters = monsters.map((monster) => monster.monster);
   if (isValidObjKey(tempMonsters, key)) {
     monsters = monsters.sort((a, b) => {
-      const valueA = a.monster[key];
-      const valueB = b.monster[key];
+      const monsterA = a.monster;
+      const monsterB = b.monster;
+      const valueA = monsterA[key];
+      const valueB = monsterB[key];
       if (typeof valueA === "string") {
         return valueA.localeCompare(valueB);
       } else if (typeof valueA === "number") {
-        return valueA - valueB;
+        const diff = valueA - valueB;
+        return diff === 0 ? monsterA.name.localeCompare(monsterB.name) : diff;
       }
     });
   }
@@ -250,12 +274,15 @@ function reverseSort(key) {
   const tempMonsters = monsters.map((monster) => monster.monster);
   if (isValidObjKey(tempMonsters, key)) {
     monsters = monsters.sort((a, b) => {
-      const valueA = a.monster[key];
-      const valueB = b.monster[key];
+      const monsterA = a.monster;
+      const monsterB = b.monster;
+      const valueA = monsterA[key];
+      const valueB = monsterB[key];
       if (typeof valueA === "string") {
         return valueB.localeCompare(valueA);
       } else if (typeof valueA === "number") {
-        return valueB - valueA;
+        const diff = valueB - valueA;
+        return diff === 0 ? monsterA.name.localeCompare(monsterB.name) : diff;
       }
     });
   }
@@ -271,7 +298,8 @@ function sortByLoHiRank() {
     const rankA = rankList.length - rankList.indexOf(rankList.find((m) => m.id === monsterA.id));
     const rankB = rankList.length - rankList.indexOf(rankList.find((m) => m.id === monsterB.id));
 
-    return rankB - rankA;
+    const rankDiff = rankB - rankA;
+    return rankDiff === 0 ? monsterA.name.localeCompare(monsterB.name) : rankDiff;
   });
 }
 
@@ -285,7 +313,30 @@ function sortByHiLoRank() {
     const rankA = rankList.length - rankList.indexOf(rankList.find((m) => m.id === monsterA.id));
     const rankB = rankList.length - rankList.indexOf(rankList.find((m) => m.id === monsterB.id));
 
-    return rankA - rankB;
+    const rankDiff = rankA - rankB;
+    return rankDiff === 0 ? monsterA.name.localeCompare(monsterB.name) : rankDiff;
+  });
+}
+
+function sortByFewToManyElements() {
+  monsters = monsters.sort((a, b) => {
+    const monsterA = a.monster;
+    const monsterB = b.monster;
+    const elementsA = monsterA.elements.length;
+    const elementsB = monsterB.elements.length;
+    const elementsDifference = elementsA - elementsB;
+    return elementsDifference === 0 ? monsterA.name.localeCompare(monsterB.name) : elementsDifference;
+  });
+}
+
+function sortByManyToFewElements() {
+  monsters = monsters.sort((a, b) => {
+    const monsterA = a.monster;
+    const monsterB = b.monster;
+    const elementsA = monsterA.elements.length;
+    const elementsB = monsterB.elements.length;
+    const elementsDifference = elementsB - elementsA;
+    return elementsDifference === 0 ? monsterA.name.localeCompare(monsterB.name) : elementsDifference;
   });
 }
 

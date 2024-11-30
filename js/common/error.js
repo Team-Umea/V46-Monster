@@ -43,58 +43,44 @@ function parseMessage(messageAsJSON) {
 }
 
 function renderErrorMesage(message, parent) {
-  // console.log("Hello", parent)
+  parent.innerHTML = "";
 
-  // const hasData = Array.from(parent.children).some((child) => child.getAttribute("class") !== "spinner" && child.getAttribute("class") !== "errorContainer");
-  
-  // if (!hasData) {
-    parent.innerHTML = "";
-    // console.log("Is in if")
+  const container = document.createElement("div");
+  const header = message.header;
+  const content = message.content;
+  const stepsHeader = message.stepsHeader;
+  const steps = message.steps;
+  const footer = message.footer;
 
-    const container = document.createElement("div");
-    const header = message.header;
-    const content = message.content;
-    const stepsHeader = message.stepsHeader;
-    const steps = message.steps;
-    const footer = message.footer;
+  const headerH2 = document.createElement("h2");
+  const contentH3 = document.createElement("h3");
+  const stepsHeaderH4 = document.createElement("h4");
+  const stepsOl = document.createElement("ol");
+  const footerP = document.createElement("p");
 
-    const headerH2 = document.createElement("h2");
-    const contentH3 = document.createElement("h3");
-    const stepsHeaderH4 = document.createElement("h4");
-    const stepsOl = document.createElement("ol");
-    const footerP = document.createElement("p");
+  container.setAttribute("class", "errorContainer");
+  headerH2.setAttribute("class", "errorHeader");
+  contentH3.setAttribute("class", "errorContent");
+  stepsHeaderH4.setAttribute("class", "errorStepsHeader");
+  stepsOl.setAttribute("class", "errorSteps");
+  footerP.setAttribute("class", "errorFooter");
 
-    container.setAttribute("class", "errorContainer");
-    headerH2.setAttribute("class", "errorHeader");
-    contentH3.setAttribute("class", "errorContent");
-    stepsHeaderH4.setAttribute("class", "errorStepsHeader");
-    stepsOl.setAttribute("class", "errorSteps");
-    footerP.setAttribute("class", "errorFooter");
+  headerH2.innerText = header;
+  contentH3.innerText = content;
+  stepsHeaderH4.innerText = stepsHeader;
+  footerP.innerText = footer;
 
-    headerH2.innerText = header;
-    contentH3.innerText = content;
-    stepsHeaderH4.innerText = stepsHeader;
-    footerP.innerText = footer;
+  steps.forEach((advice) => {
+    const adviceLi = document.createElement("li");
+    adviceLi.innerText = advice;
+    stepsOl.appendChild(adviceLi);
+  });
 
-    steps.forEach((advice) => {
-      const adviceLi = document.createElement("li");
-      adviceLi.innerText = advice;
-      stepsOl.appendChild(adviceLi);
-    });
+  container.appendChild(headerH2);
+  container.appendChild(contentH3);
+  container.appendChild(stepsHeaderH4);
+  container.appendChild(stepsOl);
+  container.appendChild(footerP);
 
-    container.appendChild(headerH2);
-    container.appendChild(contentH3);
-    container.appendChild(stepsHeaderH4);
-    container.appendChild(stepsOl);
-    container.appendChild(footerP);
-
-    parent.appendChild(container);
-
-    // const main = document.getElementsByTagName("main")[0]; 
-    // console.log("Main: ", main)
-    // main.appendChild(container)
-
-    console.log("Container", container)
-    console.log("Parent: ", parent);
-  // }
+  parent.appendChild(container);
 }
