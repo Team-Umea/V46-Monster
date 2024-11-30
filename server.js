@@ -114,6 +114,11 @@ app.get("/", (_, res) => {
   res.send(welcome);
 });
 
+app.get("/sortOptions", (_, res) => {
+  const sortOptions = ["A-Z", "Z-A", "Low-High Price", "High-Low Price", "Low-High Health", "High-Low Health", "Low-High Rank", "High-Low Rank", "Low-High Damage", "High-Low Damage", "Many-Few Elements", "Few-Many Elements"];
+  res.status(200).json({ ok: true, options: sortOptions });
+});
+
 app.get("/allMonsters", (_, res) => {
   if (monsters && monsters.length > 0) {
     return res.status(200).json({ ok: true, monsters: monsters });
@@ -122,16 +127,113 @@ app.get("/allMonsters", (_, res) => {
 });
 
 app.get("/monsters", (req, res) => {
+  let start = parseInt(req.query.start);
   let numMonsters = parseInt(req.query.num);
-  if (isNaN(numMonsters) || numMonsters <= 0) {
-    return res.status(400).json({ ok: false, message: "Num parameter missing or invalid" });
+  let sortOrder = parseInt(req.query.sort);
+  if (isNaN(numMonsters) || isNaN(start)) {
+    return res.status(400).json({ ok: false, message: "Num or start parameter missing or invalid" });
   }
-  if (numMonsters > monsters.length) {
+  if (numMonsters < 1 || numMonsters > monsters.length) {
     numMonsters = monsters.length;
   }
-  const monstersToReturn = monsters.slice(0, numMonsters);
+  if (start < 0 || start > monsters.length - 1) {
+    start = 0;
+  }
+  if (sortOrder < 0 || sortOrder > 11) {
+    sortOrder = 0;
+  }
+
+  monstersToReturn = sortMonsters(sortOrder).slice(start, start + numMonsters);
+
   return res.status(200).json({ ok: true, monsters: monstersToReturn });
 });
+
+function sortMonsters(sortOrder) {
+  if (sortOrder !== undefined && sortOrder !== null) {
+    switch (sortOrder) {
+      case 0:
+        return monsters.sort((a, b) => a.name.localeCompare(b.name));
+      case 1:
+        return monsters.sort((a, b) => b.name.localeCompare(a.name));
+      case 2:
+        return monsters.sort((a, b) => {
+          const priceDifference = a.price - b.price;
+          return priceDifference === 0 ? a.name.localeCompare(b.name) : priceDifference;
+        });
+      case 3:
+        return monsters.sort((a, b) => {
+          const priceDifference = b.price - a.price;
+          return priceDifference === 0 ? a.name.localeCompare(b.name) : priceDifference;
+        });
+      case 4:
+        return monsters.sort((a, b) => {
+          const healthDifference = a.health - b.health;
+          return healthDifference === 0 ? a.name.localeCompare(b.name) : healthDifference;
+        });
+      case 5:
+        return monsters.sort((a, b) => {
+          const healthDifference = b.health - a.health;
+          return healthDifference === 0 ? a.name.localeCompare(b.name) : healthDifference;
+        });
+      case 6:
+        return monsters.sort((a, b) => {
+          const monsterA = a;
+          const monsterB = b;
+
+          const rankA = getMonstersRankList().length - getMonstersRankList().indexOf(getMonstersRankList().find((m) => m.id === monsterA.id));
+          const rankB = getMonstersRankList().length - getMonstersRankList().indexOf(getMonstersRankList().find((m) => m.id === monsterB.id));
+
+          const rankDifference = rankB - rankA;
+
+          return rankDifference === 0 ? a.name.localeCompare(b.name) : rankDifference;
+        });
+      case 7:
+        return monsters.sort((a, b) => {
+          const monsterA = a;
+          const monsterB = b;
+
+          const rankA = getMonstersRankList().length - getMonstersRankList().indexOf(getMonstersRankList().find((m) => m.id === monsterA.id));
+          const rankB = getMonstersRankList().length - getMonstersRankList().indexOf(getMonstersRankList().find((m) => m.id === monsterB.id));
+
+          const rankDifference = rankA - rankB;
+
+          return rankDifference === 0 ? a.name.localeCompare(b.name) : rankDifference;
+        });
+      case 8:
+        return monsters.sort((a, b) => {
+          const damageDifference = a.damage - b.damage;
+          return damageDifference === 0 ? a.name.localeCompare(b.name) : damageDifference;
+        });
+      case 9:
+        return monsters.sort((a, b) => {
+          const damageDifference = b.damage - a.damage;
+          return damageDifference === 0 ? a.name.localeCompare(b.name) : damageDifference;
+        });
+      case 10:
+        return monsters.sort((a, b) => {
+          const elementsDifference = a.elements.length - b.elements.length;
+          return elementsDifference === 0 ? a.name.localeCompare(b.name) : elementsDifference;
+        });
+      case 11:
+        return monsters.sort((a, b) => {
+          const elementsDifference = b.elements.length - a.elements.length;
+          return elementsDifference === 0 ? a.name.localeCompare(b.name) : elementsDifference;
+        });
+      default:
+        return [];
+    }
+  }
+  return [];
+}
+
+function getMonstersRankList() {
+  const rankList = monsters.sort((a, b) => {
+    const ratingA = a.health + a.damage;
+    const ratingB = b.health + a.damage;
+    return ratingA - ratingB;
+  });
+  return rankList;
+}
 
 app.get("/freeMonsters", (_, res) => {
   if (monsters && monsters.length > 0) {
