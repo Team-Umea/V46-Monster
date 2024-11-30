@@ -25,7 +25,11 @@ const endpoints = [
   },
   {
     path: "/monsters",
-    desc: "Returns a specified number of monsters. Requires a query parameter 'num' (positive integer) indicating how many monsters to return. Returns a JSON object with 'ok' status and an array of monster objects, or a 400 error if 'num' is missing or invalid.",
+    desc: "Returns a specified number of monsters starting from a given index. Requires query parameters: 'num' (positive integer) indicating how many monsters to return, 'start' (non-negative integer) indicating the starting index, and 'sort' (integer) to specify sorting order. Returns a JSON object with 'ok' status and an array of monster objects, or a 400 error if 'num' or 'start' is missing or invalid. Also returns a 200 status with the monsters or a 400 status if 'sort' is out of range.",
+  },
+  {
+    path: "/sortOptions",
+    desc: "Returns a list of sorting options for monsters. No parameters needed. Returns a JSON object with 'ok' status and an array of sorting option strings, or a 500 error if there is an issue retrieving the options.",
   },
   {
     path: "/freeMonsters",
@@ -115,7 +119,7 @@ app.get("/", (_, res) => {
 });
 
 app.get("/sortOptions", (_, res) => {
-  const sortOptions = ["A-Z", "Z-A", "Low-High Price", "High-Low Price", "Low-High Health", "High-Low Health", "Low-High Rank", "High-Low Rank", "Low-High Damage", "High-Low Damage", "Many-Few Elements", "Few-Many Elements"];
+  const sortOptions = ["A-Z", "Z-A", "Low-High Price", "High-Low Price", "Low-High Health", "High-Low Health", "Low-High Rank", "High-Low Rank", "Low-High Damage", "High-Low Damage", "Few-Many Elements", "Many-Few Elements"];
   res.status(200).json({ ok: true, options: sortOptions });
 });
 
