@@ -7,7 +7,6 @@ async function fetchData(requestedEndpoint, apiParams, parent, key, ttl, useSpin
   const endpoints = await loadEndpoints();
 
   if (!(requestedEndpoint in endpoints)) {
-    console.log("404, parent: ", parent);
     return getError(404, parent);
   }
 

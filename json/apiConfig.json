@@ -1,8 +1,8 @@
 {
     "url":"https://ozzodevmonsterapi.azurewebsites.net",
-    "sortOptions":"http://localhost:3000/sortOptions",
+    "sortOptions":"https://ozzodevmonsterapi.azurewebsites.net/sortOptions",
     "allMonsters":"https://ozzodevmonsterapi.azurewebsites.net/allMonsters",
-    "monsters":"http://localhost:3000/monsters",
+    "monsters":"https://ozzodevmonsterapi.azurewebsites.net/monsters",
     "freeMonsters":"https://ozzodevmonsterapi.azurewebsites.net/freeMonsters",
     "randomMonsters":"https://ozzodevmonsterapi.azurewebsites.net/randomMonsters",
     "monsterById":"https://ozzodevmonsterapi.azurewebsites.net/monsterById",
