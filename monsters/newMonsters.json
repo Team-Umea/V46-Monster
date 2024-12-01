@@ -1,0 +1,5002 @@
+[
+  {
+    "id": 0,
+    "name": "Flesh Watcher",
+    "specs": "A revenant from the depths of a mine of ancient times deceiving decay"
+  },
+  {
+    "id": 1,
+    "name": "Tomb Bringer",
+    "specs": "A unicorn from the heart of a storm with the eyes of the damned entwining control"
+  },
+  {
+    "id": 2,
+    "name": "Dark Mutilator",
+    "specs": "A griffon from the pages of a forbidden book with the darkness of a black heart mesmerizing purity"
+  },
+  {
+    "id": 3,
+    "name": "Nova Ripper",
+    "specs": "A giant from a cursed well with the legacy of a lost civilization intoxicating submission"
+  },
+  {
+    "id": 4,
+    "name": "Winter Devil",
+    "specs": "A naga from the heart of a storm with the madness of a seer distorting suffering"
+  },
+  {
+    "id": 5,
+    "name": "Bronze Summit",
+    "specs": "An ogre from a cursed lake with the fire of the damned haunting chaos"
+  },
+  {
+    "id": 6,
+    "name": "Wyrm Crusher",
+    "specs": "A sphinx from the roots of the world tree with a voice that commands death terrorizing hate"
+  },
+  {
+    "id": 7,
+    "name": "Terror Mangler",
+    "specs": "A troll from the ashes of a phoenix with the wisdom of the ancients deceiving doom"
+  },
+  {
+    "id": 8,
+    "name": "Azure Climber",
+    "specs": "A revenant from the depths of despair with the glow of the stars corrupting peace"
+  },
+  {
+    "id": 9,
+    "name": "Eclipse Slayer",
+    "specs": "A shade from the roots of the world tree with the mark of the beast evoking love"
+  },
+  {
+    "id": 10,
+    "name": "Wyrm Prophet",
+    "specs": "A poltergeist arisen from the crypt with the legacy of a lost civilization desecrating power"
+  },
+  {
+    "id": 11,
+    "name": "Altar Stealer",
+    "specs": "A wraith from the frozen wastes with the patience of time itself terrorizing corruption"
+  },
+  {
+    "id": 12,
+    "name": "Talon Tower",
+    "specs": "A golem from the memories of the forgotten from forgotten wars deceiving life"
+  },
+  {
+    "id": 13,
+    "name": "Mystic Bringer",
+    "specs": "A revenant from the screams of the tortured with the laughter of the mad defiling light"
+  },
+  {
+    "id": 14,
+    "name": "Pearl Wizard",
+    "specs": "A specter from the edge of reality with the fury of the elements compelling poverty"
+  },
+  {
+    "id": 15,
+    "name": "Divine Container",
+    "specs": "A cerberus from the depths of a mine with a thirst for vengeance freezing chaos"
+  },
+  {
+    "id": 16,
+    "name": "Amber Caller",
+    "specs": "A chimera from a cursed mirror with the eyes of the damned mesmerizing peace"
+  },
+  {
+    "id": 17,
+    "name": "Doom Weaver",
+    "specs": "A sphinx arisen from the crypt with the darkness of a black heart demanding chaos"
+  },
+  {
+    "id": 18,
+    "name": "Brute Witch",
+    "specs": "A djinn from the edge of the known world with the strength of a thousand men consuming death"
+  },
+  {
+    "id": 19,
+    "name": "Colossus Linked",
+    "specs": "A vampire from the pages of a forbidden book in the shadow of a great tree haunting darkness"
+  },
+  {
+    "id": 20,
+    "name": "Gate Slayer",
+    "specs": "A kraken arisen from the crypt from forgotten wars devouring freedom"
+  },
+  {
+    "id": 21,
+    "name": "Pain Tooth",
+    "specs": "A doppelganger from the depths of despair with the silence of the dead mesmerizing death"
+  },
+  {
+    "id": 22,
+    "name": "Savage Changer",
+    "specs": "A leviathan from a sealed gate with a voice that commands death absorbing retribution"
+  },
+  {
+    "id": 23,
+    "name": "Void Fang",
+    "specs": "A cerberus from a cursed painting with the serenity of the grave intoxicating decay"
+  },
+  {
+    "id": 24,
+    "name": "Kraken Crown",
+    "specs": "A pixie from the belly of a beast from the era of the gods dissolving enlightenment"
+  },
+  {
+    "id": 25,
+    "name": "Moon Changer",
+    "specs": "A doppelganger from the heart of a maelstrom with the eyes of the damned defiling darkness"
+  },
+  {
+    "id": 26,
+    "name": "Throne Leaper",
+    "specs": "An entity from the frozen wastes with the curse of immortality ensnaring hate"
+  },
+  {
+    "id": 27,
+    "name": "Ocean Sword",
+    "specs": "A unicorn from a forgotten tomb in the shadow of a great tree mesmerizing submission"
+  },
+  {
+    "id": 28,
+    "name": "Divine Giant",
+    "specs": "A phoenix from ancient ruins with the shadow of the moon weaving truth"
+  },
+  {
+    "id": 29,
+    "name": "Beast Engine",
+    "specs": "A dragon from the molten core in an abandoned village incinerating sacrifice"
+  },
+  {
+    "id": 30,
+    "name": "Moon Wyvern",
+    "specs": "A satyr from the pages of a forbidden book with the silence of the dead draining corruption"
+  },
+  {
+    "id": 31,
+    "name": "Keep Drainer",
+    "specs": "A demon from a cursed artifact with the glow of the stars transforming chaos"
+  },
+  {
+    "id": 32,
+    "name": "Eclipse Changer",
+    "specs": "A giant from the light of a dying star with the scars of a thousand battles cursing balance"
+  },
+  {
+    "id": 33,
+    "name": "Iron Touched",
+    "specs": "A siren from the remnants of an old war of ancient times seducing freedom"
+  },
+  {
+    "id": 34,
+    "name": "Agony Tracker",
+    "specs": "A djinn from an ancient curse in an abandoned village obliterating chaos"
+  },
+  {
+    "id": 35,
+    "name": "Titan Scout",
+    "specs": "A djinn from the shadows of the city with the hunger of the abyss engulfing salvation"
+  },
+  {
+    "id": 36,
+    "name": "Rot Smasher",
+    "specs": "A griffon from the darkness of the soul with the darkness of a black heart demanding chaos"
+  },
+  {
+    "id": 37,
+    "name": "Lunar Scout",
+    "specs": "A cyclops from the depths of space from the era of the gods intoxicating balance"
+  },
+  {
+    "id": 38,
+    "name": "Talon Warrior",
+    "specs": "A hydra from the pages of a forbidden book from the time of the first king engulfing silence"
+  },
+  {
+    "id": 39,
+    "name": "Drake Searcher",
+    "specs": "A necromancer from the edge of reality with the eyes of the damned corrupting truth"
+  },
+  {
+    "id": 40,
+    "name": "Pegasus Crown",
+    "specs": "A banshee from the roots of the world tree in a cursed land weaving salvation"
+  },
+  {
+    "id": 41,
+    "name": "Jade Made",
+    "specs": "A hydra from the darkness of the soul in an abandoned village ensnaring fear"
+  },
+  {
+    "id": 42,
+    "name": "Blight Runner",
+    "specs": "A manticore from the depths of despair with the fire of the damned spreading clarity"
+  },
+  {
+    "id": 43,
+    "name": "Dawn Torturer",
+    "specs": "A siren from a cursed forest with the shadow of the moon strangling light"
+  },
+  {
+    "id": 44,
+    "name": "Frost Priest",
+    "specs": "A revenant from the screams of the tortured during a solar eclipse cursing order"
+  },
+  {
+    "id": 45,
+    "name": "Portal Ravager",
+    "specs": "A ghoul from the dark corners of the mind with the whisper of the wind compelling chaos"
+  },
+  {
+    "id": 46,
+    "name": "Axe Tusk",
+    "specs": "An entity from the remnants of an old war with the knowledge of forbidden magic invoking harmony"
+  },
+  {
+    "id": 47,
+    "name": "Frost Tearer",
+    "specs": "A shade from the depths of the ocean with the madness of a seer suffocating balance"
+  },
+  {
+    "id": 48,
+    "name": "Thunder Devastator",
+    "specs": "A sphinx from the silence of the void with the guilt of a thousand sins poisoning submission"
+  },
+  {
+    "id": 49,
+    "name": "Ice Walker",
+    "specs": "A gorgon from a cursed lake with the rage of a caged beast demanding deception"
+  },
+  {
+    "id": 50,
+    "name": "Ruin Smith",
+    "specs": "A wraith from the silence of the void with the scars of a thousand battles possessing division"
+  },
+  {
+    "id": 51,
+    "name": "Feral Guard",
+    "specs": "A golem from the shadows of the city with the ambition of a dark lord invoking oblivion"
+  },
+  {
+    "id": 52,
+    "name": "Savage Crawler",
+    "specs": "A wyvern from the sands of time in a world where time stands still causing purity"
+  },
+  {
+    "id": 53,
+    "name": "Bone Bandit",
+    "specs": "A wraith from the remnants of an old war with the knowledge of forbidden magic possessing serenity"
+  },
+  {
+    "id": 54,
+    "name": "Ebony Etcher",
+    "specs": "A naga from a cursed painting with the guilt of a thousand sins intoxicating purity"
+  },
+  {
+    "id": 55,
+    "name": "Sapphire Touched",
+    "specs": "A vampire from the heart of a maelstrom with the sorrow of the betrayed invoking creation"
+  },
+  {
+    "id": 56,
+    "name": "Nova Changer",
+    "specs": "A ghoul from a cursed forest with a voice that commands death ensnaring chaos"
+  },
+  {
+    "id": 57,
+    "name": "Sphinx Exterminator",
+    "specs": "A phantom from the shadows of the city with the serenity of the grave incinerating deception"
+  },
+  {
+    "id": 58,
+    "name": "Crown Seed",
+    "specs": "A leviathan from the tears of a god in a cursed land draining dominance"
+  },
+  {
+    "id": 59,
+    "name": "Gate Robber",
+    "specs": "A wyvern from the depths of despair with the laughter of the mad whispering salvation"
+  },
+  {
+    "id": 60,
+    "name": "Spear Tearer",
+    "specs": "A nymph from the belly of a beast with the darkness of a black heart weaving truth"
+  },
+  {
+    "id": 61,
+    "name": "Mountain Spire",
+    "specs": "An entity from the edge of the known world with the strength of a thousand men enchanting annihilation"
+  },
+  {
+    "id": 62,
+    "name": "Lake Morpher",
+    "specs": "An apparition from a cursed artifact with the shadow of the moon seducing confusion"
+  },
+  {
+    "id": 63,
+    "name": "Horror Crusher",
+    "specs": "A djinn from the shadows of the city with the hunger of the abyss petrifying clarity"
+  },
+  {
+    "id": 64,
+    "name": "Brute Weaver",
+    "specs": "A dragon from a sealed gate with the elegance of a deadly predator freezing tranquility"
+  },
+  {
+    "id": 65,
+    "name": "Copper Changer",
+    "specs": "A doppelganger from a cursed artifact from forgotten wars freezing sacrifice"
+  },
+  {
+    "id": 66,
+    "name": "Autumn Seeker",
+    "specs": "A poltergeist born of the void with the shadow of the moon enticing life"
+  },
+  {
+    "id": 67,
+    "name": "Giant Fang",
+    "specs": "A sphinx from the pages of a forbidden book under a blood moon defiling madness"
+  },
+  {
+    "id": 68,
+    "name": "Void Feeder",
+    "specs": "A nymph from a cursed well in the shadow of a great tree corrupting purity"
+  },
+  {
+    "id": 69,
+    "name": "Swamp Talon",
+    "specs": "A giant from a meteorite crash with the strength of a thousand men enticing deception"
+  },
+  {
+    "id": 70,
+    "name": "Hex Hydra",
+    "specs": "A kraken arisen from the crypt with the wisdom of the ancients enchanting knowledge"
+  },
+  {
+    "id": 71,
+    "name": "Golden Former",
+    "specs": "A vampire from the ashes of a fallen empire with the power of the elements strangling corruption"
+  },
+  {
+    "id": 72,
+    "name": "Eye Spectre",
+    "specs": "A chimera from a forgotten tomb with the fire of the damned manipulating submission"
+  },
+  {
+    "id": 73,
+    "name": "Soul Shackled",
+    "specs": "A lich from an ancient curse with the madness of a seer suffocating darkness"
+  },
+  {
+    "id": 74,
+    "name": "River Summoner",
+    "specs": "An apparition from the depths of a mine with the strength of a thousand men casting serenity"
+  },
+  {
+    "id": 75,
+    "name": "Altar Master",
+    "specs": "A cerberus from a cursed well with the power of the elements enchanting poverty"
+  },
+  {
+    "id": 76,
+    "name": "Ancient Mutilator",
+    "specs": "A chimera from the memories of the forgotten with the grace of a forgotten deity suffocating power"
+  },
+  {
+    "id": 77,
+    "name": "Wind Shackled",
+    "specs": "A leviathan from the edge of the known world during a solar eclipse draining salvation"
+  },
+  {
+    "id": 78,
+    "name": "Spirit Spire",
+    "specs": "A spirit from a haunted mansion with the strength of a thousand men causing chaos"
+  },
+  {
+    "id": 79,
+    "name": "Steel Trapped",
+    "specs": "A griffon from a cursed forest with the fire of the damned engulfing chaos"
+  },
+  {
+    "id": 80,
+    "name": "Bridge Axe",
+    "specs": "A necromancer arisen from the crypt with the elegance of a deadly predator invoking balance"
+  },
+  {
+    "id": 81,
+    "name": "Infinity Beast",
+    "specs": "A shade from ancient ruins with the despair of the forsaken plaguing darkness"
+  },
+  {
+    "id": 82,
+    "name": "Ice Mutilator",
+    "specs": "A leviathan from an ancient curse under a blood moon poisoning despair"
+  },
+  {
+    "id": 83,
+    "name": "Twilight Hydra",
+    "specs": "A gorgon from a haunted mansion with the shadow of the moon demanding peace"
+  },
+  {
+    "id": 84,
+    "name": "Helm Golem",
+    "specs": "A kraken from an ancient curse with a heart full of sorrow transforming wealth"
+  },
+  {
+    "id": 85,
+    "name": "Sphinx Morpher",
+    "specs": "A gorgon from an ancient curse from the depths of a nightmare corrupting dominance"
+  },
+  {
+    "id": 86,
+    "name": "Sun Deleter",
+    "specs": "A phantom from the dark corners of the mind in the shadow of a great tree seeking tranquility"
+  },
+  {
+    "id": 87,
+    "name": "Prison Construct",
+    "specs": "A specter from the light of a dying star with a thirst for vengeance manipulating growth"
+  },
+  {
+    "id": 88,
+    "name": "Storm Trapped",
+    "specs": "An imp from the depths of despair with the love of a tragic hero mesmerizing decay"
+  },
+  {
+    "id": 89,
+    "name": "Abyss Obliterator",
+    "specs": "A griffon emerged from shadows in an abandoned village absorbing truth"
+  },
+  {
+    "id": 90,
+    "name": "Pain Hydra",
+    "specs": "A manticore from the ashes of a fallen empire with a dark history petrifying light"
+  },
+  {
+    "id": 91,
+    "name": "Keep Robber",
+    "specs": "A unicorn from the depths of the ocean with the guilt of a thousand sins engulfing truth"
+  },
+  {
+    "id": 92,
+    "name": "Prime Talon",
+    "specs": "A gorgon from the shadows of the city with the whisper of the wind consuming dominance"
+  },
+  {
+    "id": 93,
+    "name": "Decay Moulder",
+    "specs": "A necromancer from the heart of a storm with the legacy of a lost civilization engulfing clarity"
+  },
+  {
+    "id": 94,
+    "name": "Throne Carrier",
+    "specs": "A wraith from the breath of a dragon with the eyes of the damned mesmerizing truth"
+  },
+  {
+    "id": 95,
+    "name": "Wild Stealer",
+    "specs": "A cyclops from the pages of a forbidden book with the despair of the forsaken dissolving rebirth"
+  },
+  {
+    "id": 96,
+    "name": "Blaze Eliminator",
+    "specs": "A cyclops from the screams of the tortured with the guilt of a thousand sins corrupting dominance"
+  },
+  {
+    "id": 97,
+    "name": "Bridge Bound",
+    "specs": "A satyr from a forgotten tomb with the knowledge of forbidden magic possessing destruction"
+  },
+  {
+    "id": 98,
+    "name": "Chimera Kraken",
+    "specs": "An entity arisen from the crypt with the fury of the elements plaguing vengeance"
+  },
+  {
+    "id": 99,
+    "name": "Spring Tormentor",
+    "specs": "A leviathan from the pages of a forbidden book with the fire of the damned possessing purity"
+  },
+  {
+    "id": 100,
+    "name": "Watch Guard",
+    "specs": "A basilisk from the heart of a storm with the hunger of the abyss haunting fear"
+  },
+  {
+    "id": 101,
+    "name": "Feral Offspring",
+    "specs": "A dragon from the echoes of a past life with the fire of the damned seeking retribution"
+  },
+  {
+    "id": 102,
+    "name": "North Torturer",
+    "specs": "A siren from a cursed painting with the wisdom of the ancients ensnaring corruption"
+  },
+  {
+    "id": 103,
+    "name": "Hex Shade",
+    "specs": "A troll from the sands of time with the tears of the condemned corrupting sacrifice"
+  },
+  {
+    "id": 104,
+    "name": "Scale Weaver",
+    "specs": "A satyr from the light of a dying star with the legacy of a lost civilization causing suffering"
+  },
+  {
+    "id": 105,
+    "name": "Plague Giant",
+    "specs": "A giant born of the void with the scars of a thousand battles causing order"
+  },
+  {
+    "id": 106,
+    "name": "Demon Phantom",
+    "specs": "A leviathan from a cursed lake with the ferocity of a storm casting salvation"
+  },
+  {
+    "id": 107,
+    "name": "Death Forged",
+    "specs": "A pixie from the ashes of a fallen empire with a thirst for vengeance tempting purity"
+  },
+  {
+    "id": 108,
+    "name": "Venom Defender",
+    "specs": "An ogre from the eye of a volcano of ancient times mesmerizing order"
+  },
+  {
+    "id": 109,
+    "name": "Soul Ghost",
+    "specs": "A necromancer from a cursed mirror with the cold of the grave corrupting despair"
+  },
+  {
+    "id": 110,
+    "name": "Cave Guardian",
+    "specs": "A pixie from the tears of a god with the serenity of the grave seducing wealth"
+  },
+  {
+    "id": 111,
+    "name": "Gate Scourge",
+    "specs": "A shade from the heart of a maelstrom with the legacy of a lost civilization drowning salvation"
+  },
+  {
+    "id": 112,
+    "name": "Ghost Ripper",
+    "specs": "An angel from the whispers of the wind with the wisdom of the ancients evoking purity"
+  },
+  {
+    "id": 113,
+    "name": "Spike Terminator",
+    "specs": "A minotaur from the breath of a dragon with a heart full of sorrow strangling truth"
+  },
+  {
+    "id": 114,
+    "name": "Abyssal Axe",
+    "specs": "A griffon from the memories of the forgotten with the despair of the forsaken petrifying sacrifice"
+  },
+  {
+    "id": 115,
+    "name": "Pegasus Caller",
+    "specs": "A manticore from the depths of despair with the love of a tragic hero obliterating oblivion"
+  },
+  {
+    "id": 116,
+    "name": "Rift Dragon",
+    "specs": "A cherub from the memories of the forgotten with the despair of the forsaken spreading truth"
+  },
+  {
+    "id": 117,
+    "name": "Swamp Chaser",
+    "specs": "A dragon from the depths of despair with a voice that commands death invoking peace"
+  },
+  {
+    "id": 118,
+    "name": "Spring Engine",
+    "specs": "A harpy from a forgotten tomb with the shadow of the moon manipulating control"
+  },
+  {
+    "id": 119,
+    "name": "Eye Plague",
+    "specs": "A wraith from the screams of the tortured with the shadow of the moon cursing dominance"
+  },
+  {
+    "id": 120,
+    "name": "Valley Hydra",
+    "specs": "A necromancer from the remnants of an old war with a thirst for vengeance demanding rebirth"
+  },
+  {
+    "id": 121,
+    "name": "Deep Stalker",
+    "specs": "A sphinx from a sealed gate with a voice that commands death mesmerizing darkness"
+  },
+  {
+    "id": 122,
+    "name": "Shield Mauler",
+    "specs": "A gorgon from a haunted mansion with the shadow of the moon suffocating confusion"
+  },
+  {
+    "id": 123,
+    "name": "Chaos Marauder",
+    "specs": "A phantom from the molten core with the sorrow of the betrayed obliterating serenity"
+  },
+  {
+    "id": 124,
+    "name": "Ancient Talon",
+    "specs": "A demon from the heart of a maelstrom with the serenity of the grave strangling doom"
+  },
+  {
+    "id": 125,
+    "name": "Horn Spike",
+    "specs": "A chimera from the dark corners of the mind with the legacy of a lost civilization entwining sacrifice"
+  },
+  {
+    "id": 126,
+    "name": "Sphinx King",
+    "specs": "A cherub from the darkness of the soul with the ferocity of a storm spreading death"
+  },
+  {
+    "id": 127,
+    "name": "Infernal Touched",
+    "specs": "A demon from the screams of the tortured with the whisper of the wind spreading tranquility"
+  },
+  {
+    "id": 128,
+    "name": "Horn Mangler",
+    "specs": "A giant from a meteorite crash with a thirst for vengeance seeking enlightenment"
+  },
+  {
+    "id": 129,
+    "name": "Fear Racer",
+    "specs": "A cyclops from the edge of reality with the scars of a thousand battles ensnaring purity"
+  },
+  {
+    "id": 130,
+    "name": "Tower Tormentor",
+    "specs": "An entity from the darkness of the soul with the guilt of a thousand sins ensnaring submission"
+  },
+  {
+    "id": 131,
+    "name": "Iron Executioner",
+    "specs": "A vampire from the edge of reality of ancient times draining confusion"
+  },
+  {
+    "id": 132,
+    "name": "Basilisk Master",
+    "specs": "A minotaur from the ashes of a fallen empire in a realm of eternal night consuming oblivion"
+  },
+  {
+    "id": 133,
+    "name": "Demon Flyer",
+    "specs": "A troll from a cursed artifact in the shadow of a great tree deceiving suffering"
+  },
+  {
+    "id": 134,
+    "name": "Astral Crusher",
+    "specs": "An imp from the whispers of the wind with the mark of the beast enchanting growth"
+  },
+  {
+    "id": 135,
+    "name": "Poison Seed",
+    "specs": "A dryad from the tears of a god with a thirst for vengeance suffocating darkness"
+  },
+  {
+    "id": 136,
+    "name": "Moon Engine",
+    "specs": "A dryad from a shattered dream with the elegance of a deadly predator weaving destruction"
+  },
+  {
+    "id": 137,
+    "name": "Wyvern Rampart",
+    "specs": "A basilisk from a cursed mirror with the scars of a thousand battles causing wealth"
+  },
+  {
+    "id": 138,
+    "name": "Spike Exterminator",
+    "specs": "A sphinx from a forgotten tomb in the shadow of a great tree terrorizing suffering"
+  },
+  {
+    "id": 139,
+    "name": "Giant Exterminator",
+    "specs": "A unicorn from the core of a black hole with the curse of immortality draining rebirth"
+  },
+  {
+    "id": 140,
+    "name": "Dungeon Chained",
+    "specs": "A chimera from a cursed lake with the knowledge of forbidden magic invoking darkness"
+  },
+  {
+    "id": 141,
+    "name": "Summer Peak",
+    "specs": "A gorgon from the belly of a beast with the love of a tragic hero absorbing order"
+  },
+  {
+    "id": 142,
+    "name": "South Seeker",
+    "specs": "A phoenix from beneath the sea with the mark of the beast plaguing darkness"
+  },
+  {
+    "id": 143,
+    "name": "Pearl Curse",
+    "specs": "A vampire from the sands of time with the fury of the elements terrorizing captivity"
+  },
+  {
+    "id": 144,
+    "name": "Dawn Breaker",
+    "specs": "A centaur from the pages of a forbidden book during a solar eclipse luring clarity"
+  },
+  {
+    "id": 145,
+    "name": "Ancient Follower",
+    "specs": "A cyclops from a cursed well with the shadow of the moon spreading truth"
+  },
+  {
+    "id": 146,
+    "name": "Prime Shaper",
+    "specs": "An angel from the pages of a forbidden book with the curse of immortality possessing rebirth"
+  },
+  {
+    "id": 147,
+    "name": "Dream Master",
+    "specs": "A specter from the memories of the forgotten under a blood moon luring clarity"
+  },
+  {
+    "id": 148,
+    "name": "Blade Peak",
+    "specs": "A harpy from the pages of a forbidden book with the ambition of a dark lord seeking submission"
+  },
+  {
+    "id": 149,
+    "name": "Spell Sentinel",
+    "specs": "A golem from a cursed well with the beauty of a fallen angel casting chaos"
+  },
+  {
+    "id": 150,
+    "name": "Copper Scourge",
+    "specs": "A cherub from a dimensional rift with the power of the elements possessing despair"
+  },
+  {
+    "id": 151,
+    "name": "Feral Mauler",
+    "specs": "A shade from the sands of time with the innocence of a lost child plaguing captivity"
+  },
+  {
+    "id": 152,
+    "name": "Acid Seeker",
+    "specs": "An imp from the breath of a dragon under a blood moon obliterating fear"
+  },
+  {
+    "id": 153,
+    "name": "Behemoth Maker",
+    "specs": "An apparition from the core of a black hole from forgotten wars whispering captivity"
+  },
+  {
+    "id": 154,
+    "name": "Crown Imprisoned",
+    "specs": "A giant from the screams of the tortured with the power of the elements entwining submission"
+  },
+  {
+    "id": 155,
+    "name": "Nova Hydra",
+    "specs": "A siren from the molten core with the despair of the forsaken extracting despair"
+  },
+  {
+    "id": 156,
+    "name": "Prime Exterminator",
+    "specs": "A doppelganger from the heart of a maelstrom with the eyes of the damned engulfing submission"
+  },
+  {
+    "id": 157,
+    "name": "Shadow Prince",
+    "specs": "A giant from the abyss with the despair of the forsaken entwining decay"
+  },
+  {
+    "id": 158,
+    "name": "Frost Spawn",
+    "specs": "A basilisk from a meteorite crash with the tears of the condemned mesmerizing doom"
+  },
+  {
+    "id": 159,
+    "name": "Magic Morpher",
+    "specs": "A golem from a dimensional rift in the shadow of a great tree absorbing creation"
+  },
+  {
+    "id": 160,
+    "name": "Sword Ravager",
+    "specs": "A dryad from the belly of a beast from the time of the first king suffocating life"
+  },
+  {
+    "id": 161,
+    "name": "Rage Fortress",
+    "specs": "A wyvern from the echoes of a past life with the whisper of the wind deceiving vengeance"
+  },
+  {
+    "id": 162,
+    "name": "Grim Devourer",
+    "specs": "An apparition from the core of a black hole with the scars of a thousand battles haunting balance"
+  },
+  {
+    "id": 163,
+    "name": "Soul Seeker",
+    "specs": "A troll from the darkness of the soul with the power of the elements poisoning growth"
+  },
+  {
+    "id": 164,
+    "name": "Sphinx Kraken",
+    "specs": "A pixie from the belly of a beast with the serenity of the grave casting chaos"
+  },
+  {
+    "id": 165,
+    "name": "Giant Made",
+    "specs": "A specter from the edge of reality with the curse of immortality ensnaring salvation"
+  },
+  {
+    "id": 166,
+    "name": "Fort Breaker",
+    "specs": "A wraith from the screams of the tortured in a realm of eternal night possessing love"
+  },
+  {
+    "id": 167,
+    "name": "Copper Bulwark",
+    "specs": "A revenant from a cursed lake with the darkness of a black heart intoxicating wealth"
+  },
+  {
+    "id": 168,
+    "name": "Sea Knight",
+    "specs": "An apparition born of the void from forgotten wars luring retribution"
+  },
+  {
+    "id": 169,
+    "name": "Prime Bound",
+    "specs": "A necromancer from the heart of a storm in a realm of eternal night consuming silence"
+  },
+  {
+    "id": 170,
+    "name": "Sun Racer",
+    "specs": "A naga from the belly of a beast during a solar eclipse casting truth"
+  },
+  {
+    "id": 171,
+    "name": "Jade Engine",
+    "specs": "A nymph from ancient ruins with the whisper of the wind devouring poverty"
+  },
+  {
+    "id": 172,
+    "name": "Bronze Forge",
+    "specs": "A manticore from the darkness of the soul in a cursed land seducing control"
+  },
+  {
+    "id": 173,
+    "name": "Mystic Breaker",
+    "specs": "A cyclops emerged from shadows with the silence of the dead intoxicating darkness"
+  },
+  {
+    "id": 174,
+    "name": "Bronze Executioner",
+    "specs": "A dragon from the whispers of the wind with the fire of the damned corrupting knowledge"
+  },
+  {
+    "id": 175,
+    "name": "Spring Drake",
+    "specs": "A necromancer from the edge of the known world with the darkness of a black heart petrifying annihilation"
+  },
+  {
+    "id": 176,
+    "name": "Venom Touched",
+    "specs": "A sphinx from the remnants of an old war with the darkness of a black heart terrorizing salvation"
+  },
+  {
+    "id": 177,
+    "name": "Wind Defender",
+    "specs": "A cyclops from the ashes of a fallen empire with the darkness of a black heart invoking serenity"
+  },
+  {
+    "id": 178,
+    "name": "Crimson Reaper",
+    "specs": "A satyr from the ashes of a phoenix from forgotten wars manipulating death"
+  },
+  {
+    "id": 179,
+    "name": "Dusk Wyrm",
+    "specs": "A griffon from the core of a black hole with the fire of the damned engulfing madness"
+  },
+  {
+    "id": 180,
+    "name": "Sphinx Conjurer",
+    "specs": "A doppelganger from a forgotten tomb under a blood moon weaving creation"
+  },
+  {
+    "id": 181,
+    "name": "Solar Spire",
+    "specs": "A phoenix from the sands of time with the grace of a forgotten deity devouring clarity"
+  },
+  {
+    "id": 182,
+    "name": "Spear Lord",
+    "specs": "A spirit from the whispers of the wind from forgotten wars petrifying chaos"
+  },
+  {
+    "id": 183,
+    "name": "Savage Terminator",
+    "specs": "A wyvern from ancient ruins from the time of the first king cursing madness"
+  },
+  {
+    "id": 184,
+    "name": "Drake Spine",
+    "specs": "A wraith from the abyss with the innocence of a lost child tempting serenity"
+  },
+  {
+    "id": 185,
+    "name": "Omega Executioner",
+    "specs": "A phantom from the depths of a mine with the scars of a thousand battles freezing dominance"
+  },
+  {
+    "id": 186,
+    "name": "Magic Eater",
+    "specs": "A cerberus from the sands of time with the glow of the stars mesmerizing poverty"
+  },
+  {
+    "id": 187,
+    "name": "Bronze Bred",
+    "specs": "A siren from the tears of a god with the shadow of the moon spreading submission"
+  },
+  {
+    "id": 188,
+    "name": "Giant Chaser",
+    "specs": "A gorgon from the heart of a maelstrom with the rage of a caged beast intoxicating tranquility"
+  },
+  {
+    "id": 189,
+    "name": "Mountain Giant",
+    "specs": "A dragon from the molten core with the mark of the beast casting fear"
+  },
+  {
+    "id": 190,
+    "name": "Wyvern Drainer",
+    "specs": "A unicorn from an ancient curse with the innocence of a lost child enchanting life"
+  },
+  {
+    "id": 191,
+    "name": "Death Phantom",
+    "specs": "A demon from a cursed artifact with the silence of the dead deceiving growth"
+  },
+  {
+    "id": 192,
+    "name": "Abyss Bringer",
+    "specs": "A nymph from the heart of a maelstrom with the beauty of a fallen angel mesmerizing peace"
+  },
+  {
+    "id": 193,
+    "name": "Unicorn Blessed",
+    "specs": "A cerberus from a meteorite crash with the hunger of the abyss suffocating confusion"
+  },
+  {
+    "id": 194,
+    "name": "Deep Crown",
+    "specs": "A wyvern born of the void with the cold of the grave luring peace"
+  },
+  {
+    "id": 195,
+    "name": "Spell King",
+    "specs": "A unicorn from the eye of a volcano with a dark history luring corruption"
+  },
+  {
+    "id": 196,
+    "name": "Meteor Seed",
+    "specs": "A specter from the roots of the world tree with the madness of a seer poisoning sacrifice"
+  },
+  {
+    "id": 197,
+    "name": "Elder Barrier",
+    "specs": "A kraken from the roots of the world tree with the laughter of the mad defiling fear"
+  },
+  {
+    "id": 198,
+    "name": "Astral Pirate",
+    "specs": "A poltergeist from the whispers of the wind with the power of the elements annihilating chaos"
+  },
+  {
+    "id": 199,
+    "name": "Azure Machine",
+    "specs": "A specter from the darkness of the soul in a cursed land distorting decay"
+  },
+  {
+    "id": 200,
+    "name": "Spirit Serpent",
+    "specs": "A griffon from a cursed lake in a realm of eternal night evoking harmony"
+  },
+  {
+    "id": 201,
+    "name": "Divine Sworn",
+    "specs": "A gorgon from the memories of the forgotten with the tears of the condemned cursing freedom"
+  },
+  {
+    "id": 202,
+    "name": "Lord Guard",
+    "specs": "A chimera from the breath of a dragon with the fury of the elements drowning knowledge"
+  },
+  {
+    "id": 203,
+    "name": "Blood Searcher",
+    "specs": "A banshee arisen from the crypt with the fire of the damned enchanting darkness"
+  },
+  {
+    "id": 204,
+    "name": "Spike Keeper",
+    "specs": "A specter from a haunted mansion with the rage of a caged beast seducing hate"
+  },
+  {
+    "id": 205,
+    "name": "South Glutton",
+    "specs": "A shade arisen from the crypt with the wisdom of the ancients haunting poverty"
+  },
+  {
+    "id": 206,
+    "name": "Infinity Sorcerer",
+    "specs": "A lich from the pages of a forbidden book with the sorrow of the betrayed whispering death"
+  },
+  {
+    "id": 207,
+    "name": "Armor Digester",
+    "specs": "A minotaur from a cursed mirror with the hunger of the abyss spreading sacrifice"
+  },
+  {
+    "id": 208,
+    "name": "Core Rampart",
+    "specs": "A sphinx from the silence of the void under a blood moon suffocating doom"
+  },
+  {
+    "id": 209,
+    "name": "Door Drainer",
+    "specs": "An ogre from the silence of the void with the ferocity of a storm desecrating vengeance"
+  },
+  {
+    "id": 210,
+    "name": "Talon Necromancer",
+    "specs": "A doppelganger from a dimensional rift with a dark history seeking peace"
+  },
+  {
+    "id": 211,
+    "name": "Desert Warlock",
+    "specs": "A siren born of the void from the era of the gods distorting truth"
+  },
+  {
+    "id": 212,
+    "name": "Comet Container",
+    "specs": "A harpy from a meteorite crash with a dark history extracting oblivion"
+  },
+  {
+    "id": 213,
+    "name": "Master Guard",
+    "specs": "A necromancer arisen from the crypt with the fire of the damned seducing despair"
+  },
+  {
+    "id": 214,
+    "name": "Poison Moulder",
+    "specs": "A werewolf from the core of a black hole with the ferocity of a storm haunting freedom"
+  },
+  {
+    "id": 215,
+    "name": "River Bred",
+    "specs": "A dryad from a sealed gate with the laughter of the mad demanding submission"
+  },
+  {
+    "id": 216,
+    "name": "Crown Carver",
+    "specs": "A siren from the shadows of the city in a cursed land mesmerizing destruction"
+  },
+  {
+    "id": 217,
+    "name": "Helm Plunderer",
+    "specs": "A lich from the light of a dying star with the shadow of the moon freezing harmony"
+  },
+  {
+    "id": 218,
+    "name": "Spring Keeper",
+    "specs": "A poltergeist from a dimensional rift from the depths of a nightmare defiling hate"
+  },
+  {
+    "id": 219,
+    "name": "Core Builder",
+    "specs": "A necromancer from a meteorite crash with the rage of a caged beast haunting oblivion"
+  },
+  {
+    "id": 220,
+    "name": "West Golem",
+    "specs": "A necromancer from the darkness of the soul with the grace of a forgotten deity suffocating oblivion"
+  },
+  {
+    "id": 221,
+    "name": "Brute Rampart",
+    "specs": "A poltergeist from the abyss with the power of the elements desecrating despair"
+  },
+  {
+    "id": 222,
+    "name": "Talon Mage",
+    "specs": "An ogre from the tears of a god with the patience of time itself evoking sacrifice"
+  },
+  {
+    "id": 223,
+    "name": "Dark Splitter",
+    "specs": "A basilisk from the ashes of a fallen empire with the sorrow of the betrayed causing purity"
+  },
+  {
+    "id": 224,
+    "name": "Temple Thief",
+    "specs": "A giant from the roots of the world tree with the wisdom of the ancients luring submission"
+  },
+  {
+    "id": 225,
+    "name": "Grim Warrior",
+    "specs": "A troll from a cursed lake with the love of a tragic hero extracting submission"
+  },
+  {
+    "id": 226,
+    "name": "Twilight Mutilator",
+    "specs": "A manticore from ancient ruins from the depths of a nightmare extracting poverty"
+  },
+  {
+    "id": 227,
+    "name": "Ruby Necromancer",
+    "specs": "A gorgon from a haunted mansion with the hunger of the abyss dissolving tranquility"
+  },
+  {
+    "id": 228,
+    "name": "Deep Sculptor",
+    "specs": "A manticore from the depths of a mine from the time of the first king suffocating despair"
+  },
+  {
+    "id": 229,
+    "name": "Sun Chained",
+    "specs": "A werewolf from a cursed painting with the scars of a thousand battles engulfing purity"
+  },
+  {
+    "id": 230,
+    "name": "Abyssal Strider",
+    "specs": "A satyr from a sealed gate during a solar eclipse seducing harmony"
+  },
+  {
+    "id": 231,
+    "name": "Ice Protector",
+    "specs": "A minotaur from the silence of the void with the darkness of a black heart tempting deception"
+  },
+  {
+    "id": 232,
+    "name": "Omega Colossus",
+    "specs": "A necromancer from a haunted mansion with the serenity of the grave mesmerizing freedom"
+  },
+  {
+    "id": 233,
+    "name": "Eye Vessel",
+    "specs": "A giant from the remnants of an old war with the wisdom of the ancients consuming serenity"
+  },
+  {
+    "id": 234,
+    "name": "Chaos Knight",
+    "specs": "A doppelganger from the edge of the known world with the despair of the forsaken haunting life"
+  },
+  {
+    "id": 235,
+    "name": "Blaze Stealer",
+    "specs": "A manticore from the silence of the void with the silence of the dead enchanting confusion"
+  },
+  {
+    "id": 236,
+    "name": "Ocean Bringer",
+    "specs": "A specter from an ancient curse with the guilt of a thousand sins compelling wealth"
+  },
+  {
+    "id": 237,
+    "name": "Fang Warlock",
+    "specs": "A poltergeist from a cursed forest with a dark history desecrating serenity"
+  },
+  {
+    "id": 238,
+    "name": "North Builder",
+    "specs": "A shade from the edge of reality with the curse of immortality draining creation"
+  },
+  {
+    "id": 239,
+    "name": "Stone Necromancer",
+    "specs": "A pixie from a cursed forest with the strength of a thousand men dissolving doom"
+  },
+  {
+    "id": 240,
+    "name": "Ruby Killer",
+    "specs": "A banshee from the depths of a mine with a heart full of sorrow dissolving unity"
+  },
+  {
+    "id": 241,
+    "name": "Dread Axe",
+    "specs": "A dryad from a cursed artifact with the cold of the grave invoking life"
+  },
+  {
+    "id": 242,
+    "name": "Hydra Shatterer",
+    "specs": "A harpy from the depths of a mine with the love of a tragic hero terrorizing sacrifice"
+  },
+  {
+    "id": 243,
+    "name": "Agony Bulwark",
+    "specs": "A troll from a dimensional rift with the hunger of the abyss consuming tranquility"
+  },
+  {
+    "id": 244,
+    "name": "Basilisk Obliterator",
+    "specs": "A siren from a cursed forest with the love of a tragic hero enchanting serenity"
+  },
+  {
+    "id": 245,
+    "name": "Giant Curse",
+    "specs": "A revenant from a dimensional rift with a heart full of sorrow incinerating life"
+  },
+  {
+    "id": 246,
+    "name": "Steel Raider",
+    "specs": "An ogre from a forgotten tomb with the laughter of the mad mesmerizing destruction"
+  },
+  {
+    "id": 247,
+    "name": "Steel Smith",
+    "specs": "A djinn from an ancient curse from the era of the gods invoking vengeance"
+  },
+  {
+    "id": 248,
+    "name": "Obsidian Bulwark",
+    "specs": "An apparition from the depths of despair with the cold of the grave ensnaring death"
+  },
+  {
+    "id": 249,
+    "name": "Fort Plunderer",
+    "specs": "An entity from the heart of a storm with the silence of the dead ensnaring light"
+  },
+  {
+    "id": 250,
+    "name": "Hex Spire",
+    "specs": "A manticore from the ashes of a phoenix with the whisper of the wind causing light"
+  },
+  {
+    "id": 251,
+    "name": "Heaven Blessed",
+    "specs": "A djinn from the edge of the known world from the time of the first king weaving doom"
+  },
+  {
+    "id": 252,
+    "name": "Ivory Knight",
+    "specs": "A necromancer from the remnants of an old war with the fire of the damned cursing suffering"
+  },
+  {
+    "id": 253,
+    "name": "War Lord",
+    "specs": "A sphinx from a cursed well from the era of the gods tempting annihilation"
+  },
+  {
+    "id": 254,
+    "name": "Valley Morpher",
+    "specs": "A phantom from a cursed painting with the guilt of a thousand sins distorting enlightenment"
+  },
+  {
+    "id": 255,
+    "name": "Zero Spirit",
+    "specs": "A wyvern from the abyss with the legacy of a lost civilization casting vengeance"
+  },
+  {
+    "id": 256,
+    "name": "Jungle Render",
+    "specs": "An imp from a dimensional rift with the hunger of the abyss evoking silence"
+  },
+  {
+    "id": 257,
+    "name": "Forest Chaser",
+    "specs": "A werewolf from the depths of despair of ancient times intoxicating darkness"
+  },
+  {
+    "id": 258,
+    "name": "Abyssal Tower",
+    "specs": "A dryad from a forgotten tomb with the hunger of the abyss defiling annihilation"
+  },
+  {
+    "id": 259,
+    "name": "Savage Channeler",
+    "specs": "A harpy from the eye of a volcano with the scars of a thousand battles cursing chaos"
+  },
+  {
+    "id": 260,
+    "name": "Wyvern Breaker",
+    "specs": "A dryad from the core of a black hole with the whisper of the wind obliterating enlightenment"
+  },
+  {
+    "id": 261,
+    "name": "Doom Morpher",
+    "specs": "A giant from the silence of the void of ancient times strangling fear"
+  },
+  {
+    "id": 262,
+    "name": "Horror Seeker",
+    "specs": "An apparition from the core of a black hole with the sorrow of the betrayed terrorizing purity"
+  },
+  {
+    "id": 263,
+    "name": "Infinity Spawn",
+    "specs": "A pixie from the ashes of a burned village with the patience of time itself tempting purity"
+  },
+  {
+    "id": 264,
+    "name": "Toxic Follower",
+    "specs": "A spirit emerged from shadows with the laughter of the mad intoxicating sacrifice"
+  },
+  {
+    "id": 265,
+    "name": "Savage Guard",
+    "specs": "A cherub from a sealed gate from the depths of a nightmare weaving vengeance"
+  },
+  {
+    "id": 266,
+    "name": "Ice Cursed",
+    "specs": "A werewolf from the eye of a volcano in the shadow of a great tree terrorizing love"
+  },
+  {
+    "id": 267,
+    "name": "Frost Stealer",
+    "specs": "A werewolf arisen from the crypt in a realm of eternal night draining dominance"
+  },
+  {
+    "id": 268,
+    "name": "Onyx Tooth",
+    "specs": "A minotaur from the dark corners of the mind with the silence of the dead dissolving tranquility"
+  },
+  {
+    "id": 269,
+    "name": "Dark Stalker",
+    "specs": "A nymph from the ashes of a fallen empire of ancient times enchanting hate"
+  },
+  {
+    "id": 270,
+    "name": "Guard Absorber",
+    "specs": "An entity from the ashes of a burned village in the shadow of a great tree demanding chaos"
+  },
+  {
+    "id": 271,
+    "name": "Omega Carrier",
+    "specs": "A harpy from a sealed gate with the ambition of a dark lord whispering corruption"
+  },
+  {
+    "id": 272,
+    "name": "Portal Former",
+    "specs": "A wraith from the dark corners of the mind from the era of the gods spreading tranquility"
+  },
+  {
+    "id": 273,
+    "name": "Eternal Crafter",
+    "specs": "An entity from the tears of a god with a voice that commands death demanding enlightenment"
+  },
+  {
+    "id": 274,
+    "name": "Prime Robber",
+    "specs": "A wraith from the pages of a forbidden book with the ferocity of a storm distorting captivity"
+  },
+  {
+    "id": 275,
+    "name": "Jade Pirate",
+    "specs": "A gorgon arisen from the crypt with the ferocity of a storm absorbing chaos"
+  },
+  {
+    "id": 276,
+    "name": "Nova Defender",
+    "specs": "A demon from an ancient curse in the shadow of a great tree intoxicating wealth"
+  },
+  {
+    "id": 277,
+    "name": "Deep Changer",
+    "specs": "A unicorn from the eye of a volcano with the power of the elements seducing control"
+  },
+  {
+    "id": 278,
+    "name": "Valley Barrier",
+    "specs": "A naga from a cursed mirror with the hunger of the abyss dissolving light"
+  },
+  {
+    "id": 279,
+    "name": "Rift Spectre",
+    "specs": "A gorgon from the depths of a mine under a blood moon mesmerizing captivity"
+  },
+  {
+    "id": 280,
+    "name": "Horn Killer",
+    "specs": "A minotaur from the ashes of a phoenix with the power of the elements mesmerizing confusion"
+  },
+  {
+    "id": 281,
+    "name": "Giant Colossus",
+    "specs": "An apparition from the depths of space with the fire of the damned terrorizing silence"
+  },
+  {
+    "id": 282,
+    "name": "Twilight Maker",
+    "specs": "A harpy from the tears of a god in the shadow of a great tree dissolving love"
+  },
+  {
+    "id": 283,
+    "name": "Hydra Construct",
+    "specs": "A lich from the core of a black hole with a heart full of sorrow weaving oblivion"
+  },
+  {
+    "id": 284,
+    "name": "Tomb Spawn",
+    "specs": "An imp from the depths of space with the legacy of a lost civilization seeking growth"
+  },
+  {
+    "id": 285,
+    "name": "Soul Summoner",
+    "specs": "A doppelganger born of the void with the cold of the grave possessing freedom"
+  },
+  {
+    "id": 286,
+    "name": "Hell Blade",
+    "specs": "A wraith from the edge of reality with the glow of the stars whispering annihilation"
+  },
+  {
+    "id": 287,
+    "name": "Primal Stealer",
+    "specs": "A nymph arisen from the crypt with the laughter of the mad mesmerizing suffering"
+  },
+  {
+    "id": 288,
+    "name": "Pit Spawn",
+    "specs": "A revenant from the silence of the void with the power of the elements seducing suffering"
+  },
+  {
+    "id": 289,
+    "name": "Guard Vessel",
+    "specs": "A phantom from beneath the sea with the guilt of a thousand sins annihilating poverty"
+  },
+  {
+    "id": 290,
+    "name": "Blight Bulwark",
+    "specs": "A revenant from the pages of a forbidden book from the era of the gods corrupting unity"
+  },
+  {
+    "id": 291,
+    "name": "Infernal Devil",
+    "specs": "A troll emerged from shadows with the tears of the condemned causing destruction"
+  },
+  {
+    "id": 292,
+    "name": "Temple Devil",
+    "specs": "A phoenix from the molten core with the beauty of a fallen angel cursing growth"
+  },
+  {
+    "id": 293,
+    "name": "Deep Forge",
+    "specs": "A manticore from the darkness of the soul with the wisdom of the ancients intoxicating oblivion"
+  },
+  {
+    "id": 294,
+    "name": "Lightning Eater",
+    "specs": "A phantom from a cursed artifact with the love of a tragic hero spreading enlightenment"
+  },
+  {
+    "id": 295,
+    "name": "Blaze Mauler",
+    "specs": "A poltergeist from the screams of the tortured from the time of the first king causing power"
+  },
+  {
+    "id": 296,
+    "name": "Plague Pillager",
+    "specs": "A cyclops from the breath of a dragon with a voice that commands death whispering wealth"
+  },
+  {
+    "id": 297,
+    "name": "Drake Crown",
+    "specs": "A golem arisen from the crypt with the despair of the forsaken compelling sacrifice"
+  },
+  {
+    "id": 298,
+    "name": "South Render",
+    "specs": "A siren from the echoes of a past life in a realm of eternal night poisoning rebirth"
+  },
+  {
+    "id": 299,
+    "name": "Spirit Construct",
+    "specs": "A golem from the frozen wastes with the despair of the forsaken corrupting knowledge"
+  },
+  {
+    "id": 300,
+    "name": "Abyss Shield",
+    "specs": "A troll from beneath the sea with the glow of the stars mesmerizing doom"
+  },
+  {
+    "id": 301,
+    "name": "Bridge Stealer",
+    "specs": "An imp from ancient ruins with the mark of the beast freezing balance"
+  },
+  {
+    "id": 302,
+    "name": "Unicorn Hammer",
+    "specs": "A naga from the darkness of the soul with the silence of the dead compelling fear"
+  },
+  {
+    "id": 303,
+    "name": "Savage Ravager",
+    "specs": "An elemental from a cursed forest during a solar eclipse spreading retribution"
+  },
+  {
+    "id": 304,
+    "name": "Sword Crafter",
+    "specs": "A phoenix from a forgotten tomb with the ferocity of a storm seeking sacrifice"
+  },
+  {
+    "id": 305,
+    "name": "Behemoth Executioner",
+    "specs": "A werewolf from a dimensional rift with the grace of a forgotten deity demanding darkness"
+  },
+  {
+    "id": 306,
+    "name": "Curse Render",
+    "specs": "A specter from the breath of a dragon from the depths of a nightmare invoking submission"
+  },
+  {
+    "id": 307,
+    "name": "West Bringer",
+    "specs": "A sphinx from the ashes of a burned village with the beauty of a fallen angel casting balance"
+  },
+  {
+    "id": 308,
+    "name": "Eye Obliterator",
+    "specs": "A doppelganger from the depths of space with the fury of the elements spreading decay"
+  },
+  {
+    "id": 309,
+    "name": "Scale Crest",
+    "specs": "A banshee born of the void from forgotten wars luring unity"
+  },
+  {
+    "id": 310,
+    "name": "Keep Diver",
+    "specs": "A spirit from a cursed mirror with the ferocity of a storm casting dominance"
+  },
+  {
+    "id": 311,
+    "name": "South Conduit",
+    "specs": "A cyclops from the edge of the known world from the depths of a nightmare evoking poverty"
+  },
+  {
+    "id": 312,
+    "name": "Horror Keeper",
+    "specs": "An ogre from the echoes of a past life with the eyes of the damned plaguing power"
+  },
+  {
+    "id": 313,
+    "name": "Wyvern Etcher",
+    "specs": "A wraith from the dark corners of the mind with the tears of the condemned seducing doom"
+  },
+  {
+    "id": 314,
+    "name": "Spring Touched",
+    "specs": "A troll from the echoes of a past life with the guilt of a thousand sins plaguing dominance"
+  },
+  {
+    "id": 315,
+    "name": "Ebony Crusher",
+    "specs": "A unicorn from the eye of a volcano with the mark of the beast terrorizing madness"
+  },
+  {
+    "id": 316,
+    "name": "Magic Pursuer",
+    "specs": "A demon from the darkness of the soul in a world where time stands still poisoning hate"
+  },
+  {
+    "id": 317,
+    "name": "Copper Made",
+    "specs": "A cerberus arisen from the crypt of ancient times drowning division"
+  },
+  {
+    "id": 318,
+    "name": "Agony Searcher",
+    "specs": "A dryad from the heart of a storm from the era of the gods terrorizing harmony"
+  },
+  {
+    "id": 319,
+    "name": "Night Reaper",
+    "specs": "A phantom from the echoes of a past life with the hunger of the abyss extracting death"
+  },
+  {
+    "id": 320,
+    "name": "Sky Spike",
+    "specs": "An entity from ancient ruins with the eyes of the damned devouring life"
+  },
+  {
+    "id": 321,
+    "name": "Infinity Giant",
+    "specs": "A kraken from the belly of a beast with a dark history cursing confusion"
+  },
+  {
+    "id": 322,
+    "name": "Sphinx Princess",
+    "specs": "A naga from the molten core under a blood moon weaving peace"
+  },
+  {
+    "id": 323,
+    "name": "Sea Slayer",
+    "specs": "An entity from a cursed artifact of ancient times manipulating love"
+  },
+  {
+    "id": 324,
+    "name": "Dream Warlock",
+    "specs": "An elemental from the sands of time with the laughter of the mad cursing dominance"
+  },
+  {
+    "id": 325,
+    "name": "War Phantom",
+    "specs": "A werewolf from a sealed gate with the grace of a forgotten deity extracting growth"
+  },
+  {
+    "id": 326,
+    "name": "Tomb Slayer",
+    "specs": "A minotaur from a forgotten tomb with the cold of the grave obliterating life"
+  },
+  {
+    "id": 327,
+    "name": "Phoenix Vessel",
+    "specs": "A banshee from the screams of the tortured with the power of the elements defiling peace"
+  },
+  {
+    "id": 328,
+    "name": "Cosmic Drake",
+    "specs": "A phoenix from a cursed painting with a thirst for vengeance dissolving fear"
+  },
+  {
+    "id": 329,
+    "name": "Earth Curse",
+    "specs": "A satyr from a cursed artifact with the wisdom of the ancients mesmerizing suffering"
+  },
+  {
+    "id": 330,
+    "name": "Spike Forged",
+    "specs": "A poltergeist from the memories of the forgotten with the grace of a forgotten deity mesmerizing clarity"
+  },
+  {
+    "id": 331,
+    "name": "Dragon Terminator",
+    "specs": "A cerberus from the memories of the forgotten with the ferocity of a storm desecrating enlightenment"
+  },
+  {
+    "id": 332,
+    "name": "Behemoth Etcher",
+    "specs": "A doppelganger from the belly of a beast from the depths of a nightmare engulfing chaos"
+  },
+  {
+    "id": 333,
+    "name": "Dragon Torturer",
+    "specs": "An entity from the depths of space under a blood moon whispering vengeance"
+  },
+  {
+    "id": 334,
+    "name": "Sleep Serpent",
+    "specs": "An ogre from a cursed well with the mark of the beast engulfing madness"
+  },
+  {
+    "id": 335,
+    "name": "Bridge Created",
+    "specs": "A wyvern from the molten core with the ambition of a dark lord desecrating chaos"
+  },
+  {
+    "id": 336,
+    "name": "Wyvern Tormentor",
+    "specs": "A pixie from the silence of the void with the fire of the damned mesmerizing chaos"
+  },
+  {
+    "id": 337,
+    "name": "Brute Carver",
+    "specs": "A spirit from a forgotten tomb with the knowledge of forbidden magic compelling growth"
+  },
+  {
+    "id": 338,
+    "name": "Obsidian Giant",
+    "specs": "A kraken from the heart of a storm with the patience of time itself cursing harmony"
+  },
+  {
+    "id": 339,
+    "name": "Core Deleter",
+    "specs": "A troll from the echoes of a past life in a cursed land weaving clarity"
+  },
+  {
+    "id": 340,
+    "name": "Valley Cleaver",
+    "specs": "A shade from the core of a black hole with a voice that commands death engulfing sacrifice"
+  },
+  {
+    "id": 341,
+    "name": "Obsidian Dragon",
+    "specs": "A ghoul from the pages of a forbidden book with the knowledge of forbidden magic possessing unity"
+  },
+  {
+    "id": 342,
+    "name": "Chaos Follower",
+    "specs": "A gorgon from the whispers of the wind with the despair of the forsaken enticing knowledge"
+  },
+  {
+    "id": 343,
+    "name": "Earth Carrier",
+    "specs": "A dryad from the shadows of the city with the wisdom of the ancients incinerating poverty"
+  },
+  {
+    "id": 344,
+    "name": "Colossus Pursuer",
+    "specs": "A basilisk from ancient ruins with the power of the elements whispering despair"
+  },
+  {
+    "id": 345,
+    "name": "Feral Protector",
+    "specs": "A werewolf from a forgotten tomb with the darkness of a black heart cursing peace"
+  },
+  {
+    "id": 346,
+    "name": "Castle Crawler",
+    "specs": "A cerberus from the roots of the world tree with the power of the elements ensnaring rebirth"
+  },
+  {
+    "id": 347,
+    "name": "Stone Crusher",
+    "specs": "A spirit from the roots of the world tree with the glow of the stars entwining unity"
+  },
+  {
+    "id": 348,
+    "name": "Blaze Colossus",
+    "specs": "A demon from a meteorite crash with the sorrow of the betrayed spreading destruction"
+  },
+  {
+    "id": 349,
+    "name": "Shrine Drainer",
+    "specs": "A pixie from the shadows of the city in a realm of eternal night casting truth"
+  },
+  {
+    "id": 350,
+    "name": "Onyx Finder",
+    "specs": "A phantom from the depths of space with the wisdom of the ancients ensnaring peace"
+  },
+  {
+    "id": 351,
+    "name": "Lunar Flyer",
+    "specs": "A phoenix from the whispers of the wind with the ambition of a dark lord haunting division"
+  },
+  {
+    "id": 352,
+    "name": "Queen Invoker",
+    "specs": "A poltergeist from the ashes of a fallen empire of ancient times haunting serenity"
+  },
+  {
+    "id": 353,
+    "name": "Bridge Mauler",
+    "specs": "A giant from the sands of time with a thirst for vengeance incinerating confusion"
+  },
+  {
+    "id": 354,
+    "name": "Leviathan Crusher",
+    "specs": "A demon from the darkness of the soul with the shadow of the moon enticing balance"
+  },
+  {
+    "id": 355,
+    "name": "Spring Invoker",
+    "specs": "A dryad from the silence of the void with the laughter of the mad enticing sacrifice"
+  },
+  {
+    "id": 356,
+    "name": "Ward Prince",
+    "specs": "An angel from the eye of a volcano from forgotten wars entwining tranquility"
+  },
+  {
+    "id": 357,
+    "name": "Obsidian Crafter",
+    "specs": "A hydra from a haunted mansion from the time of the first king ensnaring oblivion"
+  },
+  {
+    "id": 358,
+    "name": "Dread Digester",
+    "specs": "A unicorn from the whispers of the wind with the sorrow of the betrayed luring corruption"
+  },
+  {
+    "id": 359,
+    "name": "Decay Smith",
+    "specs": "A phoenix from the breath of a dragon with a heart full of sorrow corrupting deception"
+  },
+  {
+    "id": 360,
+    "name": "East Obliterator",
+    "specs": "A cerberus from a cursed painting with the strength of a thousand men enticing salvation"
+  },
+  {
+    "id": 361,
+    "name": "Crypt Child",
+    "specs": "A revenant from a cursed artifact with the scars of a thousand battles incinerating knowledge"
+  },
+  {
+    "id": 362,
+    "name": "Void Spawn",
+    "specs": "An elemental emerged from shadows in a world where time stands still devouring knowledge"
+  },
+  {
+    "id": 363,
+    "name": "Celestial Taker",
+    "specs": "An ogre from ancient ruins from forgotten wars absorbing deception"
+  },
+  {
+    "id": 364,
+    "name": "Slave Prophet",
+    "specs": "A demon from the frozen wastes with the elegance of a deadly predator distorting dominance"
+  },
+  {
+    "id": 365,
+    "name": "Eternal Smith",
+    "specs": "A doppelganger from the dark corners of the mind with the scars of a thousand battles deceiving division"
+  },
+  {
+    "id": 366,
+    "name": "Dark Trapped",
+    "specs": "A lich from ancient ruins in a realm of eternal night tempting freedom"
+  },
+  {
+    "id": 367,
+    "name": "Griffin Touched",
+    "specs": "An ogre from a shattered dream with the rage of a caged beast whispering madness"
+  },
+  {
+    "id": 368,
+    "name": "Eternal Jumper",
+    "specs": "A cherub from the ashes of a phoenix with the grace of a forgotten deity compelling creation"
+  },
+  {
+    "id": 369,
+    "name": "Flesh Pillager",
+    "specs": "A nymph from the depths of the ocean with the innocence of a lost child mesmerizing wealth"
+  },
+  {
+    "id": 370,
+    "name": "Sword Stealer",
+    "specs": "A siren from the pages of a forbidden book with the tears of the condemned devouring vengeance"
+  },
+  {
+    "id": 371,
+    "name": "Seal Titan",
+    "specs": "A phoenix from the silence of the void with the power of the elements devouring order"
+  },
+  {
+    "id": 372,
+    "name": "Ebony Blade",
+    "specs": "A dryad from the abyss with the patience of time itself drowning silence"
+  },
+  {
+    "id": 373,
+    "name": "Mountain Defender",
+    "specs": "An angel from the heart of a maelstrom with the knowledge of forbidden magic annihilating division"
+  },
+  {
+    "id": 374,
+    "name": "Key Horn",
+    "specs": "A dryad from the darkness of the soul with the innocence of a lost child draining vengeance"
+  },
+  {
+    "id": 375,
+    "name": "Venom Princess",
+    "specs": "A pixie from the edge of the known world with the tears of the condemned terrorizing tranquility"
+  },
+  {
+    "id": 376,
+    "name": "Zero Seer",
+    "specs": "A demon emerged from shadows with the sorrow of the betrayed defiling deception"
+  },
+  {
+    "id": 377,
+    "name": "South Mangler",
+    "specs": "A cherub from a haunted mansion with the elegance of a deadly predator compelling knowledge"
+  },
+  {
+    "id": 378,
+    "name": "Feral Gorger",
+    "specs": "A griffon from the tears of a god with the knowledge of forbidden magic obliterating life"
+  },
+  {
+    "id": 379,
+    "name": "Zero Watcher",
+    "specs": "A harpy from a forgotten tomb with the grace of a forgotten deity petrifying poverty"
+  },
+  {
+    "id": 380,
+    "name": "Pegasus Scourge",
+    "specs": "A golem from the shadows of the city with the eyes of the damned devouring rebirth"
+  },
+  {
+    "id": 381,
+    "name": "Ocean Made",
+    "specs": "A hydra from the ashes of a phoenix during a solar eclipse freezing rebirth"
+  },
+  {
+    "id": 382,
+    "name": "Nova Plunderer",
+    "specs": "A griffon from the dark corners of the mind with the love of a tragic hero compelling wealth"
+  },
+  {
+    "id": 383,
+    "name": "Wild Pillager",
+    "specs": "A werewolf from ancient ruins with the mark of the beast consuming retribution"
+  },
+  {
+    "id": 384,
+    "name": "Giant Mutilator",
+    "specs": "A wyvern from a cursed well with the whisper of the wind whispering vengeance"
+  },
+  {
+    "id": 385,
+    "name": "Omega Bulwark",
+    "specs": "A wyvern from a cursed artifact with the hunger of the abyss poisoning captivity"
+  },
+  {
+    "id": 386,
+    "name": "Infinity Guard",
+    "specs": "A djinn from the ashes of a burned village with the guilt of a thousand sins haunting control"
+  },
+  {
+    "id": 387,
+    "name": "Nightmare Wyvern",
+    "specs": "A hydra from the ashes of a fallen empire with the despair of the forsaken intoxicating truth"
+  },
+  {
+    "id": 388,
+    "name": "West Offspring",
+    "specs": "A golem from the dark corners of the mind with the elegance of a deadly predator absorbing peace"
+  },
+  {
+    "id": 389,
+    "name": "Silver Render",
+    "specs": "A werewolf from the edge of reality with the curse of immortality petrifying silence"
+  },
+  {
+    "id": 390,
+    "name": "Chimera Killer",
+    "specs": "A troll from the heart of a storm in an abandoned village cursing poverty"
+  },
+  {
+    "id": 391,
+    "name": "Desert Construct",
+    "specs": "A kraken from ancient ruins with the madness of a seer freezing control"
+  },
+  {
+    "id": 392,
+    "name": "East Defender",
+    "specs": "A lich from the remnants of an old war in an abandoned village distorting love"
+  },
+  {
+    "id": 393,
+    "name": "Core Construct",
+    "specs": "A harpy from a shattered dream of ancient times causing order"
+  },
+  {
+    "id": 394,
+    "name": "Temple Hydra",
+    "specs": "A griffon from the depths of a mine with the glow of the stars terrorizing purity"
+  },
+  {
+    "id": 395,
+    "name": "Master King",
+    "specs": "A pixie from a shattered dream with the patience of time itself desecrating chaos"
+  },
+  {
+    "id": 396,
+    "name": "Nightmare Wall",
+    "specs": "A giant from a meteorite crash with the glow of the stars compelling peace"
+  },
+  {
+    "id": 397,
+    "name": "Ancient Etcher",
+    "specs": "A siren from the frozen wastes with the knowledge of forbidden magic deceiving deception"
+  },
+  {
+    "id": 398,
+    "name": "Abyssal Talon",
+    "specs": "A spirit from the dark corners of the mind with the knowledge of forbidden magic seducing enlightenment"
+  },
+  {
+    "id": 399,
+    "name": "Azure Jumper",
+    "specs": "A specter from a haunted mansion with the legacy of a lost civilization drowning chaos"
+  },
+  {
+    "id": 400,
+    "name": "Bronze Dragon",
+    "specs": "A banshee from a forgotten tomb with the fire of the damned transforming order"
+  },
+  {
+    "id": 401,
+    "name": "Bronze Chaser",
+    "specs": "A leviathan from a cursed artifact with the patience of time itself dissolving chaos"
+  },
+  {
+    "id": 402,
+    "name": "Chaos Forged",
+    "specs": "A djinn from the pages of a forbidden book with the darkness of a black heart poisoning fear"
+  },
+  {
+    "id": 403,
+    "name": "Flesh Wraith",
+    "specs": "A gorgon from the pages of a forbidden book with the cold of the grave possessing oblivion"
+  },
+  {
+    "id": 404,
+    "name": "Keep Giant",
+    "specs": "A pixie from the heart of a maelstrom in the shadow of a great tree deceiving division"
+  },
+  {
+    "id": 405,
+    "name": "Astral Warlock",
+    "specs": "A pixie from the ashes of a phoenix with the mark of the beast engulfing corruption"
+  },
+  {
+    "id": 406,
+    "name": "Beast Keeper",
+    "specs": "A dragon from the ashes of a phoenix with the grace of a forgotten deity mesmerizing annihilation"
+  },
+  {
+    "id": 407,
+    "name": "Phoenix Searcher",
+    "specs": "A djinn from the edge of the known world from the depths of a nightmare suffocating oblivion"
+  },
+  {
+    "id": 408,
+    "name": "Mystic Builder",
+    "specs": "An elemental from the depths of a mine with the serenity of the grave enticing death"
+  },
+  {
+    "id": 409,
+    "name": "Dread Shatterer",
+    "specs": "A satyr from a cursed painting with the love of a tragic hero transforming dominance"
+  },
+  {
+    "id": 410,
+    "name": "Valley Knight",
+    "specs": "A giant from the heart of a storm with the strength of a thousand men drowning love"
+  },
+  {
+    "id": 411,
+    "name": "Infinity Thief",
+    "specs": "A djinn from the abyss from forgotten wars distorting knowledge"
+  },
+  {
+    "id": 412,
+    "name": "Brute Shade",
+    "specs": "A troll from the ashes of a fallen empire with the legacy of a lost civilization drowning balance"
+  },
+  {
+    "id": 413,
+    "name": "Brute Breaker",
+    "specs": "An ogre from the abyss with the ambition of a dark lord enticing harmony"
+  },
+  {
+    "id": 414,
+    "name": "Doom Phantom",
+    "specs": "A wraith from a cursed forest with the tears of the condemned petrifying sacrifice"
+  },
+  {
+    "id": 415,
+    "name": "Zero Crusher",
+    "specs": "A cherub from a meteorite crash with the fury of the elements casting rebirth"
+  },
+  {
+    "id": 416,
+    "name": "Hydra Crafted",
+    "specs": "An apparition from the core of a black hole in the shadow of a great tree seeking destruction"
+  },
+  {
+    "id": 417,
+    "name": "Lunar Robber",
+    "specs": "A cyclops from the depths of the ocean with the laughter of the mad transforming love"
+  },
+  {
+    "id": 418,
+    "name": "Wyrm Glutton",
+    "specs": "A pixie from the depths of a mine with the guilt of a thousand sins compelling doom"
+  },
+  {
+    "id": 419,
+    "name": "Pearl Gorger",
+    "specs": "A ghoul from a cursed painting with the fury of the elements corrupting corruption"
+  },
+  {
+    "id": 420,
+    "name": "Nova Spike",
+    "specs": "A revenant emerged from shadows with the mark of the beast tempting creation"
+  },
+  {
+    "id": 421,
+    "name": "Thunder Climber",
+    "specs": "A manticore from a cursed painting with the cold of the grave mesmerizing chaos"
+  },
+  {
+    "id": 422,
+    "name": "Plague Maker",
+    "specs": "An entity from a cursed well of ancient times seeking growth"
+  },
+  {
+    "id": 423,
+    "name": "Hex Beast",
+    "specs": "A troll from the depths of the ocean with the innocence of a lost child poisoning enlightenment"
+  },
+  {
+    "id": 424,
+    "name": "Plague Forge",
+    "specs": "A hydra from the ashes of a burned village with the eyes of the damned seeking growth"
+  },
+  {
+    "id": 425,
+    "name": "Bridge Obliterator",
+    "specs": "A shade from the silence of the void with the despair of the forsaken ensnaring sacrifice"
+  },
+  {
+    "id": 426,
+    "name": "Eclipse Wall",
+    "specs": "A cyclops from the memories of the forgotten with the mark of the beast dissolving growth"
+  },
+  {
+    "id": 427,
+    "name": "Iron Made",
+    "specs": "A shade from a cursed painting with the madness of a seer compelling silence"
+  },
+  {
+    "id": 428,
+    "name": "Griffin Obliterator",
+    "specs": "A cyclops from a sealed gate with the madness of a seer desecrating deception"
+  },
+  {
+    "id": 429,
+    "name": "Torment Diver",
+    "specs": "A poltergeist from a cursed forest with the tears of the condemned plaguing serenity"
+  },
+  {
+    "id": 430,
+    "name": "Demon Caller",
+    "specs": "A ghoul from the pages of a forbidden book with the power of the elements mesmerizing death"
+  },
+  {
+    "id": 431,
+    "name": "Brute Champion",
+    "specs": "A nymph from the core of a black hole with the curse of immortality enticing chaos"
+  },
+  {
+    "id": 432,
+    "name": "War Warlock",
+    "specs": "A cyclops from the eye of a volcano with the power of the elements manipulating captivity"
+  },
+  {
+    "id": 433,
+    "name": "Sleep Pursuer",
+    "specs": "A sphinx from the remnants of an old war with the power of the elements consuming light"
+  },
+  {
+    "id": 434,
+    "name": "South Pirate",
+    "specs": "A lich from the roots of the world tree with the fire of the damned plaguing tranquility"
+  },
+  {
+    "id": 435,
+    "name": "Nova Crest",
+    "specs": "A centaur from the ashes of a phoenix with the innocence of a lost child enticing wealth"
+  },
+  {
+    "id": 436,
+    "name": "Obsidian King",
+    "specs": "A lich from a shattered dream with the tears of the condemned mesmerizing doom"
+  },
+  {
+    "id": 437,
+    "name": "Frost Engine",
+    "specs": "A centaur from the shadows of the city with the love of a tragic hero transforming unity"
+  },
+  {
+    "id": 438,
+    "name": "Sea Tooth",
+    "specs": "A dryad from the screams of the tortured with the despair of the forsaken seeking suffering"
+  },
+  {
+    "id": 439,
+    "name": "Mountain Bearer",
+    "specs": "A naga from the shadows of the city with the mark of the beast corrupting harmony"
+  },
+  {
+    "id": 440,
+    "name": "Drake Talon",
+    "specs": "A doppelganger from the abyss with the elegance of a deadly predator spreading dominance"
+  },
+  {
+    "id": 441,
+    "name": "Azure Fiend",
+    "specs": "A doppelganger emerged from shadows with the love of a tragic hero mesmerizing power"
+  },
+  {
+    "id": 442,
+    "name": "Swamp Slayer",
+    "specs": "A leviathan from the depths of the ocean in a cursed land spreading purity"
+  },
+  {
+    "id": 443,
+    "name": "Abyss Curse",
+    "specs": "An imp from the ashes of a phoenix with the shadow of the moon poisoning suffering"
+  },
+  {
+    "id": 444,
+    "name": "Infinity Guardian",
+    "specs": "A dragon from the pages of a forbidden book of ancient times whispering dominance"
+  },
+  {
+    "id": 445,
+    "name": "Pit Linked",
+    "specs": "A nymph from a cursed lake with the ambition of a dark lord causing despair"
+  },
+  {
+    "id": 446,
+    "name": "Dream Exterminator",
+    "specs": "A giant from the depths of space from forgotten wars evoking control"
+  },
+  {
+    "id": 447,
+    "name": "Axe Bred",
+    "specs": "A manticore from the edge of the known world with the tears of the condemned devouring creation"
+  },
+  {
+    "id": 448,
+    "name": "Alpha Exterminator",
+    "specs": "A basilisk from the heart of a maelstrom with the cold of the grave intoxicating clarity"
+  },
+  {
+    "id": 449,
+    "name": "Autumn Eraser",
+    "specs": "An entity from the molten core with the darkness of a black heart desecrating wealth"
+  },
+  {
+    "id": 450,
+    "name": "Crimson Spawn",
+    "specs": "A spirit from the abyss with the guilt of a thousand sins haunting dominance"
+  },
+  {
+    "id": 451,
+    "name": "Scale Walker",
+    "specs": "A griffon from the edge of reality in a realm of eternal night devouring annihilation"
+  },
+  {
+    "id": 452,
+    "name": "Key Spine",
+    "specs": "A dragon born of the void with the madness of a seer enchanting salvation"
+  },
+  {
+    "id": 453,
+    "name": "Diamond Scout",
+    "specs": "A gorgon from the depths of the ocean with the serenity of the grave mesmerizing control"
+  },
+  {
+    "id": 454,
+    "name": "Hydra Titan",
+    "specs": "A cerberus from a cursed painting with the legacy of a lost civilization strangling corruption"
+  },
+  {
+    "id": 455,
+    "name": "Galaxy Horn",
+    "specs": "A minotaur from a sealed gate with the patience of time itself dissolving deception"
+  },
+  {
+    "id": 456,
+    "name": "Infinity Conjurer",
+    "specs": "A lich from a meteorite crash with a thirst for vengeance mesmerizing creation"
+  },
+  {
+    "id": 457,
+    "name": "Decay Fortress",
+    "specs": "An ogre from a cursed well with the cold of the grave strangling death"
+  },
+  {
+    "id": 458,
+    "name": "Griffin Knight",
+    "specs": "A demon from the tears of a god with the fury of the elements plaguing life"
+  },
+  {
+    "id": 459,
+    "name": "Castle Bulwark",
+    "specs": "A kraken from the molten core with the love of a tragic hero incinerating corruption"
+  },
+  {
+    "id": 460,
+    "name": "Void Chaser",
+    "specs": "An angel from beneath the sea with the mark of the beast deceiving submission"
+  },
+  {
+    "id": 461,
+    "name": "Eye Changer",
+    "specs": "A werewolf arisen from the crypt with the eyes of the damned whispering power"
+  },
+  {
+    "id": 462,
+    "name": "Comet Builder",
+    "specs": "A minotaur born of the void with the ambition of a dark lord desecrating salvation"
+  },
+  {
+    "id": 463,
+    "name": "Eclipse Champion",
+    "specs": "A spirit from the abyss with the eyes of the damned invoking rebirth"
+  },
+  {
+    "id": 464,
+    "name": "Eclipse Demon",
+    "specs": "An elemental from the heart of a storm with the ambition of a dark lord obliterating order"
+  },
+  {
+    "id": 465,
+    "name": "River Invoker",
+    "specs": "A demon from a haunted mansion in a cursed land enchanting madness"
+  },
+  {
+    "id": 466,
+    "name": "Agony Ripper",
+    "specs": "A werewolf from the darkness of the soul with a heart full of sorrow haunting light"
+  },
+  {
+    "id": 467,
+    "name": "Lunar Annihilator",
+    "specs": "A satyr from the shadows of the city with the patience of time itself manipulating enlightenment"
+  },
+  {
+    "id": 468,
+    "name": "Star Crafter",
+    "specs": "A phantom from a dimensional rift during a solar eclipse causing chaos"
+  },
+  {
+    "id": 469,
+    "name": "Infernal Mutilator",
+    "specs": "A nymph from the sands of time in a world where time stands still deceiving order"
+  },
+  {
+    "id": 470,
+    "name": "Temple Imprisoned",
+    "specs": "A golem from a cursed lake with the knowledge of forbidden magic terrorizing silence"
+  },
+  {
+    "id": 471,
+    "name": "Crimson Kraken",
+    "specs": "A leviathan from a sealed gate with the whisper of the wind cursing dominance"
+  },
+  {
+    "id": 472,
+    "name": "Agony Shatterer",
+    "specs": "A banshee from the edge of reality with the madness of a seer invoking growth"
+  },
+  {
+    "id": 473,
+    "name": "Thunder Absorber",
+    "specs": "A sphinx from the frozen wastes with the love of a tragic hero draining death"
+  },
+  {
+    "id": 474,
+    "name": "Brute Former",
+    "specs": "A satyr from a dimensional rift with the scars of a thousand battles petrifying life"
+  },
+  {
+    "id": 475,
+    "name": "Dungeon King",
+    "specs": "A troll from the silence of the void with the despair of the forsaken entwining darkness"
+  },
+  {
+    "id": 476,
+    "name": "King Diver",
+    "specs": "A necromancer from the heart of a maelstrom with the despair of the forsaken desecrating order"
+  },
+  {
+    "id": 477,
+    "name": "Chimera Axe",
+    "specs": "A manticore from a sealed gate with the despair of the forsaken plaguing sacrifice"
+  },
+  {
+    "id": 478,
+    "name": "Hydra Warlock",
+    "specs": "A minotaur from the ashes of a phoenix in a world where time stands still dissolving balance"
+  },
+  {
+    "id": 479,
+    "name": "Astral Wraith",
+    "specs": "A sphinx from the silence of the void with the shadow of the moon luring oblivion"
+  },
+  {
+    "id": 480,
+    "name": "Abyss Changer",
+    "specs": "A sphinx from the light of a dying star in an abandoned village intoxicating order"
+  },
+  {
+    "id": 481,
+    "name": "Colossus Shade",
+    "specs": "A shade from the abyss with the eyes of the damned desecrating wealth"
+  },
+  {
+    "id": 482,
+    "name": "East Exterminator",
+    "specs": "A golem from a cursed well with the whisper of the wind cursing control"
+  },
+  {
+    "id": 483,
+    "name": "Ruin Fang",
+    "specs": "A ghoul from a sealed gate with the grace of a forgotten deity invoking knowledge"
+  },
+  {
+    "id": 484,
+    "name": "Queen Tearer",
+    "specs": "A vampire from the heart of a storm with the silence of the dead mesmerizing purity"
+  },
+  {
+    "id": 485,
+    "name": "Kraken Master",
+    "specs": "A lich from the frozen wastes with a heart full of sorrow incinerating creation"
+  },
+  {
+    "id": 486,
+    "name": "Jungle Lord",
+    "specs": "A wyvern from the abyss with the rage of a caged beast deceiving fear"
+  },
+  {
+    "id": 487,
+    "name": "West Executioner",
+    "specs": "An angel from ancient ruins with the power of the elements luring peace"
+  },
+  {
+    "id": 488,
+    "name": "Blade Beast",
+    "specs": "A ghoul from the roots of the world tree with a thirst for vengeance deceiving death"
+  },
+  {
+    "id": 489,
+    "name": "Hydra Fang",
+    "specs": "A troll from an ancient curse with the sorrow of the betrayed petrifying captivity"
+  },
+  {
+    "id": 490,
+    "name": "Portal Taker",
+    "specs": "A cerberus from a cursed lake in a cursed land seeking hate"
+  },
+  {
+    "id": 491,
+    "name": "Earth Knight",
+    "specs": "A necromancer from a haunted mansion during a solar eclipse whispering darkness"
+  },
+  {
+    "id": 492,
+    "name": "Castle Blessed",
+    "specs": "A wyvern from the heart of a maelstrom with the knowledge of forbidden magic invoking poverty"
+  },
+  {
+    "id": 493,
+    "name": "Doom Lord",
+    "specs": "A phantom from the edge of reality from the depths of a nightmare spreading hate"
+  },
+  {
+    "id": 494,
+    "name": "Queen Beast",
+    "specs": "A centaur from the depths of a mine from the depths of a nightmare freezing corruption"
+  },
+  {
+    "id": 495,
+    "name": "Sleep Obliterator",
+    "specs": "A spirit from the heart of a maelstrom with the hunger of the abyss weaving tranquility"
+  },
+  {
+    "id": 496,
+    "name": "Wild Slayer",
+    "specs": "A golem from the remnants of an old war with the fire of the damned defiling chaos"
+  },
+  {
+    "id": 497,
+    "name": "Tomb Terminator",
+    "specs": "An imp from ancient ruins with the madness of a seer poisoning freedom"
+  },
+  {
+    "id": 498,
+    "name": "Nebula Giant",
+    "specs": "An entity from a cursed well with the despair of the forsaken mesmerizing hate"
+  },
+  {
+    "id": 499,
+    "name": "Winter Maker",
+    "specs": "A satyr from a meteorite crash with the ambition of a dark lord seeking control"
+  },
+  {
+    "id": 500,
+    "name": "Star Executioner",
+    "specs": "A cyclops from the remnants of an old war with the hunger of the abyss tempting madness"
+  },
+  {
+    "id": 501,
+    "name": "Cosmic Crest",
+    "specs": "A specter from the heart of a maelstrom with the ambition of a dark lord plaguing confusion"
+  },
+  {
+    "id": 502,
+    "name": "Titan Offspring",
+    "specs": "A centaur from the memories of the forgotten with the innocence of a lost child consuming peace"
+  },
+  {
+    "id": 503,
+    "name": "Spike Princess",
+    "specs": "A satyr from the abyss with the scars of a thousand battles desecrating retribution"
+  },
+  {
+    "id": 504,
+    "name": "Hex Eliminator",
+    "specs": "A wraith from the depths of despair with the legacy of a lost civilization deceiving darkness"
+  },
+  {
+    "id": 505,
+    "name": "Comet Summoner",
+    "specs": "A basilisk from the eye of a volcano with the knowledge of forbidden magic draining clarity"
+  },
+  {
+    "id": 506,
+    "name": "Magic Priest",
+    "specs": "A basilisk from the edge of reality with the darkness of a black heart entwining captivity"
+  },
+  {
+    "id": 507,
+    "name": "North Shifter",
+    "specs": "A siren from the depths of a mine with the sorrow of the betrayed corrupting power"
+  },
+  {
+    "id": 508,
+    "name": "Talon Keeper",
+    "specs": "A cherub from a haunted mansion with the innocence of a lost child poisoning chaos"
+  },
+  {
+    "id": 509,
+    "name": "Crystal Chaser",
+    "specs": "A wyvern from the sands of time with a heart full of sorrow absorbing vengeance"
+  },
+  {
+    "id": 510,
+    "name": "Guard Linked",
+    "specs": "A wyvern arisen from the crypt of ancient times haunting sacrifice"
+  },
+  {
+    "id": 511,
+    "name": "Omega Born",
+    "specs": "A phantom from the heart of a maelstrom with the patience of time itself cursing sacrifice"
+  },
+  {
+    "id": 512,
+    "name": "Bone Glutton",
+    "specs": "A dryad from the edge of reality with the ferocity of a storm drowning deception"
+  },
+  {
+    "id": 513,
+    "name": "Seal Plague",
+    "specs": "An entity from a cursed forest with the strength of a thousand men entwining life"
+  },
+  {
+    "id": 514,
+    "name": "Spell Spawn",
+    "specs": "A demon from the eye of a volcano with the ambition of a dark lord draining life"
+  },
+  {
+    "id": 515,
+    "name": "Flesh Shackled",
+    "specs": "A djinn from the silence of the void with the curse of immortality extracting salvation"
+  },
+  {
+    "id": 516,
+    "name": "Spell Writer",
+    "specs": "A shade from a cursed mirror with the ferocity of a storm transforming oblivion"
+  },
+  {
+    "id": 517,
+    "name": "Ice Barrier",
+    "specs": "A manticore from a cursed mirror from forgotten wars desecrating poverty"
+  },
+  {
+    "id": 518,
+    "name": "King Caller",
+    "specs": "A chimera from the depths of a mine with the fury of the elements cursing unity"
+  },
+  {
+    "id": 519,
+    "name": "Spring Morpher",
+    "specs": "A vampire from the silence of the void with the power of the elements evoking submission"
+  },
+  {
+    "id": 520,
+    "name": "Golden Demon",
+    "specs": "A naga from a forgotten tomb with the shadow of the moon invoking annihilation"
+  },
+  {
+    "id": 521,
+    "name": "Comet Tormentor",
+    "specs": "A necromancer from the screams of the tortured with the laughter of the mad freezing enlightenment"
+  },
+  {
+    "id": 522,
+    "name": "Dread Terminator",
+    "specs": "A phantom from the edge of the known world with the ferocity of a storm cursing oblivion"
+  },
+  {
+    "id": 523,
+    "name": "Toxic Colossus",
+    "specs": "A demon from the heart of a storm with the tears of the condemned draining harmony"
+  },
+  {
+    "id": 524,
+    "name": "Nightmare Absorber",
+    "specs": "A specter from the breath of a dragon with the fury of the elements tempting captivity"
+  },
+  {
+    "id": 525,
+    "name": "Pegasus Fortress",
+    "specs": "A minotaur from a cursed well with the eyes of the damned drowning serenity"
+  },
+  {
+    "id": 526,
+    "name": "Pain Pirate",
+    "specs": "A nymph from the edge of the known world with the serenity of the grave suffocating creation"
+  },
+  {
+    "id": 527,
+    "name": "Ghost Prophet",
+    "specs": "An ogre from the depths of despair in an abandoned village weaving dominance"
+  },
+  {
+    "id": 528,
+    "name": "Sight Watcher",
+    "specs": "A troll from beneath the sea in a realm of eternal night enchanting unity"
+  },
+  {
+    "id": 529,
+    "name": "Brute Shackled",
+    "specs": "A siren from beneath the sea with the eyes of the damned seeking silence"
+  },
+  {
+    "id": 530,
+    "name": "Jade Sorcerer",
+    "specs": "A kraken from the ashes of a fallen empire with the whisper of the wind defiling confusion"
+  },
+  {
+    "id": 531,
+    "name": "Beast Splitter",
+    "specs": "A phoenix from the edge of reality with the innocence of a lost child terrorizing clarity"
+  },
+  {
+    "id": 532,
+    "name": "Prime Raider",
+    "specs": "A dragon from ancient ruins in the shadow of a great tree cursing annihilation"
+  },
+  {
+    "id": 533,
+    "name": "Nova Shifter",
+    "specs": "A manticore arisen from the crypt from the time of the first king enticing truth"
+  },
+  {
+    "id": 534,
+    "name": "Summer Digester",
+    "specs": "A leviathan from a cursed well with a dark history possessing deception"
+  },
+  {
+    "id": 535,
+    "name": "Fang Torturer",
+    "specs": "An apparition from an ancient curse with a dark history obliterating control"
+  },
+  {
+    "id": 536,
+    "name": "Horror Wyvern",
+    "specs": "A ghoul from the edge of the known world with the beauty of a fallen angel plaguing silence"
+  },
+  {
+    "id": 537,
+    "name": "Wind Conjurer",
+    "specs": "A revenant from a dimensional rift of ancient times poisoning purity"
+  },
+  {
+    "id": 538,
+    "name": "Dark King",
+    "specs": "A naga from the ashes of a fallen empire in a world where time stands still whispering serenity"
+  },
+  {
+    "id": 539,
+    "name": "Crimson Hammer",
+    "specs": "An angel from the memories of the forgotten with the knowledge of forbidden magic dissolving chaos"
+  },
+  {
+    "id": 540,
+    "name": "Core Torturer",
+    "specs": "A specter born of the void with the patience of time itself casting doom"
+  },
+  {
+    "id": 541,
+    "name": "Altar Searcher",
+    "specs": "A griffon from the whispers of the wind in a realm of eternal night seducing division"
+  },
+  {
+    "id": 542,
+    "name": "Nova Dragon",
+    "specs": "A pixie from the depths of the ocean with the tears of the condemned plaguing corruption"
+  },
+  {
+    "id": 543,
+    "name": "Bone Container",
+    "specs": "A wyvern from the eye of a volcano with the love of a tragic hero defiling division"
+  },
+  {
+    "id": 544,
+    "name": "Talon Champion",
+    "specs": "A minotaur from the shadows of the city with the innocence of a lost child defiling rebirth"
+  },
+  {
+    "id": 545,
+    "name": "Altar Fiend",
+    "specs": "A shade from the edge of reality from forgotten wars manipulating suffering"
+  },
+  {
+    "id": 546,
+    "name": "Decay Wyrm",
+    "specs": "A doppelganger from the remnants of an old war from the era of the gods entwining purity"
+  },
+  {
+    "id": 547,
+    "name": "Tower Strider",
+    "specs": "A pixie from the screams of the tortured with the ferocity of a storm haunting hate"
+  },
+  {
+    "id": 548,
+    "name": "Forest Touched",
+    "specs": "A demon from the abyss with the strength of a thousand men seducing decay"
+  },
+  {
+    "id": 549,
+    "name": "Ruby Master",
+    "specs": "An elemental from the silence of the void with the guilt of a thousand sins corrupting captivity"
+  },
+  {
+    "id": 550,
+    "name": "Chimera Breaker",
+    "specs": "A phantom from a cursed forest with a heart full of sorrow ensnaring despair"
+  },
+  {
+    "id": 551,
+    "name": "Giant Container",
+    "specs": "A ghoul from beneath the sea with the guilt of a thousand sins tempting freedom"
+  },
+  {
+    "id": 552,
+    "name": "Shadow Chained",
+    "specs": "A cyclops from the depths of the ocean with a thirst for vengeance mesmerizing freedom"
+  },
+  {
+    "id": 553,
+    "name": "Crimson Blessed",
+    "specs": "An entity from the remnants of an old war with the power of the elements mesmerizing love"
+  },
+  {
+    "id": 554,
+    "name": "Sapphire Prophet",
+    "specs": "A troll from a haunted mansion with the innocence of a lost child extracting love"
+  },
+  {
+    "id": 555,
+    "name": "Blade Bred",
+    "specs": "An imp from a haunted mansion under a blood moon petrifying corruption"
+  },
+  {
+    "id": 556,
+    "name": "Silver Crafted",
+    "specs": "A lich from the abyss with the sorrow of the betrayed extracting annihilation"
+  },
+  {
+    "id": 557,
+    "name": "Jungle Tracker",
+    "specs": "A naga from the belly of a beast in an abandoned village obliterating annihilation"
+  },
+  {
+    "id": 558,
+    "name": "Savage Witch",
+    "specs": "An entity from beneath the sea with the sorrow of the betrayed haunting oblivion"
+  },
+  {
+    "id": 559,
+    "name": "Throne Witch",
+    "specs": "A dryad from the ashes of a fallen empire with the strength of a thousand men obliterating creation"
+  },
+  {
+    "id": 560,
+    "name": "Sword Bound",
+    "specs": "A werewolf born of the void in a world where time stands still deceiving growth"
+  },
+  {
+    "id": 561,
+    "name": "Kraken King",
+    "specs": "An apparition from a forgotten tomb with the beauty of a fallen angel devouring suffering"
+  },
+  {
+    "id": 562,
+    "name": "Rage Knight",
+    "specs": "A poltergeist from the sands of time with a heart full of sorrow enchanting power"
+  },
+  {
+    "id": 563,
+    "name": "Horror Summit",
+    "specs": "An apparition from the shadows of the city with the rage of a caged beast spreading serenity"
+  },
+  {
+    "id": 564,
+    "name": "Drake Ghost",
+    "specs": "A phantom from an ancient curse with the shadow of the moon manipulating death"
+  },
+  {
+    "id": 565,
+    "name": "Deep Watcher",
+    "specs": "A dryad from an ancient curse in a cursed land deceiving freedom"
+  },
+  {
+    "id": 566,
+    "name": "West Spectre",
+    "specs": "A giant from a cursed forest of ancient times draining chaos"
+  },
+  {
+    "id": 567,
+    "name": "Moon Bringer",
+    "specs": "A phantom from the edge of the known world with the mark of the beast dissolving division"
+  },
+  {
+    "id": 568,
+    "name": "Terror Summoner",
+    "specs": "A chimera from the ashes of a fallen empire in a cursed land annihilating deception"
+  },
+  {
+    "id": 569,
+    "name": "Pearl Tormentor",
+    "specs": "A spirit from the screams of the tortured in a world where time stands still entwining chaos"
+  },
+  {
+    "id": 570,
+    "name": "Scale Crafted",
+    "specs": "A satyr from the dark corners of the mind with the legacy of a lost civilization devouring peace"
+  },
+  {
+    "id": 571,
+    "name": "Doom Peak",
+    "specs": "A golem from the edge of reality with the wisdom of the ancients terrorizing sacrifice"
+  },
+  {
+    "id": 572,
+    "name": "Prison Priest",
+    "specs": "An apparition from the ashes of a phoenix with the wisdom of the ancients plaguing sacrifice"
+  },
+  {
+    "id": 573,
+    "name": "Alpha Bred",
+    "specs": "A cherub from the heart of a maelstrom with the serenity of the grave incinerating peace"
+  },
+  {
+    "id": 574,
+    "name": "Soul Dragon",
+    "specs": "An apparition from the tears of a god in a world where time stands still seeking unity"
+  },
+  {
+    "id": 575,
+    "name": "King Shackled",
+    "specs": "A gorgon from the core of a black hole in a world where time stands still invoking decay"
+  },
+  {
+    "id": 576,
+    "name": "Cosmic Diver",
+    "specs": "A basilisk from the frozen wastes with a voice that commands death suffocating darkness"
+  },
+  {
+    "id": 577,
+    "name": "Dungeon Tearer",
+    "specs": "A wraith from the molten core with a dark history defiling harmony"
+  },
+  {
+    "id": 578,
+    "name": "Ivory Shackled",
+    "specs": "A minotaur from the eye of a volcano with the scars of a thousand battles invoking oblivion"
+  },
+  {
+    "id": 579,
+    "name": "Wild Ghost",
+    "specs": "A cerberus from a cursed mirror with the elegance of a deadly predator whispering serenity"
+  },
+  {
+    "id": 580,
+    "name": "Rage Witch",
+    "specs": "A djinn from the ashes of a fallen empire with the eyes of the damned distorting wealth"
+  },
+  {
+    "id": 581,
+    "name": "Primal Smith",
+    "specs": "A necromancer from the screams of the tortured with a heart full of sorrow drowning corruption"
+  },
+  {
+    "id": 582,
+    "name": "Grave Smasher",
+    "specs": "A troll from a meteorite crash with the tears of the condemned extracting clarity"
+  },
+  {
+    "id": 583,
+    "name": "Shield Ghost",
+    "specs": "A phoenix from the remnants of an old war with the knowledge of forbidden magic possessing love"
+  },
+  {
+    "id": 584,
+    "name": "Iron Crest",
+    "specs": "A basilisk from an ancient curse with the guilt of a thousand sins draining control"
+  },
+  {
+    "id": 585,
+    "name": "Frost Colossus",
+    "specs": "A golem from a dimensional rift with the sorrow of the betrayed obliterating confusion"
+  },
+  {
+    "id": 586,
+    "name": "Dungeon Summit",
+    "specs": "A poltergeist from the molten core under a blood moon demanding destruction"
+  },
+  {
+    "id": 587,
+    "name": "Omega Maker",
+    "specs": "An imp from the frozen wastes with the despair of the forsaken weaving tranquility"
+  },
+  {
+    "id": 588,
+    "name": "Ice Smasher",
+    "specs": "A poltergeist from beneath the sea with the tears of the condemned seeking chaos"
+  },
+  {
+    "id": 589,
+    "name": "Sea Fiend",
+    "specs": "A necromancer from ancient ruins with the ambition of a dark lord causing death"
+  },
+  {
+    "id": 590,
+    "name": "Sapphire Carver",
+    "specs": "A hydra from the shadows of the city with the despair of the forsaken draining rebirth"
+  },
+  {
+    "id": 591,
+    "name": "Ghost Channeler",
+    "specs": "An apparition from the edge of reality from the time of the first king causing salvation"
+  },
+  {
+    "id": 592,
+    "name": "Stone Marauder",
+    "specs": "A chimera from the edge of reality with the wisdom of the ancients demanding power"
+  },
+  {
+    "id": 593,
+    "name": "Heaven Spawn",
+    "specs": "A wraith from the tears of a god with the beauty of a fallen angel mesmerizing balance"
+  },
+  {
+    "id": 594,
+    "name": "Seal Raider",
+    "specs": "A revenant from the heart of a storm from the depths of a nightmare luring hate"
+  },
+  {
+    "id": 595,
+    "name": "Rage Changer",
+    "specs": "An apparition from the ashes of a fallen empire with the strength of a thousand men incinerating rebirth"
+  },
+  {
+    "id": 596,
+    "name": "Curse Feeder",
+    "specs": "A hydra from the core of a black hole with the rage of a caged beast consuming chaos"
+  },
+  {
+    "id": 597,
+    "name": "Plague Bulwark",
+    "specs": "A nymph from the edge of reality in a realm of eternal night enticing doom"
+  },
+  {
+    "id": 598,
+    "name": "Nova Wraith",
+    "specs": "A banshee from the tears of a god with the power of the elements casting rebirth"
+  },
+  {
+    "id": 599,
+    "name": "Crystal Shield",
+    "specs": "A satyr from the ashes of a fallen empire with the ferocity of a storm defiling confusion"
+  },
+  {
+    "id": 600,
+    "name": "Wing Talon",
+    "specs": "A revenant from the belly of a beast with the fire of the damned engulfing darkness"
+  },
+  {
+    "id": 601,
+    "name": "Spell Titan",
+    "specs": "A necromancer from the shadows of the city with the fury of the elements demanding chaos"
+  },
+  {
+    "id": 602,
+    "name": "Fang Spire",
+    "specs": "A pixie from the remnants of an old war with the ferocity of a storm haunting balance"
+  },
+  {
+    "id": 603,
+    "name": "Rot Ripper",
+    "specs": "A minotaur from the shadows of the city with a voice that commands death engulfing dominance"
+  },
+  {
+    "id": 604,
+    "name": "Bone Caller",
+    "specs": "A wyvern from the memories of the forgotten with the scars of a thousand battles consuming destruction"
+  },
+  {
+    "id": 605,
+    "name": "Manticore Smasher",
+    "specs": "A nymph from the molten core with the glow of the stars evoking poverty"
+  },
+  {
+    "id": 606,
+    "name": "Jungle Hydra",
+    "specs": "A hydra from the depths of space with the power of the elements suffocating wealth"
+  },
+  {
+    "id": 607,
+    "name": "Crimson Container",
+    "specs": "A phoenix from the silence of the void with the fury of the elements haunting order"
+  },
+  {
+    "id": 608,
+    "name": "Venom Torturer",
+    "specs": "An entity from the sands of time with the beauty of a fallen angel mesmerizing fear"
+  },
+  {
+    "id": 609,
+    "name": "Phoenix Annihilator",
+    "specs": "A dragon from the depths of a mine with the strength of a thousand men mesmerizing freedom"
+  },
+  {
+    "id": 610,
+    "name": "Ice Forged",
+    "specs": "A doppelganger from the whispers of the wind with the rage of a caged beast suffocating creation"
+  },
+  {
+    "id": 611,
+    "name": "Brute Strider",
+    "specs": "A golem from beneath the sea with the grace of a forgotten deity mesmerizing retribution"
+  },
+  {
+    "id": 612,
+    "name": "Dungeon Invoker",
+    "specs": "A spirit from a cursed painting with the guilt of a thousand sins mesmerizing light"
+  },
+  {
+    "id": 613,
+    "name": "Silver Etcher",
+    "specs": "A specter from the core of a black hole with the strength of a thousand men absorbing clarity"
+  },
+  {
+    "id": 614,
+    "name": "Manticore Taker",
+    "specs": "A harpy from the heart of a storm with a thirst for vengeance weaving unity"
+  },
+  {
+    "id": 615,
+    "name": "Crystal Smith",
+    "specs": "A cherub from the core of a black hole with the shadow of the moon absorbing wealth"
+  },
+  {
+    "id": 616,
+    "name": "Grim Queen",
+    "specs": "A leviathan from the eye of a volcano with the hunger of the abyss mesmerizing hate"
+  },
+  {
+    "id": 617,
+    "name": "Dream Dragon",
+    "specs": "A wyvern from the whispers of the wind from forgotten wars poisoning tranquility"
+  },
+  {
+    "id": 618,
+    "name": "Deep Jumper",
+    "specs": "A wraith from a cursed painting in the shadow of a great tree causing submission"
+  },
+  {
+    "id": 619,
+    "name": "Drake Jumper",
+    "specs": "An elemental from the depths of the ocean with the mark of the beast entwining silence"
+  },
+  {
+    "id": 620,
+    "name": "Portal Trapped",
+    "specs": "A nymph from the edge of the known world with the hunger of the abyss mesmerizing unity"
+  },
+  {
+    "id": 621,
+    "name": "Spike Jumper",
+    "specs": "A shade emerged from shadows with the guilt of a thousand sins terrorizing madness"
+  },
+  {
+    "id": 622,
+    "name": "Keep Born",
+    "specs": "A manticore from the depths of space with the madness of a seer poisoning harmony"
+  },
+  {
+    "id": 623,
+    "name": "Temple Shifter",
+    "specs": "An angel from the roots of the world tree with the strength of a thousand men demanding annihilation"
+  },
+  {
+    "id": 624,
+    "name": "Brute Warlock",
+    "specs": "An angel from the sands of time with the grace of a forgotten deity draining purity"
+  },
+  {
+    "id": 625,
+    "name": "Curse Eliminator",
+    "specs": "A cerberus from the heart of a storm in a cursed land desecrating retribution"
+  },
+  {
+    "id": 626,
+    "name": "Pit Bred",
+    "specs": "A specter from the shadows of the city from the depths of a nightmare deceiving clarity"
+  },
+  {
+    "id": 627,
+    "name": "Mystic Consumer",
+    "specs": "A kraken from the edge of reality with a dark history demanding creation"
+  },
+  {
+    "id": 628,
+    "name": "Phoenix Shield",
+    "specs": "A doppelganger born of the void with the ambition of a dark lord casting decay"
+  },
+  {
+    "id": 629,
+    "name": "Cosmic Follower",
+    "specs": "A minotaur from a haunted mansion during a solar eclipse haunting destruction"
+  },
+  {
+    "id": 630,
+    "name": "Soul Swimmer",
+    "specs": "A kraken from the ashes of a burned village with the glow of the stars strangling deception"
+  },
+  {
+    "id": 631,
+    "name": "Meteor Thorn",
+    "specs": "An imp from the sands of time in the shadow of a great tree consuming corruption"
+  },
+  {
+    "id": 632,
+    "name": "Helm Channeler",
+    "specs": "A unicorn born of the void with the laughter of the mad deceiving rebirth"
+  },
+  {
+    "id": 633,
+    "name": "Dusk Moulder",
+    "specs": "A shade from the pages of a forbidden book with the legacy of a lost civilization seeking division"
+  },
+  {
+    "id": 634,
+    "name": "Dungeon Cursed",
+    "specs": "A naga from the edge of reality with the guilt of a thousand sins petrifying tranquility"
+  },
+  {
+    "id": 635,
+    "name": "Manticore Punisher",
+    "specs": "A spirit from the depths of a mine with the legacy of a lost civilization whispering clarity"
+  },
+  {
+    "id": 636,
+    "name": "Ghost Devourer",
+    "specs": "A manticore from the memories of the forgotten with the serenity of the grave invoking tranquility"
+  },
+  {
+    "id": 637,
+    "name": "Sphinx Breaker",
+    "specs": "A werewolf from the silence of the void with the whisper of the wind haunting destruction"
+  },
+  {
+    "id": 638,
+    "name": "Mystic Racer",
+    "specs": "A manticore from the eye of a volcano with a thirst for vengeance mesmerizing growth"
+  },
+  {
+    "id": 639,
+    "name": "Ancient Thief",
+    "specs": "A djinn from the heart of a maelstrom with the love of a tragic hero demanding peace"
+  },
+  {
+    "id": 640,
+    "name": "Drake Wraith",
+    "specs": "A ghoul from the ashes of a burned village with the laughter of the mad poisoning knowledge"
+  },
+  {
+    "id": 641,
+    "name": "Copper Queen",
+    "specs": "A necromancer from a cursed well with the ferocity of a storm desecrating decay"
+  },
+  {
+    "id": 642,
+    "name": "Scale Smith",
+    "specs": "A werewolf from ancient ruins with the darkness of a black heart draining submission"
+  },
+  {
+    "id": 643,
+    "name": "Prison Cleaver",
+    "specs": "A poltergeist from a forgotten tomb with the elegance of a deadly predator absorbing oblivion"
+  },
+  {
+    "id": 644,
+    "name": "Scale Drainer",
+    "specs": "A golem from the echoes of a past life with the silence of the dead terrorizing control"
+  },
+  {
+    "id": 645,
+    "name": "Heaven Seeker",
+    "specs": "A vampire from the roots of the world tree in an abandoned village poisoning darkness"
+  },
+  {
+    "id": 646,
+    "name": "Talon Conduit",
+    "specs": "A ghoul from the roots of the world tree with the curse of immortality petrifying poverty"
+  },
+  {
+    "id": 647,
+    "name": "Blaze Bulwark",
+    "specs": "A chimera from the molten core with the sorrow of the betrayed obliterating doom"
+  },
+  {
+    "id": 648,
+    "name": "Phoenix Ravager",
+    "specs": "A nymph from the heart of a maelstrom with the grace of a forgotten deity distorting corruption"
+  },
+  {
+    "id": 649,
+    "name": "Titan Necromancer",
+    "specs": "A pixie from the ashes of a phoenix with the shadow of the moon defiling deception"
+  },
+  {
+    "id": 650,
+    "name": "Frost Shatterer",
+    "specs": "A minotaur from the depths of space with the silence of the dead defiling balance"
+  },
+  {
+    "id": 651,
+    "name": "Jade Horn",
+    "specs": "A minotaur from the sands of time with the ambition of a dark lord haunting freedom"
+  },
+  {
+    "id": 652,
+    "name": "Dusk Thief",
+    "specs": "A harpy from the silence of the void with the tears of the condemned whispering life"
+  },
+  {
+    "id": 653,
+    "name": "Helm Sorcerer",
+    "specs": "A cyclops from a cursed mirror with the tears of the condemned devouring death"
+  },
+  {
+    "id": 654,
+    "name": "Key Cleaver",
+    "specs": "A basilisk born of the void with the fire of the damned obliterating growth"
+  },
+  {
+    "id": 655,
+    "name": "Abyssal Torturer",
+    "specs": "A wraith from the core of a black hole with the ferocity of a storm enchanting vengeance"
+  },
+  {
+    "id": 656,
+    "name": "Prison Sorcerer",
+    "specs": "A sphinx from the silence of the void with the laughter of the mad ensnaring wealth"
+  },
+  {
+    "id": 657,
+    "name": "Night Terminator",
+    "specs": "A djinn from the tears of a god with the despair of the forsaken casting light"
+  },
+  {
+    "id": 658,
+    "name": "Dread Shade",
+    "specs": "An ogre from the light of a dying star with a heart full of sorrow distorting growth"
+  },
+  {
+    "id": 659,
+    "name": "Comet Feeder",
+    "specs": "A siren from a shattered dream with the elegance of a deadly predator distorting peace"
+  },
+  {
+    "id": 660,
+    "name": "Phoenix Witch",
+    "specs": "A lich from a cursed well with the patience of time itself freezing salvation"
+  },
+  {
+    "id": 661,
+    "name": "Ghost Scout",
+    "specs": "A griffon from the depths of a mine with the tears of the condemned mesmerizing harmony"
+  },
+  {
+    "id": 662,
+    "name": "Dread Sword",
+    "specs": "A unicorn born of the void with the knowledge of forbidden magic engulfing enlightenment"
+  },
+  {
+    "id": 663,
+    "name": "Bone Shatterer",
+    "specs": "An angel from the darkness of the soul from the era of the gods devouring chaos"
+  },
+  {
+    "id": 664,
+    "name": "Basilisk Protector",
+    "specs": "A doppelganger from the shadows of the city from the era of the gods drowning division"
+  },
+  {
+    "id": 665,
+    "name": "Valley Shatterer",
+    "specs": "An apparition from ancient ruins with a heart full of sorrow ensnaring fear"
+  },
+  {
+    "id": 666,
+    "name": "Key Sworn",
+    "specs": "A gorgon from a cursed painting with the silence of the dead enticing fear"
+  },
+  {
+    "id": 667,
+    "name": "Ivory King",
+    "specs": "A centaur from the breath of a dragon with the madness of a seer poisoning salvation"
+  },
+  {
+    "id": 668,
+    "name": "Pearl Torturer",
+    "specs": "A cerberus from a cursed well with the patience of time itself tempting madness"
+  },
+  {
+    "id": 669,
+    "name": "Sleep Ripper",
+    "specs": "A dragon from a shattered dream with the scars of a thousand battles entwining dominance"
+  },
+  {
+    "id": 670,
+    "name": "Dungeon Devil",
+    "specs": "A cherub from a cursed painting with the grace of a forgotten deity corrupting sacrifice"
+  },
+  {
+    "id": 671,
+    "name": "Plague Morpher",
+    "specs": "An imp from the abyss with the tears of the condemned luring love"
+  },
+  {
+    "id": 672,
+    "name": "Earth Jumper",
+    "specs": "A minotaur from a cursed artifact with the patience of time itself casting power"
+  },
+  {
+    "id": 673,
+    "name": "Divine Pirate",
+    "specs": "A siren arisen from the crypt with the patience of time itself haunting dominance"
+  },
+  {
+    "id": 674,
+    "name": "Pain Devourer",
+    "specs": "A dryad from an ancient curse with the strength of a thousand men tempting decay"
+  },
+  {
+    "id": 675,
+    "name": "Infinity Princess",
+    "specs": "A vampire from a cursed artifact with the tears of the condemned manipulating enlightenment"
+  },
+  {
+    "id": 676,
+    "name": "Terror Scout",
+    "specs": "A dryad from the sands of time with the serenity of the grave ensnaring captivity"
+  },
+  {
+    "id": 677,
+    "name": "Golden Crown",
+    "specs": "A revenant from a haunted mansion with the legacy of a lost civilization haunting serenity"
+  },
+  {
+    "id": 678,
+    "name": "Lock Digester",
+    "specs": "A dragon from a cursed artifact with the elegance of a deadly predator casting balance"
+  },
+  {
+    "id": 679,
+    "name": "Eternal Container",
+    "specs": "A leviathan from a cursed painting from the time of the first king manipulating silence"
+  },
+  {
+    "id": 680,
+    "name": "Moon Eraser",
+    "specs": "A kraken from a meteorite crash with the cold of the grave distorting despair"
+  },
+  {
+    "id": 681,
+    "name": "Seal Sentinel",
+    "specs": "A nymph from a meteorite crash with the guilt of a thousand sins freezing death"
+  },
+  {
+    "id": 682,
+    "name": "Wind Shield",
+    "specs": "A werewolf from a shattered dream from forgotten wars draining tranquility"
+  },
+  {
+    "id": 683,
+    "name": "Griffin Blessed",
+    "specs": "A necromancer from the dark corners of the mind with the silence of the dead petrifying truth"
+  },
+  {
+    "id": 684,
+    "name": "Ocean Eliminator",
+    "specs": "A wraith from beneath the sea with the wisdom of the ancients enticing creation"
+  },
+  {
+    "id": 685,
+    "name": "Agony Crusher",
+    "specs": "An imp from the sands of time with the rage of a caged beast luring clarity"
+  },
+  {
+    "id": 686,
+    "name": "Horn Stalker",
+    "specs": "A harpy from the abyss with the legacy of a lost civilization desecrating corruption"
+  },
+  {
+    "id": 687,
+    "name": "Master Sword",
+    "specs": "A dragon from a cursed well with a heart full of sorrow mesmerizing balance"
+  },
+  {
+    "id": 688,
+    "name": "Swamp Drainer",
+    "specs": "A unicorn from a meteorite crash with the shadow of the moon terrorizing corruption"
+  },
+  {
+    "id": 689,
+    "name": "Rift Scout",
+    "specs": "An entity from ancient ruins with the guilt of a thousand sins invoking tranquility"
+  },
+  {
+    "id": 690,
+    "name": "War Rampart",
+    "specs": "A manticore from the abyss with the madness of a seer whispering rebirth"
+  },
+  {
+    "id": 691,
+    "name": "Silver Shield",
+    "specs": "A wraith from the remnants of an old war with the elegance of a deadly predator drowning clarity"
+  },
+  {
+    "id": 692,
+    "name": "Kraken Hunter",
+    "specs": "A specter from the shadows of the city with the shadow of the moon extracting death"
+  },
+  {
+    "id": 693,
+    "name": "Desert Giant",
+    "specs": "A centaur from the molten core with the elegance of a deadly predator draining submission"
+  },
+  {
+    "id": 694,
+    "name": "Castle Sentinel",
+    "specs": "A shade from the sands of time of ancient times compelling silence"
+  },
+  {
+    "id": 695,
+    "name": "Sapphire Runner",
+    "specs": "A golem from an ancient curse with the scars of a thousand battles mesmerizing truth"
+  },
+  {
+    "id": 696,
+    "name": "Soul Tracker",
+    "specs": "A banshee from the sands of time with the silence of the dead tempting growth"
+  },
+  {
+    "id": 697,
+    "name": "Blood Conduit",
+    "specs": "A basilisk from the remnants of an old war with the shadow of the moon enticing chaos"
+  },
+  {
+    "id": 698,
+    "name": "Prison Machine",
+    "specs": "A ghoul from the shadows of the city with the scars of a thousand battles spreading knowledge"
+  },
+  {
+    "id": 699,
+    "name": "Spirit Chaser",
+    "specs": "A specter from the edge of reality with the love of a tragic hero mesmerizing vengeance"
+  },
+  {
+    "id": 700,
+    "name": "Golden Curse",
+    "specs": "A poltergeist from the roots of the world tree with the rage of a caged beast intoxicating life"
+  },
+  {
+    "id": 701,
+    "name": "Dark Spawn",
+    "specs": "A lich from the remnants of an old war in the shadow of a great tree seducing chaos"
+  },
+  {
+    "id": 702,
+    "name": "Wind Former",
+    "specs": "An angel from a dimensional rift with the patience of time itself spreading oblivion"
+  },
+  {
+    "id": 703,
+    "name": "Wyrm Punisher",
+    "specs": "A lich from the depths of space with a dark history drowning order"
+  },
+  {
+    "id": 704,
+    "name": "Key Wizard",
+    "specs": "A basilisk from the memories of the forgotten with a voice that commands death demanding wealth"
+  },
+  {
+    "id": 705,
+    "name": "Rot Invoker",
+    "specs": "A necromancer from the heart of a storm with the scars of a thousand battles strangling vengeance"
+  },
+  {
+    "id": 706,
+    "name": "Shadow Thief",
+    "specs": "A satyr from the breath of a dragon with the serenity of the grave drowning wealth"
+  },
+  {
+    "id": 707,
+    "name": "Void Stealer",
+    "specs": "A shade from the depths of a mine with the power of the elements haunting dominance"
+  },
+  {
+    "id": 708,
+    "name": "Abyss Bearer",
+    "specs": "An imp from the pages of a forbidden book with the tears of the condemned freezing submission"
+  },
+  {
+    "id": 709,
+    "name": "Amber Diver",
+    "specs": "A chimera from the molten core with the guilt of a thousand sins intoxicating fear"
+  },
+  {
+    "id": 710,
+    "name": "Celestial Seeker",
+    "specs": "An angel from the memories of the forgotten with the cold of the grave desecrating death"
+  },
+  {
+    "id": 711,
+    "name": "Core Wyvern",
+    "specs": "A leviathan from a cursed lake under a blood moon deceiving captivity"
+  },
+  {
+    "id": 712,
+    "name": "Arcane Serpent",
+    "specs": "A necromancer from the remnants of an old war during a solar eclipse draining chaos"
+  },
+  {
+    "id": 713,
+    "name": "Death Queen",
+    "specs": "A werewolf from the remnants of an old war under a blood moon intoxicating creation"
+  },
+  {
+    "id": 714,
+    "name": "Queen Shield",
+    "specs": "A shade from the edge of reality with the patience of time itself transforming silence"
+  },
+  {
+    "id": 715,
+    "name": "East Thief",
+    "specs": "A wyvern from a forgotten tomb with the curse of immortality enticing death"
+  },
+  {
+    "id": 716,
+    "name": "Autumn Smith",
+    "specs": "A siren emerged from shadows with a thirst for vengeance plaguing hate"
+  },
+  {
+    "id": 717,
+    "name": "Divine Trapped",
+    "specs": "A necromancer from the core of a black hole from the depths of a nightmare extracting power"
+  },
+  {
+    "id": 718,
+    "name": "Zero Torturer",
+    "specs": "A lich from the pages of a forbidden book with a dark history consuming control"
+  },
+  {
+    "id": 719,
+    "name": "Rot Wyrm",
+    "specs": "A doppelganger from the pages of a forbidden book with the ambition of a dark lord casting chaos"
+  },
+  {
+    "id": 720,
+    "name": "Core Follower",
+    "specs": "A shade from the sands of time in a realm of eternal night drowning rebirth"
+  },
+  {
+    "id": 721,
+    "name": "Diamond Strider",
+    "specs": "A demon from ancient ruins from the era of the gods causing chaos"
+  },
+  {
+    "id": 722,
+    "name": "Bone Ripper",
+    "specs": "A wraith from the depths of the ocean in an abandoned village corrupting chaos"
+  },
+  {
+    "id": 723,
+    "name": "Keep Thief",
+    "specs": "An elemental from a cursed mirror during a solar eclipse demanding clarity"
+  },
+  {
+    "id": 724,
+    "name": "River Chained",
+    "specs": "A vampire from a forgotten tomb in a realm of eternal night suffocating despair"
+  },
+  {
+    "id": 725,
+    "name": "Agony Wraith",
+    "specs": "A minotaur from a cursed well from the depths of a nightmare casting purity"
+  },
+  {
+    "id": 726,
+    "name": "Basilisk Pursuer",
+    "specs": "An elemental from the silence of the void with the mark of the beast absorbing rebirth"
+  },
+  {
+    "id": 727,
+    "name": "Primal Princess",
+    "specs": "A ghoul from the frozen wastes with the despair of the forsaken poisoning submission"
+  },
+  {
+    "id": 728,
+    "name": "Silver Demon",
+    "specs": "A giant from the edge of the known world of ancient times enchanting order"
+  },
+  {
+    "id": 729,
+    "name": "Claw Sorcerer",
+    "specs": "An elemental from the heart of a maelstrom in an abandoned village mesmerizing serenity"
+  },
+  {
+    "id": 730,
+    "name": "Alpha Shaper",
+    "specs": "A golem from the molten core with the serenity of the grave cursing enlightenment"
+  },
+  {
+    "id": 731,
+    "name": "Behemoth Eraser",
+    "specs": "A sphinx from the dark corners of the mind with the power of the elements evoking knowledge"
+  },
+  {
+    "id": 732,
+    "name": "Cave Shade",
+    "specs": "A dryad from the edge of reality from the time of the first king poisoning creation"
+  },
+  {
+    "id": 733,
+    "name": "Lock Marauder",
+    "specs": "A necromancer from the edge of the known world with the elegance of a deadly predator spreading serenity"
+  },
+  {
+    "id": 734,
+    "name": "Gate Bandit",
+    "specs": "A revenant from the ashes of a fallen empire with the elegance of a deadly predator entwining purity"
+  },
+  {
+    "id": 735,
+    "name": "Spring Vessel",
+    "specs": "A spirit from the remnants of an old war with a voice that commands death luring annihilation"
+  },
+  {
+    "id": 736,
+    "name": "Basilisk Glutton",
+    "specs": "An entity from the heart of a storm with the eyes of the damned manipulating chaos"
+  },
+  {
+    "id": 737,
+    "name": "Swamp Shifter",
+    "specs": "A naga from an ancient curse with a dark history desecrating fear"
+  },
+  {
+    "id": 738,
+    "name": "Ruin Executioner",
+    "specs": "A naga from a cursed well with the shadow of the moon whispering vengeance"
+  },
+  {
+    "id": 739,
+    "name": "Mystic Sentinel",
+    "specs": "A cerberus from the memories of the forgotten with the laughter of the mad terrorizing sacrifice"
+  },
+  {
+    "id": 740,
+    "name": "Frost Channeler",
+    "specs": "A werewolf from the eye of a volcano with the love of a tragic hero manipulating unity"
+  },
+  {
+    "id": 741,
+    "name": "Nightmare Conduit",
+    "specs": "A leviathan from the eye of a volcano with the power of the elements mesmerizing love"
+  },
+  {
+    "id": 742,
+    "name": "Titan Killer",
+    "specs": "A wraith from a cursed painting of ancient times transforming tranquility"
+  },
+  {
+    "id": 743,
+    "name": "Autumn Robber",
+    "specs": "A golem from the darkness of the soul in a world where time stands still causing growth"
+  },
+  {
+    "id": 744,
+    "name": "Watch Forged",
+    "specs": "An apparition from the edge of the known world with the power of the elements poisoning tranquility"
+  },
+  {
+    "id": 745,
+    "name": "Valley Watcher",
+    "specs": "An imp from the belly of a beast from the time of the first king desecrating poverty"
+  },
+  {
+    "id": 746,
+    "name": "Queen Morpher",
+    "specs": "A leviathan from the molten core with the silence of the dead seeking dominance"
+  },
+  {
+    "id": 747,
+    "name": "Curse Eater",
+    "specs": "A spirit from the edge of reality during a solar eclipse whispering captivity"
+  },
+  {
+    "id": 748,
+    "name": "Doom Annihilator",
+    "specs": "An apparition born of the void with the tears of the condemned petrifying oblivion"
+  },
+  {
+    "id": 749,
+    "name": "Valley Digester",
+    "specs": "A specter from the depths of space with the wisdom of the ancients drowning silence"
+  },
+  {
+    "id": 750,
+    "name": "Valley Crafted",
+    "specs": "A shade from the whispers of the wind with the hunger of the abyss invoking chaos"
+  },
+  {
+    "id": 751,
+    "name": "Frost Destroyer",
+    "specs": "A harpy from the sands of time with the eyes of the damned engulfing oblivion"
+  },
+  {
+    "id": 752,
+    "name": "Cave Devourer",
+    "specs": "An angel from the heart of a storm under a blood moon weaving suffering"
+  },
+  {
+    "id": 753,
+    "name": "Sight Titan",
+    "specs": "A kraken from a cursed painting with the laughter of the mad casting clarity"
+  },
+  {
+    "id": 754,
+    "name": "Wing Prince",
+    "specs": "A shade from the eye of a volcano with the glow of the stars casting purity"
+  },
+  {
+    "id": 755,
+    "name": "Eternal Racer",
+    "specs": "An ogre from the echoes of a past life from the time of the first king tempting suffering"
+  },
+  {
+    "id": 756,
+    "name": "Fear Shade",
+    "specs": "A werewolf from the whispers of the wind with the sorrow of the betrayed casting chaos"
+  },
+  {
+    "id": 757,
+    "name": "Ancient Conduit",
+    "specs": "A chimera from the echoes of a past life in a cursed land invoking doom"
+  },
+  {
+    "id": 758,
+    "name": "Frost Barrier",
+    "specs": "An entity from the pages of a forbidden book with the scars of a thousand battles absorbing unity"
+  },
+  {
+    "id": 759,
+    "name": "Savage Gorger",
+    "specs": "A kraken from a sealed gate from the era of the gods ensnaring vengeance"
+  },
+  {
+    "id": 760,
+    "name": "Onyx Climber",
+    "specs": "A banshee from the silence of the void with the guilt of a thousand sins tempting decay"
+  },
+  {
+    "id": 761,
+    "name": "West Finder",
+    "specs": "A troll from the depths of despair with the sorrow of the betrayed invoking power"
+  },
+  {
+    "id": 762,
+    "name": "Nightmare Torturer",
+    "specs": "A demon from the edge of the known world from the time of the first king extracting oblivion"
+  },
+  {
+    "id": 763,
+    "name": "Crypt Walker",
+    "specs": "A cerberus from the whispers of the wind of ancient times evoking light"
+  },
+  {
+    "id": 764,
+    "name": "Fort Ripper",
+    "specs": "A manticore from the eye of a volcano in a world where time stands still draining tranquility"
+  },
+  {
+    "id": 765,
+    "name": "Helm Racer",
+    "specs": "A spirit from the frozen wastes in a cursed land distorting serenity"
+  },
+  {
+    "id": 766,
+    "name": "Storm Devil",
+    "specs": "A naga from the light of a dying star from the time of the first king strangling unity"
+  },
+  {
+    "id": 767,
+    "name": "Shadow Priest",
+    "specs": "A shade from the memories of the forgotten with the power of the elements freezing destruction"
+  },
+  {
+    "id": 768,
+    "name": "Golden Changer",
+    "specs": "A poltergeist from a cursed forest from the era of the gods absorbing growth"
+  },
+  {
+    "id": 769,
+    "name": "Amber Tower",
+    "specs": "A minotaur from beneath the sea with the silence of the dead enticing dominance"
+  },
+  {
+    "id": 770,
+    "name": "Blight Mutilator",
+    "specs": "A wraith from the remnants of an old war with the strength of a thousand men corrupting darkness"
+  },
+  {
+    "id": 771,
+    "name": "Abyssal Knight",
+    "specs": "An elemental from ancient ruins with the serenity of the grave terrorizing corruption"
+  },
+  {
+    "id": 772,
+    "name": "Bone Breaker",
+    "specs": "A pixie from a cursed painting in an abandoned village drowning sacrifice"
+  },
+  {
+    "id": 773,
+    "name": "Hex Pursuer",
+    "specs": "A griffon from a meteorite crash with the wisdom of the ancients devouring order"
+  },
+  {
+    "id": 774,
+    "name": "Infernal Tormentor",
+    "specs": "An apparition from the molten core with a thirst for vengeance mesmerizing balance"
+  },
+  {
+    "id": 775,
+    "name": "Feral Changer",
+    "specs": "A nymph from the ashes of a fallen empire in a realm of eternal night corrupting oblivion"
+  },
+  {
+    "id": 776,
+    "name": "Tomb Dragon",
+    "specs": "A shade from the whispers of the wind with the innocence of a lost child manipulating oblivion"
+  },
+  {
+    "id": 777,
+    "name": "Demon Moulder",
+    "specs": "A cyclops from the belly of a beast with the legacy of a lost civilization poisoning suffering"
+  },
+  {
+    "id": 778,
+    "name": "Pegasus Invoker",
+    "specs": "A griffon from the pages of a forbidden book with the strength of a thousand men manipulating deception"
+  },
+  {
+    "id": 779,
+    "name": "Storm Watcher",
+    "specs": "A vampire from the depths of a mine with the sorrow of the betrayed defiling annihilation"
+  },
+  {
+    "id": 780,
+    "name": "Dusk Carver",
+    "specs": "A griffon from the breath of a dragon with the madness of a seer plaguing dominance"
+  },
+  {
+    "id": 781,
+    "name": "Armor Caller",
+    "specs": "A cyclops from the screams of the tortured with the strength of a thousand men compelling control"
+  },
+  {
+    "id": 782,
+    "name": "Drake Annihilator",
+    "specs": "A manticore from the roots of the world tree with the power of the elements manipulating decay"
+  },
+  {
+    "id": 783,
+    "name": "Omega Seeker",
+    "specs": "A harpy from a meteorite crash with the ambition of a dark lord extracting life"
+  },
+  {
+    "id": 784,
+    "name": "Night Crusher",
+    "specs": "A basilisk arisen from the crypt with the scars of a thousand battles compelling truth"
+  },
+  {
+    "id": 785,
+    "name": "Star Linked",
+    "specs": "A phoenix from beneath the sea with the fire of the damned consuming silence"
+  },
+  {
+    "id": 786,
+    "name": "Scale Tooth",
+    "specs": "A cherub from the molten core of ancient times extracting division"
+  },
+  {
+    "id": 787,
+    "name": "Cave Drake",
+    "specs": "A basilisk from the ashes of a fallen empire with the despair of the forsaken causing decay"
+  },
+  {
+    "id": 788,
+    "name": "Crystal Executioner",
+    "specs": "A necromancer from a dimensional rift from the depths of a nightmare engulfing order"
+  },
+  {
+    "id": 789,
+    "name": "Obsidian Horn",
+    "specs": "A djinn from the depths of the ocean with the grace of a forgotten deity causing chaos"
+  },
+  {
+    "id": 790,
+    "name": "Blood Taker",
+    "specs": "An entity from a cursed painting with the wisdom of the ancients casting dominance"
+  },
+  {
+    "id": 791,
+    "name": "Dragon Kraken",
+    "specs": "A cherub from the breath of a dragon with the cold of the grave drowning truth"
+  },
+  {
+    "id": 792,
+    "name": "Winter Watcher",
+    "specs": "A necromancer from a cursed forest with the sorrow of the betrayed annihilating rebirth"
+  },
+  {
+    "id": 793,
+    "name": "Silver Prince",
+    "specs": "A chimera from the ashes of a burned village with the rage of a caged beast transforming rebirth"
+  },
+  {
+    "id": 794,
+    "name": "Castle Killer",
+    "specs": "A manticore from the edge of the known world with the power of the elements incinerating creation"
+  },
+  {
+    "id": 795,
+    "name": "Dusk Glutton",
+    "specs": "A chimera from the eye of a volcano with the patience of time itself whispering truth"
+  },
+  {
+    "id": 796,
+    "name": "Dream Executioner",
+    "specs": "An angel from the heart of a maelstrom with the curse of immortality spreading tranquility"
+  },
+  {
+    "id": 797,
+    "name": "Fang Axe",
+    "specs": "An imp from the core of a black hole with the shadow of the moon casting deception"
+  },
+  {
+    "id": 798,
+    "name": "Horn Linked",
+    "specs": "A centaur from the frozen wastes with a dark history invoking peace"
+  },
+  {
+    "id": 799,
+    "name": "Slave Invoker",
+    "specs": "A djinn from a meteorite crash in a world where time stands still freezing poverty"
+  },
+  {
+    "id": 800,
+    "name": "Phoenix Conjurer",
+    "specs": "A doppelganger from the breath of a dragon with the tears of the condemned consuming balance"
+  },
+  {
+    "id": 801,
+    "name": "Horn Lord",
+    "specs": "A griffon from the heart of a maelstrom with the whisper of the wind desecrating captivity"
+  },
+  {
+    "id": 802,
+    "name": "Armor Executioner",
+    "specs": "A cyclops from a cursed well from the era of the gods absorbing poverty"
+  },
+  {
+    "id": 803,
+    "name": "Eye Pirate",
+    "specs": "A gorgon from the heart of a maelstrom of ancient times suffocating captivity"
+  },
+  {
+    "id": 804,
+    "name": "Kraken Defender",
+    "specs": "A kraken from an ancient curse with the sorrow of the betrayed evoking freedom"
+  },
+  {
+    "id": 805,
+    "name": "Shadow Jumper",
+    "specs": "A hydra from the dark corners of the mind with the laughter of the mad mesmerizing order"
+  },
+  {
+    "id": 806,
+    "name": "Stone Changer",
+    "specs": "A spirit from the memories of the forgotten with a thirst for vengeance corrupting decay"
+  },
+  {
+    "id": 807,
+    "name": "Beast Bringer",
+    "specs": "A cyclops from the eye of a volcano during a solar eclipse extracting knowledge"
+  },
+  {
+    "id": 808,
+    "name": "River Searcher",
+    "specs": "A hydra emerged from shadows with the beauty of a fallen angel cursing fear"
+  },
+  {
+    "id": 809,
+    "name": "Acid Ravager",
+    "specs": "A wraith from the depths of the ocean in a cursed land plaguing destruction"
+  },
+  {
+    "id": 810,
+    "name": "Ivory Summoner",
+    "specs": "A wyvern from a shattered dream with the patience of time itself tempting captivity"
+  },
+  {
+    "id": 811,
+    "name": "Elder Knight",
+    "specs": "An entity from the ashes of a fallen empire with the glow of the stars annihilating love"
+  },
+  {
+    "id": 812,
+    "name": "Sword Strider",
+    "specs": "A leviathan from the belly of a beast in an abandoned village freezing salvation"
+  },
+  {
+    "id": 813,
+    "name": "Agony Summoner",
+    "specs": "A griffon born of the void with the ambition of a dark lord engulfing peace"
+  },
+  {
+    "id": 814,
+    "name": "Queen Pursuer",
+    "specs": "A manticore from the depths of despair with the despair of the forsaken defiling destruction"
+  },
+  {
+    "id": 815,
+    "name": "Drake Blade",
+    "specs": "A chimera from the roots of the world tree in a realm of eternal night engulfing power"
+  },
+  {
+    "id": 816,
+    "name": "Castle Linked",
+    "specs": "A hydra from the edge of reality during a solar eclipse haunting control"
+  },
+  {
+    "id": 817,
+    "name": "King Chaser",
+    "specs": "A wyvern from the edge of the known world with the eyes of the damned casting death"
+  },
+  {
+    "id": 818,
+    "name": "Spirit Touched",
+    "specs": "A kraken from a cursed forest with the fire of the damned deceiving unity"
+  },
+  {
+    "id": 819,
+    "name": "Eclipse Sorcerer",
+    "specs": "A dryad arisen from the crypt with the shadow of the moon compelling life"
+  },
+  {
+    "id": 820,
+    "name": "Azure Killer",
+    "specs": "A phantom from a cursed mirror in a world where time stands still whispering fear"
+  },
+  {
+    "id": 821,
+    "name": "Toxic Born",
+    "specs": "A satyr from a haunted mansion with the madness of a seer luring enlightenment"
+  },
+  {
+    "id": 822,
+    "name": "Frost Queen",
+    "specs": "A kraken from a cursed forest with a dark history distorting doom"
+  },
+  {
+    "id": 823,
+    "name": "Spear Shackled",
+    "specs": "A djinn from an ancient curse during a solar eclipse demanding love"
+  },
+  {
+    "id": 824,
+    "name": "Moon Shatterer",
+    "specs": "A phantom from a forgotten tomb with the rage of a caged beast desecrating retribution"
+  },
+  {
+    "id": 825,
+    "name": "Cave Sentinel",
+    "specs": "A wyvern from a cursed mirror from the time of the first king seducing suffering"
+  },
+  {
+    "id": 826,
+    "name": "Lord Prince",
+    "specs": "A golem from a shattered dream with the curse of immortality defiling peace"
+  },
+  {
+    "id": 827,
+    "name": "Prime Searcher",
+    "specs": "A satyr from a meteorite crash with the tears of the condemned entwining freedom"
+  },
+  {
+    "id": 828,
+    "name": "Desert Watcher",
+    "specs": "A unicorn from the dark corners of the mind from forgotten wars casting fear"
+  },
+  {
+    "id": 829,
+    "name": "Altar Offspring",
+    "specs": "A golem from the darkness of the soul in an abandoned village luring death"
+  },
+  {
+    "id": 830,
+    "name": "Wild Writer",
+    "specs": "An imp from the ashes of a fallen empire with the eyes of the damned draining decay"
+  },
+  {
+    "id": 831,
+    "name": "Blade Axe",
+    "specs": "A minotaur emerged from shadows with a heart full of sorrow tempting serenity"
+  },
+  {
+    "id": 832,
+    "name": "Primal Seer",
+    "specs": "A phoenix from the screams of the tortured with the scars of a thousand battles cursing control"
+  },
+  {
+    "id": 833,
+    "name": "Door Bearer",
+    "specs": "A basilisk from ancient ruins during a solar eclipse engulfing unity"
+  },
+  {
+    "id": 834,
+    "name": "Mountain Crafted",
+    "specs": "A phoenix from a cursed mirror with the grace of a forgotten deity manipulating fear"
+  },
+  {
+    "id": 835,
+    "name": "East Runner",
+    "specs": "A wyvern from the molten core with the fire of the damned haunting tranquility"
+  },
+  {
+    "id": 836,
+    "name": "Chimera Lord",
+    "specs": "An entity from the ashes of a phoenix with a dark history whispering sacrifice"
+  },
+  {
+    "id": 837,
+    "name": "Seal Bulwark",
+    "specs": "An imp from the frozen wastes from the era of the gods ensnaring captivity"
+  },
+  {
+    "id": 838,
+    "name": "Deep Mutilator",
+    "specs": "A siren from a cursed mirror with the patience of time itself entwining chaos"
+  },
+  {
+    "id": 839,
+    "name": "Seal Beast",
+    "specs": "A nymph from the roots of the world tree with the knowledge of forbidden magic compelling wealth"
+  },
+  {
+    "id": 840,
+    "name": "Twilight Bringer",
+    "specs": "An imp from a cursed artifact with the tears of the condemned causing division"
+  },
+  {
+    "id": 841,
+    "name": "Abyssal Ravager",
+    "specs": "A satyr from a cursed mirror with the guilt of a thousand sins seeking silence"
+  },
+  {
+    "id": 842,
+    "name": "Dark Cursed",
+    "specs": "A ghoul from the abyss with the laughter of the mad deceiving peace"
+  },
+  {
+    "id": 843,
+    "name": "Amber Holder",
+    "specs": "A revenant from the core of a black hole from forgotten wars enticing suffering"
+  },
+  {
+    "id": 844,
+    "name": "Diamond Hammer",
+    "specs": "A harpy from the eye of a volcano with a heart full of sorrow corrupting oblivion"
+  },
+  {
+    "id": 845,
+    "name": "Wind Swallower",
+    "specs": "A ghoul from the echoes of a past life under a blood moon invoking vengeance"
+  },
+  {
+    "id": 846,
+    "name": "Shrine Guardian",
+    "specs": "A spirit from a dimensional rift with the glow of the stars enticing corruption"
+  },
+  {
+    "id": 847,
+    "name": "Spike Hunter",
+    "specs": "An imp from a cursed artifact with the patience of time itself petrifying clarity"
+  },
+  {
+    "id": 848,
+    "name": "Brute Blade",
+    "specs": "A phantom born of the void with the curse of immortality demanding love"
+  },
+  {
+    "id": 849,
+    "name": "Torment Spawn",
+    "specs": "A cerberus from the silence of the void with the hunger of the abyss engulfing decay"
+  },
+  {
+    "id": 850,
+    "name": "Brute Dragon",
+    "specs": "A dragon from the frozen wastes with the beauty of a fallen angel cursing annihilation"
+  },
+  {
+    "id": 851,
+    "name": "Nova Terminator",
+    "specs": "A unicorn from the edge of reality from the time of the first king casting sacrifice"
+  },
+  {
+    "id": 852,
+    "name": "Doom Machine",
+    "specs": "A necromancer from the belly of a beast with the ferocity of a storm evoking captivity"
+  },
+  {
+    "id": 853,
+    "name": "Altar Colossus",
+    "specs": "A phoenix from the remnants of an old war with the patience of time itself mesmerizing sacrifice"
+  },
+  {
+    "id": 854,
+    "name": "Helm Container",
+    "specs": "An entity from the molten core with the wisdom of the ancients corrupting chaos"
+  },
+  {
+    "id": 855,
+    "name": "Chaos Taker",
+    "specs": "An imp born of the void with the eyes of the damned demanding life"
+  },
+  {
+    "id": 856,
+    "name": "Divine Robber",
+    "specs": "A cyclops from the dark corners of the mind in a world where time stands still suffocating darkness"
+  },
+  {
+    "id": 857,
+    "name": "Kraken Eliminator",
+    "specs": "A giant from the tears of a god with the legacy of a lost civilization enchanting life"
+  },
+  {
+    "id": 858,
+    "name": "Griffin Pirate",
+    "specs": "A vampire from an ancient curse with the serenity of the grave luring deception"
+  },
+  {
+    "id": 859,
+    "name": "Sun Sword",
+    "specs": "A shade from the shadows of the city with the elegance of a deadly predator evoking captivity"
+  },
+  {
+    "id": 860,
+    "name": "Leviathan Smith",
+    "specs": "A naga from the ashes of a phoenix in a world where time stands still draining division"
+  },
+  {
+    "id": 861,
+    "name": "Fang Guardian",
+    "specs": "A satyr from the pages of a forbidden book with the fury of the elements drowning submission"
+  },
+  {
+    "id": 862,
+    "name": "Iron Axe",
+    "specs": "A pixie from a cursed painting with a heart full of sorrow extracting despair"
+  },
+  {
+    "id": 863,
+    "name": "Diamond Made",
+    "specs": "A ghoul from the breath of a dragon under a blood moon deceiving decay"
+  },
+  {
+    "id": 864,
+    "name": "Portal Princess",
+    "specs": "A chimera from the frozen wastes with the silence of the dead obliterating suffering"
+  },
+  {
+    "id": 865,
+    "name": "Blood Bringer",
+    "specs": "A giant from the heart of a maelstrom with a dark history poisoning retribution"
+  },
+  {
+    "id": 866,
+    "name": "Dread Sworn",
+    "specs": "A shade from the core of a black hole with the laughter of the mad weaving dominance"
+  },
+  {
+    "id": 867,
+    "name": "Ghost Spectre",
+    "specs": "A gorgon from the screams of the tortured with the patience of time itself annihilating tranquility"
+  },
+  {
+    "id": 868,
+    "name": "Arcane Swallower",
+    "specs": "A spirit from a sealed gate with the cold of the grave casting destruction"
+  },
+  {
+    "id": 869,
+    "name": "Savage Tormentor",
+    "specs": "A gorgon born of the void with the madness of a seer incinerating chaos"
+  },
+  {
+    "id": 870,
+    "name": "Lake Tormentor",
+    "specs": "A cerberus from a haunted mansion with the laughter of the mad defiling darkness"
+  },
+  {
+    "id": 871,
+    "name": "Infinity Crafter",
+    "specs": "An imp from the silence of the void with the eyes of the damned causing love"
+  },
+  {
+    "id": 872,
+    "name": "Ghost Crafter",
+    "specs": "A doppelganger from the whispers of the wind with the ferocity of a storm draining silence"
+  },
+  {
+    "id": 873,
+    "name": "Prime Imprisoned",
+    "specs": "A ghoul from the echoes of a past life with a thirst for vengeance strangling life"
+  },
+  {
+    "id": 874,
+    "name": "Talon Wizard",
+    "specs": "A dryad from a sealed gate with a dark history poisoning growth"
+  },
+  {
+    "id": 875,
+    "name": "Spirit Carrier",
+    "specs": "A basilisk from the abyss with a dark history causing unity"
+  },
+  {
+    "id": 876,
+    "name": "Plague Sentinel",
+    "specs": "A spirit from the darkness of the soul with a heart full of sorrow terrorizing purity"
+  },
+  {
+    "id": 877,
+    "name": "Blight Killer",
+    "specs": "A banshee from a cursed artifact with the laughter of the mad draining enlightenment"
+  },
+  {
+    "id": 878,
+    "name": "Castle Axe",
+    "specs": "A basilisk from the molten core with the curse of immortality invoking destruction"
+  },
+  {
+    "id": 879,
+    "name": "East Construct",
+    "specs": "A revenant from a dimensional rift in an abandoned village mesmerizing enlightenment"
+  },
+  {
+    "id": 880,
+    "name": "Lock Guard",
+    "specs": "A harpy from the depths of the ocean from the time of the first king terrorizing confusion"
+  },
+  {
+    "id": 881,
+    "name": "Golden Knight",
+    "specs": "A sphinx from the roots of the world tree with a voice that commands death luring clarity"
+  },
+  {
+    "id": 882,
+    "name": "Obsidian Spike",
+    "specs": "A necromancer from beneath the sea in an abandoned village evoking creation"
+  },
+  {
+    "id": 883,
+    "name": "Guard Walker",
+    "specs": "A centaur from a forgotten tomb from forgotten wars ensnaring truth"
+  },
+  {
+    "id": 884,
+    "name": "Summer Demon",
+    "specs": "A dragon from a cursed artifact with the glow of the stars mesmerizing darkness"
+  },
+  {
+    "id": 885,
+    "name": "Manticore Robber",
+    "specs": "A sphinx from the darkness of the soul with the knowledge of forbidden magic freezing chaos"
+  },
+  {
+    "id": 886,
+    "name": "Wind Glutton",
+    "specs": "A gorgon from the frozen wastes in a world where time stands still mesmerizing deception"
+  },
+  {
+    "id": 887,
+    "name": "Giant Writer",
+    "specs": "A unicorn from a cursed painting in a world where time stands still deceiving division"
+  },
+  {
+    "id": 888,
+    "name": "Wild Digester",
+    "specs": "A demon from the echoes of a past life with the sorrow of the betrayed corrupting serenity"
+  },
+  {
+    "id": 889,
+    "name": "Seal Lord",
+    "specs": "A demon from the memories of the forgotten from the time of the first king evoking power"
+  },
+  {
+    "id": 890,
+    "name": "Spirit Pursuer",
+    "specs": "A centaur from the depths of the ocean in a cursed land intoxicating knowledge"
+  },
+  {
+    "id": 891,
+    "name": "Steel Phantom",
+    "specs": "An elemental from a forgotten tomb with the beauty of a fallen angel consuming clarity"
+  },
+  {
+    "id": 892,
+    "name": "Deep Drake",
+    "specs": "A kraken from a cursed artifact from the time of the first king freezing truth"
+  },
+  {
+    "id": 893,
+    "name": "Crown Splitter",
+    "specs": "A doppelganger from the depths of despair with the wisdom of the ancients engulfing wealth"
+  },
+  {
+    "id": 894,
+    "name": "Chimera Cleaver",
+    "specs": "A centaur from the edge of reality with the rage of a caged beast entwining suffering"
+  },
+  {
+    "id": 895,
+    "name": "Prison Prince",
+    "specs": "A leviathan arisen from the crypt from the time of the first king extracting creation"
+  },
+  {
+    "id": 896,
+    "name": "Pearl Serpent",
+    "specs": "An elemental from the molten core with the ferocity of a storm intoxicating enlightenment"
+  },
+  {
+    "id": 897,
+    "name": "Abyssal Shade",
+    "specs": "A manticore from the depths of space with the fire of the damned desecrating freedom"
+  },
+  {
+    "id": 898,
+    "name": "Primal Sentinel",
+    "specs": "A werewolf from the depths of despair with the power of the elements seeking suffering"
+  },
+  {
+    "id": 899,
+    "name": "Fear Bound",
+    "specs": "A naga from the depths of despair with the wisdom of the ancients luring freedom"
+  },
+  {
+    "id": 900,
+    "name": "Giant Shaper",
+    "specs": "A banshee from the pages of a forbidden book with the scars of a thousand battles corrupting dominance"
+  },
+  {
+    "id": 901,
+    "name": "Pearl Touched",
+    "specs": "An elemental from a cursed artifact with the scars of a thousand battles desecrating chaos"
+  },
+  {
+    "id": 902,
+    "name": "Dark Swallower",
+    "specs": "A djinn from the heart of a storm with the beauty of a fallen angel mesmerizing balance"
+  },
+  {
+    "id": 903,
+    "name": "Spirit Shaper",
+    "specs": "A satyr from the pages of a forbidden book with the hunger of the abyss casting suffering"
+  },
+  {
+    "id": 904,
+    "name": "Solar Scourge",
+    "specs": "A chimera from the core of a black hole with the despair of the forsaken strangling vengeance"
+  },
+  {
+    "id": 905,
+    "name": "Dream Sculptor",
+    "specs": "A phantom from a cursed painting with the cold of the grave plaguing destruction"
+  },
+  {
+    "id": 906,
+    "name": "Tomb Container",
+    "specs": "A vampire from a sealed gate with the sorrow of the betrayed devouring purity"
+  },
+  {
+    "id": 907,
+    "name": "Crypt Crafter",
+    "specs": "A phoenix from the dark corners of the mind with the madness of a seer causing hate"
+  },
+  {
+    "id": 908,
+    "name": "Grave Spirit",
+    "specs": "A phantom from the dark corners of the mind from the depths of a nightmare intoxicating unity"
+  },
+  {
+    "id": 909,
+    "name": "Beast Plunderer",
+    "specs": "An angel from the core of a black hole with the cold of the grave spreading poverty"
+  },
+  {
+    "id": 910,
+    "name": "Astral Conjurer",
+    "specs": "A werewolf from the depths of despair with the patience of time itself haunting destruction"
+  },
+  {
+    "id": 911,
+    "name": "Lightning Searcher",
+    "specs": "An elemental from the shadows of the city with the wisdom of the ancients entwining chaos"
+  },
+  {
+    "id": 912,
+    "name": "Deep Sentinel",
+    "specs": "A poltergeist from a shattered dream with the knowledge of forbidden magic terrorizing vengeance"
+  },
+  {
+    "id": 913,
+    "name": "Terror Master",
+    "specs": "A ghoul from the shadows of the city from the time of the first king drowning wealth"
+  },
+  {
+    "id": 914,
+    "name": "Core Priest",
+    "specs": "A wraith from the darkness of the soul with the darkness of a black heart obliterating destruction"
+  },
+  {
+    "id": 915,
+    "name": "Stone Colossus",
+    "specs": "A leviathan from the heart of a storm with the sorrow of the betrayed distorting poverty"
+  },
+  {
+    "id": 916,
+    "name": "Pit Swimmer",
+    "specs": "A dragon from a cursed artifact with the mark of the beast mesmerizing truth"
+  },
+  {
+    "id": 917,
+    "name": "Curse Scourge",
+    "specs": "A gorgon from a cursed artifact with the strength of a thousand men devouring annihilation"
+  },
+  {
+    "id": 918,
+    "name": "Torment Hunter",
+    "specs": "A banshee from the pages of a forbidden book with a thirst for vengeance whispering control"
+  },
+  {
+    "id": 919,
+    "name": "Desert Wall",
+    "specs": "A cherub from an ancient curse with the cold of the grave consuming poverty"
+  },
+  {
+    "id": 920,
+    "name": "Scale Mutilator",
+    "specs": "A siren from a shattered dream with the rage of a caged beast draining dominance"
+  },
+  {
+    "id": 921,
+    "name": "Nova Chaser",
+    "specs": "A harpy from the whispers of the wind with the rage of a caged beast ensnaring doom"
+  },
+  {
+    "id": 922,
+    "name": "Death Feeder",
+    "specs": "A dragon from the light of a dying star with a dark history extracting oblivion"
+  },
+  {
+    "id": 923,
+    "name": "Griffin Holder",
+    "specs": "A siren from beneath the sea in a cursed land annihilating chaos"
+  },
+  {
+    "id": 924,
+    "name": "Behemoth Tooth",
+    "specs": "A satyr from the depths of space with the knowledge of forbidden magic defiling peace"
+  },
+  {
+    "id": 925,
+    "name": "Chain Bringer",
+    "specs": "A wyvern from the depths of space with the beauty of a fallen angel corrupting wealth"
+  },
+  {
+    "id": 926,
+    "name": "Dawn Plunderer",
+    "specs": "A griffon from the silence of the void with the serenity of the grave consuming freedom"
+  },
+  {
+    "id": 927,
+    "name": "Guard Leaper",
+    "specs": "A minotaur from the pages of a forbidden book with the glow of the stars demanding suffering"
+  },
+  {
+    "id": 928,
+    "name": "Spell Scout",
+    "specs": "A dryad from the heart of a maelstrom with the whisper of the wind extracting dominance"
+  },
+  {
+    "id": 929,
+    "name": "Crimson Talon",
+    "specs": "A wraith from the depths of space under a blood moon consuming captivity"
+  },
+  {
+    "id": 930,
+    "name": "Valley Pursuer",
+    "specs": "A golem from the tears of a god from the era of the gods dissolving tranquility"
+  },
+  {
+    "id": 931,
+    "name": "Swamp Former",
+    "specs": "An ogre from the breath of a dragon with a thirst for vengeance mesmerizing chaos"
+  },
+  {
+    "id": 932,
+    "name": "Colossus Slayer",
+    "specs": "A wyvern from the depths of the ocean with a voice that commands death enticing serenity"
+  },
+  {
+    "id": 933,
+    "name": "Mystic Tearer",
+    "specs": "A demon from the remnants of an old war from forgotten wars desecrating darkness"
+  },
+  {
+    "id": 934,
+    "name": "Crown Reaper",
+    "specs": "A banshee from the heart of a maelstrom with the madness of a seer manipulating power"
+  },
+  {
+    "id": 935,
+    "name": "Shield Spectre",
+    "specs": "A hydra from a cursed painting with the glow of the stars annihilating unity"
+  },
+  {
+    "id": 936,
+    "name": "Sphinx Lord",
+    "specs": "A werewolf from the sands of time with the eyes of the damned absorbing peace"
+  },
+  {
+    "id": 937,
+    "name": "Key Born",
+    "specs": "A wraith from the dark corners of the mind with the ambition of a dark lord cursing freedom"
+  },
+  {
+    "id": 938,
+    "name": "Crystal Conduit",
+    "specs": "A basilisk from a haunted mansion with the ferocity of a storm distorting power"
+  },
+  {
+    "id": 939,
+    "name": "East Invoker",
+    "specs": "A wraith emerged from shadows with the shadow of the moon compelling wealth"
+  },
+  {
+    "id": 940,
+    "name": "Seal Vessel",
+    "specs": "A lich from the depths of despair with a voice that commands death enticing captivity"
+  },
+  {
+    "id": 941,
+    "name": "Pegasus Taker",
+    "specs": "A dryad from the frozen wastes with the love of a tragic hero absorbing submission"
+  },
+  {
+    "id": 942,
+    "name": "Divine Crusher",
+    "specs": "A cerberus from the depths of a mine with the rage of a caged beast haunting light"
+  },
+  {
+    "id": 943,
+    "name": "Scale Warlock",
+    "specs": "An elemental from the remnants of an old war from forgotten wars transforming dominance"
+  },
+  {
+    "id": 944,
+    "name": "Colossus Raider",
+    "specs": "A minotaur from the echoes of a past life with the love of a tragic hero enticing retribution"
+  },
+  {
+    "id": 945,
+    "name": "Manticore Executioner",
+    "specs": "A sphinx from the ashes of a phoenix with the madness of a seer ensnaring hate"
+  },
+  {
+    "id": 946,
+    "name": "Ruin Racer",
+    "specs": "A cerberus from the ashes of a burned village with the scars of a thousand battles devouring suffering"
+  },
+  {
+    "id": 947,
+    "name": "Ocean Offspring",
+    "specs": "A naga emerged from shadows with a voice that commands death incinerating confusion"
+  },
+  {
+    "id": 948,
+    "name": "Venom Feeder",
+    "specs": "A dryad from the whispers of the wind with the innocence of a lost child deceiving hate"
+  },
+  {
+    "id": 949,
+    "name": "Dark Born",
+    "specs": "An entity from the molten core with the scars of a thousand battles consuming annihilation"
+  },
+  {
+    "id": 950,
+    "name": "Soul Offspring",
+    "specs": "A ghoul from the echoes of a past life in an abandoned village dissolving growth"
+  },
+  {
+    "id": 951,
+    "name": "Helm Created",
+    "specs": "An entity from the edge of the known world from the era of the gods intoxicating captivity"
+  },
+  {
+    "id": 952,
+    "name": "Sleep Tower",
+    "specs": "A chimera from the memories of the forgotten of ancient times weaving destruction"
+  },
+  {
+    "id": 953,
+    "name": "Diamond Colossus",
+    "specs": "A minotaur from the memories of the forgotten in a realm of eternal night seducing silence"
+  },
+  {
+    "id": 954,
+    "name": "Throne Render",
+    "specs": "An ogre from the depths of a mine with the ambition of a dark lord mesmerizing madness"
+  },
+  {
+    "id": 955,
+    "name": "Crypt Priest",
+    "specs": "An apparition from the frozen wastes with the patience of time itself plaguing vengeance"
+  },
+  {
+    "id": 956,
+    "name": "Terror Caller",
+    "specs": "A cyclops from a meteorite crash in a world where time stands still suffocating purity"
+  },
+  {
+    "id": 957,
+    "name": "Jungle Bulwark",
+    "specs": "A basilisk from beneath the sea with the rage of a caged beast extracting unity"
+  },
+  {
+    "id": 958,
+    "name": "Basilisk Blessed",
+    "specs": "A minotaur from the belly of a beast with the strength of a thousand men evoking enlightenment"
+  },
+  {
+    "id": 959,
+    "name": "Griffin Raider",
+    "specs": "A wyvern from the remnants of an old war with a thirst for vengeance mesmerizing tranquility"
+  },
+  {
+    "id": 960,
+    "name": "Chain Spawn",
+    "specs": "A cyclops from the sands of time with a voice that commands death causing death"
+  },
+  {
+    "id": 961,
+    "name": "Ruby Horn",
+    "specs": "A wyvern emerged from shadows with the eyes of the damned distorting retribution"
+  },
+  {
+    "id": 962,
+    "name": "Altar Prophet",
+    "specs": "A troll from the heart of a storm with the laughter of the mad poisoning doom"
+  },
+  {
+    "id": 963,
+    "name": "Chain Shifter",
+    "specs": "A giant from the silence of the void from forgotten wars consuming peace"
+  },
+  {
+    "id": 964,
+    "name": "Ice Crawler",
+    "specs": "A dragon from the core of a black hole with the rage of a caged beast demanding chaos"
+  },
+  {
+    "id": 965,
+    "name": "Decay Spike",
+    "specs": "A manticore from the echoes of a past life from the era of the gods obliterating enlightenment"
+  },
+  {
+    "id": 966,
+    "name": "Forest Flyer",
+    "specs": "A wyvern from the ashes of a fallen empire with the power of the elements freezing serenity"
+  },
+  {
+    "id": 967,
+    "name": "Slave Wall",
+    "specs": "A dragon from the heart of a storm with the ambition of a dark lord suffocating decay"
+  },
+  {
+    "id": 968,
+    "name": "Gate Sentinel",
+    "specs": "A necromancer from the depths of despair in a cursed land weaving power"
+  },
+  {
+    "id": 969,
+    "name": "Storm Tower",
+    "specs": "A satyr arisen from the crypt with the shadow of the moon seeking destruction"
+  },
+  {
+    "id": 970,
+    "name": "Spike Destroyer",
+    "specs": "A lich from the belly of a beast with the silence of the dead ensnaring clarity"
+  },
+  {
+    "id": 971,
+    "name": "Chimera Linked",
+    "specs": "An imp from the molten core in an abandoned village enticing vengeance"
+  },
+  {
+    "id": 972,
+    "name": "Lunar Killer",
+    "specs": "A vampire from a sealed gate from forgotten wars haunting rebirth"
+  },
+  {
+    "id": 973,
+    "name": "Savage Crafter",
+    "specs": "A gorgon from the silence of the void with a voice that commands death mesmerizing fear"
+  },
+  {
+    "id": 974,
+    "name": "Valley Absorber",
+    "specs": "A hydra from the tears of a god with the tears of the condemned ensnaring rebirth"
+  },
+  {
+    "id": 975,
+    "name": "Pain Punisher",
+    "specs": "A cerberus from the eye of a volcano with the serenity of the grave compelling chaos"
+  },
+  {
+    "id": 976,
+    "name": "Flesh Blade",
+    "specs": "A troll from the ashes of a fallen empire with the fire of the damned dissolving confusion"
+  },
+  {
+    "id": 977,
+    "name": "Magic Shifter",
+    "specs": "A centaur from a cursed artifact with the serenity of the grave causing retribution"
+  },
+  {
+    "id": 978,
+    "name": "Spirit Diver",
+    "specs": "An ogre from the breath of a dragon with the ambition of a dark lord poisoning retribution"
+  },
+  {
+    "id": 979,
+    "name": "Crypt Spectre",
+    "specs": "A satyr from the remnants of an old war with the fury of the elements seeking knowledge"
+  },
+  {
+    "id": 980,
+    "name": "Ebony Moulder",
+    "specs": "A siren from a cursed well in a world where time stands still enticing silence"
+  },
+  {
+    "id": 981,
+    "name": "Drake Forged",
+    "specs": "A chimera from the depths of a mine with the ambition of a dark lord seeking chaos"
+  },
+  {
+    "id": 982,
+    "name": "Lunar Pursuer",
+    "specs": "A banshee from an ancient curse with the knowledge of forbidden magic extracting knowledge"
+  },
+  {
+    "id": 983,
+    "name": "Fire Crusher",
+    "specs": "A poltergeist from the pages of a forbidden book during a solar eclipse demanding silence"
+  },
+  {
+    "id": 984,
+    "name": "Wyrm Titan",
+    "specs": "A dragon from the darkness of the soul with the innocence of a lost child transforming love"
+  },
+  {
+    "id": 985,
+    "name": "Crown Spawn",
+    "specs": "A sphinx from the ashes of a fallen empire in a world where time stands still suffocating deception"
+  },
+  {
+    "id": 986,
+    "name": "Autumn Bulwark",
+    "specs": "A specter from the belly of a beast with the guilt of a thousand sins draining tranquility"
+  },
+  {
+    "id": 987,
+    "name": "Diamond Writer",
+    "specs": "An ogre from the edge of the known world with the elegance of a deadly predator dissolving annihilation"
+  },
+  {
+    "id": 988,
+    "name": "Torment Taker",
+    "specs": "A centaur from the shadows of the city with the darkness of a black heart mesmerizing peace"
+  },
+  {
+    "id": 989,
+    "name": "Colossus Bearer",
+    "specs": "An elemental from a cursed well with the madness of a seer invoking decay"
+  },
+  {
+    "id": 990,
+    "name": "Grim Serpent",
+    "specs": "A doppelganger from ancient ruins with the grace of a forgotten deity possessing unity"
+  },
+  {
+    "id": 991,
+    "name": "Blood Knight",
+    "specs": "A naga from a haunted mansion from forgotten wars possessing poverty"
+  },
+  {
+    "id": 992,
+    "name": "Basilisk Devastator",
+    "specs": "A kraken from the ashes of a burned village in an abandoned village enticing harmony"
+  },
+  {
+    "id": 993,
+    "name": "Wyvern Torturer",
+    "specs": "A siren emerged from shadows with the silence of the dead freezing power"
+  },
+  {
+    "id": 994,
+    "name": "Tower Linked",
+    "specs": "A banshee from the sands of time from the time of the first king spreading balance"
+  },
+  {
+    "id": 995,
+    "name": "Claw Protector",
+    "specs": "A phoenix from the echoes of a past life with the sorrow of the betrayed enchanting corruption"
+  },
+  {
+    "id": 996,
+    "name": "Sleep Cursed",
+    "specs": "A shade from ancient ruins under a blood moon extracting balance"
+  },
+  {
+    "id": 997,
+    "name": "Solar Watcher",
+    "specs": "An apparition from the molten core in a world where time stands still annihilating salvation"
+  },
+  {
+    "id": 998,
+    "name": "Celestial Fiend",
+    "specs": "A poltergeist from the dark corners of the mind with the serenity of the grave terrorizing salvation"
+  },
+  {
+    "id": 999,
+    "name": "Comet Terminator",
+    "specs": "A nymph from the core of a black hole with the patience of time itself cursing love"
+  }
+]
