@@ -1,7 +1,8 @@
 //Js code for monster page
 import { serveData } from "./common/fetch.js";
+import { ALLMONSTERS_TTL, SORTOPTIONS_TTL } from "./common/ttl.js";
 import { useClickEvent, useClickEvents, useScrollEvent, useChangeEvent, useInputEvent, useMouseWheelEvent } from "./common/useEvent.js";
-import { ALLMONSTERS_LSK } from "./common/localStorageKeys.js";
+import { ALLMONSTERS_LSK, SORTOPTIONS_LSK } from "./common/localStorageKeys.js";
 import { MonsterCard } from "./classes/MonsterCard.js";
 import { isValidObjKey } from "./common/utilities.js";
 import { renderSelect } from "./common/render.js";
@@ -14,13 +15,11 @@ const searchBox = document.getElementById("searchBox");
 const searchSortContainer = document.getElementById("searchSortContainer");
 const filterToggle = document.getElementById("filterToggle");
 
-const ttl = 60;
 let visibleMonsters = 20;
-const monsterCards = [];
 let monsters = [];
-let searchCategory;
-
 const ranks = [];
+
+let searchCategory;
 
 window.addEventListener("DOMContentLoaded", () => {
   init();
@@ -39,7 +38,7 @@ function init() {
 async function useData() {
   renderLoadingSkeletons(visibleMonsters);
 
-  const promises = [serveData("allMonsters", undefined, monsterContainer, ALLMONSTERS_LSK, ttl), serveData("sortOptions", undefined, sortDropDown)];
+  const promises = [serveData("allMonsters", undefined, monsterContainer, ALLMONSTERS_LSK, ALLMONSTERS_TTL), serveData("sortOptions", undefined, sortDropDown, SORTOPTIONS_LSK, SORTOPTIONS_TTL)];
 
   const responses = await Promise.all(promises);
 
@@ -82,7 +81,6 @@ function renderLoadingSkeletons(max) {
   for (let i = 0; i < max; i++) {
     const monsterCard = new MonsterCard();
     const assembleMonsterCard = monsterCard.getLoadingSkeletion();
-    monsterCards.push(monsterCard);
     monsterContainer.appendChild(assembleMonsterCard);
   }
 }

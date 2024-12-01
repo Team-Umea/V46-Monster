@@ -7,3 +7,4 @@ export const MONSTERS_LSK = "monsters";
 export const ALLMONSTERS_LSK = "allMonsters";
 export const ELEMENTS_LSK = "elements";
 export const ABILITIES_LSK = "abilities";
+export const SORTOPTIONS_LSK = "sortOptions";

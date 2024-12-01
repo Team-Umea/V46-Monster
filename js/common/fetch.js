@@ -44,6 +44,20 @@ async function fetchData(requestedEndpoint, apiParams, parent, key, ttl, useSpin
   }
 }
 
+function serveFetchedData(requestedEndpoint, apiParams, parent, key, ttl, renderSpinner) {
+  return fetchData(requestedEndpoint, apiParams, parent, key, ttl, renderSpinner)
+    .then((data) => {
+      if (data.ok) {
+        return data.data;
+      }
+      return [];
+    })
+    .catch(() => {
+      getError(0, parent);
+      return [];
+    });
+}
+
 export async function serveData(requestedEndpoint, apiParams, parent, key, ttl, useSpinner) {
   if (key) {
     const loaded = useCachedData(key);
@@ -58,12 +72,4 @@ export async function serveData(requestedEndpoint, apiParams, parent, key, ttl, 
   console.log("No key found hence data will be fetched for endpoint: ", requestedEndpoint);
   const fetchedData = await serveFetchedData(requestedEndpoint, apiParams, parent, key, ttl, useSpinner);
   return fetchedData;
-}
-
-export async function serveFetchedData(requestedEndpoint, apiParams, parent, key, ttl, renderSpinner) {
-  const reponse = await fetchData(requestedEndpoint, apiParams, parent, key, ttl, renderSpinner);
-  if (reponse.ok) {
-    return reponse.data;
-  }
-  return [];
 }
