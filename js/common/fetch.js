@@ -18,6 +18,7 @@ async function fetchData(requestedEndpoint, apiParams, parent, key, ttl, useSpin
       if (useSpinner) {
         renderSpinner(parent);
       }
+
       const response = await fetch(url);
       if (!response.ok) {
         return getError(response.status, parent);

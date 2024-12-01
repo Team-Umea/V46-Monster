@@ -1,9 +1,9 @@
 //Js code for monster page
-import { serveData, serveFetchedData } from "./common/fetch.js";
-import { useClickEvent, useScrollEvent, useChangeEvent, useInputEvent, useMouseWheelEvent } from "./common/useEvent.js";
-import { MONSTERS_LSK, ALLMONSTERS_LSK } from "./common/localStorageKeys.js";
+import { serveData } from "./common/fetch.js";
+import { useClickEvent, useClickEvents, useScrollEvent, useChangeEvent, useInputEvent, useMouseWheelEvent } from "./common/useEvent.js";
+import { ALLMONSTERS_LSK } from "./common/localStorageKeys.js";
 import { MonsterCard } from "./classes/MonsterCard.js";
-import { load, isValidObjKey } from "./common/utilities.js";
+import { isValidObjKey } from "./common/utilities.js";
 import { renderSelect } from "./common/render.js";
 
 const monsterContainer = document.getElementById("monsterContainer");
@@ -20,20 +20,18 @@ const monsterCards = [];
 let monsters = [];
 let searchCategory;
 
+const ranks = [];
+
 window.addEventListener("DOMContentLoaded", () => {
   init();
 });
 
 function init() {
   useClickEvent(filterToggle, toggleFilter);
+  useClickEvents(searchBtns, setSearchCategory);
   useScrollEvent(monsterContainer, infiniteScroll);
-  useChangeEvent(sortDropDown, setSortOrder);
+  useChangeEvent(sortDropDown, showMonsters);
   useInputEvent(searchBox, searchMonsters);
-  useMouseWheelEvent(monsterContainer, showAllMonsters);
-
-  Array.from(searchBtns).forEach((btn) => {
-    useClickEvent(btn, setSearchCategory);
-  });
 
   useMonsterData();
   populateSortDropDown();
@@ -53,11 +51,20 @@ async function useMonsterData() {
   monsters = monsterData.map((data) => ({ monster: data, visible: true }));
 
   showMonsters();
+}
 
-  renderMonsters();
+function showAllMonsters() {
+  const hasSearchQuery = searchBox.value !== "";
+  if (hasSearchQuery) {
+    monsters.forEach((monster) => (monster.visible = true));
+    searchBox.value = "";
+    renderMonsters();
+  }
 }
 
 function showMonsters() {
+  monsters.forEach((monster) => (monster.visible = true));
+
   const sortOrder = Number(sortDropDown.value);
   sortMonsters(sortOrder);
 
@@ -68,6 +75,8 @@ function showMonsters() {
       monster.visible = true;
     }
   });
+
+  renderMonsters();
 }
 
 function renderLoadingSkeletons(max) {
@@ -85,12 +94,18 @@ function renderMonsters() {
 
   monsters.forEach((monsterObj) => {
     const isVisible = monsterObj.visible;
+    const monster = monsterObj.monster;
+    const id = monster.id;
+    const allMonsters = [...monsters];
+    const monsterCard = new MonsterCard(monster, allMonsters, tempTeams, id);
+
+    if (ranks.length < monsters.length) {
+      const monsterRank = monsterCard.getRank();
+      ranks.push(monsterRank);
+    }
+
+    const assembledMonsterCard = monsterCard.assembleMonsterCard();
     if (isVisible) {
-      const monster = monsterObj.monster;
-      const id = monster.id;
-      const allMonsters = [...monsters];
-      const monsterCard = new MonsterCard(monster, allMonsters, tempTeams, id);
-      const assembledMonsterCard = monsterCard.assembleMonsterCard();
       monsterContainer.appendChild(assembledMonsterCard);
     }
   });
@@ -100,29 +115,13 @@ function infiniteScroll() {
   if (visibleMonsters < monsters.length) {
     visibleMonsters += 10;
     showMonsters();
-    renderMonsters();
   }
-}
-
-function setSortOrder() {
-  const sortOrder = Number(sortDropDown.value);
-  sortMonsters(sortOrder);
-  showAllMonsters();
-  renderMonsters();
 }
 
 function setSearchCategory() {
   const selectedBtn = Array.from(searchBtns).find((btn) => btn.checked);
   searchCategory = selectedBtn.value;
-}
-
-function showAllMonsters() {
-  const hasSearchQuery = searchBox.value !== "";
-  if (hasSearchQuery) {
-    monsters.forEach((monster) => (monster.visible = true));
-    searchBox.value = "";
-    renderMonsters();
-  }
+  showAllMonsters();
 }
 
 function searchMonsters() {
@@ -149,11 +148,9 @@ function searchMonsters() {
         }
       }
     } else {
-      const rankList = getMonstersRankList();
-      const rank = rankList.indexOf(rankList.find((m) => m.id === monster.id));
-      const descending = (rankList.length - rank).toString();
+      const rank = ranks.find((m) => m.id === monster.id).rank.toString();
 
-      if (descending.startsWith(searchQuery)) {
+      if (rank.startsWith(searchQuery)) {
         monsterObj.visible = true;
       } else {
         monsterObj.visible = false;
@@ -252,26 +249,22 @@ function reverseSort(key) {
 }
 
 function sortByLoHiRank() {
-  const rankList = getMonstersRankList();
-
   monsters = [...monsters].sort((a, b) => {
-    const rankA = rankList.length - rankList.indexOf(rankList.find((m) => m.id === a.monster.id));
-    const rankB = rankList.length - rankList.indexOf(rankList.find((m) => m.id === b.monster.id));
-
-    const rankDiff = rankB - rankA;
-    return rankDiff === 0 ? a.monster.name.localeCompare(b.monster.name) : rankDiff;
+    const monsterA = a.monster.id;
+    const monsterB = b.monster.id;
+    const rankA = ranks.length - ranks.find((rank) => rank.id === monsterA).rank;
+    const rankB = ranks.length - ranks.find((rank) => rank.id === monsterB).rank;
+    return rankA - rankB;
   });
 }
 
 function sortByHiLoRank() {
-  const rankList = getMonstersRankList();
-
   monsters = [...monsters].sort((a, b) => {
-    const rankA = rankList.length - rankList.indexOf(rankList.find((m) => m.id === a.monster.id));
-    const rankB = rankList.length - rankList.indexOf(rankList.find((m) => m.id === b.monster.id));
-
-    const rankDiff = rankA - rankB;
-    return rankDiff === 0 ? a.monster.name.localeCompare(b.monster.name) : rankDiff;
+    const monsterA = a.monster.id;
+    const monsterB = b.monster.id;
+    const rankA = ranks.length - ranks.find((rank) => rank.id === monsterA).rank;
+    const rankB = ranks.length - ranks.find((rank) => rank.id === monsterB).rank;
+    return rankB - rankA;
   });
 }
 
@@ -291,15 +284,6 @@ function sortByManyToFewElements() {
     const elementsDifference = elementsB - elementsA;
     return elementsDifference === 0 ? a.monster.name.localeCompare(b.monster.name) : elementsDifference;
   });
-}
-
-function getMonstersRankList() {
-  const rankList = [...monsters].sort((a, b) => {
-    const ratingA = a.monster.health + a.monster.damage;
-    const ratingB = b.monster.health + a.monster.damage;
-    return ratingA - ratingB;
-  });
-  return rankList;
 }
 
 function toggleFilter() {

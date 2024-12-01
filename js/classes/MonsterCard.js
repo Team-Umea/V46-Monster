@@ -1,30 +1,30 @@
 import { renderIconWithNumber } from "../common/render.js";
 
 export class MonsterCard {
-  constructor(monster, allMonsters, teams, id) {
+  constructor(monster, allMonsters, teams) {
     this.monster = monster;
     this.allMonsters = allMonsters;
     this.teams = teams;
-    this.id = id;
 
     if (monster) {
+      this.id = monster.id;
       this.name = monster.name;
       this.specs = monster.specs;
       this.health = monster.health;
       this.damage = monster.damage;
       this.elements = monster.elements;
       this.price = monster.price;
+      this.rank = this.calcRank();
     }
 
     this.monsterCard = this.monsterContainer();
     this.skeleton = this.monsterLoadingSkeleton();
   }
 
-  setValues(monster, allMonsters, teams, id) {
+  setValues(monster, allMonsters, teams) {
     this.monster = monster;
     this.allMonsters = allMonsters;
     this.teams = teams;
-    this.id = id;
 
     this.name = monster.name;
     this.specs = monster.specs;
@@ -32,6 +32,34 @@ export class MonsterCard {
     this.damage = monster.damage;
     this.elements = monster.elements;
     this.price = monster.price;
+  }
+
+  calcRank() {
+    const id = this.monster.id;
+    const allMonsters = this.allMonsters;
+
+    const rankList = allMonsters.sort((a, b) => {
+      const ratingA = a.monster.health + a.monster.damage;
+      const ratingB = b.monster.health + a.monster.damage;
+
+      const diff = ratingA - ratingB;
+      const damage = diff === 0 ? a.monster.damage - b.monster.damage : diff;
+      const health = damage === 0 ? a.monster.health - b.monster.health : damage;
+      const name = health === 0 ? a.monster.name.localeCompare(b.monster.name) : health;
+
+      return name;
+    });
+
+    const rank = rankList.indexOf(rankList.find((m) => m.monster.id === id));
+    const descending = rankList.length - rank;
+    return descending;
+  }
+
+  getRank() {
+    const id = this.id;
+    const rank = this.rank;
+    const rankID = { id, rank };
+    return rankID;
   }
 
   monsterContainer() {
@@ -76,10 +104,9 @@ export class MonsterCard {
     const statsContainer = document.createElement("ul");
 
     const name = this.name;
-    const id = this.id;
     const health = this.health;
     const damage = this.damage;
-    const allMonsters = this.allMonsters;
+    const rank = this.rank;
 
     const healthIconValue = renderIconWithNumber(health, "../../res/icons/heart.svg", `${name} has ${health} of health`);
     const damageIconValue = renderIconWithNumber(damage, "../../res/icons/skull.svg", `${name} has ${damage} of damage`);
@@ -87,19 +114,24 @@ export class MonsterCard {
 
     statsContainer.setAttribute("class", "monsterStats");
 
-    const rankList = allMonsters.sort((a, b) => {
-      const ratingA = a.monster.health + a.monster.damage;
-      const ratingB = b.monster.health + a.monster.damage;
-      return ratingA - ratingB;
-    });
+    // const rankList = allMonsters.sort((a, b) => {
+    //   const ratingA = a.monster.health + a.monster.damage;
+    //   const ratingB = b.monster.health + a.monster.damage;
 
-    if (rankList) {
-      const rank = rankList.indexOf(rankList.find((m) => m.monster.id === id));
-      const descending = rankList.length - rank;
-      const controlledRank = descending > 0 ? descending : "";
-      rankIconValue = renderIconWithNumber(controlledRank, "../../res/icons/trophy.svg", `${name} is ranked ${controlledRank} of all monsters`);
-      rankIconValue.classList.add("monsterRank");
-    }
+    //   const diff = ratingA - ratingB;
+    //   const damage = diff === 0 ? a.monster.damage - b.monster.damage : diff;
+    //   const health = damage === 0 ? a.monster.health - b.monster.health : damage;
+
+    //   return health;
+    //   // return diff === 0 ? b.monster.name.localeCompare(a.monster.name) : diff;
+    // });
+
+    // if (rankList) {
+    //   const rank = rankList.indexOf(rankList.find((m) => m.monster.id === id));
+    //   const descending = rankList.length - rank;
+    //   const controlledRank = descending > 0 ? descending : "";
+    rankIconValue = renderIconWithNumber(rank, "../../res/icons/trophy.svg", `${name} is ranked ${rank} of all monsters`);
+    rankIconValue.classList.add("monsterRank");
 
     statsContainer.appendChild(healthIconValue);
     if (rankIconValue) {
