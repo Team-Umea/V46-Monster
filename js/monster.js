@@ -33,24 +33,23 @@ function init() {
   useChangeEvent(sortDropDown, showMonsters);
   useInputEvent(searchBox, searchMonsters);
 
-  useMonsterData();
-  populateSortDropDown();
-  setSearchCategory();
+  useData();
 }
 
-function populateSortDropDown() {
-  serveData("sortOptions", undefined, sortDropDown).then((options) => {
-    renderSelect(sortDropDown, options);
-  });
-}
-
-async function useMonsterData() {
+async function useData() {
   renderLoadingSkeletons(visibleMonsters);
 
-  const monsterData = await serveData("allMonsters", undefined, monsterContainer, ALLMONSTERS_LSK, ttl);
+  const promises = [serveData("allMonsters", undefined, monsterContainer, ALLMONSTERS_LSK, ttl), serveData("sortOptions", undefined, sortDropDown)];
+
+  const responses = await Promise.all(promises);
+
+  const monsterData = responses[0];
+  const options = responses[1];
+
   monsters = monsterData.map((data) => ({ monster: data, visible: true }));
 
   showMonsters();
+  renderSelect(sortDropDown, options);
 }
 
 function showAllMonsters() {
