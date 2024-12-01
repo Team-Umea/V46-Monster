@@ -64,142 +64,27 @@ const endpoints = [
 init();
 
 function init() {
-  // readJSON("./monsters/monsters.json", (err, data) => {
-  //   if (err) {
-  //     console.log("Error", err);
-  //   } else {
-  //     monsters = data;
-  //   }
-  // });
-  // readJSON("./json/elements.json", (err, data) => {
-  //   if (err) {
-  //     console.log("Error", err);
-  //   } else {
-  //     elements = data;
-  //   }
-  // });
-  // readJSON("./json/abilities.json", (err, data) => {
-  //   if (err) {
-  //     console.log("Error", err);
-  //   } else {
-  //     abilities = data;
-  //   }
-  // });
-
-  readJSON("./monsters/monsterNames.json", (err, data) => {
+  readJSON("./monsters/monsters.json", (err, data) => {
     if (err) {
       console.log("Error", err);
     } else {
-      const nameData = data;
-
-      readJSON("./monsters/specs.json", (err, data) => {
-        if (err) {
-          console.log("Error", err);
-        } else {
-          const specsData = data;
-
-          const monsters = generateMonsterBaseStats(1000, nameData, specsData);
-
-          // console.log(monsters);
-          writeToJSONFile("./monsters/newMonsters.json", monsters);
-        }
-      });
+      monsters = data;
     }
   });
-}
-
-function generateMonsterBaseStats(num, nameData, specsData) {
-  let monsters = [];
-
-  const ids = generateIDs(num);
-  const names = generateNames(num, nameData);
-  const specss = generateSpecs(num, specsData);
-
-  for (let i = 0; i < num; i++) {
-    const id = ids[i];
-    const name = names[i];
-    const specs = specss[i];
-    const monster = { id, name, specs };
-    monsters.push(monster);
-  }
-
-  return monsters;
-}
-
-function generateSpecs(num, specsData) {
-  const entity = specsData.entity;
-  const origin = specsData.origin;
-  const condition = specsData.condition;
-  const action = specsData.action;
-  const outcome = specsData.outcome;
-
-  const specs = new Set();
-
-  for (let i = 0; i < num; i++) {
-    let entityInd;
-    let originInd;
-    let conditionInd;
-    let actionInd;
-    let outcomeInd;
-
-    let spec;
-
-    do {
-      entityInd = Math.floor(Math.random() * entity.length);
-      originInd = Math.floor(Math.random() * origin.length);
-      conditionInd = Math.floor(Math.random() * condition.length);
-      actionInd = Math.floor(Math.random() * action.length);
-      outcomeInd = Math.floor(Math.random() * outcome.length);
-
-      spec = `${entity[entityInd]} ${origin[originInd]} ${condition[conditionInd]} ${action[actionInd]} ${outcome[outcomeInd]}`;
-    } while (specs.has(spec));
-
-    specs.add(spec);
-  }
-
-  return Array.from(specs);
-}
-
-function generateIDs(num) {
-  const ids = [];
-  for (let i = 0; i < num; i++) {
-    ids.push(i);
-  }
-  return ids;
-}
-
-function generateNames(num, nameData) {
-  const pre = nameData.pre;
-  const suf = nameData.suf;
-  const names = new Set();
-
-  for (let i = 0; i < num; i++) {
-    let preInd;
-    let sufInd;
-    let name;
-
-    do {
-      preInd = Math.floor(Math.random() * pre.length);
-      sufInd = Math.floor(Math.random() * suf.length);
-
-      const preName = capitalize(pre[preInd]);
-      const sufName = capitalize(suf[sufInd]);
-
-      name = `${preName} ${sufName}`;
-    } while (names.has(name));
-
-    names.add(name);
-  }
-
-  return Array.from(names);
-}
-
-function findDuplicates(arr) {
-  return arr.filter((item, index, self) => self.indexOf(item) !== index);
-}
-
-function capitalize(str) {
-  return str[0].toUpperCase() + str.slice(1);
+  readJSON("./json/elements.json", (err, data) => {
+    if (err) {
+      console.log("Error", err);
+    } else {
+      elements = data;
+    }
+  });
+  readJSON("./json/abilities.json", (err, data) => {
+    if (err) {
+      console.log("Error", err);
+    } else {
+      abilities = data;
+    }
+  });
 }
 
 function readJSON(path, callback) {
