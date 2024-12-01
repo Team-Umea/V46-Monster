@@ -7,7 +7,7 @@ export class MonsterCard {
     this.teams = teams;
     this.id = id;
 
-    if(monster){
+    if (monster) {
       this.name = monster.name;
       this.specs = monster.specs;
       this.health = monster.health;
@@ -16,11 +16,11 @@ export class MonsterCard {
       this.price = monster.price;
     }
 
-    this.monsterCard = this.monsterContainer()
-    this.skeleton = this.monsterLoadingSkeleton()
+    this.monsterCard = this.monsterContainer();
+    this.skeleton = this.monsterLoadingSkeleton();
   }
 
-  setValues(monster, allMonsters, teams, id){
+  setValues(monster, allMonsters, teams, id) {
     this.monster = monster;
     this.allMonsters = allMonsters;
     this.teams = teams;
@@ -35,7 +35,7 @@ export class MonsterCard {
   }
 
   monsterContainer() {
-    const id = this.id
+    const id = this.id;
     const container = document.createElement("div");
     container.setAttribute("class", "monsterCard");
     container.setAttribute("id", id);
@@ -44,16 +44,16 @@ export class MonsterCard {
 
   monsterLoadingSkeleton() {
     const container = document.createElement("div");
-    container.setAttribute("class","monsterLoadingSkeleton"); 
+    container.setAttribute("class", "monsterLoadingSkeleton");
     return container;
   }
 
-  monsterImg(){
-    const img = document.createElement("img"); 
-    img.setAttribute("alt","Monster img placeholder"); 
-    img.setAttribute("class","monsterImg");
-    img.setAttribute("src","../../res/img/monsterPlaceholder.webp");
-    return img; 
+  monsterImg() {
+    const img = document.createElement("img");
+    img.setAttribute("alt", "Monster img placeholder");
+    img.setAttribute("class", "monsterImg");
+    img.setAttribute("src", "../../res/img/monsterPlaceholder.webp");
+    return img;
   }
 
   monsterName() {
@@ -79,7 +79,7 @@ export class MonsterCard {
     const id = this.id;
     const health = this.health;
     const damage = this.damage;
-    const allMonsters = this.allMonsters; 
+    const allMonsters = this.allMonsters;
 
     const healthIconValue = renderIconWithNumber(health, "../../res/icons/heart.svg", `${name} has ${health} of health`);
     const damageIconValue = renderIconWithNumber(damage, "../../res/icons/skull.svg", `${name} has ${damage} of damage`);
@@ -88,13 +88,13 @@ export class MonsterCard {
     statsContainer.setAttribute("class", "monsterStats");
 
     const rankList = allMonsters.sort((a, b) => {
-      const ratingA = a.health + a.damage;
-      const ratingB = b.health + a.damage;
+      const ratingA = a.monster.health + a.monster.damage;
+      const ratingB = b.monster.health + a.monster.damage;
       return ratingA - ratingB;
     });
 
     if (rankList) {
-      const rank = rankList.indexOf(rankList.find(m=>m.id===id));
+      const rank = rankList.indexOf(rankList.find((m) => m.monster.id === id));
       const descending = rankList.length - rank;
       const controlledRank = descending > 0 ? descending : "";
       rankIconValue = renderIconWithNumber(controlledRank, "../../res/icons/trophy.svg", `${name} is ranked ${controlledRank} of all monsters`);
@@ -139,7 +139,7 @@ export class MonsterCard {
     const price = this.price;
     const name = this.name;
     const priceIconValue = renderIconWithNumber(price, "../../res/icons/diamond.svg", `${name} costs ${price} credits`);
-    priceIconValue.classList.add("monsterPrice");;
+    priceIconValue.classList.add("monsterPrice");
     return priceIconValue;
   }
 
@@ -165,7 +165,7 @@ export class MonsterCard {
 
   assembleMonsterCard() {
     const container = this.monsterCard;
-    container.innerHTML="";
+    container.innerHTML = "";
 
     const name = this.monsterName();
     const img = this.monsterImg();
@@ -187,11 +187,10 @@ export class MonsterCard {
     return container;
   }
 
-  getLoadingSkeletion(){
-    const skeleton = this.skeleton; 
+  getLoadingSkeletion() {
+    const skeleton = this.skeleton;
     const container = this.monsterCard;
     container.appendChild(skeleton);
     return container;
   }
-
 }

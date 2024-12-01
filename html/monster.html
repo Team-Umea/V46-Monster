@@ -31,39 +31,34 @@
        <!-- <button id="fetchMonsters">Fetch Monsters</button> -->
        <div id="filterCatalogueContainer">
         <h2>Filter Monsters</h2>
-        <input type="text" id="searchBox" placeholder="Enter search query" />
-        <label for="searchBox">search by:</label>
-        <div id="searchCategory">
-          <input type="radio" id="name" name="searchBtn" value="name" checked />
-          <label for="name">Name</label>
-          <input type="radio" id="health" name="searchBtn" value="health" />
-          <label for="health">Health</label>
-          <input type="radio" id="rank" name="searchBtn" value="rank" />
-          <label for="rank">Rank</label>
+        <img src="../res/icons/downArrow.svg" alt="Show filters" title="Show filters" role="button" id="filterToggle" class="btnImg icon">
+        <div id="searchSortContainer" class="hidden"> 
+          <input type="text" id="searchBox" placeholder="Enter search query" />
+          <div id="searchContainer">
+            <label for="searchCategory">Select Search Category</label>
+            <div id="searchCategory">
+              <input type="radio" id="name" name="searchBtn" value="name" checked />
+              <label for="name">Name</label>
+              <input type="radio" id="health" name="searchBtn" value="health" />
+              <label for="health">Health</label>
+              <input type="radio" id="rank" name="searchBtn" value="rank" />
+              <label for="rank">Rank</label>
 
-          <input type="radio" id="damage" name="searchBtn" value="damage" />
-          <label for="damage">Damage</label>
-          <input type="radio" id="elements" name="searchBtn" value="elements" />
-          <label for="elements">Elements</label>
-          <input type="radio" id="price" name="searchBtn" value="price" />
-          <label for="price">Price</label>
+              <input type="radio" id="damage" name="searchBtn" value="damage" />
+              <label for="damage">Damage</label>
+              <input type="radio" id="elements" name="searchBtn" value="elements" />
+              <label for="elements">Elements</label>
+              <input type="radio" id="price" name="searchBtn" value="price" />
+              <label for="price">Price</label>
+            </div>
+          </div>
+          <div id="sortContainer">
+            <label for="sortDropdown">Select sort order</label>
+            <select name="sortDropdown" id="sortDropdown"></select>
+          </div>
         </div>
-        
-        <label for="sortDropdown">Sort by:</label>
-        <select name="sortDropdown" id="sortDropdown">
-          <!-- <option value="0">A-Z</option>
-          <option value="1">Z-A</option>
-          <option value="2">Lo-Hi Price</option>
-          <option value="3">Hi-Lo Price</option>
-          <option value="4">Lo-Hi HP</option>
-          <option value="5">Hi-Lo HP</option>
-          <option value="6">Lo-Hi Rank</option>
-          <option value="7">Hi-Lo Rank</option>
-          <option value="8">Lo-Hi Damage</option>
-          <option value="9">Hi-Lo Damage</option> -->
-        </select>
       </div>
-       <div id="monsterContainer"></div>
+      <div id="monsterContainer"></div>
     </main>
     <footer>
       <!-- footer content goes here -->

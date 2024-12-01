@@ -11,13 +11,11 @@ const sortDropDown = document.getElementById("sortDropdown");
 const searchButtonGroup = document.getElementById("searchCategory");
 const searchBtns = searchButtonGroup.getElementsByTagName("input");
 const searchBox = document.getElementById("searchBox");
+const searchSortContainer = document.getElementById("searchSortContainer");
+const filterToggle = document.getElementById("filterToggle");
 
-//time in seconds for how long the data will be cached for before it will refetch
-//this way we can limit the number of calls to the api for data that don't need
-//constent updates
 const ttl = 60;
-let allMonsters = [];
-let visibleMonsters = load(MONSTERS_LSK) ? load(MONSTERS_LSK).data.length : 20;
+let visibleMonsters = 20;
 const monsterCards = [];
 let monsters = [];
 let searchCategory;
@@ -26,25 +24,20 @@ window.addEventListener("DOMContentLoaded", () => {
   init();
 });
 
-async function init() {
-  allMonsters = await serveData("allMonsters", undefined, monsterContainer, ALLMONSTERS_LSK, ttl);
-
+function init() {
+  useClickEvent(filterToggle, toggleFilter);
   useScrollEvent(monsterContainer, infiniteScroll);
   useChangeEvent(sortDropDown, setSortOrder);
+  useInputEvent(searchBox, searchMonsters);
   useMouseWheelEvent(monsterContainer, showAllMonsters);
 
   Array.from(searchBtns).forEach((btn) => {
     useClickEvent(btn, setSearchCategory);
   });
 
-  useInputEvent(searchBox, searchMonsters);
-  processMonsters();
+  useMonsterData();
   populateSortDropDown();
   setSearchCategory();
-}
-
-function constructParams(num, start, sort) {
-  return `num=${num}&start=${start}&sort=${sort}`;
 }
 
 function populateSortDropDown() {
@@ -53,29 +46,31 @@ function populateSortDropDown() {
   });
 }
 
-async function processMonsters() {
+async function useMonsterData() {
   renderLoadingSkeletons(visibleMonsters);
-  const params = constructParams(visibleMonsters, 0, 0);
 
-  const monsterData = await serveData("monsters", params, monsterContainer, MONSTERS_LSK, ttl);
-  if (monsterData.length > 0) {
-    assignMonsters(monsterData);
-    appendNewMonsters(monsters);
-  }
+  const monsterData = await serveData("allMonsters", undefined, monsterContainer, ALLMONSTERS_LSK, ttl);
+  monsters = monsterData.map((data) => ({ monster: data, visible: true }));
+
+  showMonsters();
+
+  renderMonsters();
 }
 
-function assignMonsters(data) {
-  const mappedData = data.map((data) => ({ monster: data, visible: true }));
-  const oldMonsters = monsters;
-  monsters = [...oldMonsters, ...mappedData];
-
-  const sortOrder = getSortOrder();
+function showMonsters() {
+  const sortOrder = Number(sortDropDown.value);
   sortMonsters(sortOrder);
-  showAllMonsters();
+
+  monsters.forEach((monster, index) => {
+    if (index >= visibleMonsters) {
+      monster.visible = false;
+    } else {
+      monster.visible = true;
+    }
+  });
 }
 
 function renderLoadingSkeletons(max) {
-  // monsterContainer.innerHTML = "";
   for (let i = 0; i < max; i++) {
     const monsterCard = new MonsterCard();
     const assembleMonsterCard = monsterCard.getLoadingSkeletion();
@@ -84,31 +79,16 @@ function renderLoadingSkeletons(max) {
   }
 }
 
-function appendNewMonsters(monsters) {
-  const tempTeams = ["a", "b", "c", "d"]; //change for later
-
-  monsterCards.forEach((card, index) => {
-    const monsterObj = monsters[index];
-
-    if (monsterObj) {
-      const monster = monsterObj.monster;
-      const id = monster.id;
-
-      card.setValues(monster, allMonsters, tempTeams, id);
-      card.assembleMonsterCard();
-    }
-  });
-}
-
-function renderUpdatedMonster(monsters) {
+function renderMonsters() {
   monsterContainer.innerHTML = "";
-  const tempTeams = ["a", "b", "c", "d"];
+  const tempTeams = ["a", "b", "c", "d"]; //change for later
 
   monsters.forEach((monsterObj) => {
     const isVisible = monsterObj.visible;
     if (isVisible) {
       const monster = monsterObj.monster;
       const id = monster.id;
+      const allMonsters = [...monsters];
       const monsterCard = new MonsterCard(monster, allMonsters, tempTeams, id);
       const assembledMonsterCard = monsterCard.assembleMonsterCard();
       monsterContainer.appendChild(assembledMonsterCard);
@@ -116,25 +96,11 @@ function renderUpdatedMonster(monsters) {
   });
 }
 
-function getSortOrder() {
-  return Number(sortDropDown.value);
-}
-
-async function infiniteScroll() {
-  if (visibleMonsters < allMonsters.length) {
-    const numNewMonsters = 10;
-    renderLoadingSkeletons(numNewMonsters);
-
-    const sortOrder = getSortOrder();
-    const params = constructParams(visibleMonsters, numNewMonsters, sortOrder);
-
-    visibleMonsters += numNewMonsters;
-
-    const monsterData = await serveFetchedData("monsters", params, monsterContainer, MONSTERS_LSK, ttl);
-    const newMonsters = monsterData.slice(-numNewMonsters);
-
-    assignMonsters(newMonsters);
-    appendNewMonsters(monsters);
+function infiniteScroll() {
+  if (visibleMonsters < monsters.length) {
+    visibleMonsters += 10;
+    showMonsters();
+    renderMonsters();
   }
 }
 
@@ -142,6 +108,7 @@ function setSortOrder() {
   const sortOrder = Number(sortDropDown.value);
   sortMonsters(sortOrder);
   showAllMonsters();
+  renderMonsters();
 }
 
 function setSearchCategory() {
@@ -150,9 +117,12 @@ function setSearchCategory() {
 }
 
 function showAllMonsters() {
-  monsters.forEach((monster) => (monster.visible = true));
-  searchBox.value = "";
-  renderUpdatedMonster(monsters);
+  const hasSearchQuery = searchBox.value !== "";
+  if (hasSearchQuery) {
+    monsters.forEach((monster) => (monster.visible = true));
+    searchBox.value = "";
+    renderMonsters();
+  }
 }
 
 function searchMonsters() {
@@ -191,7 +161,7 @@ function searchMonsters() {
     }
   });
 
-  renderUpdatedMonster(monsters);
+  renderMonsters();
 }
 
 function sortMonsters(sortOrder) {
@@ -230,7 +200,6 @@ function sortMonsters(sortOrder) {
       break;
     case 8:
       //Lo-Hi Damage
-      console.log("Sorted");
       defaultSort("damage");
       break;
     case 9:
@@ -239,7 +208,6 @@ function sortMonsters(sortOrder) {
       break;
     case 10:
       //Few-Many Elements
-      console.log("hello");
       sortByFewToManyElements();
       break;
     case 11:
@@ -249,40 +217,35 @@ function sortMonsters(sortOrder) {
     default:
       break;
   }
-  renderUpdatedMonster(monsters);
 }
 
 function defaultSort(key) {
-  const tempMonsters = monsters.map((monster) => monster.monster);
+  const tempMonsters = [...monsters].map((monster) => monster.monster);
   if (isValidObjKey(tempMonsters, key)) {
-    monsters = monsters.sort((a, b) => {
-      const monsterA = a.monster;
-      const monsterB = b.monster;
-      const valueA = monsterA[key];
-      const valueB = monsterB[key];
+    monsters = [...monsters].sort((a, b) => {
+      const valueA = a.monster[key];
+      const valueB = b.monster[key];
       if (typeof valueA === "string") {
-        return valueA.localeCompare(valueB);
+        return valueA.toLowerCase().localeCompare(valueB.toLowerCase());
       } else if (typeof valueA === "number") {
         const diff = valueA - valueB;
-        return diff === 0 ? monsterA.name.localeCompare(monsterB.name) : diff;
+        return diff === 0 ? a.monster.name.toLowerCase().localeCompare(b.monster.name.toLowerCase()) : diff;
       }
     });
   }
 }
 
 function reverseSort(key) {
-  const tempMonsters = monsters.map((monster) => monster.monster);
+  const tempMonsters = [...monsters].map((monster) => monster.monster);
   if (isValidObjKey(tempMonsters, key)) {
-    monsters = monsters.sort((a, b) => {
-      const monsterA = a.monster;
-      const monsterB = b.monster;
-      const valueA = monsterA[key];
-      const valueB = monsterB[key];
+    monsters = [...monsters].sort((a, b) => {
+      const valueA = a.monster[key];
+      const valueB = b.monster[key];
       if (typeof valueA === "string") {
         return valueB.localeCompare(valueA);
       } else if (typeof valueA === "number") {
         const diff = valueB - valueA;
-        return diff === 0 ? monsterA.name.localeCompare(monsterB.name) : diff;
+        return diff === 0 ? a.monster.name.localeCompare(b.monster.name) : diff;
       }
     });
   }
@@ -291,60 +254,66 @@ function reverseSort(key) {
 function sortByLoHiRank() {
   const rankList = getMonstersRankList();
 
-  monsters = monsters.sort((a, b) => {
-    const monsterA = a.monster;
-    const monsterB = b.monster;
-
-    const rankA = rankList.length - rankList.indexOf(rankList.find((m) => m.id === monsterA.id));
-    const rankB = rankList.length - rankList.indexOf(rankList.find((m) => m.id === monsterB.id));
+  monsters = [...monsters].sort((a, b) => {
+    const rankA = rankList.length - rankList.indexOf(rankList.find((m) => m.id === a.monster.id));
+    const rankB = rankList.length - rankList.indexOf(rankList.find((m) => m.id === b.monster.id));
 
     const rankDiff = rankB - rankA;
-    return rankDiff === 0 ? monsterA.name.localeCompare(monsterB.name) : rankDiff;
+    return rankDiff === 0 ? a.monster.name.localeCompare(b.monster.name) : rankDiff;
   });
 }
 
 function sortByHiLoRank() {
   const rankList = getMonstersRankList();
 
-  monsters = monsters.sort((a, b) => {
-    const monsterA = a.monster;
-    const monsterB = b.monster;
-
-    const rankA = rankList.length - rankList.indexOf(rankList.find((m) => m.id === monsterA.id));
-    const rankB = rankList.length - rankList.indexOf(rankList.find((m) => m.id === monsterB.id));
+  monsters = [...monsters].sort((a, b) => {
+    const rankA = rankList.length - rankList.indexOf(rankList.find((m) => m.id === a.monster.id));
+    const rankB = rankList.length - rankList.indexOf(rankList.find((m) => m.id === b.monster.id));
 
     const rankDiff = rankA - rankB;
-    return rankDiff === 0 ? monsterA.name.localeCompare(monsterB.name) : rankDiff;
+    return rankDiff === 0 ? a.monster.name.localeCompare(b.monster.name) : rankDiff;
   });
 }
 
 function sortByFewToManyElements() {
-  monsters = monsters.sort((a, b) => {
-    const monsterA = a.monster;
-    const monsterB = b.monster;
-    const elementsA = monsterA.elements.length;
-    const elementsB = monsterB.elements.length;
+  monsters = [...monsters].sort((a, b) => {
+    const elementsA = a.monster.elements.length;
+    const elementsB = b.monster.elements.length;
     const elementsDifference = elementsA - elementsB;
-    return elementsDifference === 0 ? monsterA.name.localeCompare(monsterB.name) : elementsDifference;
+    return elementsDifference === 0 ? a.monster.name.localeCompare(b.monster.name) : elementsDifference;
   });
 }
 
 function sortByManyToFewElements() {
-  monsters = monsters.sort((a, b) => {
-    const monsterA = a.monster;
-    const monsterB = b.monster;
-    const elementsA = monsterA.elements.length;
-    const elementsB = monsterB.elements.length;
+  monsters = [...monsters].sort((a, b) => {
+    const elementsA = a.monster.elements.length;
+    const elementsB = b.monster.elements.length;
     const elementsDifference = elementsB - elementsA;
-    return elementsDifference === 0 ? monsterA.name.localeCompare(monsterB.name) : elementsDifference;
+    return elementsDifference === 0 ? a.monster.name.localeCompare(b.monster.name) : elementsDifference;
   });
 }
 
 function getMonstersRankList() {
-  const rankList = allMonsters.sort((a, b) => {
-    const ratingA = a.health + a.damage;
-    const ratingB = b.health + a.damage;
+  const rankList = [...monsters].sort((a, b) => {
+    const ratingA = a.monster.health + a.monster.damage;
+    const ratingB = b.monster.health + a.monster.damage;
     return ratingA - ratingB;
   });
   return rankList;
+}
+
+function toggleFilter() {
+  const src = filterToggle.getAttribute("src");
+
+  if (src.includes("downArrow")) {
+    filterToggle.setAttribute("src", "../res/icons/upArrow.svg");
+    filterToggle.setAttribute("alt", "Hide filters");
+    filterToggle.setAttribute("title", "Hide filters");
+    searchSortContainer.setAttribute("class", "searchSortContainer");
+  } else {
+    filterToggle.setAttribute("src", "../res/icons/downArrow.svg");
+    filterToggle.setAttribute("alt", "Show filters");
+    filterToggle.setAttribute("title", "Show filters");
+    searchSortContainer.setAttribute("class", "hidden");
+  }
 }

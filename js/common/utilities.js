@@ -43,11 +43,14 @@ export function load(key) {
 
   const keys = Object.keys(loaded);
 
-  const savedAt = keys.includes("savedAt");
-  const ttl = key.includes("ttl");
+  const hasSavedAtProp = keys.includes("savedAt");
+  const hasTtlProp = keys.includes("ttl");
 
-  if (savedAt && ttl) {
+  if (hasSavedAtProp && hasTtlProp) {
     const currentDate = new Date();
+    const savedAt = loaded.savedAt;
+    const ttl = loaded.ttl;
+
     const dataIsLiving = !compareWithTempDate(currentDate, savedAt, ttl);
 
     if (dataIsLiving) {
