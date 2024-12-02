@@ -56,9 +56,11 @@ export class MonsterCard {
       return name;
     });
 
-    const rank = rankList.indexOf(rankList.find((m) => {
-      return m.monster.id === id;
-    }));
+    const rank = rankList.indexOf(
+      rankList.find((m) => {
+        return m.monster.id === id;
+      })
+    );
     const descending = rankList.length - rank;
     return descending;
   }
@@ -175,16 +177,15 @@ export class MonsterCard {
     priceIconValue.classList.add("monsterPrice");
     return priceIconValue;
   }
-  
+
   addToTeam() {
     const teamSelector = document.createElement("select");
 
     teamSelector.setAttribute("class", "monsterSelect");
-    console.log(this.teams);
     const firstOption = document.createElement("option");
     firstOption.innerText = "Add to Team";
     teamSelector.appendChild(firstOption);
-    
+
     this.teams.forEach((team, index) => {
       const option = document.createElement("option");
       option.setAttribute("value", index);
@@ -193,14 +194,12 @@ export class MonsterCard {
       option.value = team.getTeamName();
       teamSelector.appendChild(option);
     });
-    teamSelector.addEventListener("change", ()=>{
+    teamSelector.addEventListener("change", () => {
       const selectedOption = teamSelector.options[teamSelector.selectedIndex].value;
       const selectedTeam = this.teams.find((team) => selectedOption === team.getTeamName());
 
       selectedTeam.addMonsterToTeam(this.monster);
       save(TEAMS_LSK, this.teams);
-      console.log("hej")
-
     });
     return teamSelector;
   }
