@@ -1,8 +1,8 @@
 //Js code for monster page
 import { serveData } from "./common/fetch.js";
-import { ALLMONSTERS_TTL, SORTOPTIONS_TTL } from "./common/ttl.js";
+import { ALLMONSTERS_TTL, MONSTERS_TTL, SORTOPTIONS_TTL } from "./common/ttl.js";
 import { useClickEvent, useClickEvents, useScrollEvent, useChangeEvent, useInputEvent, useMouseWheelEvent } from "./common/useEvent.js";
-import { ALLMONSTERS_LSK, SORTOPTIONS_LSK } from "./common/localStorageKeys.js";
+import { ALLMONSTERS_LSK, MONSTERS_LSK, SORTOPTIONS_LSK } from "./common/localStorageKeys.js";
 import { MonsterCard } from "./classes/MonsterCard.js";
 import { isValidObjKey } from "./common/utilities.js";
 import { renderSelect } from "./common/render.js";
@@ -16,6 +16,7 @@ const searchSortContainer = document.getElementById("searchSortContainer");
 const filterToggle = document.getElementById("filterToggle");
 
 let visibleMonsters = 20;
+let allMonsters = [];
 let monsters = [];
 const ranks = [];
 
@@ -38,14 +39,18 @@ function init() {
 async function useData() {
   renderLoadingSkeletons(visibleMonsters);
 
-  const promises = [serveData("allMonsters", undefined, monsterContainer, ALLMONSTERS_LSK, ALLMONSTERS_TTL), serveData("sortOptions", undefined, sortDropDown, SORTOPTIONS_LSK, SORTOPTIONS_TTL)];
+  const monsterParam = `num=${visibleMonsters}&start=${0}&sort=${0}`;
+
+  const promises = [serveData("monsters", monsterParam, monsterContainer, MONSTERS_LSK, MONSTERS_TTL), serveData("allMonsters", undefined, monsterContainer, ALLMONSTERS_LSK, ALLMONSTERS_TTL), serveData("sortOptions", undefined, sortDropDown, SORTOPTIONS_LSK, SORTOPTIONS_TTL)];
 
   const responses = await Promise.all(promises);
 
   const monsterData = responses[0];
-  const options = responses[1];
+  const allMonsterData = responses[1];
+  const options = responses[2];
 
   monsters = monsterData.map((data) => ({ monster: data, visible: true }));
+  allMonsters = allMonsterData.map((data) => ({ monster: data, visible: true }));
 
   showMonsters();
   renderSelect(sortDropDown, options);
