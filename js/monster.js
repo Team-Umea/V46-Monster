@@ -9,6 +9,7 @@ import { renderSelect } from "./common/render.js";
 import { Team } from "./classes/Team.js";
 
 const monsterContainer = document.getElementById("monsterContainer");
+const allMonstersContainer = document.getElementById("allMonsters");
 const sortDropDown = document.getElementById("sortDropdown");
 const searchButtonGroup = document.getElementById("searchCategory");
 const searchBtns = searchButtonGroup.getElementsByTagName("input");
@@ -46,7 +47,7 @@ async function useData() {
 
   const monsterParam = `num=${visibleMonsters}&start=${0}&sort=${0}`;
 
-  const promises = [serveData("monsters", monsterParam, monsterContainer, MONSTERS_LSK, MONSTERS_TTL), serveData("allMonsters", undefined, monsterContainer, ALLMONSTERS_LSK, ALLMONSTERS_TTL), serveData("sortOptions", undefined, sortDropDown, SORTOPTIONS_LSK, SORTOPTIONS_TTL)];
+  const promises = [serveData("monsters", monsterParam, monsterContainer, MONSTERS_LSK, MONSTERS_TTL), serveData("allMonsters", undefined, allMonstersContainer, ALLMONSTERS_LSK, ALLMONSTERS_TTL), serveData("sortOptions", undefined, sortDropDown, SORTOPTIONS_LSK, SORTOPTIONS_TTL)];
 
   const responses = await Promise.all(promises);
 
@@ -61,6 +62,7 @@ async function useData() {
   showMonsters();
   renderSelect(sortDropDown, options);
 }
+
 function loadTeamsFromLS() {
   const loadedTeams = load(TEAMS_LSK);
   if (loadedTeams) {
@@ -69,6 +71,7 @@ function loadTeamsFromLS() {
     });
   }
 }
+
 async function loadMoreMonsters() {
   const numNewMonsters = 10;
   const max = allMonsters.length + numNewMonsters;
