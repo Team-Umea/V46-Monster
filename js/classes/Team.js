@@ -12,6 +12,12 @@ export class Team{
     setPaidFor(status) {
         this.paidFor = status;
       }
+      getTeamName(){
+        return this.name;
+      }
+      setTeamName(name) {
+        this.name = name;
+      }
       getMonsters(){
         return this.monsters;
       }
@@ -25,10 +31,13 @@ export class Team{
         this.visible = visible;
       }
       addMonsterToTeam(monster){
-        this.monsters.push(monster);
+        const duplicates = this.monsters.filter((m)=> m.id === monster.id);
+        if(this.monsters.length < 4 && duplicates.length === 0){
+          this.monsters.push(monster);
+        }
       }
     static fromJSON(json) {
-        const newTeam = new Team(json.teamName);
+        const newTeam = new Team(json.name);
         newTeam.setMonsters(json.monsters);
         newTeam.setPaidFor(json.paidFor);
         newTeam.setVisible(json.visible);

@@ -2,10 +2,12 @@
 import { serveData } from "./common/fetch.js";
 import { ALLMONSTERS_TTL, MONSTERS_TTL, SORTOPTIONS_TTL } from "./common/ttl.js";
 import { useClickEvent, useClickEvents, useScrollEvent, useChangeEvent, useInputEvent, useMouseWheelEvent } from "./common/useEvent.js";
-import { ALLMONSTERS_LSK, MONSTERS_LSK, SORTOPTIONS_LSK } from "./common/localStorageKeys.js";
+import { ALLMONSTERS_LSK, MONSTERS_LSK, SORTOPTIONS_LSK,TEAMS_LSK } from "./common/localStorageKeys.js";
 import { MonsterCard } from "./classes/MonsterCard.js";
-import { isValidObjKey } from "./common/utilities.js";
+import { isValidObjKey,load } from "./common/utilities.js";
 import { renderSelect } from "./common/render.js";
+import { Team } from "./classes/Team.js";
+
 
 const monsterContainer = document.getElementById("monsterContainer");
 const sortDropDown = document.getElementById("sortDropdown");
@@ -18,6 +20,7 @@ const filterToggle = document.getElementById("filterToggle");
 let visibleMonsters = 20;
 let allMonsters = [];
 let monsters = [];
+let teams = [];
 const ranks = [];
 
 let searchCategory;
@@ -34,6 +37,9 @@ function init() {
   useInputEvent(searchBox, searchMonsters);
 
   useData();
+
+  loadTeamsFromLS();
+
 }
 
 async function useData() {
@@ -55,7 +61,14 @@ async function useData() {
   showMonsters();
   renderSelect(sortDropDown, options);
 }
-
+function loadTeamsFromLS(){
+  const loadedTeams = load(TEAMS_LSK);
+  if(loadedTeams){
+    loadedTeams.forEach((loadedTeam) => {
+        teams.push(Team.fromJSON(loadedTeam));
+    })
+  }
+}
 function showAllMonsters() {
   const hasSearchQuery = searchBox.value !== "";
   if (hasSearchQuery) {
@@ -93,13 +106,13 @@ function renderLoadingSkeletons(max) {
 function renderMonsters() {
   monsterContainer.innerHTML = "";
   const tempTeams = ["a", "b", "c", "d"]; //change for later
-
+  //const teamNames = teams.map((team)=>team.getTeamName());
   monsters.forEach((monsterObj) => {
     const isVisible = monsterObj.visible;
     const monster = monsterObj.monster;
     const id = monster.id;
     const allMonsters = [...monsters];
-    const monsterCard = new MonsterCard(monster, allMonsters, tempTeams, id);
+    const monsterCard = new MonsterCard(monster, allMonsters, teams, id);
 
     if (ranks.length < monsters.length) {
       const monsterRank = monsterCard.getRank();

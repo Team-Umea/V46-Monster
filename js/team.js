@@ -10,9 +10,7 @@ const allMonstersCon = document.getElementById("allMonstersContainer");
 
 let allMonsters = [];
 
-const skib = new Team("skib");
-
-const teamsArr = [skib];
+const teamsArr = [];
 
 window.addEventListener("DOMContentLoaded", () => {
   
@@ -27,18 +25,19 @@ function init(){
 
 async function getAllMonsters(){
 
-  const monsterData = await serveData("allMonsters", undefined, allMonstersCon, ALLMONSTERS_LSK, ALLMONSTERS_TTL, true);
+  const monsterData = await serveData("allMonsters", undefined, allMonstersCon, ALLMONSTERS_LSK, ALLMONSTERS_TTL);
   const mappedData = monsterData.map((monster)=>{
     return {monster:monster, visible:true};
   });
   allMonsters = mappedData;
+
   loadTeams();
+
   renderTeams();
-  const monstah = allMonsters[0];
 
 
 
-  skib.addMonsterToTeam(monstah);
+  
 }
 
 function initCreateTeamForm() {
@@ -80,11 +79,14 @@ function initCreateTeamForm() {
       if (teamName !== "") {
         const checkName = generateUniqueTeamName(teamsArr, teamName);
   
-        const controlledName = checkName.name;
-        if (!checkName.unique) {
+        let controlledName = "";
+        console.log(checkName);
+        if (checkName.nonUnique) {
+          controlledName = checkName.name;
           message.setAttribute("class", "success");
           message.innerText = `${teamName} successfully changed to ${controlledName} due to team name duplicates`;
         } else {
+          controlledName = teamName;
           message.setAttribute("class", "success");
           message.innerText = `${controlledName} successfully created`;
         }
@@ -105,15 +107,6 @@ function initCreateTeamForm() {
     });
   }
 
-  function extractLetters(str) {
-    return str.replace(/[^a-zA-Z]/g, "");
-  }
-
-  function extractNumbersFromEnd(str) {
-    const match = str.match(/\d+$/);
-    return match ? match[0] : "";
-  }
-
   function addTeam(teamName) {
     const newTeam = new Team(teamName);
     teamsArr.push(newTeam);
@@ -124,14 +117,15 @@ function initCreateTeamForm() {
     save(TEAMS_LSK,teamsArr);
     renderTeams();
   }
-  
+
   function loadTeams(){
     const loadedTeams = load(TEAMS_LSK);
     if(loadedTeams){
         loadedTeams.forEach((loadedTeam) => {
             teamsArr.push(Team.fromJSON(loadedTeam));
-            renderTeams();
-        })
+
+        });
+        renderTeams();
     }
   }
   function renderTeams(){
@@ -139,46 +133,58 @@ function initCreateTeamForm() {
     if(teamsArr.length > 0){
         teamsArr.forEach((team)=>{
             const teamDiv = document.createElement("div");
-            const teamText = document.createElement("p");
+            const teamText = document.createElement("h2");
+            const monContainer = document.createElement("div");
+
             teamText.innerText = team.name;
+
             teamDiv.appendChild(teamText);
-    
+            monContainer.setAttribute("class", "monContainer")
             teamDiv.setAttribute("id", team.name);
+            teamDiv.setAttribute("class", "teamDiv");
             if(team.monsters.length > 0){
                 team.monsters.forEach((monster)=>{
-                    const monsterCard = new MonsterCard(monster, allMonsters,[]);
+                    const monsterCard = new MonsterCard(monster, allMonsters,[],true);
                     const assembledMonsterCard = monsterCard.assembleMonsterCard();
 
-                    teamDiv.appendChild(assembledMonsterCard);
-                    
+                    monContainer.appendChild(assembledMonsterCard);
+
                 })
             }
-            
+            teamDiv.appendChild(monContainer);
             teamsContainer.appendChild(teamDiv);
         })
     }
-    
+
   }
-  
-  
+  function extractLetters(str) {
+    return str.replace(/[^a-zA-Z]/g, "");
+  }
+
+  function extractNumbersFromEnd(str) {
+    const match = str.match(/\d+$/);
+    return match ? match[0] : "";
+  }
+
  function generateUniqueTeamName(teams, teamName) {
-    const noneUnique = teams.filter((team) => extractLetters(team.name) === extractLetters(teamName));
-  
+
+    const noneUnique = teams.filter((team) => {
+      return extractLetters(team.name) === extractLetters(teamName);
+    });
     if (noneUnique && noneUnique.length > 0) {
       const lastElement = noneUnique.length - 1;
-      const sortedNames = noneUnique.sort((a, b) => Number(extractNumbersFromEnd(a.getTeamName()) - Number(extractNumbersFromEnd(b.getTeamName())))).map((temm) => temm.getTeamName());
+      const sortedNames = noneUnique.sort((a, b) => Number(extractNumbersFromEnd(a.getTeamName()) - Number(extractNumbersFromEnd(b.getTeamName())))).map((team) => team.getTeamName());
       const name = sortedNames[lastElement];
       const noneUniqueLetters = extractLetters(name);
       const digits = Number(extractNumbersFromEnd(name));
       const unique = digits + 1;
       const uniqueName = noneUniqueLetters.concat(unique);
       return {
-        unique: false,
+        nonUnique: true,
         name: uniqueName,
       };
-    }
-    return {
-      unique:false,
-      name:""
+    }return{
+      nonUnique:false,
+      name: teamName,
     }
 }
