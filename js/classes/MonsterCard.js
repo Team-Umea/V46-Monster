@@ -115,22 +115,6 @@ export class MonsterCard {
 
     statsContainer.setAttribute("class", "monsterStats");
 
-    // const rankList = allMonsters.sort((a, b) => {
-    //   const ratingA = a.monster.health + a.monster.damage;
-    //   const ratingB = b.monster.health + a.monster.damage;
-
-    //   const diff = ratingA - ratingB;
-    //   const damage = diff === 0 ? a.monster.damage - b.monster.damage : diff;
-    //   const health = damage === 0 ? a.monster.health - b.monster.health : damage;
-
-    //   return health;
-    //   // return diff === 0 ? b.monster.name.localeCompare(a.monster.name) : diff;
-    // });
-
-    // if (rankList) {
-    //   const rank = rankList.indexOf(rankList.find((m) => m.monster.id === id));
-    //   const descending = rankList.length - rank;
-    //   const controlledRank = descending > 0 ? descending : "";
     rankIconValue = renderIconWithNumber(rank, "../../res/icons/trophy.svg", `${name} is ranked ${rank} of all monsters`);
     rankIconValue.classList.add("monsterRank");
 
@@ -216,8 +200,7 @@ export class MonsterCard {
     container.appendChild(stats);
     container.appendChild(elements);
     container.appendChild(price);
-
-    if(select.children.length > 0){
+    if (select.children.length > 0) {
       container.appendChild(select);
     }
     return container;
