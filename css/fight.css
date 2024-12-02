@@ -8,7 +8,7 @@
 
 /* Main Container */
 main {
-  max-width: 800px;
+  max-width: 1200px;
   margin: 20px auto;
   padding: 20px;
   background-color: var(--color-tertiary-darker);
