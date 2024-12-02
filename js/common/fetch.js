@@ -6,6 +6,8 @@ import { renderSpinner } from "./render.js";
 async function fetchData(requestedEndpoint, apiParams, parent, key, ttl, useSpinner) {
   const endpoints = await loadEndpoints();
 
+  return getError(404, parent);
+
   if (!(requestedEndpoint in endpoints)) {
     return getError(404, parent);
   }
