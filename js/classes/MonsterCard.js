@@ -1,12 +1,14 @@
 import { TEAMS_LSK } from "../common/localStorageKeys.js";
 import { renderIconWithNumber } from "../common/render.js";
 import { save } from "../common/utilities.js";
+
 export class MonsterCard {
   constructor(monster, allMonsters, teams, hideSelect) {
     this.monster = monster;
     this.allMonsters = allMonsters;
     this.teams = teams;
     this.hideSelect = hideSelect;
+
     if (monster) {
       this.id = monster.id;
       this.name = monster.name;
@@ -19,25 +21,6 @@ export class MonsterCard {
     }
 
     this.monsterCard = this.monsterContainer();
-  }
-
-  setValues(monster, allMonsters, teams) {
-    this.monster = monster;
-    this.allMonsters = allMonsters;
-    this.teams = teams;
-
-    this.name = monster.name;
-    this.specs = monster.specs;
-    this.health = monster.health;
-    this.damage = monster.damage;
-    this.elements = monster.elements;
-    this.price = monster.price;
-
-    const container = this.monsterCard;
-    // console.log("con", container);
-    container.innerHTML = "";
-
-    // console.log("Conatiner", container);
   }
 
   calcRank() {
@@ -56,9 +39,8 @@ export class MonsterCard {
       return name;
     });
 
-    const rank = rankList.indexOf(rankList.find((m) => {
-      return m.monster.id === id;
-    }));
+    const rank = rankList.indexOf(rankList.find((m) => m.monster.id === id));
+
     const descending = rankList.length - rank;
     return descending;
   }
@@ -83,14 +65,6 @@ export class MonsterCard {
     container.appendChild(skeleton);
 
     return container;
-  }
-
-  monsterLoadingSkeleton() {
-    const monsterCard = this.monsterCard;
-    const container = document.createElement("div");
-    container.setAttribute("class", "monsterLoadingSkeleton");
-    monsterCard.appendChild(container);
-    return monsterCard;
   }
 
   monsterImg() {
@@ -175,17 +149,19 @@ export class MonsterCard {
     priceIconValue.classList.add("monsterPrice");
     return priceIconValue;
   }
-  
-  addToTeam() {
+
+  monsterSelect() {
     const teamSelector = document.createElement("select");
 
+    const teams = this.teams;
+    const monster = this.monster;
+
     teamSelector.setAttribute("class", "monsterSelect");
-    console.log(this.teams);
     const firstOption = document.createElement("option");
     firstOption.innerText = "Add to Team";
     teamSelector.appendChild(firstOption);
-    
-    this.teams.forEach((team, index) => {
+
+    teams.forEach((team, index) => {
       const option = document.createElement("option");
       option.setAttribute("value", index);
       option.setAttribute("class", "monsterSelectOption");
@@ -193,15 +169,15 @@ export class MonsterCard {
       option.value = team.getTeamName();
       teamSelector.appendChild(option);
     });
-    teamSelector.addEventListener("change", ()=>{
+
+    teamSelector.addEventListener("change", () => {
       const selectedOption = teamSelector.options[teamSelector.selectedIndex].value;
-      const selectedTeam = this.teams.find((team) => selectedOption === team.getTeamName());
+      const selectedTeam = teams.find((team) => selectedOption === team.getTeamName());
 
-      selectedTeam.addMonsterToTeam(this.monster);
-      save(TEAMS_LSK, this.teams);
-      console.log("hej")
-
+      selectedTeam.addMonsterToTeam(monster);
+      save(TEAMS_LSK, teams);
     });
+
     return teamSelector;
   }
 
@@ -215,7 +191,7 @@ export class MonsterCard {
     const stats = this.monsterStats();
     const elements = this.monsterElements();
     const price = this.monsterPrice();
-    const select = this.addToTeam();
+    const select = this.monsterSelect();
 
     container.appendChild(name);
     container.appendChild(img);

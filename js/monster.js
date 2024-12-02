@@ -1,8 +1,8 @@
 //Js code for monster page
 import { serveData, serveFetchedData } from "./common/fetch.js";
 import { ALLMONSTERS_TTL, MONSTERS_TTL, SORTOPTIONS_TTL } from "./common/ttl.js";
-import { useClickEvent, useClickEvents, useScrollEvent, useChangeEvent, useInputEvent, useMouseWheelEvent } from "./common/useEvent.js";
-import { ALLMONSTERS_LSK, MONSTERS_LSK, SORTOPTIONS_LSK, TEAMS_LSK } from "./common/localStorageKeys.js";
+import { useClickEvent, useClickEvents, useScrollEvent, useChangeEvent, useInputEvent } from "./common/useEvent.js";
+import { ALLMONSTERS_LSK, SORTOPTIONS_LSK, TEAMS_LSK } from "./common/localStorageKeys.js";
 import { MonsterCard } from "./classes/MonsterCard.js";
 import { isValidObjKey, load } from "./common/utilities.js";
 import { renderSelect } from "./common/render.js";
@@ -17,9 +17,9 @@ const searchBox = document.getElementById("searchBox");
 const searchSortContainer = document.getElementById("searchSortContainer");
 const filterToggle = document.getElementById("filterToggle");
 
-let visibleMonsters = load(MONSTERS_LSK) ? load(MONSTERS_LSK).data.length : 20;
-const monsterCards = [];
-let allMonsters = [];
+let visibleMonsters = 20;
+// const monsterCards = [];
+// let allMonsters = [];
 let monsters = [];
 let teams = [];
 const ranks = [];
@@ -45,19 +45,14 @@ function init() {
 async function useData() {
   renderLoadingSkeletons(visibleMonsters);
 
-  const monsterParam = `num=${visibleMonsters}&start=${0}&sort=${0}`;
-
-  const promises = [serveData("monsters", monsterParam, monsterContainer, MONSTERS_LSK, MONSTERS_TTL), serveData("allMonsters", undefined, allMonstersContainer, ALLMONSTERS_LSK, ALLMONSTERS_TTL), serveData("sortOptions", undefined, sortDropDown, SORTOPTIONS_LSK, SORTOPTIONS_TTL)];
+  const promises = [serveData("allMonsters", undefined, monsterContainer, ALLMONSTERS_LSK, MONSTERS_TTL), serveData("sortOptions", undefined, sortDropDown, SORTOPTIONS_LSK, SORTOPTIONS_TTL)];
 
   const responses = await Promise.all(promises);
 
   const monsterData = responses[0];
-  const allMonsterData = responses[1];
-  const options = responses[2];
+  const options = responses[1];
 
   monsters = monsterData.map((data) => ({ monster: data, visible: true }));
-
-  allMonsters = allMonsterData.map((data) => ({ monster: data, visible: true }));
 
   showMonsters();
   renderSelect(sortDropDown, options);
@@ -69,27 +64,6 @@ function loadTeamsFromLS() {
     loadedTeams.forEach((loadedTeam) => {
       teams.push(Team.fromJSON(loadedTeam));
     });
-  }
-}
-
-async function loadMoreMonsters() {
-  const numNewMonsters = 10;
-  const max = allMonsters.length + numNewMonsters;
-
-  if (visibleMonsters <= max) {
-    const startNum = visibleMonsters;
-    visibleMonsters += numNewMonsters;
-
-    const monsterParam = `num=${numNewMonsters}&start=${startNum}&sort=${0}`;
-
-    renderLoadingSkeletons(numNewMonsters);
-
-    const fetchedMonsters = await serveFetchedData("monsters", monsterParam, monsterContainer, MONSTERS_LSK, MONSTERS_TTL);
-
-    const mappedData = fetchedMonsters.map((monster) => ({ monster: monster, visible: true }));
-
-    monsters = [...monsters, ...mappedData];
-    renderMonsters();
   }
 }
 
@@ -123,7 +97,6 @@ function renderLoadingSkeletons(max) {
   for (let i = 0; i < max; i++) {
     const monsterCard = new MonsterCard();
     const assembleMonsterCard = monsterCard.getMonsterCard();
-    monsterCards.push(monsterCard);
     monsterContainer.appendChild(assembleMonsterCard);
   }
 }
@@ -151,8 +124,8 @@ function renderMonsters() {
 }
 
 function infiniteScroll() {
-  if (visibleMonsters < allMonsters.length) {
-    loadMoreMonsters();
+  if (visibleMonsters < monsters.length) {
+    visibleMonsters += 10;
     showMonsters();
   }
 }
