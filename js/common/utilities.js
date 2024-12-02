@@ -121,3 +121,35 @@ export function capitalize(str) {
 export function isValidObjKey(arr, key) {
   return arr.every((item) => key in item);
 }
+
+export function extractLetters(str) {
+  return str.replace(/[^a-zA-Z]/g, "");
+}
+
+export function extractNumbersFromEnd(str) {
+  const match = str.match(/\d+$/);
+  return match ? match[0] : "";
+}
+
+export function generateUniqueName(arr, name) {
+  const noneUnique = arr.filter((team) => {
+    return extractLetters(team.name) === extractLetters(name);
+  });
+  if (noneUnique && noneUnique.length > 0) {
+    const lastElement = noneUnique.length - 1;
+    const sortedNames = noneUnique.sort((a, b) => Number(extractNumbersFromEnd(a.getTeamName()) - Number(extractNumbersFromEnd(b.getTeamName())))).map((team) => team.getTeamName());
+    const name = sortedNames[lastElement];
+    const noneUniqueLetters = extractLetters(name);
+    const digits = Number(extractNumbersFromEnd(name));
+    const unique = digits + 1;
+    const uniqueName = noneUniqueLetters.concat(unique);
+    return {
+      nonUnique: true,
+      name: uniqueName,
+    };
+  }
+  return {
+    nonUnique: false,
+    name: name,
+  };
+}

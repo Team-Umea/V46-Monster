@@ -39,11 +39,8 @@ export class MonsterCard {
       return name;
     });
 
-    const rank = rankList.indexOf(
-      rankList.find((m) => {
-        return m.monster.id === id;
-      })
-    );
+    const rank = rankList.indexOf(rankList.find((m) => m.monster.id === id));
+
     const descending = rankList.length - rank;
     return descending;
   }
