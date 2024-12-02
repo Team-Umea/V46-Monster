@@ -1,10 +1,10 @@
 //Js code for monster page
-import { serveData } from "./common/fetch.js";
+import { serveData, serveFetchedData } from "./common/fetch.js";
 import { ALLMONSTERS_TTL, MONSTERS_TTL, SORTOPTIONS_TTL } from "./common/ttl.js";
 import { useClickEvent, useClickEvents, useScrollEvent, useChangeEvent, useInputEvent, useMouseWheelEvent } from "./common/useEvent.js";
 import { ALLMONSTERS_LSK, MONSTERS_LSK, SORTOPTIONS_LSK } from "./common/localStorageKeys.js";
 import { MonsterCard } from "./classes/MonsterCard.js";
-import { isValidObjKey } from "./common/utilities.js";
+import { isValidObjKey, load } from "./common/utilities.js";
 import { renderSelect } from "./common/render.js";
 
 const monsterContainer = document.getElementById("monsterContainer");
@@ -15,10 +15,13 @@ const searchBox = document.getElementById("searchBox");
 const searchSortContainer = document.getElementById("searchSortContainer");
 const filterToggle = document.getElementById("filterToggle");
 
-let visibleMonsters = 20;
+let visibleMonsters = load(MONSTERS_LSK) ? load(MONSTERS_LSK).data.length : 20;
+const monsterCards = [];
 let allMonsters = [];
 let monsters = [];
 const ranks = [];
+
+const teams = ["a", "b", "c", "d"]; //change for later
 
 let searchCategory;
 
@@ -50,10 +53,32 @@ async function useData() {
   const options = responses[2];
 
   monsters = monsterData.map((data) => ({ monster: data, visible: true }));
+
   allMonsters = allMonsterData.map((data) => ({ monster: data, visible: true }));
 
   showMonsters();
   renderSelect(sortDropDown, options);
+}
+
+async function loadMoreMonsters() {
+  const numNewMonsters = 10;
+  const max = allMonsters.length + numNewMonsters;
+
+  if (visibleMonsters <= max) {
+    const startNum = visibleMonsters;
+    visibleMonsters += numNewMonsters;
+
+    const monsterParam = `num=${numNewMonsters}&start=${startNum}&sort=${0}`;
+
+    renderLoadingSkeletons(numNewMonsters);
+
+    const fetchedMonsters = await serveFetchedData("monsters", monsterParam, monsterContainer, MONSTERS_LSK, MONSTERS_TTL);
+
+    const mappedData = fetchedMonsters.map((monster) => ({ monster: monster, visible: true }));
+
+    monsters = [...monsters, ...mappedData];
+    renderMonsters();
+  }
 }
 
 function showAllMonsters() {
@@ -85,21 +110,21 @@ function showMonsters() {
 function renderLoadingSkeletons(max) {
   for (let i = 0; i < max; i++) {
     const monsterCard = new MonsterCard();
-    const assembleMonsterCard = monsterCard.getLoadingSkeletion();
+    const assembleMonsterCard = monsterCard.getMonsterCard();
+    monsterCards.push(monsterCard);
     monsterContainer.appendChild(assembleMonsterCard);
   }
 }
 
 function renderMonsters() {
   monsterContainer.innerHTML = "";
-  const tempTeams = ["a", "b", "c", "d"]; //change for later
 
   monsters.forEach((monsterObj) => {
     const isVisible = monsterObj.visible;
     const monster = monsterObj.monster;
     const id = monster.id;
     const allMonsters = [...monsters];
-    const monsterCard = new MonsterCard(monster, allMonsters, tempTeams, id);
+    const monsterCard = new MonsterCard(monster, allMonsters, teams, id);
 
     if (ranks.length < monsters.length) {
       const monsterRank = monsterCard.getRank();
@@ -114,8 +139,8 @@ function renderMonsters() {
 }
 
 function infiniteScroll() {
-  if (visibleMonsters < monsters.length) {
-    visibleMonsters += 10;
+  if (visibleMonsters < allMonsters.length) {
+    loadMoreMonsters();
     showMonsters();
   }
 }

@@ -18,7 +18,6 @@ export class MonsterCard {
     }
 
     this.monsterCard = this.monsterContainer();
-    this.skeleton = this.monsterLoadingSkeleton();
   }
 
   setValues(monster, allMonsters, teams) {
@@ -32,6 +31,12 @@ export class MonsterCard {
     this.damage = monster.damage;
     this.elements = monster.elements;
     this.price = monster.price;
+
+    const container = this.monsterCard;
+    // console.log("con", container);
+    container.innerHTML = "";
+
+    // console.log("Conatiner", container);
   }
 
   calcRank() {
@@ -62,18 +67,27 @@ export class MonsterCard {
     return rankID;
   }
 
+  getMonsterCard() {
+    return this.monsterCard;
+  }
+
   monsterContainer() {
-    const id = this.id;
     const container = document.createElement("div");
     container.setAttribute("class", "monsterCard");
-    container.setAttribute("id", id);
+
+    const skeleton = document.createElement("div");
+    skeleton.setAttribute("class", "monsterLoadingSkeleton");
+    container.appendChild(skeleton);
+
     return container;
   }
 
   monsterLoadingSkeleton() {
+    const monsterCard = this.monsterCard;
     const container = document.createElement("div");
     container.setAttribute("class", "monsterLoadingSkeleton");
-    return container;
+    monsterCard.appendChild(container);
+    return monsterCard;
   }
 
   monsterImg() {
@@ -191,8 +205,6 @@ export class MonsterCard {
     const price = this.monsterPrice();
     const select = this.addToTeam();
 
-    this.skeleton.remove();
-
     container.appendChild(name);
     container.appendChild(img);
     container.appendChild(specs);
@@ -202,13 +214,6 @@ export class MonsterCard {
     if (select.children.length > 0) {
       container.appendChild(select);
     }
-    return container;
-  }
-
-  getLoadingSkeletion() {
-    const skeleton = this.skeleton;
-    const container = this.monsterCard;
-    container.appendChild(skeleton);
     return container;
   }
 }

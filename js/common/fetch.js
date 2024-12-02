@@ -44,7 +44,7 @@ async function fetchData(requestedEndpoint, apiParams, parent, key, ttl, useSpin
   }
 }
 
-function serveFetchedData(requestedEndpoint, apiParams, parent, key, ttl, renderSpinner) {
+export function serveFetchedData(requestedEndpoint, apiParams, parent, key, ttl, renderSpinner) {
   return fetchData(requestedEndpoint, apiParams, parent, key, ttl, renderSpinner)
     .then((data) => {
       if (data.ok) {
