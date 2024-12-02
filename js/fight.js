@@ -82,56 +82,11 @@ window.addEventListener("DOMContentLoaded", () => {
     init();
   
     });
-    function init(){
-        loadTeams();
-        addTeamsToSelect();
-        exampleFight();
-    }
-    function loadTeams(){
-        const loadedTeams = load(TEAMS_LSK);
-        if(loadedTeams){
-            loadedTeams.forEach((loadedTeam) => {
-                teams.push(Team.fromJSON(loadedTeam));
 
-            });
-        }
-    }
-function addTeamsToSelect(){
-
-
-    team1Selector.setAttribute("class", "teamSelect");
-    team2Selector.setAttribute("class", "teamSelect");
-
-    const firstOption1 = document.createElement("option");
-    const firstOption2 = document.createElement("option");
-
-    const team1Text = "Choose team 1";
-
-    firstOption1.innerText = team1Text;
-    team1Selector.appendChild(firstOption1);
-
-    const team2Text = "Choose team 2";
-
-    firstOption2.innerText = team2Text;
-    team2Selector.appendChild(firstOption2);
-
-    teams.forEach((team, index) => {
-      const option = document.createElement("option");
-      option.setAttribute("value", index);
-      option.setAttribute("class", "monsterSelectOption");
-      option.innerText = team.getTeamName();
-      option.value = team.getTeamName();
-      team1Selector.appendChild(option);
-    });
-    teams.forEach((team, index) => {
-        const option = document.createElement("option");
-        option.setAttribute("value", index);
-        option.setAttribute("class", "monsterSelectOption");
-        option.innerText = team.getTeamName();
-        option.value = team.getTeamName();
-        team2Selector.appendChild(option);
-      });
-    
+function init(){
+    loadTeams();
+    addTeamsToSelect();
+    exampleFight();
 }
 
 function loadTeams() {
