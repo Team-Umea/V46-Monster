@@ -5,3 +5,87 @@
     font-size: 36px;
     padding:25px;
 }
+
+/* Main Container */
+main {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Fight Container */
+.fightContainer {
+    margin-bottom: 20px;
+}
+
+/* Detail Sections */
+.detail {
+    margin: 10px 0;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    background-color: #fafafa;
+}
+
+/* Winner Announcement */
+.winner {
+    color: #d9534f; /* Bootstrap danger color */
+    font-weight: bold;
+    text-align: center;
+}
+
+/* Team Selection */
+h2 {
+    margin: 10px 0;
+    font-size: 1.5em;
+    color: #333;
+}
+
+/* Select Dropdown */
+.teamSelect {
+    width: 100%;
+    padding: 10px;
+    margin: 5px 0 20px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+/* Fight Button */
+#fightBtn {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    font-size: 1.2em;
+    color: #fff;
+    background-color: #5cb85c; /* Bootstrap success color */
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#fightBtn:hover {
+    background-color: #4cae4c; /* Darker green on hover */
+}
+
+/* Responsive Styles */
+@media (max-width: 600px) {
+    main {
+        padding: 15px;
+    }
+
+    .detail {
+        font-size: 0.9em;
+    }
+
+    h2 {
+        font-size: 1.2em;
+    }
+
+    #fightBtn {
+        font-size: 1em;
+    }
+}
