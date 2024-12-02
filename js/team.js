@@ -2,33 +2,43 @@
 import { MonsterCard } from "./classes/MonsterCard.js";
 import { Team } from "./classes/Team.js";
 import { save,load } from "./common/utilities.js";
-import { TEAMS_LSK } from "./common/localStorageKeys.js";
+import { TEAMS_LSK,ALLMONSTERS_LSK } from "./common/localStorageKeys.js";
+import { serveData } from "./common/fetch.js";
+import { ALLMONSTERS_TTL } from "./common/ttl.js";
+
+const allMonstersCon = document.getElementById("allMonstersContainer");
+
+let allMonsters = [];
 
 const skib = new Team("skib");
-const monstah = {id :"1",
-    name : "skib",
-    specs : "",
-    health : 1,
-    damage : 1,
-    elements: [],
-    price : 1,
-    rank:1};
 
-
-
-skib.addMonsterToTeam(monstah);
 const teamsArr = [skib];
 
 window.addEventListener("DOMContentLoaded", () => {
-    init();
-  });
-function init(){
-    console.log(teamsArr);
-    loadTeams();
-    console.log(teamsArr);
-    initCreateTeamForm();
+  
+  init();
 
-    renderTeams();
+  });
+
+function init(){
+    initCreateTeamForm();
+    getAllMonsters();
+}
+
+async function getAllMonsters(){
+
+  const monsterData = await serveData("allMonsters", undefined, allMonstersCon, ALLMONSTERS_LSK, ALLMONSTERS_TTL, true);
+  const mappedData = monsterData.map((monster)=>{
+    return {monster:monster, visible:true};
+  });
+  allMonsters = mappedData;
+  loadTeams();
+  renderTeams();
+  const monstah = allMonsters[0];
+
+
+
+  skib.addMonsterToTeam(monstah);
 }
 
 function initCreateTeamForm() {
@@ -36,7 +46,6 @@ function initCreateTeamForm() {
     const form = container.getElementsByTagName("form")[0];
     const input = container.getElementsByTagName("input")[0];
     const message = container.getElementsByTagName("p")[0];
-    const sortTeamsDropDown = document.getElementById("sortTeamsDropDown");
   
     const digits = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
   
@@ -81,7 +90,7 @@ function initCreateTeamForm() {
         }
         addTeam(controlledName);
         input.value = "";
-        sortTeams(sortTeamsDropDown.value);
+        
       } else {
         message.setAttribute("class", "error");
         message.innerText = "Error! Name must not be empty";
@@ -95,18 +104,22 @@ function initCreateTeamForm() {
       }
     });
   }
+
   function extractLetters(str) {
     return str.replace(/[^a-zA-Z]/g, "");
   }
+
   function extractNumbersFromEnd(str) {
     const match = str.match(/\d+$/);
     return match ? match[0] : "";
   }
+
   function addTeam(teamName) {
     const newTeam = new Team(teamName);
     teamsArr.push(newTeam);
     updateTeams();
   }
+
   function updateTeams(){
     save(TEAMS_LSK,teamsArr);
     renderTeams();
@@ -133,14 +146,11 @@ function initCreateTeamForm() {
             teamDiv.setAttribute("id", team.name);
             if(team.monsters.length > 0){
                 team.monsters.forEach((monster)=>{
-                    monster.visible = true;
-                    const id = monster.id;
-                    const allMonsters = [...team.monsters];
-                    const monsterCard = new MonsterCard(monster, allMonsters, [], id);
+                    const monsterCard = new MonsterCard(monster, allMonsters,[]);
                     const assembledMonsterCard = monsterCard.assembleMonsterCard();
-                    if (isVisible) {
-                        teamDiv.appendChild(assembledMonsterCard);
-                    }
+
+                    teamDiv.appendChild(assembledMonsterCard);
+                    
                 })
             }
             
@@ -166,5 +176,9 @@ function initCreateTeamForm() {
         unique: false,
         name: uniqueName,
       };
+    }
+    return {
+      unique:false,
+      name:""
     }
 }

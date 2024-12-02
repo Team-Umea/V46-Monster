@@ -5,7 +5,6 @@ export class MonsterCard {
     this.monster = monster;
     this.allMonsters = allMonsters;
     this.teams = teams;
-
     if (monster) {
       this.id = monster.id;
       this.name = monster.name;
@@ -50,7 +49,9 @@ export class MonsterCard {
       return name;
     });
 
-    const rank = rankList.indexOf(rankList.find((m) => m.monster.id === id));
+    const rank = rankList.indexOf(rankList.find((m) => {
+      return m.monster.id === id;
+    }));
     const descending = rankList.length - rank;
     return descending;
   }
@@ -151,7 +152,7 @@ export class MonsterCard {
     elementsContainer.setAttribute("class", "monsterElements");
     elementHeader.setAttribute("class", "elementHeader");
     elementList.setAttribute("class", "elementList");
-
+    console.log(this.elements);
     elementHeader.innerText = elements.length === 1 ? "Element" : "Elements";
 
     elements.forEach((element) => {
@@ -174,7 +175,7 @@ export class MonsterCard {
     priceIconValue.classList.add("monsterPrice");
     return priceIconValue;
   }
-
+  
   addToTeam() {
     const teamSelector = document.createElement("select");
 
@@ -215,7 +216,10 @@ export class MonsterCard {
     container.appendChild(stats);
     container.appendChild(elements);
     container.appendChild(price);
-    container.appendChild(select);
+
+    if(select.children.length > 0){
+      container.appendChild(select);
+    }
     return container;
   }
 
