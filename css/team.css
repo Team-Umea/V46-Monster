@@ -1,1 +1,60 @@
 /*Only write css here that will be used by team page*/
+/* :root {
+    --color-primary-lightest: #f6f9f9;
+    --color-primary-light: #ecf1f2;
+    --color-primary: #c4d7d9;
+    --color-primary-medium: #aec9cb;
+    --color-primary-dark: #82abae;
+    --color-primary-darker: #629295;
+    --color-secondary: #4e777b;
+    --color-secondary-dark: #406064;
+    --color-tertiary: #385154;
+    --color-tertiary-dark: #324548;
+    --color-tertiary-darker: #212e30;
+    --filter: rgba(0, 0, 0, 0.75);
+  } */
+#teamsContainer{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: auto;
+    overflow-y: auto;
+    align-items: center;
+    gap:30px;
+}
+#createTeam{
+    width:100%;
+    height:10rem;
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 1rem;
+}
+#addTeamForm{
+    width: 40%;
+    height: auto;
+    margin-top: 20px;
+}
+#addTeamForm input{
+    width:75%;
+}
+#addTeamForm button{
+    width: auto;
+}
+.teamDiv > h2:first-child{
+    font-size:3rem;
+    
+}
+.teamDiv{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap:15px;
+    background-color: var(--color-primary);
+    padding-bottom: 2rem;
+}
+.monContainer{
+    display: flex;
+    justify-content: center;
+    gap:15px;
+}

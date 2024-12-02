@@ -1,11 +1,12 @@
+import { TEAMS_LSK } from "../common/localStorageKeys.js";
 import { renderIconWithNumber } from "../common/render.js";
-
+import { save } from "../common/utilities.js";
 export class MonsterCard {
-  constructor(monster, allMonsters, teams) {
+  constructor(monster, allMonsters, teams, hideSelect) {
     this.monster = monster;
     this.allMonsters = allMonsters;
     this.teams = teams;
-
+    this.hideSelect = hideSelect;
     if (monster) {
       this.id = monster.id;
       this.name = monster.name;
@@ -55,7 +56,9 @@ export class MonsterCard {
       return name;
     });
 
-    const rank = rankList.indexOf(rankList.find((m) => m.monster.id === id));
+    const rank = rankList.indexOf(rankList.find((m) => {
+      return m.monster.id === id;
+    }));
     const descending = rankList.length - rank;
     return descending;
   }
@@ -172,24 +175,33 @@ export class MonsterCard {
     priceIconValue.classList.add("monsterPrice");
     return priceIconValue;
   }
-
+  
   addToTeam() {
     const teamSelector = document.createElement("select");
 
     teamSelector.setAttribute("class", "monsterSelect");
-
+    console.log(this.teams);
+    const firstOption = document.createElement("option");
+    firstOption.innerText = "Add to Team";
+    teamSelector.appendChild(firstOption);
+    
     this.teams.forEach((team, index) => {
       const option = document.createElement("option");
       option.setAttribute("value", index);
       option.setAttribute("class", "monsterSelectOption");
-      if (index === 0) {
-        option.innerText = "Add to team";
-      } else {
-        option.innerText = team;
-      }
+      option.innerText = team.getTeamName();
+      option.value = team.getTeamName();
       teamSelector.appendChild(option);
     });
+    teamSelector.addEventListener("change", ()=>{
+      const selectedOption = teamSelector.options[teamSelector.selectedIndex].value;
+      const selectedTeam = this.teams.find((team) => selectedOption === team.getTeamName());
 
+      selectedTeam.addMonsterToTeam(this.monster);
+      save(TEAMS_LSK, this.teams);
+      console.log("hej")
+
+    });
     return teamSelector;
   }
 
@@ -211,7 +223,7 @@ export class MonsterCard {
     container.appendChild(stats);
     container.appendChild(elements);
     container.appendChild(price);
-    if (select.children.length > 0) {
+    if (select.children.length > 0 && this.hideSelect !== true) {
       container.appendChild(select);
     }
     return container;

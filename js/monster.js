@@ -2,10 +2,11 @@
 import { serveData, serveFetchedData } from "./common/fetch.js";
 import { ALLMONSTERS_TTL, MONSTERS_TTL, SORTOPTIONS_TTL } from "./common/ttl.js";
 import { useClickEvent, useClickEvents, useScrollEvent, useChangeEvent, useInputEvent, useMouseWheelEvent } from "./common/useEvent.js";
-import { ALLMONSTERS_LSK, MONSTERS_LSK, SORTOPTIONS_LSK } from "./common/localStorageKeys.js";
+import { ALLMONSTERS_LSK, MONSTERS_LSK, SORTOPTIONS_LSK, TEAMS_LSK } from "./common/localStorageKeys.js";
 import { MonsterCard } from "./classes/MonsterCard.js";
 import { isValidObjKey, load } from "./common/utilities.js";
 import { renderSelect } from "./common/render.js";
+import { Team } from "./classes/Team.js";
 
 const monsterContainer = document.getElementById("monsterContainer");
 const sortDropDown = document.getElementById("sortDropdown");
@@ -19,9 +20,8 @@ let visibleMonsters = load(MONSTERS_LSK) ? load(MONSTERS_LSK).data.length : 20;
 const monsterCards = [];
 let allMonsters = [];
 let monsters = [];
+let teams = [];
 const ranks = [];
-
-const teams = ["a", "b", "c", "d"]; //change for later
 
 let searchCategory;
 
@@ -37,6 +37,8 @@ function init() {
   useInputEvent(searchBox, searchMonsters);
 
   useData();
+
+  loadTeamsFromLS();
 }
 
 async function useData() {
@@ -59,7 +61,14 @@ async function useData() {
   showMonsters();
   renderSelect(sortDropDown, options);
 }
-
+function loadTeamsFromLS() {
+  const loadedTeams = load(TEAMS_LSK);
+  if (loadedTeams) {
+    loadedTeams.forEach((loadedTeam) => {
+      teams.push(Team.fromJSON(loadedTeam));
+    });
+  }
+}
 async function loadMoreMonsters() {
   const numNewMonsters = 10;
   const max = allMonsters.length + numNewMonsters;

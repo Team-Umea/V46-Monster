@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="../css/common/normalize.css" />
     <link rel="stylesheet" href="../css/common/common.css" />
     <link rel="stylesheet" href="../css/team.css" />
+    <link rel="stylesheet" href="../css/monster.css">
   </head>
   <body>
     <header>
@@ -27,6 +28,16 @@
     </header>
     <main>
       <!-- main content goes here -->
+      <div id="createTeam" class="createTeamContainer">
+        <h2>Create Your Team</h2>
+        <form id="addTeamForm">
+          <input type="text" placeholder="Enter a team name" id="teamNameInput" />
+          <button type="submit">Create Team</button>
+        </form>
+        <p id="createTeamMessage" class="hidden"></p>
+      </div>
+      <div id="allMonstersContainer"></div>
+       <div id="teamsContainer"></div>
     </main>
     <footer>
       <!-- footer content goes here -->
