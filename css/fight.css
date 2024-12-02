@@ -8,7 +8,7 @@
 
 /* Main Container */
 main {
-    max-width: 800px;
+    max-width: 1200px;
     margin: 20px auto;
     padding: 20px;
     background-color: #fff;
@@ -18,7 +18,12 @@ main {
 
 /* Fight Container */
 .fightContainer {
-    margin-bottom: 20px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-content: center;
+    justify-content: space-between;
+    align-items: flex-start;
 }
 
 /* Detail Sections */
@@ -69,6 +74,10 @@ h2 {
 
 #fightBtn:hover {
     background-color: #4cae4c; /* Darker green on hover */
+}
+
+.team-details {
+
 }
 
 /* Responsive Styles */
