@@ -1,23 +1,27 @@
 export class ToggleIcon {
-  constructor(src, altTitle, callback) {
+  constructor(src, altTitle, message, confirmCallback, baseCallback) {
     this.iconFolder = "../../res/icons/";
     this.checkMark = `${this.iconFolder}check.svg`;
     this.src = `${this.iconFolder}${src}.svg`;
     this.altTitle = altTitle;
-    this.callback = callback;
+    this.message = message;
+    this.confirmCallback = confirmCallback;
+    this.baseCallback = baseCallback;
     this.linkedToggleIcons = [];
     this.icon = null;
+    this.wrapper = document.createElement("div");
   }
 
   getIconToggle() {
-    const wrapper = document.createElement("div");
+    const wrapper = this.wrapper;
     const icon = document.createElement("img");
     this.icon = icon;
 
     const checkMark = this.checkMark;
     const baseSrc = this.src;
     const baseAltTitle = this.altTitle;
-    const callback = this.callback;
+    const confirmCallback = this.confirmCallback;
+    const baseCallback = this.baseCallback;
     const toggleAltTitle = "Click to confirm";
 
     wrapper.setAttribute("role", "button");
@@ -37,13 +41,19 @@ export class ToggleIcon {
         icon.setAttribute("alt", toggleAltTitle);
         icon.setAttribute("title", toggleAltTitle);
 
-        setTimeout(() => {
-          icon.setAttribute("src", baseSrc);
-          icon.setAttribute("alt", baseAltTitle);
-          icon.setAttribute("title", baseAltTitle);
-        }, 2000);
+        if (!baseCallback) {
+          setTimeout(() => {
+            icon.setAttribute("src", baseSrc);
+            icon.setAttribute("alt", baseAltTitle);
+            icon.setAttribute("title", baseAltTitle);
+          }, 3000);
+        } else {
+          baseCallback();
+        }
       } else {
-        callback();
+        if (confirmCallback) {
+          confirmCallback();
+        }
         icon.setAttribute("src", baseSrc);
         icon.setAttribute("alt", baseAltTitle);
         icon.setAttribute("title", baseAltTitle);
@@ -56,11 +66,25 @@ export class ToggleIcon {
 
   resetLinkedToggleIcons() {
     const linkedToggleIcons = this.linkedToggleIcons;
+    const message = this.message;
+
+    if (message) {
+      message.innerText = "";
+    }
+
     if (linkedToggleIcons && linkedToggleIcons.length) {
       linkedToggleIcons.forEach((toggleIcon) => {
-        const baseSrc = toggleIcon.getBaseSrc();
-        const baseAltTitle = toggleIcon.getBaseAltTitle();
+        const baseSrc = toggleIcon.getSrc();
+        const baseAltTitle = toggleIcon.getAltTitle();
         const icon = toggleIcon.getIcon();
+
+        const children = toggleIcon.wrapper.children;
+
+        for (let i = 1; i < children.length; i++) {
+          const child = children[i];
+          console.log(child);
+          child.remove();
+        }
 
         if (icon) {
           icon.setAttribute("src", baseSrc);
@@ -79,11 +103,11 @@ export class ToggleIcon {
     this.linkedToggleIcons.push(linkedToggleIcon);
   }
 
-  getBaseSrc() {
+  getSrc() {
     return this.src;
   }
 
-  getBaseAltTitle() {
+  getAltTitle() {
     return this.altTitle;
   }
 

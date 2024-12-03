@@ -75,55 +75,55 @@ export function renderIconWithNumber(value, src, altAndTitle, dir) {
   return iconContainer;
 }
 
-export function toggleIcon(src, altTitle, callback) {
-  const wrapper = document.createElement("div");
-  const icon = document.createElement("img");
+// export function toggleIcon(src, altTitle, callback) {
+//   const wrapper = document.createElement("div");
+//   const icon = document.createElement("img");
 
-  wrapper.setAttribute("role", "button");
-  wrapper.setAttribute("class", "icon-btn icon-btn");
+//   wrapper.setAttribute("role", "button");
+//   wrapper.setAttribute("class", "icon-btn icon-btn");
 
-  if (typeof src === "string" && typeof altTitle === "string") {
-    wrapper.addEventListener("click", () => {
-      callback();
-    });
+//   if (typeof src === "string" && typeof altTitle === "string") {
+//     wrapper.addEventListener("click", () => {
+//       callback();
+//     });
 
-    icon.setAttribute("src", src);
-    icon.setAttribute("alt", altTitle);
-    icon.setAttribute("title", altTitle);
-    icon.setAttribute("class", "icon");
+//     icon.setAttribute("src", src);
+//     icon.setAttribute("alt", altTitle);
+//     icon.setAttribute("title", altTitle);
+//     icon.setAttribute("class", "icon");
 
-    wrapper.appendChild(icon);
-  } else {
-    const baseSrc = src[0];
-    const baseAltTile = altTitle[0];
-    const toggleSrc = src[1];
-    const toggleAltTitle = altTitle[1];
+//     wrapper.appendChild(icon);
+//   } else {
+//     const baseSrc = src[0];
+//     const baseAltTile = altTitle[0];
+//     const toggleSrc = src[1];
+//     const toggleAltTitle = altTitle[1];
 
-    wrapper.addEventListener("click", () => {
-      const currentSrc = icon.getAttribute("src");
+//     wrapper.addEventListener("click", () => {
+//       const currentSrc = icon.getAttribute("src");
 
-      if (currentSrc.includes(baseSrc)) {
-        icon.setAttribute("src", toggleSrc);
-        icon.setAttribute("alt", toggleAltTitle);
-        icon.setAttribute("title", toggleAltTitle);
-      } else {
-        callback();
-        icon.setAttribute("src", baseSrc);
-        icon.setAttribute("alt", baseAltTile);
-        icon.setAttribute("title", baseAltTile);
-      }
-    });
+//       if (currentSrc.includes(baseSrc)) {
+//         icon.setAttribute("src", toggleSrc);
+//         icon.setAttribute("alt", toggleAltTitle);
+//         icon.setAttribute("title", toggleAltTitle);
+//       } else {
+//         callback();
+//         icon.setAttribute("src", baseSrc);
+//         icon.setAttribute("alt", baseAltTile);
+//         icon.setAttribute("title", baseAltTile);
+//       }
+//     });
 
-    icon.setAttribute("src", baseSrc);
-    icon.setAttribute("alt", baseAltTile);
-    icon.setAttribute("title", baseAltTile);
-    icon.setAttribute("class", "icon");
+//     icon.setAttribute("src", baseSrc);
+//     icon.setAttribute("alt", baseAltTile);
+//     icon.setAttribute("title", baseAltTile);
+//     icon.setAttribute("class", "icon");
 
-    wrapper.appendChild(icon);
-  }
+//     wrapper.appendChild(icon);
+//   }
 
-  return wrapper;
-}
+//   return wrapper;
+// }
 
 function removeEl(element, delay) {
   const delayInSeconds = delay * 1000;

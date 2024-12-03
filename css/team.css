@@ -28,14 +28,12 @@ main {
 }
 
 .teamsContainer {
-  /* width: min(100%, 1600px); */
   padding: 40px;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 40px;
   border-radius: 20px;
-  /* overflow-y: auto; */
   background-color: var(--color-primary-light);
 }
 
@@ -47,12 +45,23 @@ main {
   align-items: center;
   border-radius: 20px;
   gap: 20px;
+  position: relative;
   background-color: var(--color-primary);
-  /* justify-content: center; */
 }
 
 .teamHeader {
   font-size: 3rem;
+}
+
+.teamMessage {
+  width: 100%;
+  text-align: center;
+  font-size: 1.4rem;
+  cursor: default;
+  position: absolute;
+  top: 95px;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
 .teamMonsters {
@@ -66,9 +75,8 @@ main {
 
 .teamControls {
   width: 100%;
-  padding: 20px;
-  display: flex;
-  justify-content: space-between;
+  height: 100px;
+  position: relative;
 }
 
 .teamControlBtn {

@@ -171,6 +171,10 @@ footer {
   -ms-user-select: none;
   padding: 10px 20px;
   border-radius: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
   transition: 0.3s all ease-in-out;
   border: 2px solid rgba(0, 0, 0, 0);
   box-shadow: 4px 4px 2px 0px rgba(0, 0, 0, 0.75);
@@ -227,4 +231,25 @@ footer {
 
 .hidden {
   display: none;
+}
+
+.alignLeft {
+  position: absolute;
+  left: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.alignCenter {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.alignRight {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
 }

@@ -24,9 +24,11 @@ function loadCredits() {
       credits = loadedCredits;
     } else {
       credits = startCredits;
+      save(CREDITS_LSK, credits);
     }
   } else {
     credits = startCredits;
+    save(CREDITS_LSK, credits);
   }
   renderCredits();
 }

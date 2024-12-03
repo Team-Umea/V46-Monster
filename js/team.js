@@ -130,10 +130,12 @@ function renderTeams() {
 
       const teamContainer = teamCard.teamContainer();
       const teamHeader = teamCard.teamHeader();
+      const teamMessage = teamCard.getTeamMsg();
       const teamControls = teamCard.teamControls();
       const teamMonsters = teamCard.teamMonsters();
 
       teamContainer.appendChild(teamHeader);
+      teamContainer.appendChild(teamMessage);
       teamContainer.appendChild(teamControls);
       teamContainer.appendChild(teamMonsters);
 
