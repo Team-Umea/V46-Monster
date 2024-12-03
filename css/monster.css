@@ -92,10 +92,6 @@ input[type="radio"]:checked + label {
   background-color: var(--color-primary-darker);
 }
 
-#sortDropdown option::selection {
-  background-color: red;
-}
-
 #monsterContainer {
   width: min(100%, 1565px);
   height: 100%;
@@ -174,7 +170,7 @@ input[type="radio"]:checked + label {
   gap: 5px;
   grid-column: 1;
   grid-row-start: 45;
-  grid-row-end: 80;
+  grid-row-end: 74;
 }
 
 .elementList {
@@ -190,8 +186,16 @@ input[type="radio"]:checked + label {
   justify-content: center;
   margin: auto;
   grid-column: 1;
-  grid-row-start: 81;
+  grid-row-start: 75;
   grid-row-end: 93;
+}
+
+.removeMonster {
+  position: absolute;
+  left: 50%;
+  bottom: 10px;
+  transform: translateX(-50%);
+  z-index: 100;
 }
 
 .monsterSelect {
