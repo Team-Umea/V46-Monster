@@ -7,6 +7,7 @@ export class TeamCard {
     this.monsters = monsters;
     this.allMonsters = allMonsters;
     this.linkedBtns = [];
+    this.teamCost = this.calcTeamCost();
   }
 
   teamContainer() {
@@ -23,18 +24,6 @@ export class TeamCard {
     return header;
   }
 
-  linkBtns() {
-    const linkedBtns = this.linkedBtns;
-
-    if (linkedBtns && linkedBtns.length > 0) {
-      linkedBtns.forEach((linkedBtn) => {
-        linkedBtns.forEach((btn) => {
-          linkedBtn.addLinkedToggleIcons(btn);
-        });
-      });
-    }
-  }
-
   teamControls() {
     const btnContainer = document.createElement("div");
     btnContainer.setAttribute("class", "teamControls");
@@ -43,11 +32,13 @@ export class TeamCard {
       console.log("Clicked");
     }
 
+    const teamName = this.teamName;
+    const teamCost = this.teamCost;
     const linkedBtns = this.linkedBtns;
 
-    const buyBtn = new ToggleIcon("cart", "Buy team", log);
-    const shuffleBtn = new ToggleIcon("shuffle", "Get 4 random monsters", log);
-    const deleteBtn = new ToggleIcon("trash", "Delete team", log);
+    const buyBtn = new ToggleIcon("cart", `Buy ${teamName} for ${teamCost} credits`, log);
+    const shuffleBtn = new ToggleIcon("shuffle", `Fill ${teamName} with 4 random monsters`, log);
+    const deleteBtn = new ToggleIcon("trash", `Delete ${teamName}`, log);
 
     linkedBtns.push(buyBtn);
     linkedBtns.push(shuffleBtn);
@@ -72,28 +63,48 @@ export class TeamCard {
     const monsters = this.monsters;
     const allMonsters = this.allMonsters;
     const linkedBtns = this.linkedBtns;
+    const teamName = this.teamName;
 
     monsters.forEach((monster) => {
-      const monsterCard = new MonsterCard(monster, allMonsters, [], true);
-      const assembledMonsterCard = monsterCard.assembleMonsterCard();
+      const monsterCard = new MonsterCard(monster, allMonsters, [], true).assembleMonsterCard();
+      const monsterName = monster.name;
 
       function log() {
         console.log("Clicked");
       }
 
-      const removeMonsterBtn = new ToggleIcon("x", "Buy team", log);
+      const removeMonsterBtn = new ToggleIcon("x", `Remove ${monsterName} from ${teamName}`, log);
       linkedBtns.push(removeMonsterBtn);
 
       const removeMonsterBtnEl = removeMonsterBtn.getIconToggle();
       removeMonsterBtnEl.classList.add("smallIconToggle", "removeMonster");
 
-      assembledMonsterCard.appendChild(removeMonsterBtnEl);
+      monsterCard.appendChild(removeMonsterBtnEl);
 
-      monsterContainer.appendChild(assembledMonsterCard);
+      monsterContainer.appendChild(monsterCard);
     });
 
     this.linkBtns();
 
     return monsterContainer;
+  }
+
+  linkBtns() {
+    const linkedBtns = this.linkedBtns;
+
+    if (linkedBtns && linkedBtns.length > 0) {
+      linkedBtns.forEach((linkedBtn) => {
+        linkedBtns.forEach((btn) => {
+          linkedBtn.addLinkedToggleIcons(btn);
+        });
+      });
+    }
+  }
+
+  calcTeamCost() {
+    const monsters = this.monsters;
+    const totalCost = monsters.reduce((acc, curr) => acc + curr.price, 0);
+
+    return totalCost;
   }
 }

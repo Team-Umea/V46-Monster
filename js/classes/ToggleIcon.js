@@ -22,10 +22,10 @@ export class ToggleIcon {
 
     wrapper.setAttribute("role", "button");
     wrapper.setAttribute("class", "icon-btn icon-btn");
+    wrapper.setAttribute("title", baseAltTitle);
 
     icon.setAttribute("src", baseSrc);
     icon.setAttribute("alt", baseAltTitle);
-    icon.setAttribute("title", baseAltTitle);
     icon.setAttribute("class", "icon");
 
     wrapper.addEventListener("click", () => {
