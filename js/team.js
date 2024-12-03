@@ -1,11 +1,12 @@
 //Js code for team page
 import { Team } from "./classes/Team.js";
 import { save, load, generateUniqueName } from "./common/utilities.js";
-import { TEAMS_LSK, ALLMONSTERS_LSK } from "./common/localStorageKeys.js";
+import { TEAMS_LSK, ALLMONSTERS_LSK, CREDITS_LSK } from "./common/localStorageKeys.js";
 import { serveData } from "./common/fetch.js";
 import { ALLMONSTERS_TTL } from "./common/ttl.js";
 import { TeamCard } from "./classes/TeamCard.js";
 import { ConfirmModule } from "./classes/ConfirmModule.js";
+import { updateCredits } from "./common/credits.js";
 
 const teamsContainer = document.getElementById("teamsContainer");
 const allMonstersCon = document.getElementById("allMonstersContainer");
@@ -110,6 +111,23 @@ function updateTeams() {
   renderTeams();
 }
 
+function buyTeam(teamName) {
+  const userCredits = load(CREDITS_LSK);
+
+  if (userCredits) {
+    const team = teamsArr.find((t) => t.getTeamName() === teamName);
+    const teamCost = team.getTeamCost();
+    const numMonsters = team.getMonsters().length;
+
+    if (numMonsters === 4 && userCredits >= teamCost) {
+      team.setPaidFor(true);
+      const usedCredits = teamCost;
+      updateCredits(usedCredits);
+      save(TEAMS_LSK, teamsArr);
+    }
+  }
+}
+
 function deleteTeam(teamName) {
   const filteredTeams = [...teamsArr].filter((team) => team.getTeamName() !== teamName);
   teamsArr = filteredTeams;
@@ -117,7 +135,7 @@ function deleteTeam(teamName) {
 }
 
 function showModuleOnTeamDelete(teamName) {
-  new ConfirmModule("!", `Are you sure that you want to delete team '${teamName}'. This action can't be undone`, teamName, deleteTeam);
+  new ConfirmModule("Warning!", `Are you sure that you want to delete team '${teamName}'. This action can't be undone`, teamName, deleteTeam);
 }
 
 function loadTeams() {
@@ -138,8 +156,11 @@ function renderTeams() {
     teamsArr.forEach((team) => {
       const teamName = team.getTeamName();
       const monsterInTeam = team.getMonsters();
+      const isPaidFor = team.getPaidFor();
 
-      const teamCard = new TeamCard(teamName, monsterInTeam, allMonsters, showModuleOnTeamDelete);
+      console.log("Is paid: ", isPaidFor);
+
+      const teamCard = new TeamCard(teamName, monsterInTeam, isPaidFor, allMonsters, showModuleOnTeamDelete, buyTeam);
 
       const teamContainer = teamCard.teamContainer();
       const teamHeader = teamCard.teamHeader();

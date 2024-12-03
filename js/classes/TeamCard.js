@@ -5,11 +5,13 @@ import { load } from "../common/utilities.js";
 import { renderIconWithNumber } from "../common/render.js";
 
 export class TeamCard {
-  constructor(teamName, monsters, allMonsters, deleteTeamCallback) {
+  constructor(teamName, monsters, isPaidFor, allMonsters, deleteTeamCallback, buyTeamCallback) {
     this.teamName = teamName;
     this.monsters = monsters;
     this.allMonsters = allMonsters;
+    this.isPaidFor = isPaidFor;
     this.deleteTeamCallback = deleteTeamCallback;
+    this.buyTeamCallback = buyTeamCallback;
 
     this.linkedBtns = [];
     this.teamCost = this.calcTeamCost();
@@ -69,6 +71,7 @@ export class TeamCard {
     const teamCost = this.teamCost;
     const teamName = this.teamName;
     const userCredits = this.userCredits;
+    const numMonsters = this.monsters.length;
 
     // let userCredits = this.userCredits;
     // userCredits = 4000000;
@@ -78,9 +81,15 @@ export class TeamCard {
     let className = "";
 
     if (hasEnoughCredits) {
-      message = `Total price of buying '${teamName}' is ${teamCost} credits. Your balance is ${userCredits} credits. Click checkmark to confirm`;
-      className = "success";
-      this.enoughCredits();
+      if (numMonsters === 4) {
+        message = `Total price of buying '${teamName}' is ${teamCost} credits. Your balance is ${userCredits} credits. Click checkmark to confirm`;
+        className = "success";
+        this.enoughCredits();
+      } else {
+        message = `Please fill out all 4 slots in '${teamName}' before buy`;
+        className = "error";
+        this.notEnoughMonster();
+      }
     } else {
       message = `You do not have enough credits to buy '${teamName}'. Total cost is ${teamCost} credits but you only have ${userCredits} credits`;
       className = "error";
@@ -88,6 +97,26 @@ export class TeamCard {
     }
 
     this.setTeamMsg(message, className);
+  }
+
+  notEnoughMonster() {
+    const toggleIcon = this.linkedBtns[0];
+
+    const icon = toggleIcon.getIcon();
+    const baseSrc = toggleIcon.getSrc();
+    const baseAltTitle = toggleIcon.getAltTitle();
+
+    const teamName = this.teamName;
+
+    icon.setAttribute("src", "../../res/icons/ban.svg");
+    icon.setAttribute("alt", `Please fill out all 4 slots in '${teamName}' before buy`);
+    icon.setAttribute("title", `Please fill out all 4 slots in '${teamName}' before buy`);
+
+    setTimeout(() => {
+      icon.setAttribute("src", baseSrc);
+      icon.setAttribute("alt", baseAltTitle);
+      icon.setAttribute("title", baseAltTitle);
+    }, 5000);
   }
 
   notEnoughCredits() {
@@ -120,6 +149,7 @@ export class TeamCard {
     const baseAltTitle = toggleIcon.getAltTitle();
 
     const teamCost = this.teamCost;
+    const teamName = this.teamName;
 
     let priceDisplayer = renderIconWithNumber(teamCost, "../../res/icons/diamond.svg", "");
 
@@ -127,6 +157,7 @@ export class TeamCard {
 
     buyBtnEl.addEventListener("click", () => {
       if (priceDisplayer) {
+        this.buyTeamCallback(teamName);
         this.setTeamMsg("", "");
         buyBtnEl.remove();
       }
@@ -152,6 +183,7 @@ export class TeamCard {
 
     const teamName = this.teamName;
     const teamCost = this.teamCost;
+    const isPaidFor = this.isPaidFor;
     const linkedBtns = this.linkedBtns;
     const teamMessage = this.teamMessage;
 
@@ -176,7 +208,10 @@ export class TeamCard {
     shuffleEl.classList.add("alignCenter");
     deleteEl.classList.add("alignRight");
 
-    teamControlBtnContainer.appendChild(buyEl);
+    if (!isPaidFor) {
+      console.log("is passss");
+      teamControlBtnContainer.appendChild(buyEl);
+    }
     teamControlBtnContainer.appendChild(shuffleEl);
     teamControlBtnContainer.appendChild(deleteEl);
     return teamControlBtnContainer;

@@ -4,6 +4,7 @@ export class Team {
     this.name = teamName;
     this.monsters = [];
     this.paidFor = false;
+    this.teamCost = 0;
   }
 
   getPaidFor() {
@@ -25,8 +26,15 @@ export class Team {
     return this.monsters;
   }
 
+  getTeamCost() {
+    return this.teamCost;
+  }
+
   setMonsters(monsters) {
     this.monsters = monsters;
+
+    const teamCost = monsters.reduce((acc, curr) => acc + curr.price, 0);
+    this.teamCost = teamCost;
   }
 
   getVisible() {
@@ -42,6 +50,10 @@ export class Team {
     if (this.monsters.length < 4 && duplicates.length === 0) {
       this.monsters.push(monster);
     }
+
+    const monsters = this.monsters;
+    const teamCost = monsters.reduce((acc, curr) => acc + curr.price, 0);
+    this.teamCost = teamCost;
   }
 
   static fromJSON(json) {

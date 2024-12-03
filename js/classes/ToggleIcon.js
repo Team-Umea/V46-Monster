@@ -90,7 +90,6 @@ export class ToggleIcon {
 
         for (let i = 1; i < children.length; i++) {
           const child = children[i];
-          console.log(child);
           child.remove();
         }
 
