@@ -36,6 +36,12 @@ export class ToggleIcon {
         icon.setAttribute("src", checkMark);
         icon.setAttribute("alt", toggleAltTitle);
         icon.setAttribute("title", toggleAltTitle);
+
+        setTimeout(() => {
+          icon.setAttribute("src", baseSrc);
+          icon.setAttribute("alt", baseAltTitle);
+          icon.setAttribute("title", baseAltTitle);
+        }, 2000);
       } else {
         callback();
         icon.setAttribute("src", baseSrc);
