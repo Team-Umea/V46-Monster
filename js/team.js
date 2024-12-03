@@ -11,7 +11,7 @@ const allMonstersCon = document.getElementById("allMonstersContainer");
 
 let allMonsters = [];
 
-const teamsArr = [];
+let teamsArr = [];
 
 window.addEventListener("DOMContentLoaded", () => {
   init();
@@ -109,6 +109,17 @@ function updateTeams() {
   renderTeams();
 }
 
+function deleteTeam(teamName) {
+  console.log(teamName);
+  const del = confirm(`Are you sure that you want to delete team '${teamName}'. This action is can't be undone`);
+
+  if (del) {
+    const filteredTeams = [...teamsArr].filter((team) => team.getTeamName() !== teamName);
+    teamsArr = filteredTeams;
+    updateTeams();
+  }
+}
+
 function loadTeams() {
   const loadedTeams = load(TEAMS_LSK);
   if (loadedTeams) {
@@ -126,7 +137,7 @@ function renderTeams() {
       const teamName = team.getTeamName();
       const monsterInTeam = team.getMonsters();
 
-      const teamCard = new TeamCard(teamName, monsterInTeam, allMonsters);
+      const teamCard = new TeamCard(teamName, monsterInTeam, allMonsters, deleteTeam);
 
       const teamContainer = teamCard.teamContainer();
       const teamHeader = teamCard.teamHeader();

@@ -8,14 +8,13 @@ export class ToggleIcon {
     this.confirmCallback = confirmCallback;
     this.baseCallback = baseCallback;
     this.linkedToggleIcons = [];
-    this.icon = null;
+    this.icon = document.createElement("img");
     this.wrapper = document.createElement("div");
   }
 
   getIconToggle() {
     const wrapper = this.wrapper;
-    const icon = document.createElement("img");
-    this.icon = icon;
+    const icon = this.icon;
 
     const checkMark = this.checkMark;
     const baseSrc = this.src;
@@ -42,11 +41,20 @@ export class ToggleIcon {
         icon.setAttribute("title", toggleAltTitle);
 
         if (!baseCallback) {
-          setTimeout(() => {
-            icon.setAttribute("src", baseSrc);
-            icon.setAttribute("alt", baseAltTitle);
-            icon.setAttribute("title", baseAltTitle);
-          }, 3000);
+          let timeoutId;
+
+          const updateAttributes = () => {
+            if (timeoutId) {
+              clearTimeout(timeoutId);
+            }
+
+            timeoutId = setTimeout(() => {
+              icon.setAttribute("src", baseSrc);
+              icon.setAttribute("alt", baseAltTitle);
+              icon.setAttribute("title", baseAltTitle);
+            }, 3000);
+          };
+          updateAttributes();
         } else {
           baseCallback();
         }

@@ -5,15 +5,24 @@ import { load } from "../common/utilities.js";
 import { renderIconWithNumber } from "../common/render.js";
 
 export class TeamCard {
-  constructor(teamName, monsters, allMonsters) {
+  constructor(teamName, monsters, allMonsters, deleteTeamCallback) {
     this.teamName = teamName;
     this.monsters = monsters;
     this.allMonsters = allMonsters;
+    this.deleteTeamCallback = deleteTeamCallback;
+
     this.linkedBtns = [];
     this.teamCost = this.calcTeamCost();
     this.teamMessage = this.teamMsg();
     this.userCredits = this.loadUserCredits();
     this.teamControlBtnContainer = document.createElement("div");
+  }
+
+  deleteTeam() {
+    const deleteTeamCallback = this.deleteTeamCallback;
+    const teamName = this.teamName;
+
+    deleteTeamCallback(teamName);
   }
 
   teamContainer() {
@@ -59,10 +68,10 @@ export class TeamCard {
   checkUserCredits() {
     const teamCost = this.teamCost;
     const teamName = this.teamName;
-    // const userCredits = this.userCredits;
+    const userCredits = this.userCredits;
 
-    let userCredits = this.userCredits;
-    userCredits = 4000000;
+    // let userCredits = this.userCredits;
+    // userCredits = 4000000;
 
     const hasEnoughCredits = userCredits >= teamCost;
     let message = "";
@@ -147,10 +156,11 @@ export class TeamCard {
     const teamMessage = this.teamMessage;
 
     const showPrice = this.checkUserCredits.bind(this);
+    const deleteTeam = this.deleteTeam.bind(this);
 
     const buyBtn = new ToggleIcon("cart", `Buy ${teamName} for ${teamCost} credits`, teamMessage, undefined, showPrice);
     const shuffleBtn = new ToggleIcon("shuffle", `Fill ${teamName} with 4 random monsters`, teamMessage, log);
-    const deleteBtn = new ToggleIcon("trash", `Delete ${teamName}`, teamMessage, log);
+    const deleteBtn = new ToggleIcon("trash", `Delete ${teamName}`, teamMessage, deleteTeam);
 
     linkedBtns.push(buyBtn);
     linkedBtns.push(shuffleBtn);
