@@ -5,13 +5,14 @@ import { load } from "../common/utilities.js";
 import { renderIconWithNumber } from "../common/render.js";
 
 export class TeamCard {
-  constructor(teamName, monsters, isPaidFor, allMonsters, deleteTeamCallback, buyTeamCallback) {
+  constructor(teamName, monsters, isPaidFor, allMonsters, buyTeamCallback, shuffleCallback, deleteTeamCallback) {
     this.teamName = teamName;
     this.monsters = monsters;
     this.allMonsters = allMonsters;
     this.isPaidFor = isPaidFor;
-    this.deleteTeamCallback = deleteTeamCallback;
     this.buyTeamCallback = buyTeamCallback;
+    this.shuffleCallback = shuffleCallback;
+    this.deleteTeamCallback = deleteTeamCallback;
 
     this.linkedBtns = [];
     this.teamCost = this.calcTeamCost();
@@ -144,6 +145,7 @@ export class TeamCard {
     const icon = toggleIcon.getIcon();
 
     const buyBtnEl = this.teamControlBtnContainer.children[0];
+    const shuffleBtnEl = this.teamControlBtnContainer.children[1];
 
     const baseSrc = toggleIcon.getSrc();
     const baseAltTitle = toggleIcon.getAltTitle();
@@ -160,6 +162,7 @@ export class TeamCard {
         this.buyTeamCallback(teamName);
         this.setTeamMsg("", "");
         buyBtnEl.remove();
+        shuffleBtnEl.remove();
       }
     });
 
@@ -173,13 +176,14 @@ export class TeamCard {
     }, 5000);
   }
 
+  shuffleTeam() {
+    const teamName = this.teamName;
+    this.shuffleCallback(teamName);
+  }
+
   teamControls() {
     const teamControlBtnContainer = this.teamControlBtnContainer;
     teamControlBtnContainer.setAttribute("class", "teamControls");
-
-    function log() {
-      console.log("Clicked");
-    }
 
     const teamName = this.teamName;
     const teamCost = this.teamCost;
@@ -188,10 +192,11 @@ export class TeamCard {
     const teamMessage = this.teamMessage;
 
     const showPrice = this.checkUserCredits.bind(this);
+    const shuffleTeam = this.shuffleTeam.bind(this);
     const deleteTeam = this.deleteTeam.bind(this);
 
     const buyBtn = new ToggleIcon("cart", `Buy ${teamName} for ${teamCost} credits`, teamMessage, undefined, showPrice);
-    const shuffleBtn = new ToggleIcon("shuffle", `Fill ${teamName} with 4 random monsters`, teamMessage, log);
+    const shuffleBtn = new ToggleIcon("shuffle", `Fill ${teamName} with 4 random monsters`, teamMessage, shuffleTeam);
     const deleteBtn = new ToggleIcon("trash", `Delete ${teamName}`, teamMessage, deleteTeam);
 
     linkedBtns.push(buyBtn);
@@ -211,8 +216,9 @@ export class TeamCard {
     if (!isPaidFor) {
       console.log("is passss");
       teamControlBtnContainer.appendChild(buyEl);
+      teamControlBtnContainer.appendChild(shuffleEl);
     }
-    teamControlBtnContainer.appendChild(shuffleEl);
+
     teamControlBtnContainer.appendChild(deleteEl);
     return teamControlBtnContainer;
   }

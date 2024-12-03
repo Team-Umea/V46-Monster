@@ -11,8 +11,8 @@ export class Team {
     return this.paidFor;
   }
 
-  setPaidFor(status) {
-    this.paidFor = status;
+  setPaidFor(paidFor) {
+    this.paidFor = paidFor;
   }
 
   getTeamName() {

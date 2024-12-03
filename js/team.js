@@ -128,6 +128,16 @@ function buyTeam(teamName) {
   }
 }
 
+async function shuffleTeam(teamName) {
+  const team = teamsArr.find((t) => t.getTeamName() === teamName);
+
+  const randomMonsters = await serveData("randomMonsters", "num=4", teamsContainer);
+
+  team.setMonsters(randomMonsters);
+
+  updateTeams();
+}
+
 function deleteTeam(teamName) {
   const filteredTeams = [...teamsArr].filter((team) => team.getTeamName() !== teamName);
   teamsArr = filteredTeams;
@@ -160,7 +170,7 @@ function renderTeams() {
 
       console.log("Is paid: ", isPaidFor);
 
-      const teamCard = new TeamCard(teamName, monsterInTeam, isPaidFor, allMonsters, showModuleOnTeamDelete, buyTeam);
+      const teamCard = new TeamCard(teamName, monsterInTeam, isPaidFor, allMonsters, buyTeam, shuffleTeam, showModuleOnTeamDelete);
 
       const teamContainer = teamCard.teamContainer();
       const teamHeader = teamCard.teamHeader();
