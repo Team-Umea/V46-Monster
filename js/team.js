@@ -5,6 +5,7 @@ import { TEAMS_LSK, ALLMONSTERS_LSK } from "./common/localStorageKeys.js";
 import { serveData } from "./common/fetch.js";
 import { ALLMONSTERS_TTL } from "./common/ttl.js";
 import { TeamCard } from "./classes/TeamCard.js";
+import { ConfirmModule } from "./classes/ConfirmModule.js";
 
 const teamsContainer = document.getElementById("teamsContainer");
 const allMonstersCon = document.getElementById("allMonstersContainer");
@@ -110,14 +111,13 @@ function updateTeams() {
 }
 
 function deleteTeam(teamName) {
-  console.log(teamName);
-  const del = confirm(`Are you sure that you want to delete team '${teamName}'. This action is can't be undone`);
+  const filteredTeams = [...teamsArr].filter((team) => team.getTeamName() !== teamName);
+  teamsArr = filteredTeams;
+  updateTeams();
+}
 
-  if (del) {
-    const filteredTeams = [...teamsArr].filter((team) => team.getTeamName() !== teamName);
-    teamsArr = filteredTeams;
-    updateTeams();
-  }
+function showModuleOnTeamDelete(teamName) {
+  new ConfirmModule("!", `Are you sure that you want to delete team '${teamName}'. This action can't be undone`, teamName, deleteTeam);
 }
 
 function loadTeams() {
@@ -132,12 +132,14 @@ function loadTeams() {
 
 function renderTeams() {
   teamsContainer.innerHTML = "";
+
   if (teamsArr.length > 0) {
+    teamsContainer.setAttribute("class", "teamsContainer");
     teamsArr.forEach((team) => {
       const teamName = team.getTeamName();
       const monsterInTeam = team.getMonsters();
 
-      const teamCard = new TeamCard(teamName, monsterInTeam, allMonsters, deleteTeam);
+      const teamCard = new TeamCard(teamName, monsterInTeam, allMonsters, showModuleOnTeamDelete);
 
       const teamContainer = teamCard.teamContainer();
       const teamHeader = teamCard.teamHeader();
@@ -152,5 +154,7 @@ function renderTeams() {
 
       teamsContainer.appendChild(teamContainer);
     });
+  } else {
+    teamsContainer.setAttribute("class", "teamsContainer hidden");
   }
 }

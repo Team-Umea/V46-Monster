@@ -50,6 +50,18 @@ export function renderSpinner(parent) {
   // }, 5000);
 }
 
+export function imgAsBtn(src, altTtile) {
+  const container = document.createElement("div");
+  const icon = document.createElement("img");
+
+  icon.setAttribute("src", src);
+  icon.setAttribute("alt", altTtile);
+  icon.setAttribute("title", altTtile);
+
+  container.appendChild(icon);
+  return container;
+}
+
 export function renderIconWithNumber(value, src, altAndTitle, dir) {
   const iconContainer = document.createElement("div");
   const icon = document.createElement("img");

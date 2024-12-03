@@ -36,3 +36,10 @@ export function useMouseWheelEvent(element, callback) {
     callback();
   });
 }
+
+export function useSubmitEvent(element, callback) {
+  element.addEventListener("submit", (e) => {
+    e.preventDefault();
+    callback();
+  });
+}
