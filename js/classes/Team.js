@@ -37,6 +37,10 @@ export class Team {
     this.teamCost = teamCost;
   }
 
+  deleteMonster(id) {
+    this.monsters = [...this.monsters].filter((monster) => monster.id !== id);
+  }
+
   getVisible() {
     return this.visible;
   }

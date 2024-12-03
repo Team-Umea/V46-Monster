@@ -5,14 +5,17 @@ import { load } from "../common/utilities.js";
 import { renderIconWithNumber } from "../common/render.js";
 
 export class TeamCard {
-  constructor(teamName, monsters, isPaidFor, allMonsters, buyTeamCallback, shuffleCallback, deleteTeamCallback) {
-    this.teamName = teamName;
-    this.monsters = monsters;
+  constructor(team, allMonsters, buyTeamCallback, shuffleCallback, deleteTeamCallback, removeMonsterCallback) {
+    this.team = team;
+    this.teamName = team.getTeamName();
+    this.monsters = team.getMonsters();
+    this.isPaidFor = team.getPaidFor();
+
     this.allMonsters = allMonsters;
-    this.isPaidFor = isPaidFor;
     this.buyTeamCallback = buyTeamCallback;
     this.shuffleCallback = shuffleCallback;
     this.deleteTeamCallback = deleteTeamCallback;
+    this.removeMonsterCallback = removeMonsterCallback;
 
     this.linkedBtns = [];
     this.teamCost = this.calcTeamCost();
@@ -190,6 +193,7 @@ export class TeamCard {
     const isPaidFor = this.isPaidFor;
     const linkedBtns = this.linkedBtns;
     const teamMessage = this.teamMessage;
+    const numMonsters = this.monsters.length;
 
     const showPrice = this.checkUserCredits.bind(this);
     const shuffleTeam = this.shuffleTeam.bind(this);
@@ -214,8 +218,10 @@ export class TeamCard {
     deleteEl.classList.add("alignRight");
 
     if (!isPaidFor) {
-      console.log("is passss");
       teamControlBtnContainer.appendChild(buyEl);
+    }
+
+    if (!isPaidFor || numMonsters !== 4) {
       teamControlBtnContainer.appendChild(shuffleEl);
     }
 
@@ -228,6 +234,7 @@ export class TeamCard {
     monsterContainer.setAttribute("class", "teamMonsters");
 
     const monsters = this.monsters;
+    const isPaidFor = this.isPaidFor;
     const allMonsters = this.allMonsters;
     const linkedBtns = this.linkedBtns;
     const teamName = this.teamName;
@@ -236,18 +243,19 @@ export class TeamCard {
     monsters.forEach((monster) => {
       const monsterCard = new MonsterCard(monster, allMonsters, [], true).assembleMonsterCard();
       const monsterName = monster.name;
+      const monsterID = monster.id;
 
-      function log() {
-        console.log("Clicked");
-      }
+      const removeMonster = this.removeMonsterCallback.bind(this, teamName, monsterID);
 
-      const removeMonsterBtn = new ToggleIcon("x", `Remove ${monsterName} from ${teamName}`, teamMessage, log);
+      const removeMonsterBtn = new ToggleIcon("x", `Remove ${monsterName} from ${teamName}`, teamMessage, removeMonster);
       linkedBtns.push(removeMonsterBtn);
 
       const removeMonsterBtnEl = removeMonsterBtn.getIconToggle();
       removeMonsterBtnEl.classList.add("smallIconToggle", "removeMonster");
 
-      monsterCard.appendChild(removeMonsterBtnEl);
+      if (!isPaidFor) {
+        monsterCard.appendChild(removeMonsterBtnEl);
+      }
 
       monsterContainer.appendChild(monsterCard);
     });
