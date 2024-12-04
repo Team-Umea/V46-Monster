@@ -255,10 +255,12 @@ function renderTeamStats() {
       const monsterInTeam = teamStat.monsterInTeam();
       const teamStatHeader = teamStat.header();
       const teamStatToggle = teamStat.toggle();
+
       const teamStatBodyContainer = teamStat.bodyContainer();
       const teamStatTopStats = teamStat.topStats();
       const teamStatAverageStats = teamStat.averageStats();
       const teamStatEndToEndMonsters = teamStat.endToEndMonsters();
+      const nameOfMonters = teamStat.nameOfMonters();
       // const teamStatRating = teamStat.teamRating();
 
       teamStatHeaderContainer.appendChild(monsterInTeam);
@@ -268,6 +270,7 @@ function renderTeamStats() {
       teamStatBodyContainer.appendChild(teamStatTopStats);
       teamStatBodyContainer.appendChild(teamStatAverageStats);
       teamStatBodyContainer.appendChild(teamStatEndToEndMonsters);
+      teamStatBodyContainer.appendChild(nameOfMonters);
       // teamStatBodyContainer.appendChild(teamStatRating);
 
       teamStatContainer.appendChild(teamStatHeaderContainer);
