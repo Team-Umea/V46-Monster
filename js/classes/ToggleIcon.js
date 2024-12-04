@@ -24,7 +24,7 @@ export class ToggleIcon {
     const toggleAltTitle = "Click to confirm";
 
     wrapper.setAttribute("role", "button");
-    wrapper.setAttribute("class", "icon-btn icon-btn");
+    wrapper.setAttribute("class", "icon-btn");
     wrapper.setAttribute("title", baseAltTitle);
 
     icon.setAttribute("src", baseSrc);

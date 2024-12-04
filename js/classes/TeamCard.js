@@ -65,7 +65,7 @@ export class TeamCard {
     if (!isPaidFor) {
       sellEl = document.createElement("div");
     } else {
-      sellEl.classList.add("sellTeam", "alignLeft");
+      sellEl.classList.add("sellTeam", "alignLeft", "icon-btn");
     }
 
     linkedBtns.push(sell);
@@ -87,7 +87,7 @@ export class TeamCard {
     const toggleWrapper = document.createElement("div");
     const icon = document.createElement("img");
 
-    toggleWrapper.setAttribute("class", "teamToggle alignRight");
+    toggleWrapper.setAttribute("class", "teamToggle alignRight icon-btn");
 
     icon.setAttribute("src", "../../res/icons/upArrow.svg");
     icon.setAttribute("alt", "Hide team");
@@ -145,9 +145,9 @@ export class TeamCard {
     const shuffleTeam = this.shuffleTeam.bind(this);
     const deleteTeam = this.deleteTeam.bind(this);
 
-    const buyBtn = new ToggleIcon("cart", `Buy ${teamName} for ${teamCost} credits`, teamMessage, undefined, showPrice);
-    const shuffleBtn = new ToggleIcon("shuffle", `Fill ${teamName} with 4 random monsters`, teamMessage, shuffleTeam);
-    const deleteBtn = new ToggleIcon("trash", `Delete ${teamName}`, teamMessage, deleteTeam);
+    const buyBtn = new ToggleIcon("cart", `Buy '${teamName}' for ${teamCost} credits`, teamMessage, undefined, showPrice);
+    const shuffleBtn = new ToggleIcon("shuffle", `Fill '${teamName}' with 4 random monsters`, teamMessage, shuffleTeam);
+    const deleteBtn = new ToggleIcon("trash", `Delete '${teamName}'`, teamMessage, deleteTeam);
 
     linkedBtns.push(buyBtn);
     linkedBtns.push(shuffleBtn);
@@ -193,7 +193,7 @@ export class TeamCard {
 
       const removeMonster = this.removeMonsterCallback.bind(this, teamName, monsterID);
 
-      const removeMonsterBtn = new ToggleIcon("x", `Remove ${monsterName} from ${teamName}`, teamMessage, removeMonster);
+      const removeMonsterBtn = new ToggleIcon("x", `Remove '${monsterName}' from '${teamName}'`, teamMessage, removeMonster);
       linkedBtns.push(removeMonsterBtn);
 
       const removeMonsterBtnEl = removeMonsterBtn.getIconToggle();
