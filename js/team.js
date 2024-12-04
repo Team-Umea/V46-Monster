@@ -7,12 +7,15 @@ import { ALLMONSTERS_TTL } from "./common/ttl.js";
 import { TeamCard } from "./classes/TeamCard.js";
 import { ConfirmModule } from "./classes/ConfirmModule.js";
 import { useCredits, addCredits } from "./common/credits.js";
+import { useClickEvent } from "./common/useEvent.js";
 
 const teamsContainer = document.getElementById("teamsContainer");
-const allMonstersCon = document.getElementById("allMonstersContainer");
+const allMonstersContainer = document.createElement("div");
+
+const teamStatsContainer = document.getElementById("teamStatsContainer");
+const teamStatsToggle = document.getElementById("teamStatsToggle");
 
 let allMonsters = [];
-
 let teamsArr = [];
 
 window.addEventListener("DOMContentLoaded", () => {
@@ -22,10 +25,12 @@ window.addEventListener("DOMContentLoaded", () => {
 function init() {
   initCreateTeamForm();
   getAllMonsters();
+
+  useClickEvent(teamStatsToggle, toggleTeamStats);
 }
 
 async function getAllMonsters() {
-  const monsterData = await serveData("allMonsters", undefined, allMonstersCon, ALLMONSTERS_LSK, ALLMONSTERS_TTL);
+  const monsterData = await serveData("allMonsters", undefined, allMonstersContainer, ALLMONSTERS_LSK, ALLMONSTERS_TTL);
   const mappedData = monsterData.map((monster) => ({ monster: monster, visible: true }));
 
   allMonsters = mappedData;
@@ -214,5 +219,22 @@ function renderTeams() {
     });
   } else {
     teamsContainer.setAttribute("class", "teamsContainer hidden");
+  }
+}
+
+function toggleTeamStats() {
+  const src = teamStatsToggle.getAttribute("src");
+  const isExtended = src.includes("rightArrow");
+
+  if (isExtended) {
+    teamStatsToggle.setAttribute("src", "../../res/icons/leftArrow.svg");
+    teamStatsToggle.setAttribute("alt", "Hide team stats");
+    teamStatsToggle.setAttribute("title", "Hide team stats");
+    teamStatsContainer.setAttribute("class", "teamStatsContainer extended");
+  } else {
+    teamStatsToggle.setAttribute("src", "../../res/icons/rightArrow.svg");
+    teamStatsToggle.setAttribute("alt", "Show team stats");
+    teamStatsToggle.setAttribute("title", "Show team stats");
+    teamStatsContainer.setAttribute("class", "teamStatsContainer collapsed");
   }
 }

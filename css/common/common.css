@@ -169,6 +169,7 @@ footer {
 }
 
 .icon-scale {
+  cursor: pointer;
   display: inline-block;
 }
 
@@ -271,15 +272,3 @@ footer {
   top: 50%;
   transform: translateY(-50%);
 }
-
-/* .defaultImgBtn {
-  padding: 10px 30px;
-  font-size: 1.2rem;
-  white-space: nowrap;
-  border-radius: 8px;
-  border: 0;
-  outline: none;
-  box-shadow: 4px 4px 2px 0px rgba(0, 0, 0, 0.75);
-  color: var(--color-tertiary);
-  background-color: var(--color-primary-dark);
-} */
