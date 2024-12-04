@@ -123,7 +123,7 @@ function buyTeam(teamName) {
       team.setPaidFor(true);
       const usedCredits = teamCost;
       updateCredits(usedCredits);
-      save(TEAMS_LSK, teamsArr);
+      updateTeams();
     }
   }
 }
