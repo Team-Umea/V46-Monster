@@ -15,6 +15,10 @@
     --filter: rgba(0, 0, 0, 0.75);
   } */
 
+::-webkit-scrollbar {
+  width: 0;
+}
+
 body {
   height: auto;
 }
@@ -46,7 +50,7 @@ main {
   bottom: 0;
   transition: all 0.3s ease-in-out;
   box-shadow: 18px 0px 5px 0px rgba(0, 0, 0, 0.75);
-  background-color: rgba(0, 0, 0, 1);
+  background-color: var(--color-primary-lightest);
 }
 
 .collapsed {
@@ -72,11 +76,11 @@ main {
   display: flex;
   flex-direction: column;
   gap: 10px;
-  background-color: grey;
+  background-color: var(--color-primary-light);
 }
 
 .teamStatContainer {
-  background-color: darkgray;
+  background-color: var(--color-primary);
 }
 
 .teamStatHeaderContainer {
@@ -99,6 +103,21 @@ main {
 
 .teamStatToggle:hover {
   transform: scale(1.07) translateY(-50%);
+}
+
+.teamStatTopStatsContainer {
+  padding: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.teamStatTopStatsIcon p {
+  font-size: 0.9rem;
+}
+
+.teamStatTopStatsIcon img {
+  width: 15px;
 }
 
 .teamsContainer {

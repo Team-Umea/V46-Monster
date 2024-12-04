@@ -1,4 +1,5 @@
 import { useClickEvent } from "../common/useEvent.js";
+import { renderIconWithNumber } from "../common/render.js";
 
 export class TeamStat {
   constructor(team, updateTeamCallback) {
@@ -6,6 +7,8 @@ export class TeamStat {
 
     this.teamName = team.getTeamName();
     this.totalRating = this.calcTeamRating();
+    this.totalHealh = this.calcTeamHealth();
+    this.totalDamage = this.calcTeamDamage();
     this.teamBodyVisible = team.getTeamBodyVisible();
 
     this.updateTeamCallback = updateTeamCallback;
@@ -76,6 +79,31 @@ export class TeamStat {
     return this.bodyContainerEl;
   }
 
+  topStats() {
+    const container = document.createElement("div");
+
+    container.setAttribute("class", "teamStatTopStatsContainer");
+
+    const teamName = this.teamName;
+    const totalRating = this.totalRating;
+    const totalHealth = this.totalHealh;
+    const totalDamage = this.totalDamage;
+
+    const rating = renderIconWithNumber(totalRating, "../../res/icons/trophy.svg", `Team '${teamName}' has a combined rating of ${totalRating}`);
+    const health = renderIconWithNumber(totalHealth, "../../res/icons/heart.svg", `Team '${teamName}' has a combined rating of ${totalHealth}`);
+    const damage = renderIconWithNumber(totalDamage, "../../res/icons/skull.svg", `Team '${teamName}' has a combined rating of ${totalDamage}`, "right");
+
+    rating.classList.add("teamStatTopStatsIcon");
+    health.classList.add("teamStatTopStatsIcon");
+    damage.classList.add("teamStatTopStatsIcon");
+
+    container.appendChild(rating);
+    container.appendChild(health);
+    container.appendChild(damage);
+
+    return container;
+  }
+
   teamRating() {
     const rating = document.createElement("p");
     rating.setAttribute("class", "teamRating");
@@ -135,5 +163,19 @@ export class TeamStat {
     const monsters = team.getMonsters();
     const rating = monsters.reduce((acc, curr) => acc + curr.health + curr.damage, 0);
     return rating;
+  }
+
+  calcTeamHealth() {
+    const team = this.team;
+    const monsters = team.getMonsters();
+    const health = monsters.reduce((acc, curr) => acc + curr.health, 0);
+    return health;
+  }
+
+  calcTeamDamage() {
+    const team = this.team;
+    const monsters = team.getMonsters();
+    const damage = monsters.reduce((acc, curr) => acc + curr.damage, 0);
+    return damage;
   }
 }

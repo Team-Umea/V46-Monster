@@ -105,7 +105,7 @@ export class MonsterCard {
 
     statsContainer.setAttribute("class", "monsterStats");
 
-    rankIconValue = renderIconWithNumber(rank, "../../res/icons/trophy.svg", `${name} is ranked ${rank} of all monsters`);
+    rankIconValue = renderIconWithNumber(rank, "../../res/icons/ribbon.svg", `${name} is ranked ${rank} of all monsters`);
     rankIconValue.classList.add("monsterRank");
 
     statsContainer.appendChild(healthIconValue);

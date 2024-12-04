@@ -255,12 +255,14 @@ function renderTeamStats() {
       const teamStatHeader = teamStat.header();
       const teamStatToggle = teamStat.toggle();
       const teamStatBodyContainer = teamStat.bodyContainer();
-      const teamStatRating = teamStat.teamRating();
+      const teamStatTopStats = teamStat.topStats();
+      // const teamStatRating = teamStat.teamRating();
 
       teamStatHeaderContainer.appendChild(teamStatHeader);
       teamStatHeaderContainer.appendChild(teamStatToggle);
 
-      teamStatBodyContainer.appendChild(teamStatRating);
+      teamStatBodyContainer.appendChild(teamStatTopStats);
+      // teamStatBodyContainer.appendChild(teamStatRating);
 
       teamStatContainer.appendChild(teamStatHeaderContainer);
       teamStatContainer.appendChild(teamStatBodyContainer);
