@@ -15,10 +15,6 @@
     --filter: rgba(0, 0, 0, 0.75);
   } */
 
-/* ::-webkit-scrollbar {
-  width: 0;
-} */
-
 body {
   height: auto;
 }
@@ -29,7 +25,6 @@ main {
 
 .teamsContainer {
   max-width: 1400px;
-  /* width: fit-content; */
   width: 100%;
   padding: 40px;
   display: flex;
@@ -61,6 +56,7 @@ main {
 }
 
 .teamBodyContainer {
+  width: 100%;
   position: relative;
 }
 
@@ -74,7 +70,7 @@ main {
   font-size: 1.4rem;
   cursor: default;
   position: absolute;
-  top: -30px;
+  top: -10px;
   left: 50%;
   transform: translateX(-50%);
 }
