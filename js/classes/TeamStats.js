@@ -2,8 +2,10 @@ import { useClickEvent } from "../common/useEvent.js";
 import { renderIconWithNumber, valueWithHeader } from "../common/render.js";
 
 export class TeamStat {
-  constructor(team, updateTeamCallback) {
+  constructor(team, elements, updateTeamCallback) {
     this.team = team;
+    this.elements = elements;
+    this.updateTeamCallback = updateTeamCallback;
 
     this.teamName = team.getTeamName();
     this.teamMonsters = team.getMonsters();
@@ -13,15 +15,15 @@ export class TeamStat {
     this.totalDamage = this.calcTeamDamage();
     this.topMonster = this.findTopMonster();
     this.bottomMonster = this.findBottomMonster();
+    this.teamElements = this.getAllMonsterElements();
     this.teamBodyVisible = team.getTeamBodyVisible();
-
-    this.updateTeamCallback = updateTeamCallback;
 
     this.headerContainerEl = null;
     this.bodyContainerEl = null;
     this.toggleEl = null;
 
     this.sortMonstersByHighRating();
+    // this.sortElementsByRating();
   }
 
   container() {
@@ -183,7 +185,7 @@ export class TeamStat {
     return container;
   }
 
-  nameOfMonters() {
+  allTeamMonsters() {
     const container = document.createElement("div");
     const header = document.createElement("h2");
     const monsters = document.createElement("div");
@@ -193,9 +195,8 @@ export class TeamStat {
     monsters.setAttribute("class", "teamStatMonsters");
 
     const teamMonsters = this.teamMonsters;
-    const teamName = this.teamName;
 
-    header.innerText = `All monster in team ${teamName}`;
+    header.innerText = "Monsters";
 
     teamMonsters.forEach((monster) => {
       const monsterConatiner = document.createElement("div");
@@ -216,6 +217,57 @@ export class TeamStat {
 
     container.appendChild(header);
     container.appendChild(monsters);
+
+    return container;
+  }
+
+  allTeamElements() {
+    const container = document.createElement("div");
+    const heading = document.createElement("div");
+    const header = document.createElement("h2");
+    const numElements = document.createElement("p");
+    const elements = document.createElement("div");
+
+    container.setAttribute("class", "teamStatElementsContainer");
+    heading.setAttribute("class", "teamStatElementsHeading");
+    header.setAttribute("class", "teamStatElmentsHeader");
+    numElements.setAttribute("class", "teamStatNumElements");
+    elements.setAttribute("class", "teamStatElements");
+
+    const teamName = this.teamName;
+    const teamElements = this.teamElements;
+    const teamNumElments = teamElements.length;
+
+    header.innerText = "Elments";
+    numElements.innerText = `${teamNumElments}x`;
+
+    teamElements.forEach((teamElement) => {
+      const element = document.createElement("div");
+      const name = document.createElement("p");
+
+      element.setAttribute("class", "teamStatElementContainer");
+      name.setAttribute("class", "teamStatElementName");
+
+      const elementName = Object.keys(teamElement)[0];
+      const elementInstances = teamElement[elementName];
+      const elementRating = teamElement.rating;
+
+      const rating = renderIconWithNumber(elementRating, "../../res/icons/trophy.svg", `Rating of ${elementName} is ${elementRating}`, "right");
+      rating.classList.add("teamStatElementRating");
+
+      name.innerText = `${elementInstances}x ${elementName}`;
+
+      element.appendChild(name);
+      element.appendChild(rating);
+
+      elements.appendChild(element);
+    });
+
+    heading.appendChild(header);
+    heading.appendChild(numElements);
+
+    container.appendChild(heading);
+    container.appendChild(elements);
 
     return container;
   }
@@ -392,5 +444,60 @@ export class TeamStat {
     const monsterNames = teamMonsters.map((monster) => monster.name);
 
     return monsterNames;
+  }
+
+  //   sortElementsByRating() {
+  //     const teamElements = this.teamElements;
+  //     if (teamElements) {
+  //       const sortedByHighRating = teamElements.sort((a, b) => {
+  //         const elementNameA = a.name;
+  //         const elementNameB = b.name;
+  //         const ratingA = a.rating;
+  //         const ratingB = b.rating;
+
+  //         const ratingDifference = ratingA - ratingB;
+
+  //         return ratingDifference === 0 ? elementNameA.localeCompare(elementNameB) : ratingDifference;
+  //       });
+  //       return sortedByHighRating;
+  //     }
+  //     return [];
+  //   }
+
+  getAllMonsterElements() {
+    const teamMonsters = this.teamMonsters;
+    const allElements = this.elements;
+
+    const elements = teamMonsters.map((monster) => monster.elements).flat();
+
+    const instancesOfElements = elements.reduce((acc, curr) => {
+      acc[curr] = (acc[curr] || 0) + 1;
+      return acc;
+    }, {});
+
+    const entriesArray = Object.keys(instancesOfElements).map((key) => ({
+      [key]: instancesOfElements[key],
+    }));
+
+    const sortedInstances = entriesArray.sort((a, b) => {
+      const countA = Object.values(a)[0];
+      const countB = Object.values(b)[0];
+
+      if (countB - countA !== 0) {
+        return countB - countA;
+      }
+
+      const keyA = Object.keys(a)[0];
+      const keyB = Object.keys(b)[0];
+      return keyA.localeCompare(keyB);
+    });
+
+    const sortElementsWithRating = sortedInstances.map((element) => {
+      const elementName = Object.keys(element)[0];
+      const rating = allElements.find((teamElement) => teamElement.name === elementName).rating;
+      return { ...element, rating: rating };
+    });
+
+    return sortElementsWithRating;
   }
 }

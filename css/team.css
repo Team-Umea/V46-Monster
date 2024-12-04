@@ -169,15 +169,28 @@ main {
 }
 
 .teamStatMonstersContainer {
-  padding: 10px 0;
+  padding: 10px 10px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 7px;
+  gap: 15px;
+}
+
+.teamStatElementsHeading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .teamStatMonstersHeader {
+  align-self: flex-start;
   font-size: 1.2rem;
+}
+
+.teamStatNumElements {
+  padding: 10px 20px;
+  border-radius: 8px;
+  box-shadow: 1px 1px 2px 0px rgba(0, 0, 0, 0.45);
 }
 
 .teamStatMonsters {
@@ -185,6 +198,37 @@ main {
   flex-direction: column;
   align-items: center;
   gap: 15px;
+}
+
+.teamStatElementsContainer {
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.teamStatElmentsHeader {
+  font-size: 1.2rem;
+}
+
+.teamStatElements {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.teamStatElementContainer {
+  /* width: 100%; */
+  display: flex;
+  justify-content: space-between;
+}
+
+.teamStatElementRating p {
+  font-size: 0.8rem;
+}
+
+.teamStatElementRating img {
+  width: 25px;
 }
 
 .teamStatMonsterInfoContainer {

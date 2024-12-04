@@ -1,9 +1,9 @@
 //Js code for team page
 import { Team } from "./classes/Team.js";
 import { save, load, generateUniqueName } from "./common/utilities.js";
-import { TEAMS_LSK, ALLMONSTERS_LSK, CREDITS_LSK } from "./common/localStorageKeys.js";
+import { TEAMS_LSK, ALLMONSTERS_LSK, CREDITS_LSK, ELEMENTS_LSK } from "./common/localStorageKeys.js";
 import { serveData } from "./common/fetch.js";
-import { ALLMONSTERS_TTL } from "./common/ttl.js";
+import { ALLMONSTERS_TTL, ELEMENTS_TTL } from "./common/ttl.js";
 import { TeamCard } from "./classes/TeamCard.js";
 import { TeamStat } from "./classes/TeamStats.js";
 import { ConfirmModule } from "./classes/ConfirmModule.js";
@@ -18,6 +18,7 @@ const teamStatsToggle = document.getElementById("teamStatsToggle");
 const teamStatsList = document.getElementById("teamStatsList");
 
 let allMonsters = [];
+let elements = [];
 let teamsArr = [];
 
 window.addEventListener("DOMContentLoaded", () => {
@@ -26,16 +27,21 @@ window.addEventListener("DOMContentLoaded", () => {
 
 function init() {
   initCreateTeamForm();
-  getAllMonsters();
+  useData();
 
   useClickEvent(teamStatsToggle, toggleTeamStats);
 }
 
-async function getAllMonsters() {
-  const monsterData = await serveData("allMonsters", undefined, allMonstersContainer, ALLMONSTERS_LSK, ALLMONSTERS_TTL);
-  const mappedData = monsterData.map((monster) => ({ monster: monster, visible: true }));
+async function useData() {
+  const promises = [serveData("allMonsters", undefined, allMonstersContainer, ALLMONSTERS_LSK, ALLMONSTERS_TTL), serveData("elements", undefined, allMonstersContainer, ELEMENTS_LSK, ELEMENTS_TTL)];
 
-  allMonsters = mappedData;
+  const responses = await Promise.all(promises);
+
+  const monsterData = responses[0];
+  const elementsData = responses[1];
+
+  allMonsters = monsterData.map((monster) => ({ monster: monster, visible: true }));
+  elements = elementsData;
 
   loadTeams();
   renderTeams();
@@ -248,7 +254,7 @@ function renderTeamStats() {
 
   if (teamsArr) {
     teamsArr.forEach((team) => {
-      const teamStat = new TeamStat(team, updateTeams);
+      const teamStat = new TeamStat(team, elements, updateTeams);
 
       const teamStatContainer = teamStat.container();
       const teamStatHeaderContainer = teamStat.headerContainer();
@@ -260,7 +266,8 @@ function renderTeamStats() {
       const teamStatTopStats = teamStat.topStats();
       const teamStatAverageStats = teamStat.averageStats();
       const teamStatEndToEndMonsters = teamStat.endToEndMonsters();
-      const nameOfMonters = teamStat.nameOfMonters();
+      const teamStatAllTeamMonsters = teamStat.allTeamMonsters();
+      const teamStatElements = teamStat.allTeamElements();
       // const teamStatRating = teamStat.teamRating();
 
       teamStatHeaderContainer.appendChild(monsterInTeam);
@@ -270,7 +277,8 @@ function renderTeamStats() {
       teamStatBodyContainer.appendChild(teamStatTopStats);
       teamStatBodyContainer.appendChild(teamStatAverageStats);
       teamStatBodyContainer.appendChild(teamStatEndToEndMonsters);
-      teamStatBodyContainer.appendChild(nameOfMonters);
+      teamStatBodyContainer.appendChild(teamStatAllTeamMonsters);
+      teamStatBodyContainer.appendChild(teamStatElements);
       // teamStatBodyContainer.appendChild(teamStatRating);
 
       teamStatContainer.appendChild(teamStatHeaderContainer);
