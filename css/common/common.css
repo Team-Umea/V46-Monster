@@ -272,3 +272,10 @@ footer {
   top: 50%;
   transform: translateY(-50%);
 }
+
+.valueWithHeader {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 7px;
+}

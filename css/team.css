@@ -105,7 +105,8 @@ main {
   transform: scale(1.07) translateY(-50%);
 }
 
-.teamStatTopStatsContainer {
+.teamStatTopStatsContainer,
+.teamStatAverageStatsContainer {
   padding: 15px;
   display: flex;
   align-items: center;
@@ -118,6 +119,14 @@ main {
 
 .teamStatTopStatsIcon img {
   width: 15px;
+}
+
+.teamStatAverageStatsValue h2 {
+  font-size: 0.8rem;
+}
+
+.teamStatAverageStatsValue p {
+  font-size: 0.7rem;
 }
 
 .teamsContainer {

@@ -1,5 +1,5 @@
 import { useClickEvent } from "../common/useEvent.js";
-import { renderIconWithNumber } from "../common/render.js";
+import { renderIconWithNumber, valueWithHeader } from "../common/render.js";
 
 export class TeamStat {
   constructor(team, updateTeamCallback) {
@@ -96,6 +96,42 @@ export class TeamStat {
     rating.classList.add("teamStatTopStatsIcon");
     health.classList.add("teamStatTopStatsIcon");
     damage.classList.add("teamStatTopStatsIcon");
+
+    container.appendChild(rating);
+    container.appendChild(health);
+    container.appendChild(damage);
+
+    return container;
+  }
+
+  averageStats() {
+    const container = document.createElement("div");
+
+    container.setAttribute("class", "teamStatAverageStatsContainer");
+
+    const team = this.team;
+    const numMonsters = team.getMonsters().length;
+    const totalRating = this.totalRating;
+    const totalHealth = this.totalHealh;
+    const totalDamage = this.totalDamage;
+
+    let averageRating = totalRating;
+    let averageHealth = totalHealth;
+    let averageDamage = totalDamage;
+
+    if (numMonsters > 0) {
+      averageRating = Math.floor(totalRating / numMonsters);
+      averageHealth = Math.floor(totalHealth / numMonsters);
+      averageDamage = Math.floor(totalDamage / numMonsters);
+    }
+
+    const rating = valueWithHeader(averageRating, "Avg rating");
+    const health = valueWithHeader(averageHealth, "Avg health");
+    const damage = valueWithHeader(averageDamage, "Avg damage");
+
+    rating.classList.add("teamStatAverageStatsValue");
+    health.classList.add("teamStatAverageStatsValue");
+    damage.classList.add("teamStatAverageStatsValue");
 
     container.appendChild(rating);
     container.appendChild(health);

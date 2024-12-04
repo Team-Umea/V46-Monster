@@ -137,6 +137,22 @@ export function renderIconWithNumber(value, src, altAndTitle, dir) {
 //   return wrapper;
 // }
 
+export function valueWithHeader(value, headerText) {
+  const container = document.createElement("div");
+  const h2 = document.createElement("h2");
+  const p = document.createElement("p");
+
+  container.setAttribute("class", "valueWithHeader");
+
+  h2.innerText = headerText;
+  p.innerText = value;
+
+  container.appendChild(h2);
+  container.appendChild(p);
+
+  return container;
+}
+
 function removeEl(element, delay) {
   const delayInSeconds = delay * 1000;
   setTimeout(() => {
