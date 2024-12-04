@@ -76,6 +76,7 @@ main {
 }
 
 .teamMonsters {
+  width: 100%;
   min-height: 400px;
   display: flex;
   justify-content: space-between;
@@ -98,6 +99,7 @@ main {
 
   .teamMonsters {
     width: min-content;
+    min-width: 100%;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     justify-items: center;
@@ -112,7 +114,8 @@ main {
   }
 
   .teamMonsters {
-    width: 70vw;
+    width: 50vw;
+    /* min-width: 70vw; */
     overflow-x: scroll;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
