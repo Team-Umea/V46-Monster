@@ -252,6 +252,7 @@ function renderTeamStats() {
 
       const teamStatContainer = teamStat.container();
       const teamStatHeaderContainer = teamStat.headerContainer();
+      const monsterInTeam = teamStat.monsterInTeam();
       const teamStatHeader = teamStat.header();
       const teamStatToggle = teamStat.toggle();
       const teamStatBodyContainer = teamStat.bodyContainer();
@@ -260,6 +261,7 @@ function renderTeamStats() {
       const teamStatEndToEndMonsters = teamStat.endToEndMonsters();
       // const teamStatRating = teamStat.teamRating();
 
+      teamStatHeaderContainer.appendChild(monsterInTeam);
       teamStatHeaderContainer.appendChild(teamStatHeader);
       teamStatHeaderContainer.appendChild(teamStatToggle);
 

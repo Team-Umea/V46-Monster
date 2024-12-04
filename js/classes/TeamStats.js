@@ -35,9 +35,31 @@ export class TeamStat {
     return this.headerContainerEl;
   }
 
+  monsterInTeam() {
+    const teamMonsters = this.teamMonsters;
+    const numMonster = teamMonsters.length;
+    const teamName = this.teamName;
+
+    const monsterIcon = renderIconWithNumber(numMonster, "../../res/icons/skull.svg", `There is ${numMonster} in '${teamName}'`);
+    monsterIcon.classList.add("teamStatNumMonsters");
+
+    return monsterIcon;
+  }
+
+  header() {
+    const header = document.createElement("h2");
+    header.setAttribute("class", "teamStatHeader");
+
+    const name = this.teamName;
+
+    header.innerText = name;
+
+    return header;
+  }
+
   toggle() {
     const toggle = document.createElement("img");
-    toggle.setAttribute("class", "teamStatToggle icon alignRight");
+    toggle.setAttribute("class", "teamStatToggle icon");
 
     const teamName = this.teamName;
 
@@ -52,17 +74,6 @@ export class TeamStat {
     useClickEvent(toggle, toggleStats);
 
     return toggle;
-  }
-
-  header() {
-    const header = document.createElement("h2");
-    header.setAttribute("class", "teamStatHeader alignCenter");
-
-    const name = this.teamName;
-
-    header.innerText = name;
-
-    return header;
   }
 
   bodyContainer() {
