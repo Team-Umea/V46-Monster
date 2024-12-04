@@ -5,6 +5,7 @@ import { TEAMS_LSK, ALLMONSTERS_LSK, CREDITS_LSK } from "./common/localStorageKe
 import { serveData } from "./common/fetch.js";
 import { ALLMONSTERS_TTL } from "./common/ttl.js";
 import { TeamCard } from "./classes/TeamCard.js";
+import { TeamStat } from "./classes/TeamStats.js";
 import { ConfirmModule } from "./classes/ConfirmModule.js";
 import { useCredits, addCredits } from "./common/credits.js";
 import { useClickEvent } from "./common/useEvent.js";
@@ -14,6 +15,7 @@ const allMonstersContainer = document.createElement("div");
 
 const teamStatsContainer = document.getElementById("teamStatsContainer");
 const teamStatsToggle = document.getElementById("teamStatsToggle");
+const teamStatsList = document.getElementById("teamStatsList");
 
 let allMonsters = [];
 let teamsArr = [];
@@ -37,6 +39,7 @@ async function getAllMonsters() {
 
   loadTeams();
   renderTeams();
+  renderTeamStats();
   setTeamsValue();
 }
 
@@ -119,6 +122,7 @@ function loadTeams() {
 function updateTeams() {
   save(TEAMS_LSK, teamsArr);
   renderTeams();
+  renderTeamStats();
 }
 
 function setTeamsValue() {
@@ -186,10 +190,27 @@ function showModuleOnTeamDelete(teamName) {
   new ConfirmModule("Warning!", `Are you sure that you want to delete team '${teamName}'. This action can't be undone`, teamName, deleteTeam);
 }
 
+function toggleTeamStats() {
+  const src = teamStatsToggle.getAttribute("src");
+  const isExtended = src.includes("rightArrow");
+
+  if (isExtended) {
+    teamStatsToggle.setAttribute("src", "../../res/icons/leftArrow.svg");
+    teamStatsToggle.setAttribute("alt", "Hide team stats");
+    teamStatsToggle.setAttribute("title", "Hide team stats");
+    teamStatsContainer.setAttribute("class", "teamStatsContainer extended");
+  } else {
+    teamStatsToggle.setAttribute("src", "../../res/icons/rightArrow.svg");
+    teamStatsToggle.setAttribute("alt", "Show team stats");
+    teamStatsToggle.setAttribute("title", "Show team stats");
+    teamStatsContainer.setAttribute("class", "teamStatsContainer collapsed");
+  }
+}
+
 function renderTeams() {
   teamsContainer.innerHTML = "";
 
-  if (teamsArr.length > 0) {
+  if (teamsArr) {
     teamsContainer.setAttribute("class", "teamsContainer");
     teamsArr.forEach((team) => {
       const teamCard = new TeamCard(team, allMonsters, updateTeams, sellTeam, buyTeam, shuffleTeam, showModuleOnTeamDelete, removeMonster);
@@ -222,19 +243,28 @@ function renderTeams() {
   }
 }
 
-function toggleTeamStats() {
-  const src = teamStatsToggle.getAttribute("src");
-  const isExtended = src.includes("rightArrow");
+function renderTeamStats() {
+  teamStatsList.innerHTML = "";
 
-  if (isExtended) {
-    teamStatsToggle.setAttribute("src", "../../res/icons/leftArrow.svg");
-    teamStatsToggle.setAttribute("alt", "Hide team stats");
-    teamStatsToggle.setAttribute("title", "Hide team stats");
-    teamStatsContainer.setAttribute("class", "teamStatsContainer extended");
-  } else {
-    teamStatsToggle.setAttribute("src", "../../res/icons/rightArrow.svg");
-    teamStatsToggle.setAttribute("alt", "Show team stats");
-    teamStatsToggle.setAttribute("title", "Show team stats");
-    teamStatsContainer.setAttribute("class", "teamStatsContainer collapsed");
+  if (teamsArr) {
+    teamsArr.forEach((team) => {
+      const teamStat = new TeamStat(team);
+
+      const teamStatContainer = teamStat.container();
+      const teamStatHeaderContainer = teamStat.headerContainer();
+      const teamStatHeader = teamStat.header();
+      const teamStatBodyContainer = teamStat.bodyContainer();
+      const teamStatToggle = teamStat.toggle();
+
+      teamStatHeaderContainer.appendChild(teamStatHeader);
+      teamStatHeaderContainer.appendChild(teamStatToggle);
+
+      // teamStatBodyContainer.appendChild()
+
+      teamStatContainer.appendChild(teamStatHeaderContainer);
+      teamStatContainer.appendChild(teamStatBodyContainer);
+
+      teamStatsList.appendChild(teamStatContainer);
+    });
   }
 }

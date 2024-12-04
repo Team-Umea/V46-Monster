@@ -29,6 +29,7 @@ main {
 }
 
 .createTeamContainer {
+  /**/
 }
 
 .teamFilters {
@@ -60,6 +61,31 @@ main {
   padding: 10px 0 10px 10px;
   display: flex;
   justify-content: space-between;
+}
+
+.teamStatsHeader {
+  font-size: 1.7rem;
+}
+
+.teamStatsList {
+  width: 270px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  background-color: grey;
+}
+
+.teamStatContainer {
+  background-color: darkgray;
+}
+
+.teamStatHeaderContainer {
+  height: 3rem;
+  position: relative;
+}
+
+.teamStatHeader {
+  font-size: 1.5rem;
 }
 
 .teamsContainer {
