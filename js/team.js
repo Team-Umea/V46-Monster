@@ -170,7 +170,7 @@ function renderTeams() {
   if (teamsArr.length > 0) {
     teamsContainer.setAttribute("class", "teamsContainer");
     teamsArr.forEach((team) => {
-      const teamCard = new TeamCard(team, allMonsters, buyTeam, shuffleTeam, showModuleOnTeamDelete, removeMonster);
+      const teamCard = new TeamCard(team, allMonsters, updateTeams, buyTeam, shuffleTeam, showModuleOnTeamDelete, removeMonster);
 
       const teamContainer = teamCard.teamContainer();
       const teamHeaderContainer = teamCard.teamHeaderContainer();

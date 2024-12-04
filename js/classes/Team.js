@@ -5,6 +5,7 @@ export class Team {
     this.monsters = [];
     this.paidFor = false;
     this.teamCost = 0;
+    this.teamBodyVisible = true;
   }
 
   getPaidFor() {
@@ -18,6 +19,7 @@ export class Team {
   getTeamName() {
     return this.name;
   }
+
   setTeamName(name) {
     this.name = name;
   }
@@ -60,11 +62,20 @@ export class Team {
     this.teamCost = teamCost;
   }
 
+  getTeamBodyVisible() {
+    return this.teamBodyVisible;
+  }
+
+  setTeamBodyVisible(teamBodyVisible) {
+    this.teamBodyVisible = teamBodyVisible;
+  }
+
   static fromJSON(json) {
     const newTeam = new Team(json.name);
     newTeam.setMonsters(json.monsters);
     newTeam.setPaidFor(json.paidFor);
     newTeam.setVisible(json.visible);
+    newTeam.setTeamBodyVisible(json.teamBodyVisible);
     return newTeam;
   }
 }

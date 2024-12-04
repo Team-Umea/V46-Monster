@@ -4,16 +4,18 @@ import { CREDITS_LSK } from "../common/localStorageKeys.js";
 import { load } from "../common/utilities.js";
 import { renderIconWithNumber } from "../common/render.js";
 import { useClickEvent } from "../common/useEvent.js";
-import { imgAsBtn } from "../common/render.js";
 
 export class TeamCard {
-  constructor(team, allMonsters, buyTeamCallback, shuffleCallback, deleteTeamCallback, removeMonsterCallback) {
+  constructor(team, allMonsters, updateTeamsCallback, buyTeamCallback, shuffleCallback, deleteTeamCallback, removeMonsterCallback) {
     this.team = team;
     this.teamName = team.getTeamName();
     this.monsters = team.getMonsters();
     this.isPaidFor = team.getPaidFor();
+    this.isTeamBobyVisible = team.getTeamBodyVisible();
 
     this.allMonsters = allMonsters;
+
+    this.updateTeamsCallback = updateTeamsCallback;
     this.buyTeamCallback = buyTeamCallback;
     this.shuffleCallback = shuffleCallback;
     this.deleteTeamCallback = deleteTeamCallback;
@@ -35,24 +37,6 @@ export class TeamCard {
     const container = document.createElement("div");
     container.setAttribute("class", "teamContainer");
     return container;
-  }
-
-  toggleTeamVisibility() {
-    const teamBodyContainer = this.teamBodyContainerEl;
-    const teamToggleIcon = this.teamToggleEl.getElementsByTagName("img")[0];
-    const isHidden = teamBodyContainer.getAttribute("class").includes("hidden");
-
-    if (isHidden) {
-      teamBodyContainer.setAttribute("class", "teamBodyContainer");
-      teamToggleIcon.setAttribute("src", "../../res/icons/upArrow.svg");
-      teamToggleIcon.setAttribute("alt", "Hide team");
-      teamToggleIcon.setAttribute("title", "Hide team");
-    } else {
-      teamBodyContainer.setAttribute("class", "teamBodyContainer hidden");
-      teamToggleIcon.setAttribute("src", "../../res/icons/downArrow.svg");
-      teamToggleIcon.setAttribute("alt", "Show team");
-      teamToggleIcon.setAttribute("title", "ShowTeam");
-    }
   }
 
   teamHeaderContainer() {
@@ -113,9 +97,17 @@ export class TeamCard {
 
   teamBodyContainer() {
     const container = document.createElement("div");
+    const teamToggleIcon = this.teamToggleEl.getElementsByTagName("img")[0];
+
     container.setAttribute("class", "teamBodyContainer");
 
+    const isTeamBobyVisible = this.isTeamBobyVisible;
+
     this.teamBodyContainerEl = container;
+
+    if (!isTeamBobyVisible) {
+      this.hideTeamBody(teamToggleIcon);
+    }
 
     return container;
   }
@@ -368,5 +360,44 @@ export class TeamCard {
     const teamName = this.teamName;
 
     deleteTeamCallback(teamName);
+  }
+
+  toggleTeamVisibility() {
+    const teamBodyContainer = this.teamBodyContainerEl;
+    const teamToggleIcon = this.teamToggleEl.getElementsByTagName("img")[0];
+    const isHidden = teamBodyContainer.getAttribute("class").includes("hidden");
+
+    if (isHidden) {
+      this.showTeamBody(teamToggleIcon);
+    } else {
+      this.hideTeamBody(teamToggleIcon);
+    }
+    this.updateTeamsCallback();
+  }
+
+  hideTeamBody(teamToggleIcon) {
+    const teamBodyContainer = this.teamBodyContainerEl;
+
+    console.log(teamBodyContainer);
+
+    teamBodyContainer.setAttribute("class", "teamBodyContainer hidden");
+
+    teamToggleIcon.setAttribute("src", "../../res/icons/downArrow.svg");
+    teamToggleIcon.setAttribute("alt", "Show team");
+    teamToggleIcon.setAttribute("title", "ShowTeam");
+
+    this.team.setTeamBodyVisible(false);
+  }
+
+  showTeamBody(teamToggleIcon) {
+    const teamBodyContainer = this.teamBodyContainerEl;
+
+    teamBodyContainer.setAttribute("class", "teamBodyContainer");
+
+    teamToggleIcon.setAttribute("src", "../../res/icons/upArrow.svg");
+    teamToggleIcon.setAttribute("alt", "Hide team");
+    teamToggleIcon.setAttribute("title", "Hide team");
+
+    this.team.setTeamBodyVisible(true);
   }
 }
