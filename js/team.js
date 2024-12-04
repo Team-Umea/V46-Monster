@@ -173,15 +173,30 @@ function renderTeams() {
       const teamCard = new TeamCard(team, allMonsters, buyTeam, shuffleTeam, showModuleOnTeamDelete, removeMonster);
 
       const teamContainer = teamCard.teamContainer();
+      const teamHeaderContainer = teamCard.teamHeaderContainer();
+      const teamSell = teamCard.teamSell();
       const teamHeader = teamCard.teamHeader();
+      const teamToggle = teamCard.teamToggle();
+      const teamBodyContainer = teamCard.teamBodyContainer();
       const teamMessage = teamCard.getTeamMsg();
       const teamControls = teamCard.teamControls();
       const teamMonsters = teamCard.teamMonsters();
 
-      teamContainer.appendChild(teamHeader);
-      teamContainer.appendChild(teamMessage);
-      teamContainer.appendChild(teamControls);
-      teamContainer.appendChild(teamMonsters);
+      teamHeaderContainer.appendChild(teamSell);
+      teamHeaderContainer.appendChild(teamHeader);
+      teamHeaderContainer.appendChild(teamToggle);
+
+      teamBodyContainer.appendChild(teamMessage);
+      teamBodyContainer.appendChild(teamControls);
+      teamBodyContainer.appendChild(teamMonsters);
+
+      // teamContainer.appendChild(teamHeader);
+      // teamContainer.appendChild(teamMessage);
+      // teamContainer.appendChild(teamControls);
+      // teamContainer.appendChild(teamMonsters);
+
+      teamContainer.appendChild(teamHeaderContainer);
+      teamContainer.appendChild(teamBodyContainer);
 
       teamsContainer.appendChild(teamContainer);
     });
