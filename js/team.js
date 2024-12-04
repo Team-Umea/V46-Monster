@@ -6,7 +6,7 @@ import { serveData } from "./common/fetch.js";
 import { ALLMONSTERS_TTL } from "./common/ttl.js";
 import { TeamCard } from "./classes/TeamCard.js";
 import { ConfirmModule } from "./classes/ConfirmModule.js";
-import { updateCredits } from "./common/credits.js";
+import { useCredits, addCredits } from "./common/credits.js";
 
 const teamsContainer = document.getElementById("teamsContainer");
 const allMonstersCon = document.getElementById("allMonstersContainer");
@@ -32,6 +32,7 @@ async function getAllMonsters() {
 
   loadTeams();
   renderTeams();
+  setTeamsValue();
 }
 
 function initCreateTeamForm() {
@@ -100,15 +101,41 @@ function initCreateTeamForm() {
   });
 }
 
+function loadTeams() {
+  const loadedTeams = load(TEAMS_LSK);
+  if (loadedTeams) {
+    loadedTeams.forEach((loadedTeam) => {
+      teamsArr.push(Team.fromJSON(loadedTeam));
+    });
+    renderTeams();
+  }
+}
+
+function updateTeams() {
+  save(TEAMS_LSK, teamsArr);
+  renderTeams();
+}
+
+function setTeamsValue() {
+  teamsArr.forEach((team) => {
+    team.setTeamValue(allMonsters);
+  });
+}
+
 function addTeam(teamName) {
   const newTeam = new Team(teamName);
   teamsArr.push(newTeam);
   updateTeams();
 }
 
-function updateTeams() {
-  save(TEAMS_LSK, teamsArr);
-  renderTeams();
+function sellTeam(teamName) {
+  const team = teamsArr.find((team) => team.getTeamName() === teamName);
+  const profit = team.getTeamProfit();
+  addCredits(profit);
+
+  const filteredTeams = [...teamsArr].filter((team) => team.getTeamName() !== teamName);
+  teamsArr = filteredTeams;
+  updateTeams();
 }
 
 function buyTeam(teamName) {
@@ -122,7 +149,7 @@ function buyTeam(teamName) {
     if (numMonsters === 4 && userCredits >= teamCost) {
       team.setPaidFor(true);
       const usedCredits = teamCost;
-      updateCredits(usedCredits);
+      useCredits(usedCredits);
       updateTeams();
     }
   }
@@ -154,23 +181,13 @@ function showModuleOnTeamDelete(teamName) {
   new ConfirmModule("Warning!", `Are you sure that you want to delete team '${teamName}'. This action can't be undone`, teamName, deleteTeam);
 }
 
-function loadTeams() {
-  const loadedTeams = load(TEAMS_LSK);
-  if (loadedTeams) {
-    loadedTeams.forEach((loadedTeam) => {
-      teamsArr.push(Team.fromJSON(loadedTeam));
-    });
-    renderTeams();
-  }
-}
-
 function renderTeams() {
   teamsContainer.innerHTML = "";
 
   if (teamsArr.length > 0) {
     teamsContainer.setAttribute("class", "teamsContainer");
     teamsArr.forEach((team) => {
-      const teamCard = new TeamCard(team, allMonsters, updateTeams, buyTeam, shuffleTeam, showModuleOnTeamDelete, removeMonster);
+      const teamCard = new TeamCard(team, allMonsters, updateTeams, sellTeam, buyTeam, shuffleTeam, showModuleOnTeamDelete, removeMonster);
 
       const teamContainer = teamCard.teamContainer();
       const teamHeaderContainer = teamCard.teamHeaderContainer();
@@ -189,11 +206,6 @@ function renderTeams() {
       teamBodyContainer.appendChild(teamMessage);
       teamBodyContainer.appendChild(teamControls);
       teamBodyContainer.appendChild(teamMonsters);
-
-      // teamContainer.appendChild(teamHeader);
-      // teamContainer.appendChild(teamMessage);
-      // teamContainer.appendChild(teamControls);
-      // teamContainer.appendChild(teamMonsters);
 
       teamContainer.appendChild(teamHeaderContainer);
       teamContainer.appendChild(teamBodyContainer);

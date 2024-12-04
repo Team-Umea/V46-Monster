@@ -18,8 +18,6 @@ const searchSortContainer = document.getElementById("searchSortContainer");
 const filterToggle = document.getElementById("filterToggle");
 
 let visibleMonsters = 20;
-// const monsterCards = [];
-// let allMonsters = [];
 let monsters = [];
 let teams = [];
 const ranks = [];
@@ -34,7 +32,7 @@ function init() {
   useClickEvent(filterToggle, toggleFilter);
   useClickEvents(searchBtns, setSearchCategory);
   useScrollEvent(monsterContainer, infiniteScroll);
-  useChangeEvent(sortDropDown, showMonsters);
+  useChangeEvent(sortDropDown, setSortOrder);
   useInputEvent(searchBox, searchMonsters);
 
   useData();
@@ -77,18 +75,22 @@ function showAllMonsters() {
 }
 
 function showMonsters() {
-  monsters.forEach((monster) => (monster.visible = true));
-
   const sortOrder = Number(sortDropDown.value);
-  sortMonsters(sortOrder);
+  const searchQuery = searchBox.value;
 
-  monsters.forEach((monster, index) => {
-    if (index >= visibleMonsters) {
-      monster.visible = false;
-    } else {
-      monster.visible = true;
-    }
-  });
+  if (searchQuery === "") {
+    monsters.forEach((monster) => (monster.visible = true));
+    sortMonsters(sortOrder);
+    monsters.forEach((monster, index) => {
+      if (index >= visibleMonsters) {
+        monster.visible = false;
+      } else {
+        monster.visible = true;
+      }
+    });
+  } else {
+    searchMonsters();
+  }
 
   renderMonsters();
 }
@@ -134,6 +136,11 @@ function setSearchCategory() {
   const selectedBtn = Array.from(searchBtns).find((btn) => btn.checked);
   searchCategory = selectedBtn.value;
   showAllMonsters();
+}
+
+function setSortOrder() {
+  searchBox.value = "";
+  showMonsters();
 }
 
 function searchMonsters() {

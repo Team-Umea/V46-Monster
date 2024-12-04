@@ -6,16 +6,18 @@ import { renderIconWithNumber } from "../common/render.js";
 import { useClickEvent } from "../common/useEvent.js";
 
 export class TeamCard {
-  constructor(team, allMonsters, updateTeamsCallback, buyTeamCallback, shuffleCallback, deleteTeamCallback, removeMonsterCallback) {
+  constructor(team, allMonsters, updateTeamsCallback, sellTeamCallback, buyTeamCallback, shuffleCallback, deleteTeamCallback, removeMonsterCallback) {
     this.team = team;
     this.teamName = team.getTeamName();
     this.monsters = team.getMonsters();
     this.isPaidFor = team.getPaidFor();
     this.isTeamBobyVisible = team.getTeamBodyVisible();
+    this.teamProfit = team.getTeamProfit();
 
     this.allMonsters = allMonsters;
 
     this.updateTeamsCallback = updateTeamsCallback;
+    this.sellTeamCallback = sellTeamCallback;
     this.buyTeamCallback = buyTeamCallback;
     this.shuffleCallback = shuffleCallback;
     this.deleteTeamCallback = deleteTeamCallback;
@@ -49,16 +51,24 @@ export class TeamCard {
   }
 
   teamSell() {
-    function log() {
-      console.log("Sold Team");
-    }
-
     const teamName = this.teamName;
     const teamMessage = this.teamMessage;
+    const linkedBtns = this.linkedBtns;
 
-    const sell = new ToggleIcon("coin", `Sell ${teamName}`, teamMessage, log);
-    const sellEl = sell.getIconToggle();
-    sellEl.classList.add("sellTeam", "alignLeft");
+    const isPaidFor = this.isPaidFor;
+
+    const confirmTeamSell = this.confirmTeamSell.bind(this);
+
+    const sell = new ToggleIcon("coin", `Sell ${teamName}`, teamMessage, undefined, confirmTeamSell);
+    let sellEl = sell.getIconToggle();
+
+    if (!isPaidFor) {
+      sellEl = document.createElement("div");
+    } else {
+      sellEl.classList.add("sellTeam", "alignLeft");
+    }
+
+    linkedBtns.push(sell);
 
     this.sellTeamEl = sellEl;
 
@@ -275,7 +285,7 @@ export class TeamCard {
   }
 
   notEnoughMonster() {
-    const toggleIcon = this.linkedBtns[0];
+    const toggleIcon = this.linkedBtns[1];
 
     const icon = toggleIcon.getIcon();
     const baseSrc = toggleIcon.getSrc();
@@ -295,7 +305,7 @@ export class TeamCard {
   }
 
   notEnoughCredits() {
-    const toggleIcon = this.linkedBtns[0];
+    const toggleIcon = this.linkedBtns[1];
 
     const icon = toggleIcon.getIcon();
     const baseSrc = toggleIcon.getSrc();
@@ -315,7 +325,7 @@ export class TeamCard {
   }
 
   enoughCredits() {
-    const toggleIcon = this.linkedBtns[0];
+    const toggleIcon = this.linkedBtns[1];
     const icon = toggleIcon.getIcon();
 
     const buyBtnEl = this.teamControlBtnContainer.children[0];
@@ -350,6 +360,71 @@ export class TeamCard {
     }, 5000);
   }
 
+  renderSellMessage() {
+    const team = this.team;
+    const teamName = this.teamName;
+    const teamProfit = team.getTeamProfit();
+    this.setTeamMsg(`Are your sure that you want to sell '${teamName}' for ${teamProfit} credits?`, "success");
+  }
+
+  confirmTeamSell() {
+    const toggleIcon = this.linkedBtns[0];
+    const icon = toggleIcon.getIcon();
+    const sellBtn = this.teamHeaderContainerEl.children[0];
+
+    const baseSrc = toggleIcon.getSrc();
+    const baseAltTitle = toggleIcon.getAltTitle();
+
+    const team = this.team;
+    const teamProfit = team.getTeamProfit();
+    const teamName = this.teamName;
+
+    const numChildren = sellBtn.children.length;
+
+    let priceDisplayer = renderIconWithNumber(teamProfit, "../../res/icons/diamond.svg", "");
+
+    if (numChildren === 1) {
+      this.renderSellMessage();
+      sellBtn.appendChild(priceDisplayer);
+
+      sellBtn.addEventListener("click", () => {
+        if (priceDisplayer) {
+          this.sellTeamCallback(teamName);
+          this.setTeamMsg("", "");
+          sellBtn.remove();
+        }
+      });
+
+      setTimeout(() => {
+        priceDisplayer.remove();
+        priceDisplayer = null;
+
+        icon.setAttribute("src", baseSrc);
+        icon.setAttribute("alt", baseAltTitle);
+        icon.setAttribute("title", baseAltTitle);
+      }, 5000);
+    } else {
+      sellBtn.appendChild(priceDisplayer);
+
+      sellBtn.addEventListener("click", () => {
+        if (priceDisplayer) {
+          this.sellTeamCallback(teamName);
+          this.setTeamMsg("", "");
+          sellBtn.remove();
+        }
+      });
+
+      setTimeout(() => {
+        priceDisplayer.remove();
+        priceDisplayer = null;
+
+        icon.setAttribute("src", baseSrc);
+        icon.setAttribute("alt", baseAltTitle);
+        icon.setAttribute("title", baseAltTitle);
+      }, 5000);
+    }
+  }
+
   shuffleTeam() {
     const teamName = this.teamName;
     this.shuffleCallback(teamName);
@@ -377,8 +452,6 @@ export class TeamCard {
 
   hideTeamBody(teamToggleIcon) {
     const teamBodyContainer = this.teamBodyContainerEl;
-
-    console.log(teamBodyContainer);
 
     teamBodyContainer.setAttribute("class", "teamBodyContainer hidden");
 

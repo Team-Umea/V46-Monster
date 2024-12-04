@@ -5,6 +5,8 @@ export class Team {
     this.monsters = [];
     this.paidFor = false;
     this.teamCost = 0;
+    this.teamValue = 0;
+    this.teamProfit = 0;
     this.teamBodyVisible = true;
   }
 
@@ -30,6 +32,42 @@ export class Team {
 
   getTeamCost() {
     return this.teamCost;
+  }
+
+  getTeamValue() {
+    return this.teamValue;
+  }
+
+  setTeamValue(allMonsters) {
+    const monsters = this.monsters;
+    const allMonsterData = allMonsters.map((monster) => monster.monster);
+    const monsterIDs = monsters.map((monster) => monster.id);
+
+    const originalMonsters = [...allMonsterData].filter((monster) => monsterIDs.includes(monster.id));
+
+    const originalTeamRating = originalMonsters.reduce((acc, curr) => curr.health + curr.damage + acc, 0);
+    const originalTeamPrice = originalMonsters.reduce((acc, curr) => curr.price + acc, 0);
+
+    const currentTeamRating = monsters.reduce((acc, curr) => curr.health + curr.damage + acc, 0);
+    const currentTeamPrice = monsters.reduce((acc, curr) => curr.price + acc, 0);
+
+    const ratingPriceFactor = originalTeamPrice * 0.04;
+    const priceDiffPriceFactor = originalTeamPrice * 0.02;
+
+    const ratingDifference = originalTeamRating - currentTeamRating;
+    const priceDifference = originalTeamPrice - currentTeamPrice;
+
+    const ratingInfluence = ratingDifference * ratingPriceFactor;
+    const priceInfluence = priceDifference * priceDiffPriceFactor;
+
+    const newTeamValue = originalTeamPrice - ratingInfluence - priceInfluence;
+
+    this.teamValue = newTeamValue;
+  }
+
+  getTeamProfit() {
+    const teamValue = this.teamValue;
+    return teamValue === 0 ? 0 : teamValue / 4;
   }
 
   setMonsters(monsters) {

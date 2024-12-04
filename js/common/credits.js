@@ -33,8 +33,14 @@ function loadCredits() {
   renderCredits();
 }
 
-export function updateCredits(usedCredits) {
+export function useCredits(usedCredits) {
   credits -= usedCredits;
+  save(CREDITS_LSK, credits);
+  renderCredits();
+}
+
+export function addCredits(usedCredits) {
+  credits += usedCredits;
   save(CREDITS_LSK, credits);
   renderCredits();
 }

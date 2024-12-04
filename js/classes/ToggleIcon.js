@@ -62,6 +62,7 @@ export class ToggleIcon {
         if (confirmCallback) {
           confirmCallback();
         }
+
         icon.setAttribute("src", baseSrc);
         icon.setAttribute("alt", baseAltTitle);
         icon.setAttribute("title", baseAltTitle);
