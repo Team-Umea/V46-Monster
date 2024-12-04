@@ -100,7 +100,7 @@ export class MonsterCard {
     const rank = this.rank;
 
     const healthIconValue = renderIconWithNumber(health, "../../res/icons/heart.svg", `${name} has ${health} of health`);
-    const damageIconValue = renderIconWithNumber(damage, "../../res/icons/skull.svg", `${name} has ${damage} of damage`);
+    const damageIconValue = renderIconWithNumber(damage, "../../res/icons/barbell.svg", `${name} has ${damage} of damage`);
     let rankIconValue;
 
     statsContainer.setAttribute("class", "monsterStats");

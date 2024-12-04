@@ -6,9 +6,12 @@ export class TeamStat {
     this.team = team;
 
     this.teamName = team.getTeamName();
+    this.teamMonsters = team.getMonsters();
     this.totalRating = this.calcTeamRating();
     this.totalHealh = this.calcTeamHealth();
     this.totalDamage = this.calcTeamDamage();
+    this.topMonster = this.findTopMonster();
+    this.bottomMonster = this.findBottomMonster();
     this.teamBodyVisible = team.getTeamBodyVisible();
 
     this.updateTeamCallback = updateTeamCallback;
@@ -90,8 +93,8 @@ export class TeamStat {
     const totalDamage = this.totalDamage;
 
     const rating = renderIconWithNumber(totalRating, "../../res/icons/trophy.svg", `Team '${teamName}' has a combined rating of ${totalRating}`);
-    const health = renderIconWithNumber(totalHealth, "../../res/icons/heart.svg", `Team '${teamName}' has a combined rating of ${totalHealth}`);
-    const damage = renderIconWithNumber(totalDamage, "../../res/icons/skull.svg", `Team '${teamName}' has a combined rating of ${totalDamage}`, "right");
+    const health = renderIconWithNumber(totalHealth, "../../res/icons/heart.svg", `Team '${teamName}' has ${totalHealth} combined health`);
+    const damage = renderIconWithNumber(totalDamage, "../../res/icons/skull.svg", `Team '${teamName}' has ${totalDamage} combined damage`, "right");
 
     rating.classList.add("teamStatTopStatsIcon");
     health.classList.add("teamStatTopStatsIcon");
@@ -140,14 +143,65 @@ export class TeamStat {
     return container;
   }
 
-  teamRating() {
-    const rating = document.createElement("p");
-    rating.setAttribute("class", "teamRating");
+  endToEndMonsters() {
+    const container = document.createElement("div");
 
-    const totalRating = this.totalRating;
-    rating.innerText = totalRating;
+    const topMonster = this.topMonster;
+    const bottomMonster = this.bottomMonster;
 
-    return rating;
+    const onlyOneMonster = topMonster === bottomMonster;
+
+    if (onlyOneMonster) {
+      const topMonsterEl = this.focusMonster(topMonster, "Strongest", "teamStatStrongMonster teamStatAloneMonster", "left");
+
+      container.setAttribute("class", "teamStatEndToEndMonstersContainer teamStatCenterTopMonster");
+      container.appendChild(topMonsterEl);
+    } else {
+      const topMonsterEl = this.focusMonster(topMonster, "Strongest", "teamStatStrongMonster", "left");
+      const bottomMonsterEl = this.focusMonster(bottomMonster, "Weakest", "teamStatWeakMonster", "right");
+
+      container.setAttribute("class", "teamStatEndToEndMonstersContainer");
+      container.appendChild(topMonsterEl);
+      container.appendChild(bottomMonsterEl);
+    }
+
+    return container;
+  }
+
+  focusMonster(monster, headerText, clasName, iconDir) {
+    const container = document.createElement("div");
+    const header = document.createElement("h2");
+    const name = document.createElement("h3");
+
+    container.setAttribute("class", `teamStatFocusMonsterContainer ${clasName}`);
+    header.setAttribute("class", "teamStatFocusMonsterHeader");
+    name.setAttribute("class", "teamStatFocusMonsterName");
+
+    header.innerText = headerText;
+
+    const monsterName = monster.name;
+    const monsterHealth = monster.health;
+    const monsterDamage = monster.damage;
+    const monsterRating = monsterHealth + monsterDamage;
+    // const monsterRank = monster.rank; - add this when api reponse includes a rank property in monsters
+
+    name.innerText = monsterName;
+
+    const rating = renderIconWithNumber(monsterRating, "../../res/icons/trophy.svg", `${monsterName} has a rating of ${monsterRating}`, iconDir);
+    const health = renderIconWithNumber(monsterHealth, "../../res/icons/heart.svg", `${monsterName} has ${monsterHealth} in health`, iconDir);
+    const damage = renderIconWithNumber(monsterDamage, "../../res/icons/skull.svg", `${monsterName} has ${monsterDamage} in damage`, iconDir);
+
+    rating.classList.add("teamStatFocusMonsterIcon");
+    health.classList.add("teamStatFocusMonsterIcon");
+    damage.classList.add("teamStatFocusMonsterIcon");
+
+    container.appendChild(header);
+    container.appendChild(name);
+    container.appendChild(rating);
+    container.appendChild(health);
+    container.appendChild(damage);
+
+    return container;
   }
 
   toggleStats() {
@@ -213,5 +267,39 @@ export class TeamStat {
     const monsters = team.getMonsters();
     const damage = monsters.reduce((acc, curr) => acc + curr.damage, 0);
     return damage;
+  }
+
+  findTopMonster() {
+    const monsters = this.teamMonsters;
+    const sortedByHighRating = monsters.sort((a, b) => {
+      const healthA = a.health;
+      const healthB = b.health;
+      const damageA = a.damage;
+      const damageB = b.damage;
+      const ratingA = healthA + damageA;
+      const ratingB = healthB + damageB;
+
+      return ratingB - ratingA;
+    });
+
+    const topMonster = sortedByHighRating[0];
+    return topMonster;
+  }
+
+  findBottomMonster() {
+    const monsters = this.teamMonsters;
+    const sortedByLowRating = monsters.sort((a, b) => {
+      const healthA = a.health;
+      const healthB = b.health;
+      const damageA = a.damage;
+      const damageB = b.damage;
+      const ratingA = healthA + damageA;
+      const ratingB = healthB + damageB;
+
+      return ratingA - ratingB;
+    });
+
+    const bottomMonster = sortedByLowRating[0];
+    return bottomMonster;
   }
 }
