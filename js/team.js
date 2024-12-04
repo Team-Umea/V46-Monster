@@ -248,18 +248,19 @@ function renderTeamStats() {
 
   if (teamsArr) {
     teamsArr.forEach((team) => {
-      const teamStat = new TeamStat(team);
+      const teamStat = new TeamStat(team, updateTeams);
 
       const teamStatContainer = teamStat.container();
       const teamStatHeaderContainer = teamStat.headerContainer();
       const teamStatHeader = teamStat.header();
-      const teamStatBodyContainer = teamStat.bodyContainer();
       const teamStatToggle = teamStat.toggle();
+      const teamStatBodyContainer = teamStat.bodyContainer();
+      const teamStatRating = teamStat.teamRating();
 
       teamStatHeaderContainer.appendChild(teamStatHeader);
       teamStatHeaderContainer.appendChild(teamStatToggle);
 
-      // teamStatBodyContainer.appendChild()
+      teamStatBodyContainer.appendChild(teamStatRating);
 
       teamStatContainer.appendChild(teamStatHeaderContainer);
       teamStatContainer.appendChild(teamStatBodyContainer);
