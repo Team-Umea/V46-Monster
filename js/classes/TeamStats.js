@@ -1,4 +1,4 @@
-import { useClickEvent } from "../common/useEvent.js";
+import { useChangeEvent, useClickEvent, useInputEvent } from "../common/useEvent.js";
 import { renderIconWithNumber, valueWithHeader } from "../common/render.js";
 
 export class TeamStat {
@@ -21,9 +21,10 @@ export class TeamStat {
     this.headerContainerEl = null;
     this.bodyContainerEl = null;
     this.toggleEl = null;
+    this.elementsBody = document.createElement("div");
+    this.elementsEl = document.createElement("div");
 
     this.sortMonstersByHighRating();
-    // this.sortElementsByRating();
   }
 
   container() {
@@ -225,37 +226,59 @@ export class TeamStat {
     const container = document.createElement("div");
     const heading = document.createElement("div");
     const header = document.createElement("h2");
-    // const numElements = document.createElement("p");
     const elementsToggle = document.createElement("img");
-
-    const elementsBody = document.createElement("div");
-    const elements = document.createElement("div");
+    const elementsBody = this.elementsBody;
+    const searchElementsInput = document.createElement("input");
+    const sortElementsSelect = document.createElement("select");
+    const elements = this.elementsEl;
 
     container.setAttribute("class", "teamStatElementsContainer");
     heading.setAttribute("class", "teamStatElementsHeading");
     header.setAttribute("class", "teamStatElmentsHeader");
     elementsToggle.setAttribute("class", "teamStatElementsToggle icon icon-scale");
-
-    // numElements.setAttribute("class", "teamStatNumElements");
     elementsBody.setAttribute("class", "teamStatElementsBody");
+    searchElementsInput.setAttribute("class", "teamStatSearchElements");
+    sortElementsSelect.setAttribute("class", "teamStatSortElements");
     elements.setAttribute("class", "teamStatElements");
 
     elementsToggle.setAttribute("src", "../../res/icons/eyeOff.svg");
     elementsToggle.setAttribute("alt", "Hide elements");
     elementsToggle.setAttribute("title", "Hide elements");
 
-    const teamName = this.teamName;
+    searchElementsInput.setAttribute("placeholder", "Search by element name");
+    this.populateSearchElementsSelect(sortElementsSelect);
+
     const teamElements = this.teamElements;
     const teamNumElments = teamElements.length;
 
     const toggleElementsVisibility = this.toggleElementsVisibility.bind(this, elementsToggle, elementsBody);
+    const searchElements = this.searchElements.bind(this, elements, searchElementsInput);
+    const sortElements = this.setSortOrder.bind(this, elements, sortElementsSelect, searchElementsInput);
 
     useClickEvent(elementsToggle, toggleElementsVisibility);
+    useInputEvent(searchElementsInput, searchElements);
+    useChangeEvent(sortElementsSelect, sortElements);
 
     header.setAttribute("data-elements", teamNumElments);
+    header.innerText = "Elements";
 
-    header.innerText = "Elments";
-    // numElements.innerText = `${teamNumElments}x`;
+    this.renderElments(elements);
+
+    heading.appendChild(header);
+    heading.appendChild(elementsToggle);
+    elementsBody.appendChild(searchElementsInput);
+    elementsBody.appendChild(sortElementsSelect);
+    elementsBody.appendChild(elements);
+    container.appendChild(heading);
+    container.appendChild(elementsBody);
+
+    return container;
+  }
+
+  renderElments(elementsEl, condtion) {
+    const teamElements = this.teamElements;
+
+    elementsEl.innerHTML = "";
 
     teamElements.forEach((teamElement) => {
       const element = document.createElement("div");
@@ -273,50 +296,27 @@ export class TeamStat {
 
       name.innerText = `${elementInstances}x ${elementName}`;
 
-      element.appendChild(name);
-      element.appendChild(rating);
-
-      elements.appendChild(element);
+      if (condtion === undefined || condtion === null) {
+        element.appendChild(name);
+        element.appendChild(rating);
+        elementsEl.appendChild(element);
+      } else {
+        if (typeof condtion === "function") {
+          if (condtion(elementName)) {
+            element.appendChild(name);
+            element.appendChild(rating);
+            elementsEl.appendChild(element);
+          }
+        } else {
+          if (condtion) {
+            element.appendChild(name);
+            element.appendChild(rating);
+            elementsEl.appendChild(element);
+          }
+        }
+      }
     });
-
-    heading.appendChild(header);
-    heading.appendChild(elementsToggle);
-    // heading.appendChild(numElements);
-    elementsBody.appendChild(elements);
-
-    container.appendChild(heading);
-    container.appendChild(elementsBody);
-
-    return container;
   }
-
-  toggleElementsVisibility(icon, elementBody) {
-    const elementBodyIsVisible = !elementBody.getAttribute("class").includes("hidden");
-
-    if (elementBodyIsVisible) {
-      this.hideElements(icon, elementBody);
-    } else {
-      this.showElements(icon, elementBody);
-    }
-  }
-
-  hideElements(icon, elementBody) {
-    icon.setAttribute("src", "../../res/icons/eyeOn.svg");
-    icon.setAttribute("alt", "Show elements");
-    icon.setAttribute("title", "Show elements");
-
-    elementBody.setAttribute("class", "teamStatElementsBody hidden");
-  }
-
-  showElements(icon, elementBody) {
-    icon.setAttribute("src", "../../res/icons/eyeOff.svg");
-    icon.setAttribute("alt", "Hide elements");
-    icon.setAttribute("title", "Hide elements");
-
-    elementBody.setAttribute("class", "teamStatElementsBody");
-  }
-
-  // showElements(icon)
 
   monsterStats(monster) {
     const container = document.createElement("div");
@@ -423,6 +423,153 @@ export class TeamStat {
     return container;
   }
 
+  toggleElementsVisibility(icon, elementBody) {
+    const elementBodyIsVisible = !elementBody.getAttribute("class").includes("hidden");
+
+    if (elementBodyIsVisible) {
+      this.hideElements(icon, elementBody);
+    } else {
+      this.showElements(icon, elementBody);
+    }
+  }
+
+  hideElements(icon, elementBody) {
+    icon.setAttribute("src", "../../res/icons/eyeOn.svg");
+    icon.setAttribute("alt", "Show elements");
+    icon.setAttribute("title", "Show elements");
+
+    elementBody.setAttribute("class", "teamStatElementsBody hidden");
+  }
+
+  showElements(icon, elementBody) {
+    icon.setAttribute("src", "../../res/icons/eyeOff.svg");
+    icon.setAttribute("alt", "Hide elements");
+    icon.setAttribute("title", "Hide elements");
+
+    elementBody.setAttribute("class", "teamStatElementsBody");
+  }
+
+  populateSearchElementsSelect(select) {
+    const options = ["Many-Few Instances", "Few-Many Instances", "High-Low Rating", "Low-High Rating", "A-Z", "Z-A"];
+
+    options.forEach((opt, index) => {
+      const option = document.createElement("option");
+      option.setAttribute("class", "teamStatSearchElementsOption");
+      option.innerText = opt;
+      option.value = index;
+      select.appendChild(option);
+    });
+  }
+
+  searchElements(elementsEl, searchElementsInput) {
+    const searchQuery = searchElementsInput.value;
+
+    const nameMatchesSearchQuery = (elementName) => {
+      return elementName.toLowerCase().includes(searchQuery.trim().toLowerCase());
+    };
+
+    this.renderElments(elementsEl, nameMatchesSearchQuery);
+  }
+
+  setSortOrder(elementsEl, sortElementsSelect, searchElementsInput) {
+    const sortOrder = Number(sortElementsSelect.value);
+    const searchQuery = searchElementsInput.value;
+
+    this.sortElements(sortOrder);
+
+    const nameMatchesSearchQuery = (elementName) => {
+      return elementName.toLowerCase().includes(searchQuery.trim().toLowerCase());
+    };
+
+    this.renderElments(elementsEl, nameMatchesSearchQuery);
+  }
+
+  sortElements(sortOrder) {
+    const teamElements = this.teamElements;
+    let sorted = [];
+
+    switch (sortOrder) {
+      case 0:
+        sorted = teamElements.sort((a, b) => {
+          const keyA = Object.keys(a)[0];
+          const keyB = Object.keys(b)[0];
+          const countA = a[keyA];
+          const countB = b[keyB];
+
+          const ratingA = a["rating"];
+          const ratingB = b["rating"];
+          const countDifference = countB - countA;
+          const ratingDifference = ratingB - ratingA;
+
+          return countDifference === 0 ? ratingDifference : countDifference;
+        });
+        break;
+      case 1:
+        sorted = teamElements.sort((a, b) => {
+          const keyA = Object.keys(a)[0];
+          const keyB = Object.keys(b)[0];
+          const countA = a[keyA];
+          const countB = b[keyB];
+
+          const ratingA = a["rating"];
+          const ratingB = b["rating"];
+          const countDifference = countA - countB;
+          const ratingDifference = ratingB - ratingA;
+
+          return countDifference === 0 ? ratingDifference : countDifference;
+        });
+        break;
+      case 2:
+        sorted = teamElements.sort((a, b) => {
+          const keyA = Object.keys(a)[0];
+          const keyB = Object.keys(b)[0];
+          const ratingA = a["rating"];
+          const ratingB = b["rating"];
+
+          const ratingDifference = ratingB - ratingA;
+          const alphaDifference = keyA.localeCompare(keyB);
+
+          return ratingDifference === 0 ? alphaDifference : ratingDifference;
+        });
+        break;
+      case 3:
+        sorted = teamElements.sort((a, b) => {
+          const keyA = Object.keys(a)[0];
+          const keyB = Object.keys(b)[0];
+          const ratingA = a["rating"];
+          const ratingB = b["rating"];
+
+          const ratingDifference = ratingA - ratingB;
+          const alphaDifference = keyA.localeCompare(keyB);
+
+          return ratingDifference === 0 ? alphaDifference : ratingDifference;
+        });
+        break;
+      case 4:
+        sorted = teamElements.sort((a, b) => {
+          const keyA = Object.keys(a)[0];
+          const keyB = Object.keys(b)[0];
+
+          return keyA.localeCompare(keyB);
+        });
+        break;
+      case 5:
+        sorted = teamElements.sort((a, b) => {
+          const keyA = Object.keys(a)[0];
+          const keyB = Object.keys(b)[0];
+
+          return keyB.localeCompare(keyA);
+        });
+        break;
+      default:
+        break;
+    }
+
+    if (sorted.length > 0) {
+      this.teamElements = sorted;
+    }
+  }
+
   calcTeamRating() {
     const team = this.team;
     const monsters = team.getMonsters();
@@ -491,24 +638,6 @@ export class TeamStat {
 
     return monsterNames;
   }
-
-  //   sortElementsByRating() {
-  //     const teamElements = this.teamElements;
-  //     if (teamElements) {
-  //       const sortedByHighRating = teamElements.sort((a, b) => {
-  //         const elementNameA = a.name;
-  //         const elementNameB = b.name;
-  //         const ratingA = a.rating;
-  //         const ratingB = b.rating;
-
-  //         const ratingDifference = ratingA - ratingB;
-
-  //         return ratingDifference === 0 ? elementNameA.localeCompare(elementNameB) : ratingDifference;
-  //       });
-  //       return sortedByHighRating;
-  //     }
-  //     return [];
-  //   }
 
   getAllMonsterElements() {
     const teamMonsters = this.teamMonsters;
