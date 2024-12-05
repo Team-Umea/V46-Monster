@@ -7,11 +7,15 @@ export class Team {
     this.teamCost = 0;
     this.teamValue = 0;
     this.teamProfit = 0;
+    this.numBattels = 0;
+    this.wonBattels = 0;
+    this.drawnBattels = 0;
+    this.lostBattels = 0;
+    this.totalPoints = 0;
+    this.numFights = 0;
     this.wonFights = 0;
     this.drawnFights = 0;
     this.lostFights = 0;
-    this.totalPoints = 0;
-    this.numFights = 0;
     this.teamBodyVisible = true;
   }
 
@@ -40,6 +44,30 @@ export class Team {
     return teamValue === 0 ? 0 : teamValue / 4;
   }
 
+  getNumBattels() {
+    return this.numBattels;
+  }
+
+  getWonBattels() {
+    return this.wonBattels;
+  }
+
+  getDrawBattels() {
+    return this.drawnBattels;
+  }
+
+  getLostBattels() {
+    return this.lostBattels;
+  }
+
+  getTotalPoints() {
+    return this.totalPoints;
+  }
+
+  getNumFights() {
+    return this.numFights;
+  }
+
   getWonFights() {
     return this.wonFights;
   }
@@ -50,14 +78,6 @@ export class Team {
 
   getLostFights() {
     return this.lostFights;
-  }
-
-  getTotalPoints() {
-    return this.totalPoints;
-  }
-
-  getNumFights() {
-    return this.numFights;
   }
 
   getTeamBodyVisible() {
@@ -106,6 +126,30 @@ export class Team {
     this.teamValue = newTeamValue;
   }
 
+  setNumBattels(numBattels) {
+    this.numBattels = numBattels;
+  }
+
+  setWonBattels(wonBattels) {
+    this.wonBattels = wonBattels;
+  }
+
+  setDrawnBattels(drawnBattels) {
+    this.drawnBattels = drawnBattels;
+  }
+
+  setLostBattels(lostBattels) {
+    this.lostBattels = lostBattels;
+  }
+
+  setTotalPoints(totalPoints) {
+    this.totalPoints = totalPoints;
+  }
+
+  setNumFights(numFights) {
+    this.numFights = numFights;
+  }
+
   setWonFights(wonFights) {
     this.wonFights = wonFights;
   }
@@ -116,14 +160,6 @@ export class Team {
 
   setLostFights(lostFights) {
     this.lostFights = lostFights;
-  }
-
-  setTotalPoints(totalPoints) {
-    this.totalPoints = totalPoints;
-  }
-
-  setNumFights(numFights) {
-    this.numFights = numFights;
   }
 
   setTeamBodyVisible(teamBodyVisible) {
@@ -149,11 +185,15 @@ export class Team {
     const newTeam = new Team(json.name);
     newTeam.setMonsters(json.monsters);
     newTeam.setPaidFor(json.paidFor);
+    newTeam.setNumBattels(json.numBattels);
+    newTeam.setWonBattels(json.wonBattels);
+    newTeam.setDrawnBattels(json.drawnBattels);
+    newTeam.setLostBattels(json.lostBattels);
+    newTeam.setTotalPoints(json.totalPoints);
+    newTeam.setNumFights(json.numFights);
     newTeam.setWonFights(json.wonFights);
     newTeam.setDrawnFights(json.drawnFights);
     newTeam.setLostFights(json.lostFights);
-    newTeam.setTotalPoints(json.totalPoints);
-    newTeam.setNumFights(json.numFights);
     newTeam.setTeamBodyVisible(json.teamBodyVisible);
     return newTeam;
   }
