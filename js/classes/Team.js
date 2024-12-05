@@ -7,27 +7,23 @@ export class Team {
     this.teamCost = 0;
     this.teamValue = 0;
     this.teamProfit = 0;
+    this.wonFights = 0;
+    this.drawnFights = 0;
+    this.lostFights = 0;
+    this.totalPoints = 0;
     this.teamBodyVisible = true;
-  }
-
-  getPaidFor() {
-    return this.paidFor;
-  }
-
-  setPaidFor(paidFor) {
-    this.paidFor = paidFor;
   }
 
   getTeamName() {
     return this.name;
   }
 
-  setTeamName(name) {
-    this.name = name;
-  }
-
   getMonsters() {
     return this.monsters;
+  }
+
+  getPaidFor() {
+    return this.paidFor;
   }
 
   getTeamCost() {
@@ -36,6 +32,30 @@ export class Team {
 
   getTeamValue() {
     return this.teamValue;
+  }
+
+  getTeamProfit() {
+    const teamValue = this.teamValue;
+    return teamValue === 0 ? 0 : teamValue / 4;
+  }
+
+  getTeamBodyVisible() {
+    return this.teamBodyVisible;
+  }
+
+  setTeamName(name) {
+    this.name = name;
+  }
+
+  setMonsters(monsters) {
+    this.monsters = monsters;
+
+    const teamCost = monsters.reduce((acc, curr) => acc + curr.price, 0);
+    this.teamCost = teamCost;
+  }
+
+  setPaidFor(paidFor) {
+    this.paidFor = paidFor;
   }
 
   setTeamValue(allMonsters) {
@@ -65,28 +85,12 @@ export class Team {
     this.teamValue = newTeamValue;
   }
 
-  getTeamProfit() {
-    const teamValue = this.teamValue;
-    return teamValue === 0 ? 0 : teamValue / 4;
-  }
-
-  setMonsters(monsters) {
-    this.monsters = monsters;
-
-    const teamCost = monsters.reduce((acc, curr) => acc + curr.price, 0);
-    this.teamCost = teamCost;
+  setTeamBodyVisible(teamBodyVisible) {
+    this.teamBodyVisible = teamBodyVisible;
   }
 
   deleteMonster(id) {
     this.monsters = [...this.monsters].filter((monster) => monster.id !== id);
-  }
-
-  getVisible() {
-    return this.visible;
-  }
-
-  setVisible(visible) {
-    this.visible = visible;
   }
 
   addMonsterToTeam(monster) {
@@ -98,14 +102,6 @@ export class Team {
     const monsters = this.monsters;
     const teamCost = monsters.reduce((acc, curr) => acc + curr.price, 0);
     this.teamCost = teamCost;
-  }
-
-  getTeamBodyVisible() {
-    return this.teamBodyVisible;
-  }
-
-  setTeamBodyVisible(teamBodyVisible) {
-    this.teamBodyVisible = teamBodyVisible;
   }
 
   static fromJSON(json) {
