@@ -16,6 +16,10 @@ export class Team {
     this.wonFights = 0;
     this.drawnFights = 0;
     this.lostFights = 0;
+    this.numRounds = 0;
+    this.wonRounds = 0;
+    this.drawnRounds = 0;
+    this.lostRounds = 0;
     this.teamBodyVisible = true;
   }
 
@@ -78,6 +82,22 @@ export class Team {
 
   getLostFights() {
     return this.lostFights;
+  }
+
+  getNumRounds() {
+    return this.numRounds;
+  }
+
+  getWonRounds() {
+    return this.wonRounds;
+  }
+
+  getDrawnRounds() {
+    return this.drawnRounds;
+  }
+
+  getLostRounds() {
+    return this.lostRounds;
   }
 
   getTeamBodyVisible() {
@@ -162,6 +182,22 @@ export class Team {
     this.lostFights = lostFights;
   }
 
+  setNumRounds(numRounds) {
+    this.numRounds = numRounds;
+  }
+
+  setWonRounds(wonRounds) {
+    this.wonRounds = wonRounds;
+  }
+
+  setDrawnRounds(drawnRounds) {
+    this.drawnRounds = drawnRounds;
+  }
+
+  setLostRounds(lostRounds) {
+    this.lostRounds = lostRounds;
+  }
+
   setTeamBodyVisible(teamBodyVisible) {
     this.teamBodyVisible = teamBodyVisible;
   }
@@ -194,6 +230,10 @@ export class Team {
     newTeam.setWonFights(json.wonFights);
     newTeam.setDrawnFights(json.drawnFights);
     newTeam.setLostFights(json.lostFights);
+    newTeam.setNumRounds(json.numRounds);
+    newTeam.setWonRounds(json.wonRounds);
+    newTeam.setDrawnRounds(json.drawnRounds);
+    newTeam.setLostRounds(json.lostRounds);
     newTeam.setTeamBodyVisible(json.teamBodyVisible);
     return newTeam;
   }

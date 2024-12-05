@@ -282,9 +282,12 @@ export class TeamStat {
     const heading = document.createElement("div");
     const header = document.createElement("h2");
     const body = document.createElement("div");
-    const fightStats = document.createElement("div");
+    const battleStats = document.createElement("div");
+    const fightStatsMonstersHeader = document.createElement("h3");
+    const fightStatsMonstersContainer = document.createElement("div");
 
     const team = this.team;
+    const teamMonsters = this.teamMonsters;
     const numBattels = team.getNumBattels();
     const wonBattels = team.getWonBattels();
     const drawnBattels = team.getDrawnBattels();
@@ -294,16 +297,23 @@ export class TeamStat {
     const wonFights = team.getWonFights();
     const drawnFights = team.getDrawnFights();
     const lostFights = team.getLostFights();
+    const numRounds = team.getNumRounds();
+    const wonRounds = team.getWonRounds();
+    const drawnRounds = team.getDrawnRounds();
+    const lostRouns = team.getLostRounds();
 
     container.setAttribute("class", "teamStatBattleRecordContainer");
     heading.setAttribute("class", "teamStatBattleRecordHeading");
     header.setAttribute("class", "teamStatBattleRecordHeader");
     body.setAttribute("class", "teamStatBattleRecordBody");
-    fightStats.setAttribute("class", "teamStatsBattleRecordStatsContainer");
+    battleStats.setAttribute("class", "teamStatsBattleRecordStatsContainer");
+    fightStatsMonstersHeader.setAttribute("class", "teamStatBattleRecordFightStatsMonsterHeader");
+    fightStatsMonstersContainer.setAttribute("class", "teamStatBattleRecordFightStatsMonsterContainer");
 
     header.setAttribute("data-fights", numBattels);
 
     header.innerText = "Battle Record";
+    fightStatsMonstersHeader.innerText = "Monsters Fight Records";
 
     const hideBattleRecord = () => {
       body.setAttribute("class", "teamStatBattleRecordBody hidden");
@@ -319,36 +329,66 @@ export class TeamStat {
     const drawnBattelsEl = valueWithHeader(drawnBattels, "Drawn Battels");
     const lostBattelsEl = valueWithHeader(lostBattels, "Lost Battels");
     const totalPointsEl = valueWithHeader(totalPoints, "Total points");
-
     const numFightsEl = valueWithHeader(numFights, "Fights");
     const wonFightsEl = valueWithHeader(wonFights, "Won fights");
     const drawnFightsEl = valueWithHeader(drawnFights, "Drawn fights");
     const lostFightsEl = valueWithHeader(lostFights, "Lost fights");
+    const numRoundsEl = valueWithHeader(numRounds, "Rounds");
+    const wonRoundsEl = valueWithHeader(wonRounds, "Won rounds");
+    const drawnRoundsEl = valueWithHeader(drawnRounds, "Drawn rounds");
+    const lostRoundsEl = valueWithHeader(lostRouns, "Lost rounds");
 
     wonBattelsEl.setAttribute("class", "teamStatBattleRecordStats");
     drawnBattelsEl.setAttribute("class", "teamStatBattleRecordStats");
     lostBattelsEl.setAttribute("class", "teamStatBattleRecordStats");
     totalPointsEl.setAttribute("class", "teamStatBattleRecordStats");
-
     numFightsEl.setAttribute("class", "teamStatBattleRecordStats");
     wonFightsEl.setAttribute("class", "teamStatBattleRecordStats");
     drawnFightsEl.setAttribute("class", "teamStatBattleRecordStats");
     lostFightsEl.setAttribute("class", "teamStatBattleRecordStats");
+    numRoundsEl.setAttribute("class", "teamStatBattleRecordStats");
+    wonRoundsEl.setAttribute("class", "teamStatBattleRecordStats");
+    drawnRoundsEl.setAttribute("class", "teamStatBattleRecordStats");
+    lostRoundsEl.setAttribute("class", "teamStatBattleRecordStats");
+
+    teamMonsters.forEach((teamMonster) => {
+      const container = document.createElement("div");
+      const name = document.createElement("h4");
+      const stats = document.createElement("div");
+
+      const monsterName = teamMonster.name;
+
+      container.setAttribute("class", "teamStatBattleRecordFightStatsMonsterContainer");
+      name.setAttribute("class", "teamStatBattleRecordFightStatsMonsterName");
+      stats.setAttribute("class", "teamStatBattleRecordFightStatsMonsterStats");
+
+      name.innerText = monsterName;
+
+      container.appendChild(name);
+      container.appendChild(stats);
+
+      fightStatsMonstersContainer.appendChild(container);
+    });
 
     heading.appendChild(header);
     heading.appendChild(elementsToggle);
 
-    fightStats.appendChild(wonBattelsEl);
-    fightStats.appendChild(drawnBattelsEl);
-    fightStats.appendChild(lostBattelsEl);
-    fightStats.appendChild(totalPointsEl);
+    battleStats.appendChild(wonBattelsEl);
+    battleStats.appendChild(drawnBattelsEl);
+    battleStats.appendChild(lostBattelsEl);
+    battleStats.appendChild(totalPointsEl);
+    battleStats.appendChild(numFightsEl);
+    battleStats.appendChild(wonFightsEl);
+    battleStats.appendChild(drawnFightsEl);
+    battleStats.appendChild(lostFightsEl);
+    battleStats.appendChild(numRoundsEl);
+    battleStats.appendChild(wonRoundsEl);
+    battleStats.appendChild(drawnRoundsEl);
+    battleStats.appendChild(lostRoundsEl);
 
-    fightStats.appendChild(numFightsEl);
-    fightStats.appendChild(wonFightsEl);
-    fightStats.appendChild(drawnFightsEl);
-    fightStats.appendChild(lostFightsEl);
-
-    body.appendChild(fightStats);
+    body.appendChild(battleStats);
+    body.appendChild(fightStatsMonstersHeader);
+    body.appendChild(fightStatsMonstersContainer);
 
     container.appendChild(heading);
     container.appendChild(body);
