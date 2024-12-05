@@ -238,6 +238,8 @@ export class TeamStat {
     const teamElements = this.teamElements;
     const teamNumElments = teamElements.length;
 
+    header.setAttribute("data-elements", teamNumElments);
+
     header.innerText = "Elments";
     numElements.innerText = `${teamNumElments}x`;
 
