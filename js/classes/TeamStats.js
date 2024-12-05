@@ -1,5 +1,5 @@
 import { useChangeEvent, useClickEvent, useInputEvent } from "../common/useEvent.js";
-import { renderIconWithNumber, valueWithHeader } from "../common/render.js";
+import { renderIconWithNumber, valueWithHeader, eyeToggle } from "../common/render.js";
 
 export class TeamStat {
   constructor(team, elements, updateTeamCallback) {
@@ -226,7 +226,6 @@ export class TeamStat {
     const container = document.createElement("div");
     const heading = document.createElement("div");
     const header = document.createElement("h2");
-    const elementsToggle = document.createElement("img");
     const elementsBody = this.elementsBody;
     const searchElementsInput = document.createElement("input");
     const sortElementsSelect = document.createElement("select");
@@ -235,15 +234,15 @@ export class TeamStat {
     container.setAttribute("class", "teamStatElementsContainer");
     heading.setAttribute("class", "teamStatElementsHeading");
     header.setAttribute("class", "teamStatElmentsHeader");
-    elementsToggle.setAttribute("class", "teamStatElementsToggle icon icon-scale");
+    // elementsToggle.setAttribute("class", "teamStatElementsToggle icon icon-scale");
     elementsBody.setAttribute("class", "teamStatElementsBody");
     searchElementsInput.setAttribute("class", "teamStatSearchElements");
     sortElementsSelect.setAttribute("class", "teamStatSortElements");
     elements.setAttribute("class", "teamStatElements");
 
-    elementsToggle.setAttribute("src", "../../res/icons/eyeOff.svg");
-    elementsToggle.setAttribute("alt", "Hide elements");
-    elementsToggle.setAttribute("title", "Hide elements");
+    // elementsToggle.setAttribute("src", "../../res/icons/eyeOff.svg");
+    // elementsToggle.setAttribute("alt", "Hide elements");
+    // elementsToggle.setAttribute("title", "Hide elements");
 
     searchElementsInput.setAttribute("placeholder", "Search by element name");
     this.populateSearchElementsSelect(sortElementsSelect);
@@ -251,11 +250,37 @@ export class TeamStat {
     const teamElements = this.teamElements;
     const teamNumElments = teamElements.length;
 
-    const toggleElementsVisibility = this.toggleElementsVisibility.bind(this, elementsToggle, elementsBody);
+    // const toggleElementsVisibility = this.toggleElementsVisibility.bind(this, elementsBody);
     const searchElements = this.searchElements.bind(this, elements, searchElementsInput);
     const sortElements = this.setSortOrder.bind(this, elements, sortElementsSelect, searchElementsInput);
 
-    useClickEvent(elementsToggle, toggleElementsVisibility);
+    // hideElements(icon, elementBody) {
+    //   icon.setAttribute("src", "../../res/icons/eyeOn.svg");
+    //   icon.setAttribute("alt", "Show elements");
+    //   icon.setAttribute("title", "Show elements");
+
+    //   elementBody.setAttribute("class", "teamStatElementsBody hidden");
+    // }
+
+    // showElements(icon, elementBody) {
+    //   icon.setAttribute("src", "../../res/icons/eyeOff.svg");
+    //   icon.setAttribute("alt", "Hide elements");
+    //   icon.setAttribute("title", "Hide elements");
+
+    //   elementBody.setAttribute("class", "teamStatElementsBody");
+    // }
+
+    const hideElements = () => {
+      elementsBody.setAttribute("class", "teamStatElementsBody hidden");
+    };
+
+    const showElements = () => {
+      elementsBody.setAttribute("class", "teamStatElementsBody");
+    };
+
+    const elementsToggle = eyeToggle("teamStatElementsToggle", "Show elements", "Hide elments", hideElements.bind(this), showElements.bind(this));
+    console.log(elementsToggle);
+    // useClickEvent(elementsToggle, toggleElementsVisibility);
     useInputEvent(searchElementsInput, searchElements);
     useChangeEvent(sortElementsSelect, sortElements);
 
@@ -272,6 +297,19 @@ export class TeamStat {
     container.appendChild(heading);
     container.appendChild(elementsBody);
 
+    return container;
+  }
+
+  fightRecord() {
+    const container = document.createElement("div");
+    const header = document.createElement("h2");
+
+    container.setAttribute("class", "teamStatFightRecordContainer");
+    header.setAttribute("class", "teamStatFightRecordHeader");
+
+    header.innerText = "Fight Record";
+
+    container.appendChild(header);
     return container;
   }
 
@@ -423,31 +461,15 @@ export class TeamStat {
     return container;
   }
 
-  toggleElementsVisibility(icon, elementBody) {
-    const elementBodyIsVisible = !elementBody.getAttribute("class").includes("hidden");
+  // toggleElementsVisibility(icon, elementBody) {
+  //   const elementBodyIsVisible = !elementBody.getAttribute("class").includes("hidden");
 
-    if (elementBodyIsVisible) {
-      this.hideElements(icon, elementBody);
-    } else {
-      this.showElements(icon, elementBody);
-    }
-  }
-
-  hideElements(icon, elementBody) {
-    icon.setAttribute("src", "../../res/icons/eyeOn.svg");
-    icon.setAttribute("alt", "Show elements");
-    icon.setAttribute("title", "Show elements");
-
-    elementBody.setAttribute("class", "teamStatElementsBody hidden");
-  }
-
-  showElements(icon, elementBody) {
-    icon.setAttribute("src", "../../res/icons/eyeOff.svg");
-    icon.setAttribute("alt", "Hide elements");
-    icon.setAttribute("title", "Hide elements");
-
-    elementBody.setAttribute("class", "teamStatElementsBody");
-  }
+  //   if (elementBodyIsVisible) {
+  //     this.hideElements(elementBody);
+  //   } else {
+  //     this.showElements(elementBody);
+  //   }
+  // }
 
   populateSearchElementsSelect(select) {
     const options = ["Many-Few Instances", "Few-Many Instances", "High-Low Rating", "Low-High Rating", "A-Z", "Z-A"];

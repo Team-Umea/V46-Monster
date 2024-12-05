@@ -153,6 +153,36 @@ export function valueWithHeader(value, headerText) {
   return container;
 }
 
+export function eyeToggle(clasName, altTitleHide, altTitleShow, callbackHide, callbackShow) {
+  const icon = document.createElement("img");
+
+  icon.setAttribute("class", `${clasName} icon icon-scale`);
+  icon.setAttribute("src", "../../res/icons/eyeOff.svg");
+  icon.setAttribute("alt", altTitleHide);
+  icon.setAttribute("title", altTitleHide);
+
+  icon.addEventListener("click", () => {
+    const isHidden = icon.getAttribute("src").includes("eyeOn");
+
+    if (isHidden) {
+      icon.setAttribute("src", "../../res/icons/eyeOff.svg");
+      icon.setAttribute("alt", altTitleShow);
+      icon.setAttribute("title", altTitleShow);
+      if (callbackShow) {
+        callbackShow();
+      }
+    } else {
+      icon.setAttribute("src", "../../res/icons/eyeOn.svg");
+      icon.setAttribute("alt", altTitleHide);
+      icon.setAttribute("title", altTitleHide);
+      if (callbackHide) {
+        callbackHide();
+      }
+    }
+  });
+  return icon;
+}
+
 function removeEl(element, delay) {
   const delayInSeconds = delay * 1000;
   setTimeout(() => {

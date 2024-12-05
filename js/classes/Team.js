@@ -149,7 +149,11 @@ export class Team {
     const newTeam = new Team(json.name);
     newTeam.setMonsters(json.monsters);
     newTeam.setPaidFor(json.paidFor);
-    newTeam.setVisible(json.visible);
+    newTeam.setWonFights(json.wonFights);
+    newTeam.setDrawnFights(json.drawnFights);
+    newTeam.setLostFights(json.lostFights);
+    newTeam.setTotalPoints(json.totalPoints);
+    newTeam.setNumFights(json.numFights);
     newTeam.setTeamBodyVisible(json.teamBodyVisible);
     return newTeam;
   }
