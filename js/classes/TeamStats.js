@@ -225,23 +225,37 @@ export class TeamStat {
     const container = document.createElement("div");
     const heading = document.createElement("div");
     const header = document.createElement("h2");
-    const numElements = document.createElement("p");
+    // const numElements = document.createElement("p");
+    const elementsToggle = document.createElement("img");
+
+    const elementsBody = document.createElement("div");
     const elements = document.createElement("div");
 
     container.setAttribute("class", "teamStatElementsContainer");
     heading.setAttribute("class", "teamStatElementsHeading");
     header.setAttribute("class", "teamStatElmentsHeader");
-    numElements.setAttribute("class", "teamStatNumElements");
+    elementsToggle.setAttribute("class", "teamStatElementsToggle icon icon-scale");
+
+    // numElements.setAttribute("class", "teamStatNumElements");
+    elementsBody.setAttribute("class", "teamStatElementsBody");
     elements.setAttribute("class", "teamStatElements");
+
+    elementsToggle.setAttribute("src", "../../res/icons/eyeOff.svg");
+    elementsToggle.setAttribute("alt", "Hide elements");
+    elementsToggle.setAttribute("title", "Hide elements");
 
     const teamName = this.teamName;
     const teamElements = this.teamElements;
     const teamNumElments = teamElements.length;
 
+    const toggleElementsVisibility = this.toggleElementsVisibility.bind(this, elementsToggle, elementsBody);
+
+    useClickEvent(elementsToggle, toggleElementsVisibility);
+
     header.setAttribute("data-elements", teamNumElments);
 
     header.innerText = "Elments";
-    numElements.innerText = `${teamNumElments}x`;
+    // numElements.innerText = `${teamNumElments}x`;
 
     teamElements.forEach((teamElement) => {
       const element = document.createElement("div");
@@ -266,13 +280,43 @@ export class TeamStat {
     });
 
     heading.appendChild(header);
-    heading.appendChild(numElements);
+    heading.appendChild(elementsToggle);
+    // heading.appendChild(numElements);
+    elementsBody.appendChild(elements);
 
     container.appendChild(heading);
-    container.appendChild(elements);
+    container.appendChild(elementsBody);
 
     return container;
   }
+
+  toggleElementsVisibility(icon, elementBody) {
+    const elementBodyIsVisible = !elementBody.getAttribute("class").includes("hidden");
+
+    if (elementBodyIsVisible) {
+      this.hideElements(icon, elementBody);
+    } else {
+      this.showElements(icon, elementBody);
+    }
+  }
+
+  hideElements(icon, elementBody) {
+    icon.setAttribute("src", "../../res/icons/eyeOn.svg");
+    icon.setAttribute("alt", "Show elements");
+    icon.setAttribute("title", "Show elements");
+
+    elementBody.setAttribute("class", "teamStatElementsBody hidden");
+  }
+
+  showElements(icon, elementBody) {
+    icon.setAttribute("src", "../../res/icons/eyeOff.svg");
+    icon.setAttribute("alt", "Hide elements");
+    icon.setAttribute("title", "Hide elements");
+
+    elementBody.setAttribute("class", "teamStatElementsBody");
+  }
+
+  // showElements(icon)
 
   monsterStats(monster) {
     const container = document.createElement("div");
