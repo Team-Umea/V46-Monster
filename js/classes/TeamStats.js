@@ -1,5 +1,5 @@
 import { useChangeEvent, useClickEvent, useInputEvent } from "../common/useEvent.js";
-import { renderIconWithNumber, valueWithHeader, eyeToggle } from "../common/render.js";
+import { renderIconWithNumber, valueWithHeader, eyeToggle, progressBar } from "../common/render.js";
 
 export class TeamStat {
   constructor(team, elements, updateTeamCallback) {
@@ -283,6 +283,9 @@ export class TeamStat {
     const header = document.createElement("h2");
     const body = document.createElement("div");
     const battleStats = document.createElement("div");
+    const battleValues = document.createElement("div");
+    const fightValues = document.createElement("div");
+    const roundValues = document.createElement("div");
     const fightStatsMonstersHeader = document.createElement("h3");
     const fightStatsMonstersContainer = document.createElement("div");
 
@@ -307,6 +310,9 @@ export class TeamStat {
     header.setAttribute("class", "teamStatBattleRecordHeader");
     body.setAttribute("class", "teamStatBattleRecordBody");
     battleStats.setAttribute("class", "teamStatsBattleRecordStatsContainer");
+    battleValues.setAttribute("class", "teamStatsBattleRecordBattleValues teamStatBattleRecordValues");
+    fightValues.setAttribute("class", "teamStatsBattleRecordFightValues teamStatBattleRecordValues");
+    roundValues.setAttribute("class", "teamStatsBattleRecordRoundValues teamStatBattleRecordValues");
     fightStatsMonstersHeader.setAttribute("class", "teamStatBattleRecordFightStatsMonsterHeader");
     fightStatsMonstersContainer.setAttribute("class", "teamStatBattleRecordFightStatsMonsterContainer");
 
@@ -324,6 +330,13 @@ export class TeamStat {
     };
 
     const elementsToggle = eyeToggle("teamStatBattleRecordToggle", "Show fight record", "Hide fight record", hideBattleRecord.bind(this), showBattleRecordd.bind(this));
+    const battleBar = progressBar(4, 1, 1); //change to actul values
+    const fightBar = progressBar(10, 2, 5); //change to actul values
+    const roundBar = progressBar(45, 8, 17); //change to actul values
+
+    battleBar.classList.add("teamStatBattleRecordBar");
+    fightBar.classList.add("teamStatBattleRecordBar");
+    roundBar.classList.add("teamStatBattleRecordBar");
 
     const wonBattelsEl = valueWithHeader(wonBattels, "Won Battels");
     const drawnBattelsEl = valueWithHeader(drawnBattels, "Drawn Battels");
@@ -373,18 +386,27 @@ export class TeamStat {
     heading.appendChild(header);
     heading.appendChild(elementsToggle);
 
-    battleStats.appendChild(wonBattelsEl);
-    battleStats.appendChild(drawnBattelsEl);
-    battleStats.appendChild(lostBattelsEl);
-    battleStats.appendChild(totalPointsEl);
-    battleStats.appendChild(numFightsEl);
-    battleStats.appendChild(wonFightsEl);
-    battleStats.appendChild(drawnFightsEl);
-    battleStats.appendChild(lostFightsEl);
-    battleStats.appendChild(numRoundsEl);
-    battleStats.appendChild(wonRoundsEl);
-    battleStats.appendChild(drawnRoundsEl);
-    battleStats.appendChild(lostRoundsEl);
+    battleValues.appendChild(wonBattelsEl);
+    battleValues.appendChild(drawnBattelsEl);
+    battleValues.appendChild(lostBattelsEl);
+    battleValues.appendChild(totalPointsEl);
+
+    fightValues.appendChild(numFightsEl);
+    fightValues.appendChild(wonFightsEl);
+    fightValues.appendChild(drawnFightsEl);
+    fightValues.appendChild(lostFightsEl);
+
+    roundValues.appendChild(numRoundsEl);
+    roundValues.appendChild(wonRoundsEl);
+    roundValues.appendChild(drawnRoundsEl);
+    roundValues.appendChild(lostRoundsEl);
+
+    battleStats.appendChild(battleValues);
+    battleStats.appendChild(battleBar);
+    battleStats.appendChild(fightValues);
+    battleStats.appendChild(fightBar);
+    battleStats.appendChild(roundValues);
+    battleStats.appendChild(roundBar);
 
     body.appendChild(battleStats);
     body.appendChild(fightStatsMonstersHeader);

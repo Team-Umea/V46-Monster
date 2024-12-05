@@ -329,7 +329,7 @@ main {
   padding: 10px;
 }
 
-.teamStatsBattleRecordStatsContainer {
+.teamStatBattleRecordValues {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
 }
@@ -348,6 +348,10 @@ main {
 
 .teamStatBattleRecordStats p {
   font-size: 0.7rem;
+}
+
+.teamStatBattleRecordBar {
+  box-shadow: 3px 3px 0px 2px rgba(0, 0, 0, 0.65);
 }
 
 .teamStatBattleRecordFightStatsMonsterHeader {

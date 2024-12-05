@@ -183,6 +183,48 @@ export function eyeToggle(clasName, altTitleHide, altTitleShow, callbackHide, ca
   return icon;
 }
 
+export function progressBar(progress = 1, neutral = 1, regress = 1) {
+  const progressBarEl = document.createElement("div");
+  const progressEl = document.createElement("div");
+  const neutralEl = document.createElement("div");
+  const regressEl = document.createElement("div");
+
+  progressBarEl.setAttribute("class", "progressBar");
+  progressEl.setAttribute("class", "progress");
+  neutralEl.setAttribute("class", "neutral");
+  regressEl.setAttribute("class", "regress");
+
+  let progressWidth = "0";
+  let neutralWidth = "100%";
+  let regressWidth = "0";
+
+  const total = progress + neutral + regress - 3;
+
+  let progressShare = 0;
+  let neutralShare = 100;
+  let regressShare = 0;
+
+  if (total > 0) {
+    progressShare = Math.ceil((progress / total) * 100);
+    neutralShare = Math.ceil((neutral / total) * 100);
+    regressShare = Math.ceil((regress / total) * 100);
+  }
+
+  progressWidth = `${progressShare}%`;
+  neutralWidth = `${neutralShare}%`;
+  regressWidth = `${regressShare}%`;
+
+  progressEl.style.width = progressWidth;
+  neutralEl.style.width = neutralWidth;
+  regressEl.style.width = regressWidth;
+
+  progressBarEl.appendChild(progressEl);
+  progressBarEl.appendChild(neutralEl);
+  progressBarEl.appendChild(regressEl);
+
+  return progressBarEl;
+}
+
 function removeEl(element, delay) {
   const delayInSeconds = delay * 1000;
   setTimeout(() => {

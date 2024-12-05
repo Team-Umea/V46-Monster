@@ -279,3 +279,26 @@ footer {
   align-items: center;
   gap: 7px;
 }
+
+.progressBar {
+  display: flex;
+  width: 100%;
+  height: 30px;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.progress {
+  height: 100%;
+  background-color: green;
+}
+
+.regress {
+  height: 100%;
+  background-color: red;
+}
+
+.neutral {
+  height: 100%;
+  background-color: grey;
+}
