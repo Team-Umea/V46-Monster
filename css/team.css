@@ -325,6 +325,27 @@ main {
   width: 25px;
 }
 
+.teamStatsFightRecordStatsContainer {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.teamStatFightRecordStats {
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 7px;
+}
+
+.teamStatFightRecordStats h2 {
+  font-size: 0.9rem;
+}
+
+.teamStatFightRecordStats p {
+  font-size: 0.7rem;
+}
+
 /*Teams*/
 
 .teamsContainer {

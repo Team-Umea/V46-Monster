@@ -282,14 +282,20 @@ export class TeamStat {
     const heading = document.createElement("div");
     const header = document.createElement("h2");
     const body = document.createElement("div");
+    const fightStats = document.createElement("div");
 
     const team = this.team;
     const numFights = team.getNumFights();
+    const wonFights = team.getWonFights();
+    const drawnFights = team.getDrawnFights();
+    const lostFights = team.getLostFights();
+    const totalPoints = team.getTotalPoints();
 
     container.setAttribute("class", "teamStatFightRecordContainer");
     heading.setAttribute("class", "teamStatFightRecordHeading");
     header.setAttribute("class", "teamStatFightRecordHeader");
     body.setAttribute("class", "teamStatFightRecordBody");
+    fightStats.setAttribute("class", "teamStatsFightRecordStatsContainer");
 
     header.setAttribute("data-fights", numFights);
 
@@ -305,8 +311,25 @@ export class TeamStat {
 
     const elementsToggle = eyeToggle("teamStatFightRecordToggle", "Show fight record", "Hide fight record", hideFightRecord.bind(this), showFightRecord.bind(this));
 
+    const wonFightsEl = valueWithHeader(wonFights, "Won fights");
+    const drawnFightsEl = valueWithHeader(drawnFights, "Drawn fights");
+    const lostFightsEl = valueWithHeader(lostFights, "Lost fights");
+    const totalPointsEl = valueWithHeader(totalPoints, "Total points");
+
+    wonFightsEl.setAttribute("class", "teamStatFightRecordStats");
+    drawnFightsEl.setAttribute("class", "teamStatFightRecordStats");
+    lostFightsEl.setAttribute("class", "teamStatFightRecordStats");
+    totalPointsEl.setAttribute("class", "teamStatFightRecordStats");
+
     heading.appendChild(header);
     heading.appendChild(elementsToggle);
+
+    fightStats.appendChild(wonFightsEl);
+    fightStats.appendChild(drawnFightsEl);
+    fightStats.appendChild(lostFightsEl);
+    fightStats.appendChild(totalPointsEl);
+
+    body.appendChild(fightStats);
 
     container.appendChild(heading);
     container.appendChild(body);
