@@ -11,6 +11,7 @@ export class Team {
     this.drawnFights = 0;
     this.lostFights = 0;
     this.totalPoints = 0;
+    this.numFights = 0;
     this.teamBodyVisible = true;
   }
 
@@ -37,6 +38,26 @@ export class Team {
   getTeamProfit() {
     const teamValue = this.teamValue;
     return teamValue === 0 ? 0 : teamValue / 4;
+  }
+
+  getWonFights() {
+    return this.wonFights;
+  }
+
+  getDrawnFights() {
+    return this.drawnFights;
+  }
+
+  getLostFights() {
+    return this.lostFights;
+  }
+
+  getTotalPoints() {
+    return this.totalPoints;
+  }
+
+  getNumFights() {
+    return this.numFights;
   }
 
   getTeamBodyVisible() {
@@ -83,6 +104,26 @@ export class Team {
     const newTeamValue = originalTeamPrice - ratingInfluence - priceInfluence;
 
     this.teamValue = newTeamValue;
+  }
+
+  setWonFights(wonFights) {
+    this.wonFights = wonFights;
+  }
+
+  setDrawnFights(drawnFights) {
+    this.drawnFights = drawnFights;
+  }
+
+  setLostFights(lostFights) {
+    this.lostFights = lostFights;
+  }
+
+  setTotalPoints(totalPoints) {
+    this.totalPoints = totalPoints;
+  }
+
+  setNumFights(numFights) {
+    this.numFights = numFights;
   }
 
   setTeamBodyVisible(teamBodyVisible) {
