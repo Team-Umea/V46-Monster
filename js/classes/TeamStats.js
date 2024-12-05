@@ -316,8 +316,8 @@ export class TeamStat {
     const elementsToggle = eyeToggle("teamStatBattleRecordToggle", "Show fight record", "Hide fight record", hideBattleRecord.bind(this), showBattleRecordd.bind(this));
 
     const wonBattelsEl = valueWithHeader(wonBattels, "Won Battels");
-    const drawnBattelsEl = valueWithHeader(wonBattels, "Drawn Battels");
-    const lostBattelsEl = valueWithHeader(wonBattels, "Lost Battels");
+    const drawnBattelsEl = valueWithHeader(drawnBattels, "Drawn Battels");
+    const lostBattelsEl = valueWithHeader(lostBattels, "Lost Battels");
     const totalPointsEl = valueWithHeader(totalPoints, "Total points");
 
     const numFightsEl = valueWithHeader(numFights, "Fights");
