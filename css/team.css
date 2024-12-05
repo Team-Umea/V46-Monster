@@ -185,6 +185,32 @@ main {
   gap: 15px;
 }
 
+.teamStatMonsters {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+}
+
+.teamStatMonsterInfoContainer {
+  width: 100%;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  border-radius: 6px;
+  border-left: 1px solid black;
+  border-right: 1px solid black;
+}
+
+.teamStatMonsterStats {
+  display: flex;
+  gap: 3px;
+}
+
+/*Elements*/
+
 .teamStatElementsHeading {
   padding-bottom: 5px;
   display: flex;
@@ -213,13 +239,6 @@ main {
 
 .teamStatElementsToggle {
   width: 25px;
-}
-
-.teamStatMonsters {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 15px;
 }
 
 .teamStatElementsContainer {
@@ -262,7 +281,6 @@ main {
 }
 
 .teamStatElementContainer {
-  /* width: 100%; */
   display: flex;
   justify-content: space-between;
 }
@@ -275,24 +293,39 @@ main {
   width: 25px;
 }
 
-.teamStatMonsterInfoContainer {
-  width: 100%;
-  padding: 10px;
+/*Fight record*/
+
+.teamStatFightRecordHeading {
+  padding: 10px 10px 5px 10px;
   display: flex;
-  flex-direction: column;
   align-items: center;
-  gap: 6px;
-  border-radius: 6px;
-  border-left: 1px solid black;
-  border-right: 1px solid black;
-  /* justify-content: space-between; */
+  justify-content: space-between;
+  border-bottom: 1px solid black;
 }
 
-.teamStatMonsterStats {
-  display: flex;
-  /* justify-content: flex-start; */
-  gap: 3px;
+.teamStatFightRecordHeader {
+  padding: 5px 10px;
+  font-size: 1.2rem;
+  position: relative;
+  border-radius: 10px;
+  border: 1px solid snow;
 }
+
+.teamStatFightRecordHeader::before {
+  content: attr(data-fights);
+  position: absolute;
+  left: -6px;
+  top: -18px;
+  padding: 3px;
+  border-radius: 50%;
+  background-color: var(--color-primary);
+}
+
+.teamStatFightRecordToggle {
+  width: 25px;
+}
+
+/*Teams*/
 
 .teamsContainer {
   max-width: 1400px;

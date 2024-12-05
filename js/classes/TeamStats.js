@@ -234,15 +234,10 @@ export class TeamStat {
     container.setAttribute("class", "teamStatElementsContainer");
     heading.setAttribute("class", "teamStatElementsHeading");
     header.setAttribute("class", "teamStatElmentsHeader");
-    // elementsToggle.setAttribute("class", "teamStatElementsToggle icon icon-scale");
     elementsBody.setAttribute("class", "teamStatElementsBody");
     searchElementsInput.setAttribute("class", "teamStatSearchElements");
     sortElementsSelect.setAttribute("class", "teamStatSortElements");
     elements.setAttribute("class", "teamStatElements");
-
-    // elementsToggle.setAttribute("src", "../../res/icons/eyeOff.svg");
-    // elementsToggle.setAttribute("alt", "Hide elements");
-    // elementsToggle.setAttribute("title", "Hide elements");
 
     searchElementsInput.setAttribute("placeholder", "Search by element name");
     this.populateSearchElementsSelect(sortElementsSelect);
@@ -250,25 +245,8 @@ export class TeamStat {
     const teamElements = this.teamElements;
     const teamNumElments = teamElements.length;
 
-    // const toggleElementsVisibility = this.toggleElementsVisibility.bind(this, elementsBody);
     const searchElements = this.searchElements.bind(this, elements, searchElementsInput);
     const sortElements = this.setSortOrder.bind(this, elements, sortElementsSelect, searchElementsInput);
-
-    // hideElements(icon, elementBody) {
-    //   icon.setAttribute("src", "../../res/icons/eyeOn.svg");
-    //   icon.setAttribute("alt", "Show elements");
-    //   icon.setAttribute("title", "Show elements");
-
-    //   elementBody.setAttribute("class", "teamStatElementsBody hidden");
-    // }
-
-    // showElements(icon, elementBody) {
-    //   icon.setAttribute("src", "../../res/icons/eyeOff.svg");
-    //   icon.setAttribute("alt", "Hide elements");
-    //   icon.setAttribute("title", "Hide elements");
-
-    //   elementBody.setAttribute("class", "teamStatElementsBody");
-    // }
 
     const hideElements = () => {
       elementsBody.setAttribute("class", "teamStatElementsBody hidden");
@@ -279,8 +257,7 @@ export class TeamStat {
     };
 
     const elementsToggle = eyeToggle("teamStatElementsToggle", "Show elements", "Hide elments", hideElements.bind(this), showElements.bind(this));
-    console.log(elementsToggle);
-    // useClickEvent(elementsToggle, toggleElementsVisibility);
+
     useInputEvent(searchElementsInput, searchElements);
     useChangeEvent(sortElementsSelect, sortElements);
 
@@ -302,14 +279,37 @@ export class TeamStat {
 
   fightRecord() {
     const container = document.createElement("div");
+    const heading = document.createElement("div");
     const header = document.createElement("h2");
+    const body = document.createElement("div");
+
+    const team = this.team;
+    const numFights = team.getNumFights();
 
     container.setAttribute("class", "teamStatFightRecordContainer");
+    heading.setAttribute("class", "teamStatFightRecordHeading");
     header.setAttribute("class", "teamStatFightRecordHeader");
+    body.setAttribute("class", "teamStatFightRecordBody");
+
+    header.setAttribute("data-fights", numFights);
 
     header.innerText = "Fight Record";
 
-    container.appendChild(header);
+    const hideFightRecord = () => {
+      body.setAttribute("class", "teamStatFightRecordBody hidden");
+    };
+
+    const showFightRecord = () => {
+      body.setAttribute("class", "teamStatFightRecordBody");
+    };
+
+    const elementsToggle = eyeToggle("teamStatFightRecordToggle", "Show fight record", "Hide fight record", hideFightRecord.bind(this), showFightRecord.bind(this));
+
+    heading.appendChild(header);
+    heading.appendChild(elementsToggle);
+
+    container.appendChild(heading);
+    container.appendChild(body);
     return container;
   }
 
