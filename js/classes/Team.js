@@ -52,7 +52,7 @@ export class Team {
     return this.wonBattels;
   }
 
-  getDrawBattels() {
+  getDrawnBattels() {
     return this.drawnBattels;
   }
 

@@ -268,7 +268,7 @@ function renderTeamStats() {
       const teamStatEndToEndMonsters = teamStat.endToEndMonsters();
       const teamStatAllTeamMonsters = teamStat.allTeamMonsters();
       const teamStatElements = teamStat.allTeamElements();
-      const teamStatFightRecord = teamStat.fightRecord();
+      const teamStatFightRecord = teamStat.battleRecord();
       // const teamStatRating = teamStat.teamRating();
 
       teamStatHeaderContainer.appendChild(monsterInTeam);

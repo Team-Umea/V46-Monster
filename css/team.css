@@ -295,7 +295,7 @@ main {
 
 /*Fight record*/
 
-.teamStatFightRecordHeading {
+.teamStatBattleRecordHeading {
   padding: 10px 10px 5px 10px;
   display: flex;
   align-items: center;
@@ -303,7 +303,7 @@ main {
   border-bottom: 1px solid black;
 }
 
-.teamStatFightRecordHeader {
+.teamStatBattleRecordHeader {
   padding: 5px 10px;
   font-size: 1.2rem;
   position: relative;
@@ -311,7 +311,7 @@ main {
   border: 1px solid snow;
 }
 
-.teamStatFightRecordHeader::before {
+.teamStatBattleRecordHeader::before {
   content: attr(data-fights);
   position: absolute;
   left: -6px;
@@ -321,16 +321,16 @@ main {
   background-color: var(--color-primary);
 }
 
-.teamStatFightRecordToggle {
+.teamStatBattleRecordToggle {
   width: 25px;
 }
 
-.teamStatsFightRecordStatsContainer {
+.teamStatsBattleRecordStatsContainer {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
 }
 
-.teamStatFightRecordStats {
+.teamStatBattleRecordStats {
   padding: 10px;
   display: flex;
   flex-direction: column;
@@ -338,11 +338,11 @@ main {
   gap: 7px;
 }
 
-.teamStatFightRecordStats h2 {
+.teamStatBattleRecordStats h2 {
   font-size: 0.9rem;
 }
 
-.teamStatFightRecordStats p {
+.teamStatBattleRecordStats p {
   font-size: 0.7rem;
 }
 

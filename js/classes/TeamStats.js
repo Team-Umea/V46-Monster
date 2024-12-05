@@ -277,7 +277,7 @@ export class TeamStat {
     return container;
   }
 
-  fightRecord() {
+  battleRecord() {
     const container = document.createElement("div");
     const heading = document.createElement("div");
     const header = document.createElement("h2");
@@ -285,49 +285,68 @@ export class TeamStat {
     const fightStats = document.createElement("div");
 
     const team = this.team;
+    const numBattels = team.getNumBattels();
+    const wonBattels = team.getWonBattels();
+    const drawnBattels = team.getDrawnBattels();
+    const lostBattels = team.getLostBattels();
+    const totalPoints = team.getTotalPoints();
     const numFights = team.getNumFights();
     const wonFights = team.getWonFights();
     const drawnFights = team.getDrawnFights();
     const lostFights = team.getLostFights();
-    const totalPoints = team.getTotalPoints();
 
-    container.setAttribute("class", "teamStatFightRecordContainer");
-    heading.setAttribute("class", "teamStatFightRecordHeading");
-    header.setAttribute("class", "teamStatFightRecordHeader");
-    body.setAttribute("class", "teamStatFightRecordBody");
-    fightStats.setAttribute("class", "teamStatsFightRecordStatsContainer");
+    container.setAttribute("class", "teamStatBattleRecordContainer");
+    heading.setAttribute("class", "teamStatBattleRecordHeading");
+    header.setAttribute("class", "teamStatBattleRecordHeader");
+    body.setAttribute("class", "teamStatBattleRecordBody");
+    fightStats.setAttribute("class", "teamStatsBattleRecordStatsContainer");
 
-    header.setAttribute("data-fights", numFights);
+    header.setAttribute("data-fights", numBattels);
 
-    header.innerText = "Fight Record";
+    header.innerText = "Battle Record";
 
-    const hideFightRecord = () => {
-      body.setAttribute("class", "teamStatFightRecordBody hidden");
+    const hideBattleRecord = () => {
+      body.setAttribute("class", "teamStatBattleRecordBody hidden");
     };
 
-    const showFightRecord = () => {
-      body.setAttribute("class", "teamStatFightRecordBody");
+    const showBattleRecordd = () => {
+      body.setAttribute("class", "teamStatBattleRecordBody");
     };
 
-    const elementsToggle = eyeToggle("teamStatFightRecordToggle", "Show fight record", "Hide fight record", hideFightRecord.bind(this), showFightRecord.bind(this));
+    const elementsToggle = eyeToggle("teamStatBattleRecordToggle", "Show fight record", "Hide fight record", hideBattleRecord.bind(this), showBattleRecordd.bind(this));
 
+    const wonBattelsEl = valueWithHeader(wonBattels, "Won Battels");
+    const drawnBattelsEl = valueWithHeader(wonBattels, "Drawn Battels");
+    const lostBattelsEl = valueWithHeader(wonBattels, "Lost Battels");
+    const totalPointsEl = valueWithHeader(totalPoints, "Total points");
+
+    const numFightsEl = valueWithHeader(numFights, "Fights");
     const wonFightsEl = valueWithHeader(wonFights, "Won fights");
     const drawnFightsEl = valueWithHeader(drawnFights, "Drawn fights");
     const lostFightsEl = valueWithHeader(lostFights, "Lost fights");
-    const totalPointsEl = valueWithHeader(totalPoints, "Total points");
 
-    wonFightsEl.setAttribute("class", "teamStatFightRecordStats");
-    drawnFightsEl.setAttribute("class", "teamStatFightRecordStats");
-    lostFightsEl.setAttribute("class", "teamStatFightRecordStats");
-    totalPointsEl.setAttribute("class", "teamStatFightRecordStats");
+    wonBattelsEl.setAttribute("class", "teamStatBattleRecordStats");
+    drawnBattelsEl.setAttribute("class", "teamStatBattleRecordStats");
+    lostBattelsEl.setAttribute("class", "teamStatBattleRecordStats");
+    totalPointsEl.setAttribute("class", "teamStatBattleRecordStats");
+
+    numFightsEl.setAttribute("class", "teamStatBattleRecordStats");
+    wonFightsEl.setAttribute("class", "teamStatBattleRecordStats");
+    drawnFightsEl.setAttribute("class", "teamStatBattleRecordStats");
+    lostFightsEl.setAttribute("class", "teamStatBattleRecordStats");
 
     heading.appendChild(header);
     heading.appendChild(elementsToggle);
 
+    fightStats.appendChild(wonBattelsEl);
+    fightStats.appendChild(drawnBattelsEl);
+    fightStats.appendChild(lostBattelsEl);
+    fightStats.appendChild(totalPointsEl);
+
+    fightStats.appendChild(numFightsEl);
     fightStats.appendChild(wonFightsEl);
     fightStats.appendChild(drawnFightsEl);
     fightStats.appendChild(lostFightsEl);
-    fightStats.appendChild(totalPointsEl);
 
     body.appendChild(fightStats);
 
@@ -483,16 +502,6 @@ export class TeamStat {
 
     return container;
   }
-
-  // toggleElementsVisibility(icon, elementBody) {
-  //   const elementBodyIsVisible = !elementBody.getAttribute("class").includes("hidden");
-
-  //   if (elementBodyIsVisible) {
-  //     this.hideElements(elementBody);
-  //   } else {
-  //     this.showElements(elementBody);
-  //   }
-  // }
 
   populateSearchElementsSelect(select) {
     const options = ["Many-Few Instances", "Few-Many Instances", "High-Low Rating", "Low-High Rating", "A-Z", "Z-A"];
