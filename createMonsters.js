@@ -270,6 +270,35 @@ function generateNames(num, nameData) {
   return Array.from(names);
 }
 
+function calcRank(id) {
+  const rankList = [...monsters].sort((a, b) => {
+    const ratingA = a.health + a.damage;
+    const ratingB = b.health + a.damage;
+
+    const diff = ratingA - ratingB;
+    const damage = diff === 0 ? a.damage - b.damage : diff;
+    const health = damage === 0 ? a.health - b.health : damage;
+    const name = health === 0 ? a.name.localeCompare(b.name) : health;
+
+    return name;
+  });
+
+  const rank = rankList.indexOf(rankList.find((m) => m.id === id));
+
+  const descending = rankList.length - rank;
+  return descending;
+}
+
+function writeToJSONFile(path, data) {
+  fs.writeFile(path, JSON.stringify(data, null, 2), (err) => {
+    if (err) {
+      console.error("Error writing to file", err);
+    } else {
+      console.log("Data written to file successfully!");
+    }
+  });
+}
+
 function findDuplicates(arr) {
   return arr.filter((item, index, self) => self.indexOf(item) !== index);
 }

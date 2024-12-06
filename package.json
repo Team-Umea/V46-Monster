@@ -1,7 +1,7 @@
 {
   "name": "monsterapi",
   "version": "1.0.0",
-  "description": "",
+  "description": "Monster API Documentation\r This is the API for managing monsters. The API provides several endpoints to retrieve and filter monster data. The API is live on this domain: [https://ozzodevmonsterapi.azurewebsites.net/]",
   "main": "server.js",
   "scripts": {
     "start": "node server.js"
@@ -15,5 +15,6 @@
     "express": "^4.21.1",
     "fs": "^0.0.1-security",
     "path": "^0.12.7"
-  }
+  },
+  "devDependencies": {}
 }

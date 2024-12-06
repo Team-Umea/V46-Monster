@@ -63,7 +63,7 @@ const endpoints = [
 
 init();
 
-function init() {
+async function init() {
   readJSON("./monsters/monsters.json", (err, data) => {
     if (err) {
       console.log("Error", err);
@@ -98,16 +98,6 @@ function readJSON(path, callback) {
       callback(null, jsonData);
     } catch (parseError) {
       console.log("Error parsing JSON data");
-    }
-  });
-}
-
-function writeToJSONFile(path, data) {
-  fs.writeFile(path, JSON.stringify(data, null, 2), (err) => {
-    if (err) {
-      console.error("Error writing to file", err);
-    } else {
-      console.log("Data written to file successfully!");
     }
   });
 }
