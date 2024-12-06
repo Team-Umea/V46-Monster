@@ -144,10 +144,9 @@ export class Team {
 
   setTeamValue(allMonsters) {
     const monsters = this.monsters;
-    const allMonsterData = allMonsters.map((monster) => monster.monster);
     const monsterIDs = monsters.map((monster) => monster.id);
 
-    const originalMonsters = [...allMonsterData].filter((monster) => monsterIDs.includes(monster.id));
+    const originalMonsters = [...allMonsters].filter((monster) => monsterIDs.includes(monster.id));
 
     const originalTeamRating = originalMonsters.reduce((acc, curr) => curr.health + curr.damage + acc, 0);
     const originalTeamPrice = originalMonsters.reduce((acc, curr) => curr.price + acc, 0);
@@ -234,7 +233,7 @@ export class Team {
     if (this.monsters.length < 4 && duplicates.length === 0) {
       const mappedMonster = {
         ...monster,
-        remainingHp: m.health,
+        remainingHp: monster.health,
         sufferedDamage: 0,
         distributedDamage: 0,
         fightPoints: 0,

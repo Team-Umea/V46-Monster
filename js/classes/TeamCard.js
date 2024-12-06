@@ -6,15 +6,13 @@ import { renderIconWithNumber } from "../common/render.js";
 import { useClickEvent } from "../common/useEvent.js";
 
 export class TeamCard {
-  constructor(team, allMonsters, updateTeamsCallback, sellTeamCallback, buyTeamCallback, shuffleCallback, deleteTeamCallback, removeMonsterCallback, redirectCallback) {
+  constructor(team, updateTeamsCallback, sellTeamCallback, buyTeamCallback, shuffleCallback, deleteTeamCallback, removeMonsterCallback, redirectCallback) {
     this.team = team;
     this.teamName = team.getTeamName();
     this.monsters = team.getMonsters();
     this.isPaidFor = team.getPaidFor();
     this.isTeamBobyVisible = team.getTeamBodyVisible();
     this.teamProfit = team.getTeamProfit();
-
-    this.allMonsters = allMonsters;
 
     this.updateTeamsCallback = updateTeamsCallback;
     this.sellTeamCallback = sellTeamCallback;
@@ -185,13 +183,12 @@ export class TeamCard {
 
     const monsters = this.monsters;
     const isPaidFor = this.isPaidFor;
-    const allMonsters = this.allMonsters;
     const linkedBtns = this.linkedBtns;
     const teamName = this.teamName;
     const teamMessage = this.teamMessage;
 
     monsters.forEach((monster) => {
-      const monsterCard = new MonsterCard(monster, allMonsters, [], true).assembleMonsterCard();
+      const monsterCard = new MonsterCard(monster, [], true).assembleMonsterCard();
       const monsterName = monster.name;
       const monsterID = monster.id;
 

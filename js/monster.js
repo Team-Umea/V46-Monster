@@ -9,7 +9,6 @@ import { renderSelect } from "./common/render.js";
 import { Team } from "./classes/Team.js";
 
 const monsterContainer = document.getElementById("monsterContainer");
-const allMonstersContainer = document.getElementById("allMonsters");
 const sortDropDown = document.getElementById("sortDropdown");
 const searchButtonGroup = document.getElementById("searchCategory");
 const searchBtns = searchButtonGroup.getElementsByTagName("input");
@@ -20,7 +19,6 @@ const filterToggle = document.getElementById("filterToggle");
 let visibleMonsters = 20;
 let monsters = [];
 let teams = [];
-const ranks = [];
 
 let searchCategory;
 
@@ -110,13 +108,7 @@ function renderMonsters() {
     const isVisible = monsterObj.visible;
     const monster = monsterObj.monster;
     const id = monster.id;
-    const allMonsters = [...monsters];
-    const monsterCard = new MonsterCard(monster, allMonsters, teams, id);
-
-    if (ranks.length < monsters.length) {
-      const monsterRank = monsterCard.getRank();
-      ranks.push(monsterRank);
-    }
+    const monsterCard = new MonsterCard(monster, teams, id);
 
     const assembledMonsterCard = monsterCard.assembleMonsterCard();
     if (isVisible) {
@@ -208,11 +200,11 @@ function sortMonsters(sortOrder) {
       break;
     case 6:
       //Lo-Hi Rank
-      sortByLoHiRank();
+      reverseSort("rank");
       break;
     case 7:
       //Hi-Lo Rank
-      sortByHiLoRank();
+      defaultSort("rank");
       break;
     case 8:
       //Lo-Hi Damage
@@ -265,26 +257,6 @@ function reverseSort(key) {
       }
     });
   }
-}
-
-function sortByLoHiRank() {
-  monsters = [...monsters].sort((a, b) => {
-    const monsterA = a.monster.id;
-    const monsterB = b.monster.id;
-    const rankA = ranks.length - ranks.find((rank) => rank.id === monsterA).rank;
-    const rankB = ranks.length - ranks.find((rank) => rank.id === monsterB).rank;
-    return rankA - rankB;
-  });
-}
-
-function sortByHiLoRank() {
-  monsters = [...monsters].sort((a, b) => {
-    const monsterA = a.monster.id;
-    const monsterB = b.monster.id;
-    const rankA = ranks.length - ranks.find((rank) => rank.id === monsterA).rank;
-    const rankB = ranks.length - ranks.find((rank) => rank.id === monsterB).rank;
-    return rankB - rankA;
-  });
 }
 
 function sortByFewToManyElements() {

@@ -3,9 +3,8 @@ import { renderIconWithNumber } from "../common/render.js";
 import { save } from "../common/utilities.js";
 
 export class MonsterCard {
-  constructor(monster, allMonsters, teams, hideSelect) {
+  constructor(monster, teams, hideSelect) {
     this.monster = monster;
-    this.allMonsters = allMonsters;
     this.teams = teams;
     this.hideSelect = hideSelect;
 
@@ -15,41 +14,12 @@ export class MonsterCard {
       this.specs = monster.specs;
       this.health = monster.health;
       this.damage = monster.damage;
+      this.rank = monster.rank;
       this.elements = monster.elements;
       this.price = monster.price;
-      this.rank = this.calcRank();
     }
 
     this.monsterCard = this.monsterContainer();
-  }
-
-  calcRank() {
-    const id = this.monster.id;
-    const allMonsters = this.allMonsters;
-
-    const rankList = allMonsters.sort((a, b) => {
-      const ratingA = a.monster.health + a.monster.damage;
-      const ratingB = b.monster.health + a.monster.damage;
-
-      const diff = ratingA - ratingB;
-      const damage = diff === 0 ? a.monster.damage - b.monster.damage : diff;
-      const health = damage === 0 ? a.monster.health - b.monster.health : damage;
-      const name = health === 0 ? a.monster.name.localeCompare(b.monster.name) : health;
-
-      return name;
-    });
-
-    const rank = rankList.indexOf(rankList.find((m) => m.monster.id === id));
-
-    const descending = rankList.length - rank;
-    return descending;
-  }
-
-  getRank() {
-    const id = this.id;
-    const rank = this.rank;
-    const rankID = { id, rank };
-    return rankID;
   }
 
   getMonsterCard() {
@@ -101,17 +71,12 @@ export class MonsterCard {
 
     const healthIconValue = renderIconWithNumber(health, "../../res/icons/heart.svg", `${name} has ${health} of health`);
     const damageIconValue = renderIconWithNumber(damage, "../../res/icons/barbell.svg", `${name} has ${damage} of damage`);
-    let rankIconValue;
+    const rankIconValue = renderIconWithNumber(rank, "../../res/icons/ribbon.svg", `${name} is ranked ${rank} of all monsters`);
 
     statsContainer.setAttribute("class", "monsterStats");
 
-    rankIconValue = renderIconWithNumber(rank, "../../res/icons/ribbon.svg", `${name} is ranked ${rank} of all monsters`);
-    rankIconValue.classList.add("monsterRank");
-
     statsContainer.appendChild(healthIconValue);
-    if (rankIconValue) {
-      statsContainer.appendChild(rankIconValue);
-    }
+    statsContainer.appendChild(rankIconValue);
     statsContainer.appendChild(damageIconValue);
 
     return statsContainer;

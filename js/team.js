@@ -17,7 +17,6 @@ const teamStatsContainer = document.getElementById("teamStatsContainer");
 const teamStatsToggle = document.getElementById("teamStatsToggle");
 const teamStatsList = document.getElementById("teamStatsList");
 
-let allMonsters = [];
 let elements = [];
 let teamsArr = [];
 
@@ -33,14 +32,12 @@ function init() {
 }
 
 async function useData() {
-  const promises = [serveData("allMonsters", undefined, allMonstersContainer, ALLMONSTERS_LSK, ALLMONSTERS_TTL), serveData("elements", undefined, allMonstersContainer, ELEMENTS_LSK, ELEMENTS_TTL)];
+  const promises = [serveData("elements", undefined, allMonstersContainer, ELEMENTS_LSK, ELEMENTS_TTL)];
 
   const responses = await Promise.all(promises);
 
-  const monsterData = responses[0];
-  const elementsData = responses[1];
+  const elementsData = responses[0];
 
-  allMonsters = monsterData.map((monster) => ({ monster: monster, visible: true }));
   elements = elementsData;
 
   loadTeams();
@@ -131,7 +128,8 @@ function updateTeams() {
   renderTeamStats();
 }
 
-function setTeamsValue() {
+async function setTeamsValue() {
+  const allMonsters = await serveData("allMonsters", undefined, allMonstersContainer, ALLMONSTERS_LSK, ALLMONSTERS_TTL);
   teamsArr.forEach((team) => {
     team.setTeamValue(allMonsters);
   });
@@ -226,7 +224,7 @@ function renderTeams() {
   if (teamsArr) {
     teamsContainer.setAttribute("class", "teamsContainer");
     teamsArr.forEach((team) => {
-      const teamCard = new TeamCard(team, allMonsters, updateTeams, sellTeam, buyTeam, shuffleTeam, showModuleOnTeamDelete, removeMonster, redirectToTeamControls);
+      const teamCard = new TeamCard(team, updateTeams, sellTeam, buyTeam, shuffleTeam, showModuleOnTeamDelete, removeMonster, redirectToTeamControls);
 
       const teamContainer = teamCard.teamContainer();
       const teamHeaderContainer = teamCard.teamHeaderContainer();

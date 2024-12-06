@@ -13,10 +13,13 @@ export class TeamStat {
     this.totalRating = this.calcTeamRating();
     this.totalHealh = this.calcTeamHealth();
     this.totalDamage = this.calcTeamDamage();
-    this.topMonster = this.findTopMonster();
-    this.bottomMonster = this.findBottomMonster();
     this.teamElements = this.getAllMonsterElements();
     this.teamBodyVisible = team.getTeamBodyVisible();
+
+    if (this.teamMonsters.length > 0) {
+      this.topMonster = this.findTopMonster();
+      this.bottomMonster = this.findBottomMonster();
+    }
 
     this.headerContainerEl = null;
     this.bodyContainerEl = null;
@@ -168,21 +171,21 @@ export class TeamStat {
     const bottomMonster = this.bottomMonster;
 
     const onlyOneMonster = topMonster === bottomMonster;
+    if (topMonster || bottomMonster) {
+      if (onlyOneMonster) {
+        const topMonsterEl = this.focusMonster(topMonster, "Strongest", "teamStatStrongMonster teamStatAloneMonster", "left");
 
-    if (onlyOneMonster) {
-      const topMonsterEl = this.focusMonster(topMonster, "Strongest", "teamStatStrongMonster teamStatAloneMonster", "left");
+        container.setAttribute("class", "teamStatEndToEndMonstersContainer teamStatCenterTopMonster");
+        container.appendChild(topMonsterEl);
+      } else {
+        const topMonsterEl = this.focusMonster(topMonster, "Strongest", "teamStatStrongMonster", "left");
+        const bottomMonsterEl = this.focusMonster(bottomMonster, "Weakest", "teamStatWeakMonster", "right");
 
-      container.setAttribute("class", "teamStatEndToEndMonstersContainer teamStatCenterTopMonster");
-      container.appendChild(topMonsterEl);
-    } else {
-      const topMonsterEl = this.focusMonster(topMonster, "Strongest", "teamStatStrongMonster", "left");
-      const bottomMonsterEl = this.focusMonster(bottomMonster, "Weakest", "teamStatWeakMonster", "right");
-
-      container.setAttribute("class", "teamStatEndToEndMonstersContainer");
-      container.appendChild(topMonsterEl);
-      container.appendChild(bottomMonsterEl);
+        container.setAttribute("class", "teamStatEndToEndMonstersContainer");
+        container.appendChild(topMonsterEl);
+        container.appendChild(bottomMonsterEl);
+      }
     }
-
     return container;
   }
 
