@@ -109,6 +109,29 @@ export class Team {
   }
 
   setMonsters(monsters) {
+    this.monsters = monsters.map((m) => {
+      return {
+        ...m,
+        remainingHp: m.health,
+        sufferedDamage: 0,
+        distributedDamage: 0,
+        fightPoints: 0,
+        wonFights: 0,
+        drawnFights: 0,
+        lostFights: 0,
+        wonRounds: 0,
+        drawnRounds: 0,
+        lostRounds: 0,
+      };
+    });
+
+    console.log("Monsters set to", this.monsters);
+
+    const teamCost = monsters.reduce((acc, curr) => acc + curr.price, 0);
+    this.teamCost = teamCost;
+  }
+
+  loadMonsters(monsters) {
     this.monsters = monsters;
 
     const teamCost = monsters.reduce((acc, curr) => acc + curr.price, 0);
@@ -209,9 +232,21 @@ export class Team {
   addMonsterToTeam(monster) {
     const duplicates = this.monsters.filter((m) => m.id === monster.id);
     if (this.monsters.length < 4 && duplicates.length === 0) {
-      this.monsters.push(monster);
+      const mappedMonster = {
+        ...monster,
+        remainingHp: m.health,
+        sufferedDamage: 0,
+        distributedDamage: 0,
+        fightPoints: 0,
+        wonFights: 0,
+        drawnFights: 0,
+        lostFights: 0,
+        wonRounds: 0,
+        drawnRounds: 0,
+        lostRounds: 0,
+      };
+      this.monsters.push(mappedMonster);
     }
-
     const monsters = this.monsters;
     const teamCost = monsters.reduce((acc, curr) => acc + curr.price, 0);
     this.teamCost = teamCost;
@@ -219,7 +254,7 @@ export class Team {
 
   static fromJSON(json) {
     const newTeam = new Team(json.name);
-    newTeam.setMonsters(json.monsters);
+    newTeam.loadMonsters(json.monsters);
     newTeam.setPaidFor(json.paidFor);
     newTeam.setNumBattels(json.numBattels);
     newTeam.setWonBattels(json.wonBattels);
