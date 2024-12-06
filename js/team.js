@@ -1,7 +1,7 @@
 //Js code for team page
 import { Team } from "./classes/Team.js";
 import { save, load, generateUniqueName } from "./common/utilities.js";
-import { TEAMS_LSK, ALLMONSTERS_LSK, CREDITS_LSK, ELEMENTS_LSK } from "./common/localStorageKeys.js";
+import { TEAMS_LSK, ALLMONSTERS_LSK, CREDITS_LSK, ELEMENTS_LSK, SELECTEDTEAMSETTINGS_LSK } from "./common/localStorageKeys.js";
 import { serveData } from "./common/fetch.js";
 import { ALLMONSTERS_TTL, ELEMENTS_TTL } from "./common/ttl.js";
 import { TeamCard } from "./classes/TeamCard.js";
@@ -213,13 +213,20 @@ function toggleTeamStats() {
   }
 }
 
+function redirectToTeamControls(team) {
+  save(SELECTEDTEAMSETTINGS_LSK, team);
+  setTimeout(() => {
+    window.location.href = "teamSettings.html";
+  }, 100);
+}
+
 function renderTeams() {
   teamsContainer.innerHTML = "";
 
   if (teamsArr) {
     teamsContainer.setAttribute("class", "teamsContainer");
     teamsArr.forEach((team) => {
-      const teamCard = new TeamCard(team, allMonsters, updateTeams, sellTeam, buyTeam, shuffleTeam, showModuleOnTeamDelete, removeMonster);
+      const teamCard = new TeamCard(team, allMonsters, updateTeams, sellTeam, buyTeam, shuffleTeam, showModuleOnTeamDelete, removeMonster, redirectToTeamControls);
 
       const teamContainer = teamCard.teamContainer();
       const teamHeaderContainer = teamCard.teamHeaderContainer();

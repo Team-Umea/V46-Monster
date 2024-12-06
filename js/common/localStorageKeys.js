@@ -9,3 +9,4 @@ export const ELEMENTS_LSK = "elements";
 export const ABILITIES_LSK = "abilities";
 export const SORTOPTIONS_LSK = "sortOptions";
 export const TEAMS_LSK = "teams";
+export const SELECTEDTEAMSETTINGS_LSK = "selectedTeamSettings";

@@ -6,7 +6,7 @@ import { renderIconWithNumber } from "../common/render.js";
 import { useClickEvent } from "../common/useEvent.js";
 
 export class TeamCard {
-  constructor(team, allMonsters, updateTeamsCallback, sellTeamCallback, buyTeamCallback, shuffleCallback, deleteTeamCallback, removeMonsterCallback) {
+  constructor(team, allMonsters, updateTeamsCallback, sellTeamCallback, buyTeamCallback, shuffleCallback, deleteTeamCallback, removeMonsterCallback, redirectCallback) {
     this.team = team;
     this.teamName = team.getTeamName();
     this.monsters = team.getMonsters();
@@ -22,6 +22,7 @@ export class TeamCard {
     this.shuffleCallback = shuffleCallback;
     this.deleteTeamCallback = deleteTeamCallback;
     this.removeMonsterCallback = removeMonsterCallback;
+    this.redirectCallback = redirectCallback;
 
     this.linkedBtns = [];
     this.teamCost = this.calcTeamCost();
@@ -134,6 +135,7 @@ export class TeamCard {
     const teamControlBtnContainer = this.teamControlBtnContainer;
     teamControlBtnContainer.setAttribute("class", "teamControls");
 
+    const team = this.team;
     const teamName = this.teamName;
     const teamCost = this.teamCost;
     const isPaidFor = this.isPaidFor;
@@ -145,9 +147,11 @@ export class TeamCard {
     const shuffleTeam = this.shuffleTeam.bind(this);
     const deleteTeam = this.deleteTeam.bind(this);
 
+    const redirect = this.redirectCallback.bind(this, team);
+
     const buyBtn = new ToggleIcon("cart", `Buy '${teamName}' for ${teamCost} credits`, teamMessage, undefined, showPrice);
     const shuffleBtn = new ToggleIcon("shuffle", `Fill '${teamName}' with 4 random monsters`, teamMessage, shuffleTeam);
-    const deleteBtn = new ToggleIcon("trash", `Delete '${teamName}'`, teamMessage, deleteTeam);
+    const deleteBtn = new ToggleIcon("settings", `Show settings for '${teamName}'`, teamMessage, redirect);
 
     linkedBtns.push(buyBtn);
     linkedBtns.push(shuffleBtn);
