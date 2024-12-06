@@ -183,7 +183,7 @@ export function eyeToggle(clasName, altTitleHide, altTitleShow, callbackHide, ca
   return icon;
 }
 
-export function progressBar(progress = 1, neutral = 1, regress = 1) {
+export function progressBar(pro, neu, reg) {
   const progressBarEl = document.createElement("div");
   const progressEl = document.createElement("div");
   const neutralEl = document.createElement("div");
@@ -194,21 +194,42 @@ export function progressBar(progress = 1, neutral = 1, regress = 1) {
   neutralEl.setAttribute("class", "neutral");
   regressEl.setAttribute("class", "regress");
 
+  let progress = pro;
+  let neutral = neu;
+  let regress = reg;
+
+  if (!pro || pro < 0) {
+    progress = 0;
+  }
+
+  if (!neu || neu < 0) {
+    neutral = 0;
+  }
+
+  if (!reg || reg < 0) {
+    regress = 0;
+  }
+
   let progressWidth = "0";
   let neutralWidth = "100%";
   let regressWidth = "0";
 
-  const total = progress + neutral + regress - 3;
+  const total = progress + neutral + regress;
 
   let progressShare = 0;
   let neutralShare = 100;
   let regressShare = 0;
+
+  // console.log("Values: ", progress, neutral, regress);
+  // console.log("Total: ", total);
 
   if (total > 0) {
     progressShare = Math.ceil((progress / total) * 100);
     neutralShare = Math.ceil((neutral / total) * 100);
     regressShare = Math.ceil((regress / total) * 100);
   }
+
+  // console.log("Shares", progressShare, neutralShare, regressShare);
 
   progressWidth = `${progressShare}%`;
   neutralWidth = `${neutralShare}%`;

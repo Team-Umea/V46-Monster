@@ -330,9 +330,9 @@ export class TeamStat {
     };
 
     const elementsToggle = eyeToggle("teamStatBattleRecordToggle", "Show fight record", "Hide fight record", hideBattleRecord.bind(this), showBattleRecordd.bind(this));
-    const battleBar = progressBar(4, 1, 1); //change to actul values
-    const fightBar = progressBar(10, 2, 5); //change to actul values
-    const roundBar = progressBar(45, 8, 17); //change to actul values
+    const battleBar = progressBar(wonBattels, drawnBattels, lostBattels);
+    const fightBar = progressBar(wonFights, drawnFights, lostFights);
+    const roundBar = progressBar(wonRounds, drawnRounds, lostRouns);
 
     battleBar.classList.add("teamStatBattleRecordBar");
     fightBar.classList.add("teamStatBattleRecordBar");
