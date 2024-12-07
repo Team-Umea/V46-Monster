@@ -69,10 +69,6 @@ async function init() {
       console.log("Error", err);
     } else {
       monsters = data;
-      const mapped = [...monsters].map((monster) => {
-        return { id: monster.id, name: monster.name, specs: monster.specs, health: monster.health, damage: monster.damage, rank: monster.rank, remainingHP: monster.health, sufferedDamage: 0, distributedDamage: 0, points: 0, wonFights: 0, drawnFights: 0, lostFights: 0, wonRounds: 0, drawnRounds: 0, lostRounds: 0, wonAgainst: [], drawnAgainst: [], lostAgainst: [], price: monster.price, elements: monster.elements };
-      });
-      writeToJSONFile("./monsters/monsters.json", mapped);
     }
   });
   readJSON("./json/elements.json", (err, data) => {
@@ -87,16 +83,6 @@ async function init() {
       console.log("Error", err);
     } else {
       abilities = data;
-    }
-  });
-}
-
-function writeToJSONFile(path, data) {
-  fs.writeFile(path, JSON.stringify(data, null, 2), (err) => {
-    if (err) {
-      console.error("Error writing to file", err);
-    } else {
-      console.log("Data written to file successfully!");
     }
   });
 }
