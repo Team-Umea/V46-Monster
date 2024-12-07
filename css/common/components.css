@@ -13,6 +13,7 @@
   --color-tertiary-dark: #324548;
   --color-tertiary-darker: #212e30;
   --filter: rgba(0, 0, 0, 0.75);
+  --color-primary-text: #e6e4e1;
 }
 
 * {
@@ -193,4 +194,44 @@ a {
 .neutral {
   height: 100%;
   background-color: grey;
+}
+
+.averageValueIcon {
+  padding: 36px 78px;
+  position: relative;
+
+  img,
+  p {
+    position: absolute;
+  }
+
+  .mainIcon {
+    width: 25px;
+    top: 15%;
+    left: 9%;
+  }
+
+  .subIcon {
+    width: 25px;
+    top: 39%;
+    left: 33%;
+  }
+
+  .averageValue {
+    font-size: 1.6rem;
+    right: 10%;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+}
+
+.averageValueIcon::after {
+  content: "";
+  width: 45px;
+  height: 2px;
+  position: absolute;
+  left: 13%;
+  top: 45%;
+  transform: rotate(-45deg);
+  background-color: var(--color-primary-text);
 }

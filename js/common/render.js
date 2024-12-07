@@ -220,16 +220,11 @@ export function progressBar(pro, neu, reg) {
   let neutralShare = 100;
   let regressShare = 0;
 
-  // console.log("Values: ", progress, neutral, regress);
-  // console.log("Total: ", total);
-
   if (total > 0) {
     progressShare = Math.ceil((progress / total) * 100);
     neutralShare = Math.ceil((neutral / total) * 100);
     regressShare = Math.ceil((regress / total) * 100);
   }
-
-  // console.log("Shares", progressShare, neutralShare, regressShare);
 
   progressWidth = `${progressShare}%`;
   neutralWidth = `${neutralShare}%`;
@@ -244,6 +239,29 @@ export function progressBar(pro, neu, reg) {
   progressBarEl.appendChild(regressEl);
 
   return progressBarEl;
+}
+
+export function averageValueIcon(value, mainSrc, subSrc, altTitle) {
+  const container = document.createElement("div");
+  const mainIcon = document.createElement("img");
+  const subIcon = document.createElement("img");
+  const averageValue = document.createElement("p");
+
+  container.setAttribute("class", "averageValueIcon");
+  container.setAttribute("alt", altTitle);
+  container.setAttribute("title", altTitle);
+
+  mainIcon.setAttribute("class", "mainIcon");
+  mainIcon.setAttribute("src", `../../res/icons/${mainSrc}.svg`);
+  subIcon.setAttribute("class", "subIcon");
+  subIcon.setAttribute("src", `../../res/icons/${subSrc}.svg`);
+
+  averageValue.setAttribute("class", "averageValue");
+  averageValue.innerText = value;
+
+  container.append(mainIcon, subIcon, averageValue);
+
+  return container;
 }
 
 function removeEl(element, delay) {
