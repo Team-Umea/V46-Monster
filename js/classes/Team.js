@@ -245,9 +245,8 @@ export class Team {
 
   calcTeamRank() {
     const monsters = this.monsters;
-    const numMonsters = monsters.length;
     const rank = monsters.reduce((acc, curr) => acc + curr.rank, 0);
-    return Math.floor(rank * numMonsters);
+    return rank;
   }
 
   calcTeamRating() {

@@ -54,7 +54,7 @@ export function imgAsBtn(src, altTtile) {
   const container = document.createElement("div");
   const icon = document.createElement("img");
 
-  icon.setAttribute("src", src);
+  icon.setAttribute("src", `../../res/icons/${src}.svg`);
   icon.setAttribute("alt", altTtile);
   icon.setAttribute("title", altTtile);
 

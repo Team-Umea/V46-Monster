@@ -217,10 +217,11 @@ a {
   }
 
   .averageValue {
-    font-size: 1.6rem;
-    right: 10%;
+    font-size: 2rem;
+    font-weight: bold;
+    left: 55%;
     top: 50%;
-    transform: translateY(-50%);
+    transform: translateY(-55%);
   }
 }
 
@@ -229,8 +230,8 @@ a {
   width: 45px;
   height: 2px;
   position: absolute;
-  left: 13%;
-  top: 45%;
+  left: 15%;
+  top: 47%;
   transform: rotate(-45deg);
   background-color: var(--color-primary-text);
 }

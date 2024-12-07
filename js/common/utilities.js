@@ -64,6 +64,10 @@ export function load(key) {
   return loaded;
 }
 
+export function remove(key) {
+  localStorage.removeItem(key);
+}
+
 export function useCachedData(key) {
   const loaded = load(key);
 
