@@ -62,7 +62,7 @@ function renderNumMonstersIcon() {
 
 function renderTeamStats() {
   const averageRank = Math.floor(totalRank / numMonsters);
-  const averageRating = Math.floor(totalRank / numMonsters);
+  const averageRating = Math.floor(totalRating / numMonsters);
   const averageHealth = Math.floor(totalHealth / numMonsters);
   const averageDamage = Math.floor(totalDamage / numMonsters);
 
