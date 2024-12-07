@@ -46,7 +46,7 @@ export function addCredits(usedCredits) {
 }
 
 function renderCredits() {
-  const creditsIconContainer = renderIconWithNumber(credits, "../../res/icons/diamond.svg", "Your credits");
+  const creditsIconContainer = renderIconWithNumber(credits, "../../res/icons/diamond.svg", "Your credits", "right");
 
   const prevCreditsIconContainer = headerControls.children[1];
 

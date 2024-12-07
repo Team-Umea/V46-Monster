@@ -49,91 +49,6 @@ a {
   transition: all 0.3s ease-in-out;
 }
 
-a:hover {
-  filter: brightness(1.5);
-}
-
-header {
-  /* css for header */
-  padding: 20px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 10px;
-  position: relative;
-  background-color: var(--color-primary);
-}
-
-header h1 {
-  margin-top: -10px;
-}
-
-#headerControls {
-  width: 100%;
-  display: flex;
-  flex-direction: row-reverse;
-  justify-content: space-between;
-}
-
-header nav {
-  width: 100%;
-}
-
-header nav ul {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  gap: 30px;
-}
-
-main {
-  /* css for main */
-  flex: 1;
-}
-
-footer {
-  /* css for footer */
-  padding: 30px;
-  background-color: var(--color-primary);
-}
-
-#themeToggle {
-  cursor: pointer;
-}
-
-.theme-light {
-  /*Color palette should be default*/
-  --color-primary-lightest: #f6f9f9;
-  --color-primary-light: #ecf1f2;
-  --color-primary: #c4d7d9;
-  --color-primary-medium: #aec9cb;
-  --color-primary-dark: #82abae;
-  --color-primary-darker: #629295;
-  --color-secondary: #4e777b;
-  --color-secondary-dark: #406064;
-  --color-tertiary: #385154;
-  --color-tertiary-dark: #324548;
-  --color-tertiary-darker: #212e30;
-  --filter: rgba(197, 192, 192, 0.75);
-}
-
-.theme-dark {
-  /*Color palette must be inverted to handle dark mode*/
-  --color-primary-lightest: #212e30;
-  --color-primary-light: #324548;
-  --color-primary: #385154;
-  --color-primary-medium: #406064;
-  --color-primary-dark: #4e777b;
-  --color-primary-darker: #629295;
-  --color-secondary: #82abae;
-  --color-secondary-dark: #aec9cb;
-  --color-tertiary: #c4d7d9;
-  --color-tertiary-dark: #ecf1f2;
-  --color-tertiary-darker: #f6f9f9;
-  --filter: rgba(0, 0, 0, 0.75);
-  --color-primary-text: #e6e4e1;
-}
-
 .input {
   padding: 10px;
   border-radius: 8px;
@@ -165,7 +80,6 @@ footer {
 
 .icon {
   width: 30px;
-  /* filter: invert(1); */
   color: var(--color-primary-text);
   transition: all 0.3s ease-in-out;
 }
@@ -215,30 +129,6 @@ footer {
 
 .icon-btn:active {
   border: 2px inset black;
-}
-
-.errorContainer {
-  width: min(100%, 1000px);
-  margin: auto;
-  margin-top: 50px;
-  padding: 10px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 10px;
-}
-
-.errorContainer .errorStepsHeader {
-  margin: 20px;
-  font-size: 1.2rem;
-  letter-spacing: 1.1px;
-  text-decoration: underline;
-}
-
-.errorContainer .errorFooter {
-  margin-top: 20px;
-  font-size: 1rem;
-  font-weight: bold;
 }
 
 .error {
