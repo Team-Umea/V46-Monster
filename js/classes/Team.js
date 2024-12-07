@@ -4,6 +4,10 @@ export class Team {
     this.name = teamName;
     this.monsters = [];
     this.paidFor = false;
+    this.totalRank = this.calcTeamRank();
+    this.totalRating = this.calcTeamRating();
+    this.totalHealth = this.calcTeamHealth();
+    this.totalDamage = this.calcTeamDamage();
     this.teamCost = 0;
     this.teamValue = 0;
     this.teamProfit = 0;
@@ -109,26 +113,15 @@ export class Team {
   }
 
   setMonsters(monsters) {
-    this.monsters = monsters.map((m) => {
-      return {
-        ...m,
-        remainingHp: m.health,
-        sufferedDamage: 0,
-        distributedDamage: 0,
-        fightPoints: 0,
-        wonFights: 0,
-        drawnFights: 0,
-        lostFights: 0,
-        wonRounds: 0,
-        drawnRounds: 0,
-        lostRounds: 0,
-      };
-    });
-
-    console.log("Monsters set to", this.monsters);
+    this.monsters = monsters;
 
     const teamCost = monsters.reduce((acc, curr) => acc + curr.price, 0);
     this.teamCost = teamCost;
+
+    this.totalRank = this.calcTeamRank();
+    this.totalRating = this.calcTeamRating();
+    this.totalHealth = this.calcTeamHealth();
+    this.totalDamage = this.calcTeamDamage();
   }
 
   loadMonsters(monsters) {
@@ -136,6 +129,11 @@ export class Team {
 
     const teamCost = monsters.reduce((acc, curr) => acc + curr.price, 0);
     this.teamCost = teamCost;
+
+    this.totalRank = this.calcTeamRank();
+    this.totalRating = this.calcTeamRating();
+    this.totalHealth = this.calcTeamHealth();
+    this.totalDamage = this.calcTeamDamage();
   }
 
   setPaidFor(paidFor) {
@@ -231,24 +229,43 @@ export class Team {
   addMonsterToTeam(monster) {
     const duplicates = this.monsters.filter((m) => m.id === monster.id);
     if (this.monsters.length < 4 && duplicates.length === 0) {
-      const mappedMonster = {
-        ...monster,
-        remainingHp: monster.health,
-        sufferedDamage: 0,
-        distributedDamage: 0,
-        fightPoints: 0,
-        wonFights: 0,
-        drawnFights: 0,
-        lostFights: 0,
-        wonRounds: 0,
-        drawnRounds: 0,
-        lostRounds: 0,
-      };
-      this.monsters.push(mappedMonster);
+      this.monsters.push(monster);
     }
+
     const monsters = this.monsters;
+
     const teamCost = monsters.reduce((acc, curr) => acc + curr.price, 0);
     this.teamCost = teamCost;
+
+    this.totalRank = this.calcTeamRank();
+    this.totalRating = this.calcTeamRating();
+    this.totalHealth = this.calcTeamHealth();
+    this.totalDamage = this.calcTeamDamage();
+  }
+
+  calcTeamRank() {
+    const monsters = this.monsters;
+    const numMonsters = monsters.length;
+    const rank = monsters.reduce((acc, curr) => acc + curr.rank, 0);
+    return Math.floor(rank / numMonsters);
+  }
+
+  calcTeamRating() {
+    const monsters = this.monsters;
+    const rating = monsters.reduce((acc, curr) => acc + curr.health + curr.damage, 0);
+    return rating;
+  }
+
+  calcTeamHealth() {
+    const monsters = this.monsters;
+    const health = monsters.reduce((acc, curr) => acc + curr.health, 0);
+    return health;
+  }
+
+  calcTeamDamage() {
+    const monsters = this.monsters;
+    const damage = monsters.reduce((acc, curr) => acc + curr.damage, 0);
+    return damage;
   }
 
   static fromJSON(json) {

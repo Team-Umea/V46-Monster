@@ -165,8 +165,6 @@ footer {
 
 .icon {
   width: 30px;
-  /* filter: invert(1); */
-  color: var(--color-primary-text);
   transition: all 0.3s ease-in-out;
 }
 
