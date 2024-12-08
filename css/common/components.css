@@ -145,6 +145,10 @@ a {
   visibility: hidden;
 }
 
+.hide {
+  visibility: hidden;
+}
+
 .alignLeft {
   position: absolute;
   left: 20px;

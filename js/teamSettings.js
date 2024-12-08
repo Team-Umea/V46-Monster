@@ -2,9 +2,8 @@
 import { useClickEvent } from "./common/useEvent.js";
 import { serveData } from "./common/fetch.js";
 import { renderIconWithNumber, averageValueIcon, imgAsBtn } from "./common/render.js";
-import { load, save, remove } from "./common/utilities.js";
-import { SELECTEDTEAMSETTINGS_LSK, TEAMS_LSK, CREDITS_LSK, ALLMONSTERS_LSK } from "./common/localStorageKeys.js";
-import { ALLMONSTERS_TTL } from "./common/ttl.js";
+import { load, save, remove, redirect } from "./common/utilities.js";
+import { SELECTEDTEAMSETTINGS_LSK, TEAMS_LSK, CREDITS_LSK, SELECTEDFIGHTTEAM_LSK } from "./common/localStorageKeys.js";
 import { useCredits, addCredits } from "./common/credits.js";
 import { MonsterCard } from "./classes/MonsterCard.js";
 import { Team } from "./classes/Team.js";
@@ -19,7 +18,9 @@ const spinner = document.getElementById("spinner");
 let teams = load(TEAMS_LSK).map((t) => Team.fromJSON(t)) || [];
 let userCredits = load(CREDITS_LSK);
 
-let allMonsters = [];
+const linkedBtns = [];
+const timeOutBtns = [];
+let controlMessageTimeout;
 
 let team;
 let teamName;
@@ -42,7 +43,6 @@ function init() {
   loadTeam();
   render();
   useClickEvent(navigator, navigate);
-  useData();
 }
 
 function render() {
@@ -50,6 +50,7 @@ function render() {
   renderNumMonstersIcon();
   renderTeamStats();
   renderMonsters();
+  useBtnLinks();
 }
 
 function loadTeam() {
@@ -60,6 +61,7 @@ function loadTeam() {
     teamName = team.name;
     teamMonsters = team.monsters;
     teamCost = team.teamCost;
+    teamValue = team.teamValue;
     isPaidFor = team.paidFor;
     numMonsters = teamMonsters.length;
 
@@ -68,16 +70,8 @@ function loadTeam() {
     totalHealth = team.totalHealth;
     totalDamage = team.totalDamage;
   } else {
-    navigate;
+    navigate();
   }
-}
-
-async function useData() {
-  const monsterData = await serveData("allMonsters", undefined, spinner, ALLMONSTERS_LSK, ALLMONSTERS_TTL);
-  allMonsters = monsterData;
-
-  team.setTeamValue(allMonsters);
-  teamValue = team.teamValue;
 }
 
 function navigate() {
@@ -124,6 +118,57 @@ function sellTeam() {
   }, 100);
 }
 
+function fightTeam() {
+  save(SELECTEDFIGHTTEAM_LSK, team);
+  setTimeout(() => {
+    redirect("fight.html");
+  }, 100);
+}
+
+function setControlMessage(className, message) {
+  controlMessage.setAttribute("class", `controlMessage ${className}`);
+  controlMessage.innerText = message;
+
+  if (controlMessageTimeout) {
+    clearTimeout(controlMessageTimeout);
+  }
+
+  if (controlMessage.innerText !== "") {
+    controlMessageTimeout = setTimeout(() => {
+      controlMessage.innerText = "message";
+      controlMessage.setAttribute("class", "controlMessage hide");
+    }, 7000);
+  }
+}
+
+function useBtnLinks() {
+  timeOutBtns.forEach((timeOut) => {
+    clearTimeout(timeOut);
+  });
+  linkedBtns.forEach((btn) => {
+    const icon = btn.getElementsByTagName("img")[0];
+    const index = Array.from(linkedBtns).indexOf(btn);
+    setControlMessage("hide", "message");
+    switch (index) {
+      case 0:
+        if (isPaidFor) {
+          setBtnIcon(icon, "sell", `Sell '${teamName}' for ${teamValue} credits`);
+        } else {
+          setBtnIcon(icon, "cart", `Buy '${teamName}' for ${teamCost} credits`);
+        }
+        break;
+      case 1:
+        setBtnIcon(icon, "shuffle", `Fill '${teamName}' with 4 random monsters`);
+        break;
+      case 2:
+        setBtnIcon(icon, "shield", `Fight with '${teamName}'`);
+        break;
+      default:
+        break;
+    }
+  });
+}
+
 function renderControls() {
   controlBtns.innerHTML = "";
 
@@ -132,37 +177,51 @@ function renderControls() {
   const fightBtn = imgAsBtn("shield", `Fight with '${teamName}'`);
 
   buyBtn.setAttribute("class", "controlBtn");
-  shuffleBtn.setAttribute("class", "controlBtn");
+  shuffleBtn.setAttribute("class", "controlBtn alignCenter");
   fightBtn.setAttribute("class", "controlBtn");
+
+  linkedBtns.push(buyBtn);
+  linkedBtns.push(shuffleBtn);
+  linkedBtns.push(fightBtn);
 
   buyBtn.addEventListener("click", () => {
     const buyIcon = buyBtn.getElementsByTagName("img")[0];
     const isUnchecked = !buyIcon.getAttribute("src").includes("check");
+    useBtnLinks();
 
     if (isUnchecked) {
       if (isPaidFor) {
         setBtnIcon(buyIcon, "check", "Click to confirm");
         buyBtn.appendChild(renderIconWithNumber(teamValue, "../../res/icons/diamond.svg", ""));
+        setControlMessage("", `Click to confirm that you want to sell '${teamName}' for ${teamValue} credits`);
       } else {
         if (numMonsters === 4) {
           if (teamCost <= userCredits) {
             setBtnIcon(buyIcon, "check", "Click to confirm");
             buyBtn.appendChild(renderIconWithNumber(teamCost, "../../res/icons/diamond.svg", ""));
+            setControlMessage("", `Click to confirm that you want to buy '${teamName}' for ${teamCost} credits`);
           } else {
             setBtnIcon(buyIcon, "ban", "You don't have enough credits");
+            setControlMessage("error", `You don't have enough credits to buy '${teamName}'. Total cost is ${teamCost} credits but you only have ${userCredits}`);
           }
         } else {
           setBtnIcon(buyIcon, "ban", "You must fill all 4 slots in your team before you can buy it");
+          setControlMessage("error", `All 4 slots must be filled before you can buy '${teamName}'`);
         }
       }
 
-      setTimeout(() => {
+      const timeOut = setTimeout(() => {
         const secondChild = buyBtn.children[1];
         if (secondChild) {
           secondChild.remove();
         }
-        setBtnIcon(buyIcon, "cart", `Buy '${teamName}' for ${teamCost} credits`);
-      }, 2000);
+        if (isPaidFor) {
+          setBtnIcon(buyIcon, "sell", `Sell '${teamName}' for ${teamValue} credits`);
+        } else {
+          setBtnIcon(buyIcon, "cart", `Buy '${teamName}' for ${teamCost} credits`);
+        }
+      }, 7000);
+      timeOutBtns.push(timeOut);
     } else {
       const secondChild = buyBtn.children[1];
       if (secondChild) {
@@ -170,10 +229,12 @@ function renderControls() {
       }
       if (isPaidFor) {
         sellTeam();
-        setBtnIcon(buyIcon, "sell", `Sell '${teamName}' for ${teamCost} credits`);
+        setBtnIcon(buyIcon, "sell", `Sell '${teamName}' for ${teamValue} credits`);
+        setControlMessage("hide", "message");
       } else {
         buyTeam();
         setBtnIcon(buyIcon, "cart", `Buy '${teamName}' for ${teamCost} credits`);
+        setControlMessage("hide", "message");
       }
     }
   });
@@ -181,20 +242,53 @@ function renderControls() {
   shuffleBtn.addEventListener("click", () => {
     const shuffleIcon = shuffleBtn.getElementsByTagName("img")[0];
     const isUnchecked = !shuffleIcon.getAttribute("src").includes("check");
+    useBtnLinks();
 
     if (isUnchecked) {
       setBtnIcon(shuffleIcon, "check", "Click to confirm");
-
-      setTimeout(() => {
+      setControlMessage("", `Click to confirm that you want to replace all monsters in '${teamName}'. This action can't be undone`);
+      const timeOut = setTimeout(() => {
         setBtnIcon(shuffleIcon, "shuffle", `Fill '${teamName}' with 4 random monsters`);
-      }, 2000);
+      }, 7000);
+      timeOutBtns.push(timeOut);
     } else {
       shuffleTeam();
       setBtnIcon(shuffleIcon, "shuffle", `Fill '${teamName}' with 4 random monsters`);
+      setControlMessage("hide", "message");
     }
   });
 
-  controlBtns.append(buyBtn, shuffleBtn, fightBtn);
+  fightBtn.addEventListener("click", () => {
+    const fightIcon = fightBtn.getElementsByTagName("img")[0];
+    const isUnchecked = !fightIcon.getAttribute("src").includes("check");
+    useBtnLinks();
+
+    if (isUnchecked) {
+      if (isPaidFor) {
+        setBtnIcon(fightIcon, "check", "Click to confirm");
+        setControlMessage("", `Click to confirm to fight with '${teamName}'. You will redirected to the fight page`);
+      } else {
+        setBtnIcon(fightIcon, "ban", `You must buy team '${teamName}' before you can fight with it`);
+        setControlMessage("error", `You must buy team '${teamName}' before you can fight with it`);
+      }
+      const timeOut = setTimeout(() => {
+        setBtnIcon(fightIcon, "shield", `Fight with '${teamName}'`);
+      }, 7000);
+      timeOutBtns.push(timeOut);
+    } else {
+      if (isPaidFor) {
+        fightTeam();
+      }
+      setBtnIcon(fightIcon, "shield", `Fight with '${teamName}'`);
+      setControlMessage("hide", "message");
+    }
+  });
+
+  controlBtns.appendChild(buyBtn);
+  if (!isPaidFor) {
+    controlBtns.appendChild(shuffleBtn);
+  }
+  controlBtns.appendChild(fightBtn);
 }
 
 function setBtnIcon(icon, src, altTitle) {

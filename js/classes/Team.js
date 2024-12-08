@@ -8,8 +8,8 @@ export class Team {
     this.totalRating = this.calcTeamRating();
     this.totalHealth = this.calcTeamHealth();
     this.totalDamage = this.calcTeamDamage();
+    this.teamValue = this.calcTeamValue();
     this.teamCost = 0;
-    this.teamValue = 0;
     this.teamProfit = 0;
     this.numBattels = 0;
     this.wonBattels = 0;
@@ -122,6 +122,7 @@ export class Team {
     this.totalRating = this.calcTeamRating();
     this.totalHealth = this.calcTeamHealth();
     this.totalDamage = this.calcTeamDamage();
+    this.teamValue = this.calcTeamValue();
   }
 
   loadMonsters(monsters) {
@@ -134,36 +135,11 @@ export class Team {
     this.totalRating = this.calcTeamRating();
     this.totalHealth = this.calcTeamHealth();
     this.totalDamage = this.calcTeamDamage();
+    this.teamValue = this.calcTeamValue();
   }
 
   setPaidFor(paidFor) {
     this.paidFor = paidFor;
-  }
-
-  setTeamValue(allMonsters) {
-    const monsters = this.monsters;
-    const monsterIDs = monsters.map((monster) => monster.id);
-
-    const originalMonsters = [...allMonsters].filter((monster) => monsterIDs.includes(monster.id));
-
-    const originalTeamRating = originalMonsters.reduce((acc, curr) => curr.health + curr.damage + acc, 0);
-    const originalTeamPrice = originalMonsters.reduce((acc, curr) => curr.price + acc, 0);
-
-    const currentTeamRating = monsters.reduce((acc, curr) => curr.health + curr.damage + acc, 0);
-    const currentTeamPrice = monsters.reduce((acc, curr) => curr.price + acc, 0);
-
-    const ratingPriceFactor = originalTeamPrice * 0.04;
-    const priceDiffPriceFactor = originalTeamPrice * 0.02;
-
-    const ratingDifference = originalTeamRating - currentTeamRating;
-    const priceDifference = originalTeamPrice - currentTeamPrice;
-
-    const ratingInfluence = ratingDifference * ratingPriceFactor;
-    const priceInfluence = priceDifference * priceDiffPriceFactor;
-
-    const newTeamValue = originalTeamPrice - ratingInfluence - priceInfluence;
-
-    this.teamValue = newTeamValue;
   }
 
   setNumBattels(numBattels) {
@@ -241,6 +217,7 @@ export class Team {
     this.totalRating = this.calcTeamRating();
     this.totalHealth = this.calcTeamHealth();
     this.totalDamage = this.calcTeamDamage();
+    this.teamValue = this.calcTeamValue();
   }
 
   calcTeamRank() {
@@ -265,6 +242,23 @@ export class Team {
     const monsters = this.monsters;
     const damage = monsters.reduce((acc, curr) => acc + curr.damage, 0);
     return damage;
+  }
+
+  calcTeamValue() {
+    const monsters = this.monsters;
+
+    const price = monsters.reduce((acc, curr) => acc + curr.price, 0);
+    const startHP = monsters.reduce((acc, curr) => acc + curr.health, 0);
+    const remainingHP = monsters.reduce((acc, curr) => acc + curr.remainingHP, 0);
+
+    const healthDifference = startHP - remainingHP;
+    const healthPriceFactor = price * 0.02;
+
+    const healthPriceInfluence = healthDifference * healthPriceFactor;
+
+    const teamValue = Math.floor((price - healthPriceInfluence) * 0.7);
+
+    return teamValue;
   }
 
   static fromJSON(json) {

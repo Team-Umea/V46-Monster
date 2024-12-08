@@ -158,8 +158,6 @@ export function generateUniqueName(arr, name) {
   };
 }
 
-export function navigate(path) {
-  setTimeout(() => {
-    window.location.href = path;
-  }, 100);
+export function redirect(path) {
+  window.location.href = path;
 }
