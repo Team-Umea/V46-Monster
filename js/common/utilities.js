@@ -161,3 +161,7 @@ export function generateUniqueName(arr, name) {
 export function redirect(path) {
   window.location.href = path;
 }
+
+export function reload() {
+  location.reload(true);
+}

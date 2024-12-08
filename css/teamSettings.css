@@ -29,6 +29,10 @@
   --color-primary-text: #e6e4e1;
 }
 
+::-webkit-scrollbar {
+  width: 0;
+}
+
 body {
   height: auto;
 }
@@ -184,17 +188,66 @@ main {
 }
 
 .teamMonsters {
-  width: fit-content;
-  padding: 20px;
+  width: 95%;
+  padding: 60px 20px;
   margin-top: 60px;
-  /* display: flex;
-  justify-content: center;
-  align-items: center; */
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   justify-items: center;
   gap: 20px;
   border-radius: 20px;
+  box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
+}
+
+.teamEndToEndMonsters {
+  margin-top: 160px;
+  width: 95%;
+  padding: 50px;
+  display: flex;
+  justify-content: space-evenly;
+  background-color: var(--color-surface-a0);
+  border-radius: 50px;
+  border-top: 4px solid var(--color-primary-a30);
+  position: relative;
+}
+
+.teamEndToEndMonsters::after {
+  content: attr(data-desc);
+  font-size: 3rem;
+  position: absolute;
+  left: 50%;
+  top: -4rem;
+  transform: translate(-50%);
+}
+
+.monsterCardContainer {
+  padding: 60px;
+  width: 405px;
+  border-radius: 20px;
+  transition: all 0.3s ease-in-out;
+  position: relative;
+  box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
+  background-color: var(--color-surface-a10);
+}
+
+.monsterCardContainer:hover {
+  transform: scale(1.03);
+}
+
+.monsterCardContainer::before {
+  content: attr(data-teamRank);
+  font-size: 2rem;
+  position: absolute;
+  top: 17px;
+  left: 17px;
+}
+
+.monsterCardContainer::after {
+  content: attr(data-teamRank);
+  font-size: 2rem;
+  position: absolute;
+  right: 17px;
+  bottom: 17px;
 }
 
 @media (max-width: 1300px) {

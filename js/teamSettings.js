@@ -2,18 +2,19 @@
 import { useClickEvent } from "./common/useEvent.js";
 import { serveData } from "./common/fetch.js";
 import { renderIconWithNumber, averageValueIcon, imgAsBtn } from "./common/render.js";
-import { load, save, remove, redirect } from "./common/utilities.js";
+import { load, save, remove, redirect, reload } from "./common/utilities.js";
 import { SELECTEDTEAMSETTINGS_LSK, TEAMS_LSK, CREDITS_LSK, SELECTEDFIGHTTEAM_LSK } from "./common/localStorageKeys.js";
 import { useCredits, addCredits } from "./common/credits.js";
 import { MonsterCard } from "./classes/MonsterCard.js";
 import { Team } from "./classes/Team.js";
 
 const navigator = document.getElementById("prevNavigator");
+const spinner = document.getElementById("spinner");
 const controlMessage = document.getElementById("controlMessage");
 const controlBtns = document.getElementById("controlBtns");
 const teamStats = document.getElementById("teamStatsConatiner");
 const monstersContainer = document.getElementById("teamMonsters");
-const spinner = document.getElementById("spinner");
+const endToEndMonsters = document.getElementById("teamEndToEndMonsters");
 
 let teams = load(TEAMS_LSK).map((t) => Team.fromJSON(t)) || [];
 let userCredits = load(CREDITS_LSK);
@@ -35,6 +36,9 @@ let totalRating;
 let totalHealth;
 let totalDamage;
 
+let strongestMonster;
+let weakestMonster;
+
 window.addEventListener("DOMContentLoaded", () => {
   init();
 });
@@ -47,10 +51,9 @@ function init() {
 
 function render() {
   renderControls();
-  renderNumMonstersIcon();
   renderTeamStats();
   renderMonsters();
-  useBtnLinks();
+  renderEndToEndMonsters();
 }
 
 function loadTeam() {
@@ -69,6 +72,9 @@ function loadTeam() {
     totalRating = team.totalRating;
     totalHealth = team.totalHealth;
     totalDamage = team.totalDamage;
+
+    strongestMonster = team.strongestMonster;
+    weakestMonster = team.weakestMonster;
   } else {
     navigate();
   }
@@ -84,6 +90,7 @@ function updateTeams() {
   userCredits = load(CREDITS_LSK);
   loadTeam();
   render();
+  reload();
 }
 
 async function shuffleTeam() {
@@ -97,6 +104,7 @@ async function shuffleTeam() {
   team.setMonsters(randomMonsters);
   team.setPaidFor(false);
   updateTeams();
+  render();
 }
 
 function buyTeam() {
@@ -139,6 +147,12 @@ function setControlMessage(className, message) {
       controlMessage.setAttribute("class", "controlMessage hide");
     }, 7000);
   }
+}
+
+function setBtnIcon(icon, src, altTitle) {
+  icon.setAttribute("src", `../../res/icons/${src}.svg`);
+  icon.setAttribute("alt", altTitle);
+  icon.setAttribute("title", altTitle);
 }
 
 function useBtnLinks() {
@@ -291,56 +305,87 @@ function renderControls() {
   controlBtns.appendChild(fightBtn);
 }
 
-function setBtnIcon(icon, src, altTitle) {
-  icon.setAttribute("src", `../../res/icons/${src}.svg`);
-  icon.setAttribute("alt", altTitle);
-  icon.setAttribute("title", altTitle);
-}
-
-function renderNumMonstersIcon() {
-  teamStats.innerHTML = "";
-
-  const icon = renderIconWithNumber(numMonsters, "../../res/icons/skull.svg", `There is ${numMonsters} monsters in team '${teamName}'`);
-  icon.classList.add("numMonstersIcon");
-  teamStats.appendChild(icon);
-}
-
 function renderTeamStats() {
   teamStats.innerHTML = "";
 
-  const averageRank = Math.floor(totalRank / numMonsters);
-  const averageRating = Math.floor(totalRating / numMonsters);
-  const averageHealth = Math.floor(totalHealth / numMonsters);
-  const averageDamage = Math.floor(totalDamage / numMonsters);
+  if (numMonsters > 0) {
+    const averageRank = Math.floor(totalRank / numMonsters);
+    const averageRating = Math.floor(totalRating / numMonsters);
+    const averageHealth = Math.floor(totalHealth / numMonsters);
+    const averageDamage = Math.floor(totalDamage / numMonsters);
 
-  const rankIcon = renderIconWithNumber(totalRank, "../../res/icons/ribbon.svg", `Team '${teamName}' has a rank of ${totalRank}`);
-  const ratingIcon = renderIconWithNumber(totalRating, "../../res/icons/trophy.svg", `Team '${teamName}' has a combinded rating of ${totalRating}`);
-  const healthIcon = renderIconWithNumber(totalHealth, "../../res/icons/heart.svg", `Team '${teamName}' has ${totalHealth} in total health`);
-  const damageIcon = renderIconWithNumber(totalDamage, "../../res/icons/barbell.svg", `Team '${teamName}' has ${totalDamage} in total damage`);
-  const averageRankIcon = averageValueIcon(averageRank, "ribbon", "skull", `Team '${teamName}' has an average rank of ${averageRank}`);
-  const averageRatingIcon = averageValueIcon(averageRating, "trophy", "skull", `Team '${teamName}' has an average rating of ${averageRating}`);
-  const averageHealthIcon = averageValueIcon(averageHealth, "heart", "skull", `Team '${teamName}' has ${averageHealth} in average health`);
-  const averageDamageIcon = averageValueIcon(averageDamage, "barbell", "skull", `Team '${teamName}' has ${averageDamage} in average damage`);
+    const numMonstersIcon = renderIconWithNumber(numMonsters, "../../res/icons/skull.svg", `There is ${numMonsters} monsters in team '${teamName}'`);
+    const rankIcon = renderIconWithNumber(totalRank, "../../res/icons/ribbon.svg", `Team '${teamName}' has a rank of ${totalRank}`);
+    const ratingIcon = renderIconWithNumber(totalRating, "../../res/icons/trophy.svg", `Team '${teamName}' has a combinded rating of ${totalRating}`);
+    const healthIcon = renderIconWithNumber(totalHealth, "../../res/icons/heart.svg", `Team '${teamName}' has ${totalHealth} in total health`);
+    const damageIcon = renderIconWithNumber(totalDamage, "../../res/icons/barbell.svg", `Team '${teamName}' has ${totalDamage} in total damage`);
+    const averageRankIcon = averageValueIcon(averageRank, "ribbon", "skull", `Team '${teamName}' has an average rank of ${averageRank}`);
+    const averageRatingIcon = averageValueIcon(averageRating, "trophy", "skull", `Team '${teamName}' has an average rating of ${averageRating}`);
+    const averageHealthIcon = averageValueIcon(averageHealth, "heart", "skull", `Team '${teamName}' has ${averageHealth} in average health`);
+    const averageDamageIcon = averageValueIcon(averageDamage, "barbell", "skull", `Team '${teamName}' has ${averageDamage} in average damage`);
 
-  rankIcon.classList.add("teamStatsIcon");
-  ratingIcon.classList.add("teamStatsIcon");
-  healthIcon.classList.add("teamStatsIcon");
-  damageIcon.classList.add("teamStatsIcon");
-  averageRankIcon.classList.add("teamAverageStatsIcon");
-  averageRatingIcon.classList.add("teamAverageStatsIcon");
-  averageHealthIcon.classList.add("teamAverageStatsIcon");
-  averageDamageIcon.classList.add("teamAverageStatsIcon");
+    numMonstersIcon.classList.add("numMonstersIcon");
+    rankIcon.classList.add("teamStatsIcon");
+    ratingIcon.classList.add("teamStatsIcon");
+    healthIcon.classList.add("teamStatsIcon");
+    damageIcon.classList.add("teamStatsIcon");
+    averageRankIcon.classList.add("teamAverageStatsIcon");
+    averageRatingIcon.classList.add("teamAverageStatsIcon");
+    averageHealthIcon.classList.add("teamAverageStatsIcon");
+    averageDamageIcon.classList.add("teamAverageStatsIcon");
 
-  teamStats.append(rankIcon, ratingIcon, healthIcon, damageIcon, averageRankIcon, averageRatingIcon, averageHealthIcon, averageDamageIcon);
+    teamStats.append(numMonstersIcon, rankIcon, ratingIcon, healthIcon, damageIcon, averageRankIcon, averageRatingIcon, averageHealthIcon, averageDamageIcon);
+  } else {
+    teamStats.remove();
+  }
 }
 
 function renderMonsters() {
   monstersContainer.innerHTML = "";
 
-  if (teamMonsters) {
+  if (teamMonsters && numMonsters > 0) {
     teamMonsters.forEach((monster) => {
       const monsterCard = new MonsterCard(monster, [], true).assembleMonsterCard();
       monstersContainer.appendChild(monsterCard);
     });
+  } else {
+    monstersContainer.remove();
+  }
+}
+
+function renderEndToEndMonsters() {
+  endToEndMonsters.innerHTML = "";
+
+  if (numMonsters > 0) {
+    const strongestContainer = document.createElement("div");
+    const weakestContainer = document.createElement("div");
+
+    let strongest = null;
+    let weakest = null;
+
+    strongestContainer.setAttribute("class", "monsterCardContainer");
+    weakestContainer.setAttribute("class", "monsterCardContainer");
+
+    strongestContainer.setAttribute("data-teamRank", "#1");
+    weakestContainer.setAttribute("data-teamRank", `#${numMonsters}`);
+
+    if (strongestMonster) {
+      strongest = new MonsterCard(strongestMonster, [], true).assembleMonsterCard();
+    }
+
+    if (weakestMonster) {
+      weakest = new MonsterCard(weakestMonster, [], true).assembleMonsterCard();
+    }
+
+    if (strongestMonster === weakestMonster) {
+      strongestContainer.append(strongest);
+      endToEndMonsters.append(strongestContainer);
+    } else {
+      strongestContainer.append(strongest);
+      weakestContainer.append(weakest);
+      endToEndMonsters.append(strongestContainer, weakestContainer);
+    }
+  } else {
+    endToEndMonsters.remove();
   }
 }
