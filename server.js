@@ -1,5 +1,6 @@
 const express = require("express");
 const fs = require("fs");
+const path = require("path");
 const cors = require("cors");
 
 const app = express();
@@ -101,6 +102,8 @@ function readJSON(path, callback) {
     }
   });
 }
+
+app.use("/monsterImages", express.static(path.join(__dirname, "monsterImages")));
 
 app.get("/", (_, res) => {
   const welcome = endpoints.map((end) => `${end.path} - ${end.desc}`).join("\n\n");

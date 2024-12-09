@@ -23,7 +23,8 @@
     "elements": [
       "Aqua",
       "Chaos"
-    ]
+    ],
+    "img": "/monsterImages/monster0.webp"
   },
   {
     "id": 1,
@@ -49,7 +50,8 @@
     "elements": [
       "Mirage",
       "Frost"
-    ]
+    ],
+    "img": "/monsterImages/monster1.webp"
   },
   {
     "id": 2,
@@ -74,7 +76,8 @@
     "price": 0,
     "elements": [
       "Storm"
-    ]
+    ],
+    "img": "/monsterImages/monster2.webp"
   },
   {
     "id": 3,
@@ -100,7 +103,8 @@
     "elements": [
       "Chaos",
       "Terra"
-    ]
+    ],
+    "img": "/monsterImages/monster3.webp"
   },
   {
     "id": 4,
@@ -126,7 +130,8 @@
     "elements": [
       "Aqua",
       "Chroma"
-    ]
+    ],
+    "img": "/monsterImages/monster4.webp"
   },
   {
     "id": 5,
@@ -152,7 +157,8 @@
     "elements": [
       "Searing",
       "Chroma"
-    ]
+    ],
+    "img": "/monsterImages/monster5.webp"
   },
   {
     "id": 6,
@@ -177,7 +183,8 @@
     "price": 0,
     "elements": [
       "Frost"
-    ]
+    ],
+    "img": "/monsterImages/monster6.webp"
   },
   {
     "id": 7,
@@ -203,7 +210,8 @@
     "elements": [
       "Mirage",
       "Chroma"
-    ]
+    ],
+    "img": "/monsterImages/monster7.webp"
   },
   {
     "id": 8,
@@ -229,7 +237,8 @@
     "elements": [
       "Chaos",
       "Storm"
-    ]
+    ],
+    "img": "/monsterImages/monster8.webp"
   },
   {
     "id": 9,
@@ -254,7 +263,8 @@
     "price": 0,
     "elements": [
       "Mirage"
-    ]
+    ],
+    "img": "/monsterImages/monster9.webp"
   },
   {
     "id": 10,
@@ -279,7 +289,8 @@
     "price": 0,
     "elements": [
       "Storm"
-    ]
+    ],
+    "img": "/monsterImages/monster10.webp"
   },
   {
     "id": 11,
@@ -304,7 +315,8 @@
     "price": 0,
     "elements": [
       "Storm"
-    ]
+    ],
+    "img": "/monsterImages/monster11.webp"
   },
   {
     "id": 12,
@@ -329,7 +341,8 @@
     "price": 0,
     "elements": [
       "Storm"
-    ]
+    ],
+    "img": "/monsterImages/monster12.webp"
   },
   {
     "id": 13,
@@ -354,7 +367,8 @@
     "price": 0,
     "elements": [
       "Mirage"
-    ]
+    ],
+    "img": "/monsterImages/monster13.webp"
   },
   {
     "id": 14,
@@ -379,7 +393,8 @@
     "price": 0,
     "elements": [
       "Chaos"
-    ]
+    ],
+    "img": "/monsterImages/monster14.webp"
   },
   {
     "id": 15,
@@ -404,7 +419,8 @@
     "price": 0,
     "elements": [
       "Aqua"
-    ]
+    ],
+    "img": "/monsterImages/monster15.webp"
   },
   {
     "id": 16,
@@ -430,7 +446,8 @@
     "elements": [
       "Terra",
       "Frost"
-    ]
+    ],
+    "img": "/monsterImages/monster16.webp"
   },
   {
     "id": 17,
@@ -456,7 +473,8 @@
     "elements": [
       "Chroma",
       "Frost"
-    ]
+    ],
+    "img": "/monsterImages/monster17.webp"
   },
   {
     "id": 18,
@@ -481,7 +499,8 @@
     "price": 0,
     "elements": [
       "Mirage"
-    ]
+    ],
+    "img": "/monsterImages/monster18.webp"
   },
   {
     "id": 19,
@@ -507,7 +526,8 @@
     "elements": [
       "Storm",
       "Frost"
-    ]
+    ],
+    "img": "/monsterImages/monster19.webp"
   },
   {
     "id": 20,
@@ -532,7 +552,8 @@
     "price": 0,
     "elements": [
       "Mirage"
-    ]
+    ],
+    "img": "/monsterImages/monster20.webp"
   },
   {
     "id": 21,
@@ -557,7 +578,8 @@
     "price": 0,
     "elements": [
       "Mirage"
-    ]
+    ],
+    "img": "/monsterImages/monster21.webp"
   },
   {
     "id": 22,
@@ -583,7 +605,8 @@
     "elements": [
       "Chaos",
       "Searing"
-    ]
+    ],
+    "img": "/monsterImages/monster22.webp"
   },
   {
     "id": 23,
@@ -608,7 +631,8 @@
     "price": 0,
     "elements": [
       "Searing"
-    ]
+    ],
+    "img": "/monsterImages/monster23.webp"
   },
   {
     "id": 24,
@@ -634,7 +658,8 @@
     "elements": [
       "Terra",
       "Frost"
-    ]
+    ],
+    "img": "/monsterImages/monster24.webp"
   },
   {
     "id": 25,
@@ -659,7 +684,8 @@
     "price": 3000,
     "elements": [
       "Chaos"
-    ]
+    ],
+    "img": "/monsterImages/monster25.webp"
   },
   {
     "id": 26,
@@ -684,7 +710,8 @@
     "price": 3000,
     "elements": [
       "Searing"
-    ]
+    ],
+    "img": "/monsterImages/monster26.webp"
   },
   {
     "id": 27,
@@ -709,7 +736,8 @@
     "price": 3000,
     "elements": [
       "Searing"
-    ]
+    ],
+    "img": "/monsterImages/monster27.webp"
   },
   {
     "id": 28,
@@ -734,7 +762,8 @@
     "price": 3000,
     "elements": [
       "Storm"
-    ]
+    ],
+    "img": "/monsterImages/monster28.webp"
   },
   {
     "id": 29,
@@ -759,7 +788,8 @@
     "price": 3000,
     "elements": [
       "Terra"
-    ]
+    ],
+    "img": "/monsterImages/monster29.webp"
   },
   {
     "id": 30,
@@ -785,7 +815,8 @@
     "elements": [
       "Mirage",
       "Aqua"
-    ]
+    ],
+    "img": "/monsterImages/monster30.webp"
   },
   {
     "id": 31,
@@ -810,7 +841,8 @@
     "price": 3000,
     "elements": [
       "Frost"
-    ]
+    ],
+    "img": "/monsterImages/monster31.webp"
   },
   {
     "id": 32,
@@ -836,7 +868,8 @@
     "elements": [
       "Aqua",
       "Chroma"
-    ]
+    ],
+    "img": "/monsterImages/monster32.webp"
   },
   {
     "id": 33,
@@ -862,7 +895,8 @@
     "elements": [
       "Frost",
       "Mirage"
-    ]
+    ],
+    "img": "/monsterImages/monster33.webp"
   },
   {
     "id": 34,
@@ -887,7 +921,8 @@
     "price": 3000,
     "elements": [
       "Storm"
-    ]
+    ],
+    "img": "/monsterImages/monster34.webp"
   },
   {
     "id": 35,
@@ -913,7 +948,8 @@
     "elements": [
       "Terra",
       "Searing"
-    ]
+    ],
+    "img": "/monsterImages/monster35.webp"
   },
   {
     "id": 36,
@@ -938,7 +974,8 @@
     "price": 3000,
     "elements": [
       "Mirage"
-    ]
+    ],
+    "img": "/monsterImages/monster36.webp"
   },
   {
     "id": 37,
@@ -964,7 +1001,8 @@
     "elements": [
       "Searing",
       "Frost"
-    ]
+    ],
+    "img": "/monsterImages/monster37.webp"
   },
   {
     "id": 38,
@@ -990,7 +1028,8 @@
     "elements": [
       "Storm",
       "Terra"
-    ]
+    ],
+    "img": "/monsterImages/monster38.webp"
   },
   {
     "id": 39,
@@ -1015,7 +1054,8 @@
     "price": 3000,
     "elements": [
       "Terra"
-    ]
+    ],
+    "img": "/monsterImages/monster39.webp"
   },
   {
     "id": 40,
@@ -1040,7 +1080,8 @@
     "price": 3000,
     "elements": [
       "Aqua"
-    ]
+    ],
+    "img": "/monsterImages/monster40.webp"
   },
   {
     "id": 41,
@@ -1066,7 +1107,8 @@
     "elements": [
       "Frost",
       "Mirage"
-    ]
+    ],
+    "img": "/monsterImages/monster41.webp"
   },
   {
     "id": 42,
@@ -1091,7 +1133,8 @@
     "price": 3000,
     "elements": [
       "Frost"
-    ]
+    ],
+    "img": "/monsterImages/monster42.webp"
   },
   {
     "id": 43,
@@ -1117,7 +1160,8 @@
     "elements": [
       "Chroma",
       "Chaos"
-    ]
+    ],
+    "img": "/monsterImages/monster43.webp"
   },
   {
     "id": 44,
@@ -1143,7 +1187,8 @@
     "elements": [
       "Aqua",
       "Chaos"
-    ]
+    ],
+    "img": "/monsterImages/monster44.webp"
   },
   {
     "id": 45,
@@ -1168,7 +1213,8 @@
     "price": 3000,
     "elements": [
       "Searing"
-    ]
+    ],
+    "img": "/monsterImages/monster45.webp"
   },
   {
     "id": 46,
@@ -1193,7 +1239,8 @@
     "price": 3000,
     "elements": [
       "Searing"
-    ]
+    ],
+    "img": "/monsterImages/monster46.webp"
   },
   {
     "id": 47,
@@ -1219,7 +1266,8 @@
     "elements": [
       "Terra",
       "Aqua"
-    ]
+    ],
+    "img": "/monsterImages/monster47.webp"
   },
   {
     "id": 48,
@@ -1244,7 +1292,8 @@
     "price": 3000,
     "elements": [
       "Terra"
-    ]
+    ],
+    "img": "/monsterImages/monster48.webp"
   },
   {
     "id": 49,
@@ -1269,7 +1318,8 @@
     "price": 3000,
     "elements": [
       "Chroma"
-    ]
+    ],
+    "img": "/monsterImages/monster49.webp"
   },
   {
     "id": 50,
@@ -1294,7 +1344,8 @@
     "price": 7000,
     "elements": [
       "Chaos"
-    ]
+    ],
+    "img": "/monsterImages/monster50.webp"
   },
   {
     "id": 51,
@@ -1320,7 +1371,8 @@
     "elements": [
       "Frost",
       "Aqua"
-    ]
+    ],
+    "img": "/monsterImages/monster51.webp"
   },
   {
     "id": 52,
@@ -1346,7 +1398,8 @@
     "elements": [
       "Chaos",
       "Mirage"
-    ]
+    ],
+    "img": "/monsterImages/monster52.webp"
   },
   {
     "id": 53,
@@ -1372,7 +1425,8 @@
     "elements": [
       "Chroma",
       "Chaos"
-    ]
+    ],
+    "img": "/monsterImages/monster53.webp"
   },
   {
     "id": 54,
@@ -1397,7 +1451,8 @@
     "price": 7000,
     "elements": [
       "Aqua"
-    ]
+    ],
+    "img": "/monsterImages/monster54.webp"
   },
   {
     "id": 55,
@@ -1423,7 +1478,8 @@
     "elements": [
       "Chaos",
       "Searing"
-    ]
+    ],
+    "img": "/monsterImages/monster55.webp"
   },
   {
     "id": 56,
@@ -1449,7 +1505,8 @@
     "elements": [
       "Chaos",
       "Mirage"
-    ]
+    ],
+    "img": "/monsterImages/monster56.webp"
   },
   {
     "id": 57,
@@ -1474,7 +1531,8 @@
     "price": 7000,
     "elements": [
       "Chroma"
-    ]
+    ],
+    "img": "/monsterImages/monster57.webp"
   },
   {
     "id": 58,
@@ -1500,7 +1558,8 @@
     "elements": [
       "Chaos",
       "Storm"
-    ]
+    ],
+    "img": "/monsterImages/monster58.webp"
   },
   {
     "id": 59,
@@ -1525,7 +1584,8 @@
     "price": 7000,
     "elements": [
       "Searing"
-    ]
+    ],
+    "img": "/monsterImages/monster59.webp"
   },
   {
     "id": 60,
@@ -1551,7 +1611,8 @@
     "elements": [
       "Mirage",
       "Storm"
-    ]
+    ],
+    "img": "/monsterImages/monster60.webp"
   },
   {
     "id": 61,
@@ -1576,7 +1637,8 @@
     "price": 7000,
     "elements": [
       "Frost"
-    ]
+    ],
+    "img": "/monsterImages/monster61.webp"
   },
   {
     "id": 62,
@@ -1601,7 +1663,8 @@
     "price": 7000,
     "elements": [
       "Chaos"
-    ]
+    ],
+    "img": "/monsterImages/monster62.webp"
   },
   {
     "id": 63,
@@ -1626,7 +1689,8 @@
     "price": 7000,
     "elements": [
       "Storm"
-    ]
+    ],
+    "img": "/monsterImages/monster63.webp"
   },
   {
     "id": 64,
@@ -1651,7 +1715,8 @@
     "price": 7000,
     "elements": [
       "Chroma"
-    ]
+    ],
+    "img": "/monsterImages/monster64.webp"
   },
   {
     "id": 65,
@@ -1676,7 +1741,8 @@
     "price": 7000,
     "elements": [
       "Searing"
-    ]
+    ],
+    "img": "/monsterImages/monster65.webp"
   },
   {
     "id": 66,
@@ -1701,7 +1767,8 @@
     "price": 7000,
     "elements": [
       "Searing"
-    ]
+    ],
+    "img": "/monsterImages/monster66.webp"
   },
   {
     "id": 67,
@@ -1727,7 +1794,8 @@
     "elements": [
       "Terra",
       "Storm"
-    ]
+    ],
+    "img": "/monsterImages/monster67.webp"
   },
   {
     "id": 68,
@@ -1753,7 +1821,8 @@
     "elements": [
       "Aqua",
       "Chaos"
-    ]
+    ],
+    "img": "/monsterImages/monster68.webp"
   },
   {
     "id": 69,
@@ -1779,7 +1848,8 @@
     "elements": [
       "Chroma",
       "Terra"
-    ]
+    ],
+    "img": "/monsterImages/monster69.webp"
   },
   {
     "id": 70,
@@ -1805,7 +1875,8 @@
     "elements": [
       "Frost",
       "Terra"
-    ]
+    ],
+    "img": "/monsterImages/monster70.webp"
   },
   {
     "id": 71,
@@ -1830,7 +1901,8 @@
     "price": 7000,
     "elements": [
       "Chaos"
-    ]
+    ],
+    "img": "/monsterImages/monster71.webp"
   },
   {
     "id": 72,
@@ -1856,7 +1928,8 @@
     "elements": [
       "Storm",
       "Searing"
-    ]
+    ],
+    "img": "/monsterImages/monster72.webp"
   },
   {
     "id": 73,
@@ -1881,7 +1954,8 @@
     "price": 7000,
     "elements": [
       "Chaos"
-    ]
+    ],
+    "img": "/monsterImages/monster73.webp"
   },
   {
     "id": 74,
@@ -1907,7 +1981,8 @@
     "elements": [
       "Storm",
       "Chroma"
-    ]
+    ],
+    "img": "/monsterImages/monster74.webp"
   },
   {
     "id": 75,
@@ -1933,7 +2008,8 @@
     "elements": [
       "Frost",
       "Terra"
-    ]
+    ],
+    "img": "/monsterImages/monster75.webp"
   },
   {
     "id": 76,
@@ -1959,7 +2035,8 @@
     "elements": [
       "Chaos",
       "Mirage"
-    ]
+    ],
+    "img": "/monsterImages/monster76.webp"
   },
   {
     "id": 77,
@@ -1984,7 +2061,8 @@
     "price": 10000,
     "elements": [
       "Frost"
-    ]
+    ],
+    "img": "/monsterImages/monster77.webp"
   },
   {
     "id": 78,
@@ -2010,7 +2088,8 @@
     "elements": [
       "Chroma",
       "Mirage"
-    ]
+    ],
+    "img": "/monsterImages/monster78.webp"
   },
   {
     "id": 79,
@@ -2036,7 +2115,8 @@
     "elements": [
       "Chroma",
       "Terra"
-    ]
+    ],
+    "img": "/monsterImages/monster79.webp"
   },
   {
     "id": 80,
@@ -2062,7 +2142,8 @@
     "elements": [
       "Mirage",
       "Terra"
-    ]
+    ],
+    "img": "/monsterImages/monster80.webp"
   },
   {
     "id": 81,
@@ -2087,7 +2168,8 @@
     "price": 10000,
     "elements": [
       "Storm"
-    ]
+    ],
+    "img": "/monsterImages/monster81.webp"
   },
   {
     "id": 82,
@@ -2113,7 +2195,8 @@
     "elements": [
       "Chroma",
       "Terra"
-    ]
+    ],
+    "img": "/monsterImages/monster82.webp"
   },
   {
     "id": 83,
@@ -2138,7 +2221,8 @@
     "price": 10000,
     "elements": [
       "Chaos"
-    ]
+    ],
+    "img": "/monsterImages/monster83.webp"
   },
   {
     "id": 84,
@@ -2164,7 +2248,8 @@
     "elements": [
       "Frost",
       "Aqua"
-    ]
+    ],
+    "img": "/monsterImages/monster84.webp"
   },
   {
     "id": 85,
@@ -2189,7 +2274,8 @@
     "price": 10000,
     "elements": [
       "Frost"
-    ]
+    ],
+    "img": "/monsterImages/monster85.webp"
   },
   {
     "id": 86,
@@ -2214,7 +2300,8 @@
     "price": 10000,
     "elements": [
       "Terra"
-    ]
+    ],
+    "img": "/monsterImages/monster86.webp"
   },
   {
     "id": 87,
@@ -2239,7 +2326,8 @@
     "price": 10000,
     "elements": [
       "Chaos"
-    ]
+    ],
+    "img": "/monsterImages/monster87.webp"
   },
   {
     "id": 88,
@@ -2265,7 +2353,8 @@
     "elements": [
       "Storm",
       "Chroma"
-    ]
+    ],
+    "img": "/monsterImages/monster88.webp"
   },
   {
     "id": 89,
@@ -2290,7 +2379,8 @@
     "price": 10000,
     "elements": [
       "Chroma"
-    ]
+    ],
+    "img": "/monsterImages/monster89.webp"
   },
   {
     "id": 90,
@@ -2316,7 +2406,8 @@
     "elements": [
       "Frost",
       "Terra"
-    ]
+    ],
+    "img": "/monsterImages/monster90.webp"
   },
   {
     "id": 91,
@@ -2341,7 +2432,8 @@
     "price": 10000,
     "elements": [
       "Storm"
-    ]
+    ],
+    "img": "/monsterImages/monster91.webp"
   },
   {
     "id": 92,
@@ -2366,7 +2458,8 @@
     "price": 10000,
     "elements": [
       "Chaos"
-    ]
+    ],
+    "img": "/monsterImages/monster92.webp"
   },
   {
     "id": 93,
@@ -2392,7 +2485,8 @@
     "elements": [
       "Aqua",
       "Searing"
-    ]
+    ],
+    "img": "/monsterImages/monster93.webp"
   },
   {
     "id": 94,
@@ -2418,7 +2512,8 @@
     "elements": [
       "Chroma",
       "Terra"
-    ]
+    ],
+    "img": "/monsterImages/monster94.webp"
   },
   {
     "id": 95,
@@ -2443,7 +2538,8 @@
     "price": 10000,
     "elements": [
       "Searing"
-    ]
+    ],
+    "img": "/monsterImages/monster95.webp"
   },
   {
     "id": 96,
@@ -2469,7 +2565,8 @@
     "elements": [
       "Storm",
       "Aqua"
-    ]
+    ],
+    "img": "/monsterImages/monster96.webp"
   },
   {
     "id": 97,
@@ -2494,7 +2591,8 @@
     "price": 10000,
     "elements": [
       "Mirage"
-    ]
+    ],
+    "img": "/monsterImages/monster97.webp"
   },
   {
     "id": 98,
@@ -2520,7 +2618,8 @@
     "elements": [
       "Frost",
       "Chaos"
-    ]
+    ],
+    "img": "/monsterImages/monster98.webp"
   },
   {
     "id": 99,
@@ -2545,7 +2644,8 @@
     "price": 10000,
     "elements": [
       "Chaos"
-    ]
+    ],
+    "img": "/monsterImages/monster99.webp"
   },
   {
     "id": 100,
@@ -2571,7 +2671,8 @@
     "elements": [
       "Aqua",
       "Chroma"
-    ]
+    ],
+    "img": "/monsterImages/monster100.webp"
   },
   {
     "id": 101,
@@ -2598,7 +2699,8 @@
       "Frost",
       "Chaos",
       "Storm"
-    ]
+    ],
+    "img": "/monsterImages/monster101.webp"
   },
   {
     "id": 102,
@@ -2625,7 +2727,8 @@
       "Mirage",
       "Frost",
       "Chaos"
-    ]
+    ],
+    "img": "/monsterImages/monster102.webp"
   },
   {
     "id": 103,
@@ -2653,7 +2756,8 @@
       "Terra",
       "Storm",
       "Mirage"
-    ]
+    ],
+    "img": "/monsterImages/monster103.webp"
   },
   {
     "id": 104,
@@ -2681,7 +2785,8 @@
       "Terra",
       "Searing",
       "Storm"
-    ]
+    ],
+    "img": "/monsterImages/monster104.webp"
   },
   {
     "id": 105,
@@ -2709,7 +2814,8 @@
       "Searing",
       "Terra",
       "Aqua"
-    ]
+    ],
+    "img": "/monsterImages/monster105.webp"
   },
   {
     "id": 106,
@@ -2735,7 +2841,8 @@
     "elements": [
       "Chroma",
       "Mirage"
-    ]
+    ],
+    "img": "/monsterImages/monster106.webp"
   },
   {
     "id": 107,
@@ -2763,7 +2870,8 @@
       "Searing",
       "Aqua",
       "Terra"
-    ]
+    ],
+    "img": "/monsterImages/monster107.webp"
   },
   {
     "id": 108,
@@ -2790,7 +2898,8 @@
       "Chroma",
       "Terra",
       "Frost"
-    ]
+    ],
+    "img": "/monsterImages/monster108.webp"
   },
   {
     "id": 109,
@@ -2819,7 +2928,8 @@
       "Aqua",
       "Frost",
       "Mirage"
-    ]
+    ],
+    "img": "/monsterImages/monster109.webp"
   },
   {
     "id": 110,
@@ -2845,7 +2955,8 @@
     "elements": [
       "Chroma",
       "Chaos"
-    ]
+    ],
+    "img": "/monsterImages/monster110.webp"
   },
   {
     "id": 111,
@@ -2871,7 +2982,8 @@
     "elements": [
       "Terra",
       "Aqua"
-    ]
+    ],
+    "img": "/monsterImages/monster111.webp"
   },
   {
     "id": 112,
@@ -2899,7 +3011,8 @@
       "Storm",
       "Chroma",
       "Searing"
-    ]
+    ],
+    "img": "/monsterImages/monster112.webp"
   },
   {
     "id": 113,
@@ -2926,7 +3039,8 @@
       "Aqua",
       "Chaos",
       "Terra"
-    ]
+    ],
+    "img": "/monsterImages/monster113.webp"
   },
   {
     "id": 114,
@@ -2954,7 +3068,8 @@
       "Frost",
       "Chroma",
       "Mirage"
-    ]
+    ],
+    "img": "/monsterImages/monster114.webp"
   },
   {
     "id": 115,
@@ -2983,7 +3098,8 @@
       "Frost",
       "Terra",
       "Chaos"
-    ]
+    ],
+    "img": "/monsterImages/monster115.webp"
   },
   {
     "id": 116,
@@ -3011,7 +3127,8 @@
       "Chroma",
       "Mirage",
       "Storm"
-    ]
+    ],
+    "img": "/monsterImages/monster116.webp"
   },
   {
     "id": 117,
@@ -3037,7 +3154,8 @@
     "elements": [
       "Frost",
       "Searing"
-    ]
+    ],
+    "img": "/monsterImages/monster117.webp"
   },
   {
     "id": 118,
@@ -3065,7 +3183,8 @@
       "Frost",
       "Storm",
       "Searing"
-    ]
+    ],
+    "img": "/monsterImages/monster118.webp"
   },
   {
     "id": 119,
@@ -3091,7 +3210,8 @@
     "elements": [
       "Chaos",
       "Chroma"
-    ]
+    ],
+    "img": "/monsterImages/monster119.webp"
   },
   {
     "id": 120,
@@ -3119,7 +3239,8 @@
       "Searing",
       "Storm",
       "Mirage"
-    ]
+    ],
+    "img": "/monsterImages/monster120.webp"
   },
   {
     "id": 121,
@@ -3148,7 +3269,8 @@
       "Terra",
       "Chaos",
       "Searing"
-    ]
+    ],
+    "img": "/monsterImages/monster121.webp"
   },
   {
     "id": 122,
@@ -3174,7 +3296,8 @@
     "elements": [
       "Terra",
       "Frost"
-    ]
+    ],
+    "img": "/monsterImages/monster122.webp"
   },
   {
     "id": 123,
@@ -3204,7 +3327,8 @@
       "Terra",
       "Chaos",
       "Aqua"
-    ]
+    ],
+    "img": "/monsterImages/monster123.webp"
   },
   {
     "id": 124,
@@ -3233,7 +3357,8 @@
       "Aqua",
       "Chroma",
       "Frost"
-    ]
+    ],
+    "img": "/monsterImages/monster124.webp"
   },
   {
     "id": 125,
@@ -3260,7 +3385,8 @@
       "Mirage",
       "Terra",
       "Chaos"
-    ]
+    ],
+    "img": "/monsterImages/monster125.webp"
   },
   {
     "id": 126,
@@ -3290,7 +3416,8 @@
       "Storm",
       "Mirage",
       "Frost"
-    ]
+    ],
+    "img": "/monsterImages/monster126.webp"
   },
   {
     "id": 127,
@@ -3317,7 +3444,8 @@
       "Aqua",
       "Mirage",
       "Terra"
-    ]
+    ],
+    "img": "/monsterImages/monster127.webp"
   },
   {
     "id": 128,
@@ -3346,7 +3474,8 @@
       "Chaos",
       "Searing",
       "Terra"
-    ]
+    ],
+    "img": "/monsterImages/monster128.webp"
   },
   {
     "id": 129,
@@ -3376,7 +3505,8 @@
       "Aqua",
       "Chaos",
       "Chroma"
-    ]
+    ],
+    "img": "/monsterImages/monster129.webp"
   },
   {
     "id": 130,
@@ -3403,7 +3533,8 @@
       "Terra",
       "Searing",
       "Storm"
-    ]
+    ],
+    "img": "/monsterImages/monster130.webp"
   },
   {
     "id": 131,
@@ -3429,7 +3560,8 @@
     "elements": [
       "Chaos",
       "Frost"
-    ]
+    ],
+    "img": "/monsterImages/monster131.webp"
   },
   {
     "id": 132,
@@ -3459,7 +3591,8 @@
       "Aqua",
       "Searing",
       "Chaos"
-    ]
+    ],
+    "img": "/monsterImages/monster132.webp"
   },
   {
     "id": 133,
@@ -3486,7 +3619,8 @@
       "Chaos",
       "Chroma",
       "Aqua"
-    ]
+    ],
+    "img": "/monsterImages/monster133.webp"
   },
   {
     "id": 134,
@@ -3516,7 +3650,8 @@
       "Frost",
       "Mirage",
       "Terra"
-    ]
+    ],
+    "img": "/monsterImages/monster134.webp"
   },
   {
     "id": 135,
@@ -3544,7 +3679,8 @@
       "Storm",
       "Frost",
       "Chaos"
-    ]
+    ],
+    "img": "/monsterImages/monster135.webp"
   },
   {
     "id": 136,
@@ -3570,7 +3706,8 @@
     "elements": [
       "Chaos",
       "Searing"
-    ]
+    ],
+    "img": "/monsterImages/monster136.webp"
   },
   {
     "id": 137,
@@ -3598,7 +3735,8 @@
       "Aqua",
       "Terra",
       "Mirage"
-    ]
+    ],
+    "img": "/monsterImages/monster137.webp"
   },
   {
     "id": 138,
@@ -3624,7 +3762,8 @@
     "elements": [
       "Searing",
       "Mirage"
-    ]
+    ],
+    "img": "/monsterImages/monster138.webp"
   },
   {
     "id": 139,
@@ -3653,7 +3792,8 @@
       "Terra",
       "Aqua",
       "Chaos"
-    ]
+    ],
+    "img": "/monsterImages/monster139.webp"
   },
   {
     "id": 140,
@@ -3681,7 +3821,8 @@
       "Storm",
       "Terra",
       "Mirage"
-    ]
+    ],
+    "img": "/monsterImages/monster140.webp"
   },
   {
     "id": 141,
@@ -3711,7 +3852,8 @@
       "Storm",
       "Aqua",
       "Searing"
-    ]
+    ],
+    "img": "/monsterImages/monster141.webp"
   },
   {
     "id": 142,
@@ -3737,7 +3879,8 @@
     "elements": [
       "Terra",
       "Chaos"
-    ]
+    ],
+    "img": "/monsterImages/monster142.webp"
   },
   {
     "id": 143,
@@ -3764,7 +3907,8 @@
       "Searing",
       "Storm",
       "Chaos"
-    ]
+    ],
+    "img": "/monsterImages/monster143.webp"
   },
   {
     "id": 144,
@@ -3791,7 +3935,8 @@
       "Chaos",
       "Frost",
       "Terra"
-    ]
+    ],
+    "img": "/monsterImages/monster144.webp"
   },
   {
     "id": 145,
@@ -3819,7 +3964,8 @@
       "Searing",
       "Mirage",
       "Terra"
-    ]
+    ],
+    "img": "/monsterImages/monster145.webp"
   },
   {
     "id": 146,
@@ -3849,7 +3995,8 @@
       "Chaos",
       "Terra",
       "Storm"
-    ]
+    ],
+    "img": "/monsterImages/monster146.webp"
   },
   {
     "id": 147,
@@ -3876,7 +4023,8 @@
       "Terra",
       "Mirage",
       "Chaos"
-    ]
+    ],
+    "img": "/monsterImages/monster147.webp"
   },
   {
     "id": 148,
@@ -3902,7 +4050,8 @@
     "elements": [
       "Storm",
       "Frost"
-    ]
+    ],
+    "img": "/monsterImages/monster148.webp"
   },
   {
     "id": 149,
@@ -3932,7 +4081,8 @@
       "Terra",
       "Mirage",
       "Searing"
-    ]
+    ],
+    "img": "/monsterImages/monster149.webp"
   },
   {
     "id": 150,
@@ -3961,7 +4111,8 @@
       "Mirage",
       "Terra",
       "Chroma"
-    ]
+    ],
+    "img": "/monsterImages/monster150.webp"
   },
   {
     "id": 151,
@@ -3988,7 +4139,8 @@
       "Chaos",
       "Searing",
       "Chroma"
-    ]
+    ],
+    "img": "/monsterImages/monster151.webp"
   },
   {
     "id": 152,
@@ -4018,7 +4170,8 @@
       "Aqua",
       "Chroma",
       "Searing"
-    ]
+    ],
+    "img": "/monsterImages/monster152.webp"
   },
   {
     "id": 153,
@@ -4045,7 +4198,8 @@
       "Terra",
       "Chroma",
       "Searing"
-    ]
+    ],
+    "img": "/monsterImages/monster153.webp"
   },
   {
     "id": 154,
@@ -4074,7 +4228,8 @@
       "Terra",
       "Frost",
       "Chaos"
-    ]
+    ],
+    "img": "/monsterImages/monster154.webp"
   },
   {
     "id": 155,
@@ -4104,7 +4259,8 @@
       "Frost",
       "Mirage",
       "Chroma"
-    ]
+    ],
+    "img": "/monsterImages/monster155.webp"
   },
   {
     "id": 156,
@@ -4131,7 +4287,8 @@
       "Mirage",
       "Searing",
       "Terra"
-    ]
+    ],
+    "img": "/monsterImages/monster156.webp"
   },
   {
     "id": 157,
@@ -4159,7 +4316,8 @@
       "Mirage",
       "Searing",
       "Chaos"
-    ]
+    ],
+    "img": "/monsterImages/monster157.webp"
   },
   {
     "id": 158,
@@ -4189,7 +4347,8 @@
       "Frost",
       "Terra",
       "Storm"
-    ]
+    ],
+    "img": "/monsterImages/monster158.webp"
   },
   {
     "id": 159,
@@ -4217,7 +4376,8 @@
       "Searing",
       "Frost",
       "Mirage"
-    ]
+    ],
+    "img": "/monsterImages/monster159.webp"
   },
   {
     "id": 160,
@@ -4244,7 +4404,8 @@
       "Chroma",
       "Chaos",
       "Frost"
-    ]
+    ],
+    "img": "/monsterImages/monster160.webp"
   },
   {
     "id": 161,
@@ -4273,7 +4434,8 @@
       "Aqua",
       "Chroma",
       "Frost"
-    ]
+    ],
+    "img": "/monsterImages/monster161.webp"
   },
   {
     "id": 162,
@@ -4303,7 +4465,8 @@
       "Mirage",
       "Frost",
       "Terra"
-    ]
+    ],
+    "img": "/monsterImages/monster162.webp"
   },
   {
     "id": 163,
@@ -4329,7 +4492,8 @@
     "elements": [
       "Frost",
       "Chroma"
-    ]
+    ],
+    "img": "/monsterImages/monster163.webp"
   },
   {
     "id": 164,
@@ -4355,7 +4519,8 @@
     "elements": [
       "Searing",
       "Frost"
-    ]
+    ],
+    "img": "/monsterImages/monster164.webp"
   },
   {
     "id": 165,
@@ -4385,7 +4550,8 @@
       "Aqua",
       "Mirage",
       "Chroma"
-    ]
+    ],
+    "img": "/monsterImages/monster165.webp"
   },
   {
     "id": 166,
@@ -4411,7 +4577,8 @@
     "elements": [
       "Aqua",
       "Storm"
-    ]
+    ],
+    "img": "/monsterImages/monster166.webp"
   },
   {
     "id": 167,
@@ -4439,7 +4606,8 @@
       "Terra",
       "Frost",
       "Aqua"
-    ]
+    ],
+    "img": "/monsterImages/monster167.webp"
   },
   {
     "id": 168,
@@ -4466,7 +4634,8 @@
       "Mirage",
       "Frost",
       "Chroma"
-    ]
+    ],
+    "img": "/monsterImages/monster168.webp"
   },
   {
     "id": 169,
@@ -4493,7 +4662,8 @@
       "Chaos",
       "Terra",
       "Aqua"
-    ]
+    ],
+    "img": "/monsterImages/monster169.webp"
   },
   {
     "id": 170,
@@ -4521,7 +4691,8 @@
       "Storm",
       "Frost",
       "Chroma"
-    ]
+    ],
+    "img": "/monsterImages/monster170.webp"
   },
   {
     "id": 171,
@@ -4547,7 +4718,8 @@
     "elements": [
       "Searing",
       "Chroma"
-    ]
+    ],
+    "img": "/monsterImages/monster171.webp"
   },
   {
     "id": 172,
@@ -4576,7 +4748,8 @@
       "Terra",
       "Chroma",
       "Mirage"
-    ]
+    ],
+    "img": "/monsterImages/monster172.webp"
   },
   {
     "id": 173,
@@ -4606,7 +4779,8 @@
       "Frost",
       "Terra",
       "Mirage"
-    ]
+    ],
+    "img": "/monsterImages/monster173.webp"
   },
   {
     "id": 174,
@@ -4634,7 +4808,8 @@
       "Storm",
       "Frost",
       "Searing"
-    ]
+    ],
+    "img": "/monsterImages/monster174.webp"
   },
   {
     "id": 175,
@@ -4663,7 +4838,8 @@
       "Storm",
       "Searing",
       "Chroma"
-    ]
+    ],
+    "img": "/monsterImages/monster175.webp"
   },
   {
     "id": 176,
@@ -4693,7 +4869,8 @@
       "Searing",
       "Chroma",
       "Mirage"
-    ]
+    ],
+    "img": "/monsterImages/monster176.webp"
   },
   {
     "id": 177,
@@ -4720,7 +4897,8 @@
       "Searing",
       "Aqua",
       "Mirage"
-    ]
+    ],
+    "img": "/monsterImages/monster177.webp"
   },
   {
     "id": 178,
@@ -4746,7 +4924,8 @@
     "elements": [
       "Searing",
       "Aqua"
-    ]
+    ],
+    "img": "/monsterImages/monster178.webp"
   },
   {
     "id": 179,
@@ -4773,7 +4952,8 @@
       "Frost",
       "Chaos",
       "Mirage"
-    ]
+    ],
+    "img": "/monsterImages/monster179.webp"
   },
   {
     "id": 180,
@@ -4800,7 +4980,8 @@
       "Frost",
       "Chroma",
       "Storm"
-    ]
+    ],
+    "img": "/monsterImages/monster180.webp"
   },
   {
     "id": 181,
@@ -4829,7 +5010,8 @@
       "Frost",
       "Searing",
       "Mirage"
-    ]
+    ],
+    "img": "/monsterImages/monster181.webp"
   },
   {
     "id": 182,
@@ -4859,7 +5041,8 @@
       "Storm",
       "Frost",
       "Aqua"
-    ]
+    ],
+    "img": "/monsterImages/monster182.webp"
   },
   {
     "id": 183,
@@ -4888,7 +5071,8 @@
       "Frost",
       "Chaos",
       "Terra"
-    ]
+    ],
+    "img": "/monsterImages/monster183.webp"
   },
   {
     "id": 184,
@@ -4917,7 +5101,8 @@
       "Terra",
       "Chaos",
       "Aqua"
-    ]
+    ],
+    "img": "/monsterImages/monster184.webp"
   },
   {
     "id": 185,
@@ -4946,7 +5131,8 @@
       "Chroma",
       "Mirage",
       "Terra"
-    ]
+    ],
+    "img": "/monsterImages/monster185.webp"
   },
   {
     "id": 186,
@@ -4975,7 +5161,8 @@
       "Mirage",
       "Searing",
       "Frost"
-    ]
+    ],
+    "img": "/monsterImages/monster186.webp"
   },
   {
     "id": 187,
@@ -5002,7 +5189,8 @@
       "Frost",
       "Terra",
       "Searing"
-    ]
+    ],
+    "img": "/monsterImages/monster187.webp"
   },
   {
     "id": 188,
@@ -5029,7 +5217,8 @@
       "Searing",
       "Frost",
       "Mirage"
-    ]
+    ],
+    "img": "/monsterImages/monster188.webp"
   },
   {
     "id": 189,
@@ -5055,7 +5244,8 @@
     "elements": [
       "Frost",
       "Searing"
-    ]
+    ],
+    "img": "/monsterImages/monster189.webp"
   },
   {
     "id": 190,
@@ -5083,7 +5273,8 @@
       "Frost",
       "Aqua",
       "Terra"
-    ]
+    ],
+    "img": "/monsterImages/monster190.webp"
   },
   {
     "id": 191,
@@ -5113,7 +5304,8 @@
       "Terra",
       "Chaos",
       "Mirage"
-    ]
+    ],
+    "img": "/monsterImages/monster191.webp"
   },
   {
     "id": 192,
@@ -5142,7 +5334,8 @@
       "Searing",
       "Mirage",
       "Terra"
-    ]
+    ],
+    "img": "/monsterImages/monster192.webp"
   },
   {
     "id": 193,
@@ -5172,7 +5365,8 @@
       "Aqua",
       "Searing",
       "Chroma"
-    ]
+    ],
+    "img": "/monsterImages/monster193.webp"
   },
   {
     "id": 194,
@@ -5202,7 +5396,8 @@
       "Storm",
       "Aqua",
       "Searing"
-    ]
+    ],
+    "img": "/monsterImages/monster194.webp"
   },
   {
     "id": 195,
@@ -5230,7 +5425,8 @@
       "Storm",
       "Chaos",
       "Chroma"
-    ]
+    ],
+    "img": "/monsterImages/monster195.webp"
   },
   {
     "id": 196,
@@ -5256,7 +5452,8 @@
     "elements": [
       "Mirage",
       "Chaos"
-    ]
+    ],
+    "img": "/monsterImages/monster196.webp"
   },
   {
     "id": 197,
@@ -5284,7 +5481,8 @@
       "Frost",
       "Searing",
       "Chroma"
-    ]
+    ],
+    "img": "/monsterImages/monster197.webp"
   },
   {
     "id": 198,
@@ -5311,7 +5509,8 @@
       "Mirage",
       "Frost",
       "Storm"
-    ]
+    ],
+    "img": "/monsterImages/monster198.webp"
   },
   {
     "id": 199,
@@ -5337,7 +5536,8 @@
     "elements": [
       "Searing",
       "Chroma"
-    ]
+    ],
+    "img": "/monsterImages/monster199.webp"
   },
   {
     "id": 200,
@@ -5364,7 +5564,8 @@
       "Storm",
       "Searing",
       "Frost"
-    ]
+    ],
+    "img": "/monsterImages/monster200.webp"
   },
   {
     "id": 201,
@@ -5393,7 +5594,8 @@
       "Mirage",
       "Aqua",
       "Frost"
-    ]
+    ],
+    "img": "/monsterImages/monster201.webp"
   },
   {
     "id": 202,
@@ -5422,7 +5624,8 @@
       "Storm",
       "Aqua",
       "Searing"
-    ]
+    ],
+    "img": "/monsterImages/monster202.webp"
   },
   {
     "id": 203,
@@ -5452,7 +5655,8 @@
       "Chaos",
       "Mirage",
       "Aqua"
-    ]
+    ],
+    "img": "/monsterImages/monster203.webp"
   },
   {
     "id": 204,
@@ -5482,7 +5686,8 @@
       "Aqua",
       "Mirage",
       "Terra"
-    ]
+    ],
+    "img": "/monsterImages/monster204.webp"
   },
   {
     "id": 205,
@@ -5512,7 +5717,8 @@
       "Chroma",
       "Aqua",
       "Chaos"
-    ]
+    ],
+    "img": "/monsterImages/monster205.webp"
   },
   {
     "id": 206,
@@ -5539,7 +5745,8 @@
       "Frost",
       "Aqua",
       "Storm"
-    ]
+    ],
+    "img": "/monsterImages/monster206.webp"
   },
   {
     "id": 207,
@@ -5567,7 +5774,8 @@
       "Aqua",
       "Storm",
       "Terra"
-    ]
+    ],
+    "img": "/monsterImages/monster207.webp"
   },
   {
     "id": 208,
@@ -5595,7 +5803,8 @@
       "Terra",
       "Storm",
       "Searing"
-    ]
+    ],
+    "img": "/monsterImages/monster208.webp"
   },
   {
     "id": 209,
@@ -5621,7 +5830,8 @@
     "elements": [
       "Aqua",
       "Frost"
-    ]
+    ],
+    "img": "/monsterImages/monster209.webp"
   },
   {
     "id": 210,
@@ -5649,7 +5859,8 @@
       "Searing",
       "Storm",
       "Chroma"
-    ]
+    ],
+    "img": "/monsterImages/monster210.webp"
   },
   {
     "id": 211,
@@ -5679,7 +5890,8 @@
       "Frost",
       "Storm",
       "Mirage"
-    ]
+    ],
+    "img": "/monsterImages/monster211.webp"
   },
   {
     "id": 212,
@@ -5705,7 +5917,8 @@
     "elements": [
       "Mirage",
       "Chaos"
-    ]
+    ],
+    "img": "/monsterImages/monster212.webp"
   },
   {
     "id": 213,
@@ -5731,7 +5944,8 @@
     "elements": [
       "Mirage",
       "Frost"
-    ]
+    ],
+    "img": "/monsterImages/monster213.webp"
   },
   {
     "id": 214,
@@ -5761,7 +5975,8 @@
       "Terra",
       "Chroma",
       "Aqua"
-    ]
+    ],
+    "img": "/monsterImages/monster214.webp"
   },
   {
     "id": 215,
@@ -5787,7 +6002,8 @@
     "elements": [
       "Storm",
       "Aqua"
-    ]
+    ],
+    "img": "/monsterImages/monster215.webp"
   },
   {
     "id": 216,
@@ -5815,7 +6031,8 @@
       "Storm",
       "Terra",
       "Frost"
-    ]
+    ],
+    "img": "/monsterImages/monster216.webp"
   },
   {
     "id": 217,
@@ -5845,7 +6062,8 @@
       "Aqua",
       "Searing",
       "Mirage"
-    ]
+    ],
+    "img": "/monsterImages/monster217.webp"
   },
   {
     "id": 218,
@@ -5871,7 +6089,8 @@
     "elements": [
       "Chroma",
       "Mirage"
-    ]
+    ],
+    "img": "/monsterImages/monster218.webp"
   },
   {
     "id": 219,
@@ -5897,7 +6116,8 @@
     "elements": [
       "Terra",
       "Aqua"
-    ]
+    ],
+    "img": "/monsterImages/monster219.webp"
   },
   {
     "id": 220,
@@ -5925,7 +6145,8 @@
       "Chroma",
       "Aqua",
       "Chaos"
-    ]
+    ],
+    "img": "/monsterImages/monster220.webp"
   },
   {
     "id": 221,
@@ -5953,7 +6174,8 @@
       "Aqua",
       "Mirage",
       "Searing"
-    ]
+    ],
+    "img": "/monsterImages/monster221.webp"
   },
   {
     "id": 222,
@@ -5981,7 +6203,8 @@
       "Chaos",
       "Storm",
       "Searing"
-    ]
+    ],
+    "img": "/monsterImages/monster222.webp"
   },
   {
     "id": 223,
@@ -6010,7 +6233,8 @@
       "Chroma",
       "Aqua",
       "Terra"
-    ]
+    ],
+    "img": "/monsterImages/monster223.webp"
   },
   {
     "id": 224,
@@ -6039,7 +6263,8 @@
       "Mirage",
       "Chaos",
       "Chroma"
-    ]
+    ],
+    "img": "/monsterImages/monster224.webp"
   },
   {
     "id": 225,
@@ -6066,7 +6291,8 @@
       "Mirage",
       "Terra",
       "Searing"
-    ]
+    ],
+    "img": "/monsterImages/monster225.webp"
   },
   {
     "id": 226,
@@ -6095,7 +6321,8 @@
       "Chaos",
       "Frost",
       "Aqua"
-    ]
+    ],
+    "img": "/monsterImages/monster226.webp"
   },
   {
     "id": 227,
@@ -6123,7 +6350,8 @@
       "Chroma",
       "Storm",
       "Frost"
-    ]
+    ],
+    "img": "/monsterImages/monster227.webp"
   },
   {
     "id": 228,
@@ -6151,7 +6379,8 @@
       "Chaos",
       "Searing",
       "Mirage"
-    ]
+    ],
+    "img": "/monsterImages/monster228.webp"
   },
   {
     "id": 229,
@@ -6177,7 +6406,8 @@
     "elements": [
       "Searing",
       "Terra"
-    ]
+    ],
+    "img": "/monsterImages/monster229.webp"
   },
   {
     "id": 230,
@@ -6207,7 +6437,8 @@
       "Frost",
       "Chroma",
       "Searing"
-    ]
+    ],
+    "img": "/monsterImages/monster230.webp"
   },
   {
     "id": 231,
@@ -6233,7 +6464,8 @@
     "elements": [
       "Chaos",
       "Frost"
-    ]
+    ],
+    "img": "/monsterImages/monster231.webp"
   },
   {
     "id": 232,
@@ -6262,7 +6494,8 @@
       "Storm",
       "Searing",
       "Chroma"
-    ]
+    ],
+    "img": "/monsterImages/monster232.webp"
   },
   {
     "id": 233,
@@ -6288,7 +6521,8 @@
     "elements": [
       "Aqua",
       "Mirage"
-    ]
+    ],
+    "img": "/monsterImages/monster233.webp"
   },
   {
     "id": 234,
@@ -6317,7 +6551,8 @@
       "Terra",
       "Aqua",
       "Storm"
-    ]
+    ],
+    "img": "/monsterImages/monster234.webp"
   },
   {
     "id": 235,
@@ -6345,7 +6580,8 @@
       "Searing",
       "Frost",
       "Chaos"
-    ]
+    ],
+    "img": "/monsterImages/monster235.webp"
   },
   {
     "id": 236,
@@ -6373,7 +6609,8 @@
       "Mirage",
       "Searing",
       "Terra"
-    ]
+    ],
+    "img": "/monsterImages/monster236.webp"
   },
   {
     "id": 237,
@@ -6400,7 +6637,8 @@
       "Searing",
       "Frost",
       "Mirage"
-    ]
+    ],
+    "img": "/monsterImages/monster237.webp"
   },
   {
     "id": 238,
@@ -6427,7 +6665,8 @@
       "Mirage",
       "Frost",
       "Chaos"
-    ]
+    ],
+    "img": "/monsterImages/monster238.webp"
   },
   {
     "id": 239,
@@ -6453,7 +6692,8 @@
     "elements": [
       "Mirage",
       "Storm"
-    ]
+    ],
+    "img": "/monsterImages/monster239.webp"
   },
   {
     "id": 240,
@@ -6482,7 +6722,8 @@
       "Terra",
       "Frost",
       "Storm"
-    ]
+    ],
+    "img": "/monsterImages/monster240.webp"
   },
   {
     "id": 241,
@@ -6509,7 +6750,8 @@
       "Aqua",
       "Chaos",
       "Terra"
-    ]
+    ],
+    "img": "/monsterImages/monster241.webp"
   },
   {
     "id": 242,
@@ -6539,7 +6781,8 @@
       "Chroma",
       "Terra",
       "Chaos"
-    ]
+    ],
+    "img": "/monsterImages/monster242.webp"
   },
   {
     "id": 243,
@@ -6565,7 +6808,8 @@
     "elements": [
       "Frost",
       "Mirage"
-    ]
+    ],
+    "img": "/monsterImages/monster243.webp"
   },
   {
     "id": 244,
@@ -6591,7 +6835,8 @@
     "elements": [
       "Chaos",
       "Terra"
-    ]
+    ],
+    "img": "/monsterImages/monster244.webp"
   },
   {
     "id": 245,
@@ -6620,7 +6865,8 @@
       "Chroma",
       "Aqua",
       "Storm"
-    ]
+    ],
+    "img": "/monsterImages/monster245.webp"
   },
   {
     "id": 246,
@@ -6647,7 +6893,8 @@
       "Mirage",
       "Frost",
       "Aqua"
-    ]
+    ],
+    "img": "/monsterImages/monster246.webp"
   },
   {
     "id": 247,
@@ -6677,7 +6924,8 @@
       "Chaos",
       "Terra",
       "Mirage"
-    ]
+    ],
+    "img": "/monsterImages/monster247.webp"
   },
   {
     "id": 248,
@@ -6705,7 +6953,8 @@
       "Terra",
       "Frost",
       "Searing"
-    ]
+    ],
+    "img": "/monsterImages/monster248.webp"
   },
   {
     "id": 249,
@@ -6731,7 +6980,8 @@
     "elements": [
       "Chroma",
       "Terra"
-    ]
+    ],
+    "img": "/monsterImages/monster249.webp"
   },
   {
     "id": 250,
@@ -6763,7 +7013,8 @@
       "Aqua",
       "Blight",
       "Storm"
-    ]
+    ],
+    "img": "/monsterImages/monster250.webp"
   },
   {
     "id": 251,
@@ -6795,7 +7046,8 @@
       "Seraph",
       "Aether",
       "Tempest"
-    ]
+    ],
+    "img": "/monsterImages/monster251.webp"
   },
   {
     "id": 252,
@@ -6826,7 +7078,8 @@
       "Abyss",
       "Tidal",
       "Mirage"
-    ]
+    ],
+    "img": "/monsterImages/monster252.webp"
   },
   {
     "id": 253,
@@ -6855,7 +7108,8 @@
       "Searing",
       "Chaos",
       "Tidal"
-    ]
+    ],
+    "img": "/monsterImages/monster253.webp"
   },
   {
     "id": 254,
@@ -6884,7 +7138,8 @@
       "Abyss",
       "Frost",
       "Aether"
-    ]
+    ],
+    "img": "/monsterImages/monster254.webp"
   },
   {
     "id": 255,
@@ -6913,7 +7168,8 @@
       "Lunar",
       "Cinder",
       "Mirage"
-    ]
+    ],
+    "img": "/monsterImages/monster255.webp"
   },
   {
     "id": 256,
@@ -6942,7 +7198,8 @@
       "Chroma",
       "Silhouette",
       "Embers"
-    ]
+    ],
+    "img": "/monsterImages/monster256.webp"
   },
   {
     "id": 257,
@@ -6971,7 +7228,8 @@
       "Fulgent",
       "Blight",
       "Lumina"
-    ]
+    ],
+    "img": "/monsterImages/monster257.webp"
   },
   {
     "id": 258,
@@ -7003,7 +7261,8 @@
       "Solstice",
       "Storm",
       "Tidal"
-    ]
+    ],
+    "img": "/monsterImages/monster258.webp"
   },
   {
     "id": 259,
@@ -7031,7 +7290,8 @@
       "Sable",
       "Silhouette",
       "Tempest"
-    ]
+    ],
+    "img": "/monsterImages/monster259.webp"
   },
   {
     "id": 260,
@@ -7060,7 +7320,8 @@
       "Blight",
       "Tidal",
       "Mirage"
-    ]
+    ],
+    "img": "/monsterImages/monster260.webp"
   },
   {
     "id": 261,
@@ -7092,7 +7353,8 @@
       "Storm",
       "Searing",
       "Solstice"
-    ]
+    ],
+    "img": "/monsterImages/monster261.webp"
   },
   {
     "id": 262,
@@ -7121,7 +7383,8 @@
       "Frost",
       "Gloom",
       "Fulgent"
-    ]
+    ],
+    "img": "/monsterImages/monster262.webp"
   },
   {
     "id": 263,
@@ -7149,7 +7412,8 @@
       "Abyss",
       "Gloom",
       "Aether"
-    ]
+    ],
+    "img": "/monsterImages/monster263.webp"
   },
   {
     "id": 264,
@@ -7178,7 +7442,8 @@
       "Chroma",
       "Aether",
       "Gloom"
-    ]
+    ],
+    "img": "/monsterImages/monster264.webp"
   },
   {
     "id": 265,
@@ -7205,7 +7470,8 @@
       "Blight",
       "Tidal",
       "Storm"
-    ]
+    ],
+    "img": "/monsterImages/monster265.webp"
   },
   {
     "id": 266,
@@ -7237,7 +7503,8 @@
       "Chaos",
       "Aqua",
       "Tempest"
-    ]
+    ],
+    "img": "/monsterImages/monster266.webp"
   },
   {
     "id": 267,
@@ -7264,7 +7531,8 @@
       "Tidal",
       "Aqua",
       "Vitalis"
-    ]
+    ],
+    "img": "/monsterImages/monster267.webp"
   },
   {
     "id": 268,
@@ -7295,7 +7563,8 @@
       "Lumina",
       "Tidal",
       "Cinder"
-    ]
+    ],
+    "img": "/monsterImages/monster268.webp"
   },
   {
     "id": 269,
@@ -7322,7 +7591,8 @@
       "Abyss",
       "Seraph",
       "Aether"
-    ]
+    ],
+    "img": "/monsterImages/monster269.webp"
   },
   {
     "id": 270,
@@ -7353,7 +7623,8 @@
       "Umbral",
       "Seraph",
       "Terra"
-    ]
+    ],
+    "img": "/monsterImages/monster270.webp"
   },
   {
     "id": 271,
@@ -7385,7 +7656,8 @@
       "Aether",
       "Solstice",
       "Tempest"
-    ]
+    ],
+    "img": "/monsterImages/monster271.webp"
   },
   {
     "id": 272,
@@ -7415,7 +7687,8 @@
       "Seraph",
       "Terra",
       "Aether"
-    ]
+    ],
+    "img": "/monsterImages/monster272.webp"
   },
   {
     "id": 273,
@@ -7446,7 +7719,8 @@
       "Toxin",
       "Blight",
       "Chaos"
-    ]
+    ],
+    "img": "/monsterImages/monster273.webp"
   },
   {
     "id": 274,
@@ -7478,7 +7752,8 @@
       "Solstice",
       "Fulgent",
       "Silhouette"
-    ]
+    ],
+    "img": "/monsterImages/monster274.webp"
   },
   {
     "id": 275,
@@ -7510,7 +7785,8 @@
       "Chroma",
       "Storm",
       "Solstice"
-    ]
+    ],
+    "img": "/monsterImages/monster275.webp"
   },
   {
     "id": 276,
@@ -7537,7 +7813,8 @@
       "Searing",
       "Storm",
       "Blight"
-    ]
+    ],
+    "img": "/monsterImages/monster276.webp"
   },
   {
     "id": 277,
@@ -7565,7 +7842,8 @@
       "Solstice",
       "Chroma",
       "Terra"
-    ]
+    ],
+    "img": "/monsterImages/monster277.webp"
   },
   {
     "id": 278,
@@ -7596,7 +7874,8 @@
       "Storm",
       "Embers",
       "Aether"
-    ]
+    ],
+    "img": "/monsterImages/monster278.webp"
   },
   {
     "id": 279,
@@ -7623,7 +7902,8 @@
       "Toxin",
       "Solstice",
       "Hurricane"
-    ]
+    ],
+    "img": "/monsterImages/monster279.webp"
   },
   {
     "id": 280,
@@ -7652,7 +7932,8 @@
       "Vitalis",
       "Lunar",
       "Chroma"
-    ]
+    ],
+    "img": "/monsterImages/monster280.webp"
   },
   {
     "id": 281,
@@ -7683,7 +7964,8 @@
       "Abyss",
       "Umbral",
       "Aqua"
-    ]
+    ],
+    "img": "/monsterImages/monster281.webp"
   },
   {
     "id": 282,
@@ -7715,7 +7997,8 @@
       "Blight",
       "Gloom",
       "Terra"
-    ]
+    ],
+    "img": "/monsterImages/monster282.webp"
   },
   {
     "id": 283,
@@ -7744,7 +8027,8 @@
       "Lumina",
       "Gloom",
       "Mirage"
-    ]
+    ],
+    "img": "/monsterImages/monster283.webp"
   },
   {
     "id": 284,
@@ -7773,7 +8057,8 @@
       "Seraph",
       "Solstice",
       "Lumina"
-    ]
+    ],
+    "img": "/monsterImages/monster284.webp"
   },
   {
     "id": 285,
@@ -7805,7 +8090,8 @@
       "Aqua",
       "Seraph",
       "Embers"
-    ]
+    ],
+    "img": "/monsterImages/monster285.webp"
   },
   {
     "id": 286,
@@ -7834,7 +8120,8 @@
       "Sable",
       "Terra",
       "Aether"
-    ]
+    ],
+    "img": "/monsterImages/monster286.webp"
   },
   {
     "id": 287,
@@ -7861,7 +8148,8 @@
       "Chaos",
       "Lumina",
       "Tempest"
-    ]
+    ],
+    "img": "/monsterImages/monster287.webp"
   },
   {
     "id": 288,
@@ -7888,7 +8176,8 @@
       "Toxin",
       "Chaos",
       "Aether"
-    ]
+    ],
+    "img": "/monsterImages/monster288.webp"
   },
   {
     "id": 289,
@@ -7915,7 +8204,8 @@
       "Blight",
       "Vitalis",
       "Tidal"
-    ]
+    ],
+    "img": "/monsterImages/monster289.webp"
   },
   {
     "id": 290,
@@ -7946,7 +8236,8 @@
       "Terra",
       "Chaos",
       "Searing"
-    ]
+    ],
+    "img": "/monsterImages/monster290.webp"
   },
   {
     "id": 291,
@@ -7974,7 +8265,8 @@
       "Vitalis",
       "Blight",
       "Solstice"
-    ]
+    ],
+    "img": "/monsterImages/monster291.webp"
   },
   {
     "id": 292,
@@ -8002,7 +8294,8 @@
       "Sable",
       "Silhouette",
       "Terra"
-    ]
+    ],
+    "img": "/monsterImages/monster292.webp"
   },
   {
     "id": 293,
@@ -8032,7 +8325,8 @@
       "Aether",
       "Searing",
       "Toxin"
-    ]
+    ],
+    "img": "/monsterImages/monster293.webp"
   },
   {
     "id": 294,
@@ -8061,7 +8355,8 @@
       "Tidal",
       "Cinder",
       "Embers"
-    ]
+    ],
+    "img": "/monsterImages/monster294.webp"
   },
   {
     "id": 295,
@@ -8091,7 +8386,8 @@
       "Aether",
       "Terra",
       "Seraph"
-    ]
+    ],
+    "img": "/monsterImages/monster295.webp"
   },
   {
     "id": 296,
@@ -8121,7 +8417,8 @@
       "Cacophony",
       "Aether",
       "Storm"
-    ]
+    ],
+    "img": "/monsterImages/monster296.webp"
   },
   {
     "id": 297,
@@ -8152,7 +8449,8 @@
       "Fulgent",
       "Cacophony",
       "Tempest"
-    ]
+    ],
+    "img": "/monsterImages/monster297.webp"
   },
   {
     "id": 298,
@@ -8179,7 +8477,8 @@
       "Searing",
       "Cacophony",
       "Terra"
-    ]
+    ],
+    "img": "/monsterImages/monster298.webp"
   },
   {
     "id": 299,
@@ -8209,7 +8508,8 @@
       "Abyss",
       "Chaos",
       "Solstice"
-    ]
+    ],
+    "img": "/monsterImages/monster299.webp"
   },
   {
     "id": 300,
@@ -8237,7 +8537,8 @@
       "Vitalis",
       "Fulgent",
       "Aqua"
-    ]
+    ],
+    "img": "/monsterImages/monster300.webp"
   },
   {
     "id": 301,
@@ -8269,7 +8570,8 @@
       "Umbral",
       "Abyss",
       "Frost"
-    ]
+    ],
+    "img": "/monsterImages/monster301.webp"
   },
   {
     "id": 302,
@@ -8301,7 +8603,8 @@
       "Fulgent",
       "Umbral",
       "Aether"
-    ]
+    ],
+    "img": "/monsterImages/monster302.webp"
   },
   {
     "id": 303,
@@ -8332,7 +8635,8 @@
       "Aether",
       "Mirage",
       "Umbral"
-    ]
+    ],
+    "img": "/monsterImages/monster303.webp"
   },
   {
     "id": 304,
@@ -8361,7 +8665,8 @@
       "Tidal",
       "Chaos",
       "Embers"
-    ]
+    ],
+    "img": "/monsterImages/monster304.webp"
   },
   {
     "id": 305,
@@ -8391,7 +8696,8 @@
       "Lumina",
       "Chaos",
       "Embers"
-    ]
+    ],
+    "img": "/monsterImages/monster305.webp"
   },
   {
     "id": 306,
@@ -8419,7 +8725,8 @@
       "Cinder",
       "Solstice",
       "Hurricane"
-    ]
+    ],
+    "img": "/monsterImages/monster306.webp"
   },
   {
     "id": 307,
@@ -8451,7 +8758,8 @@
       "Umbral",
       "Silhouette",
       "Cinder"
-    ]
+    ],
+    "img": "/monsterImages/monster307.webp"
   },
   {
     "id": 308,
@@ -8482,7 +8790,8 @@
       "Mirage",
       "Sable",
       "Storm"
-    ]
+    ],
+    "img": "/monsterImages/monster308.webp"
   },
   {
     "id": 309,
@@ -8514,7 +8823,8 @@
       "Mirage",
       "Aqua",
       "Seraph"
-    ]
+    ],
+    "img": "/monsterImages/monster309.webp"
   },
   {
     "id": 310,
@@ -8544,7 +8854,8 @@
       "Tempest",
       "Sable",
       "Lunar"
-    ]
+    ],
+    "img": "/monsterImages/monster310.webp"
   },
   {
     "id": 311,
@@ -8571,7 +8882,8 @@
       "Gloom",
       "Lumina",
       "Umbral"
-    ]
+    ],
+    "img": "/monsterImages/monster311.webp"
   },
   {
     "id": 312,
@@ -8602,7 +8914,8 @@
       "Frost",
       "Searing",
       "Tidal"
-    ]
+    ],
+    "img": "/monsterImages/monster312.webp"
   },
   {
     "id": 313,
@@ -8633,7 +8946,8 @@
       "Tidal",
       "Chaos",
       "Hurricane"
-    ]
+    ],
+    "img": "/monsterImages/monster313.webp"
   },
   {
     "id": 314,
@@ -8665,7 +8979,8 @@
       "Lumina",
       "Seraph",
       "Solstice"
-    ]
+    ],
+    "img": "/monsterImages/monster314.webp"
   },
   {
     "id": 315,
@@ -8697,7 +9012,8 @@
       "Cinder",
       "Hurricane",
       "Terra"
-    ]
+    ],
+    "img": "/monsterImages/monster315.webp"
   },
   {
     "id": 316,
@@ -8729,7 +9045,8 @@
       "Blight",
       "Umbral",
       "Sable"
-    ]
+    ],
+    "img": "/monsterImages/monster316.webp"
   },
   {
     "id": 317,
@@ -8756,7 +9073,8 @@
       "Cacophony",
       "Storm",
       "Umbral"
-    ]
+    ],
+    "img": "/monsterImages/monster317.webp"
   },
   {
     "id": 318,
@@ -8786,7 +9104,8 @@
       "Tidal",
       "Cacophony",
       "Aether"
-    ]
+    ],
+    "img": "/monsterImages/monster318.webp"
   },
   {
     "id": 319,
@@ -8813,7 +9132,8 @@
       "Solstice",
       "Searing",
       "Toxin"
-    ]
+    ],
+    "img": "/monsterImages/monster319.webp"
   },
   {
     "id": 320,
@@ -8840,7 +9160,8 @@
       "Seraph",
       "Abyss",
       "Chroma"
-    ]
+    ],
+    "img": "/monsterImages/monster320.webp"
   },
   {
     "id": 321,
@@ -8870,7 +9191,8 @@
       "Storm",
       "Tempest",
       "Solstice"
-    ]
+    ],
+    "img": "/monsterImages/monster321.webp"
   },
   {
     "id": 322,
@@ -8900,7 +9222,8 @@
       "Embers",
       "Sable",
       "Chroma"
-    ]
+    ],
+    "img": "/monsterImages/monster322.webp"
   },
   {
     "id": 323,
@@ -8929,7 +9252,8 @@
       "Chaos",
       "Solstice",
       "Searing"
-    ]
+    ],
+    "img": "/monsterImages/monster323.webp"
   },
   {
     "id": 324,
@@ -8961,7 +9285,8 @@
       "Cacophony",
       "Mirage",
       "Tempest"
-    ]
+    ],
+    "img": "/monsterImages/monster324.webp"
   },
   {
     "id": 325,
@@ -8988,7 +9313,8 @@
       "Storm",
       "Searing",
       "Vitalis"
-    ]
+    ],
+    "img": "/monsterImages/monster325.webp"
   },
   {
     "id": 326,
@@ -9016,7 +9342,8 @@
       "Hurricane",
       "Chroma",
       "Seraph"
-    ]
+    ],
+    "img": "/monsterImages/monster326.webp"
   },
   {
     "id": 327,
@@ -9047,7 +9374,8 @@
       "Toxin",
       "Hurricane",
       "Storm"
-    ]
+    ],
+    "img": "/monsterImages/monster327.webp"
   },
   {
     "id": 328,
@@ -9077,7 +9405,8 @@
       "Terra",
       "Sable",
       "Cinder"
-    ]
+    ],
+    "img": "/monsterImages/monster328.webp"
   },
   {
     "id": 329,
@@ -9108,7 +9437,8 @@
       "Tidal",
       "Cacophony",
       "Gloom"
-    ]
+    ],
+    "img": "/monsterImages/monster329.webp"
   },
   {
     "id": 330,
@@ -9140,7 +9470,8 @@
       "Solstice",
       "Chroma",
       "Frost"
-    ]
+    ],
+    "img": "/monsterImages/monster330.webp"
   },
   {
     "id": 331,
@@ -9169,7 +9500,8 @@
       "Chroma",
       "Sable",
       "Hurricane"
-    ]
+    ],
+    "img": "/monsterImages/monster331.webp"
   },
   {
     "id": 332,
@@ -9200,7 +9532,8 @@
       "Vitalis",
       "Aether",
       "Umbral"
-    ]
+    ],
+    "img": "/monsterImages/monster332.webp"
   },
   {
     "id": 333,
@@ -9231,7 +9564,8 @@
       "Toxin",
       "Aqua",
       "Storm"
-    ]
+    ],
+    "img": "/monsterImages/monster333.webp"
   },
   {
     "id": 334,
@@ -9262,7 +9596,8 @@
       "Toxin",
       "Blight",
       "Hurricane"
-    ]
+    ],
+    "img": "/monsterImages/monster334.webp"
   },
   {
     "id": 335,
@@ -9291,7 +9626,8 @@
       "Solstice",
       "Vitalis",
       "Aqua"
-    ]
+    ],
+    "img": "/monsterImages/monster335.webp"
   },
   {
     "id": 336,
@@ -9320,7 +9656,8 @@
       "Searing",
       "Lumina",
       "Vitalis"
-    ]
+    ],
+    "img": "/monsterImages/monster336.webp"
   },
   {
     "id": 337,
@@ -9348,7 +9685,8 @@
       "Terra",
       "Tempest",
       "Seraph"
-    ]
+    ],
+    "img": "/monsterImages/monster337.webp"
   },
   {
     "id": 338,
@@ -9377,7 +9715,8 @@
       "Solstice",
       "Terra",
       "Aether"
-    ]
+    ],
+    "img": "/monsterImages/monster338.webp"
   },
   {
     "id": 339,
@@ -9407,7 +9746,8 @@
       "Seraph",
       "Cinder",
       "Terra"
-    ]
+    ],
+    "img": "/monsterImages/monster339.webp"
   },
   {
     "id": 340,
@@ -9437,7 +9777,8 @@
       "Fulgent",
       "Toxin",
       "Sable"
-    ]
+    ],
+    "img": "/monsterImages/monster340.webp"
   },
   {
     "id": 341,
@@ -9465,7 +9806,8 @@
       "Umbral",
       "Lumina",
       "Gloom"
-    ]
+    ],
+    "img": "/monsterImages/monster341.webp"
   },
   {
     "id": 342,
@@ -9492,7 +9834,8 @@
       "Lunar",
       "Umbral",
       "Terra"
-    ]
+    ],
+    "img": "/monsterImages/monster342.webp"
   },
   {
     "id": 343,
@@ -9519,7 +9862,8 @@
       "Sable",
       "Cacophony",
       "Abyss"
-    ]
+    ],
+    "img": "/monsterImages/monster343.webp"
   },
   {
     "id": 344,
@@ -9551,7 +9895,8 @@
       "Chroma",
       "Storm",
       "Terra"
-    ]
+    ],
+    "img": "/monsterImages/monster344.webp"
   },
   {
     "id": 345,
@@ -9578,7 +9923,8 @@
       "Chaos",
       "Aqua",
       "Sable"
-    ]
+    ],
+    "img": "/monsterImages/monster345.webp"
   },
   {
     "id": 346,
@@ -9608,7 +9954,8 @@
       "Sable",
       "Seraph",
       "Silhouette"
-    ]
+    ],
+    "img": "/monsterImages/monster346.webp"
   },
   {
     "id": 347,
@@ -9636,7 +9983,8 @@
       "Umbral",
       "Lunar",
       "Cacophony"
-    ]
+    ],
+    "img": "/monsterImages/monster347.webp"
   },
   {
     "id": 348,
@@ -9666,7 +10014,8 @@
       "Cacophony",
       "Fulgent",
       "Umbral"
-    ]
+    ],
+    "img": "/monsterImages/monster348.webp"
   },
   {
     "id": 349,
@@ -9696,7 +10045,8 @@
       "Umbral",
       "Lunar",
       "Lumina"
-    ]
+    ],
+    "img": "/monsterImages/monster349.webp"
   },
   {
     "id": 350,
@@ -9725,7 +10075,8 @@
       "Blight",
       "Gloom",
       "Chaos"
-    ]
+    ],
+    "img": "/monsterImages/monster350.webp"
   },
   {
     "id": 351,
@@ -9756,7 +10107,8 @@
       "Tidal",
       "Abyss",
       "Cinder"
-    ]
+    ],
+    "img": "/monsterImages/monster351.webp"
   },
   {
     "id": 352,
@@ -9784,7 +10136,8 @@
       "Aqua",
       "Embers",
       "Aether"
-    ]
+    ],
+    "img": "/monsterImages/monster352.webp"
   },
   {
     "id": 353,
@@ -9811,7 +10164,8 @@
       "Abyss",
       "Frost",
       "Searing"
-    ]
+    ],
+    "img": "/monsterImages/monster353.webp"
   },
   {
     "id": 354,
@@ -9842,7 +10196,8 @@
       "Sable",
       "Mirage",
       "Terra"
-    ]
+    ],
+    "img": "/monsterImages/monster354.webp"
   },
   {
     "id": 355,
@@ -9873,7 +10228,8 @@
       "Searing",
       "Chaos",
       "Storm"
-    ]
+    ],
+    "img": "/monsterImages/monster355.webp"
   },
   {
     "id": 356,
@@ -9901,7 +10257,8 @@
       "Hurricane",
       "Toxin",
       "Storm"
-    ]
+    ],
+    "img": "/monsterImages/monster356.webp"
   },
   {
     "id": 357,
@@ -9928,7 +10285,8 @@
       "Storm",
       "Blight",
       "Lumina"
-    ]
+    ],
+    "img": "/monsterImages/monster357.webp"
   },
   {
     "id": 358,
@@ -9955,7 +10313,8 @@
       "Frost",
       "Storm",
       "Vitalis"
-    ]
+    ],
+    "img": "/monsterImages/monster358.webp"
   },
   {
     "id": 359,
@@ -9987,7 +10346,8 @@
       "Aether",
       "Silhouette",
       "Tidal"
-    ]
+    ],
+    "img": "/monsterImages/monster359.webp"
   },
   {
     "id": 360,
@@ -10017,7 +10377,8 @@
       "Tidal",
       "Silhouette",
       "Tempest"
-    ]
+    ],
+    "img": "/monsterImages/monster360.webp"
   },
   {
     "id": 361,
@@ -10045,7 +10406,8 @@
       "Terra",
       "Cacophony",
       "Fulgent"
-    ]
+    ],
+    "img": "/monsterImages/monster361.webp"
   },
   {
     "id": 362,
@@ -10072,7 +10434,8 @@
       "Silhouette",
       "Lumina",
       "Aqua"
-    ]
+    ],
+    "img": "/monsterImages/monster362.webp"
   },
   {
     "id": 363,
@@ -10103,7 +10466,8 @@
       "Embers",
       "Toxin",
       "Silhouette"
-    ]
+    ],
+    "img": "/monsterImages/monster363.webp"
   },
   {
     "id": 364,
@@ -10133,7 +10497,8 @@
       "Seraph",
       "Cacophony",
       "Tempest"
-    ]
+    ],
+    "img": "/monsterImages/monster364.webp"
   },
   {
     "id": 365,
@@ -10165,7 +10530,8 @@
       "Tempest",
       "Lumina",
       "Fulgent"
-    ]
+    ],
+    "img": "/monsterImages/monster365.webp"
   },
   {
     "id": 366,
@@ -10195,7 +10561,8 @@
       "Searing",
       "Terra",
       "Tempest"
-    ]
+    ],
+    "img": "/monsterImages/monster366.webp"
   },
   {
     "id": 367,
@@ -10225,7 +10592,8 @@
       "Vitalis",
       "Solstice",
       "Frost"
-    ]
+    ],
+    "img": "/monsterImages/monster367.webp"
   },
   {
     "id": 368,
@@ -10257,7 +10625,8 @@
       "Embers",
       "Aqua",
       "Seraph"
-    ]
+    ],
+    "img": "/monsterImages/monster368.webp"
   },
   {
     "id": 369,
@@ -10288,7 +10657,8 @@
       "Abyss",
       "Lunar",
       "Blight"
-    ]
+    ],
+    "img": "/monsterImages/monster369.webp"
   },
   {
     "id": 370,
@@ -10317,7 +10687,8 @@
       "Hurricane",
       "Fulgent",
       "Chaos"
-    ]
+    ],
+    "img": "/monsterImages/monster370.webp"
   },
   {
     "id": 371,
@@ -10344,7 +10715,8 @@
       "Fulgent",
       "Mirage",
       "Tempest"
-    ]
+    ],
+    "img": "/monsterImages/monster371.webp"
   },
   {
     "id": 372,
@@ -10375,7 +10747,8 @@
       "Mirage",
       "Silhouette",
       "Lumina"
-    ]
+    ],
+    "img": "/monsterImages/monster372.webp"
   },
   {
     "id": 373,
@@ -10404,7 +10777,8 @@
       "Terra",
       "Umbral",
       "Mirage"
-    ]
+    ],
+    "img": "/monsterImages/monster373.webp"
   },
   {
     "id": 374,
@@ -10436,7 +10810,8 @@
       "Searing",
       "Fulgent",
       "Lumina"
-    ]
+    ],
+    "img": "/monsterImages/monster374.webp"
   },
   {
     "id": 375,
@@ -10466,7 +10841,8 @@
       "Lumina",
       "Blight",
       "Tidal"
-    ]
+    ],
+    "img": "/monsterImages/monster375.webp"
   },
   {
     "id": 376,
@@ -10494,7 +10870,8 @@
       "Aqua",
       "Seraph",
       "Cacophony"
-    ]
+    ],
+    "img": "/monsterImages/monster376.webp"
   },
   {
     "id": 377,
@@ -10521,7 +10898,8 @@
       "Aether",
       "Frost",
       "Terra"
-    ]
+    ],
+    "img": "/monsterImages/monster377.webp"
   },
   {
     "id": 378,
@@ -10552,7 +10930,8 @@
       "Chroma",
       "Aether",
       "Fulgent"
-    ]
+    ],
+    "img": "/monsterImages/monster378.webp"
   },
   {
     "id": 379,
@@ -10580,7 +10959,8 @@
       "Aqua",
       "Chroma",
       "Sable"
-    ]
+    ],
+    "img": "/monsterImages/monster379.webp"
   },
   {
     "id": 380,
@@ -10611,7 +10991,8 @@
       "Frost",
       "Chaos",
       "Aqua"
-    ]
+    ],
+    "img": "/monsterImages/monster380.webp"
   },
   {
     "id": 381,
@@ -10638,7 +11019,8 @@
       "Seraph",
       "Embers",
       "Vitalis"
-    ]
+    ],
+    "img": "/monsterImages/monster381.webp"
   },
   {
     "id": 382,
@@ -10670,7 +11052,8 @@
       "Mirage",
       "Cinder",
       "Cacophony"
-    ]
+    ],
+    "img": "/monsterImages/monster382.webp"
   },
   {
     "id": 383,
@@ -10701,7 +11084,8 @@
       "Frost",
       "Lumina",
       "Embers"
-    ]
+    ],
+    "img": "/monsterImages/monster383.webp"
   },
   {
     "id": 384,
@@ -10733,7 +11117,8 @@
       "Frost",
       "Embers",
       "Lunar"
-    ]
+    ],
+    "img": "/monsterImages/monster384.webp"
   },
   {
     "id": 385,
@@ -10765,7 +11150,8 @@
       "Chroma",
       "Gloom",
       "Fulgent"
-    ]
+    ],
+    "img": "/monsterImages/monster385.webp"
   },
   {
     "id": 386,
@@ -10797,7 +11183,8 @@
       "Lunar",
       "Abyss",
       "Storm"
-    ]
+    ],
+    "img": "/monsterImages/monster386.webp"
   },
   {
     "id": 387,
@@ -10829,7 +11216,8 @@
       "Searing",
       "Blight",
       "Storm"
-    ]
+    ],
+    "img": "/monsterImages/monster387.webp"
   },
   {
     "id": 388,
@@ -10859,7 +11247,8 @@
       "Terra",
       "Gloom",
       "Hurricane"
-    ]
+    ],
+    "img": "/monsterImages/monster388.webp"
   },
   {
     "id": 389,
@@ -10888,7 +11277,8 @@
       "Aqua",
       "Cacophony",
       "Hurricane"
-    ]
+    ],
+    "img": "/monsterImages/monster389.webp"
   },
   {
     "id": 390,
@@ -10917,7 +11307,8 @@
       "Solstice",
       "Chroma",
       "Terra"
-    ]
+    ],
+    "img": "/monsterImages/monster390.webp"
   },
   {
     "id": 391,
@@ -10945,7 +11336,8 @@
       "Umbral",
       "Gloom",
       "Cacophony"
-    ]
+    ],
+    "img": "/monsterImages/monster391.webp"
   },
   {
     "id": 392,
@@ -10974,7 +11366,8 @@
       "Tidal",
       "Storm",
       "Chroma"
-    ]
+    ],
+    "img": "/monsterImages/monster392.webp"
   },
   {
     "id": 393,
@@ -11002,7 +11395,8 @@
       "Embers",
       "Gloom",
       "Cinder"
-    ]
+    ],
+    "img": "/monsterImages/monster393.webp"
   },
   {
     "id": 394,
@@ -11031,7 +11425,8 @@
       "Lumina",
       "Tempest",
       "Chroma"
-    ]
+    ],
+    "img": "/monsterImages/monster394.webp"
   },
   {
     "id": 395,
@@ -11063,7 +11458,8 @@
       "Silhouette",
       "Lumina",
       "Mirage"
-    ]
+    ],
+    "img": "/monsterImages/monster395.webp"
   },
   {
     "id": 396,
@@ -11093,7 +11489,8 @@
       "Solstice",
       "Aether",
       "Cacophony"
-    ]
+    ],
+    "img": "/monsterImages/monster396.webp"
   },
   {
     "id": 397,
@@ -11121,7 +11518,8 @@
       "Lunar",
       "Solstice",
       "Lumina"
-    ]
+    ],
+    "img": "/monsterImages/monster397.webp"
   },
   {
     "id": 398,
@@ -11150,7 +11548,8 @@
       "Cinder",
       "Seraph",
       "Chroma"
-    ]
+    ],
+    "img": "/monsterImages/monster398.webp"
   },
   {
     "id": 399,
@@ -11180,7 +11579,8 @@
       "Chroma",
       "Blight",
       "Storm"
-    ]
+    ],
+    "img": "/monsterImages/monster399.webp"
   },
   {
     "id": 400,
@@ -11210,7 +11610,8 @@
       "Frost",
       "Phantom",
       "Aqua"
-    ]
+    ],
+    "img": "/monsterImages/monster400.webp"
   },
   {
     "id": 401,
@@ -11244,7 +11645,8 @@
       "Fury",
       "Aether",
       "Fulgor"
-    ]
+    ],
+    "img": "/monsterImages/monster401.webp"
   },
   {
     "id": 402,
@@ -11278,7 +11680,8 @@
       "Chaos",
       "Toxin",
       "Fulgor"
-    ]
+    ],
+    "img": "/monsterImages/monster402.webp"
   },
   {
     "id": 403,
@@ -11311,7 +11714,8 @@
       "Aether",
       "Fury",
       "Vitalis"
-    ]
+    ],
+    "img": "/monsterImages/monster403.webp"
   },
   {
     "id": 404,
@@ -11344,7 +11748,8 @@
       "Genesis",
       "Rapture",
       "Mirage"
-    ]
+    ],
+    "img": "/monsterImages/monster404.webp"
   },
   {
     "id": 405,
@@ -11372,7 +11777,8 @@
       "Embers",
       "Tempest",
       "Aqua"
-    ]
+    ],
+    "img": "/monsterImages/monster405.webp"
   },
   {
     "id": 406,
@@ -11403,7 +11809,8 @@
       "Vermilion",
       "Seraph",
       "Chronos"
-    ]
+    ],
+    "img": "/monsterImages/monster406.webp"
   },
   {
     "id": 407,
@@ -11433,7 +11840,8 @@
       "Mystic",
       "Aqua",
       "Umbral"
-    ]
+    ],
+    "img": "/monsterImages/monster407.webp"
   },
   {
     "id": 408,
@@ -11466,7 +11874,8 @@
       "Storm",
       "Solstice",
       "Spirit"
-    ]
+    ],
+    "img": "/monsterImages/monster408.webp"
   },
   {
     "id": 409,
@@ -11494,7 +11903,8 @@
       "Rapture",
       "Sable",
       "Phantom"
-    ]
+    ],
+    "img": "/monsterImages/monster409.webp"
   },
   {
     "id": 410,
@@ -11525,7 +11935,8 @@
       "Fulgor",
       "Storm",
       "Fury"
-    ]
+    ],
+    "img": "/monsterImages/monster410.webp"
   },
   {
     "id": 411,
@@ -11557,7 +11968,8 @@
       "Seraph",
       "Umbral",
       "Lumina"
-    ]
+    ],
+    "img": "/monsterImages/monster411.webp"
   },
   {
     "id": 412,
@@ -11587,7 +11999,8 @@
       "Storm",
       "Fate",
       "Searing"
-    ]
+    ],
+    "img": "/monsterImages/monster412.webp"
   },
   {
     "id": 413,
@@ -11619,7 +12032,8 @@
       "Aether",
       "Fulgor",
       "Tempestuous"
-    ]
+    ],
+    "img": "/monsterImages/monster413.webp"
   },
   {
     "id": 414,
@@ -11651,7 +12065,8 @@
       "Tempestuous",
       "Searing",
       "Solaris"
-    ]
+    ],
+    "img": "/monsterImages/monster414.webp"
   },
   {
     "id": 415,
@@ -11681,7 +12096,8 @@
       "Cinder",
       "Frost",
       "Abyss"
-    ]
+    ],
+    "img": "/monsterImages/monster415.webp"
   },
   {
     "id": 416,
@@ -11711,7 +12127,8 @@
       "Crystal",
       "Searing",
       "Gloom"
-    ]
+    ],
+    "img": "/monsterImages/monster416.webp"
   },
   {
     "id": 417,
@@ -11745,7 +12162,8 @@
       "Storm",
       "Embers",
       "Chroma"
-    ]
+    ],
+    "img": "/monsterImages/monster417.webp"
   },
   {
     "id": 418,
@@ -11773,7 +12191,8 @@
       "Frost",
       "Hurricane",
       "Aqua"
-    ]
+    ],
+    "img": "/monsterImages/monster418.webp"
   },
   {
     "id": 419,
@@ -11806,7 +12225,8 @@
       "Frost",
       "Mystic",
       "Umbral"
-    ]
+    ],
+    "img": "/monsterImages/monster419.webp"
   },
   {
     "id": 420,
@@ -11834,7 +12254,8 @@
       "Crystal",
       "Fate",
       "Mystic"
-    ]
+    ],
+    "img": "/monsterImages/monster420.webp"
   },
   {
     "id": 421,
@@ -11862,7 +12283,8 @@
       "Embers",
       "Hurricane",
       "Abyss"
-    ]
+    ],
+    "img": "/monsterImages/monster421.webp"
   },
   {
     "id": 422,
@@ -11893,7 +12315,8 @@
       "Terra",
       "Embers",
       "Storm"
-    ]
+    ],
+    "img": "/monsterImages/monster422.webp"
   },
   {
     "id": 423,
@@ -11921,7 +12344,8 @@
       "Fury",
       "Lunar",
       "Embers"
-    ]
+    ],
+    "img": "/monsterImages/monster423.webp"
   },
   {
     "id": 424,
@@ -11949,7 +12373,8 @@
       "Fury",
       "Cacophony",
       "Rapture"
-    ]
+    ],
+    "img": "/monsterImages/monster424.webp"
   },
   {
     "id": 425,
@@ -11982,7 +12407,8 @@
       "Umbral",
       "Nebula",
       "Fulgor"
-    ]
+    ],
+    "img": "/monsterImages/monster425.webp"
   },
   {
     "id": 426,
@@ -12011,7 +12437,8 @@
       "Vermilion",
       "Chroma",
       "Tempestuous"
-    ]
+    ],
+    "img": "/monsterImages/monster426.webp"
   },
   {
     "id": 427,
@@ -12042,7 +12469,8 @@
       "Frost",
       "Mirage",
       "Chaos"
-    ]
+    ],
+    "img": "/monsterImages/monster427.webp"
   },
   {
     "id": 428,
@@ -12076,7 +12504,8 @@
       "Gloom",
       "Aqua",
       "Fate"
-    ]
+    ],
+    "img": "/monsterImages/monster428.webp"
   },
   {
     "id": 429,
@@ -12110,7 +12539,8 @@
       "Mirage",
       "Aqua",
       "Vermilion"
-    ]
+    ],
+    "img": "/monsterImages/monster429.webp"
   },
   {
     "id": 430,
@@ -12142,7 +12572,8 @@
       "Chroma",
       "Blight",
       "Lunar"
-    ]
+    ],
+    "img": "/monsterImages/monster430.webp"
   },
   {
     "id": 431,
@@ -12172,7 +12603,8 @@
       "Vitalis",
       "Abyss",
       "Mystic"
-    ]
+    ],
+    "img": "/monsterImages/monster431.webp"
   },
   {
     "id": 432,
@@ -12200,7 +12632,8 @@
       "Spirit",
       "Umbral",
       "Solstice"
-    ]
+    ],
+    "img": "/monsterImages/monster432.webp"
   },
   {
     "id": 433,
@@ -12229,7 +12662,8 @@
       "Vermilion",
       "Crystal",
       "Seraph"
-    ]
+    ],
+    "img": "/monsterImages/monster433.webp"
   },
   {
     "id": 434,
@@ -12259,7 +12693,8 @@
       "Lunar",
       "Frost",
       "Tempest"
-    ]
+    ],
+    "img": "/monsterImages/monster434.webp"
   },
   {
     "id": 435,
@@ -12290,7 +12725,8 @@
       "Storm",
       "Frost",
       "Chronos"
-    ]
+    ],
+    "img": "/monsterImages/monster435.webp"
   },
   {
     "id": 436,
@@ -12322,7 +12758,8 @@
       "Umbral",
       "Fulgor",
       "Vitalis"
-    ]
+    ],
+    "img": "/monsterImages/monster436.webp"
   },
   {
     "id": 437,
@@ -12350,7 +12787,8 @@
       "Tempestuous",
       "Chronos",
       "Solaris"
-    ]
+    ],
+    "img": "/monsterImages/monster437.webp"
   },
   {
     "id": 438,
@@ -12384,7 +12822,8 @@
       "Aether",
       "Toxin",
       "Vermilion"
-    ]
+    ],
+    "img": "/monsterImages/monster438.webp"
   },
   {
     "id": 439,
@@ -12412,7 +12851,8 @@
       "Chroma",
       "Fate",
       "Solaris"
-    ]
+    ],
+    "img": "/monsterImages/monster439.webp"
   },
   {
     "id": 440,
@@ -12444,7 +12884,8 @@
       "Toxin",
       "Embers",
       "Tempest"
-    ]
+    ],
+    "img": "/monsterImages/monster440.webp"
   },
   {
     "id": 441,
@@ -12474,7 +12915,8 @@
       "Aqua",
       "Cinder",
       "Aether"
-    ]
+    ],
+    "img": "/monsterImages/monster441.webp"
   },
   {
     "id": 442,
@@ -12508,7 +12950,8 @@
       "Tidal",
       "Abyss",
       "Silhouette"
-    ]
+    ],
+    "img": "/monsterImages/monster442.webp"
   },
   {
     "id": 443,
@@ -12539,7 +12982,8 @@
       "Tidal",
       "Fury",
       "Chronos"
-    ]
+    ],
+    "img": "/monsterImages/monster443.webp"
   },
   {
     "id": 444,
@@ -12573,7 +13017,8 @@
       "Chaos",
       "Aqua",
       "Crystal"
-    ]
+    ],
+    "img": "/monsterImages/monster444.webp"
   },
   {
     "id": 445,
@@ -12605,7 +13050,8 @@
       "Cacophony",
       "Fury",
       "Vitalis"
-    ]
+    ],
+    "img": "/monsterImages/monster445.webp"
   },
   {
     "id": 446,
@@ -12637,7 +13083,8 @@
       "Mirage",
       "Hurricane",
       "Blight"
-    ]
+    ],
+    "img": "/monsterImages/monster446.webp"
   },
   {
     "id": 447,
@@ -12667,7 +13114,8 @@
       "Silhouette",
       "Chronos",
       "Hurricane"
-    ]
+    ],
+    "img": "/monsterImages/monster447.webp"
   },
   {
     "id": 448,
@@ -12699,7 +13147,8 @@
       "Toxin",
       "Lunar",
       "Umbral"
-    ]
+    ],
+    "img": "/monsterImages/monster448.webp"
   },
   {
     "id": 449,
@@ -12733,7 +13182,8 @@
       "Frost",
       "Umbral",
       "Silhouette"
-    ]
+    ],
+    "img": "/monsterImages/monster449.webp"
   },
   {
     "id": 450,
@@ -12767,7 +13217,8 @@
       "Searing",
       "Blight",
       "Verdant"
-    ]
+    ],
+    "img": "/monsterImages/monster450.webp"
   },
   {
     "id": 451,
@@ -12801,7 +13252,8 @@
       "Cacophony",
       "Genesis",
       "Fury"
-    ]
+    ],
+    "img": "/monsterImages/monster451.webp"
   },
   {
     "id": 452,
@@ -12829,7 +13281,8 @@
       "Blight",
       "Nebula",
       "Cacophony"
-    ]
+    ],
+    "img": "/monsterImages/monster452.webp"
   },
   {
     "id": 453,
@@ -12859,7 +13312,8 @@
       "Fury",
       "Abyss",
       "Sable"
-    ]
+    ],
+    "img": "/monsterImages/monster453.webp"
   },
   {
     "id": 454,
@@ -12889,7 +13343,8 @@
       "Silhouette",
       "Fury",
       "Cinder"
-    ]
+    ],
+    "img": "/monsterImages/monster454.webp"
   },
   {
     "id": 455,
@@ -12923,7 +13378,8 @@
       "Crystal",
       "Blight",
       "Solaris"
-    ]
+    ],
+    "img": "/monsterImages/monster455.webp"
   },
   {
     "id": 456,
@@ -12953,7 +13409,8 @@
       "Verdant",
       "Fury",
       "Abyss"
-    ]
+    ],
+    "img": "/monsterImages/monster456.webp"
   },
   {
     "id": 457,
@@ -12985,7 +13442,8 @@
       "Chroma",
       "Tidal",
       "Aqua"
-    ]
+    ],
+    "img": "/monsterImages/monster457.webp"
   },
   {
     "id": 458,
@@ -13018,7 +13476,8 @@
       "Hurricane",
       "Phantom",
       "Genesis"
-    ]
+    ],
+    "img": "/monsterImages/monster458.webp"
   },
   {
     "id": 459,
@@ -13049,7 +13508,8 @@
       "Umbral",
       "Vermilion",
       "Fury"
-    ]
+    ],
+    "img": "/monsterImages/monster459.webp"
   },
   {
     "id": 460,
@@ -13079,7 +13539,8 @@
       "Terra",
       "Frost",
       "Cacophony"
-    ]
+    ],
+    "img": "/monsterImages/monster460.webp"
   },
   {
     "id": 461,
@@ -13110,7 +13571,8 @@
       "Rapture",
       "Terra",
       "Spirit"
-    ]
+    ],
+    "img": "/monsterImages/monster461.webp"
   },
   {
     "id": 462,
@@ -13139,7 +13601,8 @@
       "Tidal",
       "Fulgent",
       "Verdant"
-    ]
+    ],
+    "img": "/monsterImages/monster462.webp"
   },
   {
     "id": 463,
@@ -13172,7 +13635,8 @@
       "Seraph",
       "Storm",
       "Verdant"
-    ]
+    ],
+    "img": "/monsterImages/monster463.webp"
   },
   {
     "id": 464,
@@ -13203,7 +13667,8 @@
       "Verdant",
       "Silhouette",
       "Sable"
-    ]
+    ],
+    "img": "/monsterImages/monster464.webp"
   },
   {
     "id": 465,
@@ -13231,7 +13696,8 @@
       "Tempest",
       "Gloom",
       "Umbral"
-    ]
+    ],
+    "img": "/monsterImages/monster465.webp"
   },
   {
     "id": 466,
@@ -13263,7 +13729,8 @@
       "Rapture",
       "Verdant",
       "Storm"
-    ]
+    ],
+    "img": "/monsterImages/monster466.webp"
   },
   {
     "id": 467,
@@ -13296,7 +13763,8 @@
       "Sable",
       "Phantom",
       "Hurricane"
-    ]
+    ],
+    "img": "/monsterImages/monster467.webp"
   },
   {
     "id": 468,
@@ -13330,7 +13798,8 @@
       "Solstice",
       "Umbral",
       "Terra"
-    ]
+    ],
+    "img": "/monsterImages/monster468.webp"
   },
   {
     "id": 469,
@@ -13363,7 +13832,8 @@
       "Spirit",
       "Mystic",
       "Vermilion"
-    ]
+    ],
+    "img": "/monsterImages/monster469.webp"
   },
   {
     "id": 470,
@@ -13394,7 +13864,8 @@
       "Abyss",
       "Sable",
       "Lunar"
-    ]
+    ],
+    "img": "/monsterImages/monster470.webp"
   },
   {
     "id": 471,
@@ -13428,7 +13899,8 @@
       "Solstice",
       "Fulgent",
       "Embers"
-    ]
+    ],
+    "img": "/monsterImages/monster471.webp"
   },
   {
     "id": 472,
@@ -13456,7 +13928,8 @@
       "Terra",
       "Verdant",
       "Tempest"
-    ]
+    ],
+    "img": "/monsterImages/monster472.webp"
   },
   {
     "id": 473,
@@ -13490,7 +13963,8 @@
       "Tempest",
       "Lumina",
       "Tidal"
-    ]
+    ],
+    "img": "/monsterImages/monster473.webp"
   },
   {
     "id": 474,
@@ -13522,7 +13996,8 @@
       "Mystic",
       "Fate",
       "Mirage"
-    ]
+    ],
+    "img": "/monsterImages/monster474.webp"
   },
   {
     "id": 475,
@@ -13553,7 +14028,8 @@
       "Fury",
       "Vitalis",
       "Embers"
-    ]
+    ],
+    "img": "/monsterImages/monster475.webp"
   },
   {
     "id": 476,
@@ -13585,7 +14061,8 @@
       "Searing",
       "Genesis",
       "Crystal"
-    ]
+    ],
+    "img": "/monsterImages/monster476.webp"
   },
   {
     "id": 477,
@@ -13617,7 +14094,8 @@
       "Frost",
       "Gloom",
       "Aether"
-    ]
+    ],
+    "img": "/monsterImages/monster477.webp"
   },
   {
     "id": 478,
@@ -13649,7 +14127,8 @@
       "Lumina",
       "Frost",
       "Tidal"
-    ]
+    ],
+    "img": "/monsterImages/monster478.webp"
   },
   {
     "id": 479,
@@ -13679,7 +14158,8 @@
       "Fate",
       "Vitalis",
       "Verdant"
-    ]
+    ],
+    "img": "/monsterImages/monster479.webp"
   },
   {
     "id": 480,
@@ -13713,7 +14193,8 @@
       "Abyss",
       "Tempestuous",
       "Cacophony"
-    ]
+    ],
+    "img": "/monsterImages/monster480.webp"
   },
   {
     "id": 481,
@@ -13746,7 +14227,8 @@
       "Chronos",
       "Tidal",
       "Fulgor"
-    ]
+    ],
+    "img": "/monsterImages/monster481.webp"
   },
   {
     "id": 482,
@@ -13778,7 +14260,8 @@
       "Mystic",
       "Rapture",
       "Nebula"
-    ]
+    ],
+    "img": "/monsterImages/monster482.webp"
   },
   {
     "id": 483,
@@ -13810,7 +14293,8 @@
       "Solstice",
       "Abyss",
       "Searing"
-    ]
+    ],
+    "img": "/monsterImages/monster483.webp"
   },
   {
     "id": 484,
@@ -13843,7 +14327,8 @@
       "Tidal",
       "Fulgent",
       "Vermilion"
-    ]
+    ],
+    "img": "/monsterImages/monster484.webp"
   },
   {
     "id": 485,
@@ -13871,7 +14356,8 @@
       "Blight",
       "Nebula",
       "Mirage"
-    ]
+    ],
+    "img": "/monsterImages/monster485.webp"
   },
   {
     "id": 486,
@@ -13903,7 +14389,8 @@
       "Chronos",
       "Frost",
       "Tempest"
-    ]
+    ],
+    "img": "/monsterImages/monster486.webp"
   },
   {
     "id": 487,
@@ -13931,7 +14418,8 @@
       "Rapture",
       "Spirit",
       "Seraph"
-    ]
+    ],
+    "img": "/monsterImages/monster487.webp"
   },
   {
     "id": 488,
@@ -13965,7 +14453,8 @@
       "Seraph",
       "Cinder",
       "Mirage"
-    ]
+    ],
+    "img": "/monsterImages/monster488.webp"
   },
   {
     "id": 489,
@@ -13995,7 +14484,8 @@
       "Verdant",
       "Chronos",
       "Frost"
-    ]
+    ],
+    "img": "/monsterImages/monster489.webp"
   },
   {
     "id": 490,
@@ -14027,7 +14517,8 @@
       "Lunar",
       "Solstice",
       "Frost"
-    ]
+    ],
+    "img": "/monsterImages/monster490.webp"
   },
   {
     "id": 491,
@@ -14061,7 +14552,8 @@
       "Nebula",
       "Lumina",
       "Lunar"
-    ]
+    ],
+    "img": "/monsterImages/monster491.webp"
   },
   {
     "id": 492,
@@ -14091,7 +14583,8 @@
       "Spirit",
       "Tidal",
       "Phantom"
-    ]
+    ],
+    "img": "/monsterImages/monster492.webp"
   },
   {
     "id": 493,
@@ -14123,7 +14616,8 @@
       "Terra",
       "Storm",
       "Fulgor"
-    ]
+    ],
+    "img": "/monsterImages/monster493.webp"
   },
   {
     "id": 494,
@@ -14154,7 +14648,8 @@
       "Vitalis",
       "Searing",
       "Tidal"
-    ]
+    ],
+    "img": "/monsterImages/monster494.webp"
   },
   {
     "id": 495,
@@ -14188,7 +14683,8 @@
       "Embers",
       "Spirit",
       "Searing"
-    ]
+    ],
+    "img": "/monsterImages/monster495.webp"
   },
   {
     "id": 496,
@@ -14221,7 +14717,8 @@
       "Lumina",
       "Chaos",
       "Silhouette"
-    ]
+    ],
+    "img": "/monsterImages/monster496.webp"
   },
   {
     "id": 497,
@@ -14249,7 +14746,8 @@
       "Chroma",
       "Mystic",
       "Sable"
-    ]
+    ],
+    "img": "/monsterImages/monster497.webp"
   },
   {
     "id": 498,
@@ -14282,7 +14780,8 @@
       "Phantom",
       "Solstice",
       "Hurricane"
-    ]
+    ],
+    "img": "/monsterImages/monster498.webp"
   },
   {
     "id": 499,
@@ -14313,7 +14812,8 @@
       "Tempestuous",
       "Storm",
       "Lumina"
-    ]
+    ],
+    "img": "/monsterImages/monster499.webp"
   },
   {
     "id": 500,
@@ -14343,7 +14843,8 @@
       "Blight",
       "Searing",
       "Toxin"
-    ]
+    ],
+    "img": "/monsterImages/monster500.webp"
   },
   {
     "id": 501,
@@ -14374,7 +14875,8 @@
       "Solaris",
       "Umbral",
       "Mystic"
-    ]
+    ],
+    "img": "/monsterImages/monster501.webp"
   },
   {
     "id": 502,
@@ -14403,7 +14905,8 @@
       "Lumina",
       "Verdant",
       "Mirage"
-    ]
+    ],
+    "img": "/monsterImages/monster502.webp"
   },
   {
     "id": 503,
@@ -14437,7 +14940,8 @@
       "Tempestuous",
       "Mystic",
       "Chaos"
-    ]
+    ],
+    "img": "/monsterImages/monster503.webp"
   },
   {
     "id": 504,
@@ -14471,7 +14975,8 @@
       "Mystic",
       "Storm",
       "Chaos"
-    ]
+    ],
+    "img": "/monsterImages/monster504.webp"
   },
   {
     "id": 505,
@@ -14501,7 +15006,8 @@
       "Silhouette",
       "Terra",
       "Umbral"
-    ]
+    ],
+    "img": "/monsterImages/monster505.webp"
   },
   {
     "id": 506,
@@ -14533,7 +15039,8 @@
       "Seraph",
       "Aqua",
       "Tidal"
-    ]
+    ],
+    "img": "/monsterImages/monster506.webp"
   },
   {
     "id": 507,
@@ -14563,7 +15070,8 @@
       "Abyss",
       "Hurricane",
       "Searing"
-    ]
+    ],
+    "img": "/monsterImages/monster507.webp"
   },
   {
     "id": 508,
@@ -14593,7 +15101,8 @@
       "Searing",
       "Vermilion",
       "Spirit"
-    ]
+    ],
+    "img": "/monsterImages/monster508.webp"
   },
   {
     "id": 509,
@@ -14624,7 +15133,8 @@
       "Rapture",
       "Vitalis",
       "Crystal"
-    ]
+    ],
+    "img": "/monsterImages/monster509.webp"
   },
   {
     "id": 510,
@@ -14654,7 +15164,8 @@
       "Mirage",
       "Solstice",
       "Sable"
-    ]
+    ],
+    "img": "/monsterImages/monster510.webp"
   },
   {
     "id": 511,
@@ -14688,7 +15199,8 @@
       "Solaris",
       "Umbral",
       "Frost"
-    ]
+    ],
+    "img": "/monsterImages/monster511.webp"
   },
   {
     "id": 512,
@@ -14722,7 +15234,8 @@
       "Rapture",
       "Spirit",
       "Abyss"
-    ]
+    ],
+    "img": "/monsterImages/monster512.webp"
   },
   {
     "id": 513,
@@ -14756,7 +15269,8 @@
       "Vermilion",
       "Gloom",
       "Fate"
-    ]
+    ],
+    "img": "/monsterImages/monster513.webp"
   },
   {
     "id": 514,
@@ -14787,7 +15301,8 @@
       "Cinder",
       "Crystal",
       "Embers"
-    ]
+    ],
+    "img": "/monsterImages/monster514.webp"
   },
   {
     "id": 515,
@@ -14815,7 +15330,8 @@
       "Terra",
       "Chroma",
       "Cinder"
-    ]
+    ],
+    "img": "/monsterImages/monster515.webp"
   },
   {
     "id": 516,
@@ -14849,7 +15365,8 @@
       "Phantom",
       "Lumina",
       "Searing"
-    ]
+    ],
+    "img": "/monsterImages/monster516.webp"
   },
   {
     "id": 517,
@@ -14883,7 +15400,8 @@
       "Chronos",
       "Hurricane",
       "Fury"
-    ]
+    ],
+    "img": "/monsterImages/monster517.webp"
   },
   {
     "id": 518,
@@ -14912,7 +15430,8 @@
       "Fury",
       "Chaos",
       "Blight"
-    ]
+    ],
+    "img": "/monsterImages/monster518.webp"
   },
   {
     "id": 519,
@@ -14941,7 +15460,8 @@
       "Silhouette",
       "Nebula",
       "Cacophony"
-    ]
+    ],
+    "img": "/monsterImages/monster519.webp"
   },
   {
     "id": 520,
@@ -14975,7 +15495,8 @@
       "Tempestuous",
       "Blight",
       "Fulgent"
-    ]
+    ],
+    "img": "/monsterImages/monster520.webp"
   },
   {
     "id": 521,
@@ -15009,7 +15530,8 @@
       "Blight",
       "Nebula",
       "Hurricane"
-    ]
+    ],
+    "img": "/monsterImages/monster521.webp"
   },
   {
     "id": 522,
@@ -15037,7 +15559,8 @@
       "Lunar",
       "Fulgor",
       "Tempestuous"
-    ]
+    ],
+    "img": "/monsterImages/monster522.webp"
   },
   {
     "id": 523,
@@ -15068,7 +15591,8 @@
       "Phantom",
       "Chroma",
       "Lumina"
-    ]
+    ],
+    "img": "/monsterImages/monster523.webp"
   },
   {
     "id": 524,
@@ -15102,7 +15626,8 @@
       "Seraph",
       "Chroma",
       "Aether"
-    ]
+    ],
+    "img": "/monsterImages/monster524.webp"
   },
   {
     "id": 525,
@@ -15135,7 +15660,8 @@
       "Mystic",
       "Hurricane",
       "Silhouette"
-    ]
+    ],
+    "img": "/monsterImages/monster525.webp"
   },
   {
     "id": 526,
@@ -15167,7 +15693,8 @@
       "Genesis",
       "Fulgent",
       "Lunar"
-    ]
+    ],
+    "img": "/monsterImages/monster526.webp"
   },
   {
     "id": 527,
@@ -15197,7 +15724,8 @@
       "Mystic",
       "Verdant",
       "Searing"
-    ]
+    ],
+    "img": "/monsterImages/monster527.webp"
   },
   {
     "id": 528,
@@ -15230,7 +15758,8 @@
       "Rapture",
       "Aqua",
       "Spirit"
-    ]
+    ],
+    "img": "/monsterImages/monster528.webp"
   },
   {
     "id": 529,
@@ -15263,7 +15792,8 @@
       "Terra",
       "Embers",
       "Solaris"
-    ]
+    ],
+    "img": "/monsterImages/monster529.webp"
   },
   {
     "id": 530,
@@ -15297,7 +15827,8 @@
       "Tempestuous",
       "Solaris",
       "Abyss"
-    ]
+    ],
+    "img": "/monsterImages/monster530.webp"
   },
   {
     "id": 531,
@@ -15325,7 +15856,8 @@
       "Solaris",
       "Verdant",
       "Seraph"
-    ]
+    ],
+    "img": "/monsterImages/monster531.webp"
   },
   {
     "id": 532,
@@ -15357,7 +15889,8 @@
       "Solaris",
       "Mystic",
       "Cinder"
-    ]
+    ],
+    "img": "/monsterImages/monster532.webp"
   },
   {
     "id": 533,
@@ -15388,7 +15921,8 @@
       "Solaris",
       "Vitalis",
       "Lunar"
-    ]
+    ],
+    "img": "/monsterImages/monster533.webp"
   },
   {
     "id": 534,
@@ -15416,7 +15950,8 @@
       "Lunar",
       "Blight",
       "Fulgor"
-    ]
+    ],
+    "img": "/monsterImages/monster534.webp"
   },
   {
     "id": 535,
@@ -15447,7 +15982,8 @@
       "Solaris",
       "Blight",
       "Gloom"
-    ]
+    ],
+    "img": "/monsterImages/monster535.webp"
   },
   {
     "id": 536,
@@ -15480,7 +16016,8 @@
       "Solaris",
       "Mystic",
       "Storm"
-    ]
+    ],
+    "img": "/monsterImages/monster536.webp"
   },
   {
     "id": 537,
@@ -15514,7 +16051,8 @@
       "Aqua",
       "Aether",
       "Embers"
-    ]
+    ],
+    "img": "/monsterImages/monster537.webp"
   },
   {
     "id": 538,
@@ -15548,7 +16086,8 @@
       "Umbral",
       "Cacophony",
       "Rapture"
-    ]
+    ],
+    "img": "/monsterImages/monster538.webp"
   },
   {
     "id": 539,
@@ -15577,7 +16116,8 @@
       "Frost",
       "Tidal",
       "Storm"
-    ]
+    ],
+    "img": "/monsterImages/monster539.webp"
   },
   {
     "id": 540,
@@ -15611,7 +16151,8 @@
       "Fulgor",
       "Crystal",
       "Searing"
-    ]
+    ],
+    "img": "/monsterImages/monster540.webp"
   },
   {
     "id": 541,
@@ -15641,7 +16182,8 @@
       "Tempestuous",
       "Embers",
       "Hurricane"
-    ]
+    ],
+    "img": "/monsterImages/monster541.webp"
   },
   {
     "id": 542,
@@ -15671,7 +16213,8 @@
       "Searing",
       "Tempest",
       "Terra"
-    ]
+    ],
+    "img": "/monsterImages/monster542.webp"
   },
   {
     "id": 543,
@@ -15701,7 +16244,8 @@
       "Fulgent",
       "Sable",
       "Verdant"
-    ]
+    ],
+    "img": "/monsterImages/monster543.webp"
   },
   {
     "id": 544,
@@ -15729,7 +16273,8 @@
       "Crystal",
       "Vitalis",
       "Searing"
-    ]
+    ],
+    "img": "/monsterImages/monster544.webp"
   },
   {
     "id": 545,
@@ -15761,7 +16306,8 @@
       "Vitalis",
       "Fury",
       "Spirit"
-    ]
+    ],
+    "img": "/monsterImages/monster545.webp"
   },
   {
     "id": 546,
@@ -15791,7 +16337,8 @@
       "Toxin",
       "Fate",
       "Frost"
-    ]
+    ],
+    "img": "/monsterImages/monster546.webp"
   },
   {
     "id": 547,
@@ -15820,7 +16367,8 @@
       "Solstice",
       "Chroma",
       "Silhouette"
-    ]
+    ],
+    "img": "/monsterImages/monster547.webp"
   },
   {
     "id": 548,
@@ -15851,7 +16399,8 @@
       "Toxin",
       "Lunar",
       "Fulgor"
-    ]
+    ],
+    "img": "/monsterImages/monster548.webp"
   },
   {
     "id": 549,
@@ -15883,7 +16432,8 @@
       "Phantom",
       "Crystal",
       "Mystic"
-    ]
+    ],
+    "img": "/monsterImages/monster549.webp"
   },
   {
     "id": 550,
@@ -15916,7 +16466,8 @@
       "Specter",
       "Crimson",
       "Lunar"
-    ]
+    ],
+    "img": "/monsterImages/monster550.webp"
   },
   {
     "id": 551,
@@ -15946,7 +16497,8 @@
       "Blight",
       "Storm",
       "Nether"
-    ]
+    ],
+    "img": "/monsterImages/monster551.webp"
   },
   {
     "id": 552,
@@ -15977,7 +16529,8 @@
       "Aura",
       "Searing",
       "Radiance"
-    ]
+    ],
+    "img": "/monsterImages/monster552.webp"
   },
   {
     "id": 553,
@@ -16012,7 +16565,8 @@
       "Aura",
       "Fulgent",
       "Sunder"
-    ]
+    ],
+    "img": "/monsterImages/monster553.webp"
   },
   {
     "id": 554,
@@ -16048,7 +16602,8 @@
       "Spirit",
       "Quake",
       "Haven"
-    ]
+    ],
+    "img": "/monsterImages/monster554.webp"
   },
   {
     "id": 555,
@@ -16079,7 +16634,8 @@
       "Wraith",
       "Silhouette",
       "Void"
-    ]
+    ],
+    "img": "/monsterImages/monster555.webp"
   },
   {
     "id": 556,
@@ -16111,7 +16667,8 @@
       "Hurricane",
       "Void",
       "Cinder"
-    ]
+    ],
+    "img": "/monsterImages/monster556.webp"
   },
   {
     "id": 557,
@@ -16144,7 +16701,8 @@
       "Crystal",
       "Spirit",
       "Grove"
-    ]
+    ],
+    "img": "/monsterImages/monster557.webp"
   },
   {
     "id": 558,
@@ -16178,7 +16736,8 @@
       "Pestilence",
       "Spirit",
       "Umbral"
-    ]
+    ],
+    "img": "/monsterImages/monster558.webp"
   },
   {
     "id": 559,
@@ -16212,7 +16771,8 @@
       "Hurricane",
       "Chroma",
       "Crimson"
-    ]
+    ],
+    "img": "/monsterImages/monster559.webp"
   },
   {
     "id": 560,
@@ -16242,7 +16802,8 @@
       "Haze",
       "Verdant",
       "Vitalis"
-    ]
+    ],
+    "img": "/monsterImages/monster560.webp"
   },
   {
     "id": 561,
@@ -16275,7 +16836,8 @@
       "Dread",
       "Wraith",
       "Chaos"
-    ]
+    ],
+    "img": "/monsterImages/monster561.webp"
   },
   {
     "id": 562,
@@ -16305,7 +16867,8 @@
       "Tempest",
       "Voidwalker",
       "Storm"
-    ]
+    ],
+    "img": "/monsterImages/monster562.webp"
   },
   {
     "id": 563,
@@ -16338,7 +16901,8 @@
       "Lunar",
       "Tempest",
       "Vermilion"
-    ]
+    ],
+    "img": "/monsterImages/monster563.webp"
   },
   {
     "id": 564,
@@ -16374,7 +16938,8 @@
       "Aqua",
       "Aether",
       "Lunar"
-    ]
+    ],
+    "img": "/monsterImages/monster564.webp"
   },
   {
     "id": 565,
@@ -16403,7 +16968,8 @@
       "Vermilion",
       "Mystic",
       "Verdant"
-    ]
+    ],
+    "img": "/monsterImages/monster565.webp"
   },
   {
     "id": 566,
@@ -16438,7 +17004,8 @@
       "Mystic",
       "Gale",
       "Chill"
-    ]
+    ],
+    "img": "/monsterImages/monster566.webp"
   },
   {
     "id": 567,
@@ -16469,7 +17036,8 @@
       "Embers",
       "Fury",
       "Quake"
-    ]
+    ],
+    "img": "/monsterImages/monster567.webp"
   },
   {
     "id": 568,
@@ -16500,7 +17068,8 @@
       "Frost",
       "Gloom",
       "Blizzard"
-    ]
+    ],
+    "img": "/monsterImages/monster568.webp"
   },
   {
     "id": 569,
@@ -16535,7 +17104,8 @@
       "Hurricane",
       "Tempest",
       "Aurora"
-    ]
+    ],
+    "img": "/monsterImages/monster569.webp"
   },
   {
     "id": 570,
@@ -16567,7 +17137,8 @@
       "Blizzard",
       "Seraph",
       "Abyss"
-    ]
+    ],
+    "img": "/monsterImages/monster570.webp"
   },
   {
     "id": 571,
@@ -16599,7 +17170,8 @@
       "Dread",
       "Gloom",
       "Solstice"
-    ]
+    ],
+    "img": "/monsterImages/monster571.webp"
   },
   {
     "id": 572,
@@ -16630,7 +17202,8 @@
       "Nether",
       "Gloom",
       "Umbral"
-    ]
+    ],
+    "img": "/monsterImages/monster572.webp"
   },
   {
     "id": 573,
@@ -16664,7 +17237,8 @@
       "Storm",
       "Thorn",
       "Tsunami"
-    ]
+    ],
+    "img": "/monsterImages/monster573.webp"
   },
   {
     "id": 574,
@@ -16700,7 +17274,8 @@
       "Chroma",
       "Haven",
       "Aura"
-    ]
+    ],
+    "img": "/monsterImages/monster574.webp"
   },
   {
     "id": 575,
@@ -16732,7 +17307,8 @@
       "Quake",
       "Solaris",
       "Voidwalker"
-    ]
+    ],
+    "img": "/monsterImages/monster575.webp"
   },
   {
     "id": 576,
@@ -16764,7 +17340,8 @@
       "Blizzard",
       "Abyss",
       "Sandstorm"
-    ]
+    ],
+    "img": "/monsterImages/monster576.webp"
   },
   {
     "id": 577,
@@ -16797,7 +17374,8 @@
       "Seraph",
       "Searing",
       "Chronos"
-    ]
+    ],
+    "img": "/monsterImages/monster577.webp"
   },
   {
     "id": 578,
@@ -16827,7 +17405,8 @@
       "Toxin",
       "Sunder",
       "Seraph"
-    ]
+    ],
+    "img": "/monsterImages/monster578.webp"
   },
   {
     "id": 579,
@@ -16860,7 +17439,8 @@
       "Aqua",
       "Abyss",
       "Pestilence"
-    ]
+    ],
+    "img": "/monsterImages/monster579.webp"
   },
   {
     "id": 580,
@@ -16893,7 +17473,8 @@
       "Void",
       "Windshear",
       "Phantom"
-    ]
+    ],
+    "img": "/monsterImages/monster580.webp"
   },
   {
     "id": 581,
@@ -16927,7 +17508,8 @@
       "Genesis",
       "Blight",
       "Wraith"
-    ]
+    ],
+    "img": "/monsterImages/monster581.webp"
   },
   {
     "id": 582,
@@ -16959,7 +17541,8 @@
       "Spirit",
       "Chronos",
       "Verdant"
-    ]
+    ],
+    "img": "/monsterImages/monster582.webp"
   },
   {
     "id": 583,
@@ -16989,7 +17572,8 @@
       "Vermilion",
       "Specter",
       "Sandstorm"
-    ]
+    ],
+    "img": "/monsterImages/monster583.webp"
   },
   {
     "id": 584,
@@ -17020,7 +17604,8 @@
       "Umbral",
       "Gale",
       "Nebula"
-    ]
+    ],
+    "img": "/monsterImages/monster584.webp"
   },
   {
     "id": 585,
@@ -17055,7 +17640,8 @@
       "Sunder",
       "Mystic",
       "Windshear"
-    ]
+    ],
+    "img": "/monsterImages/monster585.webp"
   },
   {
     "id": 586,
@@ -17089,7 +17675,8 @@
       "Sunder",
       "Specter",
       "Chroma"
-    ]
+    ],
+    "img": "/monsterImages/monster586.webp"
   },
   {
     "id": 587,
@@ -17123,7 +17710,8 @@
       "Tempestuous",
       "Tempest",
       "Gloom"
-    ]
+    ],
+    "img": "/monsterImages/monster587.webp"
   },
   {
     "id": 588,
@@ -17158,7 +17746,8 @@
       "Dread",
       "Oblivion",
       "Vermilion"
-    ]
+    ],
+    "img": "/monsterImages/monster588.webp"
   },
   {
     "id": 589,
@@ -17191,7 +17780,8 @@
       "Vermilion",
       "Verdant",
       "Inferno"
-    ]
+    ],
+    "img": "/monsterImages/monster589.webp"
   },
   {
     "id": 590,
@@ -17222,7 +17812,8 @@
       "Aether",
       "Quake",
       "Vermilion"
-    ]
+    ],
+    "img": "/monsterImages/monster590.webp"
   },
   {
     "id": 591,
@@ -17258,7 +17849,8 @@
       "Dread",
       "Hurricane",
       "Chill"
-    ]
+    ],
+    "img": "/monsterImages/monster591.webp"
   },
   {
     "id": 592,
@@ -17287,7 +17879,8 @@
       "Aqua",
       "Phantom",
       "Abyss"
-    ]
+    ],
+    "img": "/monsterImages/monster592.webp"
   },
   {
     "id": 593,
@@ -17320,7 +17913,8 @@
       "Aurora",
       "Crystal",
       "Genesis"
-    ]
+    ],
+    "img": "/monsterImages/monster593.webp"
   },
   {
     "id": 594,
@@ -17350,7 +17944,8 @@
       "Vitalis",
       "Chronos",
       "Inferno"
-    ]
+    ],
+    "img": "/monsterImages/monster594.webp"
   },
   {
     "id": 595,
@@ -17382,7 +17977,8 @@
       "Tidal",
       "Vitalis",
       "Vortex"
-    ]
+    ],
+    "img": "/monsterImages/monster595.webp"
   },
   {
     "id": 596,
@@ -17417,7 +18013,8 @@
       "Tempest",
       "Mystic",
       "Searing"
-    ]
+    ],
+    "img": "/monsterImages/monster596.webp"
   },
   {
     "id": 597,
@@ -17447,7 +18044,8 @@
       "Phantom",
       "Mirage",
       "Dread"
-    ]
+    ],
+    "img": "/monsterImages/monster597.webp"
   },
   {
     "id": 598,
@@ -17477,7 +18075,8 @@
       "Lumina",
       "Tsunami",
       "Genesis"
-    ]
+    ],
+    "img": "/monsterImages/monster598.webp"
   },
   {
     "id": 599,
@@ -17510,7 +18109,8 @@
       "Fulgor",
       "Nether",
       "Windshear"
-    ]
+    ],
+    "img": "/monsterImages/monster599.webp"
   },
   {
     "id": 600,
@@ -17542,7 +18142,8 @@
       "Voidwalker",
       "Radiance",
       "Haven"
-    ]
+    ],
+    "img": "/monsterImages/monster600.webp"
   },
   {
     "id": 601,
@@ -17573,7 +18174,8 @@
       "Grove",
       "Inferno",
       "Gale"
-    ]
+    ],
+    "img": "/monsterImages/monster601.webp"
   },
   {
     "id": 602,
@@ -17604,7 +18206,8 @@
       "Eclipse",
       "Lumina",
       "Aegis"
-    ]
+    ],
+    "img": "/monsterImages/monster602.webp"
   },
   {
     "id": 603,
@@ -17636,7 +18239,8 @@
       "Frost",
       "Gloom",
       "Cinder"
-    ]
+    ],
+    "img": "/monsterImages/monster603.webp"
   },
   {
     "id": 604,
@@ -17669,7 +18273,8 @@
       "Sunder",
       "Aura",
       "Chronos"
-    ]
+    ],
+    "img": "/monsterImages/monster604.webp"
   },
   {
     "id": 605,
@@ -17705,7 +18310,8 @@
       "Fulgor",
       "Vitalis",
       "Specter"
-    ]
+    ],
+    "img": "/monsterImages/monster605.webp"
   },
   {
     "id": 606,
@@ -17738,7 +18344,8 @@
       "Terra",
       "Chronos",
       "Lunar"
-    ]
+    ],
+    "img": "/monsterImages/monster606.webp"
   },
   {
     "id": 607,
@@ -17774,7 +18381,8 @@
       "Beast",
       "Chaos",
       "Rapture"
-    ]
+    ],
+    "img": "/monsterImages/monster607.webp"
   },
   {
     "id": 608,
@@ -17810,7 +18418,8 @@
       "Cinder",
       "Aqua",
       "Storm"
-    ]
+    ],
+    "img": "/monsterImages/monster608.webp"
   },
   {
     "id": 609,
@@ -17845,7 +18454,8 @@
       "Genesis",
       "Fulgor",
       "Tidal"
-    ]
+    ],
+    "img": "/monsterImages/monster609.webp"
   },
   {
     "id": 610,
@@ -17880,7 +18490,8 @@
       "Fulgor",
       "Toxin",
       "Phantom"
-    ]
+    ],
+    "img": "/monsterImages/monster610.webp"
   },
   {
     "id": 611,
@@ -17916,7 +18527,8 @@
       "Vermilion",
       "Frost",
       "Abyss"
-    ]
+    ],
+    "img": "/monsterImages/monster611.webp"
   },
   {
     "id": 612,
@@ -17952,7 +18564,8 @@
       "Abyss",
       "Seraph",
       "Eclipse"
-    ]
+    ],
+    "img": "/monsterImages/monster612.webp"
   },
   {
     "id": 613,
@@ -17988,7 +18601,8 @@
       "Abyss",
       "Lumina",
       "Vermilion"
-    ]
+    ],
+    "img": "/monsterImages/monster613.webp"
   },
   {
     "id": 614,
@@ -18024,7 +18638,8 @@
       "Solaris",
       "Sable",
       "Ether"
-    ]
+    ],
+    "img": "/monsterImages/monster614.webp"
   },
   {
     "id": 615,
@@ -18060,7 +18675,8 @@
       "Umbral",
       "Chill",
       "Thorn"
-    ]
+    ],
+    "img": "/monsterImages/monster615.webp"
   },
   {
     "id": 616,
@@ -18096,7 +18712,8 @@
       "Solstice",
       "Eclipse",
       "Magma"
-    ]
+    ],
+    "img": "/monsterImages/monster616.webp"
   },
   {
     "id": 617,
@@ -18129,7 +18746,8 @@
       "Fury",
       "Pestilence",
       "Ironclad"
-    ]
+    ],
+    "img": "/monsterImages/monster617.webp"
   },
   {
     "id": 618,
@@ -18159,7 +18777,8 @@
       "Voidwalker",
       "Magma",
       "Abyss"
-    ]
+    ],
+    "img": "/monsterImages/monster618.webp"
   },
   {
     "id": 619,
@@ -18194,7 +18813,8 @@
       "Terra",
       "Toxin",
       "Ironclad"
-    ]
+    ],
+    "img": "/monsterImages/monster619.webp"
   },
   {
     "id": 620,
@@ -18228,7 +18848,8 @@
       "Chroma",
       "Aether",
       "Frost"
-    ]
+    ],
+    "img": "/monsterImages/monster620.webp"
   },
   {
     "id": 621,
@@ -18264,7 +18885,8 @@
       "Seraph",
       "Wraith",
       "Vermilion"
-    ]
+    ],
+    "img": "/monsterImages/monster621.webp"
   },
   {
     "id": 622,
@@ -18300,7 +18922,8 @@
       "Chronos",
       "Lumina",
       "Eclipse"
-    ]
+    ],
+    "img": "/monsterImages/monster622.webp"
   },
   {
     "id": 623,
@@ -18334,7 +18957,8 @@
       "Hurricane",
       "Aegis",
       "Grove"
-    ]
+    ],
+    "img": "/monsterImages/monster623.webp"
   },
   {
     "id": 624,
@@ -18364,7 +18988,8 @@
       "Tidal",
       "Eclipse",
       "Frost"
-    ]
+    ],
+    "img": "/monsterImages/monster624.webp"
   },
   {
     "id": 625,
@@ -18398,7 +19023,8 @@
       "Haven",
       "Magma",
       "Aqua"
-    ]
+    ],
+    "img": "/monsterImages/monster625.webp"
   },
   {
     "id": 626,
@@ -18434,7 +19060,8 @@
       "Rapture",
       "Nebula",
       "Phantom"
-    ]
+    ],
+    "img": "/monsterImages/monster626.webp"
   },
   {
     "id": 627,
@@ -18465,7 +19092,8 @@
       "Cavern",
       "Emberstorm",
       "Rift"
-    ]
+    ],
+    "img": "/monsterImages/monster627.webp"
   },
   {
     "id": 628,
@@ -18499,7 +19127,8 @@
       "Mirage",
       "Aurora",
       "Chroma"
-    ]
+    ],
+    "img": "/monsterImages/monster628.webp"
   },
   {
     "id": 629,
@@ -18535,7 +19164,8 @@
       "Inferno",
       "Solstice",
       "Chaos"
-    ]
+    ],
+    "img": "/monsterImages/monster629.webp"
   },
   {
     "id": 630,
@@ -18571,7 +19201,8 @@
       "Dread",
       "Storm",
       "Crimson"
-    ]
+    ],
+    "img": "/monsterImages/monster630.webp"
   },
   {
     "id": 631,
@@ -18607,7 +19238,8 @@
       "Gale",
       "Cacophony",
       "Chronos"
-    ]
+    ],
+    "img": "/monsterImages/monster631.webp"
   },
   {
     "id": 632,
@@ -18643,7 +19275,8 @@
       "Lumina",
       "Hurricane",
       "Tempestuous"
-    ]
+    ],
+    "img": "/monsterImages/monster632.webp"
   },
   {
     "id": 633,
@@ -18677,7 +19310,8 @@
       "Gale",
       "Briar",
       "Frost"
-    ]
+    ],
+    "img": "/monsterImages/monster633.webp"
   },
   {
     "id": 634,
@@ -18713,7 +19347,8 @@
       "Verdant",
       "Emberstorm",
       "Crimson"
-    ]
+    ],
+    "img": "/monsterImages/monster634.webp"
   },
   {
     "id": 635,
@@ -18747,7 +19382,8 @@
       "Cavern",
       "Fate",
       "Mirage"
-    ]
+    ],
+    "img": "/monsterImages/monster635.webp"
   },
   {
     "id": 636,
@@ -18783,7 +19419,8 @@
       "Phantom",
       "Wraith",
       "Inferno"
-    ]
+    ],
+    "img": "/monsterImages/monster636.webp"
   },
   {
     "id": 637,
@@ -18819,7 +19456,8 @@
       "Blight",
       "Nether",
       "Mirage"
-    ]
+    ],
+    "img": "/monsterImages/monster637.webp"
   },
   {
     "id": 638,
@@ -18855,7 +19493,8 @@
       "Windshear",
       "Umbral",
       "Verdant"
-    ]
+    ],
+    "img": "/monsterImages/monster638.webp"
   },
   {
     "id": 639,
@@ -18889,7 +19528,8 @@
       "Specter",
       "Radiance",
       "Mystic"
-    ]
+    ],
+    "img": "/monsterImages/monster639.webp"
   },
   {
     "id": 640,
@@ -18919,7 +19559,8 @@
       "Aurora",
       "Searing",
       "Blight"
-    ]
+    ],
+    "img": "/monsterImages/monster640.webp"
   },
   {
     "id": 641,
@@ -18949,7 +19590,8 @@
       "Umbral",
       "Dread",
       "Cavern"
-    ]
+    ],
+    "img": "/monsterImages/monster641.webp"
   },
   {
     "id": 642,
@@ -18984,7 +19626,8 @@
       "Zephyr",
       "Haze",
       "Lumina"
-    ]
+    ],
+    "img": "/monsterImages/monster642.webp"
   },
   {
     "id": 643,
@@ -19020,7 +19663,8 @@
       "Cavern",
       "Rift",
       "Aurora"
-    ]
+    ],
+    "img": "/monsterImages/monster643.webp"
   },
   {
     "id": 644,
@@ -19053,7 +19697,8 @@
       "Specter",
       "Quake",
       "Hurricane"
-    ]
+    ],
+    "img": "/monsterImages/monster644.webp"
   },
   {
     "id": 645,
@@ -19083,7 +19728,8 @@
       "Glacier",
       "Ascendancy",
       "Radiance"
-    ]
+    ],
+    "img": "/monsterImages/monster645.webp"
   },
   {
     "id": 646,
@@ -19115,7 +19761,8 @@
       "Oblivion",
       "Beast",
       "Sunder"
-    ]
+    ],
+    "img": "/monsterImages/monster646.webp"
   },
   {
     "id": 647,
@@ -19151,7 +19798,8 @@
       "Ironclad",
       "Silhouette",
       "Vortex"
-    ]
+    ],
+    "img": "/monsterImages/monster647.webp"
   },
   {
     "id": 648,
@@ -19183,7 +19831,8 @@
       "Glacier",
       "Sunder",
       "Vitalis"
-    ]
+    ],
+    "img": "/monsterImages/monster648.webp"
   },
   {
     "id": 649,
@@ -19219,7 +19868,8 @@
       "Chroma",
       "Haze",
       "Nebula"
-    ]
+    ],
+    "img": "/monsterImages/monster649.webp"
   },
   {
     "id": 650,
@@ -19249,7 +19899,8 @@
       "Mirage",
       "Pestilence",
       "Vermilion"
-    ]
+    ],
+    "img": "/monsterImages/monster650.webp"
   },
   {
     "id": 651,
@@ -19285,7 +19936,8 @@
       "Oblivion",
       "Pestilence",
       "Mystic"
-    ]
+    ],
+    "img": "/monsterImages/monster651.webp"
   },
   {
     "id": 652,
@@ -19321,7 +19973,8 @@
       "Aether",
       "Lumina",
       "Embers"
-    ]
+    ],
+    "img": "/monsterImages/monster652.webp"
   },
   {
     "id": 653,
@@ -19357,7 +20010,8 @@
       "Aura",
       "Sandstorm",
       "Nebula"
-    ]
+    ],
+    "img": "/monsterImages/monster653.webp"
   },
   {
     "id": 654,
@@ -19393,7 +20047,8 @@
       "Fury",
       "Mystic",
       "Nether"
-    ]
+    ],
+    "img": "/monsterImages/monster654.webp"
   },
   {
     "id": 655,
@@ -19429,7 +20084,8 @@
       "Specter",
       "Gale",
       "Nebula"
-    ]
+    ],
+    "img": "/monsterImages/monster655.webp"
   },
   {
     "id": 656,
@@ -19464,7 +20120,8 @@
       "Terra",
       "Sandstorm",
       "Vortex"
-    ]
+    ],
+    "img": "/monsterImages/monster656.webp"
   },
   {
     "id": 657,
@@ -19498,7 +20155,8 @@
       "Ironclad",
       "Verdant",
       "Vitalis"
-    ]
+    ],
+    "img": "/monsterImages/monster657.webp"
   },
   {
     "id": 658,
@@ -19531,7 +20189,8 @@
       "Abyss",
       "Sandstorm",
       "Tempest"
-    ]
+    ],
+    "img": "/monsterImages/monster658.webp"
   },
   {
     "id": 659,
@@ -19565,7 +20224,8 @@
       "Zephyr",
       "Hurricane",
       "Haze"
-    ]
+    ],
+    "img": "/monsterImages/monster659.webp"
   },
   {
     "id": 660,
@@ -19595,7 +20255,8 @@
       "Emberstorm",
       "Pestilence",
       "Terra"
-    ]
+    ],
+    "img": "/monsterImages/monster660.webp"
   },
   {
     "id": 661,
@@ -19626,7 +20287,8 @@
       "Chaos",
       "Chroma",
       "Eclipse"
-    ]
+    ],
+    "img": "/monsterImages/monster661.webp"
   },
   {
     "id": 662,
@@ -19659,7 +20321,8 @@
       "Specter",
       "Sunder",
       "Spirit"
-    ]
+    ],
+    "img": "/monsterImages/monster662.webp"
   },
   {
     "id": 663,
@@ -19693,7 +20356,8 @@
       "Genesis",
       "Nebula",
       "Crimson"
-    ]
+    ],
+    "img": "/monsterImages/monster663.webp"
   },
   {
     "id": 664,
@@ -19724,7 +20388,8 @@
       "Mirage",
       "Nether",
       "Grove"
-    ]
+    ],
+    "img": "/monsterImages/monster664.webp"
   },
   {
     "id": 665,
@@ -19760,7 +20425,8 @@
       "Chill",
       "Ironclad",
       "Storm"
-    ]
+    ],
+    "img": "/monsterImages/monster665.webp"
   },
   {
     "id": 666,
@@ -19795,7 +20461,8 @@
       "Ether",
       "Pestilence",
       "Aqua"
-    ]
+    ],
+    "img": "/monsterImages/monster666.webp"
   },
   {
     "id": 667,
@@ -19828,7 +20495,8 @@
       "Mystic",
       "Chaos",
       "Phantom"
-    ]
+    ],
+    "img": "/monsterImages/monster667.webp"
   },
   {
     "id": 668,
@@ -19862,7 +20530,8 @@
       "Abyss",
       "Haven",
       "Tempest"
-    ]
+    ],
+    "img": "/monsterImages/monster668.webp"
   },
   {
     "id": 669,
@@ -19896,7 +20565,8 @@
       "Vermilion",
       "Umbral",
       "Chaos"
-    ]
+    ],
+    "img": "/monsterImages/monster669.webp"
   },
   {
     "id": 670,
@@ -19931,7 +20601,8 @@
       "Wraith",
       "Haven",
       "Thorn"
-    ]
+    ],
+    "img": "/monsterImages/monster670.webp"
   },
   {
     "id": 671,
@@ -19966,7 +20637,8 @@
       "Fury",
       "Oblivion",
       "Phantom"
-    ]
+    ],
+    "img": "/monsterImages/monster671.webp"
   },
   {
     "id": 672,
@@ -19997,7 +20669,8 @@
       "Aegis",
       "Wraith",
       "Emberstorm"
-    ]
+    ],
+    "img": "/monsterImages/monster672.webp"
   },
   {
     "id": 673,
@@ -20033,7 +20706,8 @@
       "Briar",
       "Lumina",
       "Magma"
-    ]
+    ],
+    "img": "/monsterImages/monster673.webp"
   },
   {
     "id": 674,
@@ -20065,7 +20739,8 @@
       "Radiance",
       "Cavern",
       "Rift"
-    ]
+    ],
+    "img": "/monsterImages/monster674.webp"
   },
   {
     "id": 675,
@@ -20095,7 +20770,8 @@
       "Storm",
       "Vortex",
       "Grove"
-    ]
+    ],
+    "img": "/monsterImages/monster675.webp"
   },
   {
     "id": 676,
@@ -20129,7 +20805,8 @@
       "Vitalis",
       "Nebula",
       "Magma"
-    ]
+    ],
+    "img": "/monsterImages/monster676.webp"
   },
   {
     "id": 677,
@@ -20165,7 +20842,8 @@
       "Dread",
       "Crystal",
       "Rift"
-    ]
+    ],
+    "img": "/monsterImages/monster677.webp"
   },
   {
     "id": 678,
@@ -20201,7 +20879,8 @@
       "Infernal",
       "Pestilence",
       "Eclipse"
-    ]
+    ],
+    "img": "/monsterImages/monster678.webp"
   },
   {
     "id": 679,
@@ -20235,7 +20914,8 @@
       "Chaos",
       "Cinder",
       "Chronos"
-    ]
+    ],
+    "img": "/monsterImages/monster679.webp"
   },
   {
     "id": 680,
@@ -20268,7 +20948,8 @@
       "Ascendancy",
       "Tempest",
       "Windshear"
-    ]
+    ],
+    "img": "/monsterImages/monster680.webp"
   },
   {
     "id": 681,
@@ -20299,7 +20980,8 @@
       "Rapture",
       "Tsunami",
       "Mirage"
-    ]
+    ],
+    "img": "/monsterImages/monster681.webp"
   },
   {
     "id": 682,
@@ -20335,7 +21017,8 @@
       "Haven",
       "Radiance",
       "Ether"
-    ]
+    ],
+    "img": "/monsterImages/monster682.webp"
   },
   {
     "id": 683,
@@ -20371,7 +21054,8 @@
       "Zephyr",
       "Briar",
       "Chroma"
-    ]
+    ],
+    "img": "/monsterImages/monster683.webp"
   },
   {
     "id": 684,
@@ -20407,7 +21091,8 @@
       "Storm",
       "Grove",
       "Phantom"
-    ]
+    ],
+    "img": "/monsterImages/monster684.webp"
   },
   {
     "id": 685,
@@ -20438,7 +21123,8 @@
       "Hurricane",
       "Terra",
       "Silhouette"
-    ]
+    ],
+    "img": "/monsterImages/monster685.webp"
   },
   {
     "id": 686,
@@ -20469,7 +21155,8 @@
       "Tempest",
       "Silhouette",
       "Aura"
-    ]
+    ],
+    "img": "/monsterImages/monster686.webp"
   },
   {
     "id": 687,
@@ -20499,7 +21186,8 @@
       "Aether",
       "Eclipse",
       "Chaos"
-    ]
+    ],
+    "img": "/monsterImages/monster687.webp"
   },
   {
     "id": 688,
@@ -20531,7 +21219,8 @@
       "Beast",
       "Crystal",
       "Zephyr"
-    ]
+    ],
+    "img": "/monsterImages/monster688.webp"
   },
   {
     "id": 689,
@@ -20565,7 +21254,8 @@
       "Rift",
       "Blight",
       "Fulgent"
-    ]
+    ],
+    "img": "/monsterImages/monster689.webp"
   },
   {
     "id": 690,
@@ -20596,7 +21286,8 @@
       "Fulgent",
       "Beast",
       "Pestilence"
-    ]
+    ],
+    "img": "/monsterImages/monster690.webp"
   },
   {
     "id": 691,
@@ -20627,7 +21318,8 @@
       "Cavern",
       "Inferno",
       "Emberstorm"
-    ]
+    ],
+    "img": "/monsterImages/monster691.webp"
   },
   {
     "id": 692,
@@ -20663,7 +21355,8 @@
       "Aqua",
       "Vortex",
       "Searing"
-    ]
+    ],
+    "img": "/monsterImages/monster692.webp"
   },
   {
     "id": 693,
@@ -20693,7 +21386,8 @@
       "Radiance",
       "Quake",
       "Tidal"
-    ]
+    ],
+    "img": "/monsterImages/monster693.webp"
   },
   {
     "id": 694,
@@ -20723,7 +21417,8 @@
       "Solstice",
       "Glacier",
       "Nebula"
-    ]
+    ],
+    "img": "/monsterImages/monster694.webp"
   },
   {
     "id": 695,
@@ -20756,7 +21451,8 @@
       "Chill",
       "Void",
       "Vermilion"
-    ]
+    ],
+    "img": "/monsterImages/monster695.webp"
   },
   {
     "id": 696,
@@ -20788,7 +21484,8 @@
       "Gale",
       "Spirit",
       "Nether"
-    ]
+    ],
+    "img": "/monsterImages/monster696.webp"
   },
   {
     "id": 697,
@@ -20818,7 +21515,8 @@
       "Phantom",
       "Crystal",
       "Hurricane"
-    ]
+    ],
+    "img": "/monsterImages/monster697.webp"
   },
   {
     "id": 698,
@@ -20849,7 +21547,8 @@
       "Crimson",
       "Ironclad",
       "Crystal"
-    ]
+    ],
+    "img": "/monsterImages/monster698.webp"
   },
   {
     "id": 699,
@@ -20885,7 +21584,8 @@
       "Chronos",
       "Eclipse",
       "Aqua"
-    ]
+    ],
+    "img": "/monsterImages/monster699.webp"
   },
   {
     "id": 700,
@@ -20921,7 +21621,8 @@
       "Lunar",
       "Magma",
       "Embers"
-    ]
+    ],
+    "img": "/monsterImages/monster700.webp"
   },
   {
     "id": 701,
@@ -20952,7 +21653,8 @@
       "Spirit",
       "Solaris",
       "Vermilion"
-    ]
+    ],
+    "img": "/monsterImages/monster701.webp"
   },
   {
     "id": 702,
@@ -20983,7 +21685,8 @@
       "Eclipse",
       "Zephyr",
       "Searing"
-    ]
+    ],
+    "img": "/monsterImages/monster702.webp"
   },
   {
     "id": 703,
@@ -21015,7 +21718,8 @@
       "Grove",
       "Magma",
       "Tidal"
-    ]
+    ],
+    "img": "/monsterImages/monster703.webp"
   },
   {
     "id": 704,
@@ -21051,7 +21755,8 @@
       "Specter",
       "Phantom",
       "Oblivion"
-    ]
+    ],
+    "img": "/monsterImages/monster704.webp"
   },
   {
     "id": 705,
@@ -21083,7 +21788,8 @@
       "Solstice",
       "Aqua",
       "Zephyr"
-    ]
+    ],
+    "img": "/monsterImages/monster705.webp"
   },
   {
     "id": 706,
@@ -21116,7 +21822,8 @@
       "Specter",
       "Chroma",
       "Spirit"
-    ]
+    ],
+    "img": "/monsterImages/monster706.webp"
   },
   {
     "id": 707,
@@ -21152,7 +21859,8 @@
       "Lunar",
       "Crystal",
       "Aqua"
-    ]
+    ],
+    "img": "/monsterImages/monster707.webp"
   },
   {
     "id": 708,
@@ -21185,7 +21893,8 @@
       "Vermilion",
       "Gale",
       "Pestilence"
-    ]
+    ],
+    "img": "/monsterImages/monster708.webp"
   },
   {
     "id": 709,
@@ -21218,7 +21927,8 @@
       "Windshear",
       "Chroma",
       "Sunder"
-    ]
+    ],
+    "img": "/monsterImages/monster709.webp"
   },
   {
     "id": 710,
@@ -21254,7 +21964,8 @@
       "Infernal",
       "Aqua",
       "Emberstorm"
-    ]
+    ],
+    "img": "/monsterImages/monster710.webp"
   },
   {
     "id": 711,
@@ -21287,7 +21998,8 @@
       "Aura",
       "Tsunami",
       "Infernal"
-    ]
+    ],
+    "img": "/monsterImages/monster711.webp"
   },
   {
     "id": 712,
@@ -21323,7 +22035,8 @@
       "Zephyr",
       "Chaos",
       "Chill"
-    ]
+    ],
+    "img": "/monsterImages/monster712.webp"
   },
   {
     "id": 713,
@@ -21358,7 +22071,8 @@
       "Fulgor",
       "Hurricane",
       "Beast"
-    ]
+    ],
+    "img": "/monsterImages/monster713.webp"
   },
   {
     "id": 714,
@@ -21394,7 +22108,8 @@
       "Spirit",
       "Aegis",
       "Tempest"
-    ]
+    ],
+    "img": "/monsterImages/monster714.webp"
   },
   {
     "id": 715,
@@ -21427,7 +22142,8 @@
       "Nebula",
       "Ether",
       "Chaos"
-    ]
+    ],
+    "img": "/monsterImages/monster715.webp"
   },
   {
     "id": 716,
@@ -21463,7 +22179,8 @@
       "Tempest",
       "Aura",
       "Vermilion"
-    ]
+    ],
+    "img": "/monsterImages/monster716.webp"
   },
   {
     "id": 717,
@@ -21499,7 +22216,8 @@
       "Eclipse",
       "Gale",
       "Chaos"
-    ]
+    ],
+    "img": "/monsterImages/monster717.webp"
   },
   {
     "id": 718,
@@ -21529,7 +22247,8 @@
       "Tidal",
       "Oblivion",
       "Gale"
-    ]
+    ],
+    "img": "/monsterImages/monster718.webp"
   },
   {
     "id": 719,
@@ -21565,7 +22284,8 @@
       "Eclipse",
       "Nether",
       "Silhouette"
-    ]
+    ],
+    "img": "/monsterImages/monster719.webp"
   },
   {
     "id": 720,
@@ -21596,7 +22316,8 @@
       "Abyss",
       "Phantom",
       "Specter"
-    ]
+    ],
+    "img": "/monsterImages/monster720.webp"
   },
   {
     "id": 721,
@@ -21629,7 +22350,8 @@
       "Silhouette",
       "Nebula",
       "Embers"
-    ]
+    ],
+    "img": "/monsterImages/monster721.webp"
   },
   {
     "id": 722,
@@ -21661,7 +22383,8 @@
       "Mystic",
       "Gale",
       "Briar"
-    ]
+    ],
+    "img": "/monsterImages/monster722.webp"
   },
   {
     "id": 723,
@@ -21697,7 +22420,8 @@
       "Ether",
       "Abyss",
       "Terra"
-    ]
+    ],
+    "img": "/monsterImages/monster723.webp"
   },
   {
     "id": 724,
@@ -21733,7 +22457,8 @@
       "Pestilence",
       "Mirage",
       "Sable"
-    ]
+    ],
+    "img": "/monsterImages/monster724.webp"
   },
   {
     "id": 725,
@@ -21765,7 +22490,8 @@
       "Embers",
       "Solstice",
       "Crystal"
-    ]
+    ],
+    "img": "/monsterImages/monster725.webp"
   },
   {
     "id": 726,
@@ -21801,7 +22527,8 @@
       "Briar",
       "Vitalis",
       "Radiance"
-    ]
+    ],
+    "img": "/monsterImages/monster726.webp"
   },
   {
     "id": 727,
@@ -21836,7 +22563,8 @@
       "Magma",
       "Oblivion",
       "Haven"
-    ]
+    ],
+    "img": "/monsterImages/monster727.webp"
   },
   {
     "id": 728,
@@ -21870,7 +22598,8 @@
       "Aegis",
       "Blizzard",
       "Gale"
-    ]
+    ],
+    "img": "/monsterImages/monster728.webp"
   },
   {
     "id": 729,
@@ -21904,7 +22633,8 @@
       "Fate",
       "Solaris",
       "Lunar"
-    ]
+    ],
+    "img": "/monsterImages/monster729.webp"
   },
   {
     "id": 730,
@@ -21937,7 +22667,8 @@
       "Silhouette",
       "Verdant",
       "Ether"
-    ]
+    ],
+    "img": "/monsterImages/monster730.webp"
   },
   {
     "id": 731,
@@ -21973,7 +22704,8 @@
       "Solstice",
       "Aether",
       "Specter"
-    ]
+    ],
+    "img": "/monsterImages/monster731.webp"
   },
   {
     "id": 732,
@@ -22007,7 +22739,8 @@
       "Chill",
       "Void",
       "Glacier"
-    ]
+    ],
+    "img": "/monsterImages/monster732.webp"
   },
   {
     "id": 733,
@@ -22043,7 +22776,8 @@
       "Frost",
       "Tidal",
       "Solaris"
-    ]
+    ],
+    "img": "/monsterImages/monster733.webp"
   },
   {
     "id": 734,
@@ -22074,7 +22808,8 @@
       "Terra",
       "Haze",
       "Vortex"
-    ]
+    ],
+    "img": "/monsterImages/monster734.webp"
   },
   {
     "id": 735,
@@ -22104,7 +22839,8 @@
       "Vitalis",
       "Voidwalker",
       "Cinder"
-    ]
+    ],
+    "img": "/monsterImages/monster735.webp"
   },
   {
     "id": 736,
@@ -22135,7 +22871,8 @@
       "Embers",
       "Nebula",
       "Solaris"
-    ]
+    ],
+    "img": "/monsterImages/monster736.webp"
   },
   {
     "id": 737,
@@ -22171,7 +22908,8 @@
       "Silhouette",
       "Phantom",
       "Vortex"
-    ]
+    ],
+    "img": "/monsterImages/monster737.webp"
   },
   {
     "id": 738,
@@ -22202,7 +22940,8 @@
       "Cinder",
       "Eclipse",
       "Cacophony"
-    ]
+    ],
+    "img": "/monsterImages/monster738.webp"
   },
   {
     "id": 739,
@@ -22238,7 +22977,8 @@
       "Hurricane",
       "Crystal",
       "Briar"
-    ]
+    ],
+    "img": "/monsterImages/monster739.webp"
   },
   {
     "id": 740,
@@ -22270,7 +23010,8 @@
       "Zephyr",
       "Seraph",
       "Gale"
-    ]
+    ],
+    "img": "/monsterImages/monster740.webp"
   },
   {
     "id": 741,
@@ -22306,7 +23047,8 @@
       "Haze",
       "Phantom",
       "Thorn"
-    ]
+    ],
+    "img": "/monsterImages/monster741.webp"
   },
   {
     "id": 742,
@@ -22338,7 +23080,8 @@
       "Toxin",
       "Umbral",
       "Eclipse"
-    ]
+    ],
+    "img": "/monsterImages/monster742.webp"
   },
   {
     "id": 743,
@@ -22368,7 +23111,8 @@
       "Haven",
       "Radiance",
       "Fury"
-    ]
+    ],
+    "img": "/monsterImages/monster743.webp"
   },
   {
     "id": 744,
@@ -22402,7 +23146,8 @@
       "Sandstorm",
       "Oblivion",
       "Tempestuous"
-    ]
+    ],
+    "img": "/monsterImages/monster744.webp"
   },
   {
     "id": 745,
@@ -22432,7 +23177,8 @@
       "Haven",
       "Fulgor",
       "Chill"
-    ]
+    ],
+    "img": "/monsterImages/monster745.webp"
   },
   {
     "id": 746,
@@ -22465,7 +23211,8 @@
       "Aegis",
       "Eclipse",
       "Windshear"
-    ]
+    ],
+    "img": "/monsterImages/monster746.webp"
   },
   {
     "id": 747,
@@ -22501,7 +23248,8 @@
       "Thorn",
       "Blight",
       "Infernal"
-    ]
+    ],
+    "img": "/monsterImages/monster747.webp"
   },
   {
     "id": 748,
@@ -22537,7 +23285,8 @@
       "Quake",
       "Toxin",
       "Cinder"
-    ]
+    ],
+    "img": "/monsterImages/monster748.webp"
   },
   {
     "id": 749,
@@ -22568,7 +23317,8 @@
       "Blizzard",
       "Voidwalker",
       "Spirit"
-    ]
+    ],
+    "img": "/monsterImages/monster749.webp"
   },
   {
     "id": 750,
@@ -22604,7 +23354,8 @@
       "Briar",
       "Plague",
       "Sunder"
-    ]
+    ],
+    "img": "/monsterImages/monster750.webp"
   },
   {
     "id": 751,
@@ -22635,7 +23386,8 @@
       "Spirit",
       "Vermilion",
       "Toxin"
-    ]
+    ],
+    "img": "/monsterImages/monster751.webp"
   },
   {
     "id": 752,
@@ -22666,7 +23418,8 @@
       "Glacier",
       "Searing",
       "Infernal"
-    ]
+    ],
+    "img": "/monsterImages/monster752.webp"
   },
   {
     "id": 753,
@@ -22699,7 +23452,8 @@
       "Grove",
       "Mirage",
       "Shadow"
-    ]
+    ],
+    "img": "/monsterImages/monster753.webp"
   },
   {
     "id": 754,
@@ -22735,7 +23489,8 @@
       "Nebula",
       "Storm",
       "Shadow"
-    ]
+    ],
+    "img": "/monsterImages/monster754.webp"
   },
   {
     "id": 755,
@@ -22769,7 +23524,8 @@
       "Gale",
       "Blizzard",
       "Aqua"
-    ]
+    ],
+    "img": "/monsterImages/monster755.webp"
   },
   {
     "id": 756,
@@ -22805,7 +23561,8 @@
       "Oblivion",
       "Briar",
       "Blizzard"
-    ]
+    ],
+    "img": "/monsterImages/monster756.webp"
   },
   {
     "id": 757,
@@ -22841,7 +23598,8 @@
       "Mystic",
       "Terra",
       "Rift"
-    ]
+    ],
+    "img": "/monsterImages/monster757.webp"
   },
   {
     "id": 758,
@@ -22875,7 +23633,8 @@
       "Tidal",
       "Solaris",
       "Sable"
-    ]
+    ],
+    "img": "/monsterImages/monster758.webp"
   },
   {
     "id": 759,
@@ -22907,7 +23666,8 @@
       "Oblivion",
       "Lunar",
       "Wraith"
-    ]
+    ],
+    "img": "/monsterImages/monster759.webp"
   },
   {
     "id": 760,
@@ -22943,7 +23703,8 @@
       "Lunar",
       "Verdant",
       "Mirage"
-    ]
+    ],
+    "img": "/monsterImages/monster760.webp"
   },
   {
     "id": 761,
@@ -22977,7 +23738,8 @@
       "Sunder",
       "Windshear",
       "Crimson"
-    ]
+    ],
+    "img": "/monsterImages/monster761.webp"
   },
   {
     "id": 762,
@@ -23009,7 +23771,8 @@
       "Gale",
       "Crystal",
       "Fey"
-    ]
+    ],
+    "img": "/monsterImages/monster762.webp"
   },
   {
     "id": 763,
@@ -23045,7 +23808,8 @@
       "Rapture",
       "Wraith",
       "Seraph"
-    ]
+    ],
+    "img": "/monsterImages/monster763.webp"
   },
   {
     "id": 764,
@@ -23081,7 +23845,8 @@
       "Plague",
       "Beast",
       "Glacier"
-    ]
+    ],
+    "img": "/monsterImages/monster764.webp"
   },
   {
     "id": 765,
@@ -23117,7 +23882,8 @@
       "Solstice",
       "Tidal",
       "Mystic"
-    ]
+    ],
+    "img": "/monsterImages/monster765.webp"
   },
   {
     "id": 766,
@@ -23153,7 +23919,8 @@
       "Fulgent",
       "Fey",
       "Frostbite"
-    ]
+    ],
+    "img": "/monsterImages/monster766.webp"
   },
   {
     "id": 767,
@@ -23189,7 +23956,8 @@
       "Ether",
       "Spectral",
       "Celestial"
-    ]
+    ],
+    "img": "/monsterImages/monster767.webp"
   },
   {
     "id": 768,
@@ -23225,7 +23993,8 @@
       "Radiance",
       "Fey",
       "Genesis"
-    ]
+    ],
+    "img": "/monsterImages/monster768.webp"
   },
   {
     "id": 769,
@@ -23260,7 +24029,8 @@
       "Eclipse",
       "Rapture",
       "Solstice"
-    ]
+    ],
+    "img": "/monsterImages/monster769.webp"
   },
   {
     "id": 770,
@@ -23292,7 +24062,8 @@
       "Storm",
       "Aura",
       "Oblivion"
-    ]
+    ],
+    "img": "/monsterImages/monster770.webp"
   },
   {
     "id": 771,
@@ -23328,7 +24099,8 @@
       "Fate",
       "Silhouette",
       "Voidwalker"
-    ]
+    ],
+    "img": "/monsterImages/monster771.webp"
   },
   {
     "id": 772,
@@ -23364,7 +24136,8 @@
       "Sable",
       "Aqua",
       "Vortex"
-    ]
+    ],
+    "img": "/monsterImages/monster772.webp"
   },
   {
     "id": 773,
@@ -23397,7 +24170,8 @@
       "Windshear",
       "Beast",
       "Lunar"
-    ]
+    ],
+    "img": "/monsterImages/monster773.webp"
   },
   {
     "id": 774,
@@ -23433,7 +24207,8 @@
       "Aqua",
       "Sorrow",
       "Chronos"
-    ]
+    ],
+    "img": "/monsterImages/monster774.webp"
   },
   {
     "id": 775,
@@ -23469,7 +24244,8 @@
       "Inferno",
       "Fulgor",
       "Aether"
-    ]
+    ],
+    "img": "/monsterImages/monster775.webp"
   },
   {
     "id": 776,
@@ -23503,7 +24279,8 @@
       "Ascendancy",
       "Genesis",
       "Zephyr"
-    ]
+    ],
+    "img": "/monsterImages/monster776.webp"
   },
   {
     "id": 777,
@@ -23539,7 +24316,8 @@
       "Haven",
       "Eclipse",
       "Echo"
-    ]
+    ],
+    "img": "/monsterImages/monster777.webp"
   },
   {
     "id": 778,
@@ -23575,7 +24353,8 @@
       "Nebula",
       "Gloom",
       "Phantom"
-    ]
+    ],
+    "img": "/monsterImages/monster778.webp"
   },
   {
     "id": 779,
@@ -23611,7 +24390,8 @@
       "Crystal",
       "Ascendancy",
       "Embers"
-    ]
+    ],
+    "img": "/monsterImages/monster779.webp"
   },
   {
     "id": 780,
@@ -23646,7 +24426,8 @@
       "Sable",
       "Emberstorm",
       "Vermilion"
-    ]
+    ],
+    "img": "/monsterImages/monster780.webp"
   },
   {
     "id": 781,
@@ -23679,7 +24460,8 @@
       "Glacier",
       "Nightfall",
       "Fey"
-    ]
+    ],
+    "img": "/monsterImages/monster781.webp"
   },
   {
     "id": 782,
@@ -23714,7 +24496,8 @@
       "Cavern",
       "Nether",
       "Mystic"
-    ]
+    ],
+    "img": "/monsterImages/monster782.webp"
   },
   {
     "id": 783,
@@ -23750,7 +24533,8 @@
       "Sorrow",
       "Dread",
       "Lumina"
-    ]
+    ],
+    "img": "/monsterImages/monster783.webp"
   },
   {
     "id": 784,
@@ -23786,7 +24570,8 @@
       "Mystic",
       "Mirage",
       "Tempestuous"
-    ]
+    ],
+    "img": "/monsterImages/monster784.webp"
   },
   {
     "id": 785,
@@ -23817,7 +24602,8 @@
       "Aqua",
       "Haze",
       "Genesis"
-    ]
+    ],
+    "img": "/monsterImages/monster785.webp"
   },
   {
     "id": 786,
@@ -23853,7 +24639,8 @@
       "Oblivion",
       "Radiance",
       "Rift"
-    ]
+    ],
+    "img": "/monsterImages/monster786.webp"
   },
   {
     "id": 787,
@@ -23888,7 +24675,8 @@
       "Aqua",
       "Blizzard",
       "Blight"
-    ]
+    ],
+    "img": "/monsterImages/monster787.webp"
   },
   {
     "id": 788,
@@ -23923,7 +24711,8 @@
       "Aura",
       "Oblivion",
       "Fate"
-    ]
+    ],
+    "img": "/monsterImages/monster788.webp"
   },
   {
     "id": 789,
@@ -23959,7 +24748,8 @@
       "Storm",
       "Frost",
       "Hurricane"
-    ]
+    ],
+    "img": "/monsterImages/monster789.webp"
   },
   {
     "id": 790,
@@ -23995,7 +24785,8 @@
       "Plague",
       "Cacophony",
       "Mystic"
-    ]
+    ],
+    "img": "/monsterImages/monster790.webp"
   },
   {
     "id": 791,
@@ -24031,7 +24822,8 @@
       "Fury",
       "Tsunami",
       "Chroma"
-    ]
+    ],
+    "img": "/monsterImages/monster791.webp"
   },
   {
     "id": 792,
@@ -24067,7 +24859,8 @@
       "Nightfall",
       "Crimson",
       "Zephyr"
-    ]
+    ],
+    "img": "/monsterImages/monster792.webp"
   },
   {
     "id": 793,
@@ -24100,7 +24893,8 @@
       "Magma",
       "Ethereal",
       "Tempestuous"
-    ]
+    ],
+    "img": "/monsterImages/monster793.webp"
   },
   {
     "id": 794,
@@ -24136,7 +24930,8 @@
       "Phantom",
       "Frost",
       "Emberstorm"
-    ]
+    ],
+    "img": "/monsterImages/monster794.webp"
   },
   {
     "id": 795,
@@ -24172,7 +24967,8 @@
       "Vortex",
       "Voidwalker",
       "Hurricane"
-    ]
+    ],
+    "img": "/monsterImages/monster795.webp"
   },
   {
     "id": 796,
@@ -24208,7 +25004,8 @@
       "Pestilence",
       "Solstice",
       "Lumina"
-    ]
+    ],
+    "img": "/monsterImages/monster796.webp"
   },
   {
     "id": 797,
@@ -24239,7 +25036,8 @@
       "Nebula",
       "Ether",
       "Sorrow"
-    ]
+    ],
+    "img": "/monsterImages/monster797.webp"
   },
   {
     "id": 798,
@@ -24275,7 +25073,8 @@
       "Aegis",
       "Haze",
       "Infernal"
-    ]
+    ],
+    "img": "/monsterImages/monster798.webp"
   },
   {
     "id": 799,
@@ -24311,7 +25110,8 @@
       "Ironclad",
       "Thorn",
       "Fey"
-    ]
+    ],
+    "img": "/monsterImages/monster799.webp"
   },
   {
     "id": 800,
@@ -24342,7 +25142,8 @@
       "Chaos",
       "Hurricane",
       "Briar"
-    ]
+    ],
+    "img": "/monsterImages/monster800.webp"
   },
   {
     "id": 801,
@@ -24375,7 +25176,8 @@
       "Sable",
       "Aqua",
       "Crystal"
-    ]
+    ],
+    "img": "/monsterImages/monster801.webp"
   },
   {
     "id": 802,
@@ -24410,7 +25212,8 @@
       "Emberstorm",
       "Tsunami",
       "Fate"
-    ]
+    ],
+    "img": "/monsterImages/monster802.webp"
   },
   {
     "id": 803,
@@ -24446,7 +25249,8 @@
       "Haven",
       "Windshear",
       "Spirit"
-    ]
+    ],
+    "img": "/monsterImages/monster803.webp"
   },
   {
     "id": 804,
@@ -24482,7 +25286,8 @@
       "Zephyr",
       "Chronos",
       "Eclipse"
-    ]
+    ],
+    "img": "/monsterImages/monster804.webp"
   },
   {
     "id": 805,
@@ -24514,7 +25319,8 @@
       "Sorrow",
       "Aurora",
       "Ethereal"
-    ]
+    ],
+    "img": "/monsterImages/monster805.webp"
   },
   {
     "id": 806,
@@ -24550,7 +25356,8 @@
       "Grove",
       "Tidal",
       "Tsunami"
-    ]
+    ],
+    "img": "/monsterImages/monster806.webp"
   },
   {
     "id": 807,
@@ -24582,7 +25389,8 @@
       "Lunar",
       "Embers",
       "Sable"
-    ]
+    ],
+    "img": "/monsterImages/monster807.webp"
   },
   {
     "id": 808,
@@ -24618,7 +25426,8 @@
       "Void",
       "Inferno",
       "Shadow"
-    ]
+    ],
+    "img": "/monsterImages/monster808.webp"
   },
   {
     "id": 809,
@@ -24652,7 +25461,8 @@
       "Emberstorm",
       "Ethereal",
       "Solstice"
-    ]
+    ],
+    "img": "/monsterImages/monster809.webp"
   },
   {
     "id": 810,
@@ -24688,7 +25498,8 @@
       "Crimson",
       "Eclipse",
       "Vortex"
-    ]
+    ],
+    "img": "/monsterImages/monster810.webp"
   },
   {
     "id": 811,
@@ -24722,7 +25533,8 @@
       "Rapture",
       "Spirit",
       "Frostbite"
-    ]
+    ],
+    "img": "/monsterImages/monster811.webp"
   },
   {
     "id": 812,
@@ -24756,7 +25568,8 @@
       "Solaris",
       "Lumina",
       "Voidwalker"
-    ]
+    ],
+    "img": "/monsterImages/monster812.webp"
   },
   {
     "id": 813,
@@ -24788,7 +25601,8 @@
       "Nether",
       "Celestial",
       "Cinder"
-    ]
+    ],
+    "img": "/monsterImages/monster813.webp"
   },
   {
     "id": 814,
@@ -24824,7 +25638,8 @@
       "Windshear",
       "Chill",
       "Obsidian"
-    ]
+    ],
+    "img": "/monsterImages/monster814.webp"
   },
   {
     "id": 815,
@@ -24855,7 +25670,8 @@
       "Cinder",
       "Sorrow",
       "Obsidian"
-    ]
+    ],
+    "img": "/monsterImages/monster815.webp"
   },
   {
     "id": 816,
@@ -24891,7 +25707,8 @@
       "Aegis",
       "Nether",
       "Genesis"
-    ]
+    ],
+    "img": "/monsterImages/monster816.webp"
   },
   {
     "id": 817,
@@ -24927,7 +25744,8 @@
       "Phoenix",
       "Crystal",
       "Vortex"
-    ]
+    ],
+    "img": "/monsterImages/monster817.webp"
   },
   {
     "id": 818,
@@ -24960,7 +25778,8 @@
       "Inferno",
       "Toxin",
       "Vortex"
-    ]
+    ],
+    "img": "/monsterImages/monster818.webp"
   },
   {
     "id": 819,
@@ -24994,7 +25813,8 @@
       "Sunder",
       "Infernal",
       "Ether"
-    ]
+    ],
+    "img": "/monsterImages/monster819.webp"
   },
   {
     "id": 820,
@@ -25030,7 +25850,8 @@
       "Frostbite",
       "Celestial",
       "Shadow"
-    ]
+    ],
+    "img": "/monsterImages/monster820.webp"
   },
   {
     "id": 821,
@@ -25066,7 +25887,8 @@
       "Inferno",
       "Void",
       "Tidal"
-    ]
+    ],
+    "img": "/monsterImages/monster821.webp"
   },
   {
     "id": 822,
@@ -25102,7 +25924,8 @@
       "Mystic",
       "Verdant",
       "Nebula"
-    ]
+    ],
+    "img": "/monsterImages/monster822.webp"
   },
   {
     "id": 823,
@@ -25135,7 +25958,8 @@
       "Voidwalker",
       "Haven",
       "Eclipse"
-    ]
+    ],
+    "img": "/monsterImages/monster823.webp"
   },
   {
     "id": 824,
@@ -25167,7 +25991,8 @@
       "Aurora",
       "Chill",
       "Ironclad"
-    ]
+    ],
+    "img": "/monsterImages/monster824.webp"
   },
   {
     "id": 825,
@@ -25203,7 +26028,8 @@
       "Wraith",
       "Blight",
       "Blizzard"
-    ]
+    ],
+    "img": "/monsterImages/monster825.webp"
   },
   {
     "id": 826,
@@ -25235,7 +26061,8 @@
       "Fulgent",
       "Tempest",
       "Mystic"
-    ]
+    ],
+    "img": "/monsterImages/monster826.webp"
   },
   {
     "id": 827,
@@ -25269,7 +26096,8 @@
       "Toxin",
       "Plague",
       "Gale"
-    ]
+    ],
+    "img": "/monsterImages/monster827.webp"
   },
   {
     "id": 828,
@@ -25305,7 +26133,8 @@
       "Zephyr",
       "Tempestuous",
       "Tempest"
-    ]
+    ],
+    "img": "/monsterImages/monster828.webp"
   },
   {
     "id": 829,
@@ -25338,7 +26167,8 @@
       "Mystic",
       "Cinder",
       "Emberstorm"
-    ]
+    ],
+    "img": "/monsterImages/monster829.webp"
   },
   {
     "id": 830,
@@ -25374,7 +26204,8 @@
       "Terra",
       "Tempestuous",
       "Fey"
-    ]
+    ],
+    "img": "/monsterImages/monster830.webp"
   },
   {
     "id": 831,
@@ -25408,7 +26239,8 @@
       "Obsidian",
       "Aurora",
       "Quake"
-    ]
+    ],
+    "img": "/monsterImages/monster831.webp"
   },
   {
     "id": 832,
@@ -25444,7 +26276,8 @@
       "Blight",
       "Searing",
       "Rapture"
-    ]
+    ],
+    "img": "/monsterImages/monster832.webp"
   },
   {
     "id": 833,
@@ -25479,7 +26312,8 @@
       "Nebula",
       "Ironclad",
       "Void"
-    ]
+    ],
+    "img": "/monsterImages/monster833.webp"
   },
   {
     "id": 834,
@@ -25515,7 +26349,8 @@
       "Spectral",
       "Fey",
       "Silhouette"
-    ]
+    ],
+    "img": "/monsterImages/monster834.webp"
   },
   {
     "id": 835,
@@ -25547,7 +26382,8 @@
       "Fey",
       "Mystic",
       "Vitalis"
-    ]
+    ],
+    "img": "/monsterImages/monster835.webp"
   },
   {
     "id": 836,
@@ -25579,7 +26415,8 @@
       "Hurricane",
       "Void",
       "Beast"
-    ]
+    ],
+    "img": "/monsterImages/monster836.webp"
   },
   {
     "id": 837,
@@ -25615,7 +26452,8 @@
       "Sunder",
       "Plague",
       "Echo"
-    ]
+    ],
+    "img": "/monsterImages/monster837.webp"
   },
   {
     "id": 838,
@@ -25649,7 +26487,8 @@
       "Cinder",
       "Spectral",
       "Fulgent"
-    ]
+    ],
+    "img": "/monsterImages/monster838.webp"
   },
   {
     "id": 839,
@@ -25683,7 +26522,8 @@
       "Tsunami",
       "Mirage",
       "Tidal"
-    ]
+    ],
+    "img": "/monsterImages/monster839.webp"
   },
   {
     "id": 840,
@@ -25714,7 +26554,8 @@
       "Blizzard",
       "Toxin",
       "Sable"
-    ]
+    ],
+    "img": "/monsterImages/monster840.webp"
   },
   {
     "id": 841,
@@ -25749,7 +26590,8 @@
       "Chronos",
       "Sandstorm",
       "Radiance"
-    ]
+    ],
+    "img": "/monsterImages/monster841.webp"
   },
   {
     "id": 842,
@@ -25785,7 +26627,8 @@
       "Chronos",
       "Spirit",
       "Spectral"
-    ]
+    ],
+    "img": "/monsterImages/monster842.webp"
   },
   {
     "id": 843,
@@ -25821,7 +26664,8 @@
       "Mystic",
       "Plague",
       "Spirit"
-    ]
+    ],
+    "img": "/monsterImages/monster843.webp"
   },
   {
     "id": 844,
@@ -25857,7 +26701,8 @@
       "Zephyr",
       "Gloom",
       "Chaos"
-    ]
+    ],
+    "img": "/monsterImages/monster844.webp"
   },
   {
     "id": 845,
@@ -25892,7 +26737,8 @@
       "Obsidian",
       "Pestilence",
       "Storm"
-    ]
+    ],
+    "img": "/monsterImages/monster845.webp"
   },
   {
     "id": 846,
@@ -25927,7 +26773,8 @@
       "Vermilion",
       "Ascendancy",
       "Quake"
-    ]
+    ],
+    "img": "/monsterImages/monster846.webp"
   },
   {
     "id": 847,
@@ -25959,7 +26806,8 @@
       "Seraph",
       "Gloom",
       "Frost"
-    ]
+    ],
+    "img": "/monsterImages/monster847.webp"
   },
   {
     "id": 848,
@@ -25995,7 +26843,8 @@
       "Rapture",
       "Cavern",
       "Phoenix"
-    ]
+    ],
+    "img": "/monsterImages/monster848.webp"
   },
   {
     "id": 849,
@@ -26030,7 +26879,8 @@
       "Ascendancy",
       "Rapture",
       "Fury"
-    ]
+    ],
+    "img": "/monsterImages/monster849.webp"
   },
   {
     "id": 850,
@@ -26064,7 +26914,8 @@
       "Magma",
       "Vitalis",
       "Vermilion"
-    ]
+    ],
+    "img": "/monsterImages/monster850.webp"
   },
   {
     "id": 851,
@@ -26100,7 +26951,8 @@
       "Sunder",
       "Solaris",
       "Grove"
-    ]
+    ],
+    "img": "/monsterImages/monster851.webp"
   },
   {
     "id": 852,
@@ -26134,7 +26986,8 @@
       "Phantom",
       "Hurricane",
       "Shadow"
-    ]
+    ],
+    "img": "/monsterImages/monster852.webp"
   },
   {
     "id": 853,
@@ -26170,7 +27023,8 @@
       "Echo",
       "Sunder",
       "Sorrow"
-    ]
+    ],
+    "img": "/monsterImages/monster853.webp"
   },
   {
     "id": 854,
@@ -26206,7 +27060,8 @@
       "Dread",
       "Gale",
       "Crystal"
-    ]
+    ],
+    "img": "/monsterImages/monster854.webp"
   },
   {
     "id": 855,
@@ -26242,7 +27097,8 @@
       "Plague",
       "Windshear",
       "Ascendancy"
-    ]
+    ],
+    "img": "/monsterImages/monster855.webp"
   },
   {
     "id": 856,
@@ -26278,7 +27134,8 @@
       "Phantom",
       "Terra",
       "Frostbite"
-    ]
+    ],
+    "img": "/monsterImages/monster856.webp"
   },
   {
     "id": 857,
@@ -26312,7 +27169,8 @@
       "Vermilion",
       "Chronos",
       "Verdant"
-    ]
+    ],
+    "img": "/monsterImages/monster857.webp"
   },
   {
     "id": 858,
@@ -26347,7 +27205,8 @@
       "Glacier",
       "Frostbite",
       "Radiance"
-    ]
+    ],
+    "img": "/monsterImages/monster858.webp"
   },
   {
     "id": 859,
@@ -26380,7 +27239,8 @@
       "Phoenix",
       "Glacier",
       "Sable"
-    ]
+    ],
+    "img": "/monsterImages/monster859.webp"
   },
   {
     "id": 860,
@@ -26412,7 +27272,8 @@
       "Crimson",
       "Inferno",
       "Cacophony"
-    ]
+    ],
+    "img": "/monsterImages/monster860.webp"
   },
   {
     "id": 861,
@@ -26448,7 +27309,8 @@
       "Chronos",
       "Void",
       "Chaos"
-    ]
+    ],
+    "img": "/monsterImages/monster861.webp"
   },
   {
     "id": 862,
@@ -26483,7 +27345,8 @@
       "Phantom",
       "Plague",
       "Windshear"
-    ]
+    ],
+    "img": "/monsterImages/monster862.webp"
   },
   {
     "id": 863,
@@ -26519,7 +27382,8 @@
       "Oblivion",
       "Gale",
       "Sandstorm"
-    ]
+    ],
+    "img": "/monsterImages/monster863.webp"
   },
   {
     "id": 864,
@@ -26554,7 +27418,8 @@
       "Phantom",
       "Magma",
       "Echo"
-    ]
+    ],
+    "img": "/monsterImages/monster864.webp"
   },
   {
     "id": 865,
@@ -26590,7 +27455,8 @@
       "Umbral",
       "Chroma",
       "Mystic"
-    ]
+    ],
+    "img": "/monsterImages/monster865.webp"
   },
   {
     "id": 866,
@@ -26624,7 +27490,8 @@
       "Embers",
       "Gale",
       "Briar"
-    ]
+    ],
+    "img": "/monsterImages/monster866.webp"
   },
   {
     "id": 867,
@@ -26660,7 +27527,8 @@
       "Plague",
       "Fury",
       "Spirit"
-    ]
+    ],
+    "img": "/monsterImages/monster867.webp"
   },
   {
     "id": 868,
@@ -26696,7 +27564,8 @@
       "Tidal",
       "Inferno",
       "Eclipse"
-    ]
+    ],
+    "img": "/monsterImages/monster868.webp"
   },
   {
     "id": 869,
@@ -26732,7 +27601,8 @@
       "Vitalis",
       "Phoenix",
       "Lunar"
-    ]
+    ],
+    "img": "/monsterImages/monster869.webp"
   },
   {
     "id": 870,
@@ -26768,7 +27638,8 @@
       "Grove",
       "Chroma",
       "Terra"
-    ]
+    ],
+    "img": "/monsterImages/monster870.webp"
   },
   {
     "id": 871,
@@ -26799,7 +27670,8 @@
       "Infernal",
       "Verdant",
       "Crystal"
-    ]
+    ],
+    "img": "/monsterImages/monster871.webp"
   },
   {
     "id": 872,
@@ -26830,7 +27702,8 @@
       "Toxin",
       "Solstice",
       "Magma"
-    ]
+    ],
+    "img": "/monsterImages/monster872.webp"
   },
   {
     "id": 873,
@@ -26863,7 +27736,8 @@
       "Aurora",
       "Obsidian",
       "Zephyr"
-    ]
+    ],
+    "img": "/monsterImages/monster873.webp"
   },
   {
     "id": 874,
@@ -26899,7 +27773,8 @@
       "Frost",
       "Sunder",
       "Genesis"
-    ]
+    ],
+    "img": "/monsterImages/monster874.webp"
   },
   {
     "id": 875,
@@ -26932,7 +27807,8 @@
       "Terra",
       "Abyss",
       "Radiance"
-    ]
+    ],
+    "img": "/monsterImages/monster875.webp"
   },
   {
     "id": 876,
@@ -26968,7 +27844,8 @@
       "Embers",
       "Tempest",
       "Briar"
-    ]
+    ],
+    "img": "/monsterImages/monster876.webp"
   },
   {
     "id": 877,
@@ -27001,7 +27878,8 @@
       "Aura",
       "Aqua",
       "Cinder"
-    ]
+    ],
+    "img": "/monsterImages/monster877.webp"
   },
   {
     "id": 878,
@@ -27037,7 +27915,8 @@
       "Tempestuous",
       "Tempest",
       "Tidal"
-    ]
+    ],
+    "img": "/monsterImages/monster878.webp"
   },
   {
     "id": 879,
@@ -27071,7 +27950,8 @@
       "Chaos",
       "Infernal",
       "Celestial"
-    ]
+    ],
+    "img": "/monsterImages/monster879.webp"
   },
   {
     "id": 880,
@@ -27102,7 +27982,8 @@
       "Zephyr",
       "Celestial",
       "Wraith"
-    ]
+    ],
+    "img": "/monsterImages/monster880.webp"
   },
   {
     "id": 881,
@@ -27136,7 +28017,8 @@
       "Quake",
       "Inferno",
       "Nightfall"
-    ]
+    ],
+    "img": "/monsterImages/monster881.webp"
   },
   {
     "id": 882,
@@ -27169,7 +28051,8 @@
       "Mirage",
       "Aether",
       "Quake"
-    ]
+    ],
+    "img": "/monsterImages/monster882.webp"
   },
   {
     "id": 883,
@@ -27200,7 +28083,8 @@
       "Crimson",
       "Thorn",
       "Tidal"
-    ]
+    ],
+    "img": "/monsterImages/monster883.webp"
   },
   {
     "id": 884,
@@ -27236,7 +28120,8 @@
       "Cavern",
       "Chill",
       "Mirage"
-    ]
+    ],
+    "img": "/monsterImages/monster884.webp"
   },
   {
     "id": 885,
@@ -27272,7 +28157,8 @@
       "Spectral",
       "Hurricane",
       "Vitalis"
-    ]
+    ],
+    "img": "/monsterImages/monster885.webp"
   },
   {
     "id": 886,
@@ -27306,7 +28192,8 @@
       "Searing",
       "Blizzard",
       "Phoenix"
-    ]
+    ],
+    "img": "/monsterImages/monster886.webp"
   },
   {
     "id": 887,
@@ -27339,7 +28226,8 @@
       "Crimson",
       "Embers",
       "Ascendancy"
-    ]
+    ],
+    "img": "/monsterImages/monster887.webp"
   },
   {
     "id": 888,
@@ -27372,7 +28260,8 @@
       "Vitalis",
       "Tempestuous",
       "Windshear"
-    ]
+    ],
+    "img": "/monsterImages/monster888.webp"
   },
   {
     "id": 889,
@@ -27406,7 +28295,8 @@
       "Fey",
       "Phoenix",
       "Solstice"
-    ]
+    ],
+    "img": "/monsterImages/monster889.webp"
   },
   {
     "id": 890,
@@ -27437,7 +28327,8 @@
       "Wraith",
       "Beast",
       "Solstice"
-    ]
+    ],
+    "img": "/monsterImages/monster890.webp"
   },
   {
     "id": 891,
@@ -27473,7 +28364,8 @@
       "Beast",
       "Chroma",
       "Crimson"
-    ]
+    ],
+    "img": "/monsterImages/monster891.webp"
   },
   {
     "id": 892,
@@ -27507,7 +28399,8 @@
       "Gloom",
       "Lunar",
       "Embers"
-    ]
+    ],
+    "img": "/monsterImages/monster892.webp"
   },
   {
     "id": 893,
@@ -27542,7 +28435,8 @@
       "Aura",
       "Nebula",
       "Fury"
-    ]
+    ],
+    "img": "/monsterImages/monster893.webp"
   },
   {
     "id": 894,
@@ -27578,7 +28472,8 @@
       "Cinder",
       "Blizzard",
       "Silhouette"
-    ]
+    ],
+    "img": "/monsterImages/monster894.webp"
   },
   {
     "id": 895,
@@ -27612,7 +28507,8 @@
       "Oblivion",
       "Quake",
       "Celestial"
-    ]
+    ],
+    "img": "/monsterImages/monster895.webp"
   },
   {
     "id": 896,
@@ -27646,7 +28542,8 @@
       "Lunar",
       "Pestilence",
       "Verdant"
-    ]
+    ],
+    "img": "/monsterImages/monster896.webp"
   },
   {
     "id": 897,
@@ -27681,7 +28578,8 @@
       "Nebula",
       "Mirage",
       "Grove"
-    ]
+    ],
+    "img": "/monsterImages/monster897.webp"
   },
   {
     "id": 898,
@@ -27717,7 +28615,8 @@
       "Lumina",
       "Ascendancy",
       "Plague"
-    ]
+    ],
+    "img": "/monsterImages/monster898.webp"
   },
   {
     "id": 899,
@@ -27753,7 +28652,8 @@
       "Eclipse",
       "Dread",
       "Quake"
-    ]
+    ],
+    "img": "/monsterImages/monster899.webp"
   },
   {
     "id": 900,
@@ -27786,7 +28686,8 @@
       "Aqua",
       "Chill",
       "Beast"
-    ]
+    ],
+    "img": "/monsterImages/monster900.webp"
   },
   {
     "id": 901,
@@ -27822,7 +28723,8 @@
       "Inferno",
       "Crimson",
       "Vigilance"
-    ]
+    ],
+    "img": "/monsterImages/monster901.webp"
   },
   {
     "id": 902,
@@ -27854,7 +28756,8 @@
       "Magma",
       "Fury",
       "Chronos"
-    ]
+    ],
+    "img": "/monsterImages/monster902.webp"
   },
   {
     "id": 903,
@@ -27890,7 +28793,8 @@
       "Seraph",
       "Dread",
       "Wraith"
-    ]
+    ],
+    "img": "/monsterImages/monster903.webp"
   },
   {
     "id": 904,
@@ -27926,7 +28830,8 @@
       "Storm",
       "Lunar",
       "Frost"
-    ]
+    ],
+    "img": "/monsterImages/monster904.webp"
   },
   {
     "id": 905,
@@ -27962,7 +28867,8 @@
       "Emberstorm",
       "Chill",
       "Vermilion"
-    ]
+    ],
+    "img": "/monsterImages/monster905.webp"
   },
   {
     "id": 906,
@@ -27998,7 +28904,8 @@
       "Blizzard",
       "Sable",
       "Sandstorm"
-    ]
+    ],
+    "img": "/monsterImages/monster906.webp"
   },
   {
     "id": 907,
@@ -28033,7 +28940,8 @@
       "Spirit",
       "Blizzard",
       "Pestilence"
-    ]
+    ],
+    "img": "/monsterImages/monster907.webp"
   },
   {
     "id": 908,
@@ -28066,7 +28974,8 @@
       "Ironclad",
       "Frost",
       "Blizzard"
-    ]
+    ],
+    "img": "/monsterImages/monster908.webp"
   },
   {
     "id": 909,
@@ -28102,7 +29011,8 @@
       "Cinder",
       "Vermilion",
       "Eclipse"
-    ]
+    ],
+    "img": "/monsterImages/monster909.webp"
   },
   {
     "id": 910,
@@ -28137,7 +29047,8 @@
       "Shroud",
       "Embers",
       "Tidal"
-    ]
+    ],
+    "img": "/monsterImages/monster910.webp"
   },
   {
     "id": 911,
@@ -28170,7 +29081,8 @@
       "Solaris",
       "Hurricane",
       "Cacophony"
-    ]
+    ],
+    "img": "/monsterImages/monster911.webp"
   },
   {
     "id": 912,
@@ -28206,7 +29118,8 @@
       "Verdant",
       "Abyss",
       "Nether"
-    ]
+    ],
+    "img": "/monsterImages/monster912.webp"
   },
   {
     "id": 913,
@@ -28241,7 +29154,8 @@
       "Solstice",
       "Inferno",
       "Dread"
-    ]
+    ],
+    "img": "/monsterImages/monster913.webp"
   },
   {
     "id": 914,
@@ -28277,7 +29191,8 @@
       "Echo",
       "Searing",
       "Blight"
-    ]
+    ],
+    "img": "/monsterImages/monster914.webp"
   },
   {
     "id": 915,
@@ -28312,7 +29227,8 @@
       "Cavern",
       "Storm",
       "Ironclad"
-    ]
+    ],
+    "img": "/monsterImages/monster915.webp"
   },
   {
     "id": 916,
@@ -28347,7 +29263,8 @@
       "Sandstorm",
       "Vermilion",
       "Nether"
-    ]
+    ],
+    "img": "/monsterImages/monster916.webp"
   },
   {
     "id": 917,
@@ -28383,7 +29300,8 @@
       "Verdant",
       "Tidal",
       "Fury"
-    ]
+    ],
+    "img": "/monsterImages/monster917.webp"
   },
   {
     "id": 918,
@@ -28419,7 +29337,8 @@
       "Searing",
       "Fulgor",
       "Nether"
-    ]
+    ],
+    "img": "/monsterImages/monster918.webp"
   },
   {
     "id": 919,
@@ -28455,7 +29374,8 @@
       "Searing",
       "Pestilence",
       "Dread"
-    ]
+    ],
+    "img": "/monsterImages/monster919.webp"
   },
   {
     "id": 920,
@@ -28489,7 +29409,8 @@
       "Spectral",
       "Haze",
       "Voidwalker"
-    ]
+    ],
+    "img": "/monsterImages/monster920.webp"
   },
   {
     "id": 921,
@@ -28525,7 +29446,8 @@
       "Vermilion",
       "Toxin",
       "Haze"
-    ]
+    ],
+    "img": "/monsterImages/monster921.webp"
   },
   {
     "id": 922,
@@ -28561,7 +29483,8 @@
       "Vitalis",
       "Haze",
       "Wraith"
-    ]
+    ],
+    "img": "/monsterImages/monster922.webp"
   },
   {
     "id": 923,
@@ -28597,7 +29520,8 @@
       "Beast",
       "Chroma",
       "Blight"
-    ]
+    ],
+    "img": "/monsterImages/monster923.webp"
   },
   {
     "id": 924,
@@ -28633,7 +29557,8 @@
       "Fey",
       "Vortex",
       "Nightfall"
-    ]
+    ],
+    "img": "/monsterImages/monster924.webp"
   },
   {
     "id": 925,
@@ -28669,7 +29594,8 @@
       "Haze",
       "Celestial",
       "Shroud"
-    ]
+    ],
+    "img": "/monsterImages/monster925.webp"
   },
   {
     "id": 926,
@@ -28705,7 +29631,8 @@
       "Embers",
       "Vitalis",
       "Aura"
-    ]
+    ],
+    "img": "/monsterImages/monster926.webp"
   },
   {
     "id": 927,
@@ -28741,7 +29668,8 @@
       "Hurricane",
       "Silhouette",
       "Briar"
-    ]
+    ],
+    "img": "/monsterImages/monster927.webp"
   },
   {
     "id": 928,
@@ -28775,7 +29703,8 @@
       "Hallowed",
       "Infernal",
       "Fulgor"
-    ]
+    ],
+    "img": "/monsterImages/monster928.webp"
   },
   {
     "id": 929,
@@ -28811,7 +29740,8 @@
       "Specter",
       "Glacier",
       "Shroud"
-    ]
+    ],
+    "img": "/monsterImages/monster929.webp"
   },
   {
     "id": 930,
@@ -28847,7 +29777,8 @@
       "Infernal",
       "Aether",
       "Solaris"
-    ]
+    ],
+    "img": "/monsterImages/monster930.webp"
   },
   {
     "id": 931,
@@ -28882,7 +29813,8 @@
       "Aether",
       "Magma",
       "Fate"
-    ]
+    ],
+    "img": "/monsterImages/monster931.webp"
   },
   {
     "id": 932,
@@ -28918,7 +29850,8 @@
       "Fey",
       "Plague",
       "Haven"
-    ]
+    ],
+    "img": "/monsterImages/monster932.webp"
   },
   {
     "id": 933,
@@ -28954,7 +29887,8 @@
       "Nightfall",
       "Zephyr",
       "Echo"
-    ]
+    ],
+    "img": "/monsterImages/monster933.webp"
   },
   {
     "id": 934,
@@ -28988,7 +29922,8 @@
       "Fulgent",
       "Ethereal",
       "Glacier"
-    ]
+    ],
+    "img": "/monsterImages/monster934.webp"
   },
   {
     "id": 935,
@@ -29024,7 +29959,8 @@
       "Quake",
       "Tsunami",
       "Obsidian"
-    ]
+    ],
+    "img": "/monsterImages/monster935.webp"
   },
   {
     "id": 936,
@@ -29060,7 +29996,8 @@
       "Hurricane",
       "Aurora",
       "Ascendancy"
-    ]
+    ],
+    "img": "/monsterImages/monster936.webp"
   },
   {
     "id": 937,
@@ -29096,7 +30033,8 @@
       "Chronos",
       "Ironclad",
       "Gale"
-    ]
+    ],
+    "img": "/monsterImages/monster937.webp"
   },
   {
     "id": 938,
@@ -29132,7 +30070,8 @@
       "Zephyr",
       "Haze",
       "Nightfall"
-    ]
+    ],
+    "img": "/monsterImages/monster938.webp"
   },
   {
     "id": 939,
@@ -29165,7 +30104,8 @@
       "Dread",
       "Shadow",
       "Aurora"
-    ]
+    ],
+    "img": "/monsterImages/monster939.webp"
   },
   {
     "id": 940,
@@ -29199,7 +30139,8 @@
       "Genesis",
       "Gloom",
       "Quake"
-    ]
+    ],
+    "img": "/monsterImages/monster940.webp"
   },
   {
     "id": 941,
@@ -29235,7 +30176,8 @@
       "Silhouette",
       "Obsidian",
       "Nebula"
-    ]
+    ],
+    "img": "/monsterImages/monster941.webp"
   },
   {
     "id": 942,
@@ -29271,7 +30213,8 @@
       "Umbral",
       "Solstice",
       "Vortex"
-    ]
+    ],
+    "img": "/monsterImages/monster942.webp"
   },
   {
     "id": 943,
@@ -29307,7 +30250,8 @@
       "Storm",
       "Windshear",
       "Vortex"
-    ]
+    ],
+    "img": "/monsterImages/monster943.webp"
   },
   {
     "id": 944,
@@ -29343,7 +30287,8 @@
       "Silhouette",
       "Spectral",
       "Crimson"
-    ]
+    ],
+    "img": "/monsterImages/monster944.webp"
   },
   {
     "id": 945,
@@ -29375,7 +30320,8 @@
       "Cinder",
       "Wraith",
       "Fulgor"
-    ]
+    ],
+    "img": "/monsterImages/monster945.webp"
   },
   {
     "id": 946,
@@ -29409,7 +30355,8 @@
       "Lumina",
       "Nebula",
       "Wraith"
-    ]
+    ],
+    "img": "/monsterImages/monster946.webp"
   },
   {
     "id": 947,
@@ -29443,7 +30390,8 @@
       "Storm",
       "Eclipse",
       "Mystic"
-    ]
+    ],
+    "img": "/monsterImages/monster947.webp"
   },
   {
     "id": 948,
@@ -29479,7 +30427,8 @@
       "Spirit",
       "Emberstorm",
       "Blight"
-    ]
+    ],
+    "img": "/monsterImages/monster948.webp"
   },
   {
     "id": 949,
@@ -29514,7 +30463,8 @@
       "Fury",
       "Hurricane",
       "Vitalis"
-    ]
+    ],
+    "img": "/monsterImages/monster949.webp"
   },
   {
     "id": 950,
@@ -29550,7 +30500,8 @@
       "Aurora",
       "Terra",
       "Crystal"
-    ]
+    ],
+    "img": "/monsterImages/monster950.webp"
   },
   {
     "id": 951,
@@ -29586,7 +30537,8 @@
       "Nether",
       "Eclipse",
       "Fate"
-    ]
+    ],
+    "img": "/monsterImages/monster951.webp"
   },
   {
     "id": 952,
@@ -29618,7 +30570,8 @@
       "Sorrow",
       "Terra",
       "Dread"
-    ]
+    ],
+    "img": "/monsterImages/monster952.webp"
   },
   {
     "id": 953,
@@ -29654,7 +30607,8 @@
       "Inferno",
       "Ethereal",
       "Emberstorm"
-    ]
+    ],
+    "img": "/monsterImages/monster953.webp"
   },
   {
     "id": 954,
@@ -29690,7 +30644,8 @@
       "Dread",
       "Hurricane",
       "Crimson"
-    ]
+    ],
+    "img": "/monsterImages/monster954.webp"
   },
   {
     "id": 955,
@@ -29726,7 +30681,8 @@
       "Aura",
       "Fury",
       "Lumina"
-    ]
+    ],
+    "img": "/monsterImages/monster955.webp"
   },
   {
     "id": 956,
@@ -29762,7 +30718,8 @@
       "Beast",
       "Hurricane",
       "Dread"
-    ]
+    ],
+    "img": "/monsterImages/monster956.webp"
   },
   {
     "id": 957,
@@ -29795,7 +30752,8 @@
       "Mystic",
       "Rift",
       "Frostbite"
-    ]
+    ],
+    "img": "/monsterImages/monster957.webp"
   },
   {
     "id": 958,
@@ -29831,7 +30789,8 @@
       "Blizzard",
       "Dread",
       "Aegis"
-    ]
+    ],
+    "img": "/monsterImages/monster958.webp"
   },
   {
     "id": 959,
@@ -29867,7 +30826,8 @@
       "Fulgent",
       "Wraith",
       "Toxin"
-    ]
+    ],
+    "img": "/monsterImages/monster959.webp"
   },
   {
     "id": 960,
@@ -29903,7 +30863,8 @@
       "Fury",
       "Aura",
       "Vigilance"
-    ]
+    ],
+    "img": "/monsterImages/monster960.webp"
   },
   {
     "id": 961,
@@ -29939,7 +30900,8 @@
       "Searing",
       "Phoenix",
       "Fey"
-    ]
+    ],
+    "img": "/monsterImages/monster961.webp"
   },
   {
     "id": 962,
@@ -29974,7 +30936,8 @@
       "Crimson",
       "Shroud",
       "Radiance"
-    ]
+    ],
+    "img": "/monsterImages/monster962.webp"
   },
   {
     "id": 963,
@@ -30010,7 +30973,8 @@
       "Silhouette",
       "Windshear",
       "Ember"
-    ]
+    ],
+    "img": "/monsterImages/monster963.webp"
   },
   {
     "id": 964,
@@ -30043,7 +31007,8 @@
       "Phoenix",
       "Cacophony",
       "Seraph"
-    ]
+    ],
+    "img": "/monsterImages/monster964.webp"
   },
   {
     "id": 965,
@@ -30079,7 +31044,8 @@
       "Pestilence",
       "Abyss",
       "Gale"
-    ]
+    ],
+    "img": "/monsterImages/monster965.webp"
   },
   {
     "id": 966,
@@ -30111,7 +31077,8 @@
       "Silhouette",
       "Fury",
       "Blizzard"
-    ]
+    ],
+    "img": "/monsterImages/monster966.webp"
   },
   {
     "id": 967,
@@ -30147,7 +31114,8 @@
       "Nightfall",
       "Plague",
       "Umbral"
-    ]
+    ],
+    "img": "/monsterImages/monster967.webp"
   },
   {
     "id": 968,
@@ -30183,7 +31151,8 @@
       "Abyss",
       "Tsunami",
       "Genesis"
-    ]
+    ],
+    "img": "/monsterImages/monster968.webp"
   },
   {
     "id": 969,
@@ -30219,7 +31188,8 @@
       "Grove",
       "Sorrow",
       "Aurora"
-    ]
+    ],
+    "img": "/monsterImages/monster969.webp"
   },
   {
     "id": 970,
@@ -30255,7 +31225,8 @@
       "Void",
       "Rapture",
       "Cavern"
-    ]
+    ],
+    "img": "/monsterImages/monster970.webp"
   },
   {
     "id": 971,
@@ -30291,7 +31262,8 @@
       "Toxin",
       "Eclipse",
       "Infernal"
-    ]
+    ],
+    "img": "/monsterImages/monster971.webp"
   },
   {
     "id": 972,
@@ -30323,7 +31295,8 @@
       "Haven",
       "Chronos",
       "Fey"
-    ]
+    ],
+    "img": "/monsterImages/monster972.webp"
   },
   {
     "id": 973,
@@ -30359,7 +31332,8 @@
       "Ethereal",
       "Blizzard",
       "Vortex"
-    ]
+    ],
+    "img": "/monsterImages/monster973.webp"
   },
   {
     "id": 974,
@@ -30395,7 +31369,8 @@
       "Phantom",
       "Lumina",
       "Verdant"
-    ]
+    ],
+    "img": "/monsterImages/monster974.webp"
   },
   {
     "id": 975,
@@ -30431,7 +31406,8 @@
       "Chroma",
       "Tsunami",
       "Quake"
-    ]
+    ],
+    "img": "/monsterImages/monster975.webp"
   },
   {
     "id": 976,
@@ -30467,7 +31443,8 @@
       "Chaos",
       "Vortex",
       "Nether"
-    ]
+    ],
+    "img": "/monsterImages/monster976.webp"
   },
   {
     "id": 977,
@@ -30503,7 +31480,8 @@
       "Tempestuous",
       "Embers",
       "Toxin"
-    ]
+    ],
+    "img": "/monsterImages/monster977.webp"
   },
   {
     "id": 978,
@@ -30539,7 +31517,8 @@
       "Crystal",
       "Nightfall",
       "Fate"
-    ]
+    ],
+    "img": "/monsterImages/monster978.webp"
   },
   {
     "id": 979,
@@ -30574,7 +31553,8 @@
       "Pestilence",
       "Eclipse",
       "Nether"
-    ]
+    ],
+    "img": "/monsterImages/monster979.webp"
   },
   {
     "id": 980,
@@ -30608,7 +31588,8 @@
       "Echo",
       "Umbral",
       "Gloom"
-    ]
+    ],
+    "img": "/monsterImages/monster980.webp"
   },
   {
     "id": 981,
@@ -30644,7 +31625,8 @@
       "Verdant",
       "Specter",
       "Frost"
-    ]
+    ],
+    "img": "/monsterImages/monster981.webp"
   },
   {
     "id": 982,
@@ -30680,7 +31662,8 @@
       "Sunder",
       "Abyss",
       "Emberstorm"
-    ]
+    ],
+    "img": "/monsterImages/monster982.webp"
   },
   {
     "id": 983,
@@ -30712,7 +31695,8 @@
       "Tempestuous",
       "Mystic",
       "Crimson"
-    ]
+    ],
+    "img": "/monsterImages/monster983.webp"
   },
   {
     "id": 984,
@@ -30745,7 +31729,8 @@
       "Vortex",
       "Ember",
       "Aether"
-    ]
+    ],
+    "img": "/monsterImages/monster984.webp"
   },
   {
     "id": 985,
@@ -30777,7 +31762,8 @@
       "Fey",
       "Cacophony",
       "Glacier"
-    ]
+    ],
+    "img": "/monsterImages/monster985.webp"
   },
   {
     "id": 986,
@@ -30813,7 +31799,8 @@
       "Vitalis",
       "Lunar",
       "Wraith"
-    ]
+    ],
+    "img": "/monsterImages/monster986.webp"
   },
   {
     "id": 987,
@@ -30847,7 +31834,8 @@
       "Aurora",
       "Gloom",
       "Echo"
-    ]
+    ],
+    "img": "/monsterImages/monster987.webp"
   },
   {
     "id": 988,
@@ -30879,7 +31867,8 @@
       "Tsunami",
       "Chaos",
       "Grove"
-    ]
+    ],
+    "img": "/monsterImages/monster988.webp"
   },
   {
     "id": 989,
@@ -30915,7 +31904,8 @@
       "Cavern",
       "Plague",
       "Verdant"
-    ]
+    ],
+    "img": "/monsterImages/monster989.webp"
   },
   {
     "id": 990,
@@ -30951,7 +31941,8 @@
       "Rapture",
       "Lunar",
       "Storm"
-    ]
+    ],
+    "img": "/monsterImages/monster990.webp"
   },
   {
     "id": 991,
@@ -30987,7 +31978,8 @@
       "Dread",
       "Lunar",
       "Tempest"
-    ]
+    ],
+    "img": "/monsterImages/monster991.webp"
   },
   {
     "id": 992,
@@ -31023,7 +32015,8 @@
       "Void",
       "Windshear",
       "Terra"
-    ]
+    ],
+    "img": "/monsterImages/monster992.webp"
   },
   {
     "id": 993,
@@ -31055,7 +32048,8 @@
       "Infernal",
       "Shroud",
       "Ascendancy"
-    ]
+    ],
+    "img": "/monsterImages/monster993.webp"
   },
   {
     "id": 994,
@@ -31091,7 +32085,8 @@
       "Vigilance",
       "Storm",
       "Briar"
-    ]
+    ],
+    "img": "/monsterImages/monster994.webp"
   },
   {
     "id": 995,
@@ -31126,7 +32121,8 @@
       "Aether",
       "Silhouette",
       "Haven"
-    ]
+    ],
+    "img": "/monsterImages/monster995.webp"
   },
   {
     "id": 996,
@@ -31161,7 +32157,8 @@
       "Spectral",
       "Tsunami",
       "Seraph"
-    ]
+    ],
+    "img": "/monsterImages/monster996.webp"
   },
   {
     "id": 997,
@@ -31197,7 +32194,8 @@
       "Beast",
       "Echo",
       "Sable"
-    ]
+    ],
+    "img": "/monsterImages/monster997.webp"
   },
   {
     "id": 998,
@@ -31231,7 +32229,8 @@
       "Emberstorm",
       "Mirage",
       "Grove"
-    ]
+    ],
+    "img": "/monsterImages/monster998.webp"
   },
   {
     "id": 999,
@@ -31265,6 +32264,7 @@
       "Zephyr",
       "Oblivion",
       "Celestial"
-    ]
+    ],
+    "img": "/monsterImages/monster999.webp"
   }
 ]
