@@ -2,7 +2,7 @@
 import { useClickEvent } from "./common/useEvent.js";
 import { serveData } from "./common/fetch.js";
 import { renderIconWithNumber, averageValueIcon, imgAsBtn } from "./common/render.js";
-import { load, save, remove, redirect, reload } from "./common/utilities.js";
+import { load, save, remove, redirect, formatLargeNumber } from "./common/utilities.js";
 import { SELECTEDTEAMSETTINGS_LSK, TEAMS_LSK, CREDITS_LSK, SELECTEDFIGHTTEAM_LSK } from "./common/localStorageKeys.js";
 import { useCredits, addCredits } from "./common/credits.js";
 import { MonsterCard } from "./classes/MonsterCard.js";
@@ -134,7 +134,7 @@ function removeMonster(id) {
 
 function setControlMessage(className, message) {
   controlMessage.setAttribute("class", `controlMessage ${className}`);
-  controlMessage.innerText = message;
+  controlMessage.innerText = formatLargeNumber(message);
 
   if (controlMessageTimeout) {
     clearTimeout(controlMessageTimeout);
@@ -150,8 +150,8 @@ function setControlMessage(className, message) {
 
 function setBtnIcon(icon, src, altTitle) {
   icon.setAttribute("src", `../../res/icons/${src}.svg`);
-  icon.setAttribute("alt", altTitle);
-  icon.setAttribute("title", altTitle);
+  icon.setAttribute("alt", formatLargeNumber(altTitle));
+  icon.setAttribute("title", formatLargeNumber(altTitle));
 }
 
 function useBtnLinks() {

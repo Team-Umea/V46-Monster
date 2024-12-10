@@ -55,10 +55,10 @@ export function imgAsBtn(src, altTtile) {
   const container = document.createElement("div");
   const icon = document.createElement("img");
 
-  container.setAttribute("title", altTtile);
+  container.setAttribute("title", formatLargeNumber(altTtile));
 
   icon.setAttribute("src", `../../res/icons/${src}.svg`);
-  icon.setAttribute("alt", altTtile);
+  icon.setAttribute("alt", formatLargeNumber(altTtile));
 
   container.appendChild(icon);
   return container;
@@ -70,10 +70,10 @@ export function renderIconWithNumber(value, src, altAndTitle, dir) {
   const iconText = document.createElement("p");
 
   iconContainer.setAttribute("class", "iconContainer");
-  iconContainer.setAttribute("title", altAndTitle);
+  iconContainer.setAttribute("title", formatLargeNumber(altAndTitle));
 
   icon.setAttribute("src", src);
-  icon.setAttribute("alt", altAndTitle);
+  icon.setAttribute("alt", formatLargeNumber(altAndTitle));
   icon.setAttribute("class", "icon");
 
   iconText.innerText = formatLargeNumber(value);
