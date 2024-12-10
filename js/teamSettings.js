@@ -1,5 +1,5 @@
 //Js code for teamControls page
-import { useClickEvent } from "./common/useEvent.js";
+import { useClickEvent, useInputEvent, useChangeEvent } from "./common/useEvent.js";
 import { serveData } from "./common/fetch.js";
 import { renderIconWithNumber, averageValueIcon, imgAsBtn } from "./common/render.js";
 import { load, save, remove, redirect, formatLargeNumber } from "./common/utilities.js";
@@ -179,6 +179,12 @@ function useBtnLinks() {
     const icon = btn.getElementsByTagName("img")[0];
     const index = Array.from(linkedBtns).indexOf(btn);
     setControlMessage("hide", "message");
+
+    const secondChild = btn.children[1];
+    if (secondChild) {
+      secondChild.remove();
+    }
+
     switch (index) {
       case 0:
         if (isPaidFor) {
@@ -235,7 +241,7 @@ function renderPageInfo() {
 function renderControls() {
   controlBtns.innerHTML = "";
 
-  const buyBtn = imgAsBtn(isPaidFor ? "sell" : "cart", isPaidFor ? `Sell '${teamName}' for ${teamCost} credits` : `Buy '${teamName}' for ${teamValue} credits`);
+  const buyBtn = imgAsBtn(isPaidFor ? "sell" : "cart", isPaidFor ? `Sell '${teamName}' for ${teamValue} credits` : `Buy '${teamName}' for ${teamCost} credits`);
   const shuffleBtn = imgAsBtn("shuffle", `Fill '${teamName}' with 4 random monsters`);
   const fightBtn = imgAsBtn("shield", `Fight with '${teamName}'`);
 
@@ -473,6 +479,8 @@ function renderElements() {
   search.setAttribute("placeholder", "Search by element name");
   populateElementsSortSelect(sort);
 
+  createElementContainers(elements);
+
   toggle.addEventListener("click", () => {
     const toggleIcon = toggle.getElementsByTagName("img")[0];
     const isExtended = toggleIcon.getAttribute("src").includes("downArrow");
@@ -486,9 +494,173 @@ function renderElements() {
     }
   });
 
+  search.addEventListener("input", () => {
+    searchElements(elements, search);
+  });
+
+  sort.addEventListener("change", () => {
+    setSortOrder(elements, sort, search);
+  });
+
   heading.append(elementsIcon, header, toggle);
   filters.append(search, sort);
   body.append(filters, elements);
 
   teamElementsContainer.append(heading, body);
+}
+
+function createElementContainers(elementsEl, condtion) {
+  elementsEl.innerHTML = "";
+
+  teamElements.forEach((teamElement) => {
+    const element = document.createElement("div");
+    const name = document.createElement("p");
+
+    element.setAttribute("class", "elementContainer");
+    name.setAttribute("class", "elementName");
+
+    const elementName = Object.keys(teamElement)[0];
+    const elementInstances = teamElement[elementName];
+    const elementRating = teamElement.rating;
+
+    const rating = renderIconWithNumber(elementRating, "../../res/icons/trophy.svg", `Rating of ${elementName} is ${elementRating}`, "right");
+    rating.classList.add("elementRating");
+
+    name.innerText = `${elementInstances}x ${elementName}`;
+
+    element.appendChild(name);
+    element.appendChild(rating);
+    elementsEl.appendChild(element);
+
+    if (condtion !== undefined && condtion !== null) {
+      if (typeof condtion === "function") {
+        if (condtion(elementName) === false) {
+          element.classList.add("opacity-0");
+        }
+      } else {
+        if (condtion === false) {
+          console.log(condtion);
+          element.classList.add("opacity-0");
+        }
+      }
+    }
+  });
+
+  const sortedByVisible = Array.from(elementsEl.children).sort((a, b) => {
+    const aIsHidden = a.classList.contains("opacity-0");
+    const bIsHidden = b.classList.contains("opacity-0");
+    return aIsHidden - bIsHidden;
+  });
+
+  elementsEl.innerHTML = "";
+
+  sortedByVisible.forEach((el) => elementsEl.appendChild(el));
+}
+
+function searchElements(elementsEl, searchElementsInput) {
+  const searchQuery = searchElementsInput.value;
+
+  const nameMatchesSearchQuery = (elementName) => {
+    return elementName.toLowerCase().includes(searchQuery.trim().toLowerCase());
+  };
+
+  createElementContainers(elementsEl, nameMatchesSearchQuery);
+}
+
+function setSortOrder(elementsEl, sortElementsSelect, searchElementsInput) {
+  const sortOrder = Number(sortElementsSelect.value);
+  const searchQuery = searchElementsInput.value;
+
+  sortElements(sortOrder);
+
+  const nameMatchesSearchQuery = (elementName) => {
+    return elementName.toLowerCase().includes(searchQuery.trim().toLowerCase());
+  };
+
+  createElementContainers(elementsEl, nameMatchesSearchQuery);
+}
+
+function sortElements(sortOrder) {
+  let sorted = [];
+
+  switch (sortOrder) {
+    case 0:
+      sorted = teamElements.sort((a, b) => {
+        const keyA = Object.keys(a)[0];
+        const keyB = Object.keys(b)[0];
+        const countA = a[keyA];
+        const countB = b[keyB];
+
+        const ratingA = a["rating"];
+        const ratingB = b["rating"];
+        const countDifference = countB - countA;
+        const ratingDifference = ratingB - ratingA;
+
+        return countDifference === 0 ? ratingDifference : countDifference;
+      });
+      break;
+    case 1:
+      sorted = teamElements.sort((a, b) => {
+        const keyA = Object.keys(a)[0];
+        const keyB = Object.keys(b)[0];
+        const countA = a[keyA];
+        const countB = b[keyB];
+
+        const ratingA = a["rating"];
+        const ratingB = b["rating"];
+        const countDifference = countA - countB;
+        const ratingDifference = ratingB - ratingA;
+
+        return countDifference === 0 ? ratingDifference : countDifference;
+      });
+      break;
+    case 2:
+      sorted = teamElements.sort((a, b) => {
+        const keyA = Object.keys(a)[0];
+        const keyB = Object.keys(b)[0];
+        const ratingA = a["rating"];
+        const ratingB = b["rating"];
+
+        const ratingDifference = ratingB - ratingA;
+        const alphaDifference = keyA.localeCompare(keyB);
+
+        return ratingDifference === 0 ? alphaDifference : ratingDifference;
+      });
+      break;
+    case 3:
+      sorted = teamElements.sort((a, b) => {
+        const keyA = Object.keys(a)[0];
+        const keyB = Object.keys(b)[0];
+        const ratingA = a["rating"];
+        const ratingB = b["rating"];
+
+        const ratingDifference = ratingA - ratingB;
+        const alphaDifference = keyA.localeCompare(keyB);
+
+        return ratingDifference === 0 ? alphaDifference : ratingDifference;
+      });
+      break;
+    case 4:
+      sorted = teamElements.sort((a, b) => {
+        const keyA = Object.keys(a)[0];
+        const keyB = Object.keys(b)[0];
+
+        return keyA.localeCompare(keyB);
+      });
+      break;
+    case 5:
+      sorted = teamElements.sort((a, b) => {
+        const keyA = Object.keys(a)[0];
+        const keyB = Object.keys(b)[0];
+
+        return keyB.localeCompare(keyA);
+      });
+      break;
+    default:
+      break;
+  }
+
+  if (sorted.length > 0) {
+    teamElements = sorted;
+  }
 }

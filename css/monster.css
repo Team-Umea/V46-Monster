@@ -177,6 +177,7 @@ input[type="radio"]:checked + label {
 
 .monsterPrice {
   position: absolute;
+  white-space: nowrap;
   bottom: 10px;
   left: 50%;
   transform: translate(-50%);

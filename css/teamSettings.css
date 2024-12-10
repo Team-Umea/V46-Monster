@@ -300,7 +300,32 @@ main {
         color: var(--color-primary-text);
       }
     }
+
+    .teamElements {
+      margin-top: 20px;
+      .elementContainer {
+        display: flex;
+        justify-content: space-between;
+
+        .elementName {
+          font-size: 1.2rem;
+        }
+      }
+    }
   }
+}
+
+.teamStatElementContainer {
+  display: flex;
+  justify-content: space-between;
+}
+
+.teamStatElementRating p {
+  font-size: 0.8rem;
+}
+
+.teamStatElementRating img {
+  width: 25px;
 }
 
 @media (max-width: 1300px) {
