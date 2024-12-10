@@ -158,6 +158,16 @@ export function generateUniqueName(arr, name) {
   };
 }
 
+export function formatLargeNumber(num) {
+  // Convert the number to a string and split it into parts.
+  const numString = num.toString();
+
+  // Use a regular expression to format the number.
+  const formattedString = numString.replace(/\B(?=(\d{3})+(?!\d))/g, " ");
+
+  return formattedString;
+}
+
 export function redirect(path) {
   window.location.href = path;
 }

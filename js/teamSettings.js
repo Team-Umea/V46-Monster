@@ -47,6 +47,7 @@ function init() {
 
 function render() {
   linkedBtns = [];
+  renderPageInfo();
   renderControls();
   renderTeamStats();
   renderMonsters();
@@ -184,6 +185,24 @@ function useBtnLinks() {
         break;
     }
   });
+}
+
+function renderPageInfo() {
+  const pageInfoEl = document.getElementById("pageInfo");
+  const teamCostEl = renderIconWithNumber(teamCost, "../../res/icons/diamond.svg", `Total cost of '${teamName}' is ${teamCost} credits`);
+  const teamNameEl = document.createElement("h1");
+  const pageNameEl = document.createElement("h2");
+
+  pageInfoEl.innerHTML = "";
+
+  teamNameEl.innerText = `Team ${teamName}`;
+  pageNameEl.innerText = "Settings and stats";
+
+  teamCostEl.classList.add("pageInfoTeamCost");
+  teamNameEl.setAttribute("class", "teamName");
+  pageNameEl.setAttribute("class", "pageName");
+
+  pageInfoEl.append(teamNameEl, teamCostEl, pageNameEl);
 }
 
 function renderControls() {

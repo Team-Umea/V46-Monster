@@ -1,5 +1,6 @@
 //Place as much render code here as possible
 import { getError } from "./error.js";
+import { formatLargeNumber } from "./utilities.js";
 
 export function renderDataAsUl(parent, parentClass, data) {
   parent.innerHTML = "";
@@ -54,9 +55,10 @@ export function imgAsBtn(src, altTtile) {
   const container = document.createElement("div");
   const icon = document.createElement("img");
 
+  container.setAttribute("title", altTtile);
+
   icon.setAttribute("src", `../../res/icons/${src}.svg`);
   icon.setAttribute("alt", altTtile);
-  icon.setAttribute("title", altTtile);
 
   container.appendChild(icon);
   return container;
@@ -68,13 +70,13 @@ export function renderIconWithNumber(value, src, altAndTitle, dir) {
   const iconText = document.createElement("p");
 
   iconContainer.setAttribute("class", "iconContainer");
+  iconContainer.setAttribute("title", altAndTitle);
 
   icon.setAttribute("src", src);
   icon.setAttribute("alt", altAndTitle);
-  icon.setAttribute("title", altAndTitle);
   icon.setAttribute("class", "icon");
 
-  iconText.innerText = value;
+  iconText.innerText = formatLargeNumber(value);
 
   if (!dir || dir.toLowerCase() === "left") {
     iconContainer.appendChild(icon);
@@ -257,7 +259,7 @@ export function averageValueIcon(value, mainSrc, subSrc, altTitle) {
   subIcon.setAttribute("src", `../../res/icons/${subSrc}.svg`);
 
   averageValue.setAttribute("class", "averageValue");
-  averageValue.innerText = value;
+  averageValue.innerText = formatLargeNumber(value);
 
   container.append(mainIcon, subIcon, averageValue);
 

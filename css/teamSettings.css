@@ -55,21 +55,25 @@ header {
 }
 
 header .pageInfo {
-  width: 100%;
+  width: fit-content;
   text-align: start;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
 }
 
+header .pageInfo .pageInfoTeamCost {
+  margin: 10px 0 0 0;
+}
+
 header .pageInfo h1 {
   color: var(--color-primary-a50);
-  font-size: 2rem;
+  font-size: 2.4rem;
   margin: 0;
 }
 
 header .pageInfo h2 {
-  font-size: 3rem;
+  font-size: 3.4rem;
 }
 
 header .headerControls {
