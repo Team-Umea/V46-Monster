@@ -30,7 +30,6 @@ export class MonsterCard {
   monsterContainer() {
     const container = document.createElement("div");
     container.setAttribute("class", "monsterCard");
-    // container.setAttribute("src", "../../res/img/monsterCard.png");
 
     const skeleton = document.createElement("div");
     skeleton.setAttribute("class", "monsterLoadingSkeleton");

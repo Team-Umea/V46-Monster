@@ -1,7 +1,7 @@
 //Js code for monster page
 import { serveData, serveFetchedData } from "./common/fetch.js";
 import { ALLMONSTERS_TTL, MONSTERS_TTL, SORTOPTIONS_TTL } from "./common/ttl.js";
-import { useClickEvent, useClickEvents, useScrollEvent, useChangeEvent, useInputEvent } from "./common/useEvent.js";
+import { useClickEvent, useClickEvents, useScrollEvent, useChangeEvent, useInputEvent, useMouseWheelEvent } from "./common/useEvent.js";
 import { ALLMONSTERS_LSK, SORTOPTIONS_LSK, TEAMS_LSK } from "./common/localStorageKeys.js";
 import { MonsterCard } from "./classes/MonsterCard.js";
 import { isValidObjKey, load } from "./common/utilities.js";
@@ -29,7 +29,7 @@ window.addEventListener("DOMContentLoaded", () => {
 function init() {
   useClickEvent(filterToggle, toggleFilter);
   useClickEvents(searchBtns, setSearchCategory);
-  useScrollEvent(monsterContainer, infiniteScroll);
+  useMouseWheelEvent(monsterContainer, infiniteScroll);
   useChangeEvent(sortDropDown, setSortOrder);
   useInputEvent(searchBox, searchMonsters);
 

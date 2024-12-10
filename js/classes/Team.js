@@ -4,13 +4,7 @@ export class Team {
     this.name = teamName;
     this.monsters = [];
     this.paidFor = false;
-    // this.totalRank = this.calcTeamRank();
-    // this.totalRating = this.calcTeamRating();
-    // this.totalHealth = this.calcTeamHealth();
-    // this.totalDamage = this.calcTeamDamage();
-    // this.teamValue = this.calcTeamValue();
-    this.strongestMonster;
-    this.weakestMonster;
+
     this.totalRank = 0;
     this.totalRating = 0;
     this.totalHealth = 0;
@@ -36,8 +30,6 @@ export class Team {
     this.drawnRounds = 0;
     this.lostRounds = 0;
     this.teamBodyVisible = true;
-
-    this.calc();
   }
 
   getTeamName() {
@@ -119,6 +111,19 @@ export class Team {
 
   getTeamBodyVisible() {
     return this.teamBodyVisible;
+  }
+
+  getMonsterTeamRank(id) {
+    const monsters = this.monsters;
+    if (monsters.length > 0) {
+      const sortedByStrongest = [...monsters].sort((a, b) => {
+        const rankA = a.rank;
+        const rankB = b.rank;
+        return rankA - rankB;
+      });
+      return sortedByStrongest.indexOf(monsters.find((monster) => monster.id === id)) + 1;
+    }
+    return null;
   }
 
   setTeamName(name) {
@@ -205,6 +210,7 @@ export class Team {
 
   deleteMonster(id) {
     this.monsters = [...this.monsters].filter((monster) => monster.id !== id);
+    this.calc();
   }
 
   addMonsterToTeam(monster) {
@@ -220,14 +226,29 @@ export class Team {
     this.calc();
   }
 
+  shiftMonsters(id) {
+    const monsters = this.monsters;
+    const numMonsters = monsters.length;
+    let shifted = [...monsters];
+
+    const monster = monsters.find((m) => m.id === id);
+    const monsterIndex = monsters.indexOf(monster);
+
+    const nextMonster = monsterIndex < numMonsters - 1 ? monsters[monsterIndex + 1] : monsters[0];
+    const nextMonsterIndex = monsterIndex < numMonsters - 1 ? monsterIndex + 1 : 0;
+
+    shifted[monsterIndex] = nextMonster;
+    shifted[nextMonsterIndex] = monster;
+
+    this.monsters = shifted;
+  }
+
   calc() {
     this.totalRank = this.calcTeamRank();
     this.totalRating = this.calcTeamRating();
     this.totalHealth = this.calcTeamHealth();
     this.totalDamage = this.calcTeamDamage();
     this.teamValue = this.calcTeamValue();
-    this.strongestMonster = this.findStrongestMonster();
-    this.weakestMonster = this.findWeakestMonster();
   }
 
   calcTeamRank() {
@@ -269,32 +290,6 @@ export class Team {
     const teamValue = Math.floor((price - healthPriceInfluence) * 0.7);
 
     return teamValue;
-  }
-
-  findStrongestMonster() {
-    const monsters = this.monsters;
-    if (monsters.length > 0) {
-      const sortedByStrongest = monsters.sort((a, b) => {
-        const rankA = a.rank;
-        const rankB = b.rank;
-        return rankA - rankB;
-      });
-      return sortedByStrongest[0];
-    }
-    return null;
-  }
-
-  findWeakestMonster() {
-    const monsters = this.monsters;
-    if (monsters.length > 0) {
-      const sortedByWeakest = monsters.sort((a, b) => {
-        const rankA = a.rank;
-        const rankB = b.rank;
-        return rankB - rankA;
-      });
-      return sortedByWeakest[0];
-    }
-    return null;
   }
 
   static fromJSON(json) {

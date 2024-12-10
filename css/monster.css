@@ -143,8 +143,8 @@ input[type="radio"]:checked + label {
 }
 
 .monsterCard {
-  height: 640px;
   width: 400px;
+  aspect-ratio: 6/10;
   display: grid;
   grid-template-rows: repeat(100, 1fr);
   grid-template-columns: 1fr;
@@ -153,6 +153,8 @@ input[type="radio"]:checked + label {
   isolation: isolate;
   color: var(--color-primary-text);
   background: url("../res/img/monsterCard.png") no-repeat;
+  background-position: center;
+  background-size: contain;
 }
 
 .monsterName {
@@ -167,7 +169,7 @@ input[type="radio"]:checked + label {
   grid-row-start: 17;
   grid-row-end: 52;
   width: 75%;
-  height: 350px;
+  aspect-ratio: 100/77;
   border-radius: 5px;
   position: relative;
   box-shadow: 6px 6px 5px 0px rgba(0, 0, 0, 0.75);
@@ -195,18 +197,18 @@ input[type="radio"]:checked + label {
   text-align: center;
   font-size: 1rem;
   font-weight: bold;
-  width: 80%;
+  width: 05%;
   grid-row-start: 55;
   grid-row-end: 65;
 }
 
 .monsterStats {
-  width: 80%;
+  width: 88%;
   display: flex;
   justify-content: space-between;
   grid-column: 1;
-  grid-row-start: 66;
-  grid-row-end: 75;
+  grid-row-start: 65;
+  grid-row-end: 74;
 }
 
 .monsterElements {
@@ -237,7 +239,7 @@ input[type="radio"]:checked + label {
 
 .monsterSelect {
   grid-column: 1;
-  grid-row-start: 78;
+  grid-row-start: 80;
   grid-row-end: 101;
   padding: 5px;
   border-radius: 5px;

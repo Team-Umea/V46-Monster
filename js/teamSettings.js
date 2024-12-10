@@ -14,13 +14,12 @@ const controlMessage = document.getElementById("controlMessage");
 const controlBtns = document.getElementById("controlBtns");
 const teamStats = document.getElementById("teamStatsConatiner");
 const monstersContainer = document.getElementById("teamMonsters");
-const endToEndMonsters = document.getElementById("teamEndToEndMonsters");
 
 let teams = load(TEAMS_LSK).map((t) => Team.fromJSON(t)) || [];
 let userCredits = load(CREDITS_LSK);
 
-const linkedBtns = [];
-const timeOutBtns = [];
+let linkedBtns = [];
+let timeOutBtns = [];
 let controlMessageTimeout;
 
 let team;
@@ -36,9 +35,6 @@ let totalRating;
 let totalHealth;
 let totalDamage;
 
-let strongestMonster;
-let weakestMonster;
-
 window.addEventListener("DOMContentLoaded", () => {
   init();
 });
@@ -50,10 +46,10 @@ function init() {
 }
 
 function render() {
+  linkedBtns = [];
   renderControls();
   renderTeamStats();
   renderMonsters();
-  renderEndToEndMonsters();
 }
 
 function loadTeam() {
@@ -72,9 +68,6 @@ function loadTeam() {
     totalRating = team.totalRating;
     totalHealth = team.totalHealth;
     totalDamage = team.totalDamage;
-
-    strongestMonster = team.strongestMonster;
-    weakestMonster = team.weakestMonster;
   } else {
     navigate();
   }
@@ -90,7 +83,6 @@ function updateTeams() {
   userCredits = load(CREDITS_LSK);
   loadTeam();
   render();
-  reload();
 }
 
 async function shuffleTeam() {
@@ -104,7 +96,6 @@ async function shuffleTeam() {
   team.setMonsters(randomMonsters);
   team.setPaidFor(false);
   updateTeams();
-  render();
 }
 
 function buyTeam() {
@@ -133,6 +124,13 @@ function fightTeam() {
   }, 100);
 }
 
+function removeMonster(id) {
+  const selectedTeam = teams.find((t) => t.name === teamName);
+  selectedTeam.deleteMonster(id);
+  team.deleteMonster(id);
+  updateTeams();
+}
+
 function setControlMessage(className, message) {
   controlMessage.setAttribute("class", `controlMessage ${className}`);
   controlMessage.innerText = message;
@@ -159,6 +157,8 @@ function useBtnLinks() {
   timeOutBtns.forEach((timeOut) => {
     clearTimeout(timeOut);
   });
+  timeOutBtns = [];
+
   linkedBtns.forEach((btn) => {
     const icon = btn.getElementsByTagName("img")[0];
     const index = Array.from(linkedBtns).indexOf(btn);
@@ -176,6 +176,9 @@ function useBtnLinks() {
         break;
       case 2:
         setBtnIcon(icon, "shield", `Fight with '${teamName}'`);
+        break;
+      case (3, 4, 5, 6):
+        setBtnIcon(icon, "x", `Remove from '${teamName}'`);
         break;
       default:
         break;
@@ -345,47 +348,52 @@ function renderMonsters() {
 
   if (teamMonsters && numMonsters > 0) {
     teamMonsters.forEach((monster) => {
+      const monsterName = monster.name;
+      const monsterCardContainer = document.createElement("div");
       const monsterCard = new MonsterCard(monster, [], true).assembleMonsterCard();
-      monstersContainer.appendChild(monsterCard);
+      const removeBtn = imgAsBtn("x", `Remove from '${teamName}'`);
+      const shiftPlaceBtn = imgAsBtn("rightFlatArrow", "Change fight order. Monster furthest to the left will start");
+
+      const monsterTeamRank = team.getMonsterTeamRank(monster.id);
+
+      monsterCardContainer.setAttribute("class", "monsterCardContainer");
+      monsterCardContainer.setAttribute("data-teamRank", `#${monsterTeamRank}`);
+
+      removeBtn.setAttribute("class", "removeMonsterBtn primary-btn btn-small");
+      shiftPlaceBtn.setAttribute("class", "shiftMonsterBtn primary-btn");
+      linkedBtns.push(removeBtn);
+
+      removeBtn.addEventListener("click", () => {
+        const removeIcon = removeBtn.getElementsByTagName("img")[0];
+        const isUnchecked = !removeIcon.getAttribute("src").includes("check");
+        useBtnLinks();
+
+        if (isUnchecked) {
+          setBtnIcon(removeIcon, "check", "Click to confirm");
+          setControlMessage("", `Click to confirm that you want to remove ${monsterName} from '${teamName}'`);
+          const timeOut = setTimeout(() => {
+            setBtnIcon(removeIcon, "x", `Remove from '${teamName}'`);
+          }, 7000);
+          timeOutBtns.push(timeOut);
+        } else {
+          removeMonster(monster.id);
+          setControlMessage("hide", "message");
+          setBtnIcon(removeIcon, "x", `Remove from '${teamName}'`);
+          setControlMessage("hide", "message");
+        }
+      });
+
+      shiftPlaceBtn.addEventListener("click", () => {
+        team.shiftMonsters(monster.id);
+        updateTeams();
+      });
+
+      monsterCard.appendChild(removeBtn);
+      monsterCardContainer.appendChild(shiftPlaceBtn);
+      monsterCardContainer.appendChild(monsterCard);
+      monstersContainer.appendChild(monsterCardContainer);
     });
   } else {
     monstersContainer.remove();
-  }
-}
-
-function renderEndToEndMonsters() {
-  endToEndMonsters.innerHTML = "";
-
-  if (numMonsters > 0) {
-    const strongestContainer = document.createElement("div");
-    const weakestContainer = document.createElement("div");
-
-    let strongest = null;
-    let weakest = null;
-
-    strongestContainer.setAttribute("class", "monsterCardContainer");
-    weakestContainer.setAttribute("class", "monsterCardContainer");
-
-    strongestContainer.setAttribute("data-teamRank", "#1");
-    weakestContainer.setAttribute("data-teamRank", `#${numMonsters}`);
-
-    if (strongestMonster) {
-      strongest = new MonsterCard(strongestMonster, [], true).assembleMonsterCard();
-    }
-
-    if (weakestMonster) {
-      weakest = new MonsterCard(weakestMonster, [], true).assembleMonsterCard();
-    }
-
-    if (strongestMonster === weakestMonster) {
-      strongestContainer.append(strongest);
-      endToEndMonsters.append(strongestContainer);
-    } else {
-      strongestContainer.append(strongest);
-      weakestContainer.append(weakest);
-      endToEndMonsters.append(strongestContainer, weakestContainer);
-    }
-  } else {
-    endToEndMonsters.remove();
   }
 }

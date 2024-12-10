@@ -430,6 +430,21 @@ main {
   border: 3px solid var(--color-primary-lightest);
 }
 
+.monsterCard {
+  width: 300px;
+}
+
+.monsterSpecs {
+  width: 80%;
+  grid-row-start: 58;
+  grid-row-end: 65;
+}
+
+.monsterStats {
+  grid-row-start: 70;
+  grid-row-end: 84;
+}
+
 .teamControls {
   width: 100%;
   height: 100px;

@@ -43,7 +43,6 @@ async function useData() {
   loadTeams();
   renderTeams();
   renderTeamStats();
-  setTeamsValue();
 }
 
 function initCreateTeamForm() {
@@ -126,13 +125,6 @@ function updateTeams() {
   save(TEAMS_LSK, teamsArr);
   renderTeams();
   renderTeamStats();
-}
-
-async function setTeamsValue() {
-  const allMonsters = await serveData("allMonsters", undefined, allMonstersContainer, ALLMONSTERS_LSK, ALLMONSTERS_TTL);
-  teamsArr.forEach((team) => {
-    team.setTeamValue(allMonsters);
-  });
 }
 
 function addTeam(teamName) {
