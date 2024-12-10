@@ -1,18 +1,32 @@
 /*Only write css here that will be used by every pages*/
 
 :root {
-  --color-primary-lightest: #f6f9f9;
-  --color-primary-light: #ecf1f2;
-  --color-primary: #c4d7d9;
-  --color-primary-medium: #aec9cb;
-  --color-primary-dark: #82abae;
-  --color-primary-darker: #629295;
-  --color-secondary: #4e777b;
-  --color-secondary-dark: #406064;
-  --color-tertiary: #385154;
-  --color-tertiary-dark: #324548;
-  --color-tertiary-darker: #212e30;
-  --filter: rgba(0, 0, 0, 0.75);
+  /** Dark theme primary colors */
+  --color-primary-a0: #c8ad54;
+  --color-primary-a10: #cfb667;
+  --color-primary-a20: #d6bf7a;
+  --color-primary-a30: #ddc88d;
+  --color-primary-a40: #e3d19f;
+  --color-primary-a50: #e9dab2;
+
+  /** Dark theme surface colors */
+  --color-surface-a0: #121212;
+  --color-surface-a10: #282828;
+  --color-surface-a20: #3f3f3f;
+  --color-surface-a30: #575757;
+  --color-surface-a40: #717171;
+  --color-surface-a50: #8b8b8b;
+
+  /** Dark theme mixed surface colors */
+  --color-surface-mixed-a0: #221f19;
+  --color-surface-mixed-a10: #37342e;
+  --color-surface-mixed-a20: #4d4a44;
+  --color-surface-mixed-a30: #64615c;
+  --color-surface-mixed-a40: #7c7975;
+  --color-surface-mixed-a50: #94938f;
+
+  /*Primary text color*/
+  --color-primary-text: #e6e4e1;
 }
 
 * {
@@ -26,7 +40,7 @@ body {
   min-height: 100dvh;
   display: flex;
   flex-direction: column;
-  color: var(--color-tertiary-dark);
+  color: var(--color-primary-a50);
   background-color: var(--color-primary-lightest);
 }
 
@@ -54,7 +68,6 @@ a:hover {
 }
 
 header {
-  /* css for header */
   padding: 20px;
   display: flex;
   flex-direction: column;
@@ -62,6 +75,7 @@ header {
   gap: 10px;
   position: relative;
   background-color: var(--color-primary);
+  border-bottom: 2px solid var(--color-surface-mixed-a0);
 }
 
 header h1 {

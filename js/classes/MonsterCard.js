@@ -17,6 +17,7 @@ export class MonsterCard {
       this.rank = monster.rank;
       this.elements = monster.elements;
       this.price = monster.price;
+      this.imagePath = `https://ozzodevmonsterapi.azurewebsites.net${monster.img}`;
     }
 
     this.monsterCard = this.monsterContainer();
@@ -29,6 +30,7 @@ export class MonsterCard {
   monsterContainer() {
     const container = document.createElement("div");
     container.setAttribute("class", "monsterCard");
+    // container.setAttribute("src", "../../res/img/monsterCard.png");
 
     const skeleton = document.createElement("div");
     skeleton.setAttribute("class", "monsterLoadingSkeleton");
@@ -38,10 +40,13 @@ export class MonsterCard {
   }
 
   monsterImg() {
-    const img = document.createElement("img");
-    img.setAttribute("alt", "Monster img placeholder");
+    const img = document.createElement("div");
+    const src = this.imagePath;
+    // img.setAttribute("alt", "Monster img placeholder");
     img.setAttribute("class", "monsterImg");
-    img.setAttribute("src", "../../res/img/monsterPlaceholder.webp");
+    // img.setAttribute("src", src);
+    img.style.backgroundImage = `url(${src})`;
+
     return img;
   }
 
@@ -159,11 +164,12 @@ export class MonsterCard {
     const select = this.monsterSelect();
 
     container.appendChild(name);
+    img.appendChild(price);
     container.appendChild(img);
     container.appendChild(specs);
     container.appendChild(stats);
-    container.appendChild(elements);
-    container.appendChild(price);
+    // container.appendChild(elements);
+    // container.appendChild(price);
     if (select.children.length > 0 && this.hideSelect !== true) {
       container.appendChild(select);
     }

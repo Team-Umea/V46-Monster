@@ -1,6 +1,40 @@
 /*Only write css here that will be used by monster page*/
+
+:root {
+  /** Dark theme primary colors */
+  --color-primary-a0: #c8ad54;
+  --color-primary-a10: #cfb667;
+  --color-primary-a20: #d6bf7a;
+  --color-primary-a30: #ddc88d;
+  --color-primary-a40: #e3d19f;
+  --color-primary-a50: #e9dab2;
+
+  /** Dark theme surface colors */
+  --color-surface-a0: #121212;
+  --color-surface-a10: #282828;
+  --color-surface-a20: #3f3f3f;
+  --color-surface-a30: #575757;
+  --color-surface-a40: #717171;
+  --color-surface-a50: #8b8b8b;
+
+  /** Dark theme mixed surface colors */
+  --color-surface-mixed-a0: #221f19;
+  --color-surface-mixed-a10: #37342e;
+  --color-surface-mixed-a20: #4d4a44;
+  --color-surface-mixed-a30: #64615c;
+  --color-surface-mixed-a40: #7c7975;
+  --color-surface-mixed-a50: #94938f;
+
+  /*Primary text color*/
+  --color-primary-text: #e6e4e1;
+}
+
+::-webkit-scrollbar {
+  width: 0;
+}
+
 body {
-  height: 100dvh;
+  height: auto;
 }
 
 main {
@@ -12,16 +46,22 @@ main {
   gap: 20px;
 }
 
+header,
+main,
+footer {
+  background-color: #121212;
+}
+
 #filterCatalogueContainer {
   width: 500px;
   padding: 10px;
-  margin: 30px 0 10px 0;
+  margin: 50px 0 60px 0;
   border-radius: 8px;
   display: flex;
   flex-direction: column;
   gap: 10px;
   position: relative;
-  background-color: var(--color-primary-light);
+  background-color: var(--color-surface-a10);
 }
 
 #filterToggle {
@@ -42,12 +82,12 @@ main {
   border-radius: 8px;
   outline: none;
   border: none;
-  color: var(--color-tertiary-dark);
-  background-color: var(--color-primary-darker);
+  color: var(--color-primary-a50);
+  background-color: var(--color-surface-mixed-a10);
 }
 
 #searchBox::placeholder {
-  color: var(--color-tertiary-dark);
+  color: var(--color-primary-a50);
 }
 
 #searchContainer {
@@ -69,11 +109,11 @@ input[type="radio"] {
 input[type="radio"] + label {
   padding: 10px;
   border-radius: 4px;
-  background-color: var(--color-primary);
+  background-color: var(--color-surface-a10);
 }
 
 input[type="radio"]:checked + label {
-  background-color: var(--color-primary-darker);
+  background-color: var(--color-surface-mixed-a10);
 }
 
 #sortContainer {
@@ -88,78 +128,85 @@ input[type="radio"]:checked + label {
   border-radius: 8px;
   outline: none;
   border: none;
-  color: var(--color-tertiary-dark);
-  background-color: var(--color-primary-darker);
+  color: var(--color-primary-a50);
+  background-color: var(--color-surface-mixed-a10);
 }
 
 #monsterContainer {
-  width: min(100%, 1565px);
-  height: 100%;
   margin-bottom: 20px;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   gap: 20px;
   overflow-y: scroll;
-  border: 20px solid var(--color-primary-light);
-  background-color: var(--color-primary-light);
+  background-color: #121212;
 }
 
 .monsterCard {
-  width: min(100%, 285px);
-  height: 400px;
-  padding: 10px 20px;
+  height: 640px;
+  width: 400px;
   display: grid;
   grid-template-rows: repeat(100, 1fr);
   grid-template-columns: 1fr;
   justify-items: center;
   position: relative;
   isolation: isolate;
-  background-color: var(--color-primary-medium);
+  color: var(--color-primary-text);
+  background: url("../res/img/monsterCard.png") no-repeat;
 }
 
 .monsterName {
-  font-size: 1.6rem;
+  font-size: 1.4rem;
   font-weight: 900;
   grid-column: 1;
-  grid-row-start: 1;
-  grid-row-end: 14;
+  grid-row-start: 10;
+  grid-row-end: 16;
 }
 
 .monsterImg {
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 100%;
-  width: 100%;
-  z-index: -2;
+  grid-row-start: 17;
+  grid-row-end: 52;
+  width: 75%;
+  height: 350px;
+  border-radius: 5px;
+  position: relative;
+  box-shadow: 6px 6px 5px 0px rgba(0, 0, 0, 0.75);
 }
 
-.monsterCard::after {
-  content: "";
+.monsterPrice {
   position: absolute;
-  z-index: -1;
-  top: 0;
-  left: 0;
-  height: 100%;
+  bottom: 10px;
+  left: 50%;
+  transform: translate(-50%);
+  z-index: 1;
+}
+
+.monsterImg::after {
+  content: "";
   width: 100%;
-  background: var(--filter);
+  height: 8rem;
+  position: absolute;
+  bottom: 0;
+  background: rgb(0, 0, 0);
+  background: linear-gradient(0deg, rgba(0, 0, 0, 0.88) 55%, rgba(107, 106, 106, 0) 100%);
 }
 
 .monsterSpecs {
   text-align: center;
   font-size: 1rem;
-  grid-row-start: 15;
-  grid-row-end: 29;
+  font-weight: bold;
+  width: 80%;
+  grid-row-start: 55;
+  grid-row-end: 65;
 }
 
 .monsterStats {
-  width: 100%;
+  width: 80%;
   display: flex;
   justify-content: space-between;
   grid-column: 1;
-  grid-row-start: 30;
-  grid-row-end: 44;
+  grid-row-start: 66;
+  grid-row-end: 75;
 }
 
 .monsterElements {
@@ -180,16 +227,6 @@ input[type="radio"]:checked + label {
   gap: 10px;
 }
 
-.monsterPrice {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  margin: auto;
-  grid-column: 1;
-  grid-row-start: 75;
-  grid-row-end: 93;
-}
-
 .removeMonster {
   position: absolute;
   left: 50%;
@@ -200,9 +237,15 @@ input[type="radio"]:checked + label {
 
 .monsterSelect {
   grid-column: 1;
-  grid-row-start: 94;
+  grid-row-start: 78;
   grid-row-end: 101;
+  padding: 5px;
+  border-radius: 5px;
   height: fit-content;
+  border: 0;
+  outline: none;
+  color: var(--color-primary-text);
+  background-color: var(--color-surface-mixed-a10);
 }
 
 .monsterLoadingSkeleton {
@@ -214,6 +257,15 @@ input[type="radio"]:checked + label {
   background: linear-gradient(90deg, #e0e0e0 25%, #f0f0f0 50%, #e0e0e0 75%);
   background-size: 200% 100%;
   animation: loading 1.5s infinite ease-in-out;
+}
+
+.scrollFilter {
+  width: 100vw;
+  height: 100px;
+  position: fixed;
+  bottom: 0;
+  background: rgb(0, 0, 0);
+  background: linear-gradient(0deg, rgba(0, 0, 0, 0.99) 20%, rgba(107, 106, 106, 0) 100%);
 }
 
 @keyframes loading {
