@@ -31,6 +31,12 @@ export class Team {
     this.wonRounds = 0;
     this.drawnRounds = 0;
     this.lostRounds = 0;
+
+    this.lostHp = 0;
+    this.remainingHP = 0;
+    this.sufferedDamage = 0;
+    this.distributedDamage = 0;
+
     this.teamBodyVisible = true;
 
     this.calc();
@@ -253,6 +259,10 @@ export class Team {
     this.totalHealth = this.calcTeamHealth();
     this.totalDamage = this.calcTeamDamage();
     this.teamValue = this.calcTeamValue();
+    this.lostHp = this.calcLostHp();
+    this.remainingHP = this.calcRemainingHP();
+    this.sufferedDamage = this.calcSufferedDamage();
+    this.distributedDamage = this.calcDistributedDamage();
   }
 
   calcTeamRank() {
@@ -294,6 +304,33 @@ export class Team {
     const teamValue = Math.floor((price - healthPriceInfluence) * 0.7);
 
     return teamValue;
+  }
+
+  calcLostHp() {
+    const monsters = this.monsters;
+    const maxHp = monsters.reduce((acc, curr) => acc + curr.health, 0);
+    const lostHp = maxHp - monsters.reduce((acc, curr) => acc + curr.remainingHP, 0);
+    return lostHp;
+  }
+
+  calcRemainingHP() {
+    const monsters = this.monsters;
+    const maxHp = monsters.reduce((acc, curr) => acc + curr.health, 0);
+    const lostHp = monsters.reduce((acc, curr) => acc + curr.remainingHP, 0);
+    const remainingHP = Math.floor((lostHp / maxHp) * 100);
+    return remainingHP === NaN ? 100 : remainingHP;
+  }
+
+  calcSufferedDamage() {
+    const monsters = this.monsters;
+    const sufferedDamage = monsters.reduce((acc, curr) => acc + curr.sufferedDamage, 0);
+    return sufferedDamage;
+  }
+
+  calcDistributedDamage() {
+    const monsters = this.monsters;
+    const distributedDamage = monsters.reduce((acc, curr) => acc + curr.distributedDamage, 0);
+    return distributedDamage;
   }
 
   getAllMonsterElements(allElements) {

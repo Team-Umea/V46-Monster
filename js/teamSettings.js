@@ -1,7 +1,7 @@
 //Js code for teamControls page
-import { useClickEvent, useInputEvent, useChangeEvent } from "./common/useEvent.js";
+import { useClickEvent } from "./common/useEvent.js";
 import { serveData } from "./common/fetch.js";
-import { renderIconWithNumber, averageValueIcon, imgAsBtn } from "./common/render.js";
+import { renderIconWithNumber, averageValueIcon, imgAsBtn, valueWithHeader, progressBar } from "./common/render.js";
 import { load, save, remove, redirect, formatLargeNumber } from "./common/utilities.js";
 import { SELECTEDTEAMSETTINGS_LSK, TEAMS_LSK, CREDITS_LSK, SELECTEDFIGHTTEAM_LSK } from "./common/localStorageKeys.js";
 import { useCredits, addCredits } from "./common/credits.js";
@@ -18,6 +18,7 @@ const controlBtns = document.getElementById("controlBtns");
 const teamStats = document.getElementById("teamStatsConatiner");
 const monstersContainer = document.getElementById("teamMonsters");
 const teamElementsContainer = document.getElementById("teamElementsContainer");
+const battleRecordContainer = document.getElementById("battleRecordContainer");
 
 let teams = load(TEAMS_LSK).map((t) => Team.fromJSON(t)) || [];
 let userCredits = load(CREDITS_LSK);
@@ -40,6 +41,27 @@ let totalRating;
 let totalHealth;
 let totalDamage;
 
+let numBattels;
+let wonBattels;
+let drawnBattels;
+let lostBattels;
+let totalPoints;
+
+let numFights;
+let wonFights;
+let drawnFights;
+let lostFights;
+
+let numRounds;
+let wonRounds;
+let drawnRounds;
+let lostRounds;
+
+let lostHp;
+let remainingHP;
+let sufferedDamage;
+let distributedDamage;
+
 window.addEventListener("DOMContentLoaded", () => {
   init();
 });
@@ -57,6 +79,7 @@ function render() {
   renderTeamStats();
   renderMonsters();
   loadElements();
+  renderBattleRecord();
 }
 
 function loadTeam() {
@@ -76,6 +99,27 @@ function loadTeam() {
     totalRating = team.totalRating;
     totalHealth = team.totalHealth;
     totalDamage = team.totalDamage;
+
+    numBattels = team.numBattels;
+    wonBattels = team.wonBattels;
+    drawnBattels = team.drawnBattels;
+    lostBattels = team.lostBattels;
+    totalPoints = team.totalPoints;
+
+    numFights = team.numFights;
+    wonFights = team.wonFights;
+    drawnFights = team.drawnFights;
+    lostFights = team.lostFights;
+
+    numRounds = team.numRounds;
+    wonRounds = team.wonRounds;
+    drawnRounds = team.drawnRounds;
+    lostRounds = team.lostRounds;
+
+    lostHp = team.lostHp;
+    remainingHP = team.remainingHP;
+    sufferedDamage = team.sufferedDamage;
+    distributedDamage = team.distributedDamage;
   } else {
     navigate();
   }
@@ -218,6 +262,162 @@ function populateElementsSortSelect(select) {
     option.value = index;
     select.appendChild(option);
   });
+}
+
+function createElementContainers(elementsEl, condtion) {
+  elementsEl.innerHTML = "";
+
+  teamElements.forEach((teamElement) => {
+    const element = document.createElement("div");
+    const name = document.createElement("p");
+
+    element.setAttribute("class", "elementContainer");
+    name.setAttribute("class", "elementName");
+
+    const elementName = Object.keys(teamElement)[0];
+    const elementInstances = teamElement[elementName];
+    const elementRating = teamElement.rating;
+
+    const rating = renderIconWithNumber(elementRating, "../../res/icons/trophy.svg", `Rating of ${elementName} is ${elementRating}`, "right");
+    rating.classList.add("elementRating");
+
+    name.innerText = `${elementInstances}x ${elementName}`;
+
+    element.appendChild(name);
+    element.appendChild(rating);
+    elementsEl.appendChild(element);
+
+    if (condtion !== undefined && condtion !== null) {
+      if (typeof condtion === "function") {
+        if (condtion(elementName) === false) {
+          element.classList.add("opacity-0");
+        }
+      } else {
+        if (condtion === false) {
+          console.log(condtion);
+          element.classList.add("opacity-0");
+        }
+      }
+    }
+  });
+
+  const sortedByVisible = Array.from(elementsEl.children).sort((a, b) => {
+    const aIsHidden = a.classList.contains("opacity-0");
+    const bIsHidden = b.classList.contains("opacity-0");
+    return aIsHidden - bIsHidden;
+  });
+
+  elementsEl.innerHTML = "";
+
+  sortedByVisible.forEach((el) => elementsEl.appendChild(el));
+}
+
+function searchElements(elementsEl, searchElementsInput) {
+  const searchQuery = searchElementsInput.value;
+
+  const nameMatchesSearchQuery = (elementName) => {
+    return elementName.toLowerCase().includes(searchQuery.trim().toLowerCase());
+  };
+
+  createElementContainers(elementsEl, nameMatchesSearchQuery);
+}
+
+function setSortOrder(elementsEl, sortElementsSelect, searchElementsInput) {
+  const sortOrder = Number(sortElementsSelect.value);
+  const searchQuery = searchElementsInput.value;
+
+  sortElements(sortOrder);
+
+  const nameMatchesSearchQuery = (elementName) => {
+    return elementName.toLowerCase().includes(searchQuery.trim().toLowerCase());
+  };
+
+  createElementContainers(elementsEl, nameMatchesSearchQuery);
+}
+
+function sortElements(sortOrder) {
+  let sorted = [];
+
+  switch (sortOrder) {
+    case 0:
+      sorted = teamElements.sort((a, b) => {
+        const keyA = Object.keys(a)[0];
+        const keyB = Object.keys(b)[0];
+        const countA = a[keyA];
+        const countB = b[keyB];
+
+        const ratingA = a["rating"];
+        const ratingB = b["rating"];
+        const countDifference = countB - countA;
+        const ratingDifference = ratingB - ratingA;
+
+        return countDifference === 0 ? ratingDifference : countDifference;
+      });
+      break;
+    case 1:
+      sorted = teamElements.sort((a, b) => {
+        const keyA = Object.keys(a)[0];
+        const keyB = Object.keys(b)[0];
+        const countA = a[keyA];
+        const countB = b[keyB];
+
+        const ratingA = a["rating"];
+        const ratingB = b["rating"];
+        const countDifference = countA - countB;
+        const ratingDifference = ratingB - ratingA;
+
+        return countDifference === 0 ? ratingDifference : countDifference;
+      });
+      break;
+    case 2:
+      sorted = teamElements.sort((a, b) => {
+        const keyA = Object.keys(a)[0];
+        const keyB = Object.keys(b)[0];
+        const ratingA = a["rating"];
+        const ratingB = b["rating"];
+
+        const ratingDifference = ratingB - ratingA;
+        const alphaDifference = keyA.localeCompare(keyB);
+
+        return ratingDifference === 0 ? alphaDifference : ratingDifference;
+      });
+      break;
+    case 3:
+      sorted = teamElements.sort((a, b) => {
+        const keyA = Object.keys(a)[0];
+        const keyB = Object.keys(b)[0];
+        const ratingA = a["rating"];
+        const ratingB = b["rating"];
+
+        const ratingDifference = ratingA - ratingB;
+        const alphaDifference = keyA.localeCompare(keyB);
+
+        return ratingDifference === 0 ? alphaDifference : ratingDifference;
+      });
+      break;
+    case 4:
+      sorted = teamElements.sort((a, b) => {
+        const keyA = Object.keys(a)[0];
+        const keyB = Object.keys(b)[0];
+
+        return keyA.localeCompare(keyB);
+      });
+      break;
+    case 5:
+      sorted = teamElements.sort((a, b) => {
+        const keyA = Object.keys(a)[0];
+        const keyB = Object.keys(b)[0];
+
+        return keyB.localeCompare(keyA);
+      });
+      break;
+    default:
+      break;
+  }
+
+  if (sorted.length > 0) {
+    teamElements = sorted;
+  }
 }
 
 function renderPageInfo() {
@@ -379,7 +579,7 @@ function renderTeamStats() {
     const averageHealthIcon = averageValueIcon(averageHealth, "heart", "skull", `Team '${teamName}' has ${averageHealth} in average health`);
     const averageDamageIcon = averageValueIcon(averageDamage, "barbell", "skull", `Team '${teamName}' has ${averageDamage} in average damage`);
 
-    numMonstersIcon.classList.add("numMonstersIcon");
+    numMonstersIcon.classList.add("border-icon");
     rankIcon.classList.add("teamStatsIcon");
     ratingIcon.classList.add("teamStatsIcon");
     healthIcon.classList.add("teamStatsIcon");
@@ -455,9 +655,9 @@ function renderElements() {
   const numElements = teamElements.length;
 
   const heading = document.createElement("div");
-  const elementsIcon = renderIconWithNumber(numElements, "../../res/icons/element.svg", `There is ${numElements} available`);
+  const elementsIcon = renderIconWithNumber(numElements, "../../res/icons/element.svg", `There is ${numElements} elements available`);
   const header = document.createElement("h2");
-  const toggle = imgAsBtn("upArrow", "Hide Elements");
+  const toggle = imgAsBtn("downArrow", "Hide Elements");
   const body = document.createElement("div");
   const filters = document.createElement("div");
   const search = document.createElement("input");
@@ -465,10 +665,10 @@ function renderElements() {
   const elements = document.createElement("div");
 
   heading.setAttribute("class", "teamElementsHeading");
-  elementsIcon.classList.add("teamElementsIcon");
+  elementsIcon.classList.add("border-icon");
   header.setAttribute("class", "teamElementsHeader");
   toggle.setAttribute("class", "primary-btn teamElmentsToggle");
-  body.setAttribute("class", "teamElementsBody");
+  body.setAttribute("class", "teamElementsBody hidden");
   filters.setAttribute("class", "teamElementsFilters");
   search.setAttribute("class", "teamElementsSearch");
   sort.setAttribute("class", "teamElementsSort");
@@ -509,158 +709,111 @@ function renderElements() {
   teamElementsContainer.append(heading, body);
 }
 
-function createElementContainers(elementsEl, condtion) {
-  elementsEl.innerHTML = "";
+function renderBattleRecord() {
+  battleRecordContainer.innerHTML = "";
 
-  teamElements.forEach((teamElement) => {
-    const element = document.createElement("div");
-    const name = document.createElement("p");
+  const heading = document.createElement("div");
+  const battleIcon = renderIconWithNumber(numBattels, "../../res/icons/shield.svg", `Team '${teamName}' has fought ${numBattels} battles`);
+  const header = document.createElement("h2");
+  const toggle = imgAsBtn("downArrow", "Hide Elements");
+  const body = document.createElement("div");
+  const stats = document.createElement("div");
 
-    element.setAttribute("class", "elementContainer");
-    name.setAttribute("class", "elementName");
+  const battleValues = document.createElement("div");
+  const fightValues = document.createElement("div");
+  const roundValues = document.createElement("div");
+  const monsterStatsValues = document.createElement("div");
 
-    const elementName = Object.keys(teamElement)[0];
-    const elementInstances = teamElement[elementName];
-    const elementRating = teamElement.rating;
+  const battleBar = progressBar(wonBattels, drawnBattels, lostBattels);
+  const fightBar = progressBar(wonFights, drawnFights, lostFights);
+  const roundBar = progressBar(wonRounds, drawnRounds, lostRounds);
 
-    const rating = renderIconWithNumber(elementRating, "../../res/icons/trophy.svg", `Rating of ${elementName} is ${elementRating}`, "right");
-    rating.classList.add("elementRating");
+  const wonBattelsEl = valueWithHeader(wonBattels, "Won Battels");
+  const drawnBattelsEl = valueWithHeader(drawnBattels, "Drawn Battels");
+  const lostBattelsEl = valueWithHeader(lostBattels, "Lost Battels");
+  const totalPointsEl = valueWithHeader(totalPoints, "Total points");
 
-    name.innerText = `${elementInstances}x ${elementName}`;
+  const numFightsEl = valueWithHeader(numFights, "Fights");
+  const wonFightsEl = valueWithHeader(wonFights, "Won fights");
+  const drawnFightsEl = valueWithHeader(drawnFights, "Drawn fights");
+  const lostFightsEl = valueWithHeader(lostFights, "Lost fights");
 
-    element.appendChild(name);
-    element.appendChild(rating);
-    elementsEl.appendChild(element);
+  const numRoundsEl = valueWithHeader(numRounds, "Rounds");
+  const wonRoundsEl = valueWithHeader(wonRounds, "Won rounds");
+  const drawnRoundsEl = valueWithHeader(drawnRounds, "Drawn rounds");
+  const lostRoundsEl = valueWithHeader(lostRounds, "Lost rounds");
 
-    if (condtion !== undefined && condtion !== null) {
-      if (typeof condtion === "function") {
-        if (condtion(elementName) === false) {
-          element.classList.add("opacity-0");
-        }
-      } else {
-        if (condtion === false) {
-          console.log(condtion);
-          element.classList.add("opacity-0");
-        }
-      }
+  const lostHpEl = valueWithHeader(lostHp, "Lost health");
+  const remainingHpEl = valueWithHeader(`${remainingHP}%`, "Remaining health");
+  const sufferedDamageEl = valueWithHeader(sufferedDamage, "Suffered damage");
+  const distributedDamageEl = valueWithHeader(distributedDamage, "Distributed damage");
+
+  heading.setAttribute("class", "heading");
+  battleIcon.classList.add("border-icon");
+  header.setAttribute("class", "header");
+  toggle.setAttribute("class", "primary-btn toggle");
+  body.setAttribute("class", "body hidden");
+  stats.setAttribute("class", "stats");
+
+  battleValues.setAttribute("class", "statsGroup");
+  fightValues.setAttribute("class", "statsGroup");
+  roundValues.setAttribute("class", "statsGroup");
+  monsterStatsValues.setAttribute("class", "statsGroup");
+
+  wonBattelsEl.setAttribute("class", "stat");
+  drawnBattelsEl.setAttribute("class", "stat");
+  lostBattelsEl.setAttribute("class", "stat");
+  totalPointsEl.setAttribute("class", "stat");
+
+  numFightsEl.setAttribute("class", "stat");
+  wonFightsEl.setAttribute("class", "stat");
+  drawnFightsEl.setAttribute("class", "stat");
+  lostFightsEl.setAttribute("class", "stat");
+
+  numRoundsEl.setAttribute("class", "stat");
+  wonRoundsEl.setAttribute("class", "stat");
+  drawnRoundsEl.setAttribute("class", "stat");
+  lostRoundsEl.setAttribute("class", "stat");
+
+  lostHpEl.setAttribute("class", "stat");
+  remainingHpEl.setAttribute("class", "stat");
+  sufferedDamageEl.setAttribute("class", "stat");
+  distributedDamageEl.setAttribute("class", "stat");
+
+  header.innerText = "Battle record";
+
+  battleValues.append(wonBattelsEl, drawnBattelsEl, lostBattelsEl, totalPointsEl);
+  fightValues.append(numFightsEl, wonFightsEl, drawnFightsEl, lostFightsEl);
+  roundValues.append(numRoundsEl, wonRoundsEl, drawnRoundsEl, lostRoundsEl);
+  monsterStatsValues.append(lostHpEl, remainingHpEl, sufferedDamageEl, distributedDamageEl);
+
+  stats.append(battleValues, battleBar, fightValues, fightBar, roundValues, roundBar, monsterStatsValues);
+
+  toggle.addEventListener("click", () => {
+    const toggleIcon = toggle.getElementsByTagName("img")[0];
+    const isExtended = toggleIcon.getAttribute("src").includes("downArrow");
+
+    if (isExtended) {
+      body.setAttribute("class", "body");
+      setBtnIcon(toggleIcon, "upArrow", "Hide Elements");
+    } else {
+      body.setAttribute("class", "body hidden");
+      setBtnIcon(toggleIcon, "downArrow", "Show Elements");
     }
   });
 
-  const sortedByVisible = Array.from(elementsEl.children).sort((a, b) => {
-    const aIsHidden = a.classList.contains("opacity-0");
-    const bIsHidden = b.classList.contains("opacity-0");
-    return aIsHidden - bIsHidden;
-  });
+  heading.append(battleIcon, header, toggle);
+  body.append(stats);
 
-  elementsEl.innerHTML = "";
-
-  sortedByVisible.forEach((el) => elementsEl.appendChild(el));
+  battleRecordContainer.append(heading, body);
 }
 
-function searchElements(elementsEl, searchElementsInput) {
-  const searchQuery = searchElementsInput.value;
+/*
 
-  const nameMatchesSearchQuery = (elementName) => {
-    return elementName.toLowerCase().includes(searchQuery.trim().toLowerCase());
-  };
 
-  createElementContainers(elementsEl, nameMatchesSearchQuery);
-}
+Add battle record for which monsters has been won, drawn and lost against as a list
+Battle record for each monster that shows won, drawn, and lost fights and rounds for each monster
+Display remaining health, lost health, suffered damage, distributed damage per monster
+Section to render total revenue from battels
 
-function setSortOrder(elementsEl, sortElementsSelect, searchElementsInput) {
-  const sortOrder = Number(sortElementsSelect.value);
-  const searchQuery = searchElementsInput.value;
-
-  sortElements(sortOrder);
-
-  const nameMatchesSearchQuery = (elementName) => {
-    return elementName.toLowerCase().includes(searchQuery.trim().toLowerCase());
-  };
-
-  createElementContainers(elementsEl, nameMatchesSearchQuery);
-}
-
-function sortElements(sortOrder) {
-  let sorted = [];
-
-  switch (sortOrder) {
-    case 0:
-      sorted = teamElements.sort((a, b) => {
-        const keyA = Object.keys(a)[0];
-        const keyB = Object.keys(b)[0];
-        const countA = a[keyA];
-        const countB = b[keyB];
-
-        const ratingA = a["rating"];
-        const ratingB = b["rating"];
-        const countDifference = countB - countA;
-        const ratingDifference = ratingB - ratingA;
-
-        return countDifference === 0 ? ratingDifference : countDifference;
-      });
-      break;
-    case 1:
-      sorted = teamElements.sort((a, b) => {
-        const keyA = Object.keys(a)[0];
-        const keyB = Object.keys(b)[0];
-        const countA = a[keyA];
-        const countB = b[keyB];
-
-        const ratingA = a["rating"];
-        const ratingB = b["rating"];
-        const countDifference = countA - countB;
-        const ratingDifference = ratingB - ratingA;
-
-        return countDifference === 0 ? ratingDifference : countDifference;
-      });
-      break;
-    case 2:
-      sorted = teamElements.sort((a, b) => {
-        const keyA = Object.keys(a)[0];
-        const keyB = Object.keys(b)[0];
-        const ratingA = a["rating"];
-        const ratingB = b["rating"];
-
-        const ratingDifference = ratingB - ratingA;
-        const alphaDifference = keyA.localeCompare(keyB);
-
-        return ratingDifference === 0 ? alphaDifference : ratingDifference;
-      });
-      break;
-    case 3:
-      sorted = teamElements.sort((a, b) => {
-        const keyA = Object.keys(a)[0];
-        const keyB = Object.keys(b)[0];
-        const ratingA = a["rating"];
-        const ratingB = b["rating"];
-
-        const ratingDifference = ratingA - ratingB;
-        const alphaDifference = keyA.localeCompare(keyB);
-
-        return ratingDifference === 0 ? alphaDifference : ratingDifference;
-      });
-      break;
-    case 4:
-      sorted = teamElements.sort((a, b) => {
-        const keyA = Object.keys(a)[0];
-        const keyB = Object.keys(b)[0];
-
-        return keyA.localeCompare(keyB);
-      });
-      break;
-    case 5:
-      sorted = teamElements.sort((a, b) => {
-        const keyA = Object.keys(a)[0];
-        const keyB = Object.keys(b)[0];
-
-        return keyB.localeCompare(keyA);
-      });
-      break;
-    default:
-      break;
-  }
-
-  if (sorted.length > 0) {
-    teamElements = sorted;
-  }
-}
+*/

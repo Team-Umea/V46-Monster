@@ -143,26 +143,10 @@ main {
 }
 
 .teamStatsConatiner {
-  width: 95%;
-  margin-top: 60px;
-  padding: 50px;
-  border-radius: 30px;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   justify-items: center;
   gap: 60px;
-  border: 2px solid var(--color-primary-a30);
-  position: relative;
-
-  .numMonstersIcon {
-    padding: 12px;
-    top: -30px;
-    left: -40px;
-    border-radius: 30px;
-    position: absolute;
-    background-color: var(--color-surface-a0);
-    border: 2px solid var(--color-primary-a30);
-  }
 
   .teamStatsIcon {
     padding: 15px 30px;
@@ -249,28 +233,11 @@ main {
 }
 
 .teamElementsContainer {
-  width: 95%;
-  margin-top: 60px;
-  padding: 50px;
-  border: 2px solid var(--color-primary-a30);
-  border-radius: 30px;
-  position: relative;
-
   .teamElementsHeading {
     padding: 10px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-
-    .teamElementsIcon {
-      padding: 12px;
-      top: -30px;
-      left: -40px;
-      border-radius: 30px;
-      position: absolute;
-      background-color: var(--color-surface-a0);
-      border: 2px solid var(--color-primary-a30);
-    }
 
     .teamElementsHeader {
       font-size: 2.2rem;
@@ -315,17 +282,80 @@ main {
   }
 }
 
-.teamStatElementContainer {
-  display: flex;
-  justify-content: space-between;
+.battleRecordContainer {
+  .heading {
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .header {
+      font-size: 2.2rem;
+    }
+  }
+
+  .body {
+    padding: 10px;
+    margin-top: 20px;
+
+    .stats {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 30px;
+
+      .statsGroup {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+
+        .stat {
+          width: fit-content;
+          width: 15rem;
+          padding: 1rem 0;
+          display: flex;
+          flex-direction: column;
+          justify-content: flex-start;
+          align-items: center;
+          gap: 7px;
+          border-radius: 12px;
+          border-left: 1px solid var(--color-primary-a50);
+          border-right: 1px solid var(--color-primary-a50);
+          box-shadow: 2px 2px 10px rgba(230, 228, 255, 0.4);
+          background-color: var(--color-surface-a10);
+
+          p {
+            font-size: 1.6rem;
+            font-weight: bold;
+          }
+        }
+      }
+
+      .progressBar {
+        margin-bottom: 60px;
+        box-shadow: 2px 2px 10px rgba(230, 228, 255, 0.4);
+      }
+    }
+  }
 }
 
-.teamStatElementRating p {
-  font-size: 0.8rem;
+.border-gold {
+  width: 95%;
+  margin-top: 60px;
+  padding: 50px;
+  border: 2px solid var(--color-primary-a30);
+  border-radius: 30px;
+  position: relative;
 }
 
-.teamStatElementRating img {
-  width: 25px;
+.border-icon {
+  padding: 12px;
+  top: -30px;
+  left: -40px;
+  border-radius: 30px;
+  position: absolute;
+  background-color: var(--color-surface-a0);
+  border: 2px solid var(--color-primary-a30);
 }
 
 @media (max-width: 1300px) {
