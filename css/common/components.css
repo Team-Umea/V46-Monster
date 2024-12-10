@@ -95,6 +95,7 @@ a {
 }
 
 .primary-btn {
+  width: fit-content;
   padding: 10px 20px;
   border-radius: 10px;
   display: flex;

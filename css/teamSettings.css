@@ -248,6 +248,61 @@ main {
   left: 15px;
 }
 
+.teamElementsContainer {
+  width: 95%;
+  margin-top: 60px;
+  padding: 50px;
+  border: 2px solid var(--color-primary-a30);
+  border-radius: 30px;
+  position: relative;
+
+  .teamElementsHeading {
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .teamElementsIcon {
+      padding: 12px;
+      top: -30px;
+      left: -40px;
+      border-radius: 30px;
+      position: absolute;
+      background-color: var(--color-surface-a0);
+      border: 2px solid var(--color-primary-a30);
+    }
+
+    .teamElementsHeader {
+      font-size: 2.2rem;
+    }
+  }
+
+  .teamElementsBody {
+    .teamElementsFilters {
+      padding: 10px;
+      display: flex;
+      justify-content: flex-start;
+      gap: 20px;
+
+      .teamElementsSearch,
+      .teamElementsSort {
+        width: min(100%, 400px);
+        padding: 12px;
+        border-radius: 8px;
+        border: 0;
+        outline: none;
+        box-shadow: 3px 3px 5px 0px rgba(0, 0, 0, 0.75);
+        color: var(--color-primary-text);
+        background-color: var(--color-surface-mixed-a10);
+      }
+
+      .teamElementsSearch::placeholder {
+        color: var(--color-primary-text);
+      }
+    }
+  }
+}
+
 @media (max-width: 1300px) {
   .teamStatsConatiner {
     grid-template-columns: repeat(2, 1fr);

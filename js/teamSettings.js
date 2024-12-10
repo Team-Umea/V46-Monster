@@ -8,12 +8,16 @@ import { useCredits, addCredits } from "./common/credits.js";
 import { MonsterCard } from "./classes/MonsterCard.js";
 import { Team } from "./classes/Team.js";
 
+import { ELEMENTS_LSK } from "./common/localStorageKeys.js";
+import { ELEMENTS_TTL } from "./common/ttl.js";
+
 const navigator = document.getElementById("prevNavigator");
 const spinner = document.getElementById("spinner");
 const controlMessage = document.getElementById("controlMessage");
 const controlBtns = document.getElementById("controlBtns");
 const teamStats = document.getElementById("teamStatsConatiner");
 const monstersContainer = document.getElementById("teamMonsters");
+const teamElementsContainer = document.getElementById("teamElementsContainer");
 
 let teams = load(TEAMS_LSK).map((t) => Team.fromJSON(t)) || [];
 let userCredits = load(CREDITS_LSK);
@@ -27,6 +31,7 @@ let teamName;
 let teamMonsters;
 let teamCost;
 let teamValue;
+let teamElements;
 let isPaidFor;
 let numMonsters;
 
@@ -51,6 +56,7 @@ function render() {
   renderControls();
   renderTeamStats();
   renderMonsters();
+  loadElements();
 }
 
 function loadTeam() {
@@ -62,6 +68,7 @@ function loadTeam() {
     teamMonsters = team.monsters;
     teamCost = team.teamCost;
     teamValue = team.teamValue;
+    teamElements = team.elements;
     isPaidFor = team.paidFor;
     numMonsters = teamMonsters.length;
 
@@ -72,6 +79,14 @@ function loadTeam() {
   } else {
     navigate();
   }
+}
+
+async function loadElements() {
+  const allElements = await serveData("elements", undefined, undefined, ELEMENTS_LSK, ELEMENTS_TTL);
+
+  teamElements = team.getAllMonsterElements(allElements);
+
+  renderElements();
 }
 
 function navigate() {
@@ -184,6 +199,18 @@ function useBtnLinks() {
       default:
         break;
     }
+  });
+}
+
+function populateElementsSortSelect(select) {
+  const options = ["Many-Few Instances", "Few-Many Instances", "High-Low Rating", "Low-High Rating", "A-Z", "Z-A"];
+
+  options.forEach((opt, index) => {
+    const option = document.createElement("option");
+    option.setAttribute("class", "teamStatSearchElementsOption");
+    option.innerText = opt;
+    option.value = index;
+    select.appendChild(option);
   });
 }
 
@@ -415,4 +442,53 @@ function renderMonsters() {
   } else {
     monstersContainer.remove();
   }
+}
+
+function renderElements() {
+  teamElementsContainer.innerHTML = "";
+  const numElements = teamElements.length;
+
+  const heading = document.createElement("div");
+  const elementsIcon = renderIconWithNumber(numElements, "../../res/icons/element.svg", `There is ${numElements} available`);
+  const header = document.createElement("h2");
+  const toggle = imgAsBtn("upArrow", "Hide Elements");
+  const body = document.createElement("div");
+  const filters = document.createElement("div");
+  const search = document.createElement("input");
+  const sort = document.createElement("select");
+  const elements = document.createElement("div");
+
+  heading.setAttribute("class", "teamElementsHeading");
+  elementsIcon.classList.add("teamElementsIcon");
+  header.setAttribute("class", "teamElementsHeader");
+  toggle.setAttribute("class", "primary-btn teamElmentsToggle");
+  body.setAttribute("class", "teamElementsBody");
+  filters.setAttribute("class", "teamElementsFilters");
+  search.setAttribute("class", "teamElementsSearch");
+  sort.setAttribute("class", "teamElementsSort");
+  elements.setAttribute("class", "teamElements");
+
+  header.innerText = "Available elements";
+
+  search.setAttribute("placeholder", "Search by element name");
+  populateElementsSortSelect(sort);
+
+  toggle.addEventListener("click", () => {
+    const toggleIcon = toggle.getElementsByTagName("img")[0];
+    const isExtended = toggleIcon.getAttribute("src").includes("downArrow");
+
+    if (isExtended) {
+      body.setAttribute("class", "teamElementsBody");
+      setBtnIcon(toggleIcon, "upArrow", "Hide Elements");
+    } else {
+      body.setAttribute("class", "teamElementsBody hidden");
+      setBtnIcon(toggleIcon, "downArrow", "Show Elements");
+    }
+  });
+
+  heading.append(elementsIcon, header, toggle);
+  filters.append(search, sort);
+  body.append(filters, elements);
+
+  teamElementsContainer.append(heading, body);
 }

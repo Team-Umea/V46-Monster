@@ -1,9 +1,11 @@
 //Class for teams
+
 export class Team {
   constructor(teamName) {
     this.name = teamName;
     this.monsters = [];
     this.paidFor = false;
+    this.elements = [];
 
     this.totalRank = 0;
     this.totalRating = 0;
@@ -30,6 +32,8 @@ export class Team {
     this.drawnRounds = 0;
     this.lostRounds = 0;
     this.teamBodyVisible = true;
+
+    this.calc();
   }
 
   getTeamName() {
@@ -290,6 +294,42 @@ export class Team {
     const teamValue = Math.floor((price - healthPriceInfluence) * 0.7);
 
     return teamValue;
+  }
+
+  getAllMonsterElements(allElements) {
+    const teamMonsters = this.monsters;
+
+    const elements = teamMonsters.map((monster) => monster.elements).flat();
+
+    const instancesOfElements = elements.reduce((acc, curr) => {
+      acc[curr] = (acc[curr] || 0) + 1;
+      return acc;
+    }, {});
+
+    const entriesArray = Object.keys(instancesOfElements).map((key) => ({
+      [key]: instancesOfElements[key],
+    }));
+
+    const sortedInstances = entriesArray.sort((a, b) => {
+      const countA = Object.values(a)[0];
+      const countB = Object.values(b)[0];
+
+      if (countB - countA !== 0) {
+        return countB - countA;
+      }
+
+      const keyA = Object.keys(a)[0];
+      const keyB = Object.keys(b)[0];
+      return keyA.localeCompare(keyB);
+    });
+
+    const sortElementsWithRating = sortedInstances.map((element) => {
+      const elementName = Object.keys(element)[0];
+      const rating = allElements.find((teamElement) => teamElement.name === elementName).rating;
+      return { ...element, rating: rating };
+    });
+
+    return sortElementsWithRating;
   }
 
   static fromJSON(json) {
