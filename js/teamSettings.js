@@ -32,6 +32,7 @@ let teamName;
 let teamMonsters;
 let teamCost;
 let teamValue;
+let teamProfit;
 let teamElements;
 let isPaidFor;
 let numMonsters;
@@ -103,6 +104,7 @@ function loadTeam() {
     teamMonsters = team.monsters;
     teamCost = team.teamCost;
     teamValue = team.teamValue;
+    teamProfit = team.teamProfit;
     teamElements = team.elements;
     isPaidFor = team.paidFor;
     numMonsters = teamMonsters.length;
@@ -729,6 +731,7 @@ function renderBattleRecord() {
 
   const heading = document.createElement("div");
   const battleIcon = renderIconWithNumber(numBattels, "../../res/icons/shield.svg", `Team '${teamName}' has fought ${numBattels} battles`);
+  const teamProfitIcon = renderIconWithNumber(teamProfit, "../../res/icons/diamond.svg", `Team '${teamName}' has genereated a profit of ${teamProfit} credits`, "right");
   const header = document.createElement("h2");
   const toggle = imgAsBtn("downArrow", "Hide Elements");
   const body = document.createElement("div");
@@ -765,6 +768,7 @@ function renderBattleRecord() {
 
   heading.setAttribute("class", "heading");
   battleIcon.classList.add("border-icon");
+  teamProfitIcon.classList.add("border-icon", "border-icon-right");
   header.setAttribute("class", "header");
   toggle.setAttribute("class", "primary-btn toggle");
   body.setAttribute("class", "body hidden");
@@ -817,7 +821,7 @@ function renderBattleRecord() {
     }
   });
 
-  heading.append(battleIcon, header, toggle);
+  heading.append(battleIcon, teamProfitIcon, header, toggle);
   body.append(stats, renderFoughtMonsters(), renderMonsterRecords());
 
   battleRecordContainer.append(heading, body);

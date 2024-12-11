@@ -383,6 +383,7 @@ main {
       gap: 50px;
 
       .card {
+        /* max-width: 700px; */
         padding: 30px;
         display: flex;
         flex-direction: column;
@@ -415,10 +416,15 @@ main {
             .rounds {
               display: flex;
               justify-content: flex-start;
-              gap: 2rem;
+              gap: 1rem;
 
               .stat {
                 background-color: var(--color-surface-a10);
+                transition: all 0.3s ease-in-out;
+              }
+
+              .stat:hover {
+                filter: brightness(70%);
               }
             }
 
@@ -500,6 +506,11 @@ main {
   position: absolute;
   background-color: var(--color-surface-a0);
   border: 2px solid var(--color-primary-a30);
+}
+
+.border-icon-right {
+  left: auto;
+  right: -40px;
 }
 
 @media (max-width: 1300px) {
