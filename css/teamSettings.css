@@ -283,8 +283,10 @@ main {
 }
 
 .battleRecordContainer {
+  padding: 0 !important;
+
   .heading {
-    padding: 10px;
+    padding: 50px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -295,14 +297,16 @@ main {
   }
 
   .body {
-    padding: 10px;
     margin-top: 20px;
+    padding-bottom: 60px;
 
     .stats {
+      padding: 50px;
       display: flex;
       flex-direction: column;
       align-items: center;
       gap: 30px;
+      background-color: var(--color-surface-mixed-a10);
 
       .statsGroup {
         width: 100%;
@@ -334,6 +338,38 @@ main {
       .progressBar {
         margin-bottom: 60px;
         box-shadow: 2px 2px 10px rgba(230, 228, 255, 0.4);
+      }
+    }
+
+    .foughtMonsters {
+      padding: 20px;
+      margin-top: 80px;
+      display: flex;
+      justify-content: space-evenly;
+      background-color: var(--color-surface-mixed-a10);
+
+      .container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+
+        .header {
+          font-size: 2rem;
+        }
+
+        .monsters {
+          max-height: 300px;
+          display: flex;
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 4px;
+          overflow-y: scroll;
+
+          .monster {
+            font-size: 1.5rem;
+          }
+        }
       }
     }
   }

@@ -62,6 +62,9 @@ let remainingHP;
 let sufferedDamage;
 let distributedDamage;
 
+let wonAgainst;
+let lostAgainst;
+
 window.addEventListener("DOMContentLoaded", () => {
   init();
 });
@@ -120,6 +123,9 @@ function loadTeam() {
     remainingHP = team.remainingHP;
     sufferedDamage = team.sufferedDamage;
     distributedDamage = team.distributedDamage;
+
+    wonAgainst = team.wonAgainst;
+    lostAgainst = team.lostAgainst;
   } else {
     navigate();
   }
@@ -803,9 +809,52 @@ function renderBattleRecord() {
   });
 
   heading.append(battleIcon, header, toggle);
-  body.append(stats);
+  body.append(stats, renderFoughtMonsters());
 
   battleRecordContainer.append(heading, body);
+}
+
+function renderFoughtMonsters() {
+  const container = document.createElement("div");
+  const wonContainer = document.createElement("div");
+  const lostContainer = document.createElement("div");
+  const wonHeader = document.createElement("h2");
+  const lostHeader = document.createElement("h2");
+  const won = document.createElement("div");
+  const lost = document.createElement("div");
+
+  container.setAttribute("class", "foughtMonsters");
+  wonContainer.setAttribute("class", "container");
+  lostContainer.setAttribute("class", "container");
+  wonHeader.setAttribute("class", "header");
+  lostHeader.setAttribute("class", "header");
+  won.setAttribute("class", "monsters");
+  lost.setAttribute("class", "monsters");
+
+  wonHeader.innerText = "Won against";
+  lostHeader.innerText = "Lost against";
+
+  wonAgainst.forEach((w) => {
+    const value = `${Object.values(w)[0]}x ${Object.keys(w)[0]}`;
+    const p = document.createElement("p");
+    p.setAttribute("class", "monster");
+    p.innerText = value;
+    won.appendChild(p);
+  });
+
+  lostAgainst.forEach((l) => {
+    const value = `${Object.values(l)[0]}x ${Object.keys(l)[0]}`;
+    const p = document.createElement("p");
+    p.setAttribute("class", "monster");
+    p.innerText = value;
+    lost.appendChild(p);
+  });
+
+  wonContainer.append(wonHeader, won);
+  lostContainer.append(lostHeader, lost);
+  container.append(wonContainer, lostContainer);
+
+  return container;
 }
 
 /*

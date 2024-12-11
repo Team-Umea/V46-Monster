@@ -1,4 +1,5 @@
 //Class for teams
+import { sortInstances } from "../common/utilities.js";
 
 export class Team {
   constructor(teamName) {
@@ -36,6 +37,9 @@ export class Team {
     this.remainingHP = 0;
     this.sufferedDamage = 0;
     this.distributedDamage = 0;
+
+    this.wonAgainst = [];
+    this.lostAgainst = [];
 
     this.teamBodyVisible = true;
 
@@ -263,6 +267,8 @@ export class Team {
     this.remainingHP = this.calcRemainingHP();
     this.sufferedDamage = this.calcSufferedDamage();
     this.distributedDamage = this.calcDistributedDamage();
+    this.wonAgainst = this.calcWonAgainst();
+    this.lostAgainst = this.calcLostAgainst();
   }
 
   calcTeamRank() {
@@ -331,6 +337,20 @@ export class Team {
     const monsters = this.monsters;
     const distributedDamage = monsters.reduce((acc, curr) => acc + curr.distributedDamage, 0);
     return distributedDamage;
+  }
+
+  calcWonAgainst() {
+    return sortInstances(["a", "a", "a", "b", "b", "c"]);
+    // const monsters = this.monsters;
+    // const wonAgainst = monsters.reduce((acc,curr)=>[...acc,curr.wonAgainst],[]);
+    // return wonAgainst;
+  }
+
+  calcLostAgainst() {
+    return sortInstances(["g", "g", "g", "h", "h", "i"]);
+    // const monsters = this.monsters;
+    // const lostAgainst = monsters.reduce((acc,curr)=>[...acc,curr.lostAgainst],[]);
+    // return lostAgainst;
   }
 
   getAllMonsterElements(allElements) {
