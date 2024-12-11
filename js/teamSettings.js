@@ -1,8 +1,8 @@
 //Js code for teamControls page
 import { useClickEvent, useFocusEvent } from "./common/useEvent.js";
 import { serveData } from "./common/fetch.js";
-import { renderIconWithNumber, averageValueIcon, imgAsBtn, valueWithHeader, progressBar, dataList } from "./common/render.js";
-import { load, save, remove, redirect, formatLargeNumber, sortInstances } from "./common/utilities.js";
+import { renderIconWithNumber, averageValueIcon, imgAsBtn, valueWithHeader, progressBar, dataList, setBtnIcon } from "./common/render.js";
+import { load, save, remove, redirect, formatLargeNumber, reload } from "./common/utilities.js";
 import { SELECTEDTEAMSETTINGS_LSK, TEAMS_LSK, CREDITS_LSK, SELECTEDFIGHTTEAM_LSK } from "./common/localStorageKeys.js";
 import { useCredits, addCredits } from "./common/credits.js";
 import { MonsterCard } from "./classes/MonsterCard.js";
@@ -12,14 +12,12 @@ import { ELEMENTS_LSK } from "./common/localStorageKeys.js";
 import { ELEMENTS_TTL } from "./common/ttl.js";
 
 const navigator = document.getElementById("prevNavigator");
-// const spinner = document.getElementById("spinner");
 const controlMessage = document.getElementById("controlMessage");
 const controlBtns = document.getElementById("controlBtns");
 const teamStats = document.getElementById("teamStatsConatiner");
 const monstersContainer = document.getElementById("teamMonsters");
 const teamElementsContainer = document.getElementById("teamElementsContainer");
 const battleRecordContainer = document.getElementById("battleRecordContainer");
-// const dangerZone = document.getElementById("dangerZone");
 
 let teams;
 let userCredits = load(CREDITS_LSK);
@@ -167,7 +165,7 @@ function updateTeams() {
 async function shuffleTeam() {
   const randomMonsters = await serveData("randomMonsters", "num=4", monstersContainer);
 
-  const selectedTeam = teams.find((t) => t.nam.toLowerCase() === teamName.toLowerCase());
+  const selectedTeam = teams.find((t) => t.name.toLowerCase() === teamName.toLowerCase());
 
   selectedTeam.setMonsters(randomMonsters);
   selectedTeam.setPaidFor(false);
@@ -175,6 +173,7 @@ async function shuffleTeam() {
   team.setMonsters(randomMonsters);
   team.setPaidFor(false);
   updateTeams();
+  reload(); //should not have to force a reload
 }
 
 function buyTeam() {
@@ -233,12 +232,6 @@ function setControlMessage(className, message) {
       controlMessage.setAttribute("class", "controlMessage hide");
     }, 7000);
   }
-}
-
-function setBtnIcon(icon, src, altTitle) {
-  icon.setAttribute("src", `../../res/icons/${src}.svg`);
-  icon.setAttribute("alt", formatLargeNumber(altTitle));
-  icon.setAttribute("title", formatLargeNumber(altTitle));
 }
 
 function useBtnLinks() {

@@ -284,6 +284,12 @@ export function averageValueIcon(value, mainSrc, subSrc, altTitle) {
   return container;
 }
 
+export function setBtnIcon(icon, src, altTitle) {
+  icon.setAttribute("src", `../../res/icons/${src}.svg`);
+  icon.setAttribute("alt", formatLargeNumber(altTitle));
+  icon.setAttribute("title", formatLargeNumber(altTitle));
+}
+
 function removeEl(element, delay) {
   const delayInSeconds = delay * 1000;
   setTimeout(() => {

@@ -42,7 +42,7 @@ export class Team {
     this.wonAgainst = [];
     this.lostAgainst = [];
 
-    this.teamBodyVisible = true;
+    this.isVisible = true;
 
     this.calc();
   }
@@ -122,10 +122,6 @@ export class Team {
 
   getLostRounds() {
     return this.lostRounds;
-  }
-
-  getTeamBodyVisible() {
-    return this.teamBodyVisible;
   }
 
   getMonsterTeamRank(id) {
@@ -219,8 +215,8 @@ export class Team {
     this.lostRounds = lostRounds;
   }
 
-  setTeamBodyVisible(teamBodyVisible) {
-    this.teamBodyVisible = teamBodyVisible;
+  setVisible(isVisible) {
+    this.isVisible = isVisible;
   }
 
   deleteMonster(id) {
@@ -407,7 +403,7 @@ export class Team {
     newTeam.setWonRounds(json.wonRounds);
     newTeam.setDrawnRounds(json.drawnRounds);
     newTeam.setLostRounds(json.lostRounds);
-    newTeam.setTeamBodyVisible(json.teamBodyVisible);
+    newTeam.setVisible(json.isVisible);
     return newTeam;
   }
 }

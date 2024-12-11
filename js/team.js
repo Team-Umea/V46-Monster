@@ -1,23 +1,12 @@
 //Js code for team page
 import { Team } from "./classes/Team.js";
-import { save, load, generateUniqueName } from "./common/utilities.js";
-import { TEAMS_LSK, ALLMONSTERS_LSK, CREDITS_LSK, ELEMENTS_LSK, SELECTEDTEAMSETTINGS_LSK } from "./common/localStorageKeys.js";
-import { serveData } from "./common/fetch.js";
-import { ALLMONSTERS_TTL, ELEMENTS_TTL } from "./common/ttl.js";
-import { TeamCard } from "./classes/TeamCard.js";
-import { TeamStat } from "./classes/TeamStats.js";
-import { ConfirmModule } from "./classes/ConfirmModule.js";
-import { useCredits, addCredits } from "./common/credits.js";
-import { useClickEvent } from "./common/useEvent.js";
+import { save, load, generateUniqueName, redirect } from "./common/utilities.js";
+import { TEAMS_LSK, SELECTEDTEAMSETTINGS_LSK, SELECTEDFIGHTTEAM_LSK } from "./common/localStorageKeys.js";
+import { imgAsBtn, setBtnIcon } from "./common/render.js";
+import { MonsterCard } from "./classes/MonsterCard.js";
 
 const teamsContainer = document.getElementById("teamsContainer");
-const allMonstersContainer = document.createElement("div");
 
-const teamStatsContainer = document.getElementById("teamStatsContainer");
-const teamStatsToggle = document.getElementById("teamStatsToggle");
-const teamStatsList = document.getElementById("teamStatsList");
-
-let elements = [];
 let teamsArr = [];
 
 window.addEventListener("DOMContentLoaded", () => {
@@ -26,23 +15,9 @@ window.addEventListener("DOMContentLoaded", () => {
 
 function init() {
   initCreateTeamForm();
-  useData();
-
-  useClickEvent(teamStatsToggle, toggleTeamStats);
-}
-
-async function useData() {
-  const promises = [serveData("elements", undefined, allMonstersContainer, ELEMENTS_LSK, ELEMENTS_TTL)];
-
-  const responses = await Promise.all(promises);
-
-  const elementsData = responses[0];
-
-  elements = elementsData;
 
   loadTeams();
   renderTeams();
-  renderTeamStats();
 }
 
 function initCreateTeamForm() {
@@ -123,87 +98,16 @@ function loadTeams() {
 
 function updateTeams() {
   save(TEAMS_LSK, teamsArr);
-  renderTeams();
-  renderTeamStats();
 }
 
 function addTeam(teamName) {
   const newTeam = new Team(teamName);
   teamsArr.push(newTeam);
   updateTeams();
+  renderTeams();
 }
 
-function sellTeam(teamName) {
-  const team = teamsArr.find((team) => team.getTeamName() === teamName);
-  const profit = team.getTeamProfit();
-  addCredits(profit);
-
-  const filteredTeams = [...teamsArr].filter((team) => team.getTeamName() !== teamName);
-  teamsArr = filteredTeams;
-  updateTeams();
-}
-
-function buyTeam(teamName) {
-  const userCredits = load(CREDITS_LSK);
-
-  if (userCredits) {
-    const team = teamsArr.find((t) => t.getTeamName() === teamName);
-    const teamCost = team.getTeamCost();
-    const numMonsters = team.getMonsters().length;
-
-    if (numMonsters === 4 && userCredits >= teamCost) {
-      team.setPaidFor(true);
-      const usedCredits = teamCost;
-      useCredits(usedCredits);
-      updateTeams();
-    }
-  }
-}
-
-async function shuffleTeam(teamName) {
-  const team = teamsArr.find((t) => t.getTeamName() === teamName);
-  team.setPaidFor(false);
-
-  const randomMonsters = await serveData("randomMonsters", "num=4", teamsContainer);
-  team.setMonsters(randomMonsters);
-  team.setPaidFor(false);
-  updateTeams();
-}
-
-function removeMonster(teamName, id) {
-  const team = teamsArr.find((t) => t.getTeamName() === teamName);
-  team.deleteMonster(id);
-  updateTeams();
-}
-
-function deleteTeam(teamName) {
-  const filteredTeams = [...teamsArr].filter((team) => team.getTeamName() !== teamName);
-  teamsArr = filteredTeams;
-  updateTeams();
-}
-
-function showModuleOnTeamDelete(teamName) {
-  new ConfirmModule("Warning!", `Are you sure that you want to delete team '${teamName}'. This action can't be undone`, teamName, deleteTeam);
-}
-
-function toggleTeamStats() {
-  const src = teamStatsToggle.getAttribute("src");
-  const isExtended = src.includes("rightArrow");
-
-  if (isExtended) {
-    teamStatsToggle.setAttribute("src", "../../res/icons/leftArrow.svg");
-    teamStatsToggle.setAttribute("alt", "Hide team stats");
-    teamStatsToggle.setAttribute("title", "Hide team stats");
-    teamStatsContainer.setAttribute("class", "teamStatsContainer extended");
-  } else {
-    teamStatsToggle.setAttribute("src", "../../res/icons/rightArrow.svg");
-    teamStatsToggle.setAttribute("alt", "Show team stats");
-    teamStatsToggle.setAttribute("title", "Show team stats");
-    teamStatsContainer.setAttribute("class", "teamStatsContainer collapsed");
-  }
-}
-
-function redirectToTeamControls(team) {
+function redirectToSettingsPage(team) {
   save(SELECTEDTEAMSETTINGS_LSK, team);
   setTimeout(() => {
     window.location.href = "teamSettings.html";
@@ -216,72 +120,90 @@ function renderTeams() {
   if (teamsArr) {
     teamsContainer.setAttribute("class", "teamsContainer");
     teamsArr.forEach((team) => {
-      const teamCard = new TeamCard(team, updateTeams, sellTeam, buyTeam, shuffleTeam, showModuleOnTeamDelete, removeMonster, redirectToTeamControls);
+      const teamName = team.name;
+      const teamMonsters = team.monsters;
+      const numTeamMonsters = teamMonsters.length;
+      const isPaidFor = team.paidFor;
+      const isVisible = team.isVisible;
 
-      const teamContainer = teamCard.teamContainer();
-      const teamHeaderContainer = teamCard.teamHeaderContainer();
-      const teamSell = teamCard.teamSell();
-      const teamHeader = teamCard.teamHeader();
-      const teamToggle = teamCard.teamToggle();
-      const teamBodyContainer = teamCard.teamBodyContainer();
-      const teamMessage = teamCard.getTeamMsg();
-      const teamControls = teamCard.teamControls();
-      const teamMonsters = teamCard.teamMonsters();
+      const teamCard = document.createElement("div");
+      const heading = document.createElement("div");
+      const header = document.createElement("h2");
+      const controls = document.createElement("div");
 
-      teamHeaderContainer.appendChild(teamSell);
-      teamHeaderContainer.appendChild(teamHeader);
-      teamHeaderContainer.appendChild(teamToggle);
+      const fightBtn = imgAsBtn("shield", `Fight with '${teamName}'`);
+      const settingsBtn = imgAsBtn("settings", `View settings and stats for '${teamName}'`);
+      const toggleBtn = imgAsBtn(isVisible ? "upArrow" : "downArrow", isVisible ? `Hide '${teamName}'` : `Show '${teamName}'`);
 
-      teamBodyContainer.appendChild(teamMessage);
-      teamBodyContainer.appendChild(teamControls);
-      teamBodyContainer.appendChild(teamMonsters);
+      const body = document.createElement("div");
+      const monsters = document.createElement("div");
 
-      teamContainer.appendChild(teamHeaderContainer);
-      teamContainer.appendChild(teamBodyContainer);
+      teamCard.setAttribute("class", "teamCard");
+      heading.setAttribute("class", "cardHeading");
+      header.setAttribute("class", "cardHeader");
+      controls.setAttribute("class", "cardControls");
+      fightBtn.setAttribute("class", "primary-btn");
+      settingsBtn.setAttribute("class", "primary-btn");
+      toggleBtn.setAttribute("class", "primary-btn");
+      body.setAttribute("class", isVisible ? "cardBody" : "cardBody hidden");
+      monsters.setAttribute("class", "cardMonsters");
 
-      teamsContainer.appendChild(teamContainer);
+      header.innerText = teamName;
+
+      fightBtn.addEventListener("click", () => {
+        save(SELECTEDFIGHTTEAM_LSK, team);
+        setTimeout(() => {
+          redirect("fight.html");
+        }, 100);
+      });
+
+      settingsBtn.addEventListener("click", () => {
+        redirectToSettingsPage(team);
+      });
+
+      toggleBtn.addEventListener("click", () => {
+        const toggleIcon = toggleBtn.getElementsByTagName("img")[0];
+        const isExtended = toggleIcon.getAttribute("src").includes("downArrow");
+
+        if (isExtended) {
+          body.setAttribute("class", "cardBody");
+          setBtnIcon(toggleIcon, "upArrow", "Hide Elements");
+        } else {
+          body.setAttribute("class", "cardBody hidden");
+          setBtnIcon(toggleIcon, "downArrow", "Show Elements");
+        }
+
+        team.isVisible = !team.isVisible;
+        updateTeams();
+      });
+
+      teamMonsters.forEach((monster) => {
+        const monsterCard = new MonsterCard(monster, [], true).assembleMonsterCard();
+        monsters.appendChild(monsterCard);
+      });
+
+      if (isPaidFor && numTeamMonsters > 0) {
+        controls.appendChild(fightBtn);
+      }
+
+      controls.appendChild(settingsBtn);
+
+      if (numTeamMonsters > 0) {
+        controls.appendChild(toggleBtn);
+      }
+
+      heading.append(header, controls);
+      body.append(monsters);
+
+      teamCard.appendChild(heading);
+
+      if (numTeamMonsters > 0) {
+        teamCard.appendChild(body);
+      }
+
+      teamsContainer.appendChild(teamCard);
     });
   } else {
     teamsContainer.setAttribute("class", "teamsContainer hidden");
-  }
-}
-
-function renderTeamStats() {
-  teamStatsList.innerHTML = "";
-
-  if (teamsArr) {
-    teamsArr.forEach((team) => {
-      const teamStat = new TeamStat(team, elements, updateTeams);
-
-      const teamStatContainer = teamStat.container();
-      const teamStatHeaderContainer = teamStat.headerContainer();
-      const monsterInTeam = teamStat.monsterInTeam();
-      const teamStatHeader = teamStat.header();
-      const teamStatToggle = teamStat.toggle();
-
-      const teamStatBodyContainer = teamStat.bodyContainer();
-      const teamStatTopStats = teamStat.topStats();
-      const teamStatAverageStats = teamStat.averageStats();
-      const teamStatEndToEndMonsters = teamStat.endToEndMonsters();
-      const teamStatAllTeamMonsters = teamStat.allTeamMonsters();
-      const teamStatElements = teamStat.allTeamElements();
-      const teamStatFightRecord = teamStat.battleRecord();
-
-      teamStatHeaderContainer.appendChild(monsterInTeam);
-      teamStatHeaderContainer.appendChild(teamStatHeader);
-      teamStatHeaderContainer.appendChild(teamStatToggle);
-
-      teamStatBodyContainer.appendChild(teamStatTopStats);
-      teamStatBodyContainer.appendChild(teamStatAverageStats);
-      teamStatBodyContainer.appendChild(teamStatEndToEndMonsters);
-      teamStatBodyContainer.appendChild(teamStatAllTeamMonsters);
-      teamStatBodyContainer.appendChild(teamStatElements);
-      teamStatBodyContainer.appendChild(teamStatFightRecord);
-
-      teamStatContainer.appendChild(teamStatHeaderContainer);
-      teamStatContainer.appendChild(teamStatBodyContainer);
-
-      teamStatsList.appendChild(teamStatContainer);
-    });
   }
 }
