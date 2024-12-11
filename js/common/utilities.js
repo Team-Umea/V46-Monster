@@ -195,3 +195,7 @@ export function sortInstances(arr) {
 
   return sortedInstances;
 }
+
+export function convertInstancesToStr(arr) {
+  return sortInstances(arr).map((item) => `${Object.values(item)[0]}x ${Object.keys(item)[0]}`);
+}

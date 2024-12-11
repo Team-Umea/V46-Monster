@@ -1,8 +1,8 @@
 //Js code for teamControls page
 import { useClickEvent } from "./common/useEvent.js";
 import { serveData } from "./common/fetch.js";
-import { renderIconWithNumber, averageValueIcon, imgAsBtn, valueWithHeader, progressBar } from "./common/render.js";
-import { load, save, remove, redirect, formatLargeNumber } from "./common/utilities.js";
+import { renderIconWithNumber, averageValueIcon, imgAsBtn, valueWithHeader, progressBar, dataList } from "./common/render.js";
+import { load, save, remove, redirect, formatLargeNumber, sortInstances } from "./common/utilities.js";
 import { SELECTEDTEAMSETTINGS_LSK, TEAMS_LSK, CREDITS_LSK, SELECTEDFIGHTTEAM_LSK } from "./common/localStorageKeys.js";
 import { useCredits, addCredits } from "./common/credits.js";
 import { MonsterCard } from "./classes/MonsterCard.js";
@@ -20,7 +20,7 @@ const monstersContainer = document.getElementById("teamMonsters");
 const teamElementsContainer = document.getElementById("teamElementsContainer");
 const battleRecordContainer = document.getElementById("battleRecordContainer");
 
-let teams = load(TEAMS_LSK).map((t) => Team.fromJSON(t)) || [];
+let teams;
 let userCredits = load(CREDITS_LSK);
 
 let linkedBtns = [];
@@ -85,7 +85,16 @@ function render() {
   renderBattleRecord();
 }
 
+function loadAllTeams() {
+  const loaded = load(TEAMS_LSK);
+
+  if (loaded) {
+    teams = loaded.map((t) => Team.fromJSON(t));
+  }
+}
+
 function loadTeam() {
+  loadAllTeams();
   const loadedTeam = load(SELECTEDTEAMSETTINGS_LSK);
   if (loadedTeam) {
     team = Team.fromJSON(loadedTeam);
@@ -809,7 +818,7 @@ function renderBattleRecord() {
   });
 
   heading.append(battleIcon, header, toggle);
-  body.append(stats, renderFoughtMonsters());
+  body.append(stats, renderFoughtMonsters(), renderMonsterRecords());
 
   battleRecordContainer.append(heading, body);
 }
@@ -857,12 +866,92 @@ function renderFoughtMonsters() {
   return container;
 }
 
+function renderMonsterRecords() {
+  const container = document.createElement("div");
+
+  container.setAttribute("class", "monsterRecords");
+
+  teamMonsters.forEach((monster) => {
+    const card = document.createElement("div");
+    const cardHeader = document.createElement("h2");
+    const cardBody = document.createElement("div");
+    const monsterImage = new MonsterCard(monster, [], true).getImage();
+    const record = document.createElement("div");
+    const monsterStats = document.createElement("div");
+    const fights = document.createElement("div");
+    const rounds = document.createElement("div");
+    const fought = document.createElement("div");
+    const fightBar = progressBar(monster.wonFights, monster.drawnFights, monster.lostFights);
+    const roundBar = progressBar(monster.wonRounds, monster.drawnRounds, monster.lostRounds);
+    const wins = dataList("Won against", monster.wonAgainst);
+    const draws = dataList("Won against", monster.drawnAgainst);
+    const losses = dataList("Won against", monster.lostAgainst);
+
+    const lostHpEl = valueWithHeader(monster.lostHP, "Lost health");
+    const remainingHpEl = valueWithHeader(monster.percentHP, "Remaining health");
+    const sufferedDamageEl = valueWithHeader(monster.sufferedDamage, "Suffered damage");
+    const distributedDamageEl = valueWithHeader(monster.distributedDamage, "Distributed damage");
+
+    const numFights = valueWithHeader(monster.numFights, "Fights");
+    const wonFights = valueWithHeader(monster.wonFights, "Won");
+    const drawnFights = valueWithHeader(monster.drawnFights, "Drawn");
+    const lostFights = valueWithHeader(monster.lostFights, "Lost");
+    const points = valueWithHeader(monster.points, "Points");
+
+    const numRounds = valueWithHeader(monster.numRounds, "Rounds");
+    const wonRounds = valueWithHeader(monster.wonRounds, "Won");
+    const drawnRounds = valueWithHeader(monster.drawnRounds, "Drawn");
+    const lostRounds = valueWithHeader(monster.lostRounds, "Lost");
+    const winRate = valueWithHeader(monster.winRate, "Winrate");
+
+    card.setAttribute("class", "card");
+    cardHeader.setAttribute("class", "cardHeader");
+    cardBody.setAttribute("class", "cardBody");
+    monsterImage.classList.add("filter");
+    record.setAttribute("class", "record");
+    monsterStats.setAttribute("class", "monsterStats");
+    fights.setAttribute("class", "fights");
+    rounds.setAttribute("class", "rounds");
+    fought.setAttribute("class", "fought");
+    lostHpEl.setAttribute("class", "stat");
+    remainingHpEl.setAttribute("class", "stat");
+    sufferedDamageEl.setAttribute("class", "stat");
+    distributedDamageEl.setAttribute("class", "stat");
+    numFights.setAttribute("class", "stat");
+    wonFights.setAttribute("class", "stat");
+    drawnFights.setAttribute("class", "stat");
+    lostFights.setAttribute("class", "stat");
+    points.setAttribute("class", "stat");
+    numRounds.setAttribute("class", "stat");
+    wonRounds.setAttribute("class", "stat");
+    drawnRounds.setAttribute("class", "stat");
+    lostRounds.setAttribute("class", "stat");
+    winRate.setAttribute("class", "stat");
+    wins.setAttribute("class", "fightResult");
+    draws.setAttribute("class", "fightResult");
+    losses.setAttribute("class", "fightResult");
+
+    cardHeader.innerText = monster.name;
+
+    monsterStats.append(lostHpEl, remainingHpEl, sufferedDamageEl, distributedDamageEl);
+    fights.append(numFights, wonFights, drawnFights, lostFights, points);
+    rounds.append(numRounds, wonRounds, drawnRounds, lostRounds, winRate);
+    fought.append(wins, draws, losses);
+
+    record.append(fights, fightBar, rounds, roundBar, fought);
+
+    cardBody.append(monsterImage, record);
+
+    card.append(cardHeader, monsterStats, cardBody);
+
+    container.appendChild(card);
+  });
+
+  return container;
+}
+
 /*
 
-
-Add battle record for which monsters has been won, drawn and lost against as a list
-Battle record for each monster that shows won, drawn, and lost fights and rounds for each monster
-Display remaining health, lost health, suffered damage, distributed damage per monster
 Section to render total revenue from battels
 
 */

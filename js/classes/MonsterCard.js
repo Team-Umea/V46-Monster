@@ -150,6 +150,15 @@ export class MonsterCard {
     return teamSelector;
   }
 
+  getImage() {
+    const monsterImage = document.createElement("div");
+    const src = this.imagePath;
+
+    monsterImage.setAttribute("class", "monsterImage");
+    monsterImage.style.backgroundImage = `url(${src})`;
+    return monsterImage;
+  }
+
   assembleMonsterCard() {
     const container = this.monsterCard;
     container.innerHTML = "";

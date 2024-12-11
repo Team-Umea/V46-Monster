@@ -16,6 +16,24 @@ export function renderDataAsUl(parent, parentClass, data) {
   }
 }
 
+export function dataList(text, data) {
+  const container = document.createElement("div");
+  const header = document.createElement("h2");
+  const list = document.createElement("ul");
+
+  header.innerText = text;
+  if (data) {
+    data.forEach((item) => {
+      const listItem = document.createElement("li");
+      listItem.innerText = item;
+      list.appendChild(listItem);
+    });
+  }
+
+  container.append(header, list);
+  return container;
+}
+
 export function renderSelect(parent, data) {
   parent.innerHTML = "";
   if (data) {

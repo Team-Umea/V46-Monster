@@ -1,5 +1,6 @@
 //Class for teams
 import { sortInstances } from "../common/utilities.js";
+import { Monster } from "./Monster.js";
 
 export class Team {
   constructor(teamName) {
@@ -145,7 +146,7 @@ export class Team {
   }
 
   setMonsters(monsters) {
-    this.monsters = monsters;
+    this.monsters = monsters.map((m) => new Monster(m));
 
     const teamCost = monsters.reduce((acc, curr) => acc + curr.price, 0);
     this.teamCost = teamCost;
@@ -154,7 +155,7 @@ export class Team {
   }
 
   loadMonsters(monsters) {
-    this.monsters = monsters;
+    this.monsters = monsters.map((m) => new Monster(m));
 
     const teamCost = monsters.reduce((acc, curr) => acc + curr.price, 0);
     this.teamCost = teamCost;
@@ -230,7 +231,7 @@ export class Team {
   addMonsterToTeam(monster) {
     const duplicates = this.monsters.filter((m) => m.id === monster.id);
     if (this.monsters.length < 4 && duplicates.length === 0) {
-      this.monsters.push(monster);
+      this.monsters.push(new Monster(monster));
     }
 
     const monsters = this.monsters;
