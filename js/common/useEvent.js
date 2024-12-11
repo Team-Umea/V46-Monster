@@ -43,3 +43,9 @@ export function useSubmitEvent(element, callback) {
     callback();
   });
 }
+
+export function useFocusEvent(element, callback) {
+  element.addEventListener("focus", () => {
+    callback();
+  });
+}

@@ -1,5 +1,5 @@
 //Js code for teamControls page
-import { useClickEvent } from "./common/useEvent.js";
+import { useClickEvent, useFocusEvent } from "./common/useEvent.js";
 import { serveData } from "./common/fetch.js";
 import { renderIconWithNumber, averageValueIcon, imgAsBtn, valueWithHeader, progressBar, dataList } from "./common/render.js";
 import { load, save, remove, redirect, formatLargeNumber, sortInstances } from "./common/utilities.js";
@@ -12,13 +12,14 @@ import { ELEMENTS_LSK } from "./common/localStorageKeys.js";
 import { ELEMENTS_TTL } from "./common/ttl.js";
 
 const navigator = document.getElementById("prevNavigator");
-const spinner = document.getElementById("spinner");
+// const spinner = document.getElementById("spinner");
 const controlMessage = document.getElementById("controlMessage");
 const controlBtns = document.getElementById("controlBtns");
 const teamStats = document.getElementById("teamStatsConatiner");
 const monstersContainer = document.getElementById("teamMonsters");
 const teamElementsContainer = document.getElementById("teamElementsContainer");
 const battleRecordContainer = document.getElementById("battleRecordContainer");
+// const dangerZone = document.getElementById("dangerZone");
 
 let teams;
 let userCredits = load(CREDITS_LSK);
@@ -73,6 +74,7 @@ window.addEventListener("DOMContentLoaded", () => {
 function init() {
   loadTeam();
   render();
+  validateDeleteTeam();
   useClickEvent(navigator, navigate);
 }
 
@@ -165,7 +167,7 @@ function updateTeams() {
 async function shuffleTeam() {
   const randomMonsters = await serveData("randomMonsters", "num=4", monstersContainer);
 
-  const selectedTeam = teams.find((t) => t.name === teamName);
+  const selectedTeam = teams.find((t) => t.nam.toLowerCase() === teamName.toLowerCase());
 
   selectedTeam.setMonsters(randomMonsters);
   selectedTeam.setPaidFor(false);
@@ -176,7 +178,7 @@ async function shuffleTeam() {
 }
 
 function buyTeam() {
-  const selectedTeam = teams.find((t) => t.name === teamName);
+  const selectedTeam = teams.find((t) => t.name.toLowerCase() === teamName.toLowerCase());
 
   selectedTeam.setPaidFor(true);
   team.setPaidFor(true);
@@ -185,7 +187,7 @@ function buyTeam() {
 }
 
 function sellTeam() {
-  teams = teams.filter((t) => t.name !== teamName);
+  teams = teams.filter((t) => t.name.toLowerCase() !== teamName.toLowerCase());
   remove(SELECTEDTEAMSETTINGS_LSK);
   save(TEAMS_LSK, teams);
   addCredits(teamValue);
@@ -202,10 +204,19 @@ function fightTeam() {
 }
 
 function removeMonster(id) {
-  const selectedTeam = teams.find((t) => t.name === teamName);
+  const selectedTeam = teams.find((t) => t.name.toLowerCase() === teamName.toLowerCase());
   selectedTeam.deleteMonster(id);
   team.deleteMonster(id);
   updateTeams();
+}
+
+function deleteTeam() {
+  teams = teams.filter((t) => t.name.toLowerCase() !== teamName.toLowerCase());
+  remove(SELECTEDTEAMSETTINGS_LSK);
+  save(TEAMS_LSK, teams);
+  setTimeout(() => {
+    navigate();
+  }, 100);
 }
 
 function setControlMessage(className, message) {
@@ -262,6 +273,9 @@ function useBtnLinks() {
         break;
       case (3, 4, 5, 6):
         setBtnIcon(icon, "x", `Remove from '${teamName}'`);
+        break;
+      case 7:
+        setBtnIcon(icon, "trashRed", `Delete team '${teamName}'`);
         break;
       default:
         break;
@@ -954,8 +968,57 @@ function renderMonsterRecords() {
   return container;
 }
 
-/*
+function validateDeleteTeam() {
+  const delBtn = document.getElementById("deleteTeamBtn");
+  const delIcon = delBtn.getElementsByTagName("img")[0];
+  const nameInput = document.getElementById("teamName");
+  const message = document.getElementById("deleteMessage");
 
-Section to render total revenue from battels
+  setBtnIcon(delIcon, "trashRed", `Delete team '${teamName}'`);
 
-*/
+  linkedBtns = linkedBtns.filter((btn) => btn !== delBtn);
+  linkedBtns.push(delBtn);
+
+  delBtn.addEventListener("click", () => {
+    const isUnchecked = !delIcon.getAttribute("src").includes("check");
+    const teamToDel = nameInput.value.trim().toLowerCase();
+
+    nameInput.value = "";
+
+    useBtnLinks();
+
+    if (isUnchecked) {
+      if (teamToDel === teamName.toLowerCase()) {
+        message.innerText = `Warning! You are about to delete team '${teamName}'.This action can't be undone and all progress will be lost. Click to confirm`;
+        setBtnIcon(delIcon, "checkRed", "Click to confirm");
+      } else {
+        if (teamToDel === "") {
+          message.innerText = "Enter team name";
+          setBtnIcon(delIcon, "banRed", "Enter team name");
+        } else {
+          message.innerText = "Incorrect team name";
+          setBtnIcon(delIcon, "banRed", "Incorrect team name");
+        }
+      }
+
+      const timeOut = setTimeout(() => {
+        message.innerText = "";
+        setBtnIcon(delIcon, "trashRed", `Delete team '${teamName}'`);
+      }, 7000);
+      timeOutBtns = timeOutBtns.filter((time) => time !== timeOut);
+      timeOutBtns.push(timeOut);
+    } else {
+      message.innerText = "";
+      nameInput.value = "";
+      setBtnIcon(delIcon, "trashRed", `Delete team '${teamName}'`);
+      deleteTeam();
+    }
+  });
+
+  const resetStatus = () => {
+    setBtnIcon(delIcon, "trashRed", `Delete team '${teamName}'`);
+    message.innerText = "";
+  };
+
+  useFocusEvent(nameInput, resetStatus);
+}

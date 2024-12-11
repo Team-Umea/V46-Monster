@@ -27,6 +27,7 @@
 
   /*Primary text color*/
   --color-primary-text: #e6e4e1;
+  --color-light-red: #ed3b3b;
 }
 
 * {
@@ -182,7 +183,7 @@ a {
 }
 
 .error {
-  color: rgb(243, 67, 67);
+  color: var(--color-light-red);
 }
 
 .success {

@@ -27,6 +27,7 @@
 
   /*Primary text color*/
   --color-primary-text: #e6e4e1;
+  --color-light-red: #ed3b3b;
 }
 
 ::-webkit-scrollbar {
@@ -376,14 +377,11 @@ main {
     .monsterRecords {
       margin-top: 80px;
       display: flex;
-      /* flex-direction: column; */
-      /* align-items: center; */
       justify-content: center;
       flex-wrap: wrap;
       gap: 50px;
 
       .card {
-        /* max-width: 700px; */
         padding: 30px;
         display: flex;
         flex-direction: column;
@@ -485,6 +483,119 @@ main {
           }
         }
       }
+    }
+  }
+}
+
+.dangerZone {
+  width: 95%;
+  width: 95%;
+  margin-top: 60px;
+  padding: 50px;
+  border: 2px solid var(--color-light-red);
+  border-radius: 30px;
+  position: relative;
+
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  gap: 40px;
+
+  .borderText {
+    padding: 12px;
+    top: -30px;
+    left: -40px;
+    border-radius: 30px;
+    position: absolute;
+    background-color: var(--color-surface-a0);
+    border: 2px solid var(--color-light-red);
+  }
+
+  .deleteTeamContainer {
+    width: min(100%, 500px);
+    padding: 30px;
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 7px;
+    position: relative;
+
+    .deleteTeamHeader {
+      font-size: 1.6rem;
+      margin-bottom: 3rem;
+    }
+
+    .deleteTeamActions {
+      display: flex;
+      align-items: flex-end;
+      gap: 5rem;
+      position: relative;
+
+      .teamName {
+        font-size: 1.3rem;
+        width: 10rem;
+        margin-bottom: 0.2rem;
+        height: fit-content;
+        border: 0;
+        outline: 0;
+        border-bottom: 1px solid var(--color-light-red);
+        color: var(--color-primary-text);
+        background-color: transparent;
+      }
+
+      .teamNameLabel {
+        font-size: 1.3rem;
+        position: absolute;
+        left: 0;
+        transition: all 0.3s ease-in-out;
+        color: var(--color-surface-mixed-a50);
+        transform: translateY(-0.5rem);
+      }
+
+      .teamName:focus,
+      .teamName:hover {
+        background-color: transparent;
+        outline: none;
+      }
+
+      .teamName:focus + .teamNameLabel {
+        transform: translateY(-2.2rem);
+      }
+
+      .teamName:not(:placeholder-shown) + .teamNameLabel {
+        transform: translateY(-2.2rem);
+      }
+
+      .deleteTeamBtn {
+        width: fit-content;
+        padding: 10px 20px;
+        border-radius: 10px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+        cursor: pointer;
+        transition: all 0.3s ease-in-out;
+        border: 2px solid transparent;
+        background-color: var(--color-surface-a10);
+      }
+
+      .deleteTeamBtn:hover {
+        background-color: var(--color-surface-a20);
+      }
+
+      .deleteTeamBtn:active {
+        border: 2px solid var(--color-light-red);
+      }
+    }
+
+    .deleteMessage {
+      width: 70vw;
+      font-size: 1.2rem;
+      position: absolute;
+      left: 28px;
+      top: 70px;
+      color: var(--color-light-red);
     }
   }
 }
