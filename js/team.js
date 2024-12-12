@@ -1,10 +1,12 @@
 //Js code for team page
 import { Team } from "./classes/Team.js";
-import { save, load, generateUniqueName, redirect } from "./common/utilities.js";
+import { isDigit, isLetter, capitalize, save, load, generateUniqueName, redirect } from "./common/utilities.js";
 import { TEAMS_LSK, SELECTEDTEAMSETTINGS_LSK, SELECTEDFIGHTTEAM_LSK } from "./common/localStorageKeys.js";
 import { imgAsBtn, setBtnIcon } from "./common/render.js";
+import { useInputEvent, useSubmitEvent } from "./common/useEvent.js";
 import { MonsterCard } from "./classes/MonsterCard.js";
 
+const createTeamContainer = document.getElementById("createTeamContainer");
 const teamsContainer = document.getElementById("teamsContainer");
 
 let teamsArr = [];
@@ -21,26 +23,19 @@ function init() {
 }
 
 function initCreateTeamForm() {
-  const container = document.getElementById("createTeam");
-  const form = container.getElementsByTagName("form")[0];
-  const input = container.getElementsByTagName("input")[0];
-  const message = container.getElementsByTagName("p")[0];
+  const form = createTeamContainer.getElementsByTagName("form")[0];
+  const input = createTeamContainer.getElementsByTagName("input")[0];
+  const message = createTeamContainer.getElementsByTagName("p")[0];
 
-  const digits = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
-
-  input.addEventListener("input", () => {
+  const checkInput = () => {
     message.innerText = "";
     message.setAttribute("class", "hidden");
-    container.setAttribute("class", "minimize");
 
     const trimedValue = input.value.replace(/\s+/g, "");
     const lastCh = trimedValue.slice(-1).toLowerCase();
-
-    const isLetter = lastCh >= "a" && lastCh <= "z";
-    const isDigit = digits.includes(lastCh);
     input.value = trimedValue;
 
-    if (!isDigit && !isLetter) {
+    if (!isDigit(lastCh) && !isLetter(lastCh)) {
       input.value = input.value.slice(0, -1);
       message.setAttribute("class", "error");
       message.innerText = "Error! Only letters and digits allowed";
@@ -48,25 +43,24 @@ function initCreateTeamForm() {
       setTimeout(() => {
         message.innerText = "";
         message.setAttribute("class", "hidden");
-        container.setAttribute("class", "minimize");
       }, 2000);
     }
-  });
+  };
 
-  form.addEventListener("submit", (e) => {
-    e.preventDefault();
+  const createTeam = () => {
     const teamName = input.value;
     if (teamName !== "") {
-      const checkName = generateUniqueName(teamsArr, teamName);
+      const teamNames = teamsArr.map((team) => team.name);
+      const checkName = generateUniqueName(teamNames, teamName);
 
       let controlledName = "";
 
-      if (checkName.nonUnique) {
-        controlledName = checkName.name;
+      if (checkName.noneUnique) {
+        controlledName = capitalize(checkName.name);
         message.setAttribute("class", "success");
         message.innerText = `${teamName} successfully changed to ${controlledName} due to team name duplicates`;
       } else {
-        controlledName = teamName;
+        controlledName = capitalize(teamName);
         message.setAttribute("class", "success");
         message.innerText = `${controlledName} successfully created`;
       }
@@ -80,9 +74,15 @@ function initCreateTeamForm() {
       setTimeout(() => {
         message.innerText = "";
         message.setAttribute("class", "hidden");
-        container.setAttribute("class", "minimize");
       }, 3000);
     }
+  };
+
+  useInputEvent(input, checkInput);
+  useSubmitEvent(form, createTeam);
+
+  form.addEventListener("submit", (e) => {
+    e.preventDefault();
   });
 }
 

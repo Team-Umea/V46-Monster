@@ -456,14 +456,14 @@ function validateDeleteTeam() {
 
   delBtn.addEventListener("click", () => {
     const isUnchecked = !delIcon.getAttribute("src").includes("check");
-    const teamToDel = nameInput.value.trim().toLowerCase();
+    const teamToDel = nameInput.value.trim();
 
     nameInput.value = "";
 
     useBtnLinks();
 
     if (isUnchecked) {
-      if (teamToDel === teamName.toLowerCase()) {
+      if (teamToDel === teamName) {
         message.innerText = `Warning! You are about to delete team '${teamName}'.This action can't be undone and all progress will be lost. Click to confirm`;
         setBtnIcon(delIcon, "checkRed", "Click to confirm");
       } else {

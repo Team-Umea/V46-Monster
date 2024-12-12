@@ -118,10 +118,6 @@ export function changeCSSClass(styleSheeetIndex, className, properties) {
   }
 }
 
-export function capitalize(str) {
-  return str.length > 0 ? str[0].toUpperCase() + str.slice(1) : str;
-}
-
 export function isValidObjKey(arr, key) {
   return arr.every((item) => key in item);
 }
@@ -130,31 +126,64 @@ export function extractLetters(str) {
   return str.replace(/[^a-zA-Z]/g, "");
 }
 
-export function extractNumbersFromEnd(str) {
+export function extractNumbers(str) {
   const match = str.match(/\d+$/);
   return match ? match[0] : "";
 }
 
-export function generateUniqueName(arr, name) {
-  const noneUnique = arr.filter((team) => {
-    return extractLetters(team.name) === extractLetters(name);
+export function isDigit(char) {
+  return /^\d$/.test(char);
+}
+
+export function isLetter(char) {
+  return /^[\p{L}]$/u.test(char);
+}
+
+export function capitalize(str) {
+  return str.length > 0 ? str[0].toUpperCase() + str.slice(1) : str;
+}
+
+export function findMissingDigit(arr) {
+  const digits = new Set();
+
+  arr.forEach((item) => {
+    const match = item.match(/^A(\d*)$/);
+    if (match) {
+      const num = match[1] === "" ? 0 : parseInt(match[1], 10);
+      digits.add(num);
+    }
   });
-  if (noneUnique && noneUnique.length > 0) {
-    const lastElement = noneUnique.length - 1;
-    const sortedNames = noneUnique.sort((a, b) => Number(extractNumbersFromEnd(a.getTeamName()) - Number(extractNumbersFromEnd(b.getTeamName())))).map((team) => team.getTeamName());
-    const name = sortedNames[lastElement];
-    const noneUniqueLetters = extractLetters(name);
-    const digits = Number(extractNumbersFromEnd(name));
-    const unique = digits + 1;
-    const uniqueName = noneUniqueLetters.concat(unique);
+
+  const maxDigit = Math.max(...Array.from(digits));
+
+  for (let i = 0; i <= maxDigit; i++) {
+    if (!digits.has(i)) {
+      return i;
+    }
+  }
+
+  return maxDigit + 1;
+}
+
+export function generateUniqueName(arr, newName) {
+  const sortedNames = [...arr, newName].sort((a, b) => Number(extractNumbers(a) - Number(extractNumbers(b))));
+
+  if (sortedNames && sortedNames.length > 0) {
+    const uniqueID = findMissingDigit(sortedNames);
+    let name = extractLetters(newName);
+
+    if (uniqueID > 0) {
+      name += uniqueID;
+    }
+
     return {
-      nonUnique: true,
-      name: uniqueName,
+      noneUnique: true,
+      name: name,
     };
   }
   return {
-    nonUnique: false,
-    name: name,
+    noneUnique: false,
+    name: newName,
   };
 }
 
