@@ -143,14 +143,21 @@ export function capitalize(str) {
   return str.length > 0 ? str[0].toUpperCase() + str.slice(1) : str;
 }
 
-export function findMissingDigit(arr) {
+export function findMissingDigit(target, arr) {
   const digits = new Set();
 
+  console.log("Arr ", arr);
+
   arr.forEach((item) => {
-    const match = item.match(/^A(\d*)$/);
+    const match = extractLetters(item.toLowerCase()) === extractLetters(target.toLowerCase());
     if (match) {
-      const num = match[1] === "" ? 0 : parseInt(match[1], 10);
-      digits.add(num);
+      const number = extractNumbers(item);
+
+      if (number !== "") {
+        digits.add(Number(extractNumbers(item)));
+      } else {
+        digits.add(0);
+      }
     }
   });
 
@@ -166,15 +173,15 @@ export function findMissingDigit(arr) {
 }
 
 export function generateUniqueName(arr, newName) {
-  const sortedNames = [...arr, newName].sort((a, b) => Number(extractNumbers(a) - Number(extractNumbers(b))));
+  const sortedNames = [...arr, newName].sort((a, b) => Number(extractNumbers(a) - Number(extractNumbers(b)))).map((item) => item.toLowerCase());
 
-  if (sortedNames && sortedNames.length > 0) {
-    const uniqueID = findMissingDigit(sortedNames);
+  const isFirstInstance = !arr.map((item) => item.toLowerCase()).includes(extractLetters(newName));
+
+  if (!isFirstInstance && sortedNames) {
+    const uniqueID = findMissingDigit(newName, sortedNames);
     let name = extractLetters(newName);
 
-    if (uniqueID > 0) {
-      name += uniqueID;
-    }
+    name += uniqueID;
 
     return {
       noneUnique: true,
