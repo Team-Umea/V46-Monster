@@ -10,26 +10,27 @@ const createTeamContainer = document.getElementById("createTeamContainer");
 const teamsContainer = document.getElementById("teamsContainer");
 
 let teamsArr = [];
+let createTeamFormTimeout;
 
 window.addEventListener("DOMContentLoaded", () => {
   init();
 });
 
 function init() {
-  initCreateTeamForm();
+  validateCreateTeam();
 
   loadTeams();
   renderTeams();
 }
 
-function initCreateTeamForm() {
+function validateCreateTeam() {
   const form = createTeamContainer.getElementsByTagName("form")[0];
   const input = createTeamContainer.getElementsByTagName("input")[0];
   const message = createTeamContainer.getElementsByTagName("p")[0];
 
   const checkInput = () => {
     message.innerText = "";
-    message.setAttribute("class", "hidden");
+    message.setAttribute("class", "createTeamMessage hidden");
 
     const trimedValue = input.value.replace(/\s+/g, "");
     const lastCh = trimedValue.slice(-1).toLowerCase();
@@ -37,13 +38,15 @@ function initCreateTeamForm() {
 
     if (!isDigit(lastCh) && !isLetter(lastCh)) {
       input.value = input.value.slice(0, -1);
-      message.setAttribute("class", "error");
+      message.setAttribute("class", "createTeamMessage error");
       message.innerText = "Error! Only letters and digits allowed";
 
-      setTimeout(() => {
+      clearTimeout(createTeamFormTimeout);
+
+      createTeamFormTimeout = setTimeout(() => {
         message.innerText = "";
-        message.setAttribute("class", "hidden");
-      }, 2000);
+        message.setAttribute("class", "createTeamMessage hidden");
+      }, 3000);
     }
   };
 
@@ -57,24 +60,26 @@ function initCreateTeamForm() {
 
       if (checkName.noneUnique) {
         controlledName = capitalize(checkName.name);
-        message.setAttribute("class", "success");
-        message.innerText = `${teamName} successfully changed to ${controlledName} due to team name duplicates`;
+        message.setAttribute("class", "createTeamMessage success");
+        message.innerText = `${capitalize(teamName)} changed to ${controlledName} due to team name duplicates`;
       } else {
         controlledName = capitalize(teamName);
-        message.setAttribute("class", "success");
+        message.setAttribute("class", "createTeamMessage success");
         message.innerText = `${controlledName} successfully created`;
       }
       addTeam(controlledName);
       input.value = "";
     } else {
-      message.setAttribute("class", "error");
-      message.innerText = "Error! Name must not be empty";
+      message.setAttribute("class", "createTeamMessage error");
+      message.innerText = "Error! Team name must not be empty";
     }
     if (message.innerText !== "") {
-      setTimeout(() => {
+      clearTimeout(createTeamFormTimeout);
+
+      createTeamFormTimeout = setTimeout(() => {
         message.innerText = "";
-        message.setAttribute("class", "hidden");
-      }, 3000);
+        message.setAttribute("class", "createTeamMessage hidden");
+      }, 5000);
     }
   };
 

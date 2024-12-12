@@ -28,11 +28,12 @@
       <!-- main content goes here -->
       <div id="createTeamContainer" class="createTeamContainer">
         <h2>Create Your Team</h2>
-        <form id="addTeamForm">
-          <input type="text" placeholder="Enter a team name" id="teamNameInput" />
-          <button type="submit">Create Team</button>
+        <p id="createTeamMessage" class="createTeamMessage hidden"></p>
+        <form id="createTeamForm" class="createTeamForm">
+          <input type="text" placeholder=" " id="teamName" class="teamName" autocomplete="off"/>
+          <label for="teamName" id="teamNameLabel" class="teamNameLabel">Team name</label>
+          <button type="submit" id="createTeamBtn" class="createTeamBtn primary-btn">Create Team</button>
         </form>
-        <p id="createTeamMessage" class="hidden"></p>
       </div>
 
       <div id="teamFilters" class="teamFilters"></div>

@@ -146,8 +146,6 @@ export function capitalize(str) {
 export function findMissingDigit(target, arr) {
   const digits = new Set();
 
-  console.log("Arr ", arr);
-
   arr.forEach((item) => {
     const match = extractLetters(item.toLowerCase()) === extractLetters(target.toLowerCase());
     if (match) {
