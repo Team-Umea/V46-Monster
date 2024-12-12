@@ -5,7 +5,7 @@ import { useClickEvent, useClickEvents, useScrollEvent, useChangeEvent, useInput
 import { ALLMONSTERS_LSK, SORTOPTIONS_LSK, TEAMS_LSK } from "./common/localStorageKeys.js";
 import { MonsterCard } from "./classes/MonsterCard.js";
 import { isValidObjKey, load } from "./common/utilities.js";
-import { renderSelect } from "./common/render.js";
+import { populateSelect } from "./common/render.js";
 import { Team } from "./classes/Team.js";
 
 const monsterContainer = document.getElementById("monsterContainer");
@@ -51,7 +51,7 @@ async function useData() {
   monsters = monsterData.map((data) => ({ monster: data, visible: true }));
 
   showMonsters();
-  renderSelect(sortDropDown, options);
+  populateSelect(sortDropDown, options);
 }
 
 function loadTeamsFromLS() {

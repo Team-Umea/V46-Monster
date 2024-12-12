@@ -2,7 +2,7 @@
 import { Team } from "./classes/Team.js";
 import { isDigit, isLetter, capitalize, save, load, generateUniqueName, redirect } from "./common/utilities.js";
 import { TEAMS_LSK, SELECTEDTEAMSETTINGS_LSK, SELECTEDFIGHTTEAM_LSK } from "./common/localStorageKeys.js";
-import { imgAsBtn, setBtnIcon } from "./common/render.js";
+import { imgAsBtn, setBtnIcon, populateSelect } from "./common/render.js";
 import { useInputEvent, useSubmitEvent } from "./common/useEvent.js";
 import { MonsterCard } from "./classes/MonsterCard.js";
 
@@ -17,10 +17,10 @@ window.addEventListener("DOMContentLoaded", () => {
 });
 
 function init() {
-  validateCreateTeam();
-
   loadTeams();
   renderTeams();
+  validateCreateTeam();
+  filterTeams();
 }
 
 function validateCreateTeam() {
@@ -47,12 +47,25 @@ function validateCreateTeam() {
         message.innerText = "";
         message.setAttribute("class", "createTeamMessage hidden");
       }, 3000);
+    } else if (trimedValue.length > 20) {
+      input.value = input.value.slice(0, -1);
+      message.setAttribute("class", "createTeamMessage error");
+      message.innerText = `Error! Max number of characters allowed in a team name is 20 (counting ${trimedValue.length})`;
+
+      clearTimeout(createTeamFormTimeout);
+
+      createTeamFormTimeout = setTimeout(() => {
+        message.innerText = "";
+        message.setAttribute("class", "createTeamMessage hidden");
+      }, 3000);
     }
   };
 
   const createTeam = () => {
     const teamName = input.value;
-    if (teamName !== "") {
+    input.value = "";
+
+    if (teamName !== "" && teamName.length <= 20) {
       const teamNames = teamsArr.map((team) => team.name);
       const checkName = generateUniqueName(teamNames, teamName);
 
@@ -68,10 +81,19 @@ function validateCreateTeam() {
         message.innerText = `${controlledName} successfully created`;
       }
       addTeam(controlledName);
-      input.value = "";
-    } else {
+    } else if (teamName === "") {
       message.setAttribute("class", "createTeamMessage error");
       message.innerText = "Error! Team name must not be empty";
+    } else if (teamName.length > 20) {
+      message.setAttribute("class", "createTeamMessage error");
+      message.innerText = `Error! Max number of characters allowed in a team name is 20 (counting ${teamName.length})`;
+
+      clearTimeout(createTeamFormTimeout);
+
+      createTeamFormTimeout = setTimeout(() => {
+        message.innerText = "";
+        message.setAttribute("class", "createTeamMessage hidden");
+      }, 3000);
     }
     if (message.innerText !== "") {
       clearTimeout(createTeamFormTimeout);
@@ -89,6 +111,13 @@ function validateCreateTeam() {
   form.addEventListener("submit", (e) => {
     e.preventDefault();
   });
+}
+
+function filterTeams() {
+  const sortSelect = document.getElementById("sortTeams");
+  const sortOptions = ["A - Z", "Z - A", "Newest - Oldest", "Oldest - Newest", "Strongest - Weakest", "Weakest - Strongest", "Many - Few Battels", "Few - Many Battles", "High - Low Winrate", "Low - High Winrate", "Expensive - Cheap", "Cheap - Expensive", "Paid - Unpaid", "Unpaid - Paid", "Full - Empty", "Empty - Full"];
+
+  populateSelect(sortSelect, sortOptions);
 }
 
 function loadTeams() {
@@ -134,11 +163,10 @@ function renderTeams() {
       const teamCard = document.createElement("div");
       const heading = document.createElement("div");
       const header = document.createElement("h2");
-      const controls = document.createElement("div");
 
       const fightBtn = imgAsBtn("shield", `Fight with '${teamName}'`);
       const settingsBtn = imgAsBtn("settings", `View settings and stats for '${teamName}'`);
-      const toggleBtn = imgAsBtn(isVisible ? "upArrow" : "downArrow", isVisible ? `Hide '${teamName}'` : `Show '${teamName}'`);
+      const toggleBtn = imgAsBtn(isVisible ? "upArrow" : "downArrow", isVisible ? `Hide Monsters in team '${teamName}'` : `Show Monsters in team '${teamName}'`);
 
       const body = document.createElement("div");
       const monsters = document.createElement("div");
@@ -146,10 +174,9 @@ function renderTeams() {
       teamCard.setAttribute("class", "teamCard");
       heading.setAttribute("class", "cardHeading");
       header.setAttribute("class", "cardHeader");
-      controls.setAttribute("class", "cardControls");
-      fightBtn.setAttribute("class", "primary-btn");
-      settingsBtn.setAttribute("class", "primary-btn");
-      toggleBtn.setAttribute("class", "primary-btn");
+      fightBtn.setAttribute("class", "primary-btn fight");
+      settingsBtn.setAttribute("class", "primary-btn settings");
+      toggleBtn.setAttribute("class", "primary-btn toggle");
       body.setAttribute("class", isVisible ? "cardBody" : "cardBody hidden");
       monsters.setAttribute("class", "cardMonsters");
 
@@ -172,10 +199,10 @@ function renderTeams() {
 
         if (isExtended) {
           body.setAttribute("class", "cardBody");
-          setBtnIcon(toggleIcon, "upArrow", "Hide Elements");
+          setBtnIcon(toggleIcon, "upArrow", `Hide Monsters in team '${teamName}'`);
         } else {
           body.setAttribute("class", "cardBody hidden");
-          setBtnIcon(toggleIcon, "downArrow", "Show Elements");
+          setBtnIcon(toggleIcon, "downArrow", `Show Monsters in team '${teamName}'`);
         }
 
         team.isVisible = !team.isVisible;
@@ -187,17 +214,18 @@ function renderTeams() {
         monsters.appendChild(monsterCard);
       });
 
+      heading.appendChild(header);
+
       if (isPaidFor && numTeamMonsters > 0) {
-        controls.appendChild(fightBtn);
+        heading.appendChild(fightBtn);
       }
 
-      controls.appendChild(settingsBtn);
+      heading.appendChild(settingsBtn);
 
       if (numTeamMonsters > 0) {
-        controls.appendChild(toggleBtn);
+        heading.appendChild(toggleBtn);
       }
 
-      heading.append(header, controls);
       body.append(monsters);
 
       teamCard.appendChild(heading);

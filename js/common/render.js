@@ -34,8 +34,7 @@ export function dataList(text, data) {
   return container;
 }
 
-export function renderSelect(parent, data) {
-  parent.innerHTML = "";
+export function populateSelect(parent, data) {
   if (data) {
     data.forEach((item, index) => {
       const option = document.createElement("option");
@@ -60,13 +59,6 @@ export function renderSpinner(parent) {
   const spinner = document.createElement("div");
   spinner.setAttribute("class", "spinner");
   parent.appendChild(spinner);
-
-  // parent.timeoutId = setTimeout(() => {
-  //   if (parent.firstElementChild&&parent.firstElementChild.getAttribute("class") === "spinner" && parent.children.length === 1) {
-  //     getError(504, parent);
-  //     spinner.remove();
-  //   }
-  // }, 5000);
 }
 
 export function imgAsBtn(src, altTtile) {
