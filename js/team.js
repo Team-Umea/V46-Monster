@@ -181,12 +181,12 @@ function sortTeams(sortOrder) {
       break;
     case 2:
       sortedTeams = [...teamsArr].sort((a, b) => {
-        return b.createdAt - a.createdAt;
+        return new Date(b.createdAt) - new Date(a.createdAt);
       });
       break;
     case 3:
       sortedTeams = [...teamsArr].sort((a, b) => {
-        return a.createdAt - b.createdAt;
+        return new Date(a.createdAt) - new Date(b.createdAt);
       });
       break;
     case 4:
