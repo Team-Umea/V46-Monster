@@ -12,12 +12,14 @@ import { ELEMENTS_LSK } from "./common/localStorageKeys.js";
 import { ELEMENTS_TTL } from "./common/ttl.js";
 
 const navigator = document.getElementById("prevNavigator");
-const controlMessage = document.getElementById("controlMessage");
-const controlBtns = document.getElementById("controlBtns");
+const defaultMessage = document.getElementById("defaultMessage");
+const actionMessage = document.getElementById("message");
+const controls = document.getElementById("headerControls");
 const teamStats = document.getElementById("teamStatsConatiner");
 const monstersContainer = document.getElementById("teamMonsters");
 const teamElementsContainer = document.getElementById("teamElementsContainer");
 const battleRecordContainer = document.getElementById("battleRecordContainer");
+const dangerZone = document.getElementById("dangerZone");
 
 let teams;
 let userCredits = load(CREDITS_LSK);
@@ -72,6 +74,7 @@ window.addEventListener("DOMContentLoaded", () => {
 function init() {
   loadTeam();
   render();
+  postionDangerZone();
   validateDeleteTeam();
   useClickEvent(navigator, navigate);
 }
@@ -79,11 +82,13 @@ function init() {
 function render() {
   linkedBtns = [];
   renderPageInfo();
-  renderControls();
+  renderDefaultMessage();
+  renderControlBtns();
   renderTeamStats();
   renderMonsters();
   loadElements();
   renderBattleRecord();
+  postionDangerZone();
 }
 
 function loadAllTeams() {
@@ -173,7 +178,6 @@ async function shuffleTeam() {
   team.setMonsters(randomMonsters);
   team.setPaidFor(false);
   updateTeams();
-  reload(); //should not have to force a reload
 }
 
 function buyTeam() {
@@ -218,18 +222,18 @@ function deleteTeam() {
   }, 100);
 }
 
-function setControlMessage(className, message) {
-  controlMessage.setAttribute("class", `controlMessage ${className}`);
-  controlMessage.innerText = formatLargeNumber(message);
+function setActionMessage(className, message) {
+  actionMessage.setAttribute("class", `message ${className}`);
+  actionMessage.innerText = formatLargeNumber(message);
 
   if (controlMessageTimeout) {
     clearTimeout(controlMessageTimeout);
   }
 
-  if (controlMessage.innerText !== "") {
+  if (actionMessage.innerText !== "") {
     controlMessageTimeout = setTimeout(() => {
-      controlMessage.innerText = "message";
-      controlMessage.setAttribute("class", "controlMessage hide");
+      actionMessage.innerText = "message";
+      actionMessage.setAttribute("class", "message hide");
     }, 7000);
   }
 }
@@ -242,36 +246,31 @@ function useBtnLinks() {
 
   linkedBtns.forEach((btn) => {
     const icon = btn.getElementsByTagName("img")[0];
-    const index = Array.from(linkedBtns).indexOf(btn);
-    setControlMessage("hide", "message");
+    setActionMessage("hide", "message");
 
     const secondChild = btn.children[1];
     if (secondChild) {
       secondChild.remove();
     }
 
-    switch (index) {
-      case 0:
+    const classList = btn.getAttribute("class");
+
+    if (classList.includes("removeMonsterBtn")) {
+      setBtnIcon(icon, "x", `Remove from '${teamName}'`);
+    } else if (classList.includes("controlBtn")) {
+      if (classList.includes("buySell")) {
         if (isPaidFor) {
           setBtnIcon(icon, "sell", `Sell '${teamName}' for ${teamValue} credits`);
         } else {
           setBtnIcon(icon, "cart", `Buy '${teamName}' for ${teamCost} credits`);
         }
-        break;
-      case 1:
+      } else if (classList.includes("shuffle")) {
         setBtnIcon(icon, "shuffle", `Fill '${teamName}' with 4 random monsters`);
-        break;
-      case 2:
+      } else if (classList.includes("fight")) {
         setBtnIcon(icon, "shield", `Fight with '${teamName}'`);
-        break;
-      case (3, 4, 5, 6):
-        setBtnIcon(icon, "x", `Remove from '${teamName}'`);
-        break;
-      case 7:
-        setBtnIcon(icon, "trashRed", `Delete team '${teamName}'`);
-        break;
-      default:
-        break;
+      }
+    } else if (classList.includes("removeTeamBtn")) {
+      setBtnIcon(icon, "trashRed", `Delete team '${teamName}'`);
     }
   });
 }
@@ -444,34 +443,88 @@ function sortElements(sortOrder) {
   }
 }
 
-function renderPageInfo() {
-  const pageInfoEl = document.getElementById("pageInfo");
-  const teamCostEl = renderIconWithNumber(teamCost, "../../res/icons/diamond.svg", `Total cost of '${teamName}' is ${teamCost} credits`);
-  const teamNameEl = document.createElement("h1");
-  const pageNameEl = document.createElement("h2");
+function validateDeleteTeam() {
+  const delBtn = document.getElementById("deleteTeamBtn");
+  const delIcon = delBtn.getElementsByTagName("img")[0];
+  const nameInput = document.getElementById("teamName");
+  const message = document.getElementById("deleteMessage");
 
-  pageInfoEl.innerHTML = "";
+  setBtnIcon(delIcon, "trashRed", `Delete team '${teamName}'`);
 
-  teamNameEl.innerText = `Team ${teamName}`;
-  pageNameEl.innerText = "Settings and stats";
+  linkedBtns = linkedBtns.filter((btn) => btn !== delBtn);
+  linkedBtns.push(delBtn);
 
-  teamCostEl.classList.add("pageInfoTeamCost");
-  teamNameEl.setAttribute("class", "teamName");
-  pageNameEl.setAttribute("class", "pageName");
+  delBtn.addEventListener("click", () => {
+    const isUnchecked = !delIcon.getAttribute("src").includes("check");
+    const teamToDel = nameInput.value.trim().toLowerCase();
 
-  pageInfoEl.append(teamNameEl, teamCostEl, pageNameEl);
+    nameInput.value = "";
+
+    useBtnLinks();
+
+    if (isUnchecked) {
+      if (teamToDel === teamName.toLowerCase()) {
+        message.innerText = `Warning! You are about to delete team '${teamName}'.This action can't be undone and all progress will be lost. Click to confirm`;
+        setBtnIcon(delIcon, "checkRed", "Click to confirm");
+      } else {
+        if (teamToDel === "") {
+          message.innerText = "Enter team name";
+          setBtnIcon(delIcon, "banRed", "Enter team name");
+        } else {
+          message.innerText = "Incorrect team name";
+          setBtnIcon(delIcon, "banRed", "Incorrect team name");
+        }
+      }
+
+      const timeOut = setTimeout(() => {
+        message.innerText = "";
+        setBtnIcon(delIcon, "trashRed", `Delete team '${teamName}'`);
+      }, 7000);
+      timeOutBtns = timeOutBtns.filter((time) => time !== timeOut);
+      timeOutBtns.push(timeOut);
+    } else {
+      message.innerText = "";
+      nameInput.value = "";
+      setBtnIcon(delIcon, "trashRed", `Delete team '${teamName}'`);
+      deleteTeam();
+    }
+  });
+
+  const resetStatus = () => {
+    setBtnIcon(delIcon, "trashRed", `Delete team '${teamName}'`);
+    message.innerText = "";
+  };
+
+  useFocusEvent(nameInput, resetStatus);
 }
 
-function renderControls() {
+function postionDangerZone() {
+  if (numMonsters > 0) {
+    dangerZone.setAttribute("class", "dangerZone");
+  } else {
+    dangerZone.setAttribute("class", "dangerZone position-bottom");
+  }
+}
+
+function renderControlBtns() {
+  let controlBtns = document.createElement("div");
+
+  const controlBtnsExists = document.getElementsByClassName("controlBtns")[0];
+
+  if (controlBtnsExists) {
+    controlBtns = controlBtnsExists;
+  }
+
   controlBtns.innerHTML = "";
 
   const buyBtn = imgAsBtn(isPaidFor ? "sell" : "cart", isPaidFor ? `Sell '${teamName}' for ${teamValue} credits` : `Buy '${teamName}' for ${teamCost} credits`);
   const shuffleBtn = imgAsBtn("shuffle", `Fill '${teamName}' with 4 random monsters`);
   const fightBtn = imgAsBtn("shield", `Fight with '${teamName}'`);
 
-  buyBtn.setAttribute("class", "controlBtn");
-  shuffleBtn.setAttribute("class", "controlBtn alignCenter");
-  fightBtn.setAttribute("class", "controlBtn");
+  controlBtns.setAttribute("class", "controlBtns");
+  buyBtn.setAttribute("class", "controlBtn buySell");
+  shuffleBtn.setAttribute("class", "controlBtn shuffle");
+  fightBtn.setAttribute("class", "controlBtn fight");
 
   linkedBtns.push(buyBtn);
   linkedBtns.push(shuffleBtn);
@@ -486,20 +539,20 @@ function renderControls() {
       if (isPaidFor) {
         setBtnIcon(buyIcon, "check", "Click to confirm");
         buyBtn.appendChild(renderIconWithNumber(teamValue, "../../res/icons/diamond.svg", ""));
-        setControlMessage("", `Click to confirm that you want to sell '${teamName}' for ${teamValue} credits`);
+        setActionMessage("", `Click to confirm that you want to sell '${teamName}' for ${teamValue} credits`);
       } else {
         if (numMonsters === 4) {
           if (teamCost <= userCredits) {
             setBtnIcon(buyIcon, "check", "Click to confirm");
             buyBtn.appendChild(renderIconWithNumber(teamCost, "../../res/icons/diamond.svg", ""));
-            setControlMessage("", `Click to confirm that you want to buy '${teamName}' for ${teamCost} credits`);
+            setActionMessage("", `Click to confirm that you want to buy '${teamName}' for ${teamCost} credits`);
           } else {
             setBtnIcon(buyIcon, "ban", "You don't have enough credits");
-            setControlMessage("error", `You don't have enough credits to buy '${teamName}'. Total cost is ${teamCost} credits but you only have ${userCredits}`);
+            setActionMessage("error", `You don't have enough credits to buy '${teamName}'. Total cost is ${teamCost} credits but you only have ${userCredits}`);
           }
         } else {
           setBtnIcon(buyIcon, "ban", "You must fill all 4 slots in your team before you can buy it");
-          setControlMessage("error", `All 4 slots must be filled before you can buy '${teamName}'`);
+          setActionMessage("error", `All 4 slots must be filled before you can buy '${teamName}'`);
         }
       }
 
@@ -523,11 +576,11 @@ function renderControls() {
       if (isPaidFor) {
         sellTeam();
         setBtnIcon(buyIcon, "sell", `Sell '${teamName}' for ${teamValue} credits`);
-        setControlMessage("hide", "message");
+        setActionMessage("hide", "message");
       } else {
         buyTeam();
         setBtnIcon(buyIcon, "cart", `Buy '${teamName}' for ${teamCost} credits`);
-        setControlMessage("hide", "message");
+        setActionMessage("hide", "message");
       }
     }
   });
@@ -539,7 +592,7 @@ function renderControls() {
 
     if (isUnchecked) {
       setBtnIcon(shuffleIcon, "check", "Click to confirm");
-      setControlMessage("", `Click to confirm that you want to replace all monsters in '${teamName}'. This action can't be undone`);
+      setActionMessage("", `Click to confirm that you want to replace all monsters in '${teamName}'. This action can't be undone`);
       const timeOut = setTimeout(() => {
         setBtnIcon(shuffleIcon, "shuffle", `Fill '${teamName}' with 4 random monsters`);
       }, 7000);
@@ -547,7 +600,7 @@ function renderControls() {
     } else {
       shuffleTeam();
       setBtnIcon(shuffleIcon, "shuffle", `Fill '${teamName}' with 4 random monsters`);
-      setControlMessage("hide", "message");
+      setActionMessage("hide", "message");
     }
   });
 
@@ -559,10 +612,10 @@ function renderControls() {
     if (isUnchecked) {
       if (isPaidFor) {
         setBtnIcon(fightIcon, "check", "Click to confirm");
-        setControlMessage("", `Click to confirm to fight with '${teamName}'. You will redirected to the fight page`);
+        setActionMessage("", `Click to confirm to fight with '${teamName}'. You will redirected to the fight page`);
       } else {
         setBtnIcon(fightIcon, "ban", `You must buy team '${teamName}' before you can fight with it`);
-        setControlMessage("error", `You must buy team '${teamName}' before you can fight with it`);
+        setActionMessage("error", `You must buy team '${teamName}' before you can fight with it`);
       }
       const timeOut = setTimeout(() => {
         setBtnIcon(fightIcon, "shield", `Fight with '${teamName}'`);
@@ -573,7 +626,7 @@ function renderControls() {
         fightTeam();
       }
       setBtnIcon(fightIcon, "shield", `Fight with '${teamName}'`);
-      setControlMessage("hide", "message");
+      setActionMessage("hide", "message");
     }
   });
 
@@ -582,12 +635,42 @@ function renderControls() {
     controlBtns.appendChild(shuffleBtn);
   }
   controlBtns.appendChild(fightBtn);
+
+  controls.appendChild(controlBtns);
+}
+
+function renderPageInfo() {
+  const pageInfoEl = document.getElementById("pageInfo");
+  const teamCostEl = renderIconWithNumber(teamCost, "../../res/icons/diamond.svg", `Total cost of '${teamName}' is ${teamCost} credits`);
+  const teamNameEl = document.createElement("h1");
+  const pageNameEl = document.createElement("h2");
+
+  pageInfoEl.innerHTML = "";
+
+  teamNameEl.innerText = `Team ${teamName}`;
+  pageNameEl.innerText = "Settings and stats";
+
+  teamCostEl.classList.add("pageInfoTeamCost");
+  teamNameEl.setAttribute("class", "teamName");
+  pageNameEl.setAttribute("class", "pageName");
+
+  pageInfoEl.append(teamNameEl, teamCostEl, pageNameEl);
+}
+
+function renderDefaultMessage() {
+  if (numMonsters > 0) {
+    defaultMessage.setAttribute("class", "defaultMessage hidden");
+  } else {
+    defaultMessage.setAttribute("class", "defaultMessage");
+  }
 }
 
 function renderTeamStats() {
   teamStats.innerHTML = "";
 
   if (numMonsters > 0) {
+    teamStats.setAttribute("class", "teamStatsConatiner border-gold");
+
     const averageRank = Math.floor(totalRank / numMonsters);
     const averageRating = Math.floor(totalRating / numMonsters);
     const averageHealth = Math.floor(totalHealth / numMonsters);
@@ -615,7 +698,7 @@ function renderTeamStats() {
 
     teamStats.append(numMonstersIcon, rankIcon, ratingIcon, healthIcon, damageIcon, averageRankIcon, averageRatingIcon, averageHealthIcon, averageDamageIcon);
   } else {
-    teamStats.remove();
+    teamStats.setAttribute("class", "teamStatsConatiner hidden");
   }
 }
 
@@ -623,6 +706,8 @@ function renderMonsters() {
   monstersContainer.innerHTML = "";
 
   if (teamMonsters && numMonsters > 0) {
+    monstersContainer.setAttribute("class", "teamMonsters");
+
     teamMonsters.forEach((monster) => {
       const monsterName = monster.name;
       const monsterCardContainer = document.createElement("div");
@@ -646,16 +731,16 @@ function renderMonsters() {
 
         if (isUnchecked) {
           setBtnIcon(removeIcon, "check", "Click to confirm");
-          setControlMessage("", `Click to confirm that you want to remove ${monsterName} from '${teamName}'`);
+          setActionMessage("", `Click to confirm that you want to remove ${monsterName} from '${teamName}'`);
           const timeOut = setTimeout(() => {
             setBtnIcon(removeIcon, "x", `Remove from '${teamName}'`);
           }, 7000);
           timeOutBtns.push(timeOut);
         } else {
           removeMonster(monster.id);
-          setControlMessage("hide", "message");
+          setActionMessage("hide", "message");
           setBtnIcon(removeIcon, "x", `Remove from '${teamName}'`);
-          setControlMessage("hide", "message");
+          setActionMessage("hide", "message");
         }
       });
 
@@ -670,7 +755,7 @@ function renderMonsters() {
       monstersContainer.appendChild(monsterCardContainer);
     });
   } else {
-    monstersContainer.remove();
+    monstersContainer.setAttribute("class", "teamMonsters hidden");
   }
 }
 
@@ -678,160 +763,172 @@ function renderElements() {
   teamElementsContainer.innerHTML = "";
   const numElements = teamElements.length;
 
-  const heading = document.createElement("div");
-  const elementsIcon = renderIconWithNumber(numElements, "../../res/icons/element.svg", `There is ${numElements} elements available`);
-  const header = document.createElement("h2");
-  const toggle = imgAsBtn("downArrow", "Hide Elements");
-  const body = document.createElement("div");
-  const filters = document.createElement("div");
-  const search = document.createElement("input");
-  const sort = document.createElement("select");
-  const elements = document.createElement("div");
+  if (numMonsters > 0) {
+    teamElementsContainer.setAttribute("class", "teamElementsContainer border-gold");
 
-  heading.setAttribute("class", "teamElementsHeading");
-  elementsIcon.classList.add("border-icon");
-  header.setAttribute("class", "teamElementsHeader");
-  toggle.setAttribute("class", "primary-btn teamElmentsToggle");
-  body.setAttribute("class", "teamElementsBody hidden");
-  filters.setAttribute("class", "teamElementsFilters");
-  search.setAttribute("class", "teamElementsSearch");
-  sort.setAttribute("class", "teamElementsSort");
-  elements.setAttribute("class", "teamElements");
+    const heading = document.createElement("div");
+    const elementsIcon = renderIconWithNumber(numElements, "../../res/icons/element.svg", `There is ${numElements} elements available`);
+    const header = document.createElement("h2");
+    const toggle = imgAsBtn("downArrow", "Hide Elements");
+    const body = document.createElement("div");
+    const filters = document.createElement("div");
+    const search = document.createElement("input");
+    const sort = document.createElement("select");
+    const elements = document.createElement("div");
 
-  header.innerText = "Available elements";
+    heading.setAttribute("class", "teamElementsHeading");
+    elementsIcon.classList.add("border-icon");
+    header.setAttribute("class", "teamElementsHeader");
+    toggle.setAttribute("class", "primary-btn teamElmentsToggle");
+    body.setAttribute("class", "teamElementsBody hidden");
+    filters.setAttribute("class", "teamElementsFilters");
+    search.setAttribute("class", "teamElementsSearch");
+    sort.setAttribute("class", "teamElementsSort");
+    elements.setAttribute("class", "teamElements");
 
-  search.setAttribute("placeholder", "Search by element name");
-  populateElementsSortSelect(sort);
+    header.innerText = "Available elements";
 
-  createElementContainers(elements);
+    search.setAttribute("placeholder", "Search by element name");
+    populateElementsSortSelect(sort);
 
-  toggle.addEventListener("click", () => {
-    const toggleIcon = toggle.getElementsByTagName("img")[0];
-    const isExtended = toggleIcon.getAttribute("src").includes("downArrow");
+    createElementContainers(elements);
 
-    if (isExtended) {
-      body.setAttribute("class", "teamElementsBody");
-      setBtnIcon(toggleIcon, "upArrow", "Hide Elements");
-    } else {
-      body.setAttribute("class", "teamElementsBody hidden");
-      setBtnIcon(toggleIcon, "downArrow", "Show Elements");
-    }
-  });
+    toggle.addEventListener("click", () => {
+      const toggleIcon = toggle.getElementsByTagName("img")[0];
+      const isExtended = toggleIcon.getAttribute("src").includes("downArrow");
 
-  search.addEventListener("input", () => {
-    searchElements(elements, search);
-  });
+      if (isExtended) {
+        body.setAttribute("class", "teamElementsBody");
+        setBtnIcon(toggleIcon, "upArrow", "Hide Elements");
+      } else {
+        body.setAttribute("class", "teamElementsBody hidden");
+        setBtnIcon(toggleIcon, "downArrow", "Show Elements");
+      }
+    });
 
-  sort.addEventListener("change", () => {
-    setSortOrder(elements, sort, search);
-  });
+    search.addEventListener("input", () => {
+      searchElements(elements, search);
+    });
 
-  heading.append(elementsIcon, header, toggle);
-  filters.append(search, sort);
-  body.append(filters, elements);
+    sort.addEventListener("change", () => {
+      setSortOrder(elements, sort, search);
+    });
 
-  teamElementsContainer.append(heading, body);
+    heading.append(elementsIcon, header, toggle);
+    filters.append(search, sort);
+    body.append(filters, elements);
+
+    teamElementsContainer.append(heading, body);
+  } else {
+    teamElementsContainer.setAttribute("class", "teamElementsContainer border-gold hidden");
+  }
 }
 
 function renderBattleRecord() {
   battleRecordContainer.innerHTML = "";
 
-  const heading = document.createElement("div");
-  const battleIcon = renderIconWithNumber(numBattels, "../../res/icons/shield.svg", `Team '${teamName}' has fought ${numBattels} battles`);
-  const teamProfitIcon = renderIconWithNumber(teamProfit, "../../res/icons/diamond.svg", `Team '${teamName}' has genereated a profit of ${teamProfit} credits`, "right");
-  const header = document.createElement("h2");
-  const toggle = imgAsBtn("downArrow", "Hide Elements");
-  const body = document.createElement("div");
-  const stats = document.createElement("div");
+  if (numMonsters > 0) {
+    battleRecordContainer.setAttribute("class", "battleRecordContainer border-gold");
 
-  const battleValues = document.createElement("div");
-  const fightValues = document.createElement("div");
-  const roundValues = document.createElement("div");
-  const monsterStatsValues = document.createElement("div");
+    const heading = document.createElement("div");
+    const battleIcon = renderIconWithNumber(numBattels, "../../res/icons/shield.svg", `Team '${teamName}' has fought ${numBattels} battles`);
+    const teamProfitIcon = renderIconWithNumber(teamProfit, "../../res/icons/diamond.svg", `Team '${teamName}' has genereated a profit of ${teamProfit} credits`, "right");
+    const header = document.createElement("h2");
+    const toggle = imgAsBtn("downArrow", "Hide Elements");
+    const body = document.createElement("div");
+    const stats = document.createElement("div");
 
-  const battleBar = progressBar(wonBattels, drawnBattels, lostBattels);
-  const fightBar = progressBar(wonFights, drawnFights, lostFights);
-  const roundBar = progressBar(wonRounds, drawnRounds, lostRounds);
+    const battleValues = document.createElement("div");
+    const fightValues = document.createElement("div");
+    const roundValues = document.createElement("div");
+    const monsterStatsValues = document.createElement("div");
 
-  const wonBattelsEl = valueWithHeader(wonBattels, "Won Battels");
-  const drawnBattelsEl = valueWithHeader(drawnBattels, "Drawn Battels");
-  const lostBattelsEl = valueWithHeader(lostBattels, "Lost Battels");
-  const totalPointsEl = valueWithHeader(totalPoints, "Total points");
+    const battleBar = progressBar(wonBattels, drawnBattels, lostBattels);
+    const fightBar = progressBar(wonFights, drawnFights, lostFights);
+    const roundBar = progressBar(wonRounds, drawnRounds, lostRounds);
 
-  const numFightsEl = valueWithHeader(numFights, "Fights");
-  const wonFightsEl = valueWithHeader(wonFights, "Won fights");
-  const drawnFightsEl = valueWithHeader(drawnFights, "Drawn fights");
-  const lostFightsEl = valueWithHeader(lostFights, "Lost fights");
+    const wonBattelsEl = valueWithHeader(wonBattels, "Won Battels");
+    const drawnBattelsEl = valueWithHeader(drawnBattels, "Drawn Battels");
+    const lostBattelsEl = valueWithHeader(lostBattels, "Lost Battels");
+    const totalPointsEl = valueWithHeader(totalPoints, "Total points");
 
-  const numRoundsEl = valueWithHeader(numRounds, "Rounds");
-  const wonRoundsEl = valueWithHeader(wonRounds, "Won rounds");
-  const drawnRoundsEl = valueWithHeader(drawnRounds, "Drawn rounds");
-  const lostRoundsEl = valueWithHeader(lostRounds, "Lost rounds");
+    const numFightsEl = valueWithHeader(numFights, "Fights");
+    const wonFightsEl = valueWithHeader(wonFights, "Won fights");
+    const drawnFightsEl = valueWithHeader(drawnFights, "Drawn fights");
+    const lostFightsEl = valueWithHeader(lostFights, "Lost fights");
 
-  const lostHpEl = valueWithHeader(lostHp, "Lost health");
-  const remainingHpEl = valueWithHeader(`${remainingHP}%`, "Remaining health");
-  const sufferedDamageEl = valueWithHeader(sufferedDamage, "Suffered damage");
-  const distributedDamageEl = valueWithHeader(distributedDamage, "Distributed damage");
+    const numRoundsEl = valueWithHeader(numRounds, "Rounds");
+    const wonRoundsEl = valueWithHeader(wonRounds, "Won rounds");
+    const drawnRoundsEl = valueWithHeader(drawnRounds, "Drawn rounds");
+    const lostRoundsEl = valueWithHeader(lostRounds, "Lost rounds");
 
-  heading.setAttribute("class", "heading");
-  battleIcon.classList.add("border-icon");
-  teamProfitIcon.classList.add("border-icon", "border-icon-right");
-  header.setAttribute("class", "header");
-  toggle.setAttribute("class", "primary-btn toggle");
-  body.setAttribute("class", "body hidden");
-  stats.setAttribute("class", "stats");
+    const lostHpEl = valueWithHeader(lostHp, "Lost health");
+    const remainingHpEl = valueWithHeader(`${remainingHP}%`, "Remaining health");
+    const sufferedDamageEl = valueWithHeader(sufferedDamage, "Suffered damage");
+    const distributedDamageEl = valueWithHeader(distributedDamage, "Distributed damage");
 
-  battleValues.setAttribute("class", "statsGroup");
-  fightValues.setAttribute("class", "statsGroup");
-  roundValues.setAttribute("class", "statsGroup");
-  monsterStatsValues.setAttribute("class", "statsGroup");
+    heading.setAttribute("class", "heading");
+    battleIcon.classList.add("border-icon");
+    teamProfitIcon.classList.add("border-icon", "border-icon-right");
+    header.setAttribute("class", "header");
+    toggle.setAttribute("class", "primary-btn toggle");
+    body.setAttribute("class", "body hidden");
+    stats.setAttribute("class", "stats");
 
-  wonBattelsEl.setAttribute("class", "stat");
-  drawnBattelsEl.setAttribute("class", "stat");
-  lostBattelsEl.setAttribute("class", "stat");
-  totalPointsEl.setAttribute("class", "stat");
+    battleValues.setAttribute("class", "statsGroup");
+    fightValues.setAttribute("class", "statsGroup");
+    roundValues.setAttribute("class", "statsGroup");
+    monsterStatsValues.setAttribute("class", "statsGroup");
 
-  numFightsEl.setAttribute("class", "stat");
-  wonFightsEl.setAttribute("class", "stat");
-  drawnFightsEl.setAttribute("class", "stat");
-  lostFightsEl.setAttribute("class", "stat");
+    wonBattelsEl.setAttribute("class", "stat");
+    drawnBattelsEl.setAttribute("class", "stat");
+    lostBattelsEl.setAttribute("class", "stat");
+    totalPointsEl.setAttribute("class", "stat");
 
-  numRoundsEl.setAttribute("class", "stat");
-  wonRoundsEl.setAttribute("class", "stat");
-  drawnRoundsEl.setAttribute("class", "stat");
-  lostRoundsEl.setAttribute("class", "stat");
+    numFightsEl.setAttribute("class", "stat");
+    wonFightsEl.setAttribute("class", "stat");
+    drawnFightsEl.setAttribute("class", "stat");
+    lostFightsEl.setAttribute("class", "stat");
 
-  lostHpEl.setAttribute("class", "stat");
-  remainingHpEl.setAttribute("class", "stat");
-  sufferedDamageEl.setAttribute("class", "stat");
-  distributedDamageEl.setAttribute("class", "stat");
+    numRoundsEl.setAttribute("class", "stat");
+    wonRoundsEl.setAttribute("class", "stat");
+    drawnRoundsEl.setAttribute("class", "stat");
+    lostRoundsEl.setAttribute("class", "stat");
 
-  header.innerText = "Battle record";
+    lostHpEl.setAttribute("class", "stat");
+    remainingHpEl.setAttribute("class", "stat");
+    sufferedDamageEl.setAttribute("class", "stat");
+    distributedDamageEl.setAttribute("class", "stat");
 
-  battleValues.append(wonBattelsEl, drawnBattelsEl, lostBattelsEl, totalPointsEl);
-  fightValues.append(numFightsEl, wonFightsEl, drawnFightsEl, lostFightsEl);
-  roundValues.append(numRoundsEl, wonRoundsEl, drawnRoundsEl, lostRoundsEl);
-  monsterStatsValues.append(lostHpEl, remainingHpEl, sufferedDamageEl, distributedDamageEl);
+    header.innerText = "Battle record";
 
-  stats.append(battleValues, battleBar, fightValues, fightBar, roundValues, roundBar, monsterStatsValues);
+    battleValues.append(wonBattelsEl, drawnBattelsEl, lostBattelsEl, totalPointsEl);
+    fightValues.append(numFightsEl, wonFightsEl, drawnFightsEl, lostFightsEl);
+    roundValues.append(numRoundsEl, wonRoundsEl, drawnRoundsEl, lostRoundsEl);
+    monsterStatsValues.append(lostHpEl, remainingHpEl, sufferedDamageEl, distributedDamageEl);
 
-  toggle.addEventListener("click", () => {
-    const toggleIcon = toggle.getElementsByTagName("img")[0];
-    const isExtended = toggleIcon.getAttribute("src").includes("downArrow");
+    stats.append(battleValues, battleBar, fightValues, fightBar, roundValues, roundBar, monsterStatsValues);
 
-    if (isExtended) {
-      body.setAttribute("class", "body");
-      setBtnIcon(toggleIcon, "upArrow", "Hide Elements");
-    } else {
-      body.setAttribute("class", "body hidden");
-      setBtnIcon(toggleIcon, "downArrow", "Show Elements");
-    }
-  });
+    toggle.addEventListener("click", () => {
+      const toggleIcon = toggle.getElementsByTagName("img")[0];
+      const isExtended = toggleIcon.getAttribute("src").includes("downArrow");
 
-  heading.append(battleIcon, teamProfitIcon, header, toggle);
-  body.append(stats, renderFoughtMonsters(), renderMonsterRecords());
+      if (isExtended) {
+        body.setAttribute("class", "body");
+        setBtnIcon(toggleIcon, "upArrow", "Hide Elements");
+      } else {
+        body.setAttribute("class", "body hidden");
+        setBtnIcon(toggleIcon, "downArrow", "Show Elements");
+      }
+    });
 
-  battleRecordContainer.append(heading, body);
+    heading.append(battleIcon, teamProfitIcon, header, toggle);
+    body.append(stats, renderFoughtMonsters(), renderMonsterRecords());
+
+    battleRecordContainer.append(heading, body);
+  } else {
+    battleRecordContainer.setAttribute("class", "battleRecordContainer border-gold hidden");
+  }
 }
 
 function renderFoughtMonsters() {
@@ -959,59 +1056,4 @@ function renderMonsterRecords() {
   });
 
   return container;
-}
-
-function validateDeleteTeam() {
-  const delBtn = document.getElementById("deleteTeamBtn");
-  const delIcon = delBtn.getElementsByTagName("img")[0];
-  const nameInput = document.getElementById("teamName");
-  const message = document.getElementById("deleteMessage");
-
-  setBtnIcon(delIcon, "trashRed", `Delete team '${teamName}'`);
-
-  linkedBtns = linkedBtns.filter((btn) => btn !== delBtn);
-  linkedBtns.push(delBtn);
-
-  delBtn.addEventListener("click", () => {
-    const isUnchecked = !delIcon.getAttribute("src").includes("check");
-    const teamToDel = nameInput.value.trim().toLowerCase();
-
-    nameInput.value = "";
-
-    useBtnLinks();
-
-    if (isUnchecked) {
-      if (teamToDel === teamName.toLowerCase()) {
-        message.innerText = `Warning! You are about to delete team '${teamName}'.This action can't be undone and all progress will be lost. Click to confirm`;
-        setBtnIcon(delIcon, "checkRed", "Click to confirm");
-      } else {
-        if (teamToDel === "") {
-          message.innerText = "Enter team name";
-          setBtnIcon(delIcon, "banRed", "Enter team name");
-        } else {
-          message.innerText = "Incorrect team name";
-          setBtnIcon(delIcon, "banRed", "Incorrect team name");
-        }
-      }
-
-      const timeOut = setTimeout(() => {
-        message.innerText = "";
-        setBtnIcon(delIcon, "trashRed", `Delete team '${teamName}'`);
-      }, 7000);
-      timeOutBtns = timeOutBtns.filter((time) => time !== timeOut);
-      timeOutBtns.push(timeOut);
-    } else {
-      message.innerText = "";
-      nameInput.value = "";
-      setBtnIcon(delIcon, "trashRed", `Delete team '${teamName}'`);
-      deleteTeam();
-    }
-  });
-
-  const resetStatus = () => {
-    setBtnIcon(delIcon, "trashRed", `Delete team '${teamName}'`);
-    message.innerText = "";
-  };
-
-  useFocusEvent(nameInput, resetStatus);
 }
