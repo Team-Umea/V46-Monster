@@ -2,10 +2,12 @@
 import { Team } from "./classes/Team.js";
 import { isDigit, isLetter, capitalize, save, load, generateUniqueName, redirect } from "./common/utilities.js";
 import { TEAMS_LSK, SELECTEDTEAMSETTINGS_LSK, SELECTEDFIGHTTEAM_LSK } from "./common/localStorageKeys.js";
-import { imgAsBtn, setBtnIcon, populateSelect } from "./common/render.js";
-import { useInputEvent, useSubmitEvent } from "./common/useEvent.js";
+import { imgAsBtn, setBtnIcon, populateSelect, renderIconWithNumber } from "./common/render.js";
+import { useInputEvent, useSubmitEvent, useChangeEvent, useClickEvent } from "./common/useEvent.js";
 import { MonsterCard } from "./classes/MonsterCard.js";
 
+const portalToggle = document.getElementById("portalToggle");
+const actionContainer = document.getElementById("actionContainer");
 const createTeamContainer = document.getElementById("createTeamContainer");
 const teamsContainer = document.getElementById("teamsContainer");
 
@@ -18,9 +20,27 @@ window.addEventListener("DOMContentLoaded", () => {
 
 function init() {
   loadTeams();
+  sortTeams(0);
   renderTeams();
+  useClickEvent(portalToggle, togglePortal);
   validateCreateTeam();
   filterTeams();
+}
+
+function togglePortal() {
+  const isExtended = portalToggle.getAttribute("src").includes("upArrow");
+
+  if (isExtended) {
+    actionContainer.style.display = "none";
+    portalToggle.setAttribute("src", "../../res/icons/downArrow.svg");
+    portalToggle.setAttribute("alt", "Show team portal");
+    portalToggle.setAttribute("title", "Show team portal");
+  } else {
+    actionContainer.style.display = "flex";
+    portalToggle.setAttribute("src", "../../res/icons/upArrow.svg");
+    portalToggle.setAttribute("alt", "Hide team portal");
+    portalToggle.setAttribute("title", "Hide team portal");
+  }
 }
 
 function validateCreateTeam() {
@@ -81,6 +101,7 @@ function validateCreateTeam() {
         message.innerText = `${controlledName} successfully created`;
       }
       addTeam(controlledName);
+      setSortOrder();
     } else if (teamName === "") {
       message.setAttribute("class", "createTeamMessage error");
       message.innerText = "Error! Team name must not be empty";
@@ -114,10 +135,185 @@ function validateCreateTeam() {
 }
 
 function filterTeams() {
+  const searchInput = document.getElementById("searchTeams");
   const sortSelect = document.getElementById("sortTeams");
   const sortOptions = ["A - Z", "Z - A", "Newest - Oldest", "Oldest - Newest", "Strongest - Weakest", "Weakest - Strongest", "Many - Few Battels", "Few - Many Battles", "High - Low Winrate", "Low - High Winrate", "Expensive - Cheap", "Cheap - Expensive", "Paid - Unpaid", "Unpaid - Paid", "Full - Empty", "Empty - Full"];
 
   populateSelect(sortSelect, sortOptions);
+
+  useInputEvent(searchInput, searchTeams);
+  useChangeEvent(sortSelect, setSortOrder);
+}
+
+function searchTeams() {
+  const searchInput = document.getElementById("searchTeams");
+  const searchQuery = searchInput.value.trim().toLowerCase();
+
+  const matchingNames = (teamName) => {
+    return teamName.toLowerCase().startsWith(searchQuery);
+  };
+
+  renderTeams(matchingNames);
+}
+
+function setSortOrder() {
+  const sortSelect = document.getElementById("sortTeams");
+  const sortOrder = Number(sortSelect.value);
+
+  sortTeams(sortOrder);
+
+  searchTeams();
+}
+
+function sortTeams(sortOrder) {
+  let sortedTeams = [];
+
+  switch (sortOrder) {
+    case 0:
+      sortedTeams = [...teamsArr].sort((a, b) => {
+        return a.name.localeCompare(b.name);
+      });
+      break;
+    case 1:
+      sortedTeams = [...teamsArr].sort((a, b) => {
+        return b.name.localeCompare(a.name);
+      });
+      break;
+    case 2:
+      sortedTeams = [...teamsArr].sort((a, b) => {
+        return b.createdAt - a.createdAt;
+      });
+      break;
+    case 3:
+      sortedTeams = [...teamsArr].sort((a, b) => {
+        return a.createdAt - b.createdAt;
+      });
+      break;
+    case 4:
+      sortedTeams = [...teamsArr].sort((a, b) => {
+        const ratingDifference = b.totalRating - a.totalRating;
+        const rankDifference = ratingDifference === 0 ? b.totalRank - a.totalRank : ratingDifference;
+        const az = rankDifference === 0 ? a.name.localeCompare(b.name) : rankDifference;
+        const dateDifference = az === 0 ? a.createdAt - b.createdAt : az;
+        return dateDifference;
+      });
+      break;
+    case 5:
+      sortedTeams = [...teamsArr].sort((a, b) => {
+        const ratingDifference = a.totalRating - b.totalRating;
+        const rankDifference = ratingDifference === 0 ? a.totalRank - b.totalRank : ratingDifference;
+        const az = rankDifference === 0 ? a.name.localeCompare(b.name) : rankDifference;
+        const dateDifference = az === 0 ? a.createdAt - b.createdAt : az;
+        return dateDifference;
+      });
+      break;
+    case 6:
+      sortedTeams = [...teamsArr].sort((a, b) => {
+        const battleDifference = b.numBattels - a.numBattels;
+        const ratingDifference = battleDifference === 0 ? b.totalRating - a.totalRating : battleDifference;
+        const rankDifference = ratingDifference === 0 ? b.totalRank - a.totalRank : ratingDifference;
+        const az = rankDifference === 0 ? a.name.localeCompare(b.name) : rankDifference;
+        const dateDifference = az === 0 ? a.createdAt - b.createdAt : az;
+        return dateDifference;
+      });
+      break;
+    case 7:
+      sortedTeams = [...teamsArr].sort((a, b) => {
+        const battleDifference = a.numBattels - b.numBattels;
+        const ratingDifference = battleDifference === 0 ? b.totalRating - a.totalRating : battleDifference;
+        const rankDifference = ratingDifference === 0 ? b.totalRank - a.totalRank : ratingDifference;
+        const az = rankDifference === 0 ? a.name.localeCompare(b.name) : rankDifference;
+        const dateDifference = az === 0 ? a.createdAt - b.createdAt : az;
+        return dateDifference;
+      });
+      break;
+    case 8:
+      sortedTeams = [...teamsArr].sort((a, b) => {
+        const winRateDifference = b.winRate - a.winRate;
+        const ratingDifference = winRateDifference === 0 ? b.totalRating - a.totalRating : winRateDifference;
+        const rankDifference = ratingDifference === 0 ? b.totalRank - a.totalRank : ratingDifference;
+        const az = rankDifference === 0 ? a.name.localeCompare(b.name) : rankDifference;
+        const dateDifference = az === 0 ? a.createdAt - b.createdAt : az;
+        return dateDifference;
+      });
+      break;
+    case 9:
+      sortedTeams = [...teamsArr].sort((a, b) => {
+        const winRateDifference = a.winRate - b.winRate;
+        const ratingDifference = winRateDifference === 0 ? b.totalRating - a.totalRating : winRateDifference;
+        const rankDifference = ratingDifference === 0 ? b.totalRank - a.totalRank : ratingDifference;
+        const az = rankDifference === 0 ? a.name.localeCompare(b.name) : rankDifference;
+        const dateDifference = az === 0 ? a.createdAt - b.createdAt : az;
+        return dateDifference;
+      });
+      break;
+    case 10:
+      sortedTeams = [...teamsArr].sort((a, b) => {
+        const priceDifference = b.teamCost - a.teamCost;
+        const ratingDifference = priceDifference === 0 ? b.totalRating - a.totalRating : priceDifference;
+        const rankDifference = ratingDifference === 0 ? b.totalRank - a.totalRank : ratingDifference;
+        const az = rankDifference === 0 ? a.name.localeCompare(b.name) : rankDifference;
+        const dateDifference = az === 0 ? a.createdAt - b.createdAt : az;
+        return dateDifference;
+      });
+      break;
+    case 11:
+      sortedTeams = [...teamsArr].sort((a, b) => {
+        const priceDifference = a.teamCost - b.teamCost;
+        const ratingDifference = priceDifference === 0 ? b.totalRating - a.totalRating : priceDifference;
+        const rankDifference = ratingDifference === 0 ? b.totalRank - a.totalRank : ratingDifference;
+        const az = rankDifference === 0 ? a.name.localeCompare(b.name) : rankDifference;
+        const dateDifference = az === 0 ? a.createdAt - b.createdAt : az;
+        return dateDifference;
+      });
+      break;
+    case 12:
+      sortedTeams = [...teamsArr].sort((a, b) => {
+        const isPaidForDifference = Number(b.paidFor) - Number(a.paidFor);
+        const ratingDifference = isPaidForDifference === 0 ? b.totalRating - a.totalRating : isPaidForDifference;
+        const rankDifference = ratingDifference === 0 ? b.totalRank - a.totalRank : ratingDifference;
+        const az = rankDifference === 0 ? a.name.localeCompare(b.name) : rankDifference;
+        const dateDifference = az === 0 ? a.createdAt - b.createdAt : az;
+        return dateDifference;
+      });
+      break;
+    case 13:
+      sortedTeams = [...teamsArr].sort((a, b) => {
+        const isPaidForDifference = Number(a.paidFor) - Number(b.paidFor);
+        const ratingDifference = isPaidForDifference === 0 ? b.totalRating - a.totalRating : isPaidForDifference;
+        const rankDifference = ratingDifference === 0 ? b.totalRank - a.totalRank : ratingDifference;
+        const az = rankDifference === 0 ? a.name.localeCompare(b.name) : rankDifference;
+        const dateDifference = az === 0 ? a.createdAt - b.createdAt : az;
+        return dateDifference;
+      });
+      break;
+    case 14:
+      sortedTeams = [...teamsArr].sort((a, b) => {
+        const numMonsterDifference = b.monsters.length - a.monsters.length;
+        const ratingDifference = numMonsterDifference === 0 ? b.totalRating - a.totalRating : numMonsterDifference;
+        const rankDifference = ratingDifference === 0 ? b.totalRank - a.totalRank : ratingDifference;
+        const az = rankDifference === 0 ? a.name.localeCompare(b.name) : rankDifference;
+        const dateDifference = az === 0 ? a.createdAt - b.createdAt : az;
+        return dateDifference;
+      });
+      break;
+    case 15:
+      sortedTeams = [...teamsArr].sort((a, b) => {
+        const numMonsterDifference = a.monsters.length - b.monsters.length;
+        const ratingDifference = numMonsterDifference === 0 ? b.totalRating - a.totalRating : numMonsterDifference;
+        const rankDifference = ratingDifference === 0 ? b.totalRank - a.totalRank : ratingDifference;
+        const az = rankDifference === 0 ? a.name.localeCompare(b.name) : rankDifference;
+        const dateDifference = az === 0 ? a.createdAt - b.createdAt : az;
+        return dateDifference;
+      });
+      break;
+    default:
+      break;
+  }
+
+  if (sortedTeams.length > 0) {
+    teamsArr = sortedTeams;
+  }
 }
 
 function loadTeams() {
@@ -148,7 +344,7 @@ function redirectToSettingsPage(team) {
   }, 100);
 }
 
-function renderTeams() {
+function renderTeams(condition) {
   teamsContainer.innerHTML = "";
 
   if (teamsArr) {
@@ -161,9 +357,11 @@ function renderTeams() {
       const isVisible = team.isVisible;
 
       const teamCard = document.createElement("div");
+      const quickInfo = document.createElement("div");
+      const numMonstersIcon = renderIconWithNumber(numTeamMonsters, "../../res/icons/skull.svg", `There is ${numTeamMonsters} in team '${teamName}'`, "right");
+      const paidStatus = document.createElement("div");
       const heading = document.createElement("div");
       const header = document.createElement("h2");
-
       const fightBtn = imgAsBtn("shield", `Fight with '${teamName}'`);
       const settingsBtn = imgAsBtn("settings", `View settings and stats for '${teamName}'`);
       const toggleBtn = imgAsBtn(isVisible ? "upArrow" : "downArrow", isVisible ? `Hide Monsters in team '${teamName}'` : `Show Monsters in team '${teamName}'`);
@@ -172,6 +370,9 @@ function renderTeams() {
       const monsters = document.createElement("div");
 
       teamCard.setAttribute("class", "teamCard");
+      quickInfo.setAttribute("class", "quickInfo");
+      numMonstersIcon.classList.add("numMonstersIcon");
+      paidStatus.setAttribute("class", `paidStatus ${isPaidFor ? "paid" : "unPaid"}`);
       heading.setAttribute("class", "cardHeading");
       header.setAttribute("class", "cardHeader");
       fightBtn.setAttribute("class", "primary-btn fight");
@@ -179,6 +380,20 @@ function renderTeams() {
       toggleBtn.setAttribute("class", "primary-btn toggle");
       body.setAttribute("class", isVisible ? "cardBody" : "cardBody hidden");
       monsters.setAttribute("class", "cardMonsters");
+
+      paidStatus.setAttribute("title", `${isPaidFor ? `Team '${teamName}' is bought` : `Team '${teamName}' is not bought`}`);
+
+      if (condition !== undefined && condition !== null) {
+        if (typeof condition === "function") {
+          if (condition(teamName) === false) {
+            teamCard.classList.add("hidden");
+          }
+        } else {
+          if (condition === false) {
+            teamCard.classList.add("hidden");
+          }
+        }
+      }
 
       header.innerText = teamName;
 
@@ -214,7 +429,13 @@ function renderTeams() {
         monsters.appendChild(monsterCard);
       });
 
+      quickInfo.append(numMonstersIcon, paidStatus);
+
       heading.appendChild(header);
+
+      if (numTeamMonsters > 0) {
+        heading.appendChild(toggleBtn);
+      }
 
       if (isPaidFor && numTeamMonsters > 0) {
         heading.appendChild(fightBtn);
@@ -222,12 +443,9 @@ function renderTeams() {
 
       heading.appendChild(settingsBtn);
 
-      if (numTeamMonsters > 0) {
-        heading.appendChild(toggleBtn);
-      }
-
       body.append(monsters);
 
+      teamCard.appendChild(quickInfo);
       teamCard.appendChild(heading);
 
       if (numTeamMonsters > 0) {

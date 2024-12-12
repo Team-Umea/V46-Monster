@@ -26,10 +26,15 @@
     </header>
     <main>
       <!-- main content goes here -->
-       <div id="actionContainer" class="actionContainer">
 
+      <div id="portalContainer" class="portalContainer">
+
+      <h2 id="portal" class="portal">Team Portal</h2>
+        <img src="../res/icons/upArrow.svg" alt="Hide team protal" title="Hide team protal" role="button" tabindex="0" id="portalToggle" class="icon icon-scale portalToggle">
+
+       <div id="actionContainer" class="actionContainer">
         <div id="createTeamContainer" class="createTeamContainer">
-          <h2 id="createTeamHeader" class="createTeamHeader">Create Your Team</h2>
+          <h3 id="createTeamHeader" class="createTeamHeader">Create Your Team</h3>
           <p id="createTeamMessage" class="createTeamMessage hidden"></p>
           <form id="createTeamForm" class="createTeamForm">
             <input type="text" placeholder=" " id="teamName" class="teamName" autocomplete="off"/>
@@ -39,7 +44,7 @@
         </div>
 
         <div id="teamFilters" class="teamFilters">
-          <h2 id="filterTeamsHeader" class="filterTeamsHeader">Filter Teams</h2>
+          <h3 id="filterTeamsHeader" class="filterTeamsHeader">Filter Teams</h3>
           <form id="searchTeamsForm" class="searchTeamsForm">
             <input type="text" placeholder=" " id="searchTeams" class="searchTeams">
             <label for="" id="searchTeamsLabel" class="searchTeamsLabel">Search by team name</label>
@@ -47,12 +52,8 @@
           <select id="sortTeams" class="sortTeams">
           </select>
         </div>
-
-
        </div>
-
-   
-
+      </div>
 
        <div id="teamsContainer" class="teamsContainer"></div>
     </main>

@@ -48,6 +48,7 @@ let wonBattels;
 let drawnBattels;
 let lostBattels;
 let totalPoints;
+let winRate;
 
 let numFights;
 let wonFights;
@@ -124,6 +125,7 @@ function loadTeam() {
     drawnBattels = team.drawnBattels;
     lostBattels = team.lostBattels;
     totalPoints = team.totalPoints;
+    winRate = `${team.winRate}%`;
 
     numFights = team.numFights;
     wonFights = team.wonFights;
@@ -287,7 +289,7 @@ function populateElementsSortSelect(select) {
   });
 }
 
-function createElementContainers(elementsEl, condtion) {
+function createElementContainers(elementsEl, condition) {
   elementsEl.innerHTML = "";
 
   teamElements.forEach((teamElement) => {
@@ -310,14 +312,13 @@ function createElementContainers(elementsEl, condtion) {
     element.appendChild(rating);
     elementsEl.appendChild(element);
 
-    if (condtion !== undefined && condtion !== null) {
-      if (typeof condtion === "function") {
-        if (condtion(elementName) === false) {
+    if (condition !== undefined && condition !== null) {
+      if (typeof condition === "function") {
+        if (condition(elementName) === false) {
           element.classList.add("opacity-0");
         }
       } else {
-        if (condtion === false) {
-          console.log(condtion);
+        if (condition === false) {
           element.classList.add("opacity-0");
         }
       }
@@ -677,6 +678,7 @@ function renderTeamStats() {
     const averageDamage = Math.floor(totalDamage / numMonsters);
 
     const numMonstersIcon = renderIconWithNumber(numMonsters, "../../res/icons/skull.svg", `There is ${numMonsters} monsters in team '${teamName}'`);
+    const winRateIcon = renderIconWithNumber(winRate, "../../res/icons/rate.svg", `Team '${teamName}' has a winrate of ${winRate}`, "right");
     const rankIcon = renderIconWithNumber(totalRank, "../../res/icons/ribbon.svg", `Team '${teamName}' has a rank of ${totalRank}`);
     const ratingIcon = renderIconWithNumber(totalRating, "../../res/icons/trophy.svg", `Team '${teamName}' has a combinded rating of ${totalRating}`);
     const healthIcon = renderIconWithNumber(totalHealth, "../../res/icons/heart.svg", `Team '${teamName}' has ${totalHealth} in total health`);
@@ -687,6 +689,7 @@ function renderTeamStats() {
     const averageDamageIcon = averageValueIcon(averageDamage, "barbell", "skull", `Team '${teamName}' has ${averageDamage} in average damage`);
 
     numMonstersIcon.classList.add("border-icon");
+    winRateIcon.classList.add("border-icon", "border-icon-right");
     rankIcon.classList.add("teamStatsIcon");
     ratingIcon.classList.add("teamStatsIcon");
     healthIcon.classList.add("teamStatsIcon");
@@ -696,7 +699,7 @@ function renderTeamStats() {
     averageHealthIcon.classList.add("teamAverageStatsIcon");
     averageDamageIcon.classList.add("teamAverageStatsIcon");
 
-    teamStats.append(numMonstersIcon, rankIcon, ratingIcon, healthIcon, damageIcon, averageRankIcon, averageRatingIcon, averageHealthIcon, averageDamageIcon);
+    teamStats.append(numMonstersIcon, winRateIcon, rankIcon, ratingIcon, healthIcon, damageIcon, averageRankIcon, averageRatingIcon, averageHealthIcon, averageDamageIcon);
   } else {
     teamStats.setAttribute("class", "teamStatsConatiner hidden");
   }

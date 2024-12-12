@@ -4,6 +4,7 @@ import { Monster } from "./Monster.js";
 
 export class Team {
   constructor(teamName) {
+    this.createdAt = new Date();
     this.name = teamName;
     this.monsters = [];
     this.paidFor = false;
@@ -23,6 +24,7 @@ export class Team {
     this.drawnBattels = 0;
     this.lostBattels = 0;
     this.totalPoints = 0;
+    this.winRate = 0;
 
     this.numFights = 0;
     this.wonFights = 0;
@@ -139,6 +141,10 @@ export class Team {
 
   setTeamName(name) {
     this.name = name;
+  }
+
+  setCreatedAt(createdAt) {
+    this.createdAt = createdAt;
   }
 
   setMonsters(monsters) {
@@ -266,6 +272,7 @@ export class Team {
     this.distributedDamage = this.calcDistributedDamage();
     this.wonAgainst = this.calcWonAgainst();
     this.lostAgainst = this.calcLostAgainst();
+    this.winRate = this.calcWinRate();
   }
 
   calcTeamRank() {
@@ -350,6 +357,15 @@ export class Team {
     // return lostAgainst;
   }
 
+  calcWinRate() {
+    const numBattels = this.numBattels;
+    const wonBattels = this.wonBattels;
+
+    const winRate = Math.floor((wonBattels / numBattels) * 100);
+
+    return isNaN(winRate) ? 0 : winRate;
+  }
+
   getAllMonsterElements(allElements) {
     const teamMonsters = this.monsters;
 
@@ -388,6 +404,7 @@ export class Team {
 
   static fromJSON(json) {
     const newTeam = new Team(json.name);
+    newTeam.setCreatedAt(json.createdAt);
     newTeam.loadMonsters(json.monsters);
     newTeam.setPaidFor(json.paidFor);
     newTeam.setNumBattels(json.numBattels);
