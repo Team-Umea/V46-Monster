@@ -28,75 +28,145 @@
   --color-light-red: #ed3b3b;
 }
 
-.createTeamContainer {
-  width: min(100%, 500px);
-  padding: 20px 50px;
+.actionContainer {
+  width: 100%;
   margin: 40px 0 70px 0;
-  border-radius: 20px;
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 10px;
-  position: relative;
-  background-color: var(--color-surface-a10);
+  justify-content: space-evenly;
+  flex-wrap: wrap;
 
-  .createTeamMessage {
-    width: 85%;
-    font-size: 1.1rem;
-    text-align: center;
-    position: absolute;
-    top: 70px;
-    left: 50%;
-    transform: translateX(-50%);
-  }
-
-  .createTeamForm {
-    width: 100%;
-    padding-top: 90px;
+  .createTeamContainer {
+    width: min(100%, 500px);
+    padding: 20px 50px;
+    border-radius: 20px;
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 10px;
     position: relative;
-    border-top: 1px solid var(--color-primary-a50);
+    background-color: var(--color-surface-a10);
 
-    .teamName {
-      width: 100%;
-      font-size: 1.4rem;
-      border: 0;
-      outline: 0;
-      border-bottom: 2px solid var(--color-primary-text);
-      color: var(--color-primary-text);
-      background-color: transparent;
-    }
-
-    .teamName:focus + .teamNameLabel {
-      transform: translateY(-2rem);
-    }
-
-    .teamName:not(:placeholder-shown) + .teamNameLabel {
-      transform: translateY(-2rem);
-    }
-
-    .teamNameLabel {
+    .createTeamMessage {
+      width: 85%;
       font-size: 1.1rem;
+      text-align: center;
       position: absolute;
-      left: 0;
-      transition: all 0.3s;
-      color: var(--color-primary-text);
+      top: 70px;
+      left: 50%;
+      transform: translateX(-50%);
     }
 
-    .createTeamBtn {
+    .createTeamForm {
+      width: 100%;
+      padding-top: 90px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+      position: relative;
+      border-top: 1px solid var(--color-primary-a50);
+
+      .teamName {
+        width: 100%;
+        font-size: 1.4rem;
+        border: 0;
+        outline: 0;
+        border-bottom: 2px solid var(--color-primary-text);
+        color: var(--color-primary-text);
+        background-color: transparent;
+      }
+
+      .teamName:focus + .teamNameLabel {
+        transform: translateY(-2rem);
+      }
+
+      .teamName:not(:placeholder-shown) + .teamNameLabel {
+        transform: translateY(-2rem);
+      }
+
+      .teamNameLabel {
+        font-size: 1.1rem;
+        position: absolute;
+        left: 0;
+        transition: all 0.3s;
+        color: var(--color-primary-text);
+      }
+
+      .createTeamBtn {
+        font-size: 1.1rem;
+        font-weight: bold;
+        margin-top: 10px;
+        color: var(--color-primary-text);
+        background-color: var(--color-surface-mixed-a10);
+        width: 100%;
+      }
+
+      .createTeamBtn:hover {
+        background-color: var(--color-surface-mixed-a20);
+      }
+    }
+  }
+
+  .teamFilters {
+    width: min(100%, 500px);
+    padding: 20px 50px;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    position: relative;
+    background-color: var(--color-surface-a10);
+
+    .filterTeamsHeader {
+      width: 100%;
+      margin-bottom: 80px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid var(--color-primary-a50);
+    }
+
+    .searchTeamsForm {
+      width: 100%;
+      position: relative;
+
+      .searchTeams {
+        width: 100%;
+        font-size: 1.4rem;
+        border: 0;
+        outline: 0;
+        border-bottom: 2px solid var(--color-primary-text);
+        color: var(--color-primary-text);
+        background-color: transparent;
+      }
+
+      .searchTeams:focus + .searchTeamsLabel {
+        transform: translateY(-2rem);
+      }
+
+      .searchTeams:not(:placeholder-shown) + .searchTeamsLabel {
+        transform: translateY(-2rem);
+      }
+
+      .searchTeamsLabel {
+        font-size: 1.1rem;
+        position: absolute;
+        left: 0;
+        transition: all 0.3s;
+        color: var(--color-primary-text);
+      }
+    }
+
+    .sortTeams {
+      width: 100%;
       font-size: 1.1rem;
       font-weight: bold;
+      padding: 10px;
       margin-top: 10px;
+      border-radius: 10px;
+      border: 0;
+      outline: none;
       color: var(--color-primary-text);
       background-color: var(--color-surface-mixed-a10);
-      width: 100%;
-    }
-
-    .createTeamBtn:hover {
-      background-color: var(--color-surface-mixed-a20);
     }
   }
 }

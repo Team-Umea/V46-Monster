@@ -26,17 +26,35 @@
     </header>
     <main>
       <!-- main content goes here -->
-      <div id="createTeamContainer" class="createTeamContainer">
-        <h2>Create Your Team</h2>
-        <p id="createTeamMessage" class="createTeamMessage hidden"></p>
-        <form id="createTeamForm" class="createTeamForm">
-          <input type="text" placeholder=" " id="teamName" class="teamName" autocomplete="off"/>
-          <label for="teamName" id="teamNameLabel" class="teamNameLabel">Team name</label>
-          <button type="submit" id="createTeamBtn" class="createTeamBtn primary-btn">Create Team</button>
-        </form>
-      </div>
+       <div id="actionContainer" class="actionContainer">
 
-      <div id="teamFilters" class="teamFilters"></div>
+        <div id="createTeamContainer" class="createTeamContainer">
+          <h2>Create Your Team</h2>
+          <p id="createTeamMessage" class="createTeamMessage hidden"></p>
+          <form id="createTeamForm" class="createTeamForm">
+            <input type="text" placeholder=" " id="teamName" class="teamName" autocomplete="off"/>
+            <label for="teamName" id="teamNameLabel" class="teamNameLabel">Team name</label>
+            <button type="submit" id="createTeamBtn" class="createTeamBtn primary-btn">Create Team</button>
+          </form>
+        </div>
+
+        <div id="teamFilters" class="teamFilters">
+          <h2 id="filterTeamsHeader" class="filterTeamsHeader">Filter Teams</h2>
+          <form id="searchTeamsForm" class="searchTeamsForm">
+            <input type="text" placeholder=" " id="searchTeams" class="searchTeams">
+            <label for="" id="searchTeamsLabel" class="searchTeamsLabel">Search by team name</label>
+          </form>
+         
+          <select id="sortTeams" class="sortTeams">
+            <option>Sort teams</option>
+          </select>
+        </div>
+
+
+       </div>
+
+   
+
 
        <div id="teamsContainer" class="teamsContainer"></div>
     </main>
