@@ -353,12 +353,14 @@ function renderTeams(condition) {
       const teamName = team.name;
       const teamMonsters = team.monsters;
       const numTeamMonsters = teamMonsters.length;
+      const winRate = `${team.winRate}`;
       const isPaidFor = team.paidFor;
       const isVisible = team.isVisible;
 
       const teamCard = document.createElement("div");
       const quickInfo = document.createElement("div");
       const numMonstersIcon = renderIconWithNumber(numTeamMonsters, "../../res/icons/skull.svg", `There is ${numTeamMonsters} in team '${teamName}'`, "right");
+      const winRateIcon = renderIconWithNumber(winRate, "../../res/icons/rate.svg", `Team '${teamName}' has a winrate of ${winRate}`, "right");
       const paidStatus = document.createElement("div");
       const heading = document.createElement("div");
       const header = document.createElement("h2");
@@ -372,6 +374,7 @@ function renderTeams(condition) {
       teamCard.setAttribute("class", "teamCard");
       quickInfo.setAttribute("class", "quickInfo");
       numMonstersIcon.classList.add("numMonstersIcon");
+      winRateIcon.classList.add("winRateIcon");
       paidStatus.setAttribute("class", `paidStatus ${isPaidFor ? "paid" : "unPaid"}`);
       heading.setAttribute("class", "cardHeading");
       header.setAttribute("class", "cardHeader");
@@ -429,7 +432,7 @@ function renderTeams(condition) {
         monsters.appendChild(monsterCard);
       });
 
-      quickInfo.append(numMonstersIcon, paidStatus);
+      quickInfo.append(numMonstersIcon, winRateIcon, paidStatus);
 
       heading.appendChild(header);
 

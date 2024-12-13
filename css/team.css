@@ -84,7 +84,6 @@
 
       .createTeamForm {
         width: 100%;
-        /* padding-top: 90px; */
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -223,7 +222,8 @@
       align-items: center;
       gap: 7px;
 
-      .numMonstersIcon {
+      .numMonstersIcon,
+      .winRateIcon {
         gap: 4px;
 
         p {
