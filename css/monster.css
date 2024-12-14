@@ -35,6 +35,7 @@
 
 body {
   height: auto;
+  overflow: hidden;
 }
 
 main {
@@ -129,7 +130,7 @@ input[type="radio"]:checked + label {
 
 #monsterContainer {
   max-height: 100vh;
-  padding-bottom: 140px;
+  padding-bottom: 500px;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
