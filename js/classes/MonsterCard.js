@@ -1,12 +1,15 @@
 import { TEAMS_LSK } from "../common/localStorageKeys.js";
 import { renderIconWithNumber } from "../common/render.js";
-import { save } from "../common/utilities.js";
+import { save, loadTeams } from "../common/utilities.js";
 
 export class MonsterCard {
-  constructor(monster, teams, hideSelect) {
+  constructor(monster, setSelectMessage, hideSelect) {
     this.monster = monster;
-    this.teams = teams;
+    this.teams = loadTeams();
     this.hideSelect = hideSelect;
+    this.setSelectMessage = setSelectMessage;
+
+    this.tempMonsters = [];
 
     if (monster) {
       this.id = monster.id;
@@ -29,10 +32,11 @@ export class MonsterCard {
 
   monsterContainer() {
     const container = document.createElement("div");
-    container.setAttribute("class", "monsterCard");
-
     const skeleton = document.createElement("div");
+
+    container.setAttribute("class", "monsterCard");
     skeleton.setAttribute("class", "monsterLoadingSkeleton");
+
     container.appendChild(skeleton);
 
     return container;
@@ -41,9 +45,7 @@ export class MonsterCard {
   monsterImg() {
     const img = document.createElement("div");
     const src = this.imagePath;
-    // img.setAttribute("alt", "Monster img placeholder");
     img.setAttribute("class", "monsterImg");
-    // img.setAttribute("src", src);
     img.style.backgroundImage = `url(${src})`;
 
     return img;
@@ -121,30 +123,40 @@ export class MonsterCard {
 
   monsterSelect() {
     const teamSelector = document.createElement("select");
-
-    const teams = this.teams;
     const monster = this.monster;
+    let teams = loadTeams();
+    const availableTeams = teams.filter((team) => team.monsters.length < 4);
 
     teamSelector.setAttribute("class", "monsterSelect");
     const firstOption = document.createElement("option");
     firstOption.innerText = "Add to Team";
     teamSelector.appendChild(firstOption);
 
-    teams.forEach((team, index) => {
+    availableTeams.forEach((team, index) => {
       const option = document.createElement("option");
       option.setAttribute("value", index);
       option.setAttribute("class", "monsterSelectOption");
-      option.innerText = team.getTeamName();
-      option.value = team.getTeamName();
+      option.innerText = team.name;
+      option.value = team.name;
       teamSelector.appendChild(option);
     });
 
     teamSelector.addEventListener("change", () => {
-      const selectedOption = teamSelector.options[teamSelector.selectedIndex].value;
-      const selectedTeam = teams.find((team) => selectedOption === team.getTeamName());
+      teams = loadTeams();
 
-      selectedTeam.addMonsterToTeam(monster);
-      save(TEAMS_LSK, teams);
+      const selectedOption = teamSelector.options[teamSelector.selectedIndex].value;
+      const selectedTeamIndex = teams.indexOf(teams.find((team) => selectedOption === team.name));
+      const selectedTeam = teams[selectedTeamIndex];
+
+      const isNewMonster = ![...selectedTeam.monsters].map((m) => m.id).includes(monster.id);
+
+      if (isNewMonster) {
+        teams[selectedTeamIndex].addMonsterToTeam(monster);
+        save(TEAMS_LSK, teams);
+        this.setSelectMessage("success", `${monster.name} successfully added to team '${selectedTeam.name}'`);
+      } else {
+        this.setSelectMessage("error", `${monster.name} alreday exists in team '${selectedTeam.name}'`);
+      }
     });
 
     return teamSelector;
@@ -167,7 +179,6 @@ export class MonsterCard {
     const img = this.monsterImg();
     const specs = this.monsterSpecs();
     const stats = this.monsterStats();
-    const elements = this.monsterElements();
     const price = this.monsterPrice();
     const select = this.monsterSelect();
 
@@ -176,9 +187,11 @@ export class MonsterCard {
     container.appendChild(img);
     container.appendChild(specs);
     container.appendChild(stats);
-    // container.appendChild(elements);
-    // container.appendChild(price);
-    if (select.children.length > 0 && this.hideSelect !== true) {
+
+    const teams = this.teams;
+    const availableTeams = teams.filter((team) => team.monsters.length < 4);
+
+    if (select.children.length > 0 && this.hideSelect !== true && availableTeams.length > 0) {
       container.appendChild(select);
     }
     return container;

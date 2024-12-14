@@ -1,6 +1,6 @@
 //Js code for team page
 import { Team } from "./classes/Team.js";
-import { isDigit, isLetter, capitalize, save, load, generateUniqueName, redirect } from "./common/utilities.js";
+import { isDigit, isLetter, capitalize, save, load, generateUniqueName, redirect, sortTeams } from "./common/utilities.js";
 import { TEAMS_LSK, SELECTEDTEAMSETTINGS_LSK, SELECTEDFIGHTTEAM_LSK } from "./common/localStorageKeys.js";
 import { imgAsBtn, setBtnIcon, populateSelect, renderIconWithNumber } from "./common/render.js";
 import { useInputEvent, useSubmitEvent, useChangeEvent, useClickEvent } from "./common/useEvent.js";
@@ -22,7 +22,7 @@ window.addEventListener("DOMContentLoaded", () => {
 function init() {
   togglePortalOnRefresh();
   loadTeams();
-  sortTeams(user.teamSort || 0);
+  sortTeams(teams, user.teamSort || 0);
   renderTeams();
   useClickEvent(portalToggle, togglePortal);
   validateCreateTeam();
@@ -179,160 +179,9 @@ function setSortOrder() {
   const sortOrder = Number(sortSelect.value);
 
   updateUser("teamSort", sortOrder);
-  sortTeams(sortOrder);
+  teams = sortTeams(teams, sortOrder);
 
   searchTeams();
-}
-
-function sortTeams(sortOrder) {
-  let sortedTeams = [];
-
-  switch (sortOrder) {
-    case 0:
-      sortedTeams = [...teams].sort((a, b) => {
-        return a.name.localeCompare(b.name);
-      });
-      break;
-    case 1:
-      sortedTeams = [...teams].sort((a, b) => {
-        return b.name.localeCompare(a.name);
-      });
-      break;
-    case 2:
-      sortedTeams = [...teams].sort((a, b) => {
-        return new Date(b.createdAt) - new Date(a.createdAt);
-      });
-      break;
-    case 3:
-      sortedTeams = [...teams].sort((a, b) => {
-        return new Date(a.createdAt) - new Date(b.createdAt);
-      });
-      break;
-    case 4:
-      sortedTeams = [...teams].sort((a, b) => {
-        const ratingDifference = b.totalRating - a.totalRating;
-        const rankDifference = ratingDifference === 0 ? b.totalRank - a.totalRank : ratingDifference;
-        const az = rankDifference === 0 ? a.name.localeCompare(b.name) : rankDifference;
-        const dateDifference = az === 0 ? a.createdAt - b.createdAt : az;
-        return dateDifference;
-      });
-      break;
-    case 5:
-      sortedTeams = [...teams].sort((a, b) => {
-        const ratingDifference = a.totalRating - b.totalRating;
-        const rankDifference = ratingDifference === 0 ? a.totalRank - b.totalRank : ratingDifference;
-        const az = rankDifference === 0 ? a.name.localeCompare(b.name) : rankDifference;
-        const dateDifference = az === 0 ? a.createdAt - b.createdAt : az;
-        return dateDifference;
-      });
-      break;
-    case 6:
-      sortedTeams = [...teams].sort((a, b) => {
-        const battleDifference = b.numBattels - a.numBattels;
-        const ratingDifference = battleDifference === 0 ? b.totalRating - a.totalRating : battleDifference;
-        const rankDifference = ratingDifference === 0 ? b.totalRank - a.totalRank : ratingDifference;
-        const az = rankDifference === 0 ? a.name.localeCompare(b.name) : rankDifference;
-        const dateDifference = az === 0 ? a.createdAt - b.createdAt : az;
-        return dateDifference;
-      });
-      break;
-    case 7:
-      sortedTeams = [...teams].sort((a, b) => {
-        const battleDifference = a.numBattels - b.numBattels;
-        const ratingDifference = battleDifference === 0 ? b.totalRating - a.totalRating : battleDifference;
-        const rankDifference = ratingDifference === 0 ? b.totalRank - a.totalRank : ratingDifference;
-        const az = rankDifference === 0 ? a.name.localeCompare(b.name) : rankDifference;
-        const dateDifference = az === 0 ? a.createdAt - b.createdAt : az;
-        return dateDifference;
-      });
-      break;
-    case 8:
-      sortedTeams = [...teams].sort((a, b) => {
-        const winRateDifference = b.winRate - a.winRate;
-        const ratingDifference = winRateDifference === 0 ? b.totalRating - a.totalRating : winRateDifference;
-        const rankDifference = ratingDifference === 0 ? b.totalRank - a.totalRank : ratingDifference;
-        const az = rankDifference === 0 ? a.name.localeCompare(b.name) : rankDifference;
-        const dateDifference = az === 0 ? a.createdAt - b.createdAt : az;
-        return dateDifference;
-      });
-      break;
-    case 9:
-      sortedTeams = [...teams].sort((a, b) => {
-        const winRateDifference = a.winRate - b.winRate;
-        const ratingDifference = winRateDifference === 0 ? b.totalRating - a.totalRating : winRateDifference;
-        const rankDifference = ratingDifference === 0 ? b.totalRank - a.totalRank : ratingDifference;
-        const az = rankDifference === 0 ? a.name.localeCompare(b.name) : rankDifference;
-        const dateDifference = az === 0 ? a.createdAt - b.createdAt : az;
-        return dateDifference;
-      });
-      break;
-    case 10:
-      sortedTeams = [...teams].sort((a, b) => {
-        const priceDifference = b.teamCost - a.teamCost;
-        const ratingDifference = priceDifference === 0 ? b.totalRating - a.totalRating : priceDifference;
-        const rankDifference = ratingDifference === 0 ? b.totalRank - a.totalRank : ratingDifference;
-        const az = rankDifference === 0 ? a.name.localeCompare(b.name) : rankDifference;
-        const dateDifference = az === 0 ? a.createdAt - b.createdAt : az;
-        return dateDifference;
-      });
-      break;
-    case 11:
-      sortedTeams = [...teams].sort((a, b) => {
-        const priceDifference = a.teamCost - b.teamCost;
-        const ratingDifference = priceDifference === 0 ? b.totalRating - a.totalRating : priceDifference;
-        const rankDifference = ratingDifference === 0 ? b.totalRank - a.totalRank : ratingDifference;
-        const az = rankDifference === 0 ? a.name.localeCompare(b.name) : rankDifference;
-        const dateDifference = az === 0 ? a.createdAt - b.createdAt : az;
-        return dateDifference;
-      });
-      break;
-    case 12:
-      sortedTeams = [...teams].sort((a, b) => {
-        const isPaidForDifference = Number(b.paidFor) - Number(a.paidFor);
-        const ratingDifference = isPaidForDifference === 0 ? b.totalRating - a.totalRating : isPaidForDifference;
-        const rankDifference = ratingDifference === 0 ? b.totalRank - a.totalRank : ratingDifference;
-        const az = rankDifference === 0 ? a.name.localeCompare(b.name) : rankDifference;
-        const dateDifference = az === 0 ? a.createdAt - b.createdAt : az;
-        return dateDifference;
-      });
-      break;
-    case 13:
-      sortedTeams = [...teams].sort((a, b) => {
-        const isPaidForDifference = Number(a.paidFor) - Number(b.paidFor);
-        const ratingDifference = isPaidForDifference === 0 ? b.totalRating - a.totalRating : isPaidForDifference;
-        const rankDifference = ratingDifference === 0 ? b.totalRank - a.totalRank : ratingDifference;
-        const az = rankDifference === 0 ? a.name.localeCompare(b.name) : rankDifference;
-        const dateDifference = az === 0 ? a.createdAt - b.createdAt : az;
-        return dateDifference;
-      });
-      break;
-    case 14:
-      sortedTeams = [...teams].sort((a, b) => {
-        const numMonsterDifference = b.monsters.length - a.monsters.length;
-        const ratingDifference = numMonsterDifference === 0 ? b.totalRating - a.totalRating : numMonsterDifference;
-        const rankDifference = ratingDifference === 0 ? b.totalRank - a.totalRank : ratingDifference;
-        const az = rankDifference === 0 ? a.name.localeCompare(b.name) : rankDifference;
-        const dateDifference = az === 0 ? a.createdAt - b.createdAt : az;
-        return dateDifference;
-      });
-      break;
-    case 15:
-      sortedTeams = [...teams].sort((a, b) => {
-        const numMonsterDifference = a.monsters.length - b.monsters.length;
-        const ratingDifference = numMonsterDifference === 0 ? b.totalRating - a.totalRating : numMonsterDifference;
-        const rankDifference = ratingDifference === 0 ? b.totalRank - a.totalRank : ratingDifference;
-        const az = rankDifference === 0 ? a.name.localeCompare(b.name) : rankDifference;
-        const dateDifference = az === 0 ? a.createdAt - b.createdAt : az;
-        return dateDifference;
-      });
-      break;
-    default:
-      break;
-  }
-
-  if (sortedTeams.length > 0) {
-    teams = sortedTeams;
-  }
 }
 
 function loadTeams() {
@@ -447,7 +296,7 @@ function renderTeams(condition) {
       });
 
       teamMonsters.forEach((monster) => {
-        const monsterCard = new MonsterCard(monster, [], true).assembleMonsterCard();
+        const monsterCard = new MonsterCard(monster, undefined, true).assembleMonsterCard();
         monsters.appendChild(monsterCard);
       });
 

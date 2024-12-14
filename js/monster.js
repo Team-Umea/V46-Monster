@@ -2,40 +2,40 @@
 import { serveData } from "./common/fetch.js";
 import { MONSTERS_TTL } from "./common/ttl.js";
 import { useClickEvent, useClickEvents, useChangeEvent, useInputEvent, useScrollEvent } from "./common/useEvent.js";
-import { ALLMONSTERS_LSK, TEAMS_LSK } from "./common/localStorageKeys.js";
+import { ALLMONSTERS_LSK } from "./common/localStorageKeys.js";
 import { MonsterCard } from "./classes/MonsterCard.js";
-import { load } from "./common/utilities.js";
 import { populateSelect } from "./common/render.js";
-import { Team } from "./classes/Team.js";
 import { user, updateUser } from "./common/user.js";
 
-const monsterContainer = document.getElementById("monsterContainer");
 const sortDropDown = document.getElementById("sortDropdown");
 const searchButtonGroup = document.getElementById("searchCategory");
 const searchBtns = searchButtonGroup.getElementsByTagName("input");
 const searchInput = document.getElementById("searchBox");
 const searchSortContainer = document.getElementById("searchSortContainer");
 const filterToggle = document.getElementById("filterToggle");
+const monsterSelectMessage = document.getElementById("monsterSelectMessage");
+const monsterContainer = document.getElementById("monsterContainer");
+
+const sortOptions = ["A - Z", "Z - A", "Low - High Price", "High - Low Price", "Low - High Health", "High - Low Health", "Low - High Damage", "High - Low Damage", "Low - High Rank", "High - Low Rank"];
 
 let visibleMonsters = 30;
 let monsters = [];
-let teams = [];
 
 let searchCategory = "name";
+let monsterSelectTimeOutId;
 
 window.addEventListener("DOMContentLoaded", () => {
   init();
 });
 
 function init() {
+  getMonsters();
   useClickEvent(filterToggle, toggleFilter);
   useClickEvents(searchBtns, setSearchCategory);
   useChangeEvent(sortDropDown, setSortOrder);
   useInputEvent(searchInput, searchMonsters);
   useScrollEvent(monsterContainer, appendMonsters);
-  getMonsters();
-  loadTeamsFromLS();
-  populateSelect(sortDropDown, ["A - Z", "Z - A", "Low - High Price", "High - Low Price", "Low - High Health", "High - Low Health", "Low - High Damage", "High - Low Damage", "Low - High Rank", "High - Low Rank"]);
+  populateSelect(sortDropDown, sortOptions);
 }
 
 async function getMonsters() {
@@ -45,12 +45,19 @@ async function getMonsters() {
   renderMonsters();
 }
 
-function loadTeamsFromLS() {
-  const loadedTeams = load(TEAMS_LSK);
-  if (loadedTeams) {
-    loadedTeams.forEach((loadedTeam) => {
-      teams.push(Team.fromJSON(loadedTeam));
-    });
+function setMonsterSelectMessage(className, message) {
+  monsterSelectMessage.setAttribute("class", `monsterSelectMessage ${className}`);
+  monsterSelectMessage.innerText = message;
+
+  renderMonsters();
+
+  if (monsterSelectMessage.innerText !== "") {
+    clearTimeout(monsterSelectTimeOutId);
+
+    monsterSelectTimeOutId = setTimeout(() => {
+      monsterSelectMessage.setAttribute("class", "monsterSelectMessage");
+      monsterSelectMessage.innerText = "";
+    }, 5000);
   }
 }
 
@@ -67,7 +74,7 @@ function appendMonsters() {
 
   for (let i = 0; i < 10; i++) {
     const monster = monsters[i];
-    const monsterCard = new MonsterCard(monster, teams).assembleMonsterCard();
+    const monsterCard = new MonsterCard(monster, setMonsterSelectMessage).assembleMonsterCard();
     monsterContainer.appendChild(monsterCard);
   }
   closeFilter();
@@ -79,7 +86,7 @@ function renderMonsters(condition) {
 
   for (let i = 0; i < visibleMonsters; i++) {
     const monster = monsters[i];
-    const monsterCard = new MonsterCard(monster, teams).assembleMonsterCard();
+    const monsterCard = new MonsterCard(monster, setMonsterSelectMessage).assembleMonsterCard();
 
     if (condition === undefined || condition === null) {
       monsterContainer.appendChild(monsterCard);
