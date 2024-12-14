@@ -129,13 +129,13 @@ input[type="radio"]:checked + label {
 
 #monsterContainer {
   max-height: 100vh;
-
-  margin-bottom: 20px;
+  padding-bottom: 140px;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   gap: 20px;
   overflow-y: auto;
+  scroll-behavior: smooth;
   background-color: #121212;
 }
 
@@ -258,13 +258,37 @@ input[type="radio"]:checked + label {
   animation: loading 1.5s infinite ease-in-out;
 }
 
+.quickScroll {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  z-index: 2;
+  border-radius: 30px;
+  box-shadow: 10px 10px 10px 0px rgba(0, 0, 0, 0.75);
+  background-color: var(--color-surface-a0);
+
+  ul {
+    display: flex;
+    gap: 15px;
+
+    padding: 12px 20px;
+    box-shadow: inset var(--color-surface-a20) 0px 0px 30px -12px;
+    border-radius: 30px;
+  }
+}
+
 .scrollFilter {
   width: 100vw;
-  height: 100px;
   position: fixed;
-  bottom: 0;
-  background: rgb(0, 0, 0);
-  background: linear-gradient(0deg, rgba(0, 0, 0, 0.99) 20%, rgba(107, 106, 106, 0) 100%);
+  bottom: -60px;
+  background: black;
+  box-shadow: 0px -100px 150px 200px rgba(0, 0, 0, 1);
+}
+
+footer {
+  transform: translate(0) !important;
+  left: auto !important;
+  right: 20px !important;
 }
 
 @keyframes loading {

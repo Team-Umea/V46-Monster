@@ -37,6 +37,7 @@ function init() {
   useInputEvent(searchInput, searchMonsters);
   useScrollEvent(monsterContainer, appendMonsters);
   populateSortSelect();
+  quickScroll();
 }
 
 async function getMonsters() {
@@ -177,6 +178,53 @@ function closeFilter() {
   filterToggle.setAttribute("alt", "Show filters");
   filterToggle.setAttribute("title", "Show filters");
   searchSortContainer.setAttribute("class", "hidden");
+}
+
+function quickScroll() {
+  const btns = Array.from(document.getElementById("quickScroll").getElementsByTagName("li"));
+
+  btns.forEach((btn) => {
+    const index = btns.indexOf(btn);
+
+    btn.addEventListener("click", () => {
+      let scrollHeight = calcScrollHeight(10);
+
+      switch (index) {
+        case 0:
+          monsterContainer.scrollTop = 0;
+          break;
+        case 1:
+          monsterContainer.scrollTop = Math.max(monsterContainer.scrollTop - scrollHeight, 0);
+          break;
+        case 2:
+          monsterContainer.scrollTop = Math.max(monsterContainer.scrollTop + scrollHeight, 0);
+          break;
+        case 3:
+          scrollHeight = calcScrollHeight(100);
+          monsterContainer.scrollTop = Math.max(monsterContainer.scrollTop - scrollHeight, 0);
+          break;
+        case 4:
+          scrollHeight = calcScrollHeight(100);
+          monsterContainer.scrollTop = Math.max(monsterContainer.scrollTop + scrollHeight, 0);
+          break;
+        default:
+          break;
+      }
+    });
+  });
+}
+
+function calcScrollHeight(items) {
+  const containerWidth = monsterContainer.clientWidth;
+  const itemWidth = 400;
+  const itemHeight = 667;
+
+  const itemsPerCol = Math.floor(containerWidth / itemWidth);
+  const itemsPerRow = Math.floor(items / itemsPerCol);
+
+  const height = itemsPerRow * itemHeight;
+
+  return height;
 }
 
 function appendMonsters() {
