@@ -5,58 +5,118 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Monster Battle Arena</title>
     <link rel="stylesheet" href="../css/common/normalize.css" />
-    <link rel="stylesheet" href="../css/common/components.css">
+    <link rel="stylesheet" href="../css/common/components.css" />
     <link rel="stylesheet" href="../css/common/common.css" />
-    <link rel="stylesheet" href="../css/monster.css">
+    <link rel="stylesheet" href="../css/monster.css" />
     <link rel="stylesheet" href="../css/team.css" />
   </head>
   <body>
-    <header>
-      <!-- header content goes here -->
-      <h1>Welcome to team page</h1>
-      <nav>
-        <ul>
-          <li><a href="index.html">Home</a></li>
-          <li><a href="monster.html">Monsters</a></li>
-          <li><a href="team.html">Teams</a></li>
-          <li><a href="fight.html">Fight</a></li>
-          <li><a href="element.html">Elements</a></li>
-          <li><a href="fightsRecord.html">Fight Records</a></li>
-      </nav>
-    </header>
     <main>
       <!-- main content goes here -->
 
       <div id="portalContainer" class="portalContainer">
+        <h2 id="portal" class="portal">Team Portal</h2>
+        <img src="../res/icons/upArrow.svg" alt="Hide team protal" title="Hide team protal" role="button" tabindex="0" id="portalToggle" class="icon icon-scale portalToggle" />
 
-      <h2 id="portal" class="portal">Team Portal</h2>
-        <img src="../res/icons/upArrow.svg" alt="Hide team protal" title="Hide team protal" role="button" tabindex="0" id="portalToggle" class="icon icon-scale portalToggle">
+        <div id="actionContainer" class="actionContainer">
+          <div id="createTeamContainer" class="createTeamContainer">
+            <h3 id="createTeamHeader" class="createTeamHeader">Create Your Team</h3>
+            <p id="createTeamMessage" class="createTeamMessage hidden"></p>
+            <form id="createTeamForm" class="createTeamForm">
+              <input type="text" placeholder=" " id="teamName" class="teamName" autocomplete="off" />
+              <label for="teamName" id="teamNameLabel" class="teamNameLabel">Team name</label>
+              <button type="submit" id="createTeamBtn" class="createTeamBtn primary-btn">Create Team</button>
+            </form>
+          </div>
 
-       <div id="actionContainer" class="actionContainer">
-        <div id="createTeamContainer" class="createTeamContainer">
-          <h3 id="createTeamHeader" class="createTeamHeader">Create Your Team</h3>
-          <p id="createTeamMessage" class="createTeamMessage hidden"></p>
-          <form id="createTeamForm" class="createTeamForm">
-            <input type="text" placeholder=" " id="teamName" class="teamName" autocomplete="off"/>
-            <label for="teamName" id="teamNameLabel" class="teamNameLabel">Team name</label>
-            <button type="submit" id="createTeamBtn" class="createTeamBtn primary-btn">Create Team</button>
-          </form>
+          <div id="teamFilters" class="teamFilters">
+            <h3 id="filterTeamsHeader" class="filterTeamsHeader">Filter Teams</h3>
+            <form id="searchTeamsForm" class="searchTeamsForm">
+              <input type="text" placeholder=" " id="searchTeams" class="searchTeams" />
+              <label for="" id="searchTeamsLabel" class="searchTeamsLabel">Search by team name</label>
+            </form>
+            <select id="sortTeams" class="sortTeams"></select>
+          </div>
         </div>
-
-        <div id="teamFilters" class="teamFilters">
-          <h3 id="filterTeamsHeader" class="filterTeamsHeader">Filter Teams</h3>
-          <form id="searchTeamsForm" class="searchTeamsForm">
-            <input type="text" placeholder=" " id="searchTeams" class="searchTeams">
-            <label for="" id="searchTeamsLabel" class="searchTeamsLabel">Search by team name</label>
-          </form>         
-          <select id="sortTeams" class="sortTeams">
-          </select>
-        </div>
-       </div>
       </div>
 
-       <div id="teamsContainer" class="teamsContainer"></div>
+      <div id="teamsContainer" class="teamsContainer"></div>
     </main>
+    <footer>
+      <nav>
+        <ul>
+          <li title="Home">
+            <a href="../html/index.html">
+              <img src="../res/icons/home.svg" alt="Home" class="icon" />
+              <p>Home</p>
+            </a>
+          </li>
+
+          <li title="Monsters">
+            <a href="../html/monster.html">
+              <img src="../res/icons/skull.svg" alt="Monsters" class="icon" />
+              <p>Monsters</p>
+            </a>
+          </li>
+
+          <li title="Teams">
+            <a href="../html/team.html">
+              <img src="../res/icons/teams.svg" alt="Teams" class="icon" />
+              <p>Teams</p>
+            </a>
+          </li>
+
+          <li title="Fight">
+            <a href="../html/fight.html">
+              <img src="../res/icons/shield.svg" alt="Fight" class="icon" />
+              <p>Fight</p>
+            </a>
+          </li>
+
+          <li title="Achievements">
+            <a href="../html/index.html">
+              <img src="../res/icons/sparkles.svg" alt="Achievements" class="icon" />
+              <p>Achievements</p>
+            </a>
+          </li>
+
+          <li title="Elements">
+            <a href="../html/element.html">
+              <img src="../res/icons/element.svg" alt="Elements" class="icon" />
+              <p>Elements</p>
+            </a>
+          </li>
+
+          <li title="Clans">
+            <a href="../html/index.html">
+              <img src="../res/icons/clans.svg" alt="Clans" class="icon" />
+              <p>Clans</p>
+            </a>
+          </li>
+
+          <li title="Marketplace">
+            <a href="../html/index.html">
+              <img src="../res/icons/market.svg" alt="Marketplace" class="icon" />
+              <p>Marketplace</p>
+            </a>
+          </li>
+
+          <li title="Messages">
+            <a href="../html/index.html">
+              <img src="../res/icons/message.svg" alt="Messages" class="icon" />
+              <p>Messages</p>
+            </a>
+          </li>
+
+          <li title="Account">
+            <a href="../html/index.html">
+              <img src="../res/icons/account.svg" alt="Account" class="icon icon-scale" />
+              <p>Account</p>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </footer>
     <script type="module" src="../js/team.js"></script>
   </body>
 </html>

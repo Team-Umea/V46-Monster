@@ -36,12 +36,12 @@
 }
 
 body {
-  /*css for body*/
   min-height: 100dvh;
+  padding-bottom: 80px;
   display: flex;
   flex-direction: column;
   color: var(--color-primary-a50);
-  background-color: var(--color-primary-lightest);
+  background-color: var(--color-surface-a0);
 }
 
 h1,
@@ -57,95 +57,49 @@ ul {
   list-style: none;
 }
 
-a {
-  text-decoration: none;
-  color: var(--color-secondary);
-  transition: all 0.3s ease-in-out;
-}
-
-a:hover {
-  filter: brightness(1.5);
-}
-
-header {
-  padding: 20px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 10px;
-  position: relative;
-  background-color: var(--color-primary);
-  border-bottom: 2px solid var(--color-surface-mixed-a0);
-}
-
-header h1 {
-  margin-top: -10px;
-}
-
-#headerControls {
-  width: 100%;
-  display: flex;
-  flex-direction: row-reverse;
-  justify-content: space-between;
-}
-
-header nav {
-  width: 100%;
-}
-
-header nav ul {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  gap: 30px;
-}
-
 main {
-  /* css for main */
   flex: 1;
 }
 
 footer {
-  /* css for footer */
-  padding: 30px;
-  background-color: var(--color-primary);
-}
+  position: fixed;
+  left: 50%;
+  bottom: 20px;
+  transform: translate(-50%);
+  border-radius: 30px;
+  box-shadow: 10px 10px 10px 0px rgba(0, 0, 0, 0.75);
+  background-color: var(--color-surface-a0);
 
-#themeToggle {
-  cursor: pointer;
-}
+  nav {
+    padding: 20px 30px;
+    box-shadow: inset var(--color-surface-a20) 0px 0px 30px -12px;
+    border-radius: 30px;
 
-.theme-light {
-  /*Color palette should be default*/
-  --color-primary-lightest: #f6f9f9;
-  --color-primary-light: #ecf1f2;
-  --color-primary: #c4d7d9;
-  --color-primary-medium: #aec9cb;
-  --color-primary-dark: #82abae;
-  --color-primary-darker: #629295;
-  --color-secondary: #4e777b;
-  --color-secondary-dark: #406064;
-  --color-tertiary: #385154;
-  --color-tertiary-dark: #324548;
-  --color-tertiary-darker: #212e30;
-  --filter: rgba(197, 192, 192, 0.75);
-}
+    ul {
+      display: flex;
+      gap: 40px;
 
-.theme-dark {
-  /*Color palette must be inverted to handle dark mode*/
-  --color-primary-lightest: #212e30;
-  --color-primary-light: #324548;
-  --color-primary: #385154;
-  --color-primary-medium: #406064;
-  --color-primary-dark: #4e777b;
-  --color-primary-darker: #629295;
-  --color-secondary: #82abae;
-  --color-secondary-dark: #aec9cb;
-  --color-tertiary: #c4d7d9;
-  --color-tertiary-dark: #ecf1f2;
-  --color-tertiary-darker: #f6f9f9;
-  --filter: rgba(0, 0, 0, 0.75);
-  --color-primary-text: #e6e4e1;
+      li {
+        a {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          transition: all 0.3s ease-in-out;
+          color: var(--color-primary-a50);
+          text-decoration: none;
+
+          p {
+            font-size: 0.7rem;
+          }
+
+          &:hover {
+            filter: brightness(50%);
+            transform: scale(1.04);
+          }
+        }
+      }
+    }
+  }
 }
 
 .input {

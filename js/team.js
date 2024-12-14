@@ -353,7 +353,7 @@ function renderTeams(condition) {
       const teamName = team.name;
       const teamMonsters = team.monsters;
       const numTeamMonsters = teamMonsters.length;
-      const winRate = `${team.winRate}`;
+      const winRate = `${team.winRate}%`;
       const isPaidFor = team.paidFor;
       const isVisible = team.isVisible;
 

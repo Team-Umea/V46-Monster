@@ -131,7 +131,6 @@ a {
 
 .icon {
   width: 30px;
-  /* filter: invert(0); */
   transition: all 0.3s ease-in-out;
 }
 
