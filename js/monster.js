@@ -1,7 +1,7 @@
 //Js code for monster page
 import { serveData } from "./common/fetch.js";
 import { MONSTERS_TTL } from "./common/ttl.js";
-import { useClickEvent, useClickEvents, useChangeEvent, useInputEvent, useMouseWheelEvent } from "./common/useEvent.js";
+import { useClickEvent, useClickEvents, useChangeEvent, useInputEvent, useScrollEvent } from "./common/useEvent.js";
 import { ALLMONSTERS_LSK, TEAMS_LSK } from "./common/localStorageKeys.js";
 import { MonsterCard } from "./classes/MonsterCard.js";
 import { load } from "./common/utilities.js";
@@ -17,7 +17,7 @@ const searchInput = document.getElementById("searchBox");
 const searchSortContainer = document.getElementById("searchSortContainer");
 const filterToggle = document.getElementById("filterToggle");
 
-let visibleMonsters = 20;
+let visibleMonsters = 30;
 let monsters = [];
 let teams = [];
 
@@ -32,6 +32,7 @@ function init() {
   useClickEvents(searchBtns, setSearchCategory);
   useChangeEvent(sortDropDown, setSortOrder);
   useInputEvent(searchInput, searchMonsters);
+  useScrollEvent(monsterContainer, appendMonsters);
   getMonsters();
   loadTeamsFromLS();
   populateSelect(sortDropDown, ["A - Z", "Z - A", "Low - High Price", "High - Low Price", "Low - High Health", "High - Low Health", "Low - High Damage", "High - Low Damage", "Low - High Rank", "High - Low Rank"]);
@@ -61,28 +62,39 @@ function renderLoadingSkeletons(max) {
   }
 }
 
+function appendMonsters() {
+  visibleMonsters += 10;
+
+  for (let i = 0; i < 10; i++) {
+    const monster = monsters[i];
+    const monsterCard = new MonsterCard(monster, teams).assembleMonsterCard();
+    monsterContainer.appendChild(monsterCard);
+  }
+  closeFilter();
+}
+
 function renderMonsters(condition) {
+  visibleMonsters = 30;
   monsterContainer.innerHTML = "";
 
-  monsters.forEach((monster) => {
-    const monsterCard = new MonsterCard(monster, teams);
-
-    const assembledMonsterCard = monsterCard.assembleMonsterCard();
+  for (let i = 0; i < visibleMonsters; i++) {
+    const monster = monsters[i];
+    const monsterCard = new MonsterCard(monster, teams).assembleMonsterCard();
 
     if (condition === undefined || condition === null) {
-      monsterContainer.appendChild(assembledMonsterCard);
+      monsterContainer.appendChild(monsterCard);
     } else if (condition !== undefined && condition !== null) {
       if (typeof condition === "function") {
         if (condition(monster) === true) {
-          monsterContainer.appendChild(assembledMonsterCard);
+          monsterContainer.appendChild(monsterCard);
         }
       } else {
         if (condition === true) {
-          monsterContainer.appendChild(assembledMonsterCard);
+          monsterContainer.appendChild(monsterCard);
         }
       }
     }
-  });
+  }
 }
 
 function setSearchCategory() {
@@ -180,6 +192,13 @@ function sortMonsters(sortOrder) {
     default:
       break;
   }
+}
+
+function closeFilter() {
+  filterToggle.setAttribute("src", "../res/icons/downArrow.svg");
+  filterToggle.setAttribute("alt", "Show filters");
+  filterToggle.setAttribute("title", "Show filters");
+  searchSortContainer.setAttribute("class", "hidden");
 }
 
 function toggleFilter() {

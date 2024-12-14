@@ -128,18 +128,21 @@ input[type="radio"]:checked + label {
 }
 
 #monsterContainer {
+  max-height: 100vh;
+
   margin-bottom: 20px;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   gap: 20px;
-  overflow-y: scroll;
+  overflow-y: auto;
   background-color: #121212;
 }
 
 .monsterCard {
   width: 400px;
-  aspect-ratio: 6/10;
+  height: 667px;
+  /* aspect-ratio: 6/10; */
   display: grid;
   grid-template-rows: repeat(100, 1fr);
   grid-template-columns: 1fr;
