@@ -6,7 +6,6 @@ import { ALLMONSTERS_LSK } from "./common/localStorageKeys.js";
 import { MonsterCard } from "./classes/MonsterCard.js";
 import { populateSelect } from "./common/render.js";
 import { user, updateUser } from "./common/user.js";
-import { sortByQuery } from "./common/utilities.js";
 
 const sortDropDown = document.getElementById("sortDropdown");
 const searchButtonGroup = document.getElementById("searchCategory");
@@ -64,81 +63,59 @@ function setSortOrder() {
 }
 
 function searchMonsters() {
+  const sortOrder = user.monsterSort || 0;
   const searchQuery = searchInput.value.trim().toLowerCase();
 
-  monsters = sortByQuery(monsters, searchCategory, searchQuery);
+  if (searchQuery) {
+    const lowerCaseQuery = searchQuery.toLowerCase();
+
+    monsters = [...monsters].sort((a, b) => {
+      const aValue = String(a[searchCategory]).toLowerCase();
+      const bValue = String(b[searchCategory]).toLowerCase();
+
+      const aIncludesQuery = aValue.includes(lowerCaseQuery);
+      const bIncludesQuery = bValue.includes(lowerCaseQuery);
+
+      if (aIncludesQuery && !bIncludesQuery) return -1;
+      if (!aIncludesQuery && bIncludesQuery) return 1;
+
+      return sortBy(a, b, sortOrder);
+    });
+  }
 
   renderMonsters();
 }
 
 function sortMonsters(sortOrder) {
+  monsters = [...monsters].sort((a, b) => {
+    return sortBy(a, b, sortOrder);
+  });
+}
+
+function sortBy(a, b, sortOrder) {
   switch (sortOrder) {
     case 0:
-      monsters = [...monsters].sort((a, b) => {
-        return a.name.localeCompare(b.name);
-      });
-      break;
+      return a.name.localeCompare(b.name);
     case 1:
-      monsters = [...monsters].sort((a, b) => {
-        return b.name.localeCompare(a.name);
-      });
-      break;
+      return b.name.localeCompare(a.name);
     case 2:
-      monsters = [...monsters].sort((a, b) => {
-        const priceDifference = a.price - b.price;
-        const rankDifference = priceDifference === 0 ? a.rank - b.rank : priceDifference;
-        return rankDifference;
-      });
-      break;
+      return a.price - b.price;
     case 3:
-      monsters = [...monsters].sort((a, b) => {
-        const priceDifference = b.price - a.price;
-        const rankDifference = priceDifference === 0 ? a.rank - b.rank : priceDifference;
-        return rankDifference;
-      });
-      break;
+      return b.price - a.price;
     case 4:
-      monsters = [...monsters].sort((a, b) => {
-        const healthDifference = a.health - b.health;
-        const rankDifference = healthDifference === 0 ? a.rank - b.rank : healthDifference;
-        return rankDifference;
-      });
-      break;
+      return a.health - b.health;
     case 5:
-      monsters = [...monsters].sort((a, b) => {
-        const healthDifference = b.health - a.health;
-        const rankDifference = healthDifference === 0 ? a.rank - b.rank : healthDifference;
-        return rankDifference;
-      });
-      break;
+      return b.health - a.health;
     case 6:
-      monsters = [...monsters].sort((a, b) => {
-        const damageDifference = a.damage - b.damage;
-        const rankDifference = damageDifference === 0 ? a.rank - b.rank : damageDifference;
-        return rankDifference;
-      });
-      break;
+      return a.damage - b.damage;
     case 7:
-      monsters = [...monsters].sort((a, b) => {
-        const damageDifference = b.damage - a.damage;
-        const rankDifference = damageDifference === 0 ? a.rank - b.rank : damageDifference;
-        return rankDifference;
-      });
-      break;
+      return b.damage - a.damage;
     case 8:
-      monsters = [...monsters].sort((a, b) => {
-        const rankDifference = b.rank - a.rank;
-        return rankDifference;
-      });
-      break;
+      return b.rank - a.rank;
     case 9:
-      monsters = [...monsters].sort((a, b) => {
-        const rankDifference = a.rank - b.rank;
-        return rankDifference;
-      });
-      break;
+      return a.rank - b.rank;
     default:
-      break;
+      return 0;
   }
 }
 
@@ -209,7 +186,6 @@ function appendMonsters() {
 
     visibleMonsters += 10;
 
-    console.log(start, end);
     for (let i = start; i < end; i++) {
       const monster = monsters[i];
       const monsterCard = new MonsterCard(monster, setMonsterSelectMessage).assembleMonsterCard();

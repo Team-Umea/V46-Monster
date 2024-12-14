@@ -404,7 +404,7 @@ export function sortTeams(teams, sortOrder) {
   return sortedTeams;
 }
 
-export const sortByQuery = (arr, searchCategory, searchQuery) => {
+export function sortByQuery(arr, searchCategory, searchQuery) {
   const lowerCaseQuery = searchQuery.toLowerCase();
 
   return [...arr].sort((a, b) => {
@@ -419,4 +419,4 @@ export const sortByQuery = (arr, searchCategory, searchQuery) => {
 
     return aValue.localeCompare(bValue);
   });
-};
+}
