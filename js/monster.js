@@ -1,18 +1,19 @@
 //Js code for monster page
-import { serveData, serveFetchedData } from "./common/fetch.js";
-import { ALLMONSTERS_TTL, MONSTERS_TTL, SORTOPTIONS_TTL } from "./common/ttl.js";
-import { useClickEvent, useClickEvents, useScrollEvent, useChangeEvent, useInputEvent, useMouseWheelEvent } from "./common/useEvent.js";
-import { ALLMONSTERS_LSK, SORTOPTIONS_LSK, TEAMS_LSK } from "./common/localStorageKeys.js";
+import { serveData } from "./common/fetch.js";
+import { MONSTERS_TTL } from "./common/ttl.js";
+import { useClickEvent, useClickEvents, useChangeEvent, useInputEvent, useMouseWheelEvent } from "./common/useEvent.js";
+import { ALLMONSTERS_LSK, TEAMS_LSK } from "./common/localStorageKeys.js";
 import { MonsterCard } from "./classes/MonsterCard.js";
-import { isValidObjKey, load } from "./common/utilities.js";
+import { load } from "./common/utilities.js";
 import { populateSelect } from "./common/render.js";
 import { Team } from "./classes/Team.js";
+import { user, updateUser } from "./common/user.js";
 
 const monsterContainer = document.getElementById("monsterContainer");
 const sortDropDown = document.getElementById("sortDropdown");
 const searchButtonGroup = document.getElementById("searchCategory");
 const searchBtns = searchButtonGroup.getElementsByTagName("input");
-const searchBox = document.getElementById("searchBox");
+const searchInput = document.getElementById("searchBox");
 const searchSortContainer = document.getElementById("searchSortContainer");
 const filterToggle = document.getElementById("filterToggle");
 
@@ -20,7 +21,7 @@ let visibleMonsters = 20;
 let monsters = [];
 let teams = [];
 
-let searchCategory;
+let searchCategory = "name";
 
 window.addEventListener("DOMContentLoaded", () => {
   init();
@@ -29,29 +30,18 @@ window.addEventListener("DOMContentLoaded", () => {
 function init() {
   useClickEvent(filterToggle, toggleFilter);
   useClickEvents(searchBtns, setSearchCategory);
-  useMouseWheelEvent(monsterContainer, infiniteScroll);
   useChangeEvent(sortDropDown, setSortOrder);
-  useInputEvent(searchBox, searchMonsters);
-
-  useData();
-
+  useInputEvent(searchInput, searchMonsters);
+  getMonsters();
   loadTeamsFromLS();
+  populateSelect(sortDropDown, ["A - Z", "Z - A", "Low - High Price", "High - Low Price", "Low - High Health", "High - Low Health", "Low - High Damage", "High - Low Damage", "Low - High Rank", "High - Low Rank"]);
 }
 
-async function useData() {
+async function getMonsters() {
   renderLoadingSkeletons(visibleMonsters);
-
-  const promises = [serveData("allMonsters", undefined, monsterContainer, ALLMONSTERS_LSK, MONSTERS_TTL), serveData("sortOptions", undefined, sortDropDown, SORTOPTIONS_LSK, SORTOPTIONS_TTL)];
-
-  const responses = await Promise.all(promises);
-
-  const monsterData = responses[0];
-  const options = responses[1];
-
-  monsters = monsterData.map((data) => ({ monster: data, visible: true }));
-
-  showMonsters();
-  populateSelect(sortDropDown, options);
+  monsters = await serveData("allMonsters", undefined, monsterContainer, ALLMONSTERS_LSK, MONSTERS_TTL);
+  sortMonsters(user.monsterSort || 0);
+  renderMonsters();
 }
 
 function loadTeamsFromLS() {
@@ -63,36 +53,6 @@ function loadTeamsFromLS() {
   }
 }
 
-function showAllMonsters() {
-  const hasSearchQuery = searchBox.value !== "";
-  if (hasSearchQuery) {
-    monsters.forEach((monster) => (monster.visible = true));
-    searchBox.value = "";
-    renderMonsters();
-  }
-}
-
-function showMonsters() {
-  const sortOrder = Number(sortDropDown.value);
-  const searchQuery = searchBox.value;
-
-  if (searchQuery === "") {
-    monsters.forEach((monster) => (monster.visible = true));
-    sortMonsters(sortOrder);
-    monsters.forEach((monster, index) => {
-      if (index >= visibleMonsters) {
-        monster.visible = false;
-      } else {
-        monster.visible = true;
-      }
-    });
-  } else {
-    searchMonsters();
-  }
-
-  renderMonsters();
-}
-
 function renderLoadingSkeletons(max) {
   for (let i = 0; i < max; i++) {
     const monsterCard = new MonsterCard();
@@ -101,180 +61,125 @@ function renderLoadingSkeletons(max) {
   }
 }
 
-function renderMonsters() {
+function renderMonsters(condition) {
   monsterContainer.innerHTML = "";
 
-  monsters.forEach((monsterObj) => {
-    const isVisible = monsterObj.visible;
-    const monster = monsterObj.monster;
-    const id = monster.id;
-    const monsterCard = new MonsterCard(monster, teams, id);
+  monsters.forEach((monster) => {
+    const monsterCard = new MonsterCard(monster, teams);
 
     const assembledMonsterCard = monsterCard.assembleMonsterCard();
-    if (isVisible) {
+
+    if (condition === undefined || condition === null) {
       monsterContainer.appendChild(assembledMonsterCard);
+    } else if (condition !== undefined && condition !== null) {
+      if (typeof condition === "function") {
+        if (condition(monster) === true) {
+          monsterContainer.appendChild(assembledMonsterCard);
+        }
+      } else {
+        if (condition === true) {
+          monsterContainer.appendChild(assembledMonsterCard);
+        }
+      }
     }
   });
-}
-
-function infiniteScroll() {
-  if (visibleMonsters < monsters.length) {
-    visibleMonsters += 10;
-    showMonsters();
-  }
 }
 
 function setSearchCategory() {
   const selectedBtn = Array.from(searchBtns).find((btn) => btn.checked);
-  searchCategory = selectedBtn.value;
-  showAllMonsters();
+  searchCategory = selectedBtn.value.toLowerCase();
+  searchInput.value = "";
+  renderMonsters();
 }
 
 function setSortOrder() {
-  searchBox.value = "";
-  showMonsters();
+  const sortOrder = Number(sortDropDown.value);
+
+  updateUser("monsterSort", sortOrder);
+  sortMonsters(sortOrder);
+
+  searchMonsters();
 }
 
 function searchMonsters() {
-  const searchQuery = searchBox.value.trim().toLowerCase();
-  monsters.forEach((monsterObj) => {
-    const monster = monsterObj.monster;
+  const searchQuery = searchInput.value.trim().toLowerCase();
 
-    if (searchCategory !== "rank") {
-      if (searchCategory in monster) {
-        const value = monster[searchCategory];
-        let valueStrHasQuery;
-        let valueArrHasQuery;
+  const matchingQuery = (query) => {
+    return String(query[searchCategory]).toLowerCase().includes(searchQuery);
+  };
 
-        if (typeof value === "string" || typeof value === "number") {
-          valueStrHasQuery = value.toString().trim().toLowerCase().startsWith(searchQuery);
-        } else {
-          valueArrHasQuery = value.some((item) => item.toLowerCase().startsWith(searchQuery));
-        }
-
-        if (valueStrHasQuery || valueArrHasQuery) {
-          monsterObj.visible = true;
-        } else {
-          monsterObj.visible = false;
-        }
-      }
-    } else {
-      const rank = ranks.find((m) => m.id === monster.id).rank.toString();
-
-      if (rank.startsWith(searchQuery)) {
-        monsterObj.visible = true;
-      } else {
-        monsterObj.visible = false;
-      }
-    }
-  });
-
-  renderMonsters();
+  renderMonsters(matchingQuery);
 }
 
 function sortMonsters(sortOrder) {
   switch (sortOrder) {
     case 0:
-      //A-Z;
-      defaultSort("name");
+      monsters = [...monsters].sort((a, b) => {
+        return a.name.localeCompare(b.name);
+      });
       break;
     case 1:
-      //Z-A
-      reverseSort("name");
+      monsters = [...monsters].sort((a, b) => {
+        return b.name.localeCompare(a.name);
+      });
       break;
     case 2:
-      //Lo-Hi Price
-      defaultSort("price");
+      monsters = [...monsters].sort((a, b) => {
+        const priceDifference = a.price - b.price;
+        const rankDifference = priceDifference === 0 ? a.rank - b.rank : priceDifference;
+        return rankDifference;
+      });
       break;
     case 3:
-      //Hi-Lo Price
-      reverseSort("price");
+      monsters = [...monsters].sort((a, b) => {
+        const priceDifference = b.price - a.price;
+        const rankDifference = priceDifference === 0 ? a.rank - b.rank : priceDifference;
+        return rankDifference;
+      });
       break;
     case 4:
-      //Lo-Hi Health
-      defaultSort("health");
+      monsters = [...monsters].sort((a, b) => {
+        const healthDifference = a.health - b.health;
+        const rankDifference = healthDifference === 0 ? a.rank - b.rank : healthDifference;
+        return rankDifference;
+      });
       break;
     case 5:
-      //Hi-Lo Health
-      reverseSort("health");
+      monsters = [...monsters].sort((a, b) => {
+        const healthDifference = b.health - a.health;
+        const rankDifference = healthDifference === 0 ? a.rank - b.rank : healthDifference;
+        return rankDifference;
+      });
       break;
     case 6:
-      //Lo-Hi Rank
-      reverseSort("rank");
+      monsters = [...monsters].sort((a, b) => {
+        const damageDifference = a.damage - b.damage;
+        const rankDifference = damageDifference === 0 ? a.rank - b.rank : damageDifference;
+        return rankDifference;
+      });
       break;
     case 7:
-      //Hi-Lo Rank
-      defaultSort("rank");
+      monsters = [...monsters].sort((a, b) => {
+        const damageDifference = b.damage - a.damage;
+        const rankDifference = damageDifference === 0 ? a.rank - b.rank : damageDifference;
+        return rankDifference;
+      });
       break;
     case 8:
-      //Lo-Hi Damage
-      defaultSort("damage");
+      monsters = [...monsters].sort((a, b) => {
+        const rankDifference = b.rank - a.rank;
+        return rankDifference;
+      });
       break;
     case 9:
-      //Hi-Lo Damage
-      reverseSort("damage");
-      break;
-    case 10:
-      //Few-Many Elements
-      sortByFewToManyElements();
-      break;
-    case 11:
-      //Many-Few Elements;
-      sortByManyToFewElements();
+      monsters = [...monsters].sort((a, b) => {
+        const rankDifference = a.rank - b.rank;
+        return rankDifference;
+      });
       break;
     default:
       break;
   }
-}
-
-function defaultSort(key) {
-  const tempMonsters = [...monsters].map((monster) => monster.monster);
-  if (isValidObjKey(tempMonsters, key)) {
-    monsters = [...monsters].sort((a, b) => {
-      const valueA = a.monster[key];
-      const valueB = b.monster[key];
-      if (typeof valueA === "string") {
-        return valueA.toLowerCase().localeCompare(valueB.toLowerCase());
-      } else if (typeof valueA === "number") {
-        const diff = valueA - valueB;
-        return diff === 0 ? a.monster.name.toLowerCase().localeCompare(b.monster.name.toLowerCase()) : diff;
-      }
-    });
-  }
-}
-
-function reverseSort(key) {
-  const tempMonsters = [...monsters].map((monster) => monster.monster);
-  if (isValidObjKey(tempMonsters, key)) {
-    monsters = [...monsters].sort((a, b) => {
-      const valueA = a.monster[key];
-      const valueB = b.monster[key];
-      if (typeof valueA === "string") {
-        return valueB.localeCompare(valueA);
-      } else if (typeof valueA === "number") {
-        const diff = valueB - valueA;
-        return diff === 0 ? a.monster.name.localeCompare(b.monster.name) : diff;
-      }
-    });
-  }
-}
-
-function sortByFewToManyElements() {
-  monsters = [...monsters].sort((a, b) => {
-    const elementsA = a.monster.elements.length;
-    const elementsB = b.monster.elements.length;
-    const elementsDifference = elementsA - elementsB;
-    return elementsDifference === 0 ? a.monster.name.localeCompare(b.monster.name) : elementsDifference;
-  });
-}
-
-function sortByManyToFewElements() {
-  monsters = [...monsters].sort((a, b) => {
-    const elementsA = a.monster.elements.length;
-    const elementsB = b.monster.elements.length;
-    const elementsDifference = elementsB - elementsA;
-    return elementsDifference === 0 ? a.monster.name.localeCompare(b.monster.name) : elementsDifference;
-  });
 }
 
 function toggleFilter() {

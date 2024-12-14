@@ -57,6 +57,14 @@ ul {
   list-style: none;
 }
 
+header {
+  .userCredits {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+  }
+}
+
 main {
   flex: 1;
 }

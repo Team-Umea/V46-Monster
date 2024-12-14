@@ -2,12 +2,11 @@
 import { useClickEvent, useFocusEvent } from "./common/useEvent.js";
 import { serveData } from "./common/fetch.js";
 import { renderIconWithNumber, averageValueIcon, imgAsBtn, valueWithHeader, progressBar, dataList, setBtnIcon } from "./common/render.js";
-import { load, save, remove, redirect, formatLargeNumber, reload } from "./common/utilities.js";
-import { SELECTEDTEAMSETTINGS_LSK, TEAMS_LSK, CREDITS_LSK, SELECTEDFIGHTTEAM_LSK } from "./common/localStorageKeys.js";
-import { useCredits, addCredits } from "./common/credits.js";
+import { load, save, remove, redirect, formatLargeNumber } from "./common/utilities.js";
+import { USER_LSK, SELECTEDTEAMSETTINGS_LSK, TEAMS_LSK, SELECTEDFIGHTTEAM_LSK } from "./common/localStorageKeys.js";
 import { MonsterCard } from "./classes/MonsterCard.js";
 import { Team } from "./classes/Team.js";
-
+import { user, updateUser } from "./common/user.js";
 import { ELEMENTS_LSK } from "./common/localStorageKeys.js";
 import { ELEMENTS_TTL } from "./common/ttl.js";
 
@@ -22,7 +21,7 @@ const battleRecordContainer = document.getElementById("battleRecordContainer");
 const dangerZone = document.getElementById("dangerZone");
 
 let teams;
-let userCredits = load(CREDITS_LSK);
+let userCredits = load(USER_LSK).credits;
 
 let linkedBtns = [];
 let timeOutBtns = [];
@@ -90,6 +89,7 @@ function render() {
   loadElements();
   renderBattleRecord();
   postionDangerZone();
+  placeUserCredits();
 }
 
 function loadAllTeams() {
@@ -164,7 +164,6 @@ function navigate() {
 function updateTeams() {
   save(TEAMS_LSK, teams);
   save(SELECTEDTEAMSETTINGS_LSK, team);
-  userCredits = load(CREDITS_LSK);
   loadTeam();
   render();
 }
@@ -187,7 +186,9 @@ function buyTeam() {
 
   selectedTeam.setPaidFor(true);
   team.setPaidFor(true);
-  useCredits(teamCost);
+  const currentCredits = user.credits;
+  const newCredits = currentCredits - teamCost;
+  updateUser("credits", newCredits);
   updateTeams();
 }
 
@@ -195,7 +196,9 @@ function sellTeam() {
   teams = teams.filter((t) => t.name.toLowerCase() !== teamName.toLowerCase());
   remove(SELECTEDTEAMSETTINGS_LSK);
   save(TEAMS_LSK, teams);
-  addCredits(teamValue);
+  const currentCredits = user.credits;
+  const newCredits = currentCredits + teamValue;
+  updateUser("credits", newCredits);
   setTimeout(() => {
     navigate();
   }, 100);
@@ -504,6 +507,13 @@ function postionDangerZone() {
     dangerZone.setAttribute("class", "dangerZone");
   } else {
     dangerZone.setAttribute("class", "dangerZone position-bottom");
+  }
+}
+
+function placeUserCredits() {
+  const credz = document.getElementsByClassName("userCredits")[0];
+  if (credz) {
+    credz.classList.remove("userCredits");
   }
 }
 

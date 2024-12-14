@@ -5,13 +5,14 @@ import { TEAMS_LSK, SELECTEDTEAMSETTINGS_LSK, SELECTEDFIGHTTEAM_LSK } from "./co
 import { imgAsBtn, setBtnIcon, populateSelect, renderIconWithNumber } from "./common/render.js";
 import { useInputEvent, useSubmitEvent, useChangeEvent, useClickEvent } from "./common/useEvent.js";
 import { MonsterCard } from "./classes/MonsterCard.js";
+import { user, updateUser } from "./common/user.js";
 
 const portalToggle = document.getElementById("portalToggle");
 const actionContainer = document.getElementById("actionContainer");
 const createTeamContainer = document.getElementById("createTeamContainer");
 const teamsContainer = document.getElementById("teamsContainer");
 
-let teamsArr = [];
+let teams = [];
 let createTeamFormTimeout;
 
 window.addEventListener("DOMContentLoaded", () => {
@@ -19,12 +20,27 @@ window.addEventListener("DOMContentLoaded", () => {
 });
 
 function init() {
+  togglePortalOnRefresh();
   loadTeams();
-  sortTeams(0);
+  sortTeams(user.teamSort || 0);
   renderTeams();
   useClickEvent(portalToggle, togglePortal);
   validateCreateTeam();
   filterTeams();
+}
+
+function togglePortalOnRefresh() {
+  if (!user.teamPortalVisible) {
+    actionContainer.style.display = "none";
+    portalToggle.setAttribute("src", "../../res/icons/downArrow.svg");
+    portalToggle.setAttribute("alt", "Show team portal");
+    portalToggle.setAttribute("title", "Show team portal");
+  } else {
+    actionContainer.style.display = "flex";
+    portalToggle.setAttribute("src", "../../res/icons/upArrow.svg");
+    portalToggle.setAttribute("alt", "Hide team portal");
+    portalToggle.setAttribute("title", "Hide team portal");
+  }
 }
 
 function togglePortal() {
@@ -41,6 +57,8 @@ function togglePortal() {
     portalToggle.setAttribute("alt", "Hide team portal");
     portalToggle.setAttribute("title", "Hide team portal");
   }
+
+  updateUser("teamPortalVisible", !isExtended);
 }
 
 function validateCreateTeam() {
@@ -86,7 +104,7 @@ function validateCreateTeam() {
     input.value = "";
 
     if (teamName !== "" && teamName.length <= 20) {
-      const teamNames = teamsArr.map((team) => team.name);
+      const teamNames = teams.map((team) => team.name);
       const checkName = generateUniqueName(teamNames, teamName);
 
       let controlledName = "";
@@ -160,6 +178,7 @@ function setSortOrder() {
   const sortSelect = document.getElementById("sortTeams");
   const sortOrder = Number(sortSelect.value);
 
+  updateUser("teamSort", sortOrder);
   sortTeams(sortOrder);
 
   searchTeams();
@@ -170,27 +189,27 @@ function sortTeams(sortOrder) {
 
   switch (sortOrder) {
     case 0:
-      sortedTeams = [...teamsArr].sort((a, b) => {
+      sortedTeams = [...teams].sort((a, b) => {
         return a.name.localeCompare(b.name);
       });
       break;
     case 1:
-      sortedTeams = [...teamsArr].sort((a, b) => {
+      sortedTeams = [...teams].sort((a, b) => {
         return b.name.localeCompare(a.name);
       });
       break;
     case 2:
-      sortedTeams = [...teamsArr].sort((a, b) => {
+      sortedTeams = [...teams].sort((a, b) => {
         return new Date(b.createdAt) - new Date(a.createdAt);
       });
       break;
     case 3:
-      sortedTeams = [...teamsArr].sort((a, b) => {
+      sortedTeams = [...teams].sort((a, b) => {
         return new Date(a.createdAt) - new Date(b.createdAt);
       });
       break;
     case 4:
-      sortedTeams = [...teamsArr].sort((a, b) => {
+      sortedTeams = [...teams].sort((a, b) => {
         const ratingDifference = b.totalRating - a.totalRating;
         const rankDifference = ratingDifference === 0 ? b.totalRank - a.totalRank : ratingDifference;
         const az = rankDifference === 0 ? a.name.localeCompare(b.name) : rankDifference;
@@ -199,7 +218,7 @@ function sortTeams(sortOrder) {
       });
       break;
     case 5:
-      sortedTeams = [...teamsArr].sort((a, b) => {
+      sortedTeams = [...teams].sort((a, b) => {
         const ratingDifference = a.totalRating - b.totalRating;
         const rankDifference = ratingDifference === 0 ? a.totalRank - b.totalRank : ratingDifference;
         const az = rankDifference === 0 ? a.name.localeCompare(b.name) : rankDifference;
@@ -208,7 +227,7 @@ function sortTeams(sortOrder) {
       });
       break;
     case 6:
-      sortedTeams = [...teamsArr].sort((a, b) => {
+      sortedTeams = [...teams].sort((a, b) => {
         const battleDifference = b.numBattels - a.numBattels;
         const ratingDifference = battleDifference === 0 ? b.totalRating - a.totalRating : battleDifference;
         const rankDifference = ratingDifference === 0 ? b.totalRank - a.totalRank : ratingDifference;
@@ -218,7 +237,7 @@ function sortTeams(sortOrder) {
       });
       break;
     case 7:
-      sortedTeams = [...teamsArr].sort((a, b) => {
+      sortedTeams = [...teams].sort((a, b) => {
         const battleDifference = a.numBattels - b.numBattels;
         const ratingDifference = battleDifference === 0 ? b.totalRating - a.totalRating : battleDifference;
         const rankDifference = ratingDifference === 0 ? b.totalRank - a.totalRank : ratingDifference;
@@ -228,7 +247,7 @@ function sortTeams(sortOrder) {
       });
       break;
     case 8:
-      sortedTeams = [...teamsArr].sort((a, b) => {
+      sortedTeams = [...teams].sort((a, b) => {
         const winRateDifference = b.winRate - a.winRate;
         const ratingDifference = winRateDifference === 0 ? b.totalRating - a.totalRating : winRateDifference;
         const rankDifference = ratingDifference === 0 ? b.totalRank - a.totalRank : ratingDifference;
@@ -238,7 +257,7 @@ function sortTeams(sortOrder) {
       });
       break;
     case 9:
-      sortedTeams = [...teamsArr].sort((a, b) => {
+      sortedTeams = [...teams].sort((a, b) => {
         const winRateDifference = a.winRate - b.winRate;
         const ratingDifference = winRateDifference === 0 ? b.totalRating - a.totalRating : winRateDifference;
         const rankDifference = ratingDifference === 0 ? b.totalRank - a.totalRank : ratingDifference;
@@ -248,7 +267,7 @@ function sortTeams(sortOrder) {
       });
       break;
     case 10:
-      sortedTeams = [...teamsArr].sort((a, b) => {
+      sortedTeams = [...teams].sort((a, b) => {
         const priceDifference = b.teamCost - a.teamCost;
         const ratingDifference = priceDifference === 0 ? b.totalRating - a.totalRating : priceDifference;
         const rankDifference = ratingDifference === 0 ? b.totalRank - a.totalRank : ratingDifference;
@@ -258,7 +277,7 @@ function sortTeams(sortOrder) {
       });
       break;
     case 11:
-      sortedTeams = [...teamsArr].sort((a, b) => {
+      sortedTeams = [...teams].sort((a, b) => {
         const priceDifference = a.teamCost - b.teamCost;
         const ratingDifference = priceDifference === 0 ? b.totalRating - a.totalRating : priceDifference;
         const rankDifference = ratingDifference === 0 ? b.totalRank - a.totalRank : ratingDifference;
@@ -268,7 +287,7 @@ function sortTeams(sortOrder) {
       });
       break;
     case 12:
-      sortedTeams = [...teamsArr].sort((a, b) => {
+      sortedTeams = [...teams].sort((a, b) => {
         const isPaidForDifference = Number(b.paidFor) - Number(a.paidFor);
         const ratingDifference = isPaidForDifference === 0 ? b.totalRating - a.totalRating : isPaidForDifference;
         const rankDifference = ratingDifference === 0 ? b.totalRank - a.totalRank : ratingDifference;
@@ -278,7 +297,7 @@ function sortTeams(sortOrder) {
       });
       break;
     case 13:
-      sortedTeams = [...teamsArr].sort((a, b) => {
+      sortedTeams = [...teams].sort((a, b) => {
         const isPaidForDifference = Number(a.paidFor) - Number(b.paidFor);
         const ratingDifference = isPaidForDifference === 0 ? b.totalRating - a.totalRating : isPaidForDifference;
         const rankDifference = ratingDifference === 0 ? b.totalRank - a.totalRank : ratingDifference;
@@ -288,7 +307,7 @@ function sortTeams(sortOrder) {
       });
       break;
     case 14:
-      sortedTeams = [...teamsArr].sort((a, b) => {
+      sortedTeams = [...teams].sort((a, b) => {
         const numMonsterDifference = b.monsters.length - a.monsters.length;
         const ratingDifference = numMonsterDifference === 0 ? b.totalRating - a.totalRating : numMonsterDifference;
         const rankDifference = ratingDifference === 0 ? b.totalRank - a.totalRank : ratingDifference;
@@ -298,7 +317,7 @@ function sortTeams(sortOrder) {
       });
       break;
     case 15:
-      sortedTeams = [...teamsArr].sort((a, b) => {
+      sortedTeams = [...teams].sort((a, b) => {
         const numMonsterDifference = a.monsters.length - b.monsters.length;
         const ratingDifference = numMonsterDifference === 0 ? b.totalRating - a.totalRating : numMonsterDifference;
         const rankDifference = ratingDifference === 0 ? b.totalRank - a.totalRank : ratingDifference;
@@ -312,7 +331,7 @@ function sortTeams(sortOrder) {
   }
 
   if (sortedTeams.length > 0) {
-    teamsArr = sortedTeams;
+    teams = sortedTeams;
   }
 }
 
@@ -320,19 +339,19 @@ function loadTeams() {
   const loadedTeams = load(TEAMS_LSK);
   if (loadedTeams) {
     loadedTeams.forEach((loadedTeam) => {
-      teamsArr.push(Team.fromJSON(loadedTeam));
+      teams.push(Team.fromJSON(loadedTeam));
     });
     renderTeams();
   }
 }
 
 function updateTeams() {
-  save(TEAMS_LSK, teamsArr);
+  save(TEAMS_LSK, teams);
 }
 
 function addTeam(teamName) {
   const newTeam = new Team(teamName);
-  teamsArr.push(newTeam);
+  teams.push(newTeam);
   updateTeams();
   renderTeams();
 }
@@ -347,9 +366,9 @@ function redirectToSettingsPage(team) {
 function renderTeams(condition) {
   teamsContainer.innerHTML = "";
 
-  if (teamsArr) {
+  if (teams) {
     teamsContainer.setAttribute("class", "teamsContainer");
-    teamsArr.forEach((team) => {
+    teams.forEach((team) => {
       const teamName = team.name;
       const teamMonsters = team.monsters;
       const numTeamMonsters = teamMonsters.length;

@@ -103,6 +103,7 @@ input[type="radio"] {
 input[type="radio"] + label {
   padding: 10px;
   border-radius: 4px;
+  cursor: pointer;
   background-color: var(--color-surface-a10);
 }
 

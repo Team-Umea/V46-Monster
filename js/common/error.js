@@ -9,10 +9,8 @@ export async function getError(status, parent) {
     const requestedMessage = messages[status];
     const parsedMessage = parseMessage(requestedMessage);
     renderErrorMesage(parsedMessage, parent);
-    // console.error(parsedMessage);
     return parsedMessage;
   }
-  // console.error("An unexpected error occurred");
   return "An unexpected error occurred";
 }
 
