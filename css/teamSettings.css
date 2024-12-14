@@ -653,6 +653,13 @@ main {
   transform: translate(-50%);
 }
 
+footer {
+  right: auto !important;
+  left: 50% !important;
+  bottom: 20px !important;
+  transform: translate(-50%) !important;
+}
+
 @media (max-width: 1300px) {
   .teamStatsConatiner {
     grid-template-columns: repeat(2, 1fr);

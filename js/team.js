@@ -22,7 +22,7 @@ window.addEventListener("DOMContentLoaded", () => {
 function init() {
   togglePortalOnRefresh();
   loadTeams();
-  sortTeams(teams, user.teamSort || 0);
+  teams = sortTeams(teams, user.teamSort || 0);
   renderTeams();
   useClickEvent(portalToggle, togglePortal);
   validateCreateTeam();

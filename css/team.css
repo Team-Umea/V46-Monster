@@ -310,3 +310,10 @@
     bottom: 45px;
   }
 }
+
+footer {
+  right: auto !important;
+  left: 50% !important;
+  bottom: 20px !important;
+  transform: translate(-50%) !important;
+}
