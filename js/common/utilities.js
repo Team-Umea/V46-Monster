@@ -172,12 +172,13 @@ export function findMissingDigit(target, arr) {
 }
 
 export function generateUniqueName(arr, newName) {
-  const sortedNames = [...arr, newName].sort((a, b) => Number(extractNumbers(a) - Number(extractNumbers(b)))).map((item) => item.toLowerCase());
+  const lowerCase = newName.toLowerCase();
+  const sortedNames = [...arr, lowerCase].sort((a, b) => Number(extractNumbers(a) - Number(extractNumbers(b)))).map((item) => item.toLowerCase());
 
-  const isFirstInstance = !arr.map((item) => item.toLowerCase()).includes(extractLetters(newName));
+  const isFirstInstance = !arr.map((item) => item.toLowerCase()).includes(extractLetters(lowerCase));
 
   if (!isFirstInstance && sortedNames) {
-    const uniqueID = findMissingDigit(newName, sortedNames);
+    const uniqueID = findMissingDigit(lowerCase, sortedNames);
     let name = extractLetters(newName);
 
     name += uniqueID;
@@ -194,7 +195,10 @@ export function generateUniqueName(arr, newName) {
 }
 
 export function formatLargeNumber(num) {
-  return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ");
+  if (num) {
+    return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ");
+  }
+  return num;
 }
 
 export function redirect(path) {
@@ -399,3 +403,20 @@ export function sortTeams(teams, sortOrder) {
 
   return sortedTeams;
 }
+
+export const sortByQuery = (arr, searchCategory, searchQuery) => {
+  const lowerCaseQuery = searchQuery.toLowerCase();
+
+  return [...arr].sort((a, b) => {
+    const aValue = String(a[searchCategory]).toLowerCase();
+    const bValue = String(b[searchCategory]).toLowerCase();
+
+    const aIncludesQuery = aValue.includes(lowerCaseQuery);
+    const bIncludesQuery = bValue.includes(lowerCaseQuery);
+
+    if (aIncludesQuery && !bIncludesQuery) return -1;
+    if (!aIncludesQuery && bIncludesQuery) return 1;
+
+    return aValue.localeCompare(bValue);
+  });
+};

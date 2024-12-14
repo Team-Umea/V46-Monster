@@ -10,6 +10,7 @@ const newUser = {
   rank: 10,
   monsterSort: 0,
   teamSort: 0,
+  monsterPortalVisible: false,
   teamPortalVisible: true,
 };
 
@@ -38,6 +39,7 @@ export function updateUser(property, value) {
   if (property in user) {
     user[property] = value;
     save(USER_LSK, user);
+    console.log(property, value);
     if (property === "credits") {
       renderCredits(value);
     }

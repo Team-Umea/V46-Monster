@@ -30,16 +30,16 @@ function init() {
 }
 
 function togglePortalOnRefresh() {
-  if (!user.teamPortalVisible) {
-    actionContainer.style.display = "none";
-    portalToggle.setAttribute("src", "../../res/icons/downArrow.svg");
-    portalToggle.setAttribute("alt", "Show team portal");
-    portalToggle.setAttribute("title", "Show team portal");
-  } else {
+  if (user.teamPortalVisible) {
     actionContainer.style.display = "flex";
     portalToggle.setAttribute("src", "../../res/icons/upArrow.svg");
     portalToggle.setAttribute("alt", "Hide team portal");
     portalToggle.setAttribute("title", "Hide team portal");
+  } else {
+    actionContainer.style.display = "none";
+    portalToggle.setAttribute("src", "../../res/icons/downArrow.svg");
+    portalToggle.setAttribute("alt", "Show team portal");
+    portalToggle.setAttribute("title", "Show team portal");
   }
 }
 
@@ -158,6 +158,8 @@ function filterTeams() {
   const sortOptions = ["A - Z", "Z - A", "Newest - Oldest", "Oldest - Newest", "Strongest - Weakest", "Weakest - Strongest", "Many - Few Battels", "Few - Many Battles", "High - Low Winrate", "Low - High Winrate", "Expensive - Cheap", "Cheap - Expensive", "Paid - Unpaid", "Unpaid - Paid", "Full - Empty", "Empty - Full"];
 
   populateSelect(sortSelect, sortOptions);
+
+  sortSelect.value = user.teamSort || 0;
 
   useInputEvent(searchInput, searchTeams);
   useChangeEvent(sortSelect, setSortOrder);

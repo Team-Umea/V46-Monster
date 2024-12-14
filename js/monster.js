@@ -6,6 +6,7 @@ import { ALLMONSTERS_LSK } from "./common/localStorageKeys.js";
 import { MonsterCard } from "./classes/MonsterCard.js";
 import { populateSelect } from "./common/render.js";
 import { user, updateUser } from "./common/user.js";
+import { sortByQuery } from "./common/utilities.js";
 
 const sortDropDown = document.getElementById("sortDropdown");
 const searchButtonGroup = document.getElementById("searchCategory");
@@ -30,12 +31,13 @@ window.addEventListener("DOMContentLoaded", () => {
 
 function init() {
   getMonsters();
+  toggleFilerOnRefresh();
   useClickEvent(filterToggle, toggleFilter);
   useClickEvents(searchBtns, setSearchCategory);
   useChangeEvent(sortDropDown, setSortOrder);
   useInputEvent(searchInput, searchMonsters);
   useScrollEvent(monsterContainer, appendMonsters);
-  populateSelect(sortDropDown, sortOptions);
+  populateSortSelect();
 }
 
 async function getMonsters() {
@@ -43,65 +45,6 @@ async function getMonsters() {
   monsters = await serveData("allMonsters", undefined, monsterContainer, ALLMONSTERS_LSK, MONSTERS_TTL);
   sortMonsters(user.monsterSort || 0);
   renderMonsters();
-}
-
-function setMonsterSelectMessage(className, message) {
-  monsterSelectMessage.setAttribute("class", `monsterSelectMessage ${className}`);
-  monsterSelectMessage.innerText = message;
-
-  renderMonsters();
-
-  if (monsterSelectMessage.innerText !== "") {
-    clearTimeout(monsterSelectTimeOutId);
-
-    monsterSelectTimeOutId = setTimeout(() => {
-      monsterSelectMessage.setAttribute("class", "monsterSelectMessage");
-      monsterSelectMessage.innerText = "";
-    }, 5000);
-  }
-}
-
-function renderLoadingSkeletons(max) {
-  for (let i = 0; i < max; i++) {
-    const monsterCard = new MonsterCard();
-    const assembleMonsterCard = monsterCard.getMonsterCard();
-    monsterContainer.appendChild(assembleMonsterCard);
-  }
-}
-
-function appendMonsters() {
-  visibleMonsters += 10;
-
-  for (let i = 0; i < 10; i++) {
-    const monster = monsters[i];
-    const monsterCard = new MonsterCard(monster, setMonsterSelectMessage).assembleMonsterCard();
-    monsterContainer.appendChild(monsterCard);
-  }
-  closeFilter();
-}
-
-function renderMonsters(condition) {
-  visibleMonsters = 30;
-  monsterContainer.innerHTML = "";
-
-  for (let i = 0; i < visibleMonsters; i++) {
-    const monster = monsters[i];
-    const monsterCard = new MonsterCard(monster, setMonsterSelectMessage).assembleMonsterCard();
-
-    if (condition === undefined || condition === null) {
-      monsterContainer.appendChild(monsterCard);
-    } else if (condition !== undefined && condition !== null) {
-      if (typeof condition === "function") {
-        if (condition(monster) === true) {
-          monsterContainer.appendChild(monsterCard);
-        }
-      } else {
-        if (condition === true) {
-          monsterContainer.appendChild(monsterCard);
-        }
-      }
-    }
-  }
 }
 
 function setSearchCategory() {
@@ -123,11 +66,9 @@ function setSortOrder() {
 function searchMonsters() {
   const searchQuery = searchInput.value.trim().toLowerCase();
 
-  const matchingQuery = (query) => {
-    return String(query[searchCategory]).toLowerCase().includes(searchQuery);
-  };
+  monsters = sortByQuery(monsters, searchCategory, searchQuery);
 
-  renderMonsters(matchingQuery);
+  renderMonsters();
 }
 
 function sortMonsters(sortOrder) {
@@ -201,11 +142,39 @@ function sortMonsters(sortOrder) {
   }
 }
 
-function closeFilter() {
-  filterToggle.setAttribute("src", "../res/icons/downArrow.svg");
-  filterToggle.setAttribute("alt", "Show filters");
-  filterToggle.setAttribute("title", "Show filters");
-  searchSortContainer.setAttribute("class", "hidden");
+function populateSortSelect() {
+  populateSelect(sortDropDown, sortOptions);
+  sortDropDown.value = user.monsterSort || 0;
+}
+
+function setMonsterSelectMessage(className, message) {
+  monsterSelectMessage.setAttribute("class", `monsterSelectMessage ${className}`);
+  monsterSelectMessage.innerText = message;
+
+  renderMonsters();
+
+  if (monsterSelectMessage.innerText !== "") {
+    clearTimeout(monsterSelectTimeOutId);
+
+    monsterSelectTimeOutId = setTimeout(() => {
+      monsterSelectMessage.setAttribute("class", "monsterSelectMessage");
+      monsterSelectMessage.innerText = "";
+    }, 5000);
+  }
+}
+
+function toggleFilerOnRefresh() {
+  if (user.monsterPortalVisible) {
+    filterToggle.setAttribute("src", "../res/icons/upArrow.svg");
+    filterToggle.setAttribute("alt", "Hide filters");
+    filterToggle.setAttribute("title", "Hide filters");
+    searchSortContainer.setAttribute("class", "searchSortContainer");
+  } else {
+    filterToggle.setAttribute("src", "../res/icons/downArrow.svg");
+    filterToggle.setAttribute("alt", "Show filters");
+    filterToggle.setAttribute("title", "Show filters");
+    searchSortContainer.setAttribute("class", "hidden");
+  }
 }
 
 function toggleFilter() {
@@ -216,10 +185,57 @@ function toggleFilter() {
     filterToggle.setAttribute("alt", "Hide filters");
     filterToggle.setAttribute("title", "Hide filters");
     searchSortContainer.setAttribute("class", "searchSortContainer");
+    updateUser("monsterPortalVisible", true);
   } else {
     filterToggle.setAttribute("src", "../res/icons/downArrow.svg");
     filterToggle.setAttribute("alt", "Show filters");
     filterToggle.setAttribute("title", "Show filters");
     searchSortContainer.setAttribute("class", "hidden");
+    updateUser("monsterPortalVisible", false);
+  }
+}
+
+function closeFilter() {
+  filterToggle.setAttribute("src", "../res/icons/downArrow.svg");
+  filterToggle.setAttribute("alt", "Show filters");
+  filterToggle.setAttribute("title", "Show filters");
+  searchSortContainer.setAttribute("class", "hidden");
+}
+
+function appendMonsters() {
+  if (visibleMonsters < monsters.length) {
+    const start = visibleMonsters;
+    const end = visibleMonsters + 10;
+
+    visibleMonsters += 10;
+
+    console.log(start, end);
+    for (let i = start; i < end; i++) {
+      const monster = monsters[i];
+      const monsterCard = new MonsterCard(monster, setMonsterSelectMessage).assembleMonsterCard();
+      monsterContainer.appendChild(monsterCard);
+    }
+  }
+
+  closeFilter();
+}
+
+function renderLoadingSkeletons(max) {
+  for (let i = 0; i < max; i++) {
+    const monsterCard = new MonsterCard();
+    const assembleMonsterCard = monsterCard.getMonsterCard();
+    monsterContainer.appendChild(assembleMonsterCard);
+  }
+}
+
+function renderMonsters() {
+  visibleMonsters = 30;
+  monsterContainer.innerHTML = "";
+
+  for (let i = 0; i < visibleMonsters; i++) {
+    const monster = monsters[i];
+    const monsterCard = new MonsterCard(monster, setMonsterSelectMessage).assembleMonsterCard();
+
+    monsterContainer.appendChild(monsterCard);
   }
 }
