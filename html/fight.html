@@ -6,26 +6,49 @@
     <title>Monster Battle Arena</title>
     <link rel="stylesheet" href="../css/common/normalize.css" />
     <link rel="stylesheet" href="../css/common/common.css" />
+    <link rel="stylesheet" href="../css/monster.css" />
     <link rel="stylesheet" href="../css/fight.css" />
   </head>
   <body>
+    <header>
+      <h1 id="head" class="head">Monster Battle Arena</h1>
+      <div id="teamNames" class="teamNames">
+        <h2 id="teamOneName" class="teamOneName teamName">Dutzo</h2>
+        <span id="vs" class="vs">vs</span>
+        <h2 id="teamTwoName" class="teamTwoName teamName">Ozzo</h2>
+      </div>
+    </header>
     <main>
-      <!-- main content goes here -->
-      <div id="fightContainer" class="fightContainer"></div>
+      <div id="teamsContainer" class="teamsContainer">
+        <div id="teamOne" class="teamOne team">
+          <div id="teamMonsters" class="teamMonsters teamOneMonsters">
+            <div id="monsterStats" class="monsterStats"></div>
+            <div id="monsters" class="monsters"></div>
+          </div>
+          <div id="monsterFought" class="monsterFought"></div>
+        </div>
+        <div id="teamTwo" class="teamTwo team">
+          <div id="teamMonsters" class="teamMonsters teamTwoMonsters">
+            <div id="monsterStats" class="monsterStats"></div>
+            <div id="monsters" class="monsters"></div>
+          </div>
+          <div id="monsterFought" class="monsterFought"></div>
+        </div>
+      </div>
+
+      <!-- <div id="fightContainer" class="fightContainer"></div>
 
       <div id="team1Container">
         <h2>Select team 1:</h2>
         <select name="team1Selector" id="team1Selector">
-          <!-- teams go here -->
         </select>
       </div>
       <div id="team2Container">
         <h2>Select team 2:</h2>
         <select name="team2Selector" id="team2Selector">
-          <!-- teams go here -->
         </select>
       </div>
-      <button id="fightBtn">FIGHT!</button>
+      <button id="fightBtn">FIGHT!</button> -->
     </main>
     <footer>
       <nav>
