@@ -28,11 +28,6 @@
   --color-light-red: #ed3b3b;
 }
 
-/* body {
-  overflow: auto !important;
-  padding-bottom: 100px;
-} */
-
 .portalContainer {
   width: min(100%, 1000px);
   padding: 50px;

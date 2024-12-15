@@ -211,6 +211,13 @@ function fightTeam() {
   }, 100);
 }
 
+function shiftTeamOrder(id) {
+  const selectedTeam = teams.find((t) => t.name.toLowerCase() === teamName.toLowerCase());
+  selectedTeam.shiftMonsters(id);
+  team.shiftMonsters(id);
+  updateTeams();
+}
+
 function removeMonster(id) {
   const selectedTeam = teams.find((t) => t.name.toLowerCase() === teamName.toLowerCase());
   selectedTeam.deleteMonster(id);
@@ -722,6 +729,7 @@ function renderMonsters() {
     monstersContainer.setAttribute("class", "teamMonsters");
 
     teamMonsters.forEach((monster) => {
+      const monsterId = monster.id;
       const monsterName = monster.name;
       const monsterCardContainer = document.createElement("div");
       const monsterCard = new MonsterCard(monster, [], true).assembleMonsterCard();
@@ -758,8 +766,7 @@ function renderMonsters() {
       });
 
       shiftPlaceBtn.addEventListener("click", () => {
-        team.shiftMonsters(monster.id);
-        updateTeams();
+        shiftTeamOrder(monsterId);
       });
 
       monsterCard.appendChild(removeBtn);
