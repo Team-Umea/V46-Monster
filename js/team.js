@@ -222,15 +222,20 @@ function renderTeams(condition) {
     teams.forEach((team) => {
       const teamName = team.name;
       const teamMonsters = team.monsters;
+      const teamRating = team.totalRating;
       const numTeamMonsters = teamMonsters.length;
       const winRate = `${team.winRate}%`;
+      const teamCost = team.teamCost;
       const isPaidFor = team.paidFor;
       const isVisible = team.isVisible;
 
       const teamCard = document.createElement("div");
       const quickInfo = document.createElement("div");
-      const numMonstersIcon = renderIconWithNumber(numTeamMonsters, "../../res/icons/skull.svg", `There is ${numTeamMonsters} in team '${teamName}'`, "right");
+      const teamRatingIcon = renderIconWithNumber(teamRating, "../../res/icons/trophy.svg", `Team '${teamName}' has a rating of ${teamRating}`, "right");
+      const numMonstersIcon = renderIconWithNumber(numTeamMonsters, "../../res/icons/skull.svg", `There is ${numTeamMonsters} monsters in team '${teamName}'`, "right");
       const winRateIcon = renderIconWithNumber(winRate, "../../res/icons/rate.svg", `Team '${teamName}' has a winrate of ${winRate}`, "right");
+      const teamCostIcon = renderIconWithNumber(teamCost, "../../res/icons/diamond.svg", `Totalt cost of team '${teamName}' is ${teamCost} credits`, "right");
+
       const paidStatus = document.createElement("div");
       const heading = document.createElement("div");
       const header = document.createElement("h2");
@@ -243,8 +248,10 @@ function renderTeams(condition) {
 
       teamCard.setAttribute("class", "teamCard");
       quickInfo.setAttribute("class", "quickInfo");
-      numMonstersIcon.classList.add("numMonstersIcon");
-      winRateIcon.classList.add("winRateIcon");
+      teamRatingIcon.classList.add("teamRatingIcon", "icon");
+      numMonstersIcon.classList.add("numMonstersIcon", "icon");
+      winRateIcon.classList.add("winRateIcon", "icon");
+      teamCostIcon.classList.add("teamCostIcon", "icon");
       paidStatus.setAttribute("class", `paidStatus ${isPaidFor ? "paid" : "unPaid"}`);
       heading.setAttribute("class", "cardHeading");
       header.setAttribute("class", "cardHeader");
@@ -302,7 +309,7 @@ function renderTeams(condition) {
         monsters.appendChild(monsterCard);
       });
 
-      quickInfo.append(numMonstersIcon, winRateIcon, paidStatus);
+      quickInfo.append(teamRatingIcon, numMonstersIcon, winRateIcon, teamCostIcon, paidStatus);
 
       heading.appendChild(header);
 
