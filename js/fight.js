@@ -7,6 +7,7 @@ import { MonsterCard } from "./classes/MonsterCard.js";
 import { MonsterFighCard } from "./classes/MonsterFighCard.js";
 import { valueWithHeader, progressBar } from "./common/render.js";
 
+const teamsStatsContainer = document.getElementById("teamsStatsContainer");
 const teamOneContainer = document.getElementById("teamOne");
 const teamTwoContainer = document.getElementById("teamTwo");
 
@@ -23,22 +24,80 @@ function init() {
 }
 
 function render() {
-  renderTeam(selectedTeam, teamOneContainer);
-  renderTeam(selectedTeam, teamTwoContainer);
+  renderTeam(teams[0], teamOneContainer);
+  renderTeam(teams[1], teamTwoContainer);
+}
+
+function renderTeamStats(parent, team) {
+  const container = document.createElement("div");
+  const battleContainer = document.createElement("div");
+  const fightContainer = document.createElement("div");
+  const roundContainer = document.createElement("div");
+
+  container.setAttribute("class", "teamStatsContainer");
+  battleContainer.setAttribute("class", "battleStatsContainer statsContainer");
+  fightContainer.setAttribute("class", "fightStatsContainer statsContainer");
+  roundContainer.setAttribute("class", "roundStatsContainer statsContainer");
+
+  const numBattelsEl = valueWithHeader(team.numBattels, "Battels");
+  const winRateEl = valueWithHeader(team.winRate, "Winrate");
+  const wonBattlesEl = valueWithHeader(team.wonBattels, "Won");
+  const drawnBattelsEl = valueWithHeader(team.drawnBattels, "Drawn");
+  const lostBattelsEl = valueWithHeader(team.lostBattels, "Lost");
+  const pointsEl = valueWithHeader(team.totalPoints, "Points");
+
+  const numFightsEl = valueWithHeader(team.numFights, "Fights");
+  const wonFightsEl = valueWithHeader(team.wonFights, "Won");
+  const drawnFightsEl = valueWithHeader(team.drawnFights, "Drawn");
+  const lostFightsEl = valueWithHeader(team.lostFights, "Lost");
+
+  const numRoundsEl = valueWithHeader(team.numRounds, "Rounds");
+  const wonRounsEl = valueWithHeader(team.wonRounds, "Won");
+  const drawnRoundsEl = valueWithHeader(team.drawnRounds, "Drawn");
+  const lostRoundsEl = valueWithHeader(team.lostRounds, "Lost");
+
+  numBattelsEl.classList.add("teamStat");
+  winRateEl.classList.add("teamStat");
+  wonBattlesEl.classList.add("teamStat");
+  drawnBattelsEl.classList.add("teamStat");
+  lostBattelsEl.classList.add("teamStat");
+  pointsEl.classList.add("teamStat");
+  numFightsEl.classList.add("teamStat");
+  wonFightsEl.classList.add("teamStat");
+  drawnFightsEl.classList.add("teamStat");
+  lostFightsEl.classList.add("teamStat");
+  numRoundsEl.classList.add("teamStat");
+  wonRounsEl.classList.add("teamStat");
+  drawnRoundsEl.classList.add("teamStat");
+  lostRoundsEl.classList.add("teamStat");
+
+  battleContainer.append(numBattelsEl, winRateEl, wonBattlesEl, drawnBattelsEl, lostBattelsEl, pointsEl);
+  fightContainer.append(numFightsEl, wonFightsEl, drawnFightsEl, lostFightsEl);
+  roundContainer.append(numRoundsEl, wonRounsEl, drawnRoundsEl, lostRoundsEl);
+
+  container.append(battleContainer, fightContainer, roundContainer);
+
+  parent.appendChild(container);
 }
 
 function renderTeam(team, container) {
-  const teamContainer = container.children[0];
-  const fightRecordContainer = container.children[1];
+  const teamNameHeader = container.children[0];
+  const teamStatsContainer = container.children[1];
+  const teamContainer = container.children[2];
+  const fightRecordContainer = container.children[3];
   const monsterStatsContainer = teamContainer.children[0];
   const monsterContainer = teamContainer.children[1];
 
   if (team) {
+    const teamName = team.name;
+    const monsters = team.monsters;
+
     monsterContainer.innerHTML = "";
+    teamNameHeader.innerText = teamName;
+
     const carousel = document.createElement("div");
 
     carousel.setAttribute("class", "carousel");
-    const monsters = team.monsters;
 
     monsters.forEach((monster, index) => {
       fightRecordContainer.innerHTML = "";
@@ -88,6 +147,7 @@ function renderTeam(team, container) {
 
     container.appendChild(carousel);
   }
+  renderTeamStats(teamStatsContainer, team);
 }
 
 function renderMonsterStats(container, monster) {

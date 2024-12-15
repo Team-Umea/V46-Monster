@@ -30,7 +30,7 @@
 
 header {
   padding-bottom: 10px;
-  border-bottom: 1px solid var(--color-surface-mixed-a50);
+  /* border-bottom: 1px solid var(--color-surface-mixed-a50); */
 
   .head {
     font-size: 2.5rem;
@@ -65,18 +65,56 @@ body {
 
       .team {
         width: fit-content;
-        padding: 20px;
+        padding: 40px;
         display: flex;
         flex-direction: column;
         align-items: center;
         gap: 10px;
         border-radius: 20px;
+        position: relative;
         background-color: var(--color-surface-a10);
+        border: 2px solid var(--color-primary-a50);
+
+        .teamName {
+          font-size: 2rem;
+          margin-top: -20px;
+        }
+
+        .teamStats {
+          width: 100%;
+          padding: 20px;
+          margin-bottom: 50px;
+          border-radius: 20px;
+          box-shadow: inset 0 0 10px var(--color-surface-a0);
+
+          .teamStatsContainer {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+
+            .statsContainer {
+              display: flex;
+              gap: 20px;
+              .teamStat {
+                h2 {
+                  font-size: 1.2rem;
+                }
+                p {
+                  font-size: 1rem;
+                }
+              }
+            }
+          }
+        }
 
         .teamMonsters {
+          padding: 20px;
           display: flex;
           flex-direction: row;
           justify-content: space-between;
+          border-radius: 20px;
+          box-shadow: inset 0 0 10px var(--color-surface-a0);
 
           .monsterStats {
             width: fit-content;
@@ -85,7 +123,7 @@ body {
             .monsterAllStats {
               display: flex;
               flex-direction: column;
-              justify-content: space-between;
+              justify-content: space-evenly;
 
               .mainStats {
                 margin-bottom: 32px;
@@ -100,8 +138,7 @@ body {
 
                 .monsterStat,
                 .generalStat {
-                  max-width: 5rem;
-                  /* padding: 10px; */
+                  max-width: 3.5rem;
 
                   h2 {
                     font-size: 0.8rem;
@@ -118,6 +155,7 @@ body {
                 grid-template-columns: repeat(5, 1fr);
 
                 .generalStat {
+                  padding: 10px;
                   border-radius: 10px;
                   background-color: var(--color-surface-mixed-a10);
                 }
@@ -161,12 +199,16 @@ body {
           justify-content: space-between;
 
           .fightRecord {
+            width: 100%;
+            &:nth-child(n + 2) {
+              border-left: 1px solid var(--color-surface-a50);
+            }
             .fightRecordHeader {
               font-size: 1rem;
             }
 
             .fightRecordList {
-              max-height: 120px;
+              height: 120px;
               padding-bottom: 10px;
               display: flex;
               flex-direction: column;
@@ -180,6 +222,7 @@ body {
           display: flex;
           justify-content: center;
           gap: 15px;
+          grid-area: carousel;
 
           .carouselBtn {
             cursor: pointer;
