@@ -5,7 +5,7 @@ import { serveData } from "./common/fetch.js";
 import { Team } from "./classes/Team.js";
 import { MonsterCard } from "./classes/MonsterCard.js";
 import { MonsterFighCard } from "./classes/MonsterFighCard.js";
-import { valueWithHeader, progressBar } from "./common/render.js";
+import { valueWithHeader, progressBar, setBtnIcon } from "./common/render.js";
 
 const teamsStatsContainer = document.getElementById("teamsStatsContainer");
 const teamOneContainer = document.getElementById("teamOne");
@@ -21,6 +21,7 @@ window.addEventListener("DOMContentLoaded", () => {
 function init() {
   //*
   render();
+  toggleTeamMonsters();
 }
 
 function render() {
@@ -81,18 +82,18 @@ function renderTeamStats(parent, team) {
 }
 
 function renderTeam(team, container) {
-  const teamNameHeader = container.children[0];
-  const teamStatsContainer = container.children[1];
-  const teamContainer = container.children[2];
-  const fightRecordContainer = container.children[3];
-  const monsterStatsContainer = teamContainer.children[0];
-  const monsterContainer = teamContainer.children[1];
+  const teamNameHeader = container.getElementsByClassName("teamName")[0];
+  const teamStats = container.getElementsByClassName("teamStats")[0];
+  const teamMonsterContainer = container.getElementsByClassName("teamMonsters")[0];
+
+  const teamMonsterStats = container.getElementsByClassName("monsterStats")[0];
+  const teamMonsters = container.getElementsByClassName("monsters")[0];
+  const teamFightRecord = container.getElementsByClassName("monsterFought")[0];
 
   if (team) {
     const teamName = team.name;
     const monsters = team.monsters;
 
-    monsterContainer.innerHTML = "";
     teamNameHeader.innerText = teamName;
 
     const carousel = document.createElement("div");
@@ -100,54 +101,54 @@ function renderTeam(team, container) {
     carousel.setAttribute("class", "carousel");
 
     monsters.forEach((monster, index) => {
-      fightRecordContainer.innerHTML = "";
+      teamFightRecord.innerHTML = "";
       const monsterCard = new MonsterFighCard(monster).card();
       const carouselBtn = document.createElement("button");
 
       carouselBtn.setAttribute("class", `${index === 0 ? "carouselBtn carouselBtn-checked" : "carouselBtn"}`);
 
       if (index === 0) {
-        renderMonsterStats(monsterStatsContainer, monster);
+        renderMonsterStats(teamMonsterStats, monster);
       }
 
-      renderMonstersFought(fightRecordContainer, "Won against", monster.wonAgainst);
-      renderMonstersFought(fightRecordContainer, "Drawn against", monster.drawnAgainst);
-      renderMonstersFought(fightRecordContainer, "Lost against", monster.lostAgainst);
+      renderMonstersFought(teamFightRecord, "Won against", monster.wonAgainst);
+      renderMonstersFought(teamFightRecord, "Drawn against", monster.drawnAgainst);
+      renderMonstersFought(teamFightRecord, "Lost against", monster.lostAgainst);
 
-      monsterContainer.appendChild(monsterCard);
+      teamMonsters.appendChild(monsterCard);
       carousel.appendChild(carouselBtn);
     });
 
     const carouselBtns = Array.from(carousel.children);
-    const monsterCards = Array.from(monsterContainer.children);
+    const monsterCards = Array.from(teamMonsters.children);
 
     carouselBtns.forEach((carouselBtn) => {
       const index = carouselBtns.indexOf(carouselBtn);
       const monster = monsters[index];
 
       carouselBtn.addEventListener("click", () => {
-        fightRecordContainer.innerHTML = "";
+        teamFightRecord.innerHTML = "";
         carouselBtns.forEach((btn) => btn.setAttribute("class", "carouselBtn"));
-        monsterCards.forEach((montserCard) => montserCard.setAttribute("class", "monsterFighCard opa-0"));
+        monsterCards.forEach((montserCard) => montserCard.setAttribute("class", "monsterFighCard opacity-0"));
 
         carouselBtn.setAttribute("class", "carouselBtn carouselBtn-checked");
 
-        const monsterCard = monsterContainer.children[index];
+        const monsterCard = teamMonsters.children[index];
 
         if (monsterCard) {
-          monsterCard.setAttribute("class", "monsterFighCard opa-1");
+          monsterCard.setAttribute("class", "monsterFighCard opacity-1");
         }
 
-        renderMonsterStats(monsterStatsContainer, monster);
-        renderMonstersFought(fightRecordContainer, "Won against", monster.wonAgainst);
-        renderMonstersFought(fightRecordContainer, "Drawn against", monster.drawnAgainst);
-        renderMonstersFought(fightRecordContainer, "Lost against", monster.lostAgainst);
+        renderMonsterStats(teamMonsterStats, monster);
+        renderMonstersFought(teamFightRecord, "Won against", monster.wonAgainst);
+        renderMonstersFought(teamFightRecord, "Drawn against", monster.drawnAgainst);
+        renderMonstersFought(teamFightRecord, "Lost against", monster.lostAgainst);
       });
     });
 
-    container.appendChild(carousel);
+    teamMonsterContainer.appendChild(carousel);
   }
-  renderTeamStats(teamStatsContainer, team);
+  renderTeamStats(teamStats, team);
 }
 
 function renderMonsterStats(container, monster) {
@@ -243,6 +244,57 @@ function renderMonstersFought(parent, headerText, record) {
 
   container.append(header, recordList);
   parent.appendChild(container);
+}
+
+function toggleTeamMonsters() {
+  const toggleEls = document.querySelectorAll(".teamMonsterToggle");
+
+  const toggles = Array.from(toggleEls);
+
+  toggles.forEach((toggle) => {
+    const index = toggles.indexOf(toggle);
+
+    toggle.addEventListener("click", () => {
+      switch (index) {
+        case 0:
+          const teamOneToggle = teamOneContainer.getElementsByClassName("teamMonsterToggle")[0];
+          const teamOneStats = teamOneContainer.getElementsByClassName("teamStats")[0];
+          const teamOneMonsters = teamOneContainer.getElementsByClassName("teamMonsters")[0];
+
+          const teamOneStatsVisible = teamOneToggle.getAttribute("src").includes("skull");
+
+          if (teamOneStatsVisible) {
+            teamOneStats.setAttribute("class", "teamStats opacity-0");
+            teamOneMonsters.setAttribute("class", "teamMonsters opacity-1");
+            setBtnIcon(teamOneToggle, "teams", "Show team stats");
+          } else {
+            teamOneStats.setAttribute("class", "teamStats opacity-1");
+            teamOneMonsters.setAttribute("class", "teamMonsters opacity-0");
+            setBtnIcon(teamOneToggle, "skull", "Show team monsters");
+          }
+          break;
+        case 1:
+          const teamTwoToggle = teamTwoContainer.getElementsByClassName("teamMonsterToggle")[0];
+          const teamTwoStats = teamTwoContainer.getElementsByClassName("teamStats")[0];
+          const teamTwoMonsters = teamTwoContainer.getElementsByClassName("teamMonsters")[0];
+
+          const teamTwoStatsVisible = teamTwoToggle.getAttribute("src").includes("skull");
+
+          if (teamTwoStatsVisible) {
+            teamTwoStats.setAttribute("class", "teamStats opacity-0");
+            teamTwoMonsters.setAttribute("class", "teamMonsters opacity-1");
+            setBtnIcon(teamTwoToggle, "teams", "Show team stats");
+          } else {
+            teamTwoStats.setAttribute("class", "teamStats opacity-1");
+            teamTwoMonsters.setAttribute("class", "teamMonsters opacity-0");
+            setBtnIcon(teamTwoToggle, "skull", "Show team monsters");
+          }
+          break;
+        default:
+          break;
+      }
+    });
+  });
 }
 
 // const fightContainer = document.getElementById("fightContainer");

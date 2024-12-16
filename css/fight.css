@@ -80,162 +80,172 @@ body {
           margin-top: -20px;
         }
 
-        .teamStats {
-          width: 100%;
-          padding: 20px;
-          margin-bottom: 50px;
-          border-radius: 20px;
-          box-shadow: inset 0 0 10px var(--color-surface-a0);
-
-          .teamStatsContainer {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 20px;
-
-            .statsContainer {
-              display: flex;
-              gap: 20px;
-              .teamStat {
-                h2 {
-                  font-size: 1.2rem;
-                }
-                p {
-                  font-size: 1rem;
-                }
-              }
-            }
-          }
+        .teamMonsterToggle {
+          position: absolute;
+          top: 20px;
+          right: 20px;
         }
 
-        .teamMonsters {
-          padding: 20px;
-          display: flex;
-          flex-direction: row;
-          justify-content: space-between;
-          border-radius: 20px;
-          box-shadow: inset 0 0 10px var(--color-surface-a0);
+        .teamInfo {
+          display: grid;
+          grid-template-columns: 1;
+          grid-template-rows: 1;
 
-          .monsterStats {
-            width: fit-content;
-            padding: 10px;
-
-            .monsterAllStats {
-              display: flex;
-              flex-direction: column;
-              justify-content: space-evenly;
-
-              .mainStats {
-                margin-bottom: 32px;
-              }
-
-              .mainStats,
-              .generalStats {
-                width: 100%;
-                display: flex;
-                justify-content: space-between;
-                gap: 10px;
-
-                .monsterStat,
-                .generalStat {
-                  max-width: 3.5rem;
-
-                  h2 {
-                    font-size: 0.8rem;
-                  }
-
-                  p {
-                    font-size: 0.7rem;
-                  }
-                }
-              }
-
-              .generalStats {
-                display: grid;
-                grid-template-columns: repeat(5, 1fr);
-
-                .generalStat {
-                  padding: 10px;
-                  border-radius: 10px;
-                  background-color: var(--color-surface-mixed-a10);
-                }
-              }
-
-              .statsBar {
-                height: 3px;
-              }
-            }
-          }
-
-          .monsters {
-            display: grid;
-            grid-template-columns: 1fr;
-            grid-template-rows: 1fr;
-
-            .monsterFighCard {
-              grid-column: 1;
-              grid-row: 1;
-              transition: all 0.3s ease-in-out;
-            }
-
-            .opa-0 {
-              opacity: 0;
-            }
-
-            .opa-1 {
-              opacity: 1;
-            }
-          }
-        }
-
-        .teamOneMonsters {
-          flex-direction: row-reverse;
-        }
-
-        .monsterFought {
-          width: 100%;
-          padding: 0 10px;
-          display: flex;
-          justify-content: space-between;
-
-          .fightRecord {
+          .teamStats {
             width: 100%;
-            &:nth-child(n + 2) {
-              border-left: 1px solid var(--color-surface-a50);
-            }
-            .fightRecordHeader {
-              font-size: 1rem;
-            }
+            padding: 20px;
+            margin-bottom: 50px;
+            border-radius: 20px;
+            background-color: var(--color-surface-a10);
+            grid-column: 1;
+            grid-row: 1;
 
-            .fightRecordList {
-              height: 120px;
-              padding-bottom: 10px;
+            .teamStatsContainer {
               display: flex;
               flex-direction: column;
               align-items: center;
-              overflow-y: auto;
+              gap: 20px;
+
+              .statsContainer {
+                display: flex;
+                gap: 20px;
+                .teamStat {
+                  h2 {
+                    font-size: 1.2rem;
+                  }
+                  p {
+                    font-size: 1rem;
+                  }
+                }
+              }
             }
           }
-        }
 
-        .carousel {
-          display: flex;
-          justify-content: center;
-          gap: 15px;
-          grid-area: carousel;
+          .teamMonsters {
+            padding: 20px;
+            display: flex;
+            opacity: 0;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+            border-radius: 20px;
+            box-shadow: inset 0 0 10px var(--color-surface-a0);
+            background-color: var(--color-surface-a10);
+            grid-column: 1;
+            grid-row: 1;
 
-          .carouselBtn {
-            cursor: pointer;
-            width: 12px;
-            height: 12px;
-            border: 0;
-            outline: none;
-            border-radius: 50%;
-            background-color: var(--color-surface-a20);
-          }
+            .monsterInfo {
+              display: flex;
 
-          .carouselBtn-checked {
-            background-color: var(--color-surface-a30);
+              .monsterStats {
+                width: fit-content;
+                padding: 10px;
+
+                .monsterAllStats {
+                  display: flex;
+                  flex-direction: column;
+                  justify-content: space-between;
+
+                  .mainStats {
+                    margin-bottom: 32px;
+                  }
+
+                  .mainStats,
+                  .generalStats {
+                    width: 100%;
+                    display: flex;
+                    justify-content: space-between;
+                    gap: 10px;
+
+                    .monsterStat,
+                    .generalStat {
+                      max-width: 3.5rem;
+
+                      h2 {
+                        font-size: 0.8rem;
+                      }
+
+                      p {
+                        font-size: 0.7rem;
+                      }
+                    }
+                  }
+
+                  .generalStats {
+                    display: grid;
+                    grid-template-columns: repeat(5, 1fr);
+
+                    .generalStat {
+                      padding: 10px;
+                      border-radius: 10px;
+                      background-color: var(--color-surface-mixed-a10);
+                    }
+                  }
+
+                  .statsBar {
+                    height: 3px;
+                  }
+                }
+              }
+
+              .monsters {
+                display: grid;
+                grid-template-columns: 1fr;
+                grid-template-rows: 1fr;
+
+                .monsterFighCard {
+                  grid-column: 1;
+                  grid-row: 1;
+                  transition: all 0.3s ease-in-out;
+                }
+              }
+            }
+            .monsterFought {
+              width: 100%;
+              padding: 0 10px;
+              display: flex;
+              justify-content: space-between;
+
+              .fightRecord {
+                width: 100%;
+                &:nth-child(n + 2) {
+                  border-left: 1px solid var(--color-surface-a50);
+                }
+                .fightRecordHeader {
+                  font-size: 1rem;
+                }
+
+                .fightRecordList {
+                  height: 120px;
+                  padding-bottom: 10px;
+                  display: flex;
+                  flex-direction: column;
+                  align-items: center;
+                  overflow-y: auto;
+                }
+              }
+            }
+
+            .carousel {
+              display: flex;
+              justify-content: center;
+              gap: 15px;
+              grid-area: carousel;
+
+              .carouselBtn {
+                cursor: pointer;
+                width: 12px;
+                height: 12px;
+                border: 0;
+                outline: none;
+                border-radius: 50%;
+                background-color: var(--color-surface-a20);
+              }
+
+              .carouselBtn-checked {
+                background-color: var(--color-surface-a30);
+              }
+            }
           }
         }
       }

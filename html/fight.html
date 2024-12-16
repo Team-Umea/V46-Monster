@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Monster Battle Arena</title>
     <link rel="stylesheet" href="../css/common/normalize.css" />
+    <link rel="stylesheet" href="../css/common/components.css" />
     <link rel="stylesheet" href="../css/common/common.css" />
     <link rel="stylesheet" href="../css/monster.css" />
     <link rel="stylesheet" href="../css/fight.css" />
@@ -23,22 +24,33 @@
 
       <div id="teamsContainer" class="teamsContainer">
         <div id="teamOne" class="teamOne team">
-          <h2 id="teamName" class="teamName teamOneName"></h2>
-          <div id="teamStats" class="teamStats"></div>
-          <div id="teamMonsters" class="teamMonsters teamOneMonsters">
-            <div id="monsterStats" class="monsterStats"></div>
-            <div id="monsters" class="monsters"></div>
+          <h2 class="teamName teamOneName"></h2>
+          <img src="../res/icons/skull.svg" alt="Show team monsters" title="Show team monsters" role="button" tabindex="0" class="teamMonsterToggle icon icon-scale" />
+          <div class="teamInfo">
+            <div class="teamStats"></div>
+            <div class="teamMonsters teamOneMonsters">
+              <div class="monsterInfo row-reverse">
+                <div class="monsterStats"></div>
+                <div class="monsters"></div>
+              </div>
+              <div class="monsterFought"></div>
+            </div>
           </div>
-          <div id="monsterFought" class="monsterFought"></div>
         </div>
+
         <div id="teamTwo" class="teamTwo team">
-          <h2 id="teamName" class="teamName teamTwoName"></h2>
-          <div id="teamStats" class="teamStats"></div>
-          <div id="teamMonsters" class="teamMonsters teamTwoMonsters">
-            <div id="monsterStats" class="monsterStats"></div>
-            <div id="monsters" class="monsters"></div>
+          <h2 class="teamName teamTwoName"></h2>
+          <img src="../res/icons/skull.svg" alt="Show team monsters" title="Show team monsters" role="button" tabindex="0" class="teamMonsterToggle icon icon-scale" />
+          <div class="teamInfo">
+            <div class="teamStats"></div>
+            <div class="teamMonsters teamTwoMonsters">
+              <div class="monsterInfo">
+                <div class="monsterStats"></div>
+                <div class="monsters"></div>
+              </div>
+              <div class="monsterFought"></div>
+            </div>
           </div>
-          <div id="monsterFought" class="monsterFought"></div>
         </div>
       </div>
 
