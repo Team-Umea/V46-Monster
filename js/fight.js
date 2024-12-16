@@ -5,7 +5,7 @@ import { serveData } from "./common/fetch.js";
 import { Team } from "./classes/Team.js";
 import { MonsterCard } from "./classes/MonsterCard.js";
 import { MonsterFighCard } from "./classes/MonsterFighCard.js";
-import { valueWithHeader, progressBar, setBtnIcon } from "./common/render.js";
+import { valueWithHeader, progressBar, setBtnIcon, renderIconWithNumber, averageValueIcon } from "./common/render.js";
 
 const teamsStatsContainer = document.getElementById("teamsStatsContainer");
 const teamOneContainer = document.getElementById("teamOne");
@@ -31,32 +31,61 @@ function render() {
 
 function renderTeamStats(parent, team) {
   const container = document.createElement("div");
+  const topStats = document.createElement("div");
+  const averageStats = document.createElement("div");
   const battleContainer = document.createElement("div");
   const fightContainer = document.createElement("div");
   const roundContainer = document.createElement("div");
+  const performaceStats = document.createElement("div");
 
-  container.setAttribute("class", "teamStatsContainer");
-  battleContainer.setAttribute("class", "battleStatsContainer statsContainer");
-  fightContainer.setAttribute("class", "fightStatsContainer statsContainer");
-  roundContainer.setAttribute("class", "roundStatsContainer statsContainer");
+  const averageRank = Math.floor(team.totalRank / team.monsters.length);
+  const averageRating = Math.floor(team.totalRating / team.monsters.length);
+  const averageHealth = Math.floor(team.totalHealth / team.monsters.length);
+  const averageDamage = Math.floor(team.totalDamage / team.monsters.length);
 
+  const rankIcon = renderIconWithNumber(team.totalRank, "../../res/icons/ribbon.svg", `Team '${team.name}' has a rank of ${team.totalRank}`);
+  const ratingIcon = renderIconWithNumber(team.totalRating, "../../res/icons/trophy.svg", `Team '${team.name}' has a combinded rating of ${team.totalRating}`);
+  const healthIcon = renderIconWithNumber(team.totalHealth, "../../res/icons/heart.svg", `Team '${team.name}' has ${team.totalHealth} in total health`);
+  const damageIcon = renderIconWithNumber(team.totalDamage, "../../res/icons/barbell.svg", `Team '${team.name}' has ${team.totalDamage} in total damage`);
+
+  const averageRankIcon = averageValueIcon(averageRank, "ribbon", "skull", `Team '${team.name}' has an average rank of ${averageRank}`);
+  const averageRatingIcon = averageValueIcon(averageRating, "trophy", "skull", `Team '${team.name}' has an average rating of ${averageRating}`);
+  const averageHealthIcon = averageValueIcon(averageHealth, "heart", "skull", `Team '${team.name}' has ${averageHealth} in average health`);
+  const averageDamageIcon = averageValueIcon(averageDamage, "barbell", "skull", `Team '${team.name}' has ${averageDamage} in average damage`);
+
+  const battleBar = progressBar(team.wonBattels, team.drawnBattels, team.lostBattels);
+  const fightBar = progressBar(team.wonFights, team.drawnFights, team.lostFights);
+  const roundBar = progressBar(team.wonRounds, team.drawnRounds, team.lostRounds);
+  const winRateEl = renderIconWithNumber(`${team.winRate}%`, "../../res/icons/rate.svg", `Winrate of '${team.name}' is ${team.winRate}%`, "right");
+  const pointsEl = renderIconWithNumber(team.totalPoints, "../../res/icons/points.svg", `'${team.name}' has ${team.totalPoints} of points`, "Sright");
   const numBattelsEl = valueWithHeader(team.numBattels, "Battels");
-  const winRateEl = valueWithHeader(team.winRate, "Winrate");
   const wonBattlesEl = valueWithHeader(team.wonBattels, "Won");
   const drawnBattelsEl = valueWithHeader(team.drawnBattels, "Drawn");
   const lostBattelsEl = valueWithHeader(team.lostBattels, "Lost");
-  const pointsEl = valueWithHeader(team.totalPoints, "Points");
-
   const numFightsEl = valueWithHeader(team.numFights, "Fights");
   const wonFightsEl = valueWithHeader(team.wonFights, "Won");
   const drawnFightsEl = valueWithHeader(team.drawnFights, "Drawn");
   const lostFightsEl = valueWithHeader(team.lostFights, "Lost");
-
   const numRoundsEl = valueWithHeader(team.numRounds, "Rounds");
   const wonRounsEl = valueWithHeader(team.wonRounds, "Won");
   const drawnRoundsEl = valueWithHeader(team.drawnRounds, "Drawn");
   const lostRoundsEl = valueWithHeader(team.lostRounds, "Lost");
 
+  container.setAttribute("class", "teamStatsContainer");
+  topStats.setAttribute("class", "topStats");
+  averageStats.setAttribute("class", "averageStats");
+  battleContainer.setAttribute("class", "battleStatsContainer statsContainer");
+  fightContainer.setAttribute("class", "fightStatsContainer statsContainer");
+  roundContainer.setAttribute("class", "roundStatsContainer statsContainer");
+  performaceStats.setAttribute("class", "performanceStats");
+  rankIcon.classList.add("teamStatsIcon");
+  ratingIcon.classList.add("teamStatsIcon");
+  healthIcon.classList.add("teamStatsIcon");
+  damageIcon.classList.add("teamStatsIcon");
+  averageRankIcon.classList.add("teamAverageStatsIcon");
+  averageRatingIcon.classList.add("teamAverageStatsIcon");
+  averageHealthIcon.classList.add("teamAverageStatsIcon");
+  averageDamageIcon.classList.add("teamAverageStatsIcon");
   numBattelsEl.classList.add("teamStat");
   winRateEl.classList.add("teamStat");
   wonBattlesEl.classList.add("teamStat");
@@ -72,11 +101,14 @@ function renderTeamStats(parent, team) {
   drawnRoundsEl.classList.add("teamStat");
   lostRoundsEl.classList.add("teamStat");
 
-  battleContainer.append(numBattelsEl, winRateEl, wonBattlesEl, drawnBattelsEl, lostBattelsEl, pointsEl);
+  performaceStats.append(winRateEl, pointsEl);
+  topStats.append(rankIcon, ratingIcon, healthIcon, damageIcon);
+  averageStats.append(averageRankIcon, averageRatingIcon, averageHealthIcon, averageDamageIcon);
+  battleContainer.append(numBattelsEl, wonBattlesEl, drawnBattelsEl, lostBattelsEl);
   fightContainer.append(numFightsEl, wonFightsEl, drawnFightsEl, lostFightsEl);
   roundContainer.append(numRoundsEl, wonRounsEl, drawnRoundsEl, lostRoundsEl);
 
-  container.append(battleContainer, fightContainer, roundContainer);
+  container.append(topStats, averageStats, battleContainer, battleBar, fightContainer, fightBar, roundContainer, roundBar, performaceStats);
 
   parent.appendChild(container);
 }
@@ -264,12 +296,12 @@ function toggleTeamMonsters() {
           const teamOneStatsVisible = teamOneToggle.getAttribute("src").includes("skull");
 
           if (teamOneStatsVisible) {
-            teamOneStats.setAttribute("class", "teamStats opacity-0");
-            teamOneMonsters.setAttribute("class", "teamMonsters opacity-1");
+            teamOneStats.setAttribute("class", "teamStats opacity-0 noneVisible");
+            teamOneMonsters.setAttribute("class", "teamMonsters opacity-1 visible");
             setBtnIcon(teamOneToggle, "teams", "Show team stats");
           } else {
-            teamOneStats.setAttribute("class", "teamStats opacity-1");
-            teamOneMonsters.setAttribute("class", "teamMonsters opacity-0");
+            teamOneStats.setAttribute("class", "teamStats opacity-1 visible");
+            teamOneMonsters.setAttribute("class", "teamMonsters opacity-0 noneVisible");
             setBtnIcon(teamOneToggle, "skull", "Show team monsters");
           }
           break;
@@ -281,12 +313,12 @@ function toggleTeamMonsters() {
           const teamTwoStatsVisible = teamTwoToggle.getAttribute("src").includes("skull");
 
           if (teamTwoStatsVisible) {
-            teamTwoStats.setAttribute("class", "teamStats opacity-0");
-            teamTwoMonsters.setAttribute("class", "teamMonsters opacity-1");
+            teamTwoStats.setAttribute("class", "teamStats opacity-0 noneVisible");
+            teamTwoMonsters.setAttribute("class", "teamMonsters opacity-1 visible");
             setBtnIcon(teamTwoToggle, "teams", "Show team stats");
           } else {
-            teamTwoStats.setAttribute("class", "teamStats opacity-1");
-            teamTwoMonsters.setAttribute("class", "teamMonsters opacity-0");
+            teamTwoStats.setAttribute("class", "teamStats opacity-1 visible");
+            teamTwoMonsters.setAttribute("class", "teamMonsters opacity-0 noneVisible");
             setBtnIcon(teamTwoToggle, "skull", "Show team monsters");
           }
           break;

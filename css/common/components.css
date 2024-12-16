@@ -198,6 +198,14 @@ a {
   visibility: hidden;
 }
 
+.visible {
+  visibility: visible !important;
+}
+
+.noneVisible {
+  visibility: hidden !important;
+}
+
 .alignLeft {
   position: absolute;
   left: 20px;
