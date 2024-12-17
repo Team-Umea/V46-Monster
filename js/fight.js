@@ -6,8 +6,11 @@ import { Team } from "./classes/Team.js";
 import { MonsterCard } from "./classes/MonsterCard.js";
 import { MonsterFighCard } from "./classes/MonsterFighCard.js";
 import { valueWithHeader, progressBar, setBtnIcon, renderIconWithNumber, averageValueIcon } from "./common/render.js";
+import { useClickEvent } from "./common/useEvent.js";
 
-const teamsStatsContainer = document.getElementById("teamsStatsContainer");
+const teamsContainerToggle = document.getElementById("teamsContainerToggle");
+const teamsContainerBody = document.getElementById("teamsContainerBody");
+// const teamsStatsContainer = document.getElementById("teamsStatsContainer");
 const teamOneContainer = document.getElementById("teamOne");
 const teamTwoContainer = document.getElementById("teamTwo");
 
@@ -19,14 +22,26 @@ window.addEventListener("DOMContentLoaded", () => {
 });
 
 function init() {
-  //*
   render();
   toggleTeamMonsters();
+  useClickEvent(teamsContainerToggle, toggleTeamsHeadToHead);
 }
 
 function render() {
   renderTeam(teams[0], teamOneContainer);
   renderTeam(teams[1], teamTwoContainer);
+}
+
+function toggleTeamsHeadToHead() {
+  const isExtended = teamsContainerToggle.getAttribute("src").includes("upArrow");
+
+  if (isExtended) {
+    teamsContainerBody.setAttribute("class", "teamsContainerBody none");
+    setBtnIcon(teamsContainerToggle, "downArrow", "Show head to head stats");
+  } else {
+    teamsContainerBody.setAttribute("class", "teamsContainerBody flez");
+    setBtnIcon(teamsContainerToggle, "upArrow", "Hide head to head stats");
+  }
 }
 
 function renderTeamStats(parent, team) {
@@ -42,12 +57,10 @@ function renderTeamStats(parent, team) {
   const averageRating = Math.floor(team.totalRating / team.monsters.length);
   const averageHealth = Math.floor(team.totalHealth / team.monsters.length);
   const averageDamage = Math.floor(team.totalDamage / team.monsters.length);
-
   const rankIcon = renderIconWithNumber(team.totalRank, "../../res/icons/ribbon.svg", `Team '${team.name}' has a rank of ${team.totalRank}`);
   const ratingIcon = renderIconWithNumber(team.totalRating, "../../res/icons/trophy.svg", `Team '${team.name}' has a combinded rating of ${team.totalRating}`);
   const healthIcon = renderIconWithNumber(team.totalHealth, "../../res/icons/heart.svg", `Team '${team.name}' has ${team.totalHealth} in total health`);
   const damageIcon = renderIconWithNumber(team.totalDamage, "../../res/icons/barbell.svg", `Team '${team.name}' has ${team.totalDamage} in total damage`);
-
   const averageRankIcon = averageValueIcon(averageRank, "ribbon", "skull", `Team '${team.name}' has an average rank of ${averageRank}`);
   const averageRatingIcon = averageValueIcon(averageRating, "trophy", "skull", `Team '${team.name}' has an average rating of ${averageRating}`);
   const averageHealthIcon = averageValueIcon(averageHealth, "heart", "skull", `Team '${team.name}' has ${averageHealth} in average health`);

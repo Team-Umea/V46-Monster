@@ -198,6 +198,14 @@ a {
   visibility: hidden;
 }
 
+.none {
+  display: none !important;
+}
+
+.flex {
+  display: flex !important;
+}
+
 .visible {
   visibility: visible !important;
 }

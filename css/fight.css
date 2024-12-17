@@ -42,275 +42,300 @@ body {
   main {
     .teamsContainer {
       width: 100%;
-      padding: 30px;
-      display: flex;
-      justify-content: space-between;
+      margin-top: 100px;
 
-      .team {
-        width: fit-content;
-        padding: 40px;
+      .teamsContainerHeading {
+        width: 100%;
+        padding: 20px;
         display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 10px;
-        border-radius: 20px;
+        justify-content: flex-end;
         position: relative;
-        background-color: var(--color-surface-a10);
-        border: 2px solid var(--color-primary-a50);
 
-        .teamName {
-          font-size: 2rem;
-          margin-top: -20px;
+        .teamsContainerHeader {
+          font-size: 4rem;
+        }
+      }
+
+      .teamsContainerBody {
+        width: 100%;
+        padding: 30px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        column-gap: 50px;
+
+        .vs {
+          width: 200px;
+          height: 200px;
         }
 
-        .teamMonsterToggle {
-          position: absolute;
-          top: 20px;
-          right: 20px;
-        }
+        .team {
+          width: fit-content;
+          padding: 40px;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          gap: 10px;
+          border-radius: 20px;
+          position: relative;
+          background-color: var(--color-surface-a10);
+          border: 2px solid var(--color-primary-a50);
 
-        .teamInfo {
-          display: grid;
-          grid-template-columns: 1;
-          grid-template-rows: 1;
+          .teamName {
+            font-size: 2rem;
+            margin-top: -20px;
+          }
 
-          .teamStats {
-            width: 100%;
-            height: 100%;
-            padding: 20px;
-            margin-bottom: 50px;
-            border-radius: 20px;
-            box-shadow: inset 0 0 10px var(--color-surface-a0);
-            background-color: var(--color-surface-a10);
-            transition: all 0.3s ease-in-out;
-            grid-column: 1;
-            grid-row: 1;
+          .teamMonsterToggle {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+          }
 
-            .teamStatsContainer {
+          .teamInfo {
+            display: grid;
+            grid-template-columns: 1;
+            grid-template-rows: 1;
+
+            .teamStats {
+              width: 100%;
               height: 100%;
+              padding: 20px;
+              margin-bottom: 50px;
+              border-radius: 20px;
+              box-shadow: inset 0 0 10px var(--color-surface-a0);
+              background-color: var(--color-surface-a10);
+              transition: all 0.3s ease-in-out;
+              grid-column: 1;
+              grid-row: 1;
+
+              .teamStatsContainer {
+                height: 100%;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                gap: 20px;
+                position: relative;
+
+                .topStats,
+                .averageStats {
+                  width: 100%;
+                  display: grid;
+                  grid-template-columns: repeat(4, 1fr);
+                  justify-items: center;
+
+                  .teamStatsIcon {
+                    padding: 15px 30px;
+                  }
+
+                  .teamStatsIcon,
+                  .teamAverageStatsIcon {
+                    width: 100px;
+                    height: 60px;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    border-radius: 12px;
+                    text-align: center;
+                    border-left: 1px solid var(--color-primary-a50);
+                    border-right: 1px solid var(--color-primary-a50);
+                    box-shadow: 2px 2px 10px rgba(230, 228, 255, 0.4);
+                    background-color: var(--color-surface-a10);
+                  }
+
+                  .teamStatsIcon p,
+                  .teamAverageStatsIcon p {
+                    font-size: 1rem;
+                  }
+
+                  .teamStatsIcon img,
+                  .teamAverageStatsIcon img {
+                    width: 16px;
+                  }
+
+                  .teamAverageStatsIcon {
+                    &::after {
+                      width: 40px;
+                      height: 1px;
+                      left: 8%;
+                      top: 42%;
+                      transform: rotate(-45deg);
+                    }
+                  }
+                }
+
+                .averageStats {
+                  margin-bottom: 30px;
+                }
+
+                .statsContainer {
+                  width: 100%;
+                  display: grid;
+                  grid-template-columns: repeat(4, 1fr);
+
+                  .teamStat {
+                    h2 {
+                      font-size: 1.2rem;
+                    }
+                    p {
+                      font-size: 1rem;
+                    }
+                  }
+                }
+
+                .progressBar {
+                  height: 2px !important;
+                }
+
+                .performanceStats {
+                  position: absolute;
+                  right: 5px;
+                  bottom: 5px;
+                  display: flex;
+                  gap: 10px;
+
+                  .iconContainer {
+                    gap: 2px;
+
+                    p {
+                      font-size: 1rem;
+                    }
+
+                    img {
+                      width: 16px;
+                    }
+                  }
+                }
+              }
+            }
+
+            .teamMonsters {
+              padding: 20px;
               display: flex;
+              visibility: hidden;
+              opacity: 0;
               flex-direction: column;
               align-items: center;
               gap: 20px;
-              position: relative;
+              border-radius: 20px;
+              box-shadow: inset 0 0 10px var(--color-surface-a0);
+              background-color: var(--color-surface-a10);
+              transition: all 0.3s ease-in-out;
+              grid-column: 1;
+              grid-row: 1;
 
-              .topStats,
-              .averageStats {
-                width: 100%;
-                display: grid;
-                grid-template-columns: repeat(4, 1fr);
-                justify-items: center;
-
-                .teamStatsIcon {
-                  padding: 15px 30px;
-                }
-
-                .teamStatsIcon,
-                .teamAverageStatsIcon {
-                  width: 100px;
-                  height: 60px;
-                  display: flex;
-                  justify-content: center;
-                  align-items: center;
-                  border-radius: 12px;
-                  text-align: center;
-                  border-left: 1px solid var(--color-primary-a50);
-                  border-right: 1px solid var(--color-primary-a50);
-                  box-shadow: 2px 2px 10px rgba(230, 228, 255, 0.4);
-                  background-color: var(--color-surface-a10);
-                }
-
-                .teamStatsIcon p,
-                .teamAverageStatsIcon p {
-                  font-size: 1rem;
-                }
-
-                .teamStatsIcon img,
-                .teamAverageStatsIcon img {
-                  width: 16px;
-                }
-
-                .teamAverageStatsIcon {
-                  &::after {
-                    width: 40px;
-                    height: 1px;
-                    left: 8%;
-                    top: 42%;
-                    transform: rotate(-45deg);
-                  }
-                }
-              }
-
-              .averageStats {
-                margin-bottom: 30px;
-              }
-
-              .statsContainer {
-                width: 100%;
-                display: grid;
-                grid-template-columns: repeat(4, 1fr);
-
-                .teamStat {
-                  h2 {
-                    font-size: 1.2rem;
-                  }
-                  p {
-                    font-size: 1rem;
-                  }
-                }
-              }
-
-              .progressBar {
-                height: 2px !important;
-              }
-
-              .performanceStats {
-                position: absolute;
-                right: 5px;
-                bottom: 5px;
+              .monsterInfo {
                 display: flex;
-                gap: 10px;
 
-                .iconContainer {
-                  gap: 2px;
+                .monsterStats {
+                  width: fit-content;
+                  padding: 10px;
 
-                  p {
+                  .monsterAllStats {
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: space-between;
+
+                    .mainStats {
+                      margin-bottom: 32px;
+                    }
+
+                    .mainStats,
+                    .generalStats {
+                      width: 100%;
+                      display: flex;
+                      justify-content: space-between;
+                      gap: 10px;
+
+                      .monsterStat,
+                      .generalStat {
+                        max-width: 3.5rem;
+
+                        h2 {
+                          font-size: 0.8rem;
+                        }
+
+                        p {
+                          font-size: 0.7rem;
+                        }
+                      }
+                    }
+
+                    .generalStats {
+                      display: grid;
+                      grid-template-columns: repeat(5, 1fr);
+
+                      .generalStat {
+                        padding: 10px;
+                        border-radius: 10px;
+                        background-color: var(--color-surface-mixed-a10);
+                      }
+                    }
+
+                    .statsBar {
+                      height: 2px !important;
+                    }
+                  }
+                }
+
+                .monsters {
+                  display: grid;
+                  grid-template-columns: 1fr;
+                  grid-template-rows: 1fr;
+
+                  .monsterFighCard {
+                    grid-column: 1;
+                    grid-row: 1;
+                    transition: all 0.3s ease-in-out;
+                  }
+                }
+              }
+              .monsterFought {
+                width: 100%;
+                padding: 0 10px;
+                display: flex;
+                justify-content: space-between;
+
+                .fightRecord {
+                  width: 100%;
+
+                  &:nth-child(n + 2) {
+                    border-left: 1px solid var(--color-surface-a50);
+                  }
+                  .fightRecordHeader {
                     font-size: 1rem;
                   }
 
-                  img {
-                    width: 16px;
-                  }
-                }
-              }
-            }
-          }
-
-          .teamMonsters {
-            padding: 20px;
-            display: flex;
-            visibility: hidden;
-            opacity: 0;
-            flex-direction: column;
-            align-items: center;
-            gap: 20px;
-            border-radius: 20px;
-            box-shadow: inset 0 0 10px var(--color-surface-a0);
-            background-color: var(--color-surface-a10);
-            transition: all 0.3s ease-in-out;
-            grid-column: 1;
-            grid-row: 1;
-
-            .monsterInfo {
-              display: flex;
-
-              .monsterStats {
-                width: fit-content;
-                padding: 10px;
-
-                .monsterAllStats {
-                  display: flex;
-                  flex-direction: column;
-                  justify-content: space-between;
-
-                  .mainStats {
-                    margin-bottom: 32px;
-                  }
-
-                  .mainStats,
-                  .generalStats {
-                    width: 100%;
+                  .fightRecordList {
+                    height: 120px;
+                    padding-bottom: 10px;
                     display: flex;
-                    justify-content: space-between;
-                    gap: 10px;
-
-                    .monsterStat,
-                    .generalStat {
-                      max-width: 3.5rem;
-
-                      h2 {
-                        font-size: 0.8rem;
-                      }
-
-                      p {
-                        font-size: 0.7rem;
-                      }
-                    }
-                  }
-
-                  .generalStats {
-                    display: grid;
-                    grid-template-columns: repeat(5, 1fr);
-
-                    .generalStat {
-                      padding: 10px;
-                      border-radius: 10px;
-                      background-color: var(--color-surface-mixed-a10);
-                    }
-                  }
-
-                  .statsBar {
-                    height: 2px !important;
+                    flex-direction: column;
+                    align-items: center;
+                    overflow-y: auto;
                   }
                 }
               }
 
-              .monsters {
-                display: grid;
-                grid-template-columns: 1fr;
-                grid-template-rows: 1fr;
+              .carousel {
+                display: flex;
+                justify-content: center;
+                gap: 15px;
+                grid-area: carousel;
 
-                .monsterFighCard {
-                  grid-column: 1;
-                  grid-row: 1;
-                  transition: all 0.3s ease-in-out;
-                }
-              }
-            }
-            .monsterFought {
-              width: 100%;
-              padding: 0 10px;
-              display: flex;
-              justify-content: space-between;
-
-              .fightRecord {
-                width: 100%;
-                &:nth-child(n + 2) {
-                  border-left: 1px solid var(--color-surface-a50);
-                }
-                .fightRecordHeader {
-                  font-size: 1rem;
+                .carouselBtn {
+                  cursor: pointer;
+                  width: 12px;
+                  height: 12px;
+                  border: 0;
+                  outline: none;
+                  border-radius: 50%;
+                  background-color: var(--color-surface-a20);
                 }
 
-                .fightRecordList {
-                  height: 120px;
-                  padding-bottom: 10px;
-                  display: flex;
-                  flex-direction: column;
-                  align-items: center;
-                  overflow-y: auto;
+                .carouselBtn-checked {
+                  background-color: var(--color-surface-a30);
                 }
-              }
-            }
-
-            .carousel {
-              display: flex;
-              justify-content: center;
-              gap: 15px;
-              grid-area: carousel;
-
-              .carouselBtn {
-                cursor: pointer;
-                width: 12px;
-                height: 12px;
-                border: 0;
-                outline: none;
-                border-radius: 50%;
-                background-color: var(--color-surface-a20);
-              }
-
-              .carouselBtn-checked {
-                background-color: var(--color-surface-a30);
               }
             }
           }
@@ -384,4 +409,11 @@ footer {
   left: 50% !important;
   bottom: 20px !important;
   transform: translate(-50%) !important;
+}
+
+@media (max-width: 1700px) {
+  .teamsContainerBody {
+    flex-direction: column;
+    row-gap: 60px;
+  }
 }
