@@ -361,7 +361,29 @@ body {
         width: 100%;
         display: flex;
         justify-content: space-between;
+        gap: 50px;
+
+        .monsterFightContainer {
+          width: 100%;
+          height: 300px;
+          position: relative;
+
+          .monsterFighCard {
+            position: absolute;
+            transition: all 0.3s ease-in-out;
+          }
+        }
+
+        .monster2FightContainer {
+          .monsterFighCard {
+            right: 0;
+          }
+        }
       }
+    }
+
+    .fightBtn {
+      margin-bottom: 200px;
     }
   }
 }

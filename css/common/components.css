@@ -106,6 +106,7 @@ a {
   cursor: pointer;
   transition: all 0.3s ease-in-out;
   border: 2px solid transparent;
+  color: var(--color-primary-text);
   background-color: var(--color-surface-a10);
 }
 

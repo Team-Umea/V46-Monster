@@ -13,9 +13,12 @@ const teamsContainerBody = document.getElementById("teamsContainerBody");
 const teamOneContainer = document.getElementById("teamOne");
 const teamTwoContainer = document.getElementById("teamTwo");
 const battleContainer = document.getElementById("battleContainer");
+const fightBtn = document.getElementById("fightBtn");
 
 const teams = load(TEAMS_LSK) || [];
 const selectedTeam = load(SELECTEDFIGHTTEAM_LSK) || null;
+
+let currentFight = 0;
 
 window.addEventListener("DOMContentLoaded", () => {
   init();
@@ -24,6 +27,7 @@ window.addEventListener("DOMContentLoaded", () => {
 function init() {
   render();
   toggleTeamMonsters();
+  useClickEvent(fightBtn, slideFightCards);
   useClickEvent(teamsContainerToggle, toggleTeamsHeadToHead);
 }
 
@@ -31,6 +35,42 @@ function render() {
   renderTeam(teams[0], teamOneContainer);
   renderTeam(teams[1], teamTwoContainer);
   renderBattleMonsters();
+}
+
+function slideFightCards() {
+  if (currentFight < 4) {
+    const monsterCardTeam1 = getCurrentFighCards(currentFight).monsterCardTeam1;
+    const monsterCardTeam2 = getCurrentFighCards(currentFight).monsterCardTeam2;
+
+    const cardWidth = monsterCardTeam1.clientWidth;
+
+    const sildeDist = battleContainer.children[0].getElementsByClassName("monster1FightContainer")[0].clientWidth - cardWidth;
+
+    if (currentFight > 0) {
+      const prevMonsterCardTeam1 = getCurrentFighCards(currentFight - 1).monsterCardTeam1;
+      const prevMonsterCardTeam2 = getCurrentFighCards(currentFight - 1).monsterCardTeam2;
+
+      prevMonsterCardTeam1.style.transform = `translateX(0)`;
+      prevMonsterCardTeam2.style.transform = `translateX(0)`;
+    }
+
+    monsterCardTeam1.style.transform = `translateX(${sildeDist}px)`;
+    monsterCardTeam2.style.transform = `translateX(-${sildeDist}px)`;
+
+    currentFight++;
+  }
+}
+
+function getCurrentFighCards(index) {
+  const currentFightConatiner = battleContainer.children[index];
+
+  const monsterCardTeam1 = currentFightConatiner.getElementsByClassName("monster1FightContainer")[0].getElementsByClassName("monsterFighCard")[0];
+  const monsterCardTeam2 = currentFightConatiner.getElementsByClassName("monster2FightContainer")[0].getElementsByClassName("monsterFighCard")[0];
+
+  return {
+    monsterCardTeam1,
+    monsterCardTeam2,
+  };
 }
 
 function toggleTeamsHeadToHead() {
@@ -354,13 +394,20 @@ function renderBattleMonsters() {
     const team2Monsters = team2[index];
 
     const fightContainer = document.createElement("div");
+    const monster1Conatiner = document.createElement("div");
+    const monster2Container = document.createElement("div");
 
     fightContainer.setAttribute("class", "fightContainer");
+    monster1Conatiner.setAttribute("class", "monster1FightContainer monsterFightContainer");
+    monster2Container.setAttribute("class", "monster2FightContainer monsterFightContainer");
 
     const monsterCardTeam1 = new MonsterFighCard(team1Monsters).card();
     const monsterCardTeam2 = new MonsterFighCard(team2Monsters).card();
 
-    fightContainer.append(monsterCardTeam1, monsterCardTeam2);
+    monster1Conatiner.appendChild(monsterCardTeam1);
+    monster2Container.appendChild(monsterCardTeam2);
+
+    fightContainer.append(monster1Conatiner, monster2Container);
 
     battleContainer.appendChild(fightContainer);
   });
