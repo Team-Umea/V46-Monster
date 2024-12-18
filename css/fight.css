@@ -162,9 +162,18 @@ body {
                     &::after {
                       width: 40px;
                       height: 1px;
-                      left: 8%;
-                      top: 42%;
+                      left: 6%;
+                      top: 48%;
                       transform: rotate(-45deg);
+                    }
+
+                    .subIcon {
+                      left: 30%;
+                      top: 55%;
+                    }
+
+                    .averageValue {
+                      right: 5%;
                     }
                   }
                 }
