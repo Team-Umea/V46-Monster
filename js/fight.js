@@ -39,6 +39,7 @@ function render() {
 
 function slideFightCards() {
   if (currentFight < 4) {
+    const fightContainer = battleContainer.children[currentFight];
     const monsterCardTeam1 = getCurrentFighCards(currentFight).monsterCardTeam1;
     const monsterCardTeam2 = getCurrentFighCards(currentFight).monsterCardTeam2;
 
@@ -47,13 +48,19 @@ function slideFightCards() {
     const sildeDist = battleContainer.children[0].getElementsByClassName("monster1FightContainer")[0].clientWidth - cardWidth;
 
     if (currentFight > 0) {
+      const prevFightContainer = battleContainer.children[currentFight - 1];
       const prevMonsterCardTeam1 = getCurrentFighCards(currentFight - 1).monsterCardTeam1;
       const prevMonsterCardTeam2 = getCurrentFighCards(currentFight - 1).monsterCardTeam2;
+
+      const originalContainerWidth = 100 - (currentFight - 1) * 2;
+
+      prevFightContainer.style.width = `${originalContainerWidth}%`;
 
       prevMonsterCardTeam1.style.transform = `translateX(0)`;
       prevMonsterCardTeam2.style.transform = `translateX(0)`;
     }
 
+    fightContainer.style.width = "100%";
     monsterCardTeam1.style.transform = `translateX(${sildeDist}px)`;
     monsterCardTeam2.style.transform = `translateX(-${sildeDist}px)`;
 
