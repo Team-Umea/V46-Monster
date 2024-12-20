@@ -1,11 +1,8 @@
 //Js code for fight page
 import { TEAMS_LSK, SELECTEDFIGHTTEAM_LSK } from "./common/localStorageKeys.js";
 import { load } from "./common/utilities.js";
-import { serveData } from "./common/fetch.js";
-import { Team } from "./classes/Team.js";
-import { MonsterCard } from "./classes/MonsterCard.js";
 import { MonsterFighCard } from "./classes/MonsterFighCard.js";
-import { valueWithHeader, progressBar, setBtnIcon, renderIconWithNumber, averageValueIcon, imgAsBtn } from "./common/render.js";
+import { valueWithHeader, progressBar, setBtnIcon, renderIconWithNumber, averageValueIcon, imgAsBtn, accuracyMeter } from "./common/render.js";
 import { useClickEvent } from "./common/useEvent.js";
 
 const teamsContainerToggle = document.getElementById("teamsContainerToggle");
@@ -85,11 +82,25 @@ function getCurrentFighCards(index) {
 function renderHitControls() {
   hitContainer.innerHTML = "";
 
+  const meter = accuracyMeter();
+  const meterPin = meter.getElementsByClassName("pin")[0];
   const hitBtn = imgAsBtn("sword", "Hit");
 
   hitBtn.setAttribute("class", "hitBtn icon icon-scale");
 
-  hitContainer.append(hitBtn);
+  useClickEvent(hitBtn, () => {
+    let meterIsRunning = meter.style.animationPlayState !== "paused";
+
+    if (meterIsRunning) {
+      meterPin.style.animationPlayState = "paused";
+      setTimeout(() => {
+        meterPin.style.animationPlayState = "running";
+        meterIsRunning = meterPin.style.animationPlayState !== "paused";
+      }, 1000);
+    }
+  });
+
+  hitContainer.append(meter, hitBtn);
 }
 
 function toggleTeamsHeadToHead() {

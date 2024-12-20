@@ -431,6 +431,7 @@ body {
       display: flex;
       flex-direction: column;
       align-items: center;
+      gap: 10px;
 
       .hitBtn {
         width: fit-content;
