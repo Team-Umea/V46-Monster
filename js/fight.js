@@ -5,7 +5,7 @@ import { serveData } from "./common/fetch.js";
 import { Team } from "./classes/Team.js";
 import { MonsterCard } from "./classes/MonsterCard.js";
 import { MonsterFighCard } from "./classes/MonsterFighCard.js";
-import { valueWithHeader, progressBar, setBtnIcon, renderIconWithNumber, averageValueIcon } from "./common/render.js";
+import { valueWithHeader, progressBar, setBtnIcon, renderIconWithNumber, averageValueIcon, imgAsBtn } from "./common/render.js";
 import { useClickEvent } from "./common/useEvent.js";
 
 const teamsContainerToggle = document.getElementById("teamsContainerToggle");
@@ -14,6 +14,7 @@ const teamOneContainer = document.getElementById("teamOne");
 const teamTwoContainer = document.getElementById("teamTwo");
 const battleContainer = document.getElementById("battleContainer");
 const fightBtn = document.getElementById("fightBtn");
+const hitContainer = document.getElementById("hitContainer");
 
 const teams = load(TEAMS_LSK) || [];
 const selectedTeam = load(SELECTEDFIGHTTEAM_LSK) || null;
@@ -65,6 +66,7 @@ function slideFightCards() {
     monsterCardTeam2.style.transform = `translateX(-${sildeDist}px)`;
 
     currentFight++;
+    renderHitControls();
   }
 }
 
@@ -78,6 +80,16 @@ function getCurrentFighCards(index) {
     monsterCardTeam1,
     monsterCardTeam2,
   };
+}
+
+function renderHitControls() {
+  hitContainer.innerHTML = "";
+
+  const hitBtn = imgAsBtn("sword", "Hit");
+
+  hitBtn.setAttribute("class", "hitBtn icon icon-scale");
+
+  hitContainer.append(hitBtn);
 }
 
 function toggleTeamsHeadToHead() {
