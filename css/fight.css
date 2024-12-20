@@ -513,6 +513,22 @@ body {
     background: rgb(0, 0, 0);
     background: linear-gradient(0deg, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0) 100%);
   }
+
+  .lostHpIcon {
+    position: absolute;
+    left: 50%;
+    bottom: -50px;
+    transform: translateX(-50%);
+    animation: fadeOut 2s ease-in-out;
+
+    img {
+      width: 40px;
+    }
+
+    p {
+      color: var(--color-light-red);
+    }
+  }
 }
 
 footer {
@@ -520,6 +536,15 @@ footer {
   left: 50% !important;
   bottom: 20px !important;
   transform: translate(-50%) !important;
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
 }
 
 @media (max-width: 1700px) {

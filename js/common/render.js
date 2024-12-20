@@ -238,6 +238,24 @@ export function averageValueIcon(value, mainSrc, subSrc, altTitle) {
   return container;
 }
 
+export function iconStat(value, src, clasName) {
+  const container = document.createElement("div");
+  const icon = document.createElement("img");
+  const text = document.createElement("p");
+
+  container.setAttribute("class", `iconStat ${clasName}`);
+  icon.setAttribute("class", "iconStatIcon");
+  text.setAttribute("class", "iconStatText");
+
+  icon.setAttribute("src", `../../res/icons/${src}.svg`);
+
+  text.innerText = value;
+
+  container.append(icon, text);
+
+  return container;
+}
+
 export function setBtnIcon(icon, src, altTitle) {
   icon.setAttribute("src", `../../res/icons/${src}.svg`);
   icon.setAttribute("alt", formatLargeNumber(altTitle));
