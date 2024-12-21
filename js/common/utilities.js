@@ -38,7 +38,7 @@ export function save(key, value) {
 export function load(key) {
   const loaded = JSON.parse(localStorage.getItem(key));
 
-  if (loaded === null) {
+  if (!loaded) {
     return null;
   }
 

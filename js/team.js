@@ -280,7 +280,7 @@ function renderTeams(condition) {
       fightBtn.addEventListener("click", () => {
         save(SELECTEDFIGHTTEAM_LSK, team);
         setTimeout(() => {
-          redirect("fight.html");
+          redirect("setUpFight.html");
         }, 100);
       });
 

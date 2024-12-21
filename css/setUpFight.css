@@ -1,0 +1,76 @@
+:root {
+    /** Dark theme primary colors */
+    --color-primary-a0: #c8ad54;
+    --color-primary-a10: #cfb667;
+    --color-primary-a20: #d6bf7a;
+    --color-primary-a30: #ddc88d;
+    --color-primary-a40: #e3d19f;
+    --color-primary-a50: #e9dab2;
+  
+    /** Dark theme surface colors */
+    --color-surface-a0: #121212;
+    --color-surface-a10: #282828;
+    --color-surface-a20: #3f3f3f;
+    --color-surface-a30: #575757;
+    --color-surface-a40: #717171;
+    --color-surface-a50: #8b8b8b;
+  
+    /** Dark theme mixed surface colors */
+    --color-surface-mixed-a0: #221f19;
+    --color-surface-mixed-a10: #37342e;
+    --color-surface-mixed-a20: #4d4a44;
+    --color-surface-mixed-a30: #64615c;
+    --color-surface-mixed-a40: #7c7975;
+    --color-surface-mixed-a50: #94938f;
+  
+    /*Primary text color*/
+    --color-primary-text: #e6e4e1;
+    --color-light-red: #ed3b3b;
+  }
+
+footer {
+    right: auto !important;
+    left: 50% !important;
+    bottom: 20px !important;
+    transform: translate(-50%) !important;
+}
+
+main{
+    .userTeam{
+        width: 88%;
+        margin-top: 30px;
+        padding: 30px 60px 40px 60px;
+        border-radius: 20px;
+        position: relative;
+        border: 1px solid var(--color-primary-a50);
+
+        .legend{
+            font-size: 1.2rem;
+            padding: 10px;
+            position: absolute;
+            top: -20px;
+            left: -50px;
+            border-radius: 20px;
+            border: 1px solid var(--color-primary-a50);
+            background-color: var(--color-surface-a0);
+        }
+
+        .selectedTeam{
+            font-size: 1.5rem;
+            margin:10px 0 15px 0 ;
+        }
+
+        .availableTeams{
+            width: min(100%, 400px);
+            padding: 12px;
+            display: block;
+            margin: auto;
+            border-radius: 8px;
+            border: 0;
+            outline: none;
+            box-shadow: 3px 3px 5px 0px rgba(0, 0, 0, 0.75);
+            color: var(--color-primary-text);
+            background-color: var(--color-surface-mixed-a10);
+        }
+    }
+}
