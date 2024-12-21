@@ -8,61 +8,11 @@
     <link rel="stylesheet" href="../css/common/components.css" />
     <link rel="stylesheet" href="../css/common/common.css" />
     <link rel="stylesheet" href="../css/monster.css" />
-    <link rel="stylesheet" href="../css/fight.css" />
+    <link rel="stylesheet" href="../css/setUpFight.css" />
   </head>
   <body>
     <main>
       <!-- <div id="teamsStatsContainer" class="teamsStatsContainer"></div> -->
-
-      <div id="teamsContainer" class="teamsContainer">
-        <div id="teamsContainerHeading" class="teamsContainerHeading">
-          <h2 id="teamsContainerHeader" class="teamsContainerHeader alignCenter">Head to Head</h2>
-          <img src="../res/icons/upArrow.svg" alt="Hide head to head stats" title="Hide head to head stats" role="button" tabindex="0" id="teamsContainerToggle" class="teamsContainerToggle icon icon-scale" />
-        </div>
-
-        <div id="teamsContainerBody" class="teamsContainerBody">
-          <div id="teamOne" class="teamOne team">
-            <h2 class="teamName teamOneName"></h2>
-            <img src="../res/icons/skull.svg" alt="Show team monsters" title="Show team monsters" role="button" tabindex="0" class="teamMonsterToggle icon icon-scale" />
-            <div class="teamInfo">
-              <div class="teamStats"></div>
-              <div class="teamMonsters teamOneMonsters">
-                <div class="monsterInfo row-reverse">
-                  <div class="monsterStats"></div>
-                  <div class="monsters"></div>
-                </div>
-                <div class="monsterFought"></div>
-              </div>
-            </div>
-          </div>
-
-          <img src="../res/img/vs.png" alt="vs" id="vs" class="vs" />
-
-          <div id="teamTwo" class="teamTwo team">
-            <h2 class="teamName teamTwoName"></h2>
-            <img src="../res/icons/skull.svg" alt="Show team monsters" title="Show team monsters" role="button" tabindex="0" class="teamMonsterToggle icon icon-scale" />
-            <div class="teamInfo">
-              <div class="teamStats"></div>
-              <div class="teamMonsters teamTwoMonsters">
-                <div class="monsterInfo">
-                  <div class="monsterStats"></div>
-                  <div class="monsters"></div>
-                </div>
-                <div class="monsterFought"></div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div id="battle" class="battle">
-        <button id="fightBtn" class="fightBtn btn primary-btn">Fight</button>
-        <div id="scoreContainer" class="scoreContainer">
-          <p id="score" class="score"></p>
-        </div>
-
-        <div id="battleContainer" class="battleContainer"></div>
-        <div id="hitContainer" class="hitContainer"></div>
-      </div>
     </main>
     <footer>
       <nav>
@@ -89,7 +39,7 @@
           </li>
 
           <li title="Fight">
-            <a href="../html/setUpFight.html">
+            <a href="../html/fight.html">
               <img src="../res/icons/shield.svg" alt="Fight" class="icon" />
               <p>Fight</p>
             </a>
@@ -139,6 +89,6 @@
         </ul>
       </nav>
     </footer>
-    <script type="module" src="../js/fight.js"></script>
+    <script type="module" src="../js/setUpFight.js"></script>
   </body>
 </html>

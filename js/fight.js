@@ -101,6 +101,7 @@ function toggleTeamMonsters() {
 }
 
 function slideFightCards() {
+  updateScore();
   if (currentFight < 4) {
     const fightContainer = battleContainer.children[currentFight];
     const monsterCardTeam1 = getCurrentFightCards(currentFight).monsterCardTeam1;
@@ -118,15 +119,11 @@ function slideFightCards() {
     monsterCardTeam1.style.transform = `translateX(${sildeDist}px)`;
     monsterCardTeam2.style.transform = `translateX(-${sildeDist}px)`;
 
-    updateScore();
-
     currentFight++;
     renderHitControls();
   } else {
     hideHitControls();
-    updateScore();
     resetPrevFight();
-    console.log("Points: ", userPoints);
   }
 }
 
