@@ -128,6 +128,7 @@ body {
                   display: grid;
                   grid-template-columns: repeat(4, 1fr);
                   justify-items: center;
+                  gap: 20px;
 
                   .teamStatsIcon {
                     padding: 15px 30px;
@@ -365,6 +366,13 @@ body {
       .fightBtn {
         position: absolute;
         top: 10px;
+        left: 50%;
+        transform: translateX(-50%);
+      }
+
+      .scoreContainer {
+        position: absolute;
+        top: 70px;
         left: 50%;
         transform: translateX(-50%);
       }

@@ -11,6 +11,7 @@ const teamOneContainer = document.getElementById("teamOne");
 const teamTwoContainer = document.getElementById("teamTwo");
 const battleContainer = document.getElementById("battleContainer");
 const fightBtn = document.getElementById("fightBtn");
+const score = document.getElementById("score");
 const hitContainer = document.getElementById("hitContainer");
 
 const teams = load(TEAMS_LSK) || [];
@@ -110,25 +111,21 @@ function slideFightCards() {
     const sildeDist = battleContainer.children[0].getElementsByClassName("monster1FightContainer")[0].clientWidth - cardWidth;
 
     if (currentFight > 0) {
-      const prevFightContainer = battleContainer.children[currentFight - 1];
-      const prevMonsterCardTeam1 = getCurrentFightCards(currentFight - 1).monsterCardTeam1;
-      const prevMonsterCardTeam2 = getCurrentFightCards(currentFight - 1).monsterCardTeam2;
-
-      const originalContainerWidth = 100 - (currentFight - 1) * 2;
-
-      prevFightContainer.style.width = `${originalContainerWidth}%`;
-
-      prevMonsterCardTeam1.style.transform = `translateX(0)`;
-      prevMonsterCardTeam2.style.transform = `translateX(0)`;
+      resetPrevFight();
     }
 
     fightContainer.style.width = "100%";
     monsterCardTeam1.style.transform = `translateX(${sildeDist}px)`;
     monsterCardTeam2.style.transform = `translateX(-${sildeDist}px)`;
 
+    updateScore();
+
     currentFight++;
     renderHitControls();
   } else {
+    hideHitControls();
+    updateScore();
+    resetPrevFight();
     console.log("Points: ", userPoints);
   }
 }
@@ -143,6 +140,23 @@ function getCurrentFightCards(index) {
     monsterCardTeam1,
     monsterCardTeam2,
   };
+}
+
+function resetPrevFight() {
+  const prevFightContainer = battleContainer.children[currentFight - 1];
+  const prevMonsterCardTeam1 = getCurrentFightCards(currentFight - 1).monsterCardTeam1;
+  const prevMonsterCardTeam2 = getCurrentFightCards(currentFight - 1).monsterCardTeam2;
+
+  const originalContainerWidth = 100 - (currentFight - 1) * 2;
+
+  prevFightContainer.style.width = `${originalContainerWidth}%`;
+
+  prevMonsterCardTeam1.style.transform = `translateX(0)`;
+  prevMonsterCardTeam2.style.transform = `translateX(0)`;
+}
+
+function hideHitControls() {
+  hitContainer.setAttribute("class", "hitContainer hidden");
 }
 
 function calcUserDamage(monster, meter, meterPin) {
@@ -168,6 +182,13 @@ function calcUserDamage(monster, meter, meterPin) {
   const damage = Math.floor(maxDamage * percentage);
 
   return damage;
+}
+
+function updateScore() {
+  if (currentFight > 0) {
+    userPoints++;
+  }
+  score.innerText = `${userPoints} - 0`;
 }
 
 function renderTeamStats(parent, team) {
@@ -494,7 +515,6 @@ function updateHp(damage, monster, monsterCard) {
       lostHpIcon.remove();
     }
     slideFightCards();
-    userPoints++;
   } else {
     monsterCard.appendChild(lostHpIcon);
   }
