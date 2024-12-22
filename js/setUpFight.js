@@ -2,6 +2,7 @@ import { TEAMS_LSK,SELECTEDFIGHTTEAM_LSK, OPPOSINGFIGHTTEAM_LSK } from "./common
 import { save, load, redirect } from "./common/utilities.js";
 import {useChangeEvent, useClickEvent} from "./common/useEvent.js"
 import { serveData } from "./common/fetch.js";
+import { Team } from "./classes/Team.js";
 
 const selectedTeamEl = document.getElementById("selectedTeam");
 const userTeamSelectEl = document.getElementById("availableTeams");
@@ -35,7 +36,10 @@ function selectTeam(){
 }
 
 async function getOpposingTeam(level){
-    const opposingTeam = await serveData("generateTeam",`&level=${level}`, opposingTeamListEl);
+    const opposingTeam = new Team(`AI ${level}`);
+    const opposingTeamMonsters = await serveData("generateTeam",`&level=${level}`, opposingTeamListEl);
+    opposingTeam.setMonsters(opposingTeamMonsters);
+    
     save(OPPOSINGFIGHTTEAM_LSK, opposingTeam);
 
     setTimeout(() => {

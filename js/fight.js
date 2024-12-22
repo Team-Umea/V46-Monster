@@ -1,5 +1,5 @@
 //Js code for fight page
-import { TEAMS_LSK, SELECTEDFIGHTTEAM_LSK } from "./common/localStorageKeys.js";
+import { TEAMS_LSK, SELECTEDFIGHTTEAM_LSK, OPPOSINGFIGHTTEAM_LSK } from "./common/localStorageKeys.js";
 import { load } from "./common/utilities.js";
 import { MonsterFighCard } from "./classes/MonsterFighCard.js";
 import { valueWithHeader, progressBar, setBtnIcon, renderIconWithNumber, averageValueIcon, imgAsBtn, accuracyMeter } from "./common/render.js";
@@ -15,7 +15,8 @@ const score = document.getElementById("score");
 const hitContainer = document.getElementById("hitContainer");
 
 const teams = load(TEAMS_LSK) || [];
-const selectedTeam = load(SELECTEDFIGHTTEAM_LSK) || null;
+const userTeam = teams.find(team=>team.name===load(SELECTEDFIGHTTEAM_LSK)) || null;
+const opposingTeam = load(OPPOSINGFIGHTTEAM_LSK) || null; 
 
 let currentFight = 0;
 let userPoints = 0;
@@ -32,8 +33,8 @@ function init() {
 }
 
 function render() {
-  renderTeam(teams[0], teamOneContainer);
-  renderTeam(teams[1], teamTwoContainer);
+  renderTeam(userTeam, teamOneContainer);
+  renderTeam(opposingTeam, teamTwoContainer);
   renderBattleMonsters();
 }
 
@@ -178,7 +179,7 @@ function calcUserDamage(monster, meter, meterPin) {
   const percentage = vaildHit / 100;
   const damage = Math.floor(maxDamage * percentage);
 
-  return damage;
+  return damage===0?1:damage;
 }
 
 function updateScore() {
@@ -438,8 +439,8 @@ function renderMonstersFought(parent, headerText, record) {
 function renderBattleMonsters() {
   battleContainer.innerHTML = "";
 
-  const team1 = teams[0].monsters;
-  const team2 = teams[1].monsters;
+  const team1 = userTeam.monsters;
+  const team2 = opposingTeam.monsters;
 
   team1.forEach((_, index) => {
     const team1Monsters = team1[index];
@@ -481,8 +482,8 @@ function renderHitControls() {
       meterPin.style.animationPlayState = "paused";
       meterIsRunning = false;
 
-      const monster = teams[0].monsters[currentFight - 1];
-      const oponent = teams[1].monsters[currentFight - 1];
+      const monster = userTeam.monsters[currentFight - 1];
+      const oponent = opposingTeam.monsters[currentFight - 1];
 
       const userDamage = calcUserDamage(monster, meter, meterPin);
       const opponentCurrentFightCard = getCurrentFightCards(currentFight - 1).monsterCardTeam2;
