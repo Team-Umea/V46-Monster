@@ -205,7 +205,7 @@ function sellTeam() {
 }
 
 function fightTeam() {
-  save(SELECTEDFIGHTTEAM_LSK, team);
+  save(SELECTEDFIGHTTEAM_LSK, team.name);
   setTimeout(() => {
     redirect("setUpFight.html");
   }, 100);

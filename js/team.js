@@ -278,7 +278,7 @@ function renderTeams(condition) {
       header.innerText = teamName;
 
       fightBtn.addEventListener("click", () => {
-        save(SELECTEDFIGHTTEAM_LSK, team);
+        save(SELECTEDFIGHTTEAM_LSK, teamName);
         setTimeout(() => {
           redirect("setUpFight.html");
         }, 100);

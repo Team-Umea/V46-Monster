@@ -18,7 +18,7 @@ function init(){
     useChangeEvent(userTeamSelectEl, selectTeam)
 }
 
-function setSelectedTeam(){
+function setSelectedTeam(){    
     if(selectedTeam){
         selectedTeamEl.innerText = `Selected Team '${selectedTeam}'`        
         userTeamSelectEl.value = selectedTeam
