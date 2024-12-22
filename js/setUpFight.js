@@ -3,13 +3,17 @@ import { save, load, redirect } from "./common/utilities.js";
 import {useChangeEvent, useClickEvent} from "./common/useEvent.js"
 import { serveData } from "./common/fetch.js";
 import { Team } from "./classes/Team.js";
+import {MonsterFighCard} from "./classes/MonsterFighCard.js"
 
 const selectedTeamEl = document.getElementById("selectedTeam");
 const userTeamSelectEl = document.getElementById("availableTeams");
+const userTeamMonstersEl = document.getElementById("userTeamMonsters");
 const opposingTeamListEl = document.getElementById("opposingTeamList");
 
 const teams = load(TEAMS_LSK).map(team=>team.name) || [];
 const selectedTeam = load(SELECTEDFIGHTTEAM_LSK)||""; 
+
+let teamMonsters = load(TEAMS_LSK).find(team=>team.name===selectedTeam).monsters || [];
 
 window.addEventListener("DOMContentLoaded",()=>{
     init();
@@ -18,6 +22,7 @@ window.addEventListener("DOMContentLoaded",()=>{
 function init(){
     populateUserTeamSelect();
     populateOpposingTeamList();
+    renderUserTeamMonsters();
     setSelectedTeam();
     useChangeEvent(userTeamSelectEl, selectTeam)
 }
@@ -30,9 +35,13 @@ function setSelectedTeam(){
 }
 
 function selectTeam(){
-    const team = userTeamSelectEl.value;
-    selectedTeamEl.innerText = `Selected Team '${team}'`        
-    save(SELECTEDFIGHTTEAM_LSK, team);
+    const teamName = userTeamSelectEl.value;
+    selectedTeamEl.innerText = `Selected Team '${teamName}'` 
+    
+    teamMonsters = load(TEAMS_LSK).find(team=>team.name===teamName).monsters || [];
+    
+    save(SELECTEDFIGHTTEAM_LSK, teamName);
+    renderUserTeamMonsters();
 }
 
 async function getOpposingTeam(level){
@@ -58,6 +67,15 @@ function populateUserTeamSelect(){
 
         userTeamSelectEl.appendChild(teamOptionEl);
     })
+}
+
+function renderUserTeamMonsters(){
+    userTeamMonstersEl.innerHTML ="";
+
+    teamMonsters.forEach(monster=>{
+        const monsterCard = new MonsterFighCard(monster).card(); 
+        userTeamMonstersEl.appendChild(monsterCard);
+    });
 }
 
 function populateOpposingTeamList(){
