@@ -10,3 +10,4 @@ export const SORTOPTIONS_LSK = "sortOptions";
 export const TEAMS_LSK = "teams";
 export const SELECTEDTEAMSETTINGS_LSK = "selectedTeamSettings";
 export const SELECTEDFIGHTTEAM_LSK = "selectedFightTeam";
+export const OPPOSINGFIGHTTEAM_LSK = "opposingFightTeam";
