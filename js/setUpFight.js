@@ -8,12 +8,14 @@ import {MonsterFighCard} from "./classes/MonsterFighCard.js"
 const selectedTeamEl = document.getElementById("selectedTeam");
 const userTeamSelectEl = document.getElementById("availableTeams");
 const userTeamMonstersEl = document.getElementById("userTeamMonsters");
+const fightBtn = document.getElementById("fightBtn");
 const opposingTeamListEl = document.getElementById("opposingTeamList");
+const opposingTeamMonstersEl = document.getElementById("opposingTeamMonters");
 
 const teams = load(TEAMS_LSK).map(team=>team.name) || [];
 const selectedTeam = load(SELECTEDFIGHTTEAM_LSK)||""; 
 
-let teamMonsters = load(TEAMS_LSK).find(team=>team.name===selectedTeam).monsters || [];
+let userTeamMonsters = load(TEAMS_LSK).find(team=>team.name===selectedTeam).monsters || [];
 
 window.addEventListener("DOMContentLoaded",()=>{
     init();
@@ -22,9 +24,10 @@ window.addEventListener("DOMContentLoaded",()=>{
 function init(){
     populateUserTeamSelect();
     populateOpposingTeamList();
-    renderUserTeamMonsters();
+    renderMonsters(userTeamMonstersEl,userTeamMonsters);
     setSelectedTeam();
-    useChangeEvent(userTeamSelectEl, selectTeam)
+    useClickEvent(fightBtn,()=>redirect("fight.html"));
+    useChangeEvent(userTeamSelectEl, selectTeam);
 }
 
 function setSelectedTeam(){    
@@ -38,22 +41,21 @@ function selectTeam(){
     const teamName = userTeamSelectEl.value;
     selectedTeamEl.innerText = `Selected Team '${teamName}'` 
     
-    teamMonsters = load(TEAMS_LSK).find(team=>team.name===teamName).monsters || [];
+    userTeamMonsters = load(TEAMS_LSK).find(team=>team.name===teamName).monsters || [];
     
     save(SELECTEDFIGHTTEAM_LSK, teamName);
-    renderUserTeamMonsters();
+    renderMonsters(userTeamMonstersEl, userTeamMonsters);
 }
 
 async function getOpposingTeam(level){
     const opposingTeam = new Team(`AI ${level}`);
-    const opposingTeamMonsters = await serveData("generateTeam",`&level=${level}`, opposingTeamListEl);
+    const opposingTeamMonsters = await serveData("generateTeam",`&level=${level}`, opposingTeamMonstersEl, undefined, undefined, true);
     opposingTeam.setMonsters(opposingTeamMonsters);
     
     save(OPPOSINGFIGHTTEAM_LSK, opposingTeam);
 
-    setTimeout(() => {
-        redirect("fight.html");
-    }, 100);
+    renderMonsters(opposingTeamMonstersEl, opposingTeamMonsters);
+    fightBtn.classList.remove("hidden");
 }
 
 function populateUserTeamSelect(){
@@ -69,12 +71,11 @@ function populateUserTeamSelect(){
     })
 }
 
-function renderUserTeamMonsters(){
-    userTeamMonstersEl.innerHTML ="";
+function renderMonsters(parent, monsters){
+    parent.innerHTML ="";
 
-    teamMonsters.forEach(monster=>{
-        const monsterCard = new MonsterFighCard(monster).card(); 
-        userTeamMonstersEl.appendChild(monsterCard);
+    monsters.forEach(monster=>{
+        parent.appendChild(new MonsterFighCard(monster).card());
     });
 }
 
@@ -98,4 +99,13 @@ function populateOpposingTeamList(){
         listItem.appendChild(teamLevelBtn);
         opposingTeamListEl.appendChild(listItem);
     }
+}
+
+function renderOpposingTeamMonsters(){
+    opposingTeamMonstersEl.innerHTML ="";
+
+    userTeamMonsters.forEach(monster=>{
+        const monsterCard = new MonsterFighCard(monster).card(); 
+        userTeamMonstersEl.appendChild(monsterCard);
+    });
 }

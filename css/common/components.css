@@ -337,7 +337,7 @@ a {
     left: 50%;
     transform: translateX(-50%);
     animation: slide 0.5s linear infinite;
-    background-color: var(--color-surface-a30);
+    background-color: var(--color-primary-a50);
   }
 }
 
