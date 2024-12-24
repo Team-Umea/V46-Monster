@@ -20,6 +20,7 @@ const opposingTeam = load(OPPOSINGFIGHTTEAM_LSK) || null;
 
 let currentFight = 0;
 let userPoints = 0;
+let oppoentPoints = 0; 
 
 window.addEventListener("DOMContentLoaded", () => {
   init();
@@ -28,7 +29,7 @@ window.addEventListener("DOMContentLoaded", () => {
 function init() {
   render();
   toggleTeamMonsters();
-  useClickEvent(fightBtn, slideFightCards);
+  useClickEvent(fightBtn, startFight);
   useClickEvent(teamsContainerToggle, toggleTeamsHeadToHead);
 }
 
@@ -101,8 +102,12 @@ function toggleTeamMonsters() {
   });
 }
 
+function startFight(){
+  slideFightCards();
+  score.innerText = `${userPoints} - ${oppoentPoints}`;
+}
+
 function slideFightCards() {
-  updateScore();
   if (currentFight < 4) {
     const fightContainer = battleContainer.children[currentFight];
     const monsterCardTeam1 = getCurrentFightCards(currentFight).monsterCardTeam1;
@@ -182,11 +187,34 @@ function calcUserDamage(monster, meter, meterPin) {
   return damage===0?1:damage;
 }
 
-function updateScore() {
-  if (currentFight > 0) {
-    userPoints++;
+function calcOpposingDamage(monster) {
+  const maxDamage = monster.damage;
+
+  const hitValue = 100 - (Math.random()*100+1)
+  const boosted = Math.floor(hitValue * 1.05);
+
+  let vaildHit = boosted;
+
+  if (vaildHit < 30) {
+    vaildHit = 30;
+  } else if (vaildHit > 100) {
+    vaildHit = 100;
   }
-  score.innerText = `${userPoints} - 0`;
+
+  const percentage = vaildHit / 100;
+  const damage = Math.floor(maxDamage * percentage);
+
+  return damage===0?1:damage;
+}
+
+function updateScore(monster, opponent) {
+  if(monster.health<=0){
+    oppoentPoints++; 
+  }else if(opponent.health<=0){
+    userPoints++; 
+  }
+
+  score.innerText = `${userPoints} - ${oppoentPoints}`;
 }
 
 function renderTeamStats(parent, team) {
@@ -483,12 +511,17 @@ function renderHitControls() {
       meterIsRunning = false;
 
       const monster = userTeam.monsters[currentFight - 1];
-      const oponent = opposingTeam.monsters[currentFight - 1];
+      const opponent = opposingTeam.monsters[currentFight - 1];
 
       const userDamage = calcUserDamage(monster, meter, meterPin);
+      const opposingDamage = calcOpposingDamage(opponent);
+      const userCurrentFightCard = getCurrentFightCards(currentFight-1).monsterCardTeam1; 
       const opponentCurrentFightCard = getCurrentFightCards(currentFight - 1).monsterCardTeam2;
 
-      updateHp(userDamage, oponent, opponentCurrentFightCard);
+      updateHp(userDamage, opponent, opponentCurrentFightCard, "right");
+      updateHp(opposingDamage, monster, userCurrentFightCard,"left");
+
+      updateScore(monster, opponent); 
 
       setTimeout(() => {
         meterPin.style.animationPlayState = "running";
@@ -500,9 +533,10 @@ function renderHitControls() {
   hitContainer.append(meter, hitBtn);
 }
 
-function updateHp(damage, monster, monsterCard) {
-  const lostHpIcon = createLostHpIcon(damage);
+function updateHp(damage, monster, monsterCard, iconDir) {
   const healthEl = monsterCard.getElementsByClassName("stats")[0].children[0].getElementsByTagName("p")[0];
+  const lostHpIcon = renderIconWithNumber(`-${damage}`, "../../res/icons/heartRed.svg", "", iconDir);
+  lostHpIcon.classList.add("lostHpIcon");
 
   const health = monster.health;
   let updatedHealth = health - damage;
@@ -512,22 +546,17 @@ function updateHp(damage, monster, monsterCard) {
     if (lostHpIcon.parentNode) {
       lostHpIcon.remove();
     }
+    const lostHpIcons = document.getElementsByClassName("lostHpIcon");
+    Array.from(lostHpIcons).forEach(icon=>icon.remove());
     slideFightCards();
   } else {
     monsterCard.appendChild(lostHpIcon);
   }
 
-  monster.health = updatedHealth;
-  healthEl.innerText = updatedHealth;
-}
-
-function createLostHpIcon(damage) {
-  const lostHpIcon = renderIconWithNumber(`-${damage}`, "../../res/icons/heartRed.svg", "", "right");
-  lostHpIcon.classList.add("lostHpIcon");
-
   setTimeout(() => {
     lostHpIcon.remove();
   }, 1000);
 
-  return lostHpIcon;
+  monster.health = updatedHealth;
+  healthEl.innerText = updatedHealth;
 }
