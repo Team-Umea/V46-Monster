@@ -434,6 +434,34 @@ body {
       }
     }
 
+    .lostHpIconContainer{
+      width: min(100%, 500px);
+      height: 10px;
+      margin: -80px auto 50px auto;
+      display: flex;
+      gap: 10px;
+
+      .lostHpIconHolder{
+        width: 100%;
+        height: 10px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        .lostHpIcon {
+          animation: fadeOut 2s ease-in-out;
+      
+          img {
+            width: 40px;
+          }
+      
+          p {
+            color: var(--color-light-red);
+          }
+        }
+      }
+    }
+
     .hitContainer {
       margin-bottom: 200px;
       display: flex;
@@ -520,22 +548,6 @@ body {
     height: 8rem;
     background: rgb(0, 0, 0);
     background: linear-gradient(0deg, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0) 100%);
-  }
-
-  .lostHpIcon {
-    position: absolute;
-    left: 50%;
-    bottom: -50px;
-    transform: translateX(-50%);
-    animation: fadeOut 2s ease-in-out;
-
-    img {
-      width: 40px;
-    }
-
-    p {
-      color: var(--color-light-red);
-    }
   }
 }
 

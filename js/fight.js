@@ -12,6 +12,8 @@ const teamTwoContainer = document.getElementById("teamTwo");
 const battleContainer = document.getElementById("battleContainer");
 const fightBtn = document.getElementById("fightBtn");
 const score = document.getElementById("score");
+const userLostHpIconHolder = document.getElementById("userLostHpIconHolder"); 
+const opponentLostHpIconHolder = document.getElementById("opponentLostHpIconHolder");
 const hitContainer = document.getElementById("hitContainer");
 
 const teams = load(TEAMS_LSK) || [];
@@ -156,6 +158,9 @@ function resetPrevFight() {
 
   prevMonsterCardTeam1.style.transform = `translateX(0)`;
   prevMonsterCardTeam2.style.transform = `translateX(0)`;
+
+  console.log("New fight to come");
+  
 }
 
 function hideHitControls() {
@@ -210,10 +215,14 @@ function calcOpposingDamage(monster) {
 function updateScore(monster, opponent) {
   if(monster.health<=0){
     oppoentPoints++; 
+    userLostHpIconHolder.innerHTML=""; 
+    opponentLostHpIconHolder.innerHTML="";
   }else if(opponent.health<=0){
     userPoints++; 
+    userLostHpIconHolder.innerHTML=""; 
+    opponentLostHpIconHolder.innerHTML="";
   }
-
+  
   score.innerText = `${userPoints} - ${oppoentPoints}`;
 }
 
@@ -518,8 +527,8 @@ function renderHitControls() {
       const userCurrentFightCard = getCurrentFightCards(currentFight-1).monsterCardTeam1; 
       const opponentCurrentFightCard = getCurrentFightCards(currentFight - 1).monsterCardTeam2;
 
-      updateHp(userDamage, opponent, opponentCurrentFightCard, "right");
-      updateHp(opposingDamage, monster, userCurrentFightCard,"left");
+      updateHp(userDamage, opponent, opponentCurrentFightCard,opponentLostHpIconHolder, "right");
+      updateHp(opposingDamage, monster, userCurrentFightCard,userLostHpIconHolder,"left");
 
       updateScore(monster, opponent); 
 
@@ -533,7 +542,7 @@ function renderHitControls() {
   hitContainer.append(meter, hitBtn);
 }
 
-function updateHp(damage, monster, monsterCard, iconDir) {
+function updateHp(damage, monster, monsterCard, lostHpIconHolder,iconDir) {
   const healthEl = monsterCard.getElementsByClassName("stats")[0].children[0].getElementsByTagName("p")[0];
   const lostHpIcon = renderIconWithNumber(`-${damage}`, "../../res/icons/heartRed.svg", "", iconDir);
   lostHpIcon.classList.add("lostHpIcon");
@@ -543,14 +552,17 @@ function updateHp(damage, monster, monsterCard, iconDir) {
 
   if (updatedHealth <= 0) {
     updatedHealth = 0;
+
     if (lostHpIcon.parentNode) {
       lostHpIcon.remove();
     }
-    const lostHpIcons = document.getElementsByClassName("lostHpIcon");
-    Array.from(lostHpIcons).forEach(icon=>icon.remove());
+
     slideFightCards();
   } else {
-    monsterCard.appendChild(lostHpIcon);
+    if (!lostHpIcon.parentNode) {
+      lostHpIconHolder.appendChild(lostHpIcon);
+      console.log("Appended", new Date().getSeconds())
+    }
   }
 
   setTimeout(() => {
