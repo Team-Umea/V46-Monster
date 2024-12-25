@@ -1,6 +1,6 @@
 //Js code for fight page
 import { TEAMS_LSK, SELECTEDFIGHTTEAM_LSK, OPPOSINGFIGHTTEAM_LSK } from "./common/localStorageKeys.js";
-import { load } from "./common/utilities.js";
+import { load, save } from "./common/utilities.js";
 import { MonsterFighCard } from "./classes/MonsterFighCard.js";
 import { valueWithHeader, progressBar, setBtnIcon, renderIconWithNumber, averageValueIcon, imgAsBtn, accuracyMeter } from "./common/render.js";
 import { useClickEvent } from "./common/useEvent.js";
@@ -19,6 +19,9 @@ const hitContainer = document.getElementById("hitContainer");
 const teams = load(TEAMS_LSK) || [];
 const userTeam = teams.find(team=>team.name===load(SELECTEDFIGHTTEAM_LSK)) || null;
 const opposingTeam = load(OPPOSINGFIGHTTEAM_LSK) || null; 
+
+let monster = {...userTeam.monsters[0]};
+let opponent = {...opposingTeam.monsters[0]};
 
 let currentFight = 0;
 let userPoints = 0;
@@ -129,6 +132,10 @@ function slideFightCards() {
     monsterCardTeam2.style.transform = `translateX(-${sildeDist}px)`;
 
     currentFight++;
+
+    monster = {...userTeam.monsters[currentFight-1]};
+    opponent = {...opposingTeam.monsters[currentFight-1]};
+
     renderHitControls();
   } else {
     hideHitControls();
@@ -158,10 +165,7 @@ function resetPrevFight() {
   prevFightContainer.style.width = `${originalContainerWidth}%`;
 
   prevMonsterCardTeam1.style.transform = `translateX(0)`;
-  prevMonsterCardTeam2.style.transform = `translateX(0)`;
-
-  console.log("New fight to come");
-  
+  prevMonsterCardTeam2.style.transform = `translateX(0)`;  
 }
 
 function hideHitControls() {
@@ -221,6 +225,74 @@ function updateScore(monster, opponent) {
   }
   
   score.innerText = `${userPoints} - ${oppoentPoints}`;
+}
+
+function updateHp(damage, monster, monsterCard, lostHpIconHolder,iconDir) {
+  const healthEl = monsterCard.getElementsByClassName("stats")[0].children[0].getElementsByTagName("p")[0];
+  const lostHpIcon = renderIconWithNumber(`-${damage}`, "../../res/icons/heartRed.svg", "", iconDir);
+  lostHpIcon.classList.add("lostHpIcon");
+
+  const health = monster.health;
+  let updatedHealth = health - damage;
+
+  lostHpIconHolder.appendChild(lostHpIcon);
+
+  if (updatedHealth <= 0) {
+    updatedHealth = 0;
+  }
+
+  monster.health = updatedHealth;
+  healthEl.innerText = updatedHealth;
+
+  setTimeout(() => {
+    lostHpIcon.remove();
+  }, 1000);
+}
+
+function removeAllLostHpIcons(){
+  userLostHpIconHolder.innerHTML=""; 
+  opponentLostHpIconHolder.innerHTML="";
+}
+
+function updateUserTeamMonster(currentMonster, currentOpponent, userDamage, opposingDamage){
+  userTeam.monsters.forEach(monster=>{
+    if(monster.id===currentMonster.id){
+      monster.numRounds++; 
+      monster.distributedDamage+=userDamage; 
+      monster.sufferedDamage+=opposingDamage; 
+
+      if(currentMonster.health===currentOpponent.health){
+        monster.drawnRounds++; 
+      }else if(currentMonster.health<currentOpponent.health){
+        monster.lostRounds++; 
+      }else if(currentMonster.health>currentOpponent.health){
+        monster.wonRounds++; 
+      }
+
+      if(currentMonster.health<=0&&currentOpponent.health<=0){
+        monster.drawnFights++; 
+        monster.drawnAgainst.push(currentOpponent.name);
+      }else if(currentMonster.health<=0){
+        monster.health--;
+        monster.remainingHP--;
+        monster.lostFights++; 
+        monster.lostAgainst.push(currentOpponent.name);
+      }else if(currentOpponent.health<=0){
+        monster.points++; 
+        monster.wonFights++; 
+        monster.wonAgainst.push(currentOpponent.name);
+      }
+    }
+  }); 
+
+  const updatedTeams = teams.map(team=>{
+    if(team.name===userTeam.name){
+      return userTeam; 
+    };
+    return team; 
+  })
+  
+  save(TEAMS_LSK, updatedTeams);
 }
 
 function renderTeamStats(parent, team) {
@@ -518,9 +590,6 @@ function renderHitControls() {
       meterPin.style.animationPlayState = "paused";
       meterIsRunning = false;
 
-      const monster = userTeam.monsters[currentFight - 1];
-      const opponent = opposingTeam.monsters[currentFight - 1];
-
       const userDamage = calcUserDamage(monster, meter, meterPin);
       const opposingDamage = calcOpposingDamage(opponent);
       const userCurrentFightCard = getCurrentFightCards(currentFight-1).monsterCardTeam1; 
@@ -529,7 +598,13 @@ function renderHitControls() {
       updateHp(userDamage, opponent, opponentCurrentFightCard,opponentLostHpIconHolder, "right");
       updateHp(opposingDamage, monster, userCurrentFightCard,userLostHpIconHolder,"left");
 
-      updateScore(monster, opponent); 
+      const nextFight = monster.health <= 0 || opponent.health <= 0;
+      updateUserTeamMonster(monster, opponent, userDamage, opposingDamage);
+
+      if(nextFight){
+        updateScore(monster, opponent);
+        slideFightCards();        
+      }
 
       setTimeout(() => {
         meterPin.style.animationPlayState = "running";
@@ -539,32 +614,4 @@ function renderHitControls() {
   });
 
   hitContainer.append(meter, hitBtn);
-}
-
-function updateHp(damage, monster, monsterCard, lostHpIconHolder,iconDir) {
-  const healthEl = monsterCard.getElementsByClassName("stats")[0].children[0].getElementsByTagName("p")[0];
-  const lostHpIcon = renderIconWithNumber(`-${damage}`, "../../res/icons/heartRed.svg", "", iconDir);
-  lostHpIcon.classList.add("lostHpIcon");
-
-  const health = monster.health;
-  let updatedHealth = health - damage;
-
-  lostHpIconHolder.appendChild(lostHpIcon);
-
-  if (updatedHealth <= 0) {
-    updatedHealth = 0;
-    slideFightCards();
-  }
-
-  monster.health = updatedHealth;
-  healthEl.innerText = updatedHealth;
-
-  setTimeout(() => {
-    lostHpIcon.remove();
-  }, 1000);
-}
-
-function removeAllLostHpIcons(){
-  userLostHpIconHolder.innerHTML=""; 
-  opponentLostHpIconHolder.innerHTML="";
 }
