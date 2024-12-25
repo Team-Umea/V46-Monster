@@ -215,12 +215,12 @@ function calcOpposingDamage(monster) {
 function updateScore(monster, opponent) {
   if(monster.health<=0){
     oppoentPoints++; 
-    userLostHpIconHolder.innerHTML=""; 
-    opponentLostHpIconHolder.innerHTML="";
+    // userLostHpIconHolder.innerHTML=""; 
+    // opponentLostHpIconHolder.innerHTML="";
   }else if(opponent.health<=0){
     userPoints++; 
-    userLostHpIconHolder.innerHTML=""; 
-    opponentLostHpIconHolder.innerHTML="";
+    // userLostHpIconHolder.innerHTML=""; 
+    // opponentLostHpIconHolder.innerHTML="";
   }
   
   score.innerText = `${userPoints} - ${oppoentPoints}`;
@@ -516,6 +516,8 @@ function renderHitControls() {
 
   useClickEvent(hitBtn, () => {
     if (meterIsRunning) {
+      removeAllLostHpIcons();
+
       meterPin.style.animationPlayState = "paused";
       meterIsRunning = false;
 
@@ -550,25 +552,22 @@ function updateHp(damage, monster, monsterCard, lostHpIconHolder,iconDir) {
   const health = monster.health;
   let updatedHealth = health - damage;
 
+  lostHpIconHolder.appendChild(lostHpIcon);
+
   if (updatedHealth <= 0) {
     updatedHealth = 0;
-
-    if (lostHpIcon.parentNode) {
-      lostHpIcon.remove();
-    }
-
     slideFightCards();
-  } else {
-    if (!lostHpIcon.parentNode) {
-      lostHpIconHolder.appendChild(lostHpIcon);
-      console.log("Appended", new Date().getSeconds())
-    }
   }
+
+  monster.health = updatedHealth;
+  healthEl.innerText = updatedHealth;
 
   setTimeout(() => {
     lostHpIcon.remove();
   }, 1000);
+}
 
-  monster.health = updatedHealth;
-  healthEl.innerText = updatedHealth;
+function removeAllLostHpIcons(){
+  userLostHpIconHolder.innerHTML=""; 
+  opponentLostHpIconHolder.innerHTML="";
 }
