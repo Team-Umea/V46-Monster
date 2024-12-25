@@ -105,6 +105,7 @@ function toggleTeamMonsters() {
 }
 
 function startFight(){
+  fightBtn.classList.add("hidden");
   slideFightCards();
   score.innerText = `${userPoints} - ${oppoentPoints}`;
 }
@@ -215,12 +216,8 @@ function calcOpposingDamage(monster) {
 function updateScore(monster, opponent) {
   if(monster.health<=0){
     oppoentPoints++; 
-    // userLostHpIconHolder.innerHTML=""; 
-    // opponentLostHpIconHolder.innerHTML="";
   }else if(opponent.health<=0){
     userPoints++; 
-    // userLostHpIconHolder.innerHTML=""; 
-    // opponentLostHpIconHolder.innerHTML="";
   }
   
   score.innerText = `${userPoints} - ${oppoentPoints}`;
