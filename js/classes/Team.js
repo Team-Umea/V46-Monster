@@ -157,10 +157,12 @@ export class Team {
   }
 
   loadMonsters(monsters) {
-    this.monsters = monsters.map((m) => new Monster(m));
+    if(monsters){
+      this.monsters = monsters.map((m) => new Monster(m));
 
-    const teamCost = monsters.reduce((acc, curr) => acc + curr.price, 0);
-    this.teamCost = teamCost;
+      const teamCost = monsters.reduce((acc, curr) => acc + curr.price, 0);
+      this.teamCost = teamCost;
+    }
 
     this.calc();
   }
@@ -281,6 +283,7 @@ export class Team {
     this.wonAgainst = this.calcWonAgainst();
     this.lostAgainst = this.calcLostAgainst();
     this.winRate = this.calcWinRate();
+    this.totalPoints = this.calcPoints();
   }
 
   calcTeamRank() {
@@ -386,17 +389,27 @@ export class Team {
   }
 
   calcWonAgainst() {
-    return sortInstances(["a", "a", "a", "b", "b", "c"]);
-    // const monsters = this.monsters;
-    // const wonAgainst = monsters.reduce((acc,curr)=>[...acc,curr.wonAgainst],[]);
-    // return wonAgainst;
+    const monsters = this.monsters;
+    const wonAgainst = monsters.reduce((acc,curr)=>[...acc,curr.wonAgainst],[]);
+    return wonAgainst;
+  }
+
+  calcDrawnAgainst() {
+    const monsters = this.monsters;
+    const drawnAgainst = monsters.reduce((acc,curr)=>[...acc,curr.drawAgainst],[]);
+    return drawnAgainst;
   }
 
   calcLostAgainst() {
-    return sortInstances(["g", "g", "g", "h", "h", "i"]);
-    // const monsters = this.monsters;
-    // const lostAgainst = monsters.reduce((acc,curr)=>[...acc,curr.lostAgainst],[]);
-    // return lostAgainst;
+    const monsters = this.monsters;
+    const lostAgainst = monsters.reduce((acc,curr)=>[...acc,curr.lostAgainst],[]);
+    return lostAgainst;
+  }
+
+  calcPoints(){
+    const monsters = this.monsters; 
+    const points = monsters.reduce((acc,curr)=>acc+curr.points,0);
+    return points
   }
 
   calcWinRate() {

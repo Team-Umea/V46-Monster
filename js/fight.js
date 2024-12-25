@@ -18,14 +18,11 @@ const opponentLostHpIconHolder = document.getElementById("opponentLostHpIconHold
 const hitContainer = document.getElementById("hitContainer");
 
 const teams = load(TEAMS_LSK) || [];
-// const userTeam = teams.find(team=>team.name===load(SELECTEDFIGHTTEAM_LSK)) || null;
-const selctedTeam = load(SELECTEDFIGHTTEAM_LSK)||null; 
+const selctedTeam = load(SELECTEDFIGHTTEAM_LSK)||teams[0].name; 
+const team = teams.find(team=>team.name===selctedTeam) || teams[0]||null; 
 const userTeamMonsters = teams.find(team=>team.name===selctedTeam).monsters || [];
-const userTeam = new Team(selctedTeam);
+const userTeam = Team.fromJSON(team);
 userTeam.setMonsters(userTeamMonsters);
-
-console.log(userTeam);
-
 const opposingTeam = load(OPPOSINGFIGHTTEAM_LSK) || null; 
 
 let monster = {...userTeam.monsters[0]};
@@ -148,7 +145,20 @@ function slideFightCards() {
   } else {
     hideHitControls();
     resetPrevFight();
+    evalBattle();
   }
+}
+
+function evalBattle(){
+  userTeam.numBattels++; 
+  if(userPoints===oppoentPoints){
+    userTeam.drawnBattels++; 
+  }else if(userPoints<oppoentPoints){
+    userTeam.lostBattels++; 
+  }else if(userPoints>oppoentPoints){
+    userTeam.wonBattels++; 
+  }
+  updateTeams();
 }
 
 function getCurrentFightCards(index) {
@@ -292,7 +302,10 @@ function updateUserTeamMonster(currentMonster, currentOpponent, userDamage, oppo
       }
     }
   }); 
+  updateTeams();
+}
 
+function updateTeams(){
   const updatedTeams = teams.map(team=>{
     if(team.name===userTeam.name){
       return userTeam; 

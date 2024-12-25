@@ -13,7 +13,7 @@ const opposingTeamListEl = document.getElementById("opposingTeamList");
 const opposingTeamMonstersEl = document.getElementById("opposingTeamMonters");
 
 const teams = load(TEAMS_LSK).map(team=>team.name) || [];
-const selectedTeam = load(SELECTEDFIGHTTEAM_LSK)||""; 
+const selectedTeam = load(SELECTEDFIGHTTEAM_LSK)||teams[0]; 
 
 let userTeamMonsters = load(TEAMS_LSK).find(team=>team.name===selectedTeam).monsters || [];
 
