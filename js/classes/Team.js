@@ -270,6 +270,14 @@ export class Team {
     this.remainingHP = this.calcRemainingHP();
     this.sufferedDamage = this.calcSufferedDamage();
     this.distributedDamage = this.calcDistributedDamage();
+    this.numFights = this.calcFights().numFights; 
+    this.wonFights = this.calcFights().wonFights; 
+    this.drawnFights = this.calcFights().drawnFights; 
+    this.lostFights = this.calcFights().lostFights; 
+    this.numRounds = this.calcRounds().numRounds; 
+    this.wonRounds = this.calcRounds().wonRounds; 
+    this.drawnRounds = this.calcRounds().drawnRounds; 
+    this.lostRounds = this.calcRounds().lostRounds; 
     this.wonAgainst = this.calcWonAgainst();
     this.lostAgainst = this.calcLostAgainst();
     this.winRate = this.calcWinRate();
@@ -341,6 +349,40 @@ export class Team {
     const monsters = this.monsters;
     const distributedDamage = monsters.reduce((acc, curr) => acc + curr.distributedDamage, 0);
     return distributedDamage;
+  }
+
+  calcBattles(){
+
+  }
+
+  calcFights(){
+    const monsters = this.monsters; 
+    const numFights = monsters.reduce((acc,curr)=>acc+curr.numFights,0);
+    const wonFights = monsters.reduce((acc,curr)=>acc+curr.wonFights,0);
+    const drawnFights = monsters.reduce((acc,curr)=>acc+curr.drawnFights,0);
+    const lostFights = monsters.reduce((acc,curr)=>acc+curr.lostFights,0);
+
+    return {
+      numFights,
+      wonFights, 
+      drawnFights, 
+      lostFights
+    }
+  }
+
+  calcRounds(){
+    const monsters = this.monsters; 
+    const numRounds = monsters.reduce((acc,curr)=>acc+curr.numRounds,0);
+    const wonRounds = monsters.reduce((acc,curr)=>acc+curr.wonRounds,0);
+    const drawnRounds = monsters.reduce((acc,curr)=>acc+curr.drawnRounds,0);
+    const lostRounds = monsters.reduce((acc,curr)=>acc+curr.lostRounds,0);
+
+    return {
+      numRounds,
+      wonRounds, 
+      drawnRounds, 
+      lostRounds
+    }
   }
 
   calcWonAgainst() {

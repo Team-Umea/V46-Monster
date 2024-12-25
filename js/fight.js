@@ -4,6 +4,7 @@ import { load, save } from "./common/utilities.js";
 import { MonsterFighCard } from "./classes/MonsterFighCard.js";
 import { valueWithHeader, progressBar, setBtnIcon, renderIconWithNumber, averageValueIcon, imgAsBtn, accuracyMeter } from "./common/render.js";
 import { useClickEvent } from "./common/useEvent.js";
+import { Team } from "./classes/Team.js";
 
 const teamsContainerToggle = document.getElementById("teamsContainerToggle");
 const teamsContainerBody = document.getElementById("teamsContainerBody");
@@ -17,7 +18,14 @@ const opponentLostHpIconHolder = document.getElementById("opponentLostHpIconHold
 const hitContainer = document.getElementById("hitContainer");
 
 const teams = load(TEAMS_LSK) || [];
-const userTeam = teams.find(team=>team.name===load(SELECTEDFIGHTTEAM_LSK)) || null;
+// const userTeam = teams.find(team=>team.name===load(SELECTEDFIGHTTEAM_LSK)) || null;
+const selctedTeam = load(SELECTEDFIGHTTEAM_LSK)||null; 
+const userTeamMonsters = teams.find(team=>team.name===selctedTeam).monsters || [];
+const userTeam = new Team(selctedTeam);
+userTeam.setMonsters(userTeamMonsters);
+
+console.log(userTeam);
+
 const opposingTeam = load(OPPOSINGFIGHTTEAM_LSK) || null; 
 
 let monster = {...userTeam.monsters[0]};
