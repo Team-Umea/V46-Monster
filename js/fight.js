@@ -236,9 +236,9 @@ function calcOpposingDamage(monster) {
 }
 
 function updateScore(monster, opponent) {
-  if(monster.health<=0){
+  if(monster.remainingHP<=0){
     oppoentPoints++; 
-  }else if(opponent.health<=0){
+  }else if(opponent.remainingHP<=0){
     userPoints++; 
   }
   
@@ -250,7 +250,7 @@ function updateHp(damage, monster, monsterCard, lostHpIconHolder,iconDir) {
   const lostHpIcon = renderIconWithNumber(`-${damage}`, "../../res/icons/heartRed.svg", "", iconDir);
   lostHpIcon.classList.add("lostHpIcon");
 
-  const health = monster.health;
+  const health = monster.remainingHP;
   let updatedHealth = health - damage;
 
   lostHpIconHolder.appendChild(lostHpIcon);
@@ -259,7 +259,7 @@ function updateHp(damage, monster, monsterCard, lostHpIconHolder,iconDir) {
     updatedHealth = 0;
   }
 
-  monster.health = updatedHealth;
+  monster.remainingHP = updatedHealth;
   healthEl.innerText = updatedHealth;
 
   setTimeout(() => {
@@ -279,29 +279,30 @@ function updateUserTeamMonster(currentMonster, currentOpponent, userDamage, oppo
       monster.distributedDamage+=userDamage; 
       monster.sufferedDamage+=opposingDamage; 
 
-      if(currentMonster.health===currentOpponent.health){
+      if(currentMonster.remainingHP===currentOpponent.remainingHP){
         monster.drawnRounds++; 
-      }else if(currentMonster.health<currentOpponent.health){
+      }else if(currentMonster.remainingHP<currentOpponent.remainingHP){
         monster.lostRounds++; 
-      }else if(currentMonster.health>currentOpponent.health){
+      }else if(currentMonster.remainingHP>currentOpponent.remainingHP){
         monster.wonRounds++; 
       }
 
-      if(currentMonster.health<=0&&currentOpponent.health<=0){
+      if(currentMonster.remainingHP<=0&&currentOpponent.remainingHP<=0){
         monster.drawnFights++; 
         monster.drawnAgainst.push(currentOpponent.name);
-      }else if(currentMonster.health<=0){
-        monster.health--;
-        monster.remainingHP--;
+      }else if(currentMonster.remainingHP<=0){
+        monster.remainingHP--; 
         monster.lostFights++; 
         monster.lostAgainst.push(currentOpponent.name);
-      }else if(currentOpponent.health<=0){
+        
+      }else if(currentOpponent.remainingHP<=0){
         monster.points++; 
         monster.wonFights++; 
         monster.wonAgainst.push(currentOpponent.name);
       }
+      monster.calc();
     }
-  }); 
+  });   
   updateTeams();
 }
 
@@ -486,7 +487,7 @@ function renderMonsterStats(container, monster) {
   const lostFights = monster.lostFights;
   const points = monster.points;
   const numRounds = monster.numRounds;
-  const wonRounds = monster.numRounds;
+  const wonRounds = monster.wonRounds;
   const drawnRounds = monster.drawnRounds;
   const lostRounds = monster.lostRounds;
   const winRate = monster.winRate;
@@ -619,7 +620,7 @@ function renderHitControls() {
       updateHp(userDamage, opponent, opponentCurrentFightCard,opponentLostHpIconHolder, "right");
       updateHp(opposingDamage, monster, userCurrentFightCard,userLostHpIconHolder,"left");
 
-      const nextFight = monster.health <= 0 || opponent.health <= 0;
+      const nextFight = monster.remainingHP <= 0 || opponent.remainingHP <= 0;
       updateUserTeamMonster(monster, opponent, userDamage, opposingDamage);
 
       if(nextFight){

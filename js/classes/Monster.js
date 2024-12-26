@@ -3,15 +3,13 @@ import { convertInstancesToStr } from "../common/utilities.js";
 //Class for monster
 export class Monster {
   constructor(monster) {
-    this.monster = monster;
-
     this.id = monster.id;
     this.name = monster.name;
     this.specs = monster.specs;
     this.health = monster.health;
     this.damage = monster.damage;
     this.rank = monster.rank;
-    this.remainingHP = monster.remainingHP;
+    this.remainingHP = monster.remainingHP || monster.health;
     this.sufferedDamage = monster.sufferedDamage;
     this.distributedDamage = monster.distributedDamage;
     this.points = monster.points;

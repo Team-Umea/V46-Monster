@@ -10,7 +10,7 @@ export class MonsterFighCard {
     const monster = this.monster;
     const monsterName = monster.name;
     const monsterPrice = monster.price;
-    const monsterHealth = monster.health;
+    const monsterHealth = monster.remainingHP;
     const monsterRank = monster.rank;
     const monsterDamage = monster.damage;
     const monsterImg = this.imagePath;
