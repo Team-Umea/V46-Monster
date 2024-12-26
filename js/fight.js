@@ -1,6 +1,6 @@
 //Js code for fight page
 import { TEAMS_LSK, SELECTEDFIGHTTEAM_LSK, OPPOSINGFIGHTTEAM_LSK } from "./common/localStorageKeys.js";
-import { load, save } from "./common/utilities.js";
+import { load, save,convertInstancesToStr } from "./common/utilities.js";
 import { MonsterFighCard } from "./classes/MonsterFighCard.js";
 import { valueWithHeader, progressBar, setBtnIcon, renderIconWithNumber, averageValueIcon, imgAsBtn, accuracyMeter } from "./common/render.js";
 import { useClickEvent } from "./common/useEvent.js";
@@ -429,9 +429,9 @@ function renderTeam(team, container) {
         renderMonsterStats(teamMonsterStats, monster);
       }
 
-      renderMonstersFought(teamFightRecord, "Won against", monster.wonAgainst);
-      renderMonstersFought(teamFightRecord, "Drawn against", monster.drawnAgainst);
-      renderMonstersFought(teamFightRecord, "Lost against", monster.lostAgainst);
+      renderMonstersFought(teamFightRecord, "Won against", convertInstancesToStr(monster.wonAgainst));
+      renderMonstersFought(teamFightRecord, "Drawn against", convertInstancesToStr(monster.drawnAgainst));
+      renderMonstersFought(teamFightRecord, "Lost against", convertInstancesToStr(monster.lostAgainst));
 
       teamMonsters.appendChild(monsterCard);
       carousel.appendChild(carouselBtn);
@@ -458,9 +458,9 @@ function renderTeam(team, container) {
         }
 
         renderMonsterStats(teamMonsterStats, monster);
-        renderMonstersFought(teamFightRecord, "Won against", monster.wonAgainst);
-        renderMonstersFought(teamFightRecord, "Drawn against", monster.drawnAgainst);
-        renderMonstersFought(teamFightRecord, "Lost against", monster.lostAgainst);
+        renderMonstersFought(teamFightRecord, "Won against", convertInstancesToStr(monster.wonAgainst));
+        renderMonstersFought(teamFightRecord, "Drawn against", convertInstancesToStr(monster.drawnAgainst));
+        renderMonstersFought(teamFightRecord, "Lost against", convertInstancesToStr(monster.lostAgainst));
       });
     });
 
