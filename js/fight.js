@@ -31,6 +31,8 @@ let opponent = { ...opposingTeam.monsters[0] };
 let currentFight = 0;
 let userPoints = 0;
 let oppoentPoints = 0;
+let totalRounds = 0;
+let battleCredits = 0;
 
 window.addEventListener("DOMContentLoaded", () => {
   init();
@@ -116,6 +118,8 @@ function startFight() {
   currentFight = 0;
   userPoints = 0;
   oppoentPoints = 0;
+  totalRounds = 0;
+  battleCredits = 0;
 
   fightBtn.classList.add("hidden");
   hitContainer.setAttribute("class", "hitContainer");
@@ -160,6 +164,25 @@ function slideFightCards() {
   }
 }
 
+function calcBattleCredits() {
+  const userTeamRating = userTeam.totalRating;
+  const opposingTeamRating = opposingTeam.totalRating;
+
+  const ratingDifference = Math.abs(userTeamRating - opposingTeamRating);
+  const performanceFactor = userPoints / ((totalRounds + 1) * 8);
+
+  const total = (performanceFactor / ratingDifference) * 1000000;
+  const roundedTotal = Math.round(total / 100) * 100;
+
+  if (userPoints >= oppoentPoints) {
+    battleCredits = roundedTotal;
+  } else {
+    battleCredits = -roundedTotal;
+  }
+
+  console.log("rating diff", ratingDifference, performanceFactor);
+}
+
 function evalBattle() {
   userTeam.numBattels++;
   if (userPoints === oppoentPoints) {
@@ -175,10 +198,11 @@ function evalBattle() {
   fightBtn.classList.remove("hidden");
   hitContainer.setAttribute("class", "hitContainer hidden");
 
+  calcBattleCredits();
   updateTeams();
   resetPrevFight();
   render();
-  renderBattleMessage(winner);
+  renderBattleResult(winner);
 }
 
 function getCurrentFightCards(index) {
@@ -586,11 +610,17 @@ function renderMonstersFought(parent, headerText, record) {
   parent.appendChild(container);
 }
 
-function renderBattleMessage(message) {
+function renderBattleResult(message) {
+  const battleResultContainer = document.createElement("div");
   const battleMessage = document.createElement("h2");
+  const battleCreditsIcon = renderIconWithNumber(battleCredits, "../../res/icons/diamond.svg", `Battle generated ${battleCredits} of credits`);
+
+  battleResultContainer.setAttribute("class", "battleResultContainer");
   battleMessage.setAttribute("class", "battleMessage");
+
   battleMessage.innerText = message;
-  battleContainer.appendChild(battleMessage);
+  battleResultContainer.append(battleMessage, battleCreditsIcon);
+  battleContainer.appendChild(battleResultContainer);
 }
 
 function renderBattleMonsters() {
@@ -637,6 +667,8 @@ function renderHitControls() {
   useClickEvent(hitBtn, () => {
     if (meterIsRunning) {
       removeAllLostHpIcons();
+
+      totalRounds++;
 
       meterPin.style.animationPlayState = "paused";
       meterIsRunning = false;
