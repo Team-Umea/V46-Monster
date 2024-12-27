@@ -120,7 +120,14 @@ function startFight() {
   fightBtn.classList.add("hidden");
   hitContainer.setAttribute("class", "hitContainer");
 
+  const battleMessage = document.getElementsByClassName("battleMessage")[0];
+
+  if (battleMessage) {
+    battleMessage.remove();
+  }
+
   slideFightCards();
+
   score.innerText = `${userPoints} - ${oppoentPoints}`;
 }
 
@@ -163,12 +170,15 @@ function evalBattle() {
     userTeam.wonBattels++;
   }
 
+  const winner = userPoints > oppoentPoints ? `Battle won by ${userTeam.name}` : userPoints < oppoentPoints ? `Battle won by ${opposingTeam.name}` : "Battle ended in a draw";
+
   fightBtn.classList.remove("hidden");
   hitContainer.setAttribute("class", "hitContainer hidden");
 
   updateTeams();
   resetPrevFight();
   render();
+  renderBattleMessage(winner);
 }
 
 function getCurrentFightCards(index) {
@@ -574,6 +584,13 @@ function renderMonstersFought(parent, headerText, record) {
 
   container.append(header, recordList);
   parent.appendChild(container);
+}
+
+function renderBattleMessage(message) {
+  const battleMessage = document.createElement("h2");
+  battleMessage.setAttribute("class", "battleMessage");
+  battleMessage.innerText = message;
+  battleContainer.appendChild(battleMessage);
 }
 
 function renderBattleMonsters() {
