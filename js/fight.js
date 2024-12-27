@@ -1,6 +1,6 @@
 //Js code for fight page
 import { TEAMS_LSK, SELECTEDFIGHTTEAM_LSK, OPPOSINGFIGHTTEAM_LSK } from "./common/localStorageKeys.js";
-import { load, save,convertInstancesToStr } from "./common/utilities.js";
+import { load, save, convertInstancesToStr } from "./common/utilities.js";
 import { MonsterFighCard } from "./classes/MonsterFighCard.js";
 import { valueWithHeader, progressBar, setBtnIcon, renderIconWithNumber, averageValueIcon, imgAsBtn, accuracyMeter } from "./common/render.js";
 import { useClickEvent } from "./common/useEvent.js";
@@ -13,24 +13,24 @@ const teamTwoContainer = document.getElementById("teamTwo");
 const battleContainer = document.getElementById("battleContainer");
 const fightBtn = document.getElementById("fightBtn");
 const score = document.getElementById("score");
-const userLostHpIconHolder = document.getElementById("userLostHpIconHolder"); 
+const userLostHpIconHolder = document.getElementById("userLostHpIconHolder");
 const opponentLostHpIconHolder = document.getElementById("opponentLostHpIconHolder");
 const hitContainer = document.getElementById("hitContainer");
 
 const teams = load(TEAMS_LSK) || [];
-const selctedTeam = load(SELECTEDFIGHTTEAM_LSK)||teams[0].name; 
-const team = teams.find(team=>team.name===selctedTeam) || teams[0]||null; 
-const userTeamMonsters = teams.find(team=>team.name===selctedTeam).monsters || [];
+const selctedTeam = load(SELECTEDFIGHTTEAM_LSK) || teams[0].name;
+const team = teams.find((team) => team.name === selctedTeam) || teams[0] || null;
+const userTeamMonsters = teams.find((team) => team.name === selctedTeam).monsters || [];
 const userTeam = Team.fromJSON(team);
 userTeam.setMonsters(userTeamMonsters);
-const opposingTeam = load(OPPOSINGFIGHTTEAM_LSK) || null; 
+const opposingTeam = load(OPPOSINGFIGHTTEAM_LSK) || null;
 
-let monster = {...userTeam.monsters[0]};
-let opponent = {...opposingTeam.monsters[0]};
+let monster = { ...userTeam.monsters[0] };
+let opponent = { ...opposingTeam.monsters[0] };
 
 let currentFight = 0;
 let userPoints = 0;
-let oppoentPoints = 0; 
+let oppoentPoints = 0;
 
 window.addEventListener("DOMContentLoaded", () => {
   init();
@@ -112,8 +112,14 @@ function toggleTeamMonsters() {
   });
 }
 
-function startFight(){
+function startFight() {
+  currentFight = 0;
+  userPoints = 0;
+  oppoentPoints = 0;
+
   fightBtn.classList.add("hidden");
+  hitContainer.setAttribute("class", "hitContainer");
+
   slideFightCards();
   score.innerText = `${userPoints} - ${oppoentPoints}`;
 }
@@ -138,27 +144,31 @@ function slideFightCards() {
 
     currentFight++;
 
-    monster = {...userTeam.monsters[currentFight-1]};
-    opponent = {...opposingTeam.monsters[currentFight-1]};
+    monster = { ...userTeam.monsters[currentFight - 1] };
+    opponent = { ...opposingTeam.monsters[currentFight - 1] };
 
     renderHitControls();
   } else {
-    hideHitControls();
-    resetPrevFight();
     evalBattle();
   }
 }
 
-function evalBattle(){
-  userTeam.numBattels++; 
-  if(userPoints===oppoentPoints){
-    userTeam.drawnBattels++; 
-  }else if(userPoints<oppoentPoints){
-    userTeam.lostBattels++; 
-  }else if(userPoints>oppoentPoints){
-    userTeam.wonBattels++; 
+function evalBattle() {
+  userTeam.numBattels++;
+  if (userPoints === oppoentPoints) {
+    userTeam.drawnBattels++;
+  } else if (userPoints < oppoentPoints) {
+    userTeam.lostBattels++;
+  } else if (userPoints > oppoentPoints) {
+    userTeam.wonBattels++;
   }
+
+  fightBtn.classList.remove("hidden");
+  hitContainer.setAttribute("class", "hitContainer hidden");
+
   updateTeams();
+  resetPrevFight();
+  render();
 }
 
 function getCurrentFightCards(index) {
@@ -183,11 +193,7 @@ function resetPrevFight() {
   prevFightContainer.style.width = `${originalContainerWidth}%`;
 
   prevMonsterCardTeam1.style.transform = `translateX(0)`;
-  prevMonsterCardTeam2.style.transform = `translateX(0)`;  
-}
-
-function hideHitControls() {
-  hitContainer.setAttribute("class", "hitContainer hidden");
+  prevMonsterCardTeam2.style.transform = `translateX(0)`;
 }
 
 function calcUserDamage(monster, meter, meterPin) {
@@ -212,13 +218,13 @@ function calcUserDamage(monster, meter, meterPin) {
   const percentage = vaildHit / 100;
   const damage = Math.floor(maxDamage * percentage);
 
-  return damage===0?1:damage;
+  return damage === 0 ? 1 : damage;
 }
 
 function calcOpposingDamage(monster) {
   const maxDamage = monster.damage;
 
-  const hitValue = 100 - (Math.random()*100+1)
+  const hitValue = 100 - (Math.random() * 100 + 1);
   const boosted = Math.floor(hitValue * 1.05);
 
   let vaildHit = boosted;
@@ -232,20 +238,20 @@ function calcOpposingDamage(monster) {
   const percentage = vaildHit / 100;
   const damage = Math.floor(maxDamage * percentage);
 
-  return damage===0?1:damage;
+  return damage === 0 ? 1 : damage;
 }
 
 function updateScore(monster, opponent) {
-  if(monster.remainingHP<=0){
-    oppoentPoints++; 
-  }else if(opponent.remainingHP<=0){
-    userPoints++; 
+  if (monster.remainingHP <= 0) {
+    oppoentPoints++;
+  } else if (opponent.remainingHP <= 0) {
+    userPoints++;
   }
-  
+
   score.innerText = `${userPoints} - ${oppoentPoints}`;
 }
 
-function updateHp(damage, monster, monsterCard, lostHpIconHolder,iconDir) {
+function updateHp(damage, monster, monsterCard, lostHpIconHolder, iconDir) {
   const healthEl = monsterCard.getElementsByClassName("stats")[0].children[0].getElementsByTagName("p")[0];
   const lostHpIcon = renderIconWithNumber(`-${damage}`, "../../res/icons/heartRed.svg", "", iconDir);
   lostHpIcon.classList.add("lostHpIcon");
@@ -267,53 +273,52 @@ function updateHp(damage, monster, monsterCard, lostHpIconHolder,iconDir) {
   }, 1000);
 }
 
-function removeAllLostHpIcons(){
-  userLostHpIconHolder.innerHTML=""; 
-  opponentLostHpIconHolder.innerHTML="";
+function removeAllLostHpIcons() {
+  userLostHpIconHolder.innerHTML = "";
+  opponentLostHpIconHolder.innerHTML = "";
 }
 
-function updateUserTeamMonster(currentMonster, currentOpponent, userDamage, opposingDamage){
-  userTeam.monsters.forEach(monster=>{
-    if(monster.id===currentMonster.id){
-      monster.numRounds++; 
-      monster.distributedDamage+=userDamage; 
-      monster.sufferedDamage+=opposingDamage; 
+function updateUserTeamMonster(currentMonster, currentOpponent, userDamage, opposingDamage) {
+  userTeam.monsters.forEach((monster) => {
+    if (monster.id === currentMonster.id) {
+      monster.numRounds++;
+      monster.distributedDamage += userDamage;
+      monster.sufferedDamage += opposingDamage;
 
-      if(currentMonster.remainingHP===currentOpponent.remainingHP){
-        monster.drawnRounds++; 
-      }else if(currentMonster.remainingHP<currentOpponent.remainingHP){
-        monster.lostRounds++; 
-      }else if(currentMonster.remainingHP>currentOpponent.remainingHP){
-        monster.wonRounds++; 
+      if (currentMonster.remainingHP === currentOpponent.remainingHP) {
+        monster.drawnRounds++;
+      } else if (currentMonster.remainingHP < currentOpponent.remainingHP) {
+        monster.lostRounds++;
+      } else if (currentMonster.remainingHP > currentOpponent.remainingHP) {
+        monster.wonRounds++;
       }
 
-      if(currentMonster.remainingHP<=0&&currentOpponent.remainingHP<=0){
-        monster.drawnFights++; 
+      if (currentMonster.remainingHP <= 0 && currentOpponent.remainingHP <= 0) {
+        monster.drawnFights++;
         monster.drawnAgainst.push(currentOpponent.name);
-      }else if(currentMonster.remainingHP<=0){
-        monster.remainingHP--; 
-        monster.lostFights++; 
+      } else if (currentMonster.remainingHP <= 0) {
+        monster.remainingHP--;
+        monster.lostFights++;
         monster.lostAgainst.push(currentOpponent.name);
-        
-      }else if(currentOpponent.remainingHP<=0){
-        monster.points++; 
-        monster.wonFights++; 
+      } else if (currentOpponent.remainingHP <= 0) {
+        monster.points++;
+        monster.wonFights++;
         monster.wonAgainst.push(currentOpponent.name);
       }
       monster.calc();
     }
-  });   
+  });
   updateTeams();
 }
 
-function updateTeams(){
-  const updatedTeams = teams.map(team=>{
-    if(team.name===userTeam.name){
-      return userTeam; 
-    };
-    return team; 
-  })
-  
+function updateTeams() {
+  const updatedTeams = teams.map((team) => {
+    if (team.name === userTeam.name) {
+      return userTeam;
+    }
+    return team;
+  });
+
   save(TEAMS_LSK, updatedTeams);
 }
 
@@ -408,6 +413,11 @@ function renderTeam(team, container) {
   const teamMonsters = container.getElementsByClassName("monsters")[0];
   const teamFightRecord = container.getElementsByClassName("monsterFought")[0];
 
+  teamStats.innerHTML = "";
+  teamMonsterStats.innerHTML = "";
+  teamMonsters.innerHTML = "";
+  teamFightRecord.innerHTML = "";
+
   if (team) {
     const teamName = team.name;
     const monsters = team.monsters;
@@ -464,7 +474,9 @@ function renderTeam(team, container) {
       });
     });
 
-    teamMonsterContainer.appendChild(carousel);
+    if (!teamMonsterContainer.children[2]) {
+      teamMonsterContainer.appendChild(carousel);
+    }
   }
   renderTeamStats(teamStats, team);
 }
@@ -614,18 +626,18 @@ function renderHitControls() {
 
       const userDamage = calcUserDamage(monster, meter, meterPin);
       const opposingDamage = calcOpposingDamage(opponent);
-      const userCurrentFightCard = getCurrentFightCards(currentFight-1).monsterCardTeam1; 
+      const userCurrentFightCard = getCurrentFightCards(currentFight - 1).monsterCardTeam1;
       const opponentCurrentFightCard = getCurrentFightCards(currentFight - 1).monsterCardTeam2;
 
-      updateHp(userDamage, opponent, opponentCurrentFightCard,opponentLostHpIconHolder, "right");
-      updateHp(opposingDamage, monster, userCurrentFightCard,userLostHpIconHolder,"left");
+      updateHp(userDamage, opponent, opponentCurrentFightCard, opponentLostHpIconHolder, "right");
+      updateHp(opposingDamage, monster, userCurrentFightCard, userLostHpIconHolder, "left");
 
       const nextFight = monster.remainingHP <= 0 || opponent.remainingHP <= 0;
       updateUserTeamMonster(monster, opponent, userDamage, opposingDamage);
 
-      if(nextFight){
+      if (nextFight) {
         updateScore(monster, opponent);
-        slideFightCards();        
+        slideFightCards();
       }
 
       setTimeout(() => {
