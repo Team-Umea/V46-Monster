@@ -5,6 +5,7 @@ import { MonsterFighCard } from "./classes/MonsterFighCard.js";
 import { valueWithHeader, progressBar, setBtnIcon, renderIconWithNumber, averageValueIcon, imgAsBtn, accuracyMeter } from "./common/render.js";
 import { useClickEvent } from "./common/useEvent.js";
 import { Team } from "./classes/Team.js";
+import { user, updateUser } from "./common/user.js";
 
 const teamsContainerToggle = document.getElementById("teamsContainerToggle");
 const teamsContainerBody = document.getElementById("teamsContainerBody");
@@ -167,20 +168,29 @@ function slideFightCards() {
 function calcBattleCredits() {
   const userTeamRating = userTeam.totalRating;
   const opposingTeamRating = opposingTeam.totalRating;
-
   const ratingDifference = Math.abs(userTeamRating - opposingTeamRating);
-  const performanceFactor = userPoints / ((totalRounds + 1) * 8);
 
-  const total = (performanceFactor / ratingDifference) * 1000000;
-  const roundedTotal = Math.round(total / 100) * 100;
+  const maxCredits = 10000 * userTeamRating * (1 / (ratingDifference * 5)) * userPoints;
+  const minRounds = 4;
 
-  if (userPoints >= oppoentPoints) {
-    battleCredits = roundedTotal;
-  } else {
-    battleCredits = -roundedTotal;
+  const performanceFactor = minRounds / totalRounds;
+
+  const ratingDifferenceFactor = Math.max(2, ratingDifference * 0.1);
+
+  const total = (maxCredits * performanceFactor) / ratingDifferenceFactor;
+
+  if (total > 100) {
+    battleCredits = Math.round(total / 100) * 100;
   }
 
-  console.log("rating diff", ratingDifference, performanceFactor);
+  if (userPoints < oppoentPoints) {
+    battleCredits = 0;
+  }
+
+  const currentCredits = user.credits;
+  const newCredits = currentCredits + battleCredits;
+  userTeam.teamProfit += battleCredits;
+  updateUser("credits", newCredits);
 }
 
 function evalBattle() {
