@@ -42,11 +42,83 @@ body {
     gap: 20px;
 
     .elementContainer {
+      width: 100%;
+
       .elementList {
+        width: 100%;
+        height: 100dvh;
         display: flex;
-        flex-direction: column;
         align-items: center;
-        gap: 4px;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 20px;
+        overflow: auto;
+
+        .element {
+          width: min(100%, 500px);
+          padding: 20px;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          gap: 10px;
+          border-radius: 20px;
+          border-left: 1px solid var(--color-primary-a50);
+          border-right: 1px solid var(--color-primary-a50);
+
+          .elementStats {
+            width: 100%;
+            padding: 0 10px;
+            display: flex;
+            justify-content: flex-start;
+            gap: 7px;
+
+            img {
+              width: 15px;
+            }
+
+            p {
+              font-size: 0.8rem;
+            }
+          }
+
+          .banner {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+
+            .buyElementBtn {
+              padding: 5px !important;
+
+              img {
+                width: 20px;
+              }
+            }
+          }
+
+          .abilityContainer {
+            margin-top: 30px;
+            width: 100%;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            justify-items: center;
+
+            .abilityHeader {
+              font-size: 1.1rem;
+              font-weight: bold;
+              color: var(--color-surface-a30);
+            }
+
+            .abilities {
+              margin-top: 10px;
+              display: flex;
+              flex-direction: column;
+              align-items: center;
+              color: var(--color-surface-a50);
+              height: 60px;
+              overflow: auto;
+            }
+          }
+        }
       }
     }
   }
