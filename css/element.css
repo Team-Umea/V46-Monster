@@ -41,6 +41,43 @@ body {
     align-items: center;
     gap: 20px;
 
+    .elementFilters {
+      width: 100%;
+      padding-bottom: 50px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 10px;
+      position: relative;
+
+      .searchElements,
+      .sortElements,
+      .selectTeam {
+        width: min(100%, 200px);
+        padding: 10px;
+        border-radius: 8px;
+        outline: none;
+        border: none;
+        color: var(--color-primary-a50);
+        background-color: var(--color-surface-mixed-a10);
+      }
+
+      .searchElements {
+        &::placeholder {
+          color: var(--color-primary-a50);
+        }
+      }
+
+      .filterMessage {
+        font-size: 1.2rem;
+        position: absolute;
+        left: 50%;
+        bottom: 10px;
+        transform: translateX(-50%);
+      }
+    }
+
     .elementContainer {
       width: 100%;
 

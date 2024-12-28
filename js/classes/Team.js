@@ -157,6 +157,10 @@ export class Team {
     this.calc();
   }
 
+  setElements(elements) {
+    this.elements = elements;
+  }
+
   loadMonsters(monsters) {
     if (monsters) {
       this.monsters = monsters.map((m) => new Monster(m));
@@ -423,45 +427,10 @@ export class Team {
     return isNaN(winRate) ? 0 : winRate;
   }
 
-  getAllMonsterElements(allElements) {
-    const teamMonsters = this.monsters;
-
-    const elements = teamMonsters.map((monster) => monster.elements).flat();
-
-    const instancesOfElements = elements.reduce((acc, curr) => {
-      acc[curr] = (acc[curr] || 0) + 1;
-      return acc;
-    }, {});
-
-    const entriesArray = Object.keys(instancesOfElements).map((key) => ({
-      [key]: instancesOfElements[key],
-    }));
-
-    const sortedInstances = entriesArray.sort((a, b) => {
-      const countA = Object.values(a)[0];
-      const countB = Object.values(b)[0];
-
-      if (countB - countA !== 0) {
-        return countB - countA;
-      }
-
-      const keyA = Object.keys(a)[0];
-      const keyB = Object.keys(b)[0];
-      return keyA.localeCompare(keyB);
-    });
-
-    const sortElementsWithRating = sortedInstances.map((element) => {
-      const elementName = Object.keys(element)[0];
-      const rating = allElements.find((teamElement) => teamElement.name === elementName).rating;
-      return { ...element, rating: rating };
-    });
-
-    return sortElementsWithRating;
-  }
-
   static fromJSON(json) {
     const newTeam = new Team(json.name);
     newTeam.setCreatedAt(json.createdAt);
+    newTeam.setElements(json.elements);
     newTeam.loadMonsters(json.monsters);
     newTeam.setPaidFor(json.paidFor);
     newTeam.setTeamProfit(json.teamProfit);

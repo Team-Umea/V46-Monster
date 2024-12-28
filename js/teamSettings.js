@@ -87,7 +87,7 @@ function render() {
   renderControlBtns();
   renderTeamStats();
   renderMonsters();
-  loadElements();
+  renderElements();
   renderBattleRecord();
   postionDangerZone();
   placeUserCredits();
@@ -100,7 +100,7 @@ function loadTeam() {
     teamCost = team.teamCost;
     teamValue = team.teamValue;
     teamProfit = team.teamProfit;
-    teamElements = team.elements;
+    // teamElements = team.elements;
     isPaidFor = team.paidFor;
     numMonsters = teamMonsters.length;
 
@@ -134,17 +134,31 @@ function loadTeam() {
     wonAgainst = convertInstancesToStr(team.wonAgainst);
     drawnAgainst = convertInstancesToStr(team.drawnAgainst);
     lostAgainst = convertInstancesToStr(team.lostAgainst);
+
+    const sortedElements = team.elements.reduce((acc, curr) => {
+      if (!acc[curr.name]) {
+        acc[curr.name] = {
+          count: 0,
+          rating: [],
+        };
+      }
+
+      acc[curr.name].count += 1;
+      acc[curr.name].rating = curr.rating;
+
+      return acc;
+    }, {});
+
+    teamElements = Object.entries(sortedElements)
+      .map(([name, { count, rating }]) => ({
+        name,
+        count,
+        rating,
+      }))
+      .sort((a, b) => b.count - a.count);
   } else {
     navigate();
   }
-}
-
-async function loadElements() {
-  const allElements = await serveData("elements", undefined, undefined, ELEMENTS_LSK, ELEMENTS_TTL);
-
-  teamElements = team.getAllMonsterElements(allElements);
-
-  renderElements();
 }
 
 function navigate() {
@@ -299,8 +313,8 @@ function createElementContainers(elementsEl, condition) {
     element.setAttribute("class", "elementContainer");
     name.setAttribute("class", "elementName");
 
-    const elementName = Object.keys(teamElement)[0];
-    const elementInstances = teamElement[elementName];
+    const elementName = teamElement.name;
+    const elementInstances = teamElement.count;
     const elementRating = teamElement.rating;
 
     const rating = renderIconWithNumber(elementRating, "../../res/icons/trophy.svg", `Rating of ${elementName} is ${elementRating}`, "right");
@@ -365,13 +379,11 @@ function sortElements(sortOrder) {
   switch (sortOrder) {
     case 0:
       sorted = teamElements.sort((a, b) => {
-        const keyA = Object.keys(a)[0];
-        const keyB = Object.keys(b)[0];
-        const countA = a[keyA];
-        const countB = b[keyB];
+        const countA = a.count;
+        const countB = b.count;
 
-        const ratingA = a["rating"];
-        const ratingB = b["rating"];
+        const ratingA = a.rating;
+        const ratingB = b.rating;
         const countDifference = countB - countA;
         const ratingDifference = ratingB - ratingA;
 
@@ -380,13 +392,11 @@ function sortElements(sortOrder) {
       break;
     case 1:
       sorted = teamElements.sort((a, b) => {
-        const keyA = Object.keys(a)[0];
-        const keyB = Object.keys(b)[0];
-        const countA = a[keyA];
-        const countB = b[keyB];
+        const countA = a.count;
+        const countB = b.count;
 
-        const ratingA = a["rating"];
-        const ratingB = b["rating"];
+        const ratingA = a.rating;
+        const ratingB = b.rating;
         const countDifference = countA - countB;
         const ratingDifference = ratingB - ratingA;
 
@@ -395,44 +405,38 @@ function sortElements(sortOrder) {
       break;
     case 2:
       sorted = teamElements.sort((a, b) => {
-        const keyA = Object.keys(a)[0];
-        const keyB = Object.keys(b)[0];
-        const ratingA = a["rating"];
-        const ratingB = b["rating"];
+        const ratingA = a.rating;
+        const ratingB = b.rating;
 
         const ratingDifference = ratingB - ratingA;
-        const alphaDifference = keyA.localeCompare(keyB);
+        const alphaDifference = a.name.localeCompare(b.name);
 
         return ratingDifference === 0 ? alphaDifference : ratingDifference;
       });
       break;
     case 3:
       sorted = teamElements.sort((a, b) => {
-        const keyA = Object.keys(a)[0];
-        const keyB = Object.keys(b)[0];
-        const ratingA = a["rating"];
-        const ratingB = b["rating"];
+        console.log(a, b);
+
+        const ratingA = a.rating;
+        const ratingB = b.rating;
+
+        console.log(ratingA, ratingB);
 
         const ratingDifference = ratingA - ratingB;
-        const alphaDifference = keyA.localeCompare(keyB);
+        const alphaDifference = a.name.localeCompare(b.name);
 
         return ratingDifference === 0 ? alphaDifference : ratingDifference;
       });
       break;
     case 4:
       sorted = teamElements.sort((a, b) => {
-        const keyA = Object.keys(a)[0];
-        const keyB = Object.keys(b)[0];
-
-        return keyA.localeCompare(keyB);
+        return a.name.localeCompare(b.name);
       });
       break;
     case 5:
       sorted = teamElements.sort((a, b) => {
-        const keyA = Object.keys(a)[0];
-        const keyB = Object.keys(b)[0];
-
-        return keyB.localeCompare(keyA);
+        return b.name.localeCompare(a.name);
       });
       break;
     default:
@@ -771,7 +775,7 @@ function renderMonsters() {
 
 function renderElements() {
   teamElementsContainer.innerHTML = "";
-  const numElements = teamElements.length;
+  const numElements = team.elements.length;
 
   if (numMonsters > 0) {
     teamElementsContainer.setAttribute("class", "teamElementsContainer border-gold");
