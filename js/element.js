@@ -3,36 +3,45 @@ import { serveData } from "./common/fetch.js";
 import { useClickEvent } from "./common/useEvent.js";
 import { renderDataAsUl } from "./common/render.js";
 import { ELEMENTS_LSK, ABILITIES_LSK } from "./common/localStorageKeys.js";
-import { capitalize } from "./common/utilities.js";
+import { ELEMENTS_TTL } from "./common/ttl.js";
+import { load, save, capitalize } from "./common/utilities.js";
+import { renderCredits } from "./common/user.js";
+import { USER_LSK } from "./common/localStorageKeys.js";
 
-const elementsContainer = document.getElementById("elementsContainer");
-const abilitiesContainer = document.getElementById("abilitiesContainer");
-const fetchElementsBtn = document.getElementById("fetchElements");
-const fetchAbilitiesBtn = document.getElementById("fetchAbilities");
+const elementContainer = document.getElementById("elementContainer");
+const elementList = document.getElementById("elementList");
 
-//time in seconds for how long the data will be cached for before it will refetch
-//this way we can limit the number of calls to the api for data that don't need
-//constent updates
-const ttl = 300; //5 min
+const userCredits = load(USER_LSK).credits;
+
+let elements = [];
 
 window.addEventListener("DOMContentLoaded", () => {
   init();
 });
 
 function init() {
-  useClickEvent(fetchElementsBtn, fetchElements);
-  useClickEvent(fetchAbilitiesBtn, fetchAbilities);
+  fetchElements();
+  renderCredits(userCredits);
 }
 
 async function fetchElements() {
-  const response = await serveData("elements", undefined, elementsContainer, ELEMENTS_LSK, ttl);
-  const elements = response.map((res) => res.name);
-  renderDataAsUl(elementsContainer, "elementsContainer", elements);
+  elements = await serveData("elements", undefined, elementContainer, ELEMENTS_LSK, ELEMENTS_TTL);
+
+  console.log("Elements: ", elements);
+
+  renderElements();
 }
 
-async function fetchAbilities() {
-  const response = await serveData("abilities", undefined, abilitiesContainer, ABILITIES_LSK, ttl);
-  const abilities = response;
-  const capatilizedAbilities = abilities.map((ability) => capitalize(ability));
-  renderDataAsUl(abilitiesContainer, "elementsContainer", capatilizedAbilities);
+function renderElements() {
+  elementList.innerHTML = "";
+
+  elements.forEach((element) => {
+    const elementEl = document.createElement("li");
+
+    elementEl.innerText = element.name;
+
+    elementEl.setAttribute("class", "element");
+
+    elementList.appendChild(elementEl);
+  });
 }

@@ -1,7 +1,53 @@
 /*Only write css here that will be used by element page*/
-.dataContainer {
-  width: 100%;
-  padding: 20px;
-  display: flex;
-  justify-content: space-between;
+:root {
+  /** Dark theme primary colors */
+  --color-primary-a0: #c8ad54;
+  --color-primary-a10: #cfb667;
+  --color-primary-a20: #d6bf7a;
+  --color-primary-a30: #ddc88d;
+  --color-primary-a40: #e3d19f;
+  --color-primary-a50: #e9dab2;
+
+  /** Dark theme surface colors */
+  --color-surface-a0: #121212;
+  --color-surface-a10: #282828;
+  --color-surface-a20: #3f3f3f;
+  --color-surface-a30: #575757;
+  --color-surface-a40: #717171;
+  --color-surface-a50: #8b8b8b;
+
+  /** Dark theme mixed surface colors */
+  --color-surface-mixed-a0: #221f19;
+  --color-surface-mixed-a10: #37342e;
+  --color-surface-mixed-a20: #4d4a44;
+  --color-surface-mixed-a30: #64615c;
+  --color-surface-mixed-a40: #7c7975;
+  --color-surface-mixed-a50: #94938f;
+
+  /*Primary text color*/
+  --color-primary-text: #e6e4e1;
+  --color-light-red: #ed3b3b;
+  --color-success: #2d8a2d;
+}
+
+::-webkit-scrollbar {
+  width: 0;
+}
+
+body {
+  main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+
+    .elementContainer {
+      .elementList {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 4px;
+      }
+    }
+  }
 }

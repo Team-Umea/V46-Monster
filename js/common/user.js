@@ -45,7 +45,7 @@ export function updateUser(property, value) {
   }
 }
 
-function renderCredits(credits) {
+export function renderCredits(credits) {
   const userCreditsContainer = document.getElementById("headerControls");
   const creditsIconContainer = renderIconWithNumber(credits, "../../res/icons/diamond.svg", "Your credits");
 
