@@ -22,6 +22,9 @@ const dangerZone = document.getElementById("dangerZone");
 
 const loadedTeams = load(TEAMS_LSK).map((t) => Team.fromJSON(t)) || [];
 const team = loadedTeams.find((t) => t.name === load(SELECTEDTEAMSETTINGS_LSK).name);
+
+console.log(team);
+
 let userCredits = load(USER_LSK).credits;
 
 let linkedBtns = [];
@@ -100,7 +103,6 @@ function loadTeam() {
     teamCost = team.teamCost;
     teamValue = team.teamValue;
     teamProfit = team.teamProfit;
-    // teamElements = team.elements;
     isPaidFor = team.paidFor;
     numMonsters = teamMonsters.length;
 
@@ -166,7 +168,14 @@ function navigate() {
 }
 
 function updateTeams() {
-  save(TEAMS_LSK, teams);
+  const updatedTeams = loadedTeams.map((t) => {
+    if (t.name === team.name) {
+      return team;
+    }
+    return t;
+  });
+
+  save(TEAMS_LSK, updatedTeams);
   save(SELECTEDTEAMSETTINGS_LSK, team);
   loadTeam();
   render();
@@ -175,20 +184,12 @@ function updateTeams() {
 async function shuffleTeam() {
   const randomMonsters = await serveData("randomMonsters", "num=4", monstersContainer);
 
-  const selectedTeam = teams.find((t) => t.name.toLowerCase() === teamName.toLowerCase());
-
-  selectedTeam.setMonsters(randomMonsters);
-  selectedTeam.setPaidFor(false);
-
   team.setMonsters(randomMonsters);
   team.setPaidFor(false);
   updateTeams();
 }
 
 function buyTeam() {
-  const selectedTeam = teams.find((t) => t.name.toLowerCase() === teamName.toLowerCase());
-
-  selectedTeam.setPaidFor(true);
   team.setPaidFor(true);
   const currentCredits = user.credits;
   const newCredits = currentCredits - teamCost;
@@ -197,9 +198,15 @@ function buyTeam() {
 }
 
 function sellTeam() {
-  teams = teams.filter((t) => t.name.toLowerCase() !== teamName.toLowerCase());
+  const updatedTeams = loadedTeams.map((t) => {
+    if (t.name === team.name) {
+      return team;
+    }
+    return t;
+  });
+
+  save(TEAMS_LSK, updatedTeams);
   remove(SELECTEDTEAMSETTINGS_LSK);
-  save(TEAMS_LSK, teams);
   const currentCredits = user.credits;
   const newCredits = currentCredits + teamValue;
   updateUser("credits", newCredits);
@@ -216,23 +223,25 @@ function fightTeam() {
 }
 
 function shiftTeamOrder(id) {
-  const selectedTeam = teams.find((t) => t.name.toLowerCase() === teamName.toLowerCase());
-  selectedTeam.shiftMonsters(id);
   team.shiftMonsters(id);
   updateTeams();
 }
 
 function removeMonster(id) {
-  const selectedTeam = teams.find((t) => t.name.toLowerCase() === teamName.toLowerCase());
-  selectedTeam.deleteMonster(id);
   team.deleteMonster(id);
   updateTeams();
 }
 
 function deleteTeam() {
-  teams = teams.filter((t) => t.name.toLowerCase() !== teamName.toLowerCase());
+  const updatedTeams = loadedTeams.map((t) => {
+    if (t.name === team.name) {
+      return team;
+    }
+    return t;
+  });
+
+  save(TEAMS_LSK, updatedTeams);
   remove(SELECTEDTEAMSETTINGS_LSK);
-  save(TEAMS_LSK, teams);
   setTimeout(() => {
     navigate();
   }, 100);
