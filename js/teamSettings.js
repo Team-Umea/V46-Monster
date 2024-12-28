@@ -2,7 +2,7 @@
 import { useClickEvent, useFocusEvent } from "./common/useEvent.js";
 import { serveData } from "./common/fetch.js";
 import { renderIconWithNumber, averageValueIcon, imgAsBtn, valueWithHeader, progressBar, dataList, setBtnIcon } from "./common/render.js";
-import { load, save, remove, redirect, formatLargeNumber } from "./common/utilities.js";
+import { load, save, remove, redirect, formatLargeNumber, convertInstancesToStr } from "./common/utilities.js";
 import { USER_LSK, SELECTEDTEAMSETTINGS_LSK, TEAMS_LSK, SELECTEDFIGHTTEAM_LSK } from "./common/localStorageKeys.js";
 import { MonsterCard } from "./classes/MonsterCard.js";
 import { Team } from "./classes/Team.js";
@@ -20,14 +20,14 @@ const teamElementsContainer = document.getElementById("teamElementsContainer");
 const battleRecordContainer = document.getElementById("battleRecordContainer");
 const dangerZone = document.getElementById("dangerZone");
 
-let teams;
+const loadedTeams = load(TEAMS_LSK).map((t) => Team.fromJSON(t)) || [];
+const team = loadedTeams.find((t) => t.name === load(SELECTEDTEAMSETTINGS_LSK).name);
 let userCredits = load(USER_LSK).credits;
 
 let linkedBtns = [];
 let timeOutBtns = [];
 let controlMessageTimeout;
 
-let team;
 let teamName;
 let teamMonsters;
 let teamCost;
@@ -65,6 +65,7 @@ let sufferedDamage;
 let distributedDamage;
 
 let wonAgainst;
+let drawnAgainst;
 let lostAgainst;
 
 window.addEventListener("DOMContentLoaded", () => {
@@ -92,20 +93,8 @@ function render() {
   placeUserCredits();
 }
 
-function loadAllTeams() {
-  const loaded = load(TEAMS_LSK);
-
-  if (loaded) {
-    teams = loaded.map((t) => Team.fromJSON(t));
-  }
-}
-
 function loadTeam() {
-  loadAllTeams();
-  const loadedTeam = load(SELECTEDTEAMSETTINGS_LSK);
-  if (loadedTeam) {
-    team = Team.fromJSON(loadedTeam);
-
+  if (team) {
     teamName = team.name;
     teamMonsters = team.monsters;
     teamCost = team.teamCost;
@@ -142,8 +131,9 @@ function loadTeam() {
     sufferedDamage = team.sufferedDamage;
     distributedDamage = team.distributedDamage;
 
-    wonAgainst = team.wonAgainst;
-    lostAgainst = team.lostAgainst;
+    wonAgainst = convertInstancesToStr(team.wonAgainst);
+    drawnAgainst = convertInstancesToStr(team.drawnAgainst);
+    lostAgainst = convertInstancesToStr(team.lostAgainst);
   } else {
     navigate();
   }
@@ -954,42 +944,55 @@ function renderBattleRecord() {
 function renderFoughtMonsters() {
   const container = document.createElement("div");
   const wonContainer = document.createElement("div");
+  const drawnContainer = document.createElement("div");
   const lostContainer = document.createElement("div");
   const wonHeader = document.createElement("h2");
+  const drawnHeader = document.createElement("h2");
   const lostHeader = document.createElement("h2");
   const won = document.createElement("div");
+  const drawn = document.createElement("div");
   const lost = document.createElement("div");
 
   container.setAttribute("class", "foughtMonsters");
   wonContainer.setAttribute("class", "container");
+  drawnContainer.setAttribute("class", "container");
   lostContainer.setAttribute("class", "container");
   wonHeader.setAttribute("class", "header");
+  drawnHeader.setAttribute("class", "header");
   lostHeader.setAttribute("class", "header");
   won.setAttribute("class", "monsters");
+  drawn.setAttribute("class", "monsters");
   lost.setAttribute("class", "monsters");
 
   wonHeader.innerText = "Won against";
+  drawnHeader.innerText = "Drawn against";
   lostHeader.innerText = "Lost against";
 
-  wonAgainst.forEach((w) => {
-    const value = `${Object.values(w)[0]}x ${Object.keys(w)[0]}`;
+  wonAgainst.forEach((rec) => {
     const p = document.createElement("p");
     p.setAttribute("class", "monster");
-    p.innerText = value;
+    p.innerText = rec;
     won.appendChild(p);
   });
 
-  lostAgainst.forEach((l) => {
-    const value = `${Object.values(l)[0]}x ${Object.keys(l)[0]}`;
+  drawnAgainst.forEach((rec) => {
     const p = document.createElement("p");
     p.setAttribute("class", "monster");
-    p.innerText = value;
+    p.innerText = rec;
+    drawn.appendChild(p);
+  });
+
+  lostAgainst.forEach((rec) => {
+    const p = document.createElement("p");
+    p.setAttribute("class", "monster");
+    p.innerText = rec;
     lost.appendChild(p);
   });
 
   wonContainer.append(wonHeader, won);
+  drawnContainer.append(drawnHeader, drawn);
   lostContainer.append(lostHeader, lost);
-  container.append(wonContainer, lostContainer);
+  container.append(wonContainer, drawnContainer, lostContainer);
 
   return container;
 }
@@ -1011,9 +1014,9 @@ function renderMonsterRecords() {
     const fought = document.createElement("div");
     const fightBar = progressBar(monster.wonFights, monster.drawnFights, monster.lostFights);
     const roundBar = progressBar(monster.wonRounds, monster.drawnRounds, monster.lostRounds);
-    const wins = dataList("Won against", monster.wonAgainst);
-    const draws = dataList("Won against", monster.drawnAgainst);
-    const losses = dataList("Won against", monster.lostAgainst);
+    const wins = dataList("Won against", convertInstancesToStr(monster.wonAgainst));
+    const draws = dataList("Won against", convertInstancesToStr(monster.drawnAgainst));
+    const losses = dataList("Won against", convertInstancesToStr(monster.lostAgainst));
 
     const lostHpEl = valueWithHeader(monster.lostHP, "Lost health");
     const remainingHpEl = valueWithHeader(monster.percentHP, "Remaining health");

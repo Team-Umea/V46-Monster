@@ -1,5 +1,5 @@
 //Js code for fight page
-import { TEAMS_LSK, SELECTEDFIGHTTEAM_LSK, OPPOSINGFIGHTTEAM_LSK } from "./common/localStorageKeys.js";
+import { TEAMS_LSK, SELECTEDFIGHTTEAM_LSK, OPPOSINGFIGHTTEAM_LSK, SELECTEDTEAMSETTINGS_LSK } from "./common/localStorageKeys.js";
 import { load, save, convertInstancesToStr } from "./common/utilities.js";
 import { MonsterFighCard } from "./classes/MonsterFighCard.js";
 import { valueWithHeader, progressBar, setBtnIcon, renderIconWithNumber, averageValueIcon, imgAsBtn, accuracyMeter } from "./common/render.js";
@@ -159,8 +159,8 @@ function slideFightCards() {
 
     currentFight++;
 
-    monster = { ...userTeam.monsters[4 - currentFight] };
-    opponent = { ...opposingTeam.monsters[4 - currentFight] };
+    monster = { ...userTeam.monsters[currentFight - 1] };
+    opponent = { ...opposingTeam.monsters[currentFight - 1] };
 
     renderHitControls();
   } else {
@@ -494,7 +494,7 @@ function renderTeam(team, container) {
     });
 
     const carouselBtns = Array.from(carousel.children);
-    const monsterCards = Array.from(teamMonsters.children);
+    let monsterCards = Array.from(teamMonsters.children);
 
     monsterCards.forEach((monsterCard) => monsterCard.setAttribute("class", "monsterFighCard opacity-0"));
     teamFightRecord.innerHTML = "";
@@ -513,6 +513,7 @@ function renderTeam(team, container) {
 
     carouselBtns.forEach((carouselBtn) => {
       carouselBtn.addEventListener("click", () => {
+        monsterCards = Array.from(teamMonsters.children);
         const index = carouselBtns.indexOf(carouselBtn);
         const monster = team.monsters[index];
 
@@ -663,7 +664,7 @@ function renderFightOrder() {
 function renderBattleResult(message) {
   const battleResultContainer = document.createElement("div");
   const battleMessage = document.createElement("h2");
-  const battleCreditsIcon = renderIconWithNumber(battleCredits, "../../res/icons/diamond.svg", `Battle generated ${battleCredits} of credits`);
+  const battleCreditsIcon = renderIconWithNumber(battleCredits, "../../res/icons/diamond.svg", `Battle generated ${battleCredits} credits`);
 
   battleResultContainer.setAttribute("class", "battleResultContainer");
   battleMessage.setAttribute("class", "battleMessage");

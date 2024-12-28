@@ -3,9 +3,9 @@ import { sortInstances } from "../common/utilities.js";
 import { Monster } from "./Monster.js";
 
 export class Team {
-  constructor(teamName) {
+  constructor(name) {
     this.createdAt = new Date();
-    this.name = teamName;
+    this.name = name;
     this.monsters = [];
     this.paidFor = false;
     this.elements = [];
@@ -42,6 +42,7 @@ export class Team {
     this.distributedDamage = 0;
 
     this.wonAgainst = [];
+    this.drawnAgainst = [];
     this.lostAgainst = [];
 
     this.isVisible = true;
@@ -157,7 +158,7 @@ export class Team {
   }
 
   loadMonsters(monsters) {
-    if(monsters){
+    if (monsters) {
       this.monsters = monsters.map((m) => new Monster(m));
 
       const teamCost = monsters.reduce((acc, curr) => acc + curr.price, 0);
@@ -169,6 +170,10 @@ export class Team {
 
   setPaidFor(paidFor) {
     this.paidFor = paidFor;
+  }
+
+  setTeamProfit(teamProfit) {
+    this.teamProfit = teamProfit;
   }
 
   setNumBattels(numBattels) {
@@ -268,22 +273,23 @@ export class Team {
     this.totalHealth = this.calcTeamHealth();
     this.totalDamage = this.calcTeamDamage();
     this.teamValue = this.calcTeamValue();
+    this.totalPoints = this.calcPoints();
     this.lostHp = this.calcLostHp();
     this.remainingHP = this.calcRemainingHP();
     this.sufferedDamage = this.calcSufferedDamage();
     this.distributedDamage = this.calcDistributedDamage();
-    this.numFights = this.calcFights().numFights; 
-    this.wonFights = this.calcFights().wonFights; 
-    this.drawnFights = this.calcFights().drawnFights; 
-    this.lostFights = this.calcFights().lostFights; 
-    this.numRounds = this.calcRounds().numRounds; 
-    this.wonRounds = this.calcRounds().wonRounds; 
-    this.drawnRounds = this.calcRounds().drawnRounds; 
-    this.lostRounds = this.calcRounds().lostRounds; 
+    this.numFights = this.calcFights().numFights;
+    this.wonFights = this.calcFights().wonFights;
+    this.drawnFights = this.calcFights().drawnFights;
+    this.lostFights = this.calcFights().lostFights;
+    this.numRounds = this.calcRounds().numRounds;
+    this.wonRounds = this.calcRounds().wonRounds;
+    this.drawnRounds = this.calcRounds().drawnRounds;
+    this.lostRounds = this.calcRounds().lostRounds;
     this.wonAgainst = this.calcWonAgainst();
+    this.drawnAgainst = this.calcDrawnAgainst();
     this.lostAgainst = this.calcLostAgainst();
     this.winRate = this.calcWinRate();
-    this.totalPoints = this.calcPoints();
   }
 
   calcTeamRank() {
@@ -327,6 +333,12 @@ export class Team {
     return teamValue;
   }
 
+  calcPoints() {
+    const monsters = this.monsters;
+    const points = monsters.reduce((acc, curr) => acc + curr.points, 0);
+    return points;
+  }
+
   calcLostHp() {
     const monsters = this.monsters;
     const maxHp = monsters.reduce((acc, curr) => acc + curr.health, 0);
@@ -354,62 +366,52 @@ export class Team {
     return distributedDamage;
   }
 
-  calcBattles(){
-
-  }
-
-  calcFights(){
-    const monsters = this.monsters; 
-    const numFights = monsters.reduce((acc,curr)=>acc+curr.numFights,0);
-    const wonFights = monsters.reduce((acc,curr)=>acc+curr.wonFights,0);
-    const drawnFights = monsters.reduce((acc,curr)=>acc+curr.drawnFights,0);
-    const lostFights = monsters.reduce((acc,curr)=>acc+curr.lostFights,0);
+  calcFights() {
+    const monsters = this.monsters;
+    const numFights = monsters.reduce((acc, curr) => acc + curr.numFights, 0);
+    const wonFights = monsters.reduce((acc, curr) => acc + curr.wonFights, 0);
+    const drawnFights = monsters.reduce((acc, curr) => acc + curr.drawnFights, 0);
+    const lostFights = monsters.reduce((acc, curr) => acc + curr.lostFights, 0);
 
     return {
       numFights,
-      wonFights, 
-      drawnFights, 
-      lostFights
-    }
+      wonFights,
+      drawnFights,
+      lostFights,
+    };
   }
 
-  calcRounds(){
-    const monsters = this.monsters; 
-    const numRounds = monsters.reduce((acc,curr)=>acc+curr.numRounds,0);
-    const wonRounds = monsters.reduce((acc,curr)=>acc+curr.wonRounds,0);
-    const drawnRounds = monsters.reduce((acc,curr)=>acc+curr.drawnRounds,0);
-    const lostRounds = monsters.reduce((acc,curr)=>acc+curr.lostRounds,0);
+  calcRounds() {
+    const monsters = this.monsters;
+    const numRounds = monsters.reduce((acc, curr) => acc + curr.numRounds, 0);
+    const wonRounds = monsters.reduce((acc, curr) => acc + curr.wonRounds, 0);
+    const drawnRounds = monsters.reduce((acc, curr) => acc + curr.drawnRounds, 0);
+    const lostRounds = monsters.reduce((acc, curr) => acc + curr.lostRounds, 0);
 
     return {
       numRounds,
-      wonRounds, 
-      drawnRounds, 
-      lostRounds
-    }
+      wonRounds,
+      drawnRounds,
+      lostRounds,
+    };
   }
 
   calcWonAgainst() {
     const monsters = this.monsters;
-    const wonAgainst = monsters.reduce((acc,curr)=>[...acc,curr.wonAgainst],[]);
+    const wonAgainst = monsters.flatMap((record) => record.wonAgainst);
     return wonAgainst;
   }
 
   calcDrawnAgainst() {
     const monsters = this.monsters;
-    const drawnAgainst = monsters.reduce((acc,curr)=>[...acc,curr.drawAgainst],[]);
+    const drawnAgainst = monsters.flatMap((record) => record.drawnAgainst);
     return drawnAgainst;
   }
 
   calcLostAgainst() {
     const monsters = this.monsters;
-    const lostAgainst = monsters.reduce((acc,curr)=>[...acc,curr.lostAgainst],[]);
+    const lostAgainst = monsters.flatMap((record) => record.lostAgainst);
     return lostAgainst;
-  }
-
-  calcPoints(){
-    const monsters = this.monsters; 
-    const points = monsters.reduce((acc,curr)=>acc+curr.points,0);
-    return points
   }
 
   calcWinRate() {
@@ -462,6 +464,7 @@ export class Team {
     newTeam.setCreatedAt(json.createdAt);
     newTeam.loadMonsters(json.monsters);
     newTeam.setPaidFor(json.paidFor);
+    newTeam.setTeamProfit(json.teamProfit);
     newTeam.setNumBattels(json.numBattels);
     newTeam.setWonBattels(json.wonBattels);
     newTeam.setDrawnBattels(json.drawnBattels);
@@ -476,6 +479,8 @@ export class Team {
     newTeam.setDrawnRounds(json.drawnRounds);
     newTeam.setLostRounds(json.lostRounds);
     newTeam.setVisible(json.isVisible);
+    newTeam.calc();
+
     return newTeam;
   }
 }

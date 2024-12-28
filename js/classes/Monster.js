@@ -41,10 +41,6 @@ export class Monster {
     this.winRate = this.calcWinRate();
     this.numFights = this.calcNumFights();
     this.numRounds = this.calcNumRounds();
-
-    // this.wonAgainst = convertInstancesToStr(this.wonAgainst);
-    // this.drawnAgainst = convertInstancesToStr(this.drawnAgainst);
-    // this.lostAgainst = convertInstancesToStr(this.lostAgainst);
   }
 
   calcLostHp() {
