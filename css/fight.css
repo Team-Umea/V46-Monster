@@ -358,6 +358,15 @@ body {
       }
     }
 
+    .fightOrderContainer {
+      margin: 80px 0 40px 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
     .battle {
       width: 100%;
       position: relative;
@@ -559,6 +568,18 @@ body {
     height: 8rem;
     background: rgb(0, 0, 0);
     background: linear-gradient(0deg, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0) 100%);
+  }
+
+  .shiftMonsterBtn {
+    padding: 10px;
+    position: absolute;
+    left: 50%;
+    top: -50px;
+    transform: translateX(-50%);
+
+    img {
+      width: 20px;
+    }
   }
 }
 

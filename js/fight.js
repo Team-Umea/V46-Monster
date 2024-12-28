@@ -11,6 +11,7 @@ const teamsContainerToggle = document.getElementById("teamsContainerToggle");
 const teamsContainerBody = document.getElementById("teamsContainerBody");
 const teamOneContainer = document.getElementById("teamOne");
 const teamTwoContainer = document.getElementById("teamTwo");
+const fightOrderContainer = document.getElementById("fightOrderContainer");
 const battleContainer = document.getElementById("battleContainer");
 const fightBtn = document.getElementById("fightBtn");
 const score = document.getElementById("score");
@@ -49,6 +50,7 @@ function init() {
 function render() {
   renderTeam(userTeam, teamOneContainer);
   renderTeam(opposingTeam, teamTwoContainer);
+  renderFightOrder();
   renderBattleMonsters();
 }
 
@@ -122,6 +124,7 @@ function startFight() {
   totalRounds = 0;
   battleCredits = 0;
 
+  fightOrderContainer.innerHTML = "";
   fightBtn.classList.add("hidden");
   hitContainer.setAttribute("class", "hitContainer");
 
@@ -138,9 +141,9 @@ function startFight() {
 
 function slideFightCards() {
   if (currentFight < 4) {
-    const fightContainer = battleContainer.children[currentFight];
-    const monsterCardTeam1 = getCurrentFightCards(currentFight).monsterCardTeam1;
-    const monsterCardTeam2 = getCurrentFightCards(currentFight).monsterCardTeam2;
+    const fightContainer = battleContainer.children[3 - currentFight];
+    const monsterCardTeam1 = getCurrentFightCards(3 - currentFight).monsterCardTeam1;
+    const monsterCardTeam2 = getCurrentFightCards(3 - currentFight).monsterCardTeam2;
 
     const cardWidth = monsterCardTeam1.clientWidth;
 
@@ -156,8 +159,8 @@ function slideFightCards() {
 
     currentFight++;
 
-    monster = { ...userTeam.monsters[currentFight - 1] };
-    opponent = { ...opposingTeam.monsters[currentFight - 1] };
+    monster = { ...userTeam.monsters[4 - currentFight] };
+    opponent = { ...opposingTeam.monsters[4 - currentFight] };
 
     renderHitControls();
   } else {
@@ -228,11 +231,11 @@ function getCurrentFightCards(index) {
 }
 
 function resetPrevFight() {
-  const prevFightContainer = battleContainer.children[currentFight - 1];
-  const prevMonsterCardTeam1 = getCurrentFightCards(currentFight - 1).monsterCardTeam1;
-  const prevMonsterCardTeam2 = getCurrentFightCards(currentFight - 1).monsterCardTeam2;
+  const prevFightContainer = battleContainer.children[4 - currentFight];
+  const prevMonsterCardTeam1 = getCurrentFightCards(4 - currentFight).monsterCardTeam1;
+  const prevMonsterCardTeam2 = getCurrentFightCards(4 - currentFight).monsterCardTeam2;
 
-  const originalContainerWidth = 100 - (currentFight - 1) * 2;
+  const originalContainerWidth = 100 - (4 - currentFight) * 2;
 
   prevFightContainer.style.width = `${originalContainerWidth}%`;
 
@@ -620,6 +623,27 @@ function renderMonstersFought(parent, headerText, record) {
   parent.appendChild(container);
 }
 
+function renderFightOrder() {
+  fightOrderContainer.innerHTML = "";
+
+  userTeam.monsters.forEach((monster) => {
+    const monsterCard = new MonsterFighCard(monster).card();
+    const shiftPlaceBtn = imgAsBtn("rightFlatArrow", "Change fight order. Monster furthest to the left will start");
+
+    shiftPlaceBtn.setAttribute("class", "shiftMonsterBtn primary-btn");
+
+    useClickEvent(shiftPlaceBtn, () => {
+      userTeam.shiftMonsters(monster.id);
+      updateTeams();
+      renderFightOrder();
+      renderBattleMonsters();
+    });
+
+    monsterCard.appendChild(shiftPlaceBtn);
+    fightOrderContainer.appendChild(monsterCard);
+  });
+}
+
 function renderBattleResult(message) {
   const battleResultContainer = document.createElement("div");
   const battleMessage = document.createElement("h2");
@@ -640,8 +664,8 @@ function renderBattleMonsters() {
   const team2 = opposingTeam.monsters;
 
   team1.forEach((_, index) => {
-    const team1Monsters = team1[index];
-    const team2Monsters = team2[index];
+    const team1Monsters = team1[team1.length - 1 - index];
+    const team2Monsters = team2[team2.length - 1 - index];
 
     const fightContainer = document.createElement("div");
     const monster1Conatiner = document.createElement("div");
@@ -685,8 +709,8 @@ function renderHitControls() {
 
       const userDamage = calcUserDamage(monster, meter, meterPin);
       const opposingDamage = calcOpposingDamage(opponent);
-      const userCurrentFightCard = getCurrentFightCards(currentFight - 1).monsterCardTeam1;
-      const opponentCurrentFightCard = getCurrentFightCards(currentFight - 1).monsterCardTeam2;
+      const userCurrentFightCard = getCurrentFightCards(4 - currentFight).monsterCardTeam1;
+      const opponentCurrentFightCard = getCurrentFightCards(4 - currentFight).monsterCardTeam2;
 
       updateHp(userDamage, opponent, opponentCurrentFightCard, opponentLostHpIconHolder, "right");
       updateHp(opposingDamage, monster, userCurrentFightCard, userLostHpIconHolder, "left");
