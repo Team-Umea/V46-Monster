@@ -29,10 +29,6 @@ const endpoints = [
     desc: "Returns a specified number of monsters starting from a given index. Requires query parameters: 'num' (positive integer) indicating how many monsters to return, 'start' (non-negative integer) indicating the starting index, and 'sort' (integer) to specify sorting order. Returns a JSON object with 'ok' status and an array of monster objects, or a 400 error if 'num' or 'start' is missing or invalid. Also returns a 200 status with the monsters or a 400 status if 'sort' is out of range.",
   },
   {
-    path: "/sortOptions",
-    desc: "Returns a list of sorting options for monsters. No parameters needed. Returns a JSON object with 'ok' status and an array of sorting option strings, or a 500 error if there is an issue retrieving the options.",
-  },
-  {
     path: "/freeMonsters",
     desc: "Returns a list of monsters that are free (price = 0). No parameters needed. Returns a JSON object with 'ok' status and an array of free monster objects, or a 500 error if there are no monsters.",
   },
@@ -88,6 +84,16 @@ async function init() {
   });
 }
 
+function writeToJSONFile(path, data) {
+  fs.writeFile(path, JSON.stringify(data, null, 2), (err) => {
+    if (err) {
+      console.error("Error writing to file", err);
+    } else {
+      console.log("Data written to file successfully!");
+    }
+  });
+}
+
 function readJSON(path, callback) {
   fs.readFile(path, "utf8", (err, data) => {
     if (err) {
@@ -109,11 +115,6 @@ app.get("/", (_, res) => {
   const welcome = endpoints.map((end) => `${end.path} - ${end.desc}`).join("\n\n");
   res.setHeader("Content-Type", "text/plain");
   res.send(welcome);
-});
-
-app.get("/sortOptions", (_, res) => {
-  const sortOptions = ["A-Z", "Z-A", "Low-High Price", "High-Low Price", "Low-High Health", "High-Low Health", "Low-High Rank", "High-Low Rank", "Low-High Damage", "High-Low Damage", "Few-Many Elements", "Many-Few Elements"];
-  res.status(200).json({ ok: true, options: sortOptions });
 });
 
 app.get("/allMonsters", (_, res) => {
@@ -276,12 +277,7 @@ app.get("/monsterById", (req, res) => {
 });
 
 app.get("/elements", (_, res) => {
-  const elmentsNameAndRating = elements.map((elment) => ({ name: elment.name, rating: elment.rating }));
-  if (elmentsNameAndRating) {
-    const sortedByRating = elmentsNameAndRating.sort((a, b) => a.rating - b.rating);
-    return res.status(200).json({ ok: true, elements: sortedByRating });
-  }
-  return res.status(500).json({ ok: false });
+  return res.status(200).json({ ok: true, elements });
 });
 
 app.get("/abilities", (_, res) => {
