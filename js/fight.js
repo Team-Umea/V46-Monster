@@ -467,7 +467,6 @@ function renderTeam(team, container) {
 
   if (team) {
     const teamName = team.name;
-    const monsters = team.monsters;
 
     teamNameHeader.innerText = teamName;
 
@@ -475,7 +474,7 @@ function renderTeam(team, container) {
 
     carousel.setAttribute("class", "carousel");
 
-    monsters.forEach((monster, index) => {
+    team.monsters.forEach((monster, index) => {
       teamFightRecord.innerHTML = "";
       const monsterCard = new MonsterFighCard(monster).card();
       const carouselBtn = document.createElement("button");
@@ -497,14 +496,29 @@ function renderTeam(team, container) {
     const carouselBtns = Array.from(carousel.children);
     const monsterCards = Array.from(teamMonsters.children);
 
-    carouselBtns.forEach((carouselBtn) => {
-      const index = carouselBtns.indexOf(carouselBtn);
-      const monster = monsters[index];
+    monsterCards.forEach((monsterCard) => monsterCard.setAttribute("class", "monsterFighCard opacity-0"));
+    teamFightRecord.innerHTML = "";
 
+    const firstMonster = team.monsters[0];
+    const firstMonsterCrd = teamMonsters.children[0];
+
+    if (firstMonsterCrd) {
+      firstMonsterCrd.setAttribute("class", "monsterFighCard opacity-1");
+    }
+
+    renderMonsterStats(teamMonsterStats, firstMonster);
+    renderMonstersFought(teamFightRecord, "Won against", convertInstancesToStr(firstMonster.wonAgainst));
+    renderMonstersFought(teamFightRecord, "Drawn against", convertInstancesToStr(firstMonster.drawnAgainst));
+    renderMonstersFought(teamFightRecord, "Lost against", convertInstancesToStr(firstMonster.lostAgainst));
+
+    carouselBtns.forEach((carouselBtn) => {
       carouselBtn.addEventListener("click", () => {
+        const index = carouselBtns.indexOf(carouselBtn);
+        const monster = team.monsters[index];
+
         teamFightRecord.innerHTML = "";
         carouselBtns.forEach((btn) => btn.setAttribute("class", "carouselBtn"));
-        monsterCards.forEach((montserCard) => montserCard.setAttribute("class", "monsterFighCard opacity-0"));
+        monsterCards.forEach((monsterCard) => monsterCard.setAttribute("class", "monsterFighCard opacity-0"));
 
         carouselBtn.setAttribute("class", "carouselBtn carouselBtn-checked");
 
@@ -637,6 +651,8 @@ function renderFightOrder() {
       updateTeams();
       renderFightOrder();
       renderBattleMonsters();
+      renderTeam(userTeam, teamOneContainer);
+      renderTeam(opposingTeam, teamTwoContainer);
     });
 
     monsterCard.appendChild(shiftPlaceBtn);
