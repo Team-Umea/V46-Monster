@@ -65,17 +65,13 @@ export class Monster {
   }
 
   calcWinRate() {
-    const wonFights = this.wonFights;
-    const drawnFights = this.drawnFights;
-    const lostFights = this.lostFights;
     const wonRounds = this.wonRounds;
     const drawnRounds = this.drawnRounds;
     const lostRounds = this.lostRounds;
 
-    const sum = wonFights + drawnFights + lostFights + wonRounds + drawnRounds + lostRounds;
-    const wins = wonFights + wonRounds;
+    const sum = wonRounds + drawnRounds + lostRounds;
 
-    const winRate = Math.floor((wins / sum) * 100);
+    const winRate = Math.floor((wonRounds / sum) * 100);
 
     return isNaN(winRate) ? "0%" : `${winRate}%`;
   }
