@@ -500,11 +500,39 @@ body {
         border-radius: 20px;
         box-shadow: inset 0 0 10px var(--color-surface-a10);
 
+        .useElementBtn {
+          width: fit-content;
+          height: fit-content;
+          padding: 5px 10px;
+          font-size: 0.9rem;
+          align-self: center;
+          justify-self: center;
+        }
+
         .element {
           display: flex;
           flex-direction: column;
           align-items: center;
           gap: 10px;
+
+          .elementControls {
+            width: 100%;
+            margin-top: 5px;
+            position: absolute;
+            left: 50%;
+            bottom: 0;
+            transform: translateX(-50%);
+            display: flex;
+            justify-content: space-between;
+
+            .elementControlBtn {
+              padding: 2px 4px;
+
+              img {
+                width: 16px;
+              }
+            }
+          }
 
           .elementBanner {
             display: flex;
@@ -553,10 +581,20 @@ body {
                 display: flex;
                 justify-content: center;
                 text-align: center;
+                white-space: nowrap;
                 color: var(--color-surface-a50);
               }
             }
           }
+        }
+
+        .userElement {
+          width: 260px;
+          height: 140px;
+          padding-bottom: 20px;
+          grid-row: 1;
+          grid-column: 1;
+          position: relative;
         }
 
         .opponentElement {

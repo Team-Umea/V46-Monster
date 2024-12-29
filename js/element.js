@@ -197,7 +197,7 @@ function renderElements() {
 
         teams.forEach((t) => {
           if (t.name === selectedTeam) {
-            t.elements = [...t.elements, { name: element.name, rating: element.rating }];
+            t.elements = [...t.elements, { ...element }];
           }
         });
 

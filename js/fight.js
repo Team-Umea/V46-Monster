@@ -29,6 +29,8 @@ const opposingTeam = load(OPPOSINGFIGHTTEAM_LSK) || null;
 
 let monster = { ...userTeam.monsters[0] };
 let opponent = { ...opposingTeam.monsters[0] };
+let userTeamElements = [];
+let currentUserTeamElement = 0;
 
 let currentFight = 0;
 let userPoints = 0;
@@ -43,6 +45,7 @@ window.addEventListener("DOMContentLoaded", () => {
 function init() {
   render();
   toggleTeamMonsters();
+  loadUserTeamElements();
   useClickEvent(fightBtn, startFight);
   useClickEvent(teamsContainerToggle, toggleTeamsHeadToHead);
 }
@@ -52,6 +55,36 @@ function render() {
   renderTeam(opposingTeam, teamTwoContainer);
   renderFightOrder();
   renderBattleMonsters();
+}
+
+function loadUserTeamElements() {
+  const sortedElements = team.elements.reduce((acc, curr) => {
+    if (!acc[curr.name]) {
+      acc[curr.name] = {
+        count: 0,
+        rating: [],
+        strongAgainst: [],
+        weakAgainst: [],
+      };
+    }
+
+    acc[curr.name].count += 1;
+    acc[curr.name].rating = curr.rating;
+    acc[curr.name].strongAgainst = curr.strongAgainst;
+    acc[curr.name].weakAgainst = curr.weakAgainst;
+
+    return acc;
+  }, {});
+
+  userTeamElements = Object.entries(sortedElements)
+    .map(([name, { count, rating, strongAgainst, weakAgainst }]) => ({
+      name,
+      count,
+      rating,
+      strongAgainst,
+      weakAgainst,
+    }))
+    .sort((a, b) => b.count - a.count);
 }
 
 function toggleTeamsHeadToHead() {
@@ -118,6 +151,7 @@ function toggleTeamMonsters() {
 }
 
 function startFight() {
+  currentUserTeamElement = 0;
   currentFight = 0;
   userPoints = 0;
   oppoentPoints = 0;
@@ -704,10 +738,15 @@ function renderBattleMonsters() {
   });
 }
 
-function renderElement(elements) {
-  if (elements && elements.length > 0) {
-    const element = elements[0];
+function renderElement(element, useControls, increaseCallback, decreaseCallback) {
+  if (element) {
+    console.log(element);
+
     const containerEl = document.createElement("div");
+    const controlsEl = document.createElement("div");
+    const decBtn = imgAsBtn("leftArrow", "Use previous element");
+    const elementCountEl = document.createElement("p");
+    const incBtn = imgAsBtn("rightArrow", "Use next element");
     const bannerEl = document.createElement("div");
     const iconEl = document.createElement("img");
     const nameEl = document.createElement("h2");
@@ -719,6 +758,10 @@ function renderElement(elements) {
     const weakListEl = document.createElement("ul");
 
     containerEl.setAttribute("class", "element");
+    controlsEl.setAttribute("class", "elementControls");
+    decBtn.classList.add("elementControlBtn", "primary-btn");
+    elementCountEl.setAttribute("class", "elementCount");
+    incBtn.classList.add("elementControlBtn", "primary-btn");
     bannerEl.setAttribute("class", "elementBanner");
     iconEl.setAttribute("class", "elementIcon");
     nameEl.setAttribute("class", "elementName");
@@ -732,6 +775,9 @@ function renderElement(elements) {
     iconEl.setAttribute("src", "../../res/img/elementPlaceHolder.png");
     iconEl.setAttribute("alt", element.name);
 
+    if (element["count"]) {
+      elementCountEl.innerText = `${element.count}x`;
+    }
     nameEl.innerText = element.name;
     strongHeaderEl.innerText = "Strong against";
     weakHeaderEl.innerText = "Weak against";
@@ -750,28 +796,98 @@ function renderElement(elements) {
       weakListEl.appendChild(abyEl);
     });
 
+    if (increaseCallback && typeof increaseCallback === "function") {
+      useClickEvent(incBtn, () => {
+        increaseCallback();
+      });
+    }
+
+    if (decreaseCallback && typeof decreaseCallback === "function") {
+      useClickEvent(decBtn, () => {
+        decreaseCallback();
+      });
+    }
+
+    controlsEl.append(decBtn, elementCountEl, incBtn);
     bannerEl.append(iconEl, nameEl, ratingEl);
     abilityEl.append(strongHeaderEl, weakHeaderEl, strongListEl, weakListEl);
 
     containerEl.append(bannerEl, abilityEl);
+    if (useControls) {
+      containerEl.appendChild(controlsEl);
+    }
+
     return containerEl;
   }
   return document.createElement("div");
 }
 
+function updateRenderedElement(element, renderedElement) {
+  const userElementNameEl = renderedElement.getElementsByClassName("elementName")[0];
+  const userElementRatingEl = renderedElement.getElementsByClassName("elementRating")[0].getElementsByTagName("p")[0];
+  const userElementCountEl = renderedElement.getElementsByClassName("elementCount")[0];
+  const userElementStrongListEl = renderedElement.getElementsByClassName("elementAbilities")[0];
+  const userElementWeakListEl = renderedElement.getElementsByClassName("elementAbilities")[1];
+
+  userElementNameEl.innerText = element.name;
+  userElementRatingEl.innerText = element.rating;
+  userElementCountEl.innerText = `${element.count}x`;
+
+  userElementStrongListEl.innerHTML = "";
+  userElementWeakListEl.innerHTML = "";
+
+  element.strongAgainst.forEach((aby) => {
+    const abyEl = document.createElement("li");
+    abyEl.setAttribute("class", "elementAbility");
+    abyEl.innerText = capitalize(aby);
+    userElementStrongListEl.appendChild(abyEl);
+  });
+
+  element.weakAgainst.forEach((aby) => {
+    const abyEl = document.createElement("li");
+    abyEl.setAttribute("class", "elementAbility");
+    abyEl.innerText = capitalize(aby);
+    userElementWeakListEl.appendChild(abyEl);
+  });
+}
+
 function renderHitControls() {
   hitContainer.innerHTML = "";
 
-  const elements = document.createElement("div");
-  let opponentElement = renderElement(opponent.elements);
+  const elementContainer = document.createElement("div");
+  const useElementsBtn = document.createElement("button");
+
+  let userElementEl = renderElement(userTeamElements[currentUserTeamElement], true, increaseElementIndex, decreaseElementIndex);
+  let opponentElementEl = renderElement(opponent.elements[0]);
+
+  function increaseElementIndex() {
+    currentUserTeamElement++;
+    if (currentUserTeamElement > userTeamElements.length - 1) {
+      currentUserTeamElement = 0;
+    }
+    updateRenderedElement(userTeamElements[currentUserTeamElement], userElementEl);
+  }
+
+  function decreaseElementIndex() {
+    currentUserTeamElement--;
+    if (currentUserTeamElement < 0) {
+      currentUserTeamElement = userTeamElements.length - 1;
+    }
+    updateRenderedElement(userTeamElements[currentUserTeamElement], userElementEl);
+  }
+  console.log(userTeamElements);
 
   const meter = accuracyMeter();
   const meterPin = meter.getElementsByClassName("pin")[0];
   const hitBtn = imgAsBtn("sword", "Hit");
 
-  opponentElement.classList.add("opponentElement");
-  elements.setAttribute("class", "elements");
+  useElementsBtn.setAttribute("class", "useElementBtn primary-btn");
+  userElementEl.classList.add("userElement");
+  opponentElementEl.classList.add("opponentElement");
+  elementContainer.setAttribute("class", "elements");
   hitBtn.setAttribute("class", "hitBtn icon icon-scale");
+
+  useElementsBtn.innerText = "Use Elements";
 
   let meterIsRunning = true;
 
@@ -800,7 +916,7 @@ function renderHitControls() {
         slideFightCards();
       }
 
-      opponentElement = renderElement(opponent.elements);
+      opponentElementEl = renderElement(opponent.elements[0]);
 
       setTimeout(() => {
         meterPin.style.animationPlayState = "running";
@@ -809,6 +925,11 @@ function renderHitControls() {
     }
   });
 
-  elements.append(opponentElement);
-  hitContainer.append(elements, meter, hitBtn);
+  useClickEvent(useElementsBtn, () => {
+    useElementsBtn.remove();
+    elementContainer.appendChild(userElementEl);
+  });
+
+  elementContainer.append(useElementsBtn, opponentElementEl);
+  hitContainer.append(elementContainer, meter, hitBtn);
 }
