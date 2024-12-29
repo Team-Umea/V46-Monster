@@ -180,7 +180,7 @@ function calcBattleCredits() {
 
   const ratingDifferenceFactor = Math.max(2, ratingDifference * 0.1);
 
-  const total = (maxCredits * performanceFactor) / ratingDifferenceFactor;
+  const total = (maxCredits * performanceFactor) / ratingDifferenceFactor + userTeamRating * 0.1;
 
   if (total > 100) {
     battleCredits = Math.round(total / 100) * 100;
