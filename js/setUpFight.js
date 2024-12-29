@@ -1,4 +1,5 @@
-import { TEAMS_LSK, SELECTEDFIGHTTEAM_LSK, OPPOSINGFIGHTTEAM_LSK } from "./common/localStorageKeys.js";
+import { TEAMS_LSK, SELECTEDFIGHTTEAM_LSK, OPPOSINGFIGHTTEAM_LSK, ELEMENTS_LSK } from "./common/localStorageKeys.js";
+import { ELEMENTS_TTL } from "./common/ttl.js";
 import { save, load, redirect } from "./common/utilities.js";
 import { useChangeEvent, useClickEvent } from "./common/useEvent.js";
 import { serveData } from "./common/fetch.js";
@@ -49,13 +50,60 @@ function selectTeam() {
 
 async function getOpposingTeam(level) {
   const opposingTeam = new Team(`AI ${level}`);
-  const opposingTeamMonsters = await serveData("generateTeam", `&level=${level}`, opposingTeamMonstersEl, undefined, undefined, true);
+
+  const opposingTeamPromises = [serveData("generateTeam", `&level=${level}`, opposingTeamMonstersEl), serveData("elements", undefined, opposingTeamMonstersEl, ELEMENTS_LSK, ELEMENTS_TTL)];
+
+  const opposingTeamData = await Promise.all(opposingTeamPromises);
+
+  const opposingTeamMonsters = opposingTeamData[0];
+  const elements = opposingTeamData[1];
+
+  assignOpposingTeamElements(elements, opposingTeamMonsters, level);
   opposingTeam.setMonsters(opposingTeamMonsters);
 
   save(OPPOSINGFIGHTTEAM_LSK, opposingTeam);
 
   renderMonsters(opposingTeamMonstersEl, opposingTeamMonsters);
   fightBtn.classList.remove("hidden");
+}
+
+function assignOpposingTeamElements(elements, monsters, level) {
+  const numElementsProbability = [1, 1, 1, 1, 2, 2, 2, 2, 3, 3, 3, 3, 3, 3, 4, 4, 4, 4, 4, 4];
+  const numElements = numElementsProbability[Math.floor(Math.random() * numElementsProbability.length)];
+
+  const elementRatings = elements
+    .map((element) => element.rating)
+    .filter((item, index, self) => self.indexOf(item) === index)
+    .sort((a, b) => a - b);
+
+  const elementLevel = Math.min(elementRatings.length - 1, level - 1);
+  const allowedRatings = level <= 2 ? [elementRatings[elementLevel]] : [...elementRatings.slice(elementLevel - 2, elementLevel + 1)];
+
+  const possibleElements = [...elements]
+    .filter((element) => {
+      return allowedRatings.includes(element.rating);
+    })
+    .sort((a, b) => a.rating - b.rating);
+
+  const randomElementIndexes = new Set();
+  const randomMonsterIndexes = new Set();
+
+  while (randomElementIndexes.size < numElements) {
+    const randomElementIndex = Math.floor(Math.random() * possibleElements.length);
+    randomElementIndexes.add(randomElementIndex);
+  }
+
+  while (randomMonsterIndexes.size < numElements) {
+    const randomMonsterIndex = Math.floor(Math.random() * monsters.length);
+    randomMonsterIndexes.add(randomMonsterIndex);
+  }
+
+  monsters.forEach((monster) => (monster.elements = []));
+
+  Array.from(randomElementIndexes).forEach((randInd, ind) => {
+    const monsterIndex = Array.from(randomMonsterIndexes)[ind];
+    monsters[monsterIndex].elements = possibleElements[randInd];
+  });
 }
 
 function populateUserTeamSelect() {
