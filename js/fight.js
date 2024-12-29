@@ -31,6 +31,7 @@ let monster = { ...userTeam.monsters[0] };
 let opponent = { ...opposingTeam.monsters[0] };
 let userTeamElements = [];
 let currentUserTeamElement = 0;
+let lockElement;
 
 let currentFight = 0;
 let userPoints = 0;
@@ -157,6 +158,7 @@ function startFight() {
   oppoentPoints = 0;
   totalRounds = 0;
   battleCredits = 0;
+  lockElement = false;
 
   fightOrderContainer.innerHTML = "";
   fightBtn.classList.add("hidden");
@@ -272,6 +274,8 @@ function resetPrevFight() {
   const originalContainerWidth = 100 - (4 - currentFight) * 2;
 
   prevFightContainer.style.width = `${originalContainerWidth}%`;
+
+  lockElement = false;
 
   prevMonsterCardTeam1.style.transform = `translateX(0)`;
   prevMonsterCardTeam2.style.transform = `translateX(0)`;
@@ -401,6 +405,22 @@ function updateTeams() {
   });
 
   save(TEAMS_LSK, updatedTeams);
+}
+
+function hideElementControls() {
+  const useElementBtn = document.getElementsByClassName("useElementBtn")[0];
+  const decBtn = document.getElementsByClassName("elementControlBtn")[0];
+  const incBtn = document.getElementsByClassName("elementControlBtn")[1];
+
+  if (useElementBtn) {
+    useElementBtn.classList.add("hidden");
+  }
+  if (decBtn) {
+    decBtn.classList.add("hidden");
+  }
+  if (incBtn) {
+    incBtn.classList.add("hidden");
+  }
 }
 
 function renderTeamStats(parent, team) {
@@ -740,8 +760,6 @@ function renderBattleMonsters() {
 
 function renderElement(element, useControls, increaseCallback, decreaseCallback) {
   if (element) {
-    console.log(element);
-
     const containerEl = document.createElement("div");
     const controlsEl = document.createElement("div");
     const decBtn = imgAsBtn("leftArrow", "Use previous element");
@@ -903,6 +921,9 @@ function renderHitControls() {
 
       meterPin.style.animationPlayState = "paused";
       meterIsRunning = false;
+      lockElement = true;
+
+      hideElementControls();
 
       const userDamage = calcUserDamage(monster, meter, meterPin);
       const opposingDamage = calcOpposingDamage(opponent);
