@@ -489,6 +489,81 @@ body {
       align-items: center;
       gap: 10px;
 
+      .elements {
+        min-height: 150px;
+        margin-bottom: 20px;
+        padding: 20px;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 50px;
+        position: relative;
+        border-radius: 20px;
+        box-shadow: inset 0 0 10px var(--color-surface-a10);
+
+        .element {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          gap: 10px;
+
+          .elementBanner {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+
+            .elementName {
+              font-size: 1rem;
+            }
+
+            .elementIcon {
+              width: 16px;
+            }
+
+            .elementRating {
+              img {
+                width: 16px;
+              }
+
+              p {
+                font-size: 0.8rem;
+              }
+            }
+          }
+
+          .elementAbility {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            justify-items: center;
+            column-gap: 20px;
+
+            .elementAbilityHeader {
+              font-weight: bold;
+              margin-bottom: 5px;
+              color: var(--color-surface-a40);
+            }
+
+            .elementAbilities {
+              display: flex;
+              flex-direction: column;
+              align-items: center;
+
+              .elementAbility {
+                font-size: 0.8rem;
+                display: flex;
+                justify-content: center;
+                text-align: center;
+                color: var(--color-surface-a50);
+              }
+            }
+          }
+        }
+
+        .opponentElement {
+          grid-column: 2;
+        }
+      }
+
       .hitBtn {
         width: fit-content;
         padding: 10px 20px;

@@ -1,6 +1,6 @@
 //Js code for fight page
 import { TEAMS_LSK, SELECTEDFIGHTTEAM_LSK, OPPOSINGFIGHTTEAM_LSK, SELECTEDTEAMSETTINGS_LSK } from "./common/localStorageKeys.js";
-import { load, save, convertInstancesToStr } from "./common/utilities.js";
+import { load, save, convertInstancesToStr, capitalize } from "./common/utilities.js";
 import { MonsterFighCard } from "./classes/MonsterFighCard.js";
 import { valueWithHeader, progressBar, setBtnIcon, renderIconWithNumber, averageValueIcon, imgAsBtn, accuracyMeter } from "./common/render.js";
 import { useClickEvent } from "./common/useEvent.js";
@@ -128,10 +128,10 @@ function startFight() {
   fightBtn.classList.add("hidden");
   hitContainer.setAttribute("class", "hitContainer");
 
-  const battleMessage = document.getElementsByClassName("battleMessage")[0];
+  const battleResultContainer = document.getElementsByClassName("battleResultContainer")[0];
 
-  if (battleMessage) {
-    battleMessage.remove();
+  if (battleResultContainer) {
+    battleResultContainer.remove();
   }
 
   slideFightCards();
@@ -704,13 +704,73 @@ function renderBattleMonsters() {
   });
 }
 
+function renderElement(elements) {
+  if (elements && elements.length > 0) {
+    const element = elements[0];
+    const containerEl = document.createElement("div");
+    const bannerEl = document.createElement("div");
+    const iconEl = document.createElement("img");
+    const nameEl = document.createElement("h2");
+    const ratingEl = renderIconWithNumber(element.rating, "../../res/icons/trophy.svg", `${element.name} has an rating of ${element.rating}`, "right");
+    const abilityEl = document.createElement("div");
+    const strongHeaderEl = document.createElement("p");
+    const weakHeaderEl = document.createElement("p");
+    const strongListEl = document.createElement("ul");
+    const weakListEl = document.createElement("ul");
+
+    containerEl.setAttribute("class", "element");
+    bannerEl.setAttribute("class", "elementBanner");
+    iconEl.setAttribute("class", "elementIcon");
+    nameEl.setAttribute("class", "elementName");
+    ratingEl.classList.add("elementRating");
+    abilityEl.setAttribute("class", "elementAbility");
+    strongHeaderEl.setAttribute("class", "elementAbilityHeader");
+    weakHeaderEl.setAttribute("class", "elementAbilityHeader");
+    strongListEl.setAttribute("class", "elementAbilities");
+    weakListEl.setAttribute("class", "elementAbilities");
+
+    iconEl.setAttribute("src", "../../res/img/elementPlaceHolder.png");
+    iconEl.setAttribute("alt", element.name);
+
+    nameEl.innerText = element.name;
+    strongHeaderEl.innerText = "Strong against";
+    weakHeaderEl.innerText = "Weak against";
+
+    element.strongAgainst.forEach((aby) => {
+      const abyEl = document.createElement("li");
+      abyEl.setAttribute("class", "elementAbility");
+      abyEl.innerText = capitalize(aby);
+      strongListEl.appendChild(abyEl);
+    });
+
+    element.weakAgainst.forEach((aby) => {
+      const abyEl = document.createElement("li");
+      abyEl.setAttribute("class", "elementAbility");
+      abyEl.innerText = capitalize(aby);
+      weakListEl.appendChild(abyEl);
+    });
+
+    bannerEl.append(iconEl, nameEl, ratingEl);
+    abilityEl.append(strongHeaderEl, weakHeaderEl, strongListEl, weakListEl);
+
+    containerEl.append(bannerEl, abilityEl);
+    return containerEl;
+  }
+  return document.createElement("div");
+}
+
 function renderHitControls() {
   hitContainer.innerHTML = "";
+
+  const elements = document.createElement("div");
+  let opponentElement = renderElement(opponent.elements);
 
   const meter = accuracyMeter();
   const meterPin = meter.getElementsByClassName("pin")[0];
   const hitBtn = imgAsBtn("sword", "Hit");
 
+  opponentElement.classList.add("opponentElement");
+  elements.setAttribute("class", "elements");
   hitBtn.setAttribute("class", "hitBtn icon icon-scale");
 
   let meterIsRunning = true;
@@ -740,6 +800,8 @@ function renderHitControls() {
         slideFightCards();
       }
 
+      opponentElement = renderElement(opponent.elements);
+
       setTimeout(() => {
         meterPin.style.animationPlayState = "running";
         meterIsRunning = true;
@@ -747,5 +809,6 @@ function renderHitControls() {
     }
   });
 
-  hitContainer.append(meter, hitBtn);
+  elements.append(opponentElement);
+  hitContainer.append(elements, meter, hitBtn);
 }

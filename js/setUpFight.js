@@ -102,7 +102,7 @@ function assignOpposingTeamElements(elements, monsters, level) {
 
   Array.from(randomElementIndexes).forEach((randInd, ind) => {
     const monsterIndex = Array.from(randomMonsterIndexes)[ind];
-    monsters[monsterIndex].elements = possibleElements[randInd];
+    monsters[monsterIndex].elements = [possibleElements[randInd]];
   });
 }
 
