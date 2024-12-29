@@ -23,9 +23,9 @@
   --color-surface-mixed-a40: #7c7975;
   --color-surface-mixed-a50: #94938f;
 
-  /*Primary text color*/
   --color-primary-text: #e6e4e1;
   --color-light-red: #ed3b3b;
+  --color-success: #2d8a2d;
 }
 
 header {
@@ -721,6 +721,38 @@ footer {
   left: 50% !important;
   bottom: 20px !important;
   transform: translate(-50%) !important;
+}
+
+.animateBlinkGreen {
+  animation: blinkGreen 1.2s ease-out;
+}
+
+.animateBlinkRed {
+  animation: blinkRed 1.2s ease-out;
+}
+
+@keyframes blinkGreen {
+  0% {
+    background-color: transparent;
+  }
+  50% {
+    background-color: var(--color-success);
+  }
+  100% {
+    background-color: transparent;
+  }
+}
+
+@keyframes blinkRed {
+  0% {
+    background-color: transparent;
+  }
+  50% {
+    background-color: var(--color-light-red);
+  }
+  100% {
+    background-color: transparent;
+  }
 }
 
 @keyframes fadeOut {

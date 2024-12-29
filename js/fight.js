@@ -31,7 +31,6 @@ let monster = { ...userTeam.monsters[0] };
 let opponent = { ...opposingTeam.monsters[0] };
 let userTeamElements = [];
 let currentUserTeamElement = 0;
-let lockElement;
 
 let currentFight = 0;
 let userPoints = 0;
@@ -97,6 +96,7 @@ function removeUserTeamElment(element) {
     }
     return true;
   });
+  updateTeams();
   loadUserTeamElements();
 }
 
@@ -170,7 +170,6 @@ function startFight() {
   oppoentPoints = 0;
   totalRounds = 0;
   battleCredits = 0;
-  lockElement = false;
 
   fightOrderContainer.innerHTML = "";
   fightBtn.classList.add("hidden");
@@ -287,7 +286,12 @@ function resetPrevFight() {
 
   prevFightContainer.style.width = `${originalContainerWidth}%`;
 
-  lockElement = false;
+  const noOpponentElement = opponent.elements.length === 0;
+
+  if (!noOpponentElement) {
+    removeUserTeamElment(userTeamElements[currentUserTeamElement]);
+  }
+
   currentUserTeamElement = 0;
 
   prevMonsterCardTeam1.style.transform = `translateX(0)`;
@@ -319,12 +323,25 @@ function calcUserDamage(monster, userElement, opponentElement, meter, meterPin) 
     overlappingAbilities = userElement.strongAgainst.reduce((acc, curr) => {
       if (opponentElement && opponentElement.weakAgainst && opponentElement.weakAgainst.includes(curr)) {
         acc += Math.max(1, Math.floor(userElement.rating * 0.03));
+
+        const opponentAbility = opponentElement.weakAgainst.find((aby) => aby.toLowerCase() === curr.toLowerCase());
+
+        const userElementStrongList = document.getElementsByClassName("userElement")[0].getElementsByClassName("elementAbilities")[0];
+        const opponentElementWeakList = document.getElementsByClassName("opponentElement")[0].getElementsByClassName("elementAbilities")[1];
+
+        const userAbilityEl = Array.from(userElementStrongList.children).find((item) => item.innerText.toLowerCase() === curr.toLowerCase());
+        const opponentAbilityEl = Array.from(opponentElementWeakList.children).find((item) => item.innerText.toLowerCase() === opponentAbility);
+
+        userAbilityEl.classList.add("animateBlinkGreen");
+        opponentAbilityEl.classList.add("animateBlinkRed");
+
+        setTimeout(() => {
+          userAbilityEl.classList.remove("animateBlinkGreen");
+          opponentAbilityEl.classList.remove("animateBlinkRed");
+        }, 1200);
       }
       return acc;
     }, 0);
-    if (!lockElement) {
-      removeUserTeamElment(userElement);
-    }
   }
 
   const percentage = vaildHit / 100;
@@ -351,8 +368,28 @@ function calcOpposingDamage(monster, userElement, opponentElement) {
 
   if (userElement && opponentElement) {
     overlappingAbilities = opponentElement.strongAgainst.reduce((acc, curr) => {
+      console.log(userElement, userElement.weakAgainst, userElement.weakAgainst.includes(curr));
+
       if (userElement && userElement.weakAgainst && userElement.weakAgainst.includes(curr)) {
         acc += Math.max(1, Math.floor(opponentElement.rating * 0.03));
+
+        console.log(curr);
+
+        const userAbility = userElement.weakAgainst.find((aby) => aby.toLowerCase() === curr.toLowerCase());
+
+        const opponentElementStrongList = document.getElementsByClassName("opponentElement")[0].getElementsByClassName("elementAbilities")[0];
+        const userElementWeakList = document.getElementsByClassName("userElement")[0].getElementsByClassName("elementAbilities")[1];
+
+        const opponentAbilityEl = Array.from(opponentElementStrongList.children).find((item) => item.innerText.toLowerCase() === curr.toLowerCase());
+        const userAbilityEl = Array.from(userElementWeakList.children).find((item) => item.innerText.toLowerCase() === userAbility);
+
+        opponentAbilityEl.classList.add("animateBlinkGreen");
+        userAbilityEl.classList.add("animateBlinkRed");
+
+        setTimeout(() => {
+          opponentAbilityEl.classList.remove("animateBlinkGreen");
+          userAbilityEl.classList.remove("animateBlinkRed");
+        }, 1200);
       }
       return acc;
     }, 0);
@@ -969,8 +1006,6 @@ function renderHitControls() {
 
       updateHp(userDamage, opponent, opponentCurrentFightCard, opponentLostHpIconHolder, "right");
       updateHp(opposingDamage, monster, userCurrentFightCard, userLostHpIconHolder, "left");
-
-      lockElement = true;
 
       const nextFight = monster.remainingHP <= 0 || opponent.remainingHP <= 0;
       updateUserTeamMonster(monster, opponent, userDamage, opposingDamage);
