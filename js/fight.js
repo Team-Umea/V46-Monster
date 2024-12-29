@@ -856,6 +856,7 @@ function renderHitControls() {
 
   const elementContainer = document.createElement("div");
   const useElementsBtn = document.createElement("button");
+  const noElementsMessageEl = document.createElement("h2");
 
   let userElementEl = renderElement(userTeamElements[currentUserTeamElement], true, increaseElementIndex, decreaseElementIndex);
   let opponentElementEl = renderElement(opponent.elements[0]);
@@ -875,19 +876,22 @@ function renderHitControls() {
     }
     updateRenderedElement(userTeamElements[currentUserTeamElement], userElementEl);
   }
-  console.log(userTeamElements);
+
+  const noOpponentElement = opponent.elements.length === 0;
 
   const meter = accuracyMeter();
   const meterPin = meter.getElementsByClassName("pin")[0];
   const hitBtn = imgAsBtn("sword", "Hit");
 
+  elementContainer.setAttribute("class", `${!noOpponentElement ? "elements" : "noElements"}`);
   useElementsBtn.setAttribute("class", "useElementBtn primary-btn");
+  noElementsMessageEl.setAttribute("class", "noElementsMessage");
   userElementEl.classList.add("userElement");
   opponentElementEl.classList.add("opponentElement");
-  elementContainer.setAttribute("class", "elements");
   hitBtn.setAttribute("class", "hitBtn icon icon-scale");
 
   useElementsBtn.innerText = "Use Elements";
+  noElementsMessageEl.innerText = "Opponent has no elements available";
 
   let meterIsRunning = true;
 
@@ -930,6 +934,6 @@ function renderHitControls() {
     elementContainer.appendChild(userElementEl);
   });
 
-  elementContainer.append(useElementsBtn, opponentElementEl);
+  elementContainer.append(!noOpponentElement ? useElementsBtn : noElementsMessageEl, opponentElementEl);
   hitContainer.append(elementContainer, meter, hitBtn);
 }
