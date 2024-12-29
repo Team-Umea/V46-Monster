@@ -59,7 +59,7 @@ function render() {
 }
 
 function loadUserTeamElements() {
-  const sortedElements = team.elements.reduce((acc, curr) => {
+  const sortedElements = userTeam.elements.reduce((acc, curr) => {
     if (!acc[curr.name]) {
       acc[curr.name] = {
         count: 0,
@@ -86,6 +86,18 @@ function loadUserTeamElements() {
       weakAgainst,
     }))
     .sort((a, b) => b.count - a.count);
+}
+
+function removeUserTeamElment(element) {
+  let removed = false;
+  userTeam.elements = [...userTeam.elements].filter((item) => {
+    if (item.name === element.name && !removed) {
+      removed = true;
+      return false;
+    }
+    return true;
+  });
+  loadUserTeamElements();
 }
 
 function toggleTeamsHeadToHead() {
@@ -276,12 +288,13 @@ function resetPrevFight() {
   prevFightContainer.style.width = `${originalContainerWidth}%`;
 
   lockElement = false;
+  currentUserTeamElement = 0;
 
   prevMonsterCardTeam1.style.transform = `translateX(0)`;
   prevMonsterCardTeam2.style.transform = `translateX(0)`;
 }
 
-function calcUserDamage(monster, meter, meterPin) {
+function calcUserDamage(monster, userElement, opponentElement, meter, meterPin) {
   const maxDamage = monster.damage;
 
   const max = meter.clientWidth;
@@ -300,13 +313,27 @@ function calcUserDamage(monster, meter, meterPin) {
     vaildHit = 100;
   }
 
+  let overlappingAbilities = 0;
+
+  if (userElement && opponentElement) {
+    overlappingAbilities = userElement.strongAgainst.reduce((acc, curr) => {
+      if (opponentElement && opponentElement.weakAgainst && opponentElement.weakAgainst.includes(curr)) {
+        acc += Math.max(1, Math.floor(userElement.rating * 0.03));
+      }
+      return acc;
+    }, 0);
+    if (!lockElement) {
+      removeUserTeamElment(userElement);
+    }
+  }
+
   const percentage = vaildHit / 100;
-  const damage = Math.floor(maxDamage * percentage);
+  const damage = Math.floor(maxDamage * percentage) + overlappingAbilities;
 
   return damage === 0 ? 1 : damage;
 }
 
-function calcOpposingDamage(monster) {
+function calcOpposingDamage(monster, userElement, opponentElement) {
   const maxDamage = monster.damage;
 
   const hitValue = 100 - (Math.random() * 100 + 1);
@@ -320,8 +347,19 @@ function calcOpposingDamage(monster) {
     vaildHit = 100;
   }
 
+  let overlappingAbilities = 0;
+
+  if (userElement && opponentElement) {
+    overlappingAbilities = opponentElement.strongAgainst.reduce((acc, curr) => {
+      if (userElement && userElement.weakAgainst && userElement.weakAgainst.includes(curr)) {
+        acc += Math.max(1, Math.floor(opponentElement.rating * 0.03));
+      }
+      return acc;
+    }, 0);
+  }
+
   const percentage = vaildHit / 100;
-  const damage = Math.floor(maxDamage * percentage);
+  const damage = Math.floor(maxDamage * percentage) + overlappingAbilities;
 
   return damage === 0 ? 1 : damage;
 }
@@ -921,17 +959,18 @@ function renderHitControls() {
 
       meterPin.style.animationPlayState = "paused";
       meterIsRunning = false;
-      lockElement = true;
 
       hideElementControls();
 
-      const userDamage = calcUserDamage(monster, meter, meterPin);
-      const opposingDamage = calcOpposingDamage(opponent);
+      const userDamage = calcUserDamage(monster, userTeamElements[currentUserTeamElement], opponent.elements[0], meter, meterPin);
+      const opposingDamage = calcOpposingDamage(opponent, userTeamElements[currentUserTeamElement], opponent.elements[0]);
       const userCurrentFightCard = getCurrentFightCards(4 - currentFight).monsterCardTeam1;
       const opponentCurrentFightCard = getCurrentFightCards(4 - currentFight).monsterCardTeam2;
 
       updateHp(userDamage, opponent, opponentCurrentFightCard, opponentLostHpIconHolder, "right");
       updateHp(opposingDamage, monster, userCurrentFightCard, userLostHpIconHolder, "left");
+
+      lockElement = true;
 
       const nextFight = monster.remainingHP <= 0 || opponent.remainingHP <= 0;
       updateUserTeamMonster(monster, opponent, userDamage, opposingDamage);
