@@ -125,7 +125,7 @@ export class MonsterCard {
     const teamSelector = document.createElement("select");
     const monster = this.monster;
     let teams = loadTeams();
-    const availableTeams = teams.filter((team) => team.monsters.length < 4);
+    let availableTeams = teams.filter((team) => team.monsters.length < 4);
 
     teamSelector.setAttribute("class", "monsterSelect");
     const firstOption = document.createElement("option");
@@ -153,6 +153,7 @@ export class MonsterCard {
       if (isNewMonster) {
         teams[selectedTeamIndex].addMonsterToTeam(monster).then((_) => {
           save(TEAMS_LSK, teams);
+          this.assembleMonsterCard();
         });
         this.setSelectMessage("success", `${monster.name} successfully added to team '${selectedTeam.name}'`);
       } else {
