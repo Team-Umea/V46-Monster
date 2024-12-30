@@ -967,11 +967,14 @@ function renderHitControls() {
   let userElementEl = renderElement(userTeamElements[currentUserTeamElement], true, increaseElementIndex, decreaseElementIndex);
   let opponentElementEl = renderElement(opponent.elements[0]);
 
+  let usedElement = userTeamElements[currentUserTeamElement];
+
   function increaseElementIndex() {
     currentUserTeamElement++;
     if (currentUserTeamElement > userTeamElements.length - 1) {
       currentUserTeamElement = 0;
     }
+    usedElement = userTeamElements[currentUserTeamElement];
     updateRenderedElement(userTeamElements[currentUserTeamElement], userElementEl);
   }
 
@@ -980,6 +983,7 @@ function renderHitControls() {
     if (currentUserTeamElement < 0) {
       currentUserTeamElement = userTeamElements.length - 1;
     }
+    usedElement = userTeamElements[currentUserTeamElement];
     updateRenderedElement(userTeamElements[currentUserTeamElement], userElementEl);
   }
 
@@ -1005,20 +1009,14 @@ function renderHitControls() {
     if (meterIsRunning) {
       removeAllLostHpIcons();
 
-      totalRounds++;
-
-      if (!noOpponentElement && !lockElement) {
-        // removeUserTeamElment(userTeamElements[currentUserTeamElement]);
-      }
-
       meterPin.style.animationPlayState = "paused";
       meterIsRunning = false;
-      lockElement = true;
+      totalRounds++;
 
       hideElementControls();
 
-      const userDamage = calcUserDamage(monster, userTeamElements[currentUserTeamElement], opponent.elements[0], meter, meterPin);
-      const opposingDamage = calcOpposingDamage(opponent, userTeamElements[currentUserTeamElement], opponent.elements[0]);
+      const userDamage = calcUserDamage(monster, usedElement, opponent.elements[0], meter, meterPin);
+      const opposingDamage = calcOpposingDamage(opponent, usedElement, opponent.elements[0]);
       const userCurrentFightCard = getCurrentFightCards(4 - currentFight).monsterCardTeam1;
       const opponentCurrentFightCard = getCurrentFightCards(4 - currentFight).monsterCardTeam2;
 
@@ -1034,6 +1032,26 @@ function renderHitControls() {
       }
 
       opponentElementEl = renderElement(opponent.elements[0]);
+
+      if (!noOpponentElement && !lockElement && userElementEl.parentNode) {
+        removeUserTeamElment(usedElement);
+
+        const usedElementEl = document.createElement("p");
+        usedElementEl.setAttribute("class", "usedElement");
+        usedElementEl.innerText = `-1x ${usedElement.name}`;
+        elementContainer.appendChild(usedElementEl);
+
+        setTimeout(() => {
+          usedElementEl.remove();
+        }, 1200);
+
+        const elementCountEl = userElementEl.getElementsByClassName("elementCount")[0];
+        elementCountEl.innerText = `${usedElement.count - 1}x`;
+      }
+
+      if (userElementEl.parentNode) {
+        lockElement = true;
+      }
 
       setTimeout(() => {
         meterPin.style.animationPlayState = "running";

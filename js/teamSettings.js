@@ -890,8 +890,6 @@ function renderBattleRecord() {
     const sufferedDamageEl = valueWithHeader(sufferedDamage, "Suffered damage");
     const distributedDamageEl = valueWithHeader(distributedDamage, "Distributed damage");
 
-    console.log("Suff: ", sufferedDamage);
-
     heading.setAttribute("class", "heading");
     battleIcon.classList.add("border-icon");
     teamProfitIcon.classList.add("border-icon", "border-icon-right");

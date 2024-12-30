@@ -491,7 +491,7 @@ body {
 
       .elements {
         width: min(100%, 600px);
-        min-height: 150px;
+        min-height: 180px;
         margin-bottom: 20px;
         padding: 20px;
         display: grid;
@@ -609,11 +609,19 @@ body {
         .opponentElement {
           grid-column: 2;
         }
+
+        .usedElement {
+          position: absolute;
+          top: -20px;
+          left: 19%;
+          opacity: 0;
+          animation: fadeOut 1.2s ease-in-out;
+        }
       }
 
       .noElements {
         width: min(100%, 600px);
-        min-height: 150px;
+        min-height: 180px;
         margin-bottom: 20px;
         display: flex;
         justify-content: center;
