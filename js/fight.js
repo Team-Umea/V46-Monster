@@ -22,9 +22,7 @@ const hitContainer = document.getElementById("hitContainer");
 const teams = load(TEAMS_LSK) || [];
 const selctedTeam = load(SELECTEDFIGHTTEAM_LSK) || teams[0].name;
 const team = teams.find((team) => team.name === selctedTeam) || teams[0] || null;
-const userTeamMonsters = teams.find((team) => team.name === selctedTeam).monsters || [];
 const userTeam = Team.fromJSON(team);
-userTeam.setMonsters(userTeamMonsters);
 const opposingTeam = Team.fromJSON(load(OPPOSINGFIGHTTEAM_LSK));
 
 let monster = { ...userTeam.monsters[0] };
@@ -89,6 +87,7 @@ function loadUserTeamElements() {
 
 function removeUserTeamElment(element) {
   let removed = false;
+
   userTeam.elements = [...userTeam.elements].filter((item) => {
     if (item.name === element.name && !removed) {
       removed = true;
@@ -96,6 +95,7 @@ function removeUserTeamElment(element) {
     }
     return true;
   });
+
   updateTeams();
   loadUserTeamElements();
 }
@@ -242,6 +242,7 @@ function calcBattleCredits(winner) {
   const newCredits = currentCredits + battleCredits;
   userTeam.teamProfit += battleCredits;
   updateUser("credits", newCredits);
+  updateTeams();
   renderBattleResult(winner, battleCredits);
 }
 
@@ -845,7 +846,7 @@ function renderBattleMonsters() {
   });
 }
 
-function renderElement(element, useControls, increaseCallback, decreaseCallback) {
+function renderElement(element, useControls, increaseCallback, decreaseCallback, allTeamElements) {
   if (element) {
     const containerEl = document.createElement("div");
     const controlsEl = document.createElement("div");
@@ -913,7 +914,20 @@ function renderElement(element, useControls, increaseCallback, decreaseCallback)
       });
     }
 
-    controlsEl.append(decBtn, elementCountEl, incBtn);
+    if (allTeamElements && allTeamElements.length > 1) {
+      controlsEl.appendChild(decBtn);
+    } else if (decBtn.parentNode) {
+      decBtn.remove();
+    }
+
+    controlsEl.appendChild(elementCountEl);
+
+    if (allTeamElements && allTeamElements.length > 1) {
+      controlsEl.appendChild(incBtn);
+    } else if (incBtn.parentNode) {
+      incBtn.remove();
+    }
+
     bannerEl.append(iconEl, nameEl, ratingEl);
     abilityEl.append(strongHeaderEl, weakHeaderEl, strongListEl, weakListEl);
 
@@ -963,7 +977,7 @@ function renderHitControls() {
   const useElementsBtn = document.createElement("button");
   const noElementsMessageEl = document.createElement("h2");
 
-  let userElementEl = renderElement(userTeamElements[currentUserTeamElement], true, increaseElementIndex, decreaseElementIndex);
+  let userElementEl = renderElement(userTeamElements[currentUserTeamElement], true, increaseElementIndex, decreaseElementIndex, userTeamElements);
   let opponentElementEl = renderElement(opponent.elements[0]);
 
   let usedElement = userTeamElements[currentUserTeamElement];
@@ -986,6 +1000,7 @@ function renderHitControls() {
     updateRenderedElement(userTeamElements[currentUserTeamElement], userElementEl);
   }
 
+  const noUserElement = userTeam.elements.length === 0;
   const noOpponentElement = opponent.elements.length === 0;
 
   const meter = accuracyMeter();
@@ -1000,7 +1015,7 @@ function renderHitControls() {
   hitBtn.setAttribute("class", "hitBtn icon icon-scale");
 
   useElementsBtn.innerText = "Use Elements";
-  noElementsMessageEl.innerText = "Opponent has no elements available";
+  noElementsMessageEl.innerText = noUserElement ? "You have no elements available" : "Opponent has no elements available";
 
   let meterIsRunning = true;
 
@@ -1064,6 +1079,16 @@ function renderHitControls() {
     elementContainer.appendChild(userElementEl);
   });
 
-  elementContainer.append(!noOpponentElement ? useElementsBtn : noElementsMessageEl, opponentElementEl);
+  if (noOpponentElement) {
+    elementContainer.append(noElementsMessageEl);
+  } else {
+    if (!noUserElement) {
+      elementContainer.append(useElementsBtn);
+    } else {
+      elementContainer.append(noElementsMessageEl);
+    }
+  }
+
+  elementContainer.append(opponentElementEl);
   hitContainer.append(elementContainer, meter, hitBtn);
 }
