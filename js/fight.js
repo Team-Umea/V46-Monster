@@ -1,5 +1,5 @@
 //Js code for fight page
-import { TEAMS_LSK, SELECTEDFIGHTTEAM_LSK, OPPOSINGFIGHTTEAM_LSK, SELECTEDTEAMSETTINGS_LSK } from "./common/localStorageKeys.js";
+import { TEAMS_LSK, SELECTEDFIGHTTEAM_LSK, OPPOSINGFIGHTTEAM_LSK } from "./common/localStorageKeys.js";
 import { load, save, convertInstancesToStr, capitalize } from "./common/utilities.js";
 import { MonsterFighCard } from "./classes/MonsterFighCard.js";
 import { valueWithHeader, progressBar, setBtnIcon, renderIconWithNumber, averageValueIcon, imgAsBtn, accuracyMeter } from "./common/render.js";
@@ -258,6 +258,8 @@ function evalBattle() {
   fightBtn.classList.remove("hidden");
   hitContainer.setAttribute("class", "hitContainer hidden");
 
+  userTeam.calc();
+
   calcBattleCredits();
   updateTeams();
   resetPrevFight();
@@ -372,8 +374,6 @@ function calcOpposingDamage(monster, userElement, opponentElement) {
 
       if (userElement && userElement.weakAgainst && userElement.weakAgainst.includes(curr)) {
         acc += Math.max(1, Math.floor(opponentElement.rating * 0.03));
-
-        console.log(curr);
 
         const userAbility = userElement.weakAgainst.find((aby) => aby.toLowerCase() === curr.toLowerCase());
 
