@@ -232,12 +232,7 @@ function removeMonster(id) {
 }
 
 function deleteTeam() {
-  const updatedTeams = loadedTeams.map((t) => {
-    if (t.name === team.name) {
-      return team;
-    }
-    return t;
-  });
+  const updatedTeams = loadedTeams.filter((t) => t.name !== team.name);
 
   save(TEAMS_LSK, updatedTeams);
   remove(SELECTEDTEAMSETTINGS_LSK);
