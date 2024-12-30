@@ -31,6 +31,7 @@ let monster = { ...userTeam.monsters[0] };
 let opponent = { ...opposingTeam.monsters[0] };
 let userTeamElements = [];
 let currentUserTeamElement = 0;
+let lockElement = false;
 
 let currentFight = 0;
 let userPoints = 0;
@@ -170,6 +171,7 @@ function startFight() {
   oppoentPoints = 0;
   totalRounds = 0;
   battleCredits = 0;
+  lockElement = false;
 
   fightOrderContainer.innerHTML = "";
   fightBtn.classList.add("hidden");
@@ -288,13 +290,8 @@ function resetPrevFight() {
 
   prevFightContainer.style.width = `${originalContainerWidth}%`;
 
-  const noOpponentElement = opponent.elements.length === 0;
-
-  if (!noOpponentElement) {
-    removeUserTeamElment(userTeamElements[currentUserTeamElement]);
-  }
-
   currentUserTeamElement = 0;
+  lockElement = false;
 
   prevMonsterCardTeam1.style.transform = `translateX(0)`;
   prevMonsterCardTeam2.style.transform = `translateX(0)`;
@@ -328,19 +325,28 @@ function calcUserDamage(monster, userElement, opponentElement, meter, meterPin) 
 
         const opponentAbility = opponentElement.weakAgainst.find((aby) => aby.toLowerCase() === curr.toLowerCase());
 
-        const userElementStrongList = document.getElementsByClassName("userElement")[0].getElementsByClassName("elementAbilities")[0];
-        const opponentElementWeakList = document.getElementsByClassName("opponentElement")[0].getElementsByClassName("elementAbilities")[1];
+        const userElementEl = document.getElementsByClassName("userElement")[0];
+        const opponentElementEl = document.getElementsByClassName("opponentElement")[0];
 
-        const userAbilityEl = Array.from(userElementStrongList.children).find((item) => item.innerText.toLowerCase() === curr.toLowerCase());
-        const opponentAbilityEl = Array.from(opponentElementWeakList.children).find((item) => item.innerText.toLowerCase() === opponentAbility);
+        if (userElementEl && opponentElementEl) {
+          const userElementStrongList = userElementEl.getElementsByClassName("elementAbilities")[0];
+          const opponentElementWeakList = opponentElementEl.getElementsByClassName("elementAbilities")[1];
 
-        userAbilityEl.classList.add("animateBlinkGreen");
-        opponentAbilityEl.classList.add("animateBlinkRed");
+          const userAbilityEl = Array.from(userElementStrongList.children).find((item) => item.innerText.toLowerCase() === curr.toLowerCase());
+          const opponentAbilityEl = Array.from(opponentElementWeakList.children).find((item) => item.innerText.toLowerCase() === opponentAbility);
 
-        setTimeout(() => {
-          userAbilityEl.classList.remove("animateBlinkGreen");
-          opponentAbilityEl.classList.remove("animateBlinkRed");
-        }, 1200);
+          if (userAbilityEl && opponentAbilityEl) {
+            userAbilityEl.classList.add("animateBlinkGreen");
+            opponentAbilityEl.classList.add("animateBlinkRed");
+          }
+
+          setTimeout(() => {
+            if (userAbilityEl && opponentAbilityEl) {
+              userAbilityEl.classList.remove("animateBlinkGreen");
+              opponentAbilityEl.classList.remove("animateBlinkRed");
+            }
+          }, 1200);
+        }
       }
       return acc;
     }, 0);
@@ -370,26 +376,33 @@ function calcOpposingDamage(monster, userElement, opponentElement) {
 
   if (userElement && opponentElement) {
     overlappingAbilities = opponentElement.strongAgainst.reduce((acc, curr) => {
-      console.log(userElement, userElement.weakAgainst, userElement.weakAgainst.includes(curr));
-
       if (userElement && userElement.weakAgainst && userElement.weakAgainst.includes(curr)) {
         acc += Math.max(1, Math.floor(opponentElement.rating * 0.03));
 
         const userAbility = userElement.weakAgainst.find((aby) => aby.toLowerCase() === curr.toLowerCase());
 
-        const opponentElementStrongList = document.getElementsByClassName("opponentElement")[0].getElementsByClassName("elementAbilities")[0];
-        const userElementWeakList = document.getElementsByClassName("userElement")[0].getElementsByClassName("elementAbilities")[1];
+        const opponentElementEl = document.getElementsByClassName("opponentElement")[0];
+        const userElementEl = document.getElementsByClassName("userElement")[0];
 
-        const opponentAbilityEl = Array.from(opponentElementStrongList.children).find((item) => item.innerText.toLowerCase() === curr.toLowerCase());
-        const userAbilityEl = Array.from(userElementWeakList.children).find((item) => item.innerText.toLowerCase() === userAbility);
+        if (opponentElementEl && userElementEl) {
+          const opponentElementStrongList = opponentElementEl.getElementsByClassName("elementAbilities")[0];
+          const userElementWeakList = userElementEl.getElementsByClassName("elementAbilities")[1];
 
-        opponentAbilityEl.classList.add("animateBlinkGreen");
-        userAbilityEl.classList.add("animateBlinkRed");
+          const opponentAbilityEl = Array.from(opponentElementStrongList.children).find((item) => item.innerText.toLowerCase() === curr.toLowerCase());
+          const userAbilityEl = Array.from(userElementWeakList.children).find((item) => item.innerText.toLowerCase() === userAbility);
 
-        setTimeout(() => {
-          opponentAbilityEl.classList.remove("animateBlinkGreen");
-          userAbilityEl.classList.remove("animateBlinkRed");
-        }, 1200);
+          if (opponentAbilityEl && userAbilityEl) {
+            opponentAbilityEl.classList.add("animateBlinkGreen");
+            userAbilityEl.classList.add("animateBlinkRed");
+          }
+
+          setTimeout(() => {
+            if (opponentAbilityEl && userAbilityEl) {
+              opponentAbilityEl.classList.remove("animateBlinkGreen");
+              userAbilityEl.classList.remove("animateBlinkRed");
+            }
+          }, 1200);
+        }
       }
       return acc;
     }, 0);
@@ -994,8 +1007,13 @@ function renderHitControls() {
 
       totalRounds++;
 
+      if (!noOpponentElement && !lockElement) {
+        // removeUserTeamElment(userTeamElements[currentUserTeamElement]);
+      }
+
       meterPin.style.animationPlayState = "paused";
       meterIsRunning = false;
+      lockElement = true;
 
       hideElementControls();
 
