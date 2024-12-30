@@ -23,8 +23,6 @@ const dangerZone = document.getElementById("dangerZone");
 const loadedTeams = load(TEAMS_LSK).map((t) => Team.fromJSON(t)) || [];
 const team = loadedTeams.find((t) => t.name === load(SELECTEDTEAMSETTINGS_LSK).name);
 
-console.log(team);
-
 let userCredits = load(USER_LSK).credits;
 
 let linkedBtns = [];
@@ -184,9 +182,10 @@ function updateTeams() {
 async function shuffleTeam() {
   const randomMonsters = await serveData("randomMonsters", "num=4", monstersContainer);
 
-  team.setMonsters(randomMonsters);
+  await team.setMonsters(randomMonsters);
   team.setPaidFor(false);
   updateTeams();
+  renderElements();
 }
 
 function buyTeam() {

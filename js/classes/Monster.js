@@ -1,5 +1,3 @@
-import { convertInstancesToStr } from "../common/utilities.js";
-
 //Class for monster
 export class Monster {
   constructor(monster) {

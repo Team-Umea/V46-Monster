@@ -1,4 +1,7 @@
 //Class for teams
+import { serveData } from "../common/fetch.js";
+import { ELEMENTS_LSK } from "../common/localStorageKeys.js";
+import { ELEMENTS_TTL } from "../common/ttl.js";
 import { sortInstances } from "../common/utilities.js";
 import { Monster } from "./Monster.js";
 
@@ -148,12 +151,21 @@ export class Team {
     this.createdAt = createdAt;
   }
 
-  setMonsters(monsters) {
+  async setMonsters(monsters) {
     this.monsters = monsters.map((m) => new Monster(m));
 
     const teamCost = monsters.reduce((acc, curr) => acc + curr.price, 0);
-    this.teamCost = teamCost;
 
+    const elements = await serveData("elements", undefined, document.createElement("div"), ELEMENTS_LSK, ELEMENTS_TTL);
+
+    const givenElementNames = monsters.flatMap((monster) => monster.elements);
+
+    const mappedElements = givenElementNames.map((element) => {
+      return elements.find((el) => el.name === element);
+    });
+
+    this.elements = mappedElements;
+    this.teamCost = teamCost;
     this.calc();
   }
 
@@ -241,10 +253,18 @@ export class Team {
     this.calc();
   }
 
-  addMonsterToTeam(monster) {
+  async addMonsterToTeam(monster) {
     const duplicates = this.monsters.filter((m) => m.id === monster.id);
     if (this.monsters.length < 4 && duplicates.length === 0) {
       this.monsters.push(new Monster(monster));
+
+      const elements = await serveData("elements", undefined, document.createElement("div"), ELEMENTS_LSK, ELEMENTS_TTL);
+
+      const mappedElements = monster.elements.map((element) => {
+        return elements.find((el) => el.name === element);
+      });
+
+      this.elements = [...this.elements, ...mappedElements];
     }
 
     const monsters = this.monsters;

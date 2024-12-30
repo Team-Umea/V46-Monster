@@ -151,8 +151,9 @@ export class MonsterCard {
       const isNewMonster = ![...selectedTeam.monsters].map((m) => m.id).includes(monster.id);
 
       if (isNewMonster) {
-        teams[selectedTeamIndex].addMonsterToTeam(monster);
-        save(TEAMS_LSK, teams);
+        teams[selectedTeamIndex].addMonsterToTeam(monster).then((_) => {
+          save(TEAMS_LSK, teams);
+        });
         this.setSelectMessage("success", `${monster.name} successfully added to team '${selectedTeam.name}'`);
       } else {
         this.setSelectMessage("error", `${monster.name} alreday exists in team '${selectedTeam.name}'`);
