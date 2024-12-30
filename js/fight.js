@@ -25,7 +25,7 @@ const team = teams.find((team) => team.name === selctedTeam) || teams[0] || null
 const userTeamMonsters = teams.find((team) => team.name === selctedTeam).monsters || [];
 const userTeam = Team.fromJSON(team);
 userTeam.setMonsters(userTeamMonsters);
-const opposingTeam = load(OPPOSINGFIGHTTEAM_LSK) || null;
+const opposingTeam = Team.fromJSON(load(OPPOSINGFIGHTTEAM_LSK));
 
 let monster = { ...userTeam.monsters[0] };
 let opponent = { ...opposingTeam.monsters[0] };
@@ -37,7 +37,6 @@ let currentFight = 0;
 let userPoints = 0;
 let oppoentPoints = 0;
 let totalRounds = 0;
-let battleCredits = 0;
 
 window.addEventListener("DOMContentLoaded", () => {
   init();
@@ -170,7 +169,6 @@ function startFight() {
   userPoints = 0;
   oppoentPoints = 0;
   totalRounds = 0;
-  battleCredits = 0;
   lockElement = false;
 
   fightOrderContainer.innerHTML = "";
@@ -217,25 +215,26 @@ function slideFightCards() {
   }
 }
 
-function calcBattleCredits() {
+function calcBattleCredits(winner) {
   const userTeamRating = userTeam.totalRating;
-  const opposingTeamRating = opposingTeam.totalRating;
-  const ratingDifference = Math.abs(userTeamRating - opposingTeamRating);
+  const opponentRating = opposingTeam.totalRating;
+  const ratingDifference = Math.abs(userTeamRating - opponentRating);
+  const numFights = 4;
+  const maxCredits = Math.max(100, Math.round(Math.max(0, 1.5 * userTeamRating - ratingDifference + opponentRating) / numFights / 100) * 100);
 
-  const maxCredits = 10000 * userTeamRating * (1 / (ratingDifference * 5)) * userPoints;
-  const minRounds = 4;
+  const roundsFactor = 4 / Math.max(4, totalRounds);
+  const pointsFactor = Math.max(1, userPoints);
+  const performanceFactor = roundsFactor * pointsFactor;
 
-  const performanceFactor = minRounds / totalRounds;
+  let battleCredits = maxCredits * performanceFactor;
 
-  const ratingDifferenceFactor = Math.max(2, ratingDifference * 0.1);
-
-  const total = (maxCredits * performanceFactor) / ratingDifferenceFactor + userTeamRating * 0.1;
-
-  if (total > 100) {
-    battleCredits = Math.round(total / 100) * 100;
+  if (battleCredits <= 1000) {
+    battleCredits = Math.round(battleCredits / 10) * 10;
+  } else {
+    battleCredits = Math.round(battleCredits / 100) * 100;
   }
 
-  if (userPoints < oppoentPoints) {
+  if (oppoentPoints > userPoints) {
     battleCredits = 0;
   }
 
@@ -243,6 +242,7 @@ function calcBattleCredits() {
   const newCredits = currentCredits + battleCredits;
   userTeam.teamProfit += battleCredits;
   updateUser("credits", newCredits);
+  renderBattleResult(winner, battleCredits);
 }
 
 function evalBattle() {
@@ -262,11 +262,10 @@ function evalBattle() {
 
   userTeam.calc();
 
-  calcBattleCredits();
   updateTeams();
   resetPrevFight();
   render();
-  renderBattleResult(winner);
+  calcBattleCredits(winner);
 }
 
 function getCurrentFightCards(index) {
@@ -803,10 +802,10 @@ function renderFightOrder() {
   });
 }
 
-function renderBattleResult(message) {
+function renderBattleResult(message, credz) {
   const battleResultContainer = document.createElement("div");
   const battleMessage = document.createElement("h2");
-  const battleCreditsIcon = renderIconWithNumber(battleCredits, "../../res/icons/diamond.svg", `Battle generated ${battleCredits} credits`);
+  const battleCreditsIcon = renderIconWithNumber(credz, "../../res/icons/diamond.svg", `Battle generated ${credz} credits`);
 
   battleResultContainer.setAttribute("class", "battleResultContainer");
   battleMessage.setAttribute("class", "battleMessage");
